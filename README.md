@@ -13,12 +13,15 @@ Include a demo video of your game here (you don't have to wait until the end, yo
 
 Add a group photo here!
 
-- Group member 1, name, email, role
-- Group member 2, name, email, role
-- Group member 3, name, email, role
-- Group member 4, name, email, role
-- Group member 5, name, email, role
-- Group member 6, name, email, role
+| Group # | Name | Email | Role |
+| :-: | :-: | :-: | :-: |
+| 01 | Jack May | jack.robert.may@gmail.com | |
+| 02 | Tom Raynes | nc19537@bristol.ac.uk | |
+| 03 | Kuan Jung Huang | jp24328@bristol.ac.uk | |
+| 04 | Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | |
+| 05 | Jing Yao | so24769@bristol.ac.uk | |
+| 06 | Zhiling Liu | cj24646@bristol.ac.uk | |
+
 
 ## Project Report
 
