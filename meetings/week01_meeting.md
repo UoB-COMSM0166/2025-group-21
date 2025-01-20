@@ -6,12 +6,7 @@
 
 ## Game Ideas
 
-
-| Name | Desc | Fundamentals | Nice to haves | Inspiration |
-| :-: | :-: | :-: | :-: | :-: |
-| Maze Game | 
-
-### Idea 3 - Maze Game
+### Idea 1 - Maze Game
 
 Fundamentals:
 - Level generation
@@ -38,18 +33,20 @@ Nice to haves:
 - High score system
 
 Inspiration:
-- 
+- A
 
 ### Idea 3 - Side-Scroller Game
 
 Fundamentals:
 - Map generation
 
+Nice to haves:
+- A
 
 Inspiration:
-- 
+- A
 
-##  Idea 4 - Rollercoaster
+### Idea 4 - Rollercoaster
 
 Fundamentals:
 - Physics e.g. friction, gravity
@@ -63,7 +60,7 @@ Nice to haves:
 Inspiration:
 - A
 
-## Idea 5 - Doodle jump
+### Idea 5 - Doodle jump
 
 Fundamentals:
 - Physics
@@ -78,12 +75,13 @@ Nice to haves:
 Inspiration:
 - A
 
-## Idea 6 - Motorbike Game
+### Idea 6 - Motorbike Game
 
 Fundamentals:
-- Physics; gravity, 
+- Physics; gravity
 - Dynamic movement, rotation
 - Multiple levels
+- 
 
 Nice to haves:
 - Interactables, items
@@ -92,4 +90,27 @@ Nice to haves:
 
 Inspiration:
 - Happy wheels
+
+### Idea 7 - Rocket Game
+
+Fundamentals:
+- Physics, gravity, weather, air resistance
+- Left-right movement
+- Upgrade / item system
+
+Nice to haves:
+- High Score system
 - 
+
+Inspiration:
+- A
+
+
+
+
+
+<!-- ## Tabulated
+
+| Name | Desc | Fundamentals | Nice to haves | Inspiration |
+| :-: | :-: | :-: | :-: | :-: |
+| Maze Game | <ul><li>Level generation</li></ul><ul><li>Card interaction system</li></ul><ul><li>NPCs and dialogue</li></ul> | <ul><li>Multiplayer</li></ul><ul><li>High score system</li></ul> |  -->
