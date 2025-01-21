@@ -8,6 +8,10 @@
 
 ### Idea 1 - Maze Game
 
+Inspiration:
+- Inscryption
+- Pokemon
+
 Fundamentals:
 - Level generation
 - Card interaction system
@@ -17,11 +21,10 @@ Nice to haves:
 - Multiplayer
 - High score system
 
-Inspiration:
-- Inscryption
-- Pokemon
-
 ### Idea 2 - Tank Game
+
+Inspiration:
+- Diep.io
 
 Fundamentals:
 - Top-down play style
@@ -32,21 +35,24 @@ Nice to haves:
 - Multiple game modes
 - High score system
 
-Inspiration:
-- A
-
 ### Idea 3 - Side-Scroller Game
+
+Inspiration:
+- Mario
 
 Fundamentals:
 - Map generation
+- Physics, gravity
+- Characters
+- Interactables
 
 Nice to haves:
-- A
-
-Inspiration:
-- A
+- High score system
 
 ### Idea 4 - Rollercoaster
+
+Inspiration:
+- Skywire
 
 Fundamentals:
 - Physics e.g. friction, gravity
@@ -57,10 +63,10 @@ Nice to haves:
 - Increasing difficulty
 - High score system
 
-Inspiration:
-- A
-
 ### Idea 5 - Doodle jump
+
+Inspiration:
+- Doodle Jump
 
 Fundamentals:
 - Physics
@@ -72,26 +78,26 @@ Nice to haves:
 - Interactables, items
 - Enemies, traps
 
-Inspiration:
-- A
-
 ### Idea 6 - Motorbike Game
+
+Inspiration:
+- Happy wheels
+- Motocross 3
 
 Fundamentals:
 - Physics; gravity
 - Dynamic movement, rotation
 - Multiple levels
-- 
 
 Nice to haves:
 - Interactables, items
 - High scores system
 - Inventory / upgrades
 
-Inspiration:
-- Happy wheels
-
 ### Idea 7 - Rocket Game
+
+Inspiration:
+- Interspace
 
 Fundamentals:
 - Physics, gravity, weather, air resistance
@@ -100,13 +106,8 @@ Fundamentals:
 
 Nice to haves:
 - High Score system
-- 
-
-Inspiration:
-- A
-
-
-
+- Infinite map generation
+- High score system
 
 
 <!-- ## Tabulated
