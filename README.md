@@ -13,7 +13,7 @@ Include a demo video of your game here (you don't have to wait until the end, yo
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
 
-<center>
+<div align="center">
 
 | Group # | Name | Email | Role |
 | :-: | :-: | :-: | :-: |
@@ -24,7 +24,7 @@ Include a demo video of your game here (you don't have to wait until the end, yo
 | 05 | Jing Yao | so24769@bristol.ac.uk | |
 | 06 | Zhiling Liu | cj24646@bristol.ac.uk | |
 
-</center>
+</div>
 
 ## Project Report
 
