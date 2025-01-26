@@ -40,6 +40,10 @@ Changing scenery
 
 <a href="https://www.silvergames.com/en/into-space">Into Space</a>
 
+#### Premise:
+
+The player tries to escape Earth's atmosphere and get into space with a rocket. The player can make upgrades to their rocket using in-game currency. This can be collected on each attempt flight where it is aquired per increase in altitude as well as by the rocket (floating coins in the atmosphere. The flight ends when the rocket runs out of fuel or an obstical us hit. 
+
 
 
 
