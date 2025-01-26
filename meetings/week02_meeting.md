@@ -66,3 +66,10 @@ The players will achieve a higher altitude as they aquire more upgrades to their
 - Constant downwards gravitational force that is counteracted with increasing successas the rocket is upgraded
 - Trajectory of rocket is affected by wind and rocket can be manoeuvred left/right with arrow keys. Manoeuvrability increases with upgrades.
 - Rocket health bar is depleted if an obstacle (e.g. UFO) is hit.
+- Algorithm for generating obstacles and collectables.
+- Paralax effect for background to simulate the feeling of realistic movement.
+
+#### Extensions:
+
+- NPC rocket to compete against the player
+- Additional levels, e.g., other planets with distinct gravity, obstacles, physics.
