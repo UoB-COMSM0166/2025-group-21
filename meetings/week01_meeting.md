@@ -97,7 +97,7 @@ Nice to haves:
 ### Idea 7 - Rocket Game
 
 Inspiration:
-- Interspace
+- Into Space
 
 Fundamentals:
 - Physics, gravity, weather, air resistance
