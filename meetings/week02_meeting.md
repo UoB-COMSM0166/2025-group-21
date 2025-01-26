@@ -53,7 +53,6 @@ Game begins with initial flight with the default starting rocket (no upgrades). 
   - Engine
   - Fuel tank
   - Boosters
-
   - Better coin economy
   - Better fuel consumption
   - Better aerodynamics
