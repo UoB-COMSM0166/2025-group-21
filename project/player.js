@@ -11,9 +11,9 @@ class Player {
 
         //---Fixed position fr the penguin----
         this.x = x;
+        this.y = floorYatX(this.x) + 1;
 
         //---This will change according to the wave's Y (check floor.js / floorYatX())
-        this.y = 0;
         this.radius = radius;
         
         //---Velicity: 1-Positive: goes down / 2:negative, goes up
@@ -31,7 +31,7 @@ class Player {
             this.velocity = -15; //Negative for jumping
         }
     }
-  
+
     //---Updating position according to velocity and gravity---------
     update() {
         
@@ -43,18 +43,18 @@ class Player {
         
         //---Here i am handling collision. If the penguin/ball goes "pass(?)" the wave... take it back to wave position...
         if (this.y >= theFloor - this.radius) {
-        this.y = theFloor - this.radius;
-        this.velocity = 0;
-        this.isJumping = false;
+            this.y = theFloor - this.radius;
+            this.velocity = 0;
+            this.isJumping = false;
         }
     }
-  
+
     //---This is the method for rendering the penguin/ball--------------------
     show() {
       // Draw the ball
       fill('rgb(104,240,30)');
       noStroke(); 
-      ellipse(this.x, this.y, this.radius * 2);
+      circle(this.x, this.y, this.radius * 2);
     }
 
 }
