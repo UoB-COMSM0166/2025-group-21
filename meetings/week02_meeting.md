@@ -34,10 +34,41 @@ Bonus / multiplier system
 Design of items
 Changing scenery
 
-### 2. Boat Game
+### 2. Rocket Game
 
+#### Inspiration:
 
+<a href="https://www.silvergames.com/en/into-space">Into Space</a>
 
+#### Premise:
 
+The player tries to escape Earth's atmosphere and get into space with a rocket. The player can make upgrades to their rocket using in-game currency. This can be collected on each attempt flight where it is aquired per increase in altitude as well as by the rocket (floating coins in the atmosphere). The flight ends when the rocket runs out of fuel or an obstical us hit. 
 
+#### Basic Game Flow:
 
+Game begins with initial flight with the default starting rocket (no upgrades). Between each flight, the player is taken to the workshop (upgrades screen) where they can choose which parts or attributes to upgrade. Upgrades include: 
+
+  - Hull
+  - Fins
+  - Engine
+  - Fuel tank
+  - Boosters
+  - Better coin economy
+  - Better fuel consumption
+  - Better aerodynamics
+  - Better damage protection
+
+The players will achieve a higher altitude as they aquire more upgrades to their rocket. Game concludes once the player has reached aspecific altitude.
+
+#### In-Game Mechanics:
+
+- Constant downwards gravitational force that is counteracted with increasing successas the rocket is upgraded
+- Trajectory of rocket is affected by wind and rocket can be manoeuvred left/right with arrow keys. Manoeuvrability increases with upgrades.
+- Rocket health bar is depleted if an obstacle (e.g. UFO) is hit.
+- Algorithm for generating obstacles and collectables.
+- Paralax effect for background to simulate the feeling of realistic movement.
+
+#### Extensions:
+
+- NPC rocket to compete against the player
+- Additional levels, e.g., other planets with distinct gravity, obstacles, physics.
