@@ -5,26 +5,6 @@
 //-The only thing that being updated is its Y position
 
 
-class Player {
-
-    constructor(x, radius) {
-
-        //---Fixed position fr the penguin----
-        this.x = x;
-        this.y = floorYatX(this.x) + 1;
-
-        //---This will change according to the wave's Y (check floor.js / floorYatX())
-        this.radius = radius;
-        
-        //---Velicity: 1-Positive: goes down / 2:negative, goes up
-        this.velocity = 0;
-        this.gravity = 0.8;//-------------------- N E W --------------------
-
-//Idea:
-//-The ball/penguin should stay fixed in an X position
-//-The only thing that being updated is its Y position
-
-
         class Player {
 
             constructor(x, radius) {
@@ -151,7 +131,7 @@ class Player {
     show() {
       // Draw the ball
       fill('rgb(104,240,30)');
-      noStroke(); 
+      noStroke();
       circle(this.x, this.y, this.radius * 2);
     }
 
