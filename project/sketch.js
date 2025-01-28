@@ -32,7 +32,6 @@ function draw() {
 
 }
 
-
 //NEW----Jumping function with SpacebaR (DEMO)-----
 function keyPressed() {
 
