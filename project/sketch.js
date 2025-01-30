@@ -14,7 +14,7 @@ function setup() {
 
 function draw() {
     
-    background('#C4F2FF');
+    background('#2C2F30');
 
 
 
@@ -30,9 +30,16 @@ function draw() {
 }
 
 //NEW----Jumping function with SpacebaR (DEMO)-----
+// Handle key presses for speed changes
 function keyPressed() {
-
     if (key === ' ') {
-      player.fall();
+        player.fall();
+        floor.increaseSpeed();
+    }
+}
+
+function keyReleased() {
+    if (key === ' ') {
+        floor.decreaseSpeed();
     }
 }
