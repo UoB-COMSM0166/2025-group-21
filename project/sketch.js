@@ -1,19 +1,13 @@
-let amplitudes = [];
-let frequencies = [];
-let phases = [];
-let speed = 5;
-let numWaves = 20; // Num sin waves to sum
-let step = 5;
-
-
 function setup() {
 
     createCanvas(1000, 500);
 
-    initSinParams();
+    // Create floor and initialise
+    floor = new Floor();
+    floor.initSinParams();
 
     //NEW--- Creation of Player----------
-    player = new Player(200, 10);
+    player = new Player();
     
 }
 
@@ -22,8 +16,11 @@ function draw() {
     
     background('#C4F2FF');
 
+
+
     stroke(1);
-    drawFloor();
+
+    floor.drawFloor();
 
     //NEW---Updating player-------
     player.update();
@@ -36,6 +33,6 @@ function draw() {
 function keyPressed() {
 
     if (key === ' ') {
-      player.jump();
+      player.fall();
     }
 }

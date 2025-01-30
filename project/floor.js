@@ -1,51 +1,60 @@
-let floor = {
-    x: null,
-    y: null
-}
+class Floor {
 
-function initSinParams() {
-
-    // Get randomised parameters for sin waves
-    for (let i = 0; i < numWaves; i++) {
-        amplitudes.push(Math.random() * 20 + 10);
-        frequencies.push(Math.random() * 0.01 + 0.01);
-        phases.push(Math.random() * Math.PI * 4);
+    constructor() {
+        this.yBelow = null,
+        this.yBehind = null
+        this.amplitudes = [];
+        this.frequencies = [];
+        this.phases = [];
+        this.speed = 5;
+        this.numWaves = 20; // Num sin waves to sum
+        this.step = 5;
     }
-  
-}
 
-function drawFloor() {
+    initSinParams() {
 
-    let prevX = null;
-    let prevY = null;
-
-    // Draw and shuffle with increasing frameCount
-    for (let x = 0; x <= width; x += step) {
-        floor.y = height / 1.5 - generateHills(x + frameCount * speed);
-        if (prevX !== null && prevY !== null) {
-            line(prevX, prevY, x, floor.y);
+        // Get randomised parameters for sin waves
+        for (let i = 0; i < this.numWaves; i++) {
+            this.amplitudes.push(Math.random() * 20 + 10);
+            this.frequencies.push(Math.random() * 0.01 + 0.01);
+            this.phases.push(Math.random() * Math.PI * 4);
         }
-        prevX = x;
-        prevY = floor.y;
     }
 
-}
+    drawFloor() {
 
-function generateHills(x) {
-  
-    // Sum randomised parameter sin curves for variation
-    let y = 0;
-    for (let i = 0; i < numWaves; i++) {
-        y += amplitudes[i] * Math.sin(frequencies[i] * x + phases[i]);
+        let prevX = null;
+        let prevY = null;
+
+        for (let x = 0; x <= width; x += this.step) {
+
+            let currentY = height / 1.5 - this.generateHills(x + frameCount * this.speed);
+
+            if (prevX !== null && prevY !== null) {
+                stroke(255);
+                line(prevX, prevY, x, currentY);
+            }
+
+            if (x === player.x) {
+                this.yBelow = currentY;
+                this.yBehind = prevY || currentY;
+            }
+
+            prevX = x;
+            prevY = currentY;
+
+        }
+
     }
-    return y;
 
-}
+    generateHills(x) {
 
+        // Sum randomised parameter sin curves for variation
+        let y = 0;
+        for (let i = 0; i < this.numWaves; i++) {
+            y += this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
+        }
+        return y;
+    }
 
-function floorYatX(x) {
-
-    //--Same formula for Y in the drawFloor function---
-
-    return height / 1.5 - generateHills(x + frameCount * speed);
 }
