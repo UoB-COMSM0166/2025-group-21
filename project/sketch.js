@@ -7,7 +7,7 @@ function setup() {
     floor.initSinParams();
 
     //NEW--- Creation of Player----------
-    player = new Player();
+    player = new Player(200, 10);
     
 }
 
