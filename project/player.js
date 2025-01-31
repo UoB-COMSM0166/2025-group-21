@@ -31,7 +31,7 @@ class Player {
             }
         }
         else {
-            this.gravity = 1.2; // 0.5
+            this.gravity = 0.6; // 0.5
             let slope = terrain.slope(this.pos.x);  // Terrain gradient
             //let curvature = terrain.secondDerivative(this.pos.x);
 
