@@ -6,19 +6,21 @@ function setup() {
     floor = new Floor();
     floor.initSinParams();
 
+    //--Display Creation-----
+    display = new Display(10, 10); // Position at (10, 10)
     //NEW--- Creation of Player----------
-    player = new Player(200, 10);
+    player = new Player(200, 10,display);
     
 }
 
 
 function draw() {
     
-    background('#C4F2FF');
+    background('#2C2F30');
 
 
 
-    stroke(1);
+
 
     floor.drawFloor();
 
@@ -29,10 +31,22 @@ function draw() {
 
 }
 
-//NEW----Jumping function with SpacebaR (DEMO)-----
 function keyPressed() {
 
     if (key === ' ') {
       player.fall();
+    }
+    if (key == 's'){
+        floor.speed = 15;
+    }
+}
+
+function keyReleased() {
+
+    if (key == 's'){
+        floor.speed = 5;
+    }
+    if (key == ' '){
+        player.notFall();
     }
 }

@@ -3,9 +3,9 @@ class Physics {
 
     // let gravity = 9.8;
 
-    function velocity() {
-        // Apply
-        speed += 2*gravity*Math.sin(THETA)
-    }
+    //velocity() {
+    //    // Apply
+    //    speed += 2*gravity*Math.sin(THETA);
+    //}
 
-}
+
