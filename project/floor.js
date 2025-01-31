@@ -70,4 +70,8 @@ class Floor {
         this.speed = 5;
     }
 
+    floorYatX(worldX) {
+        return height / 1.5 - this.generateHills(worldX);
+    }
+
 }

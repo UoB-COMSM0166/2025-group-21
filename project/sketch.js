@@ -8,12 +8,12 @@ function setup() {
 
     //NEW--- Creation of Player----------
     player = new Player(200, 10);
-    
+
 }
 
 
 function draw() {
-    
+
     background('#2C2F30');
 
 
@@ -34,12 +34,14 @@ function draw() {
 function keyPressed() {
     if (key === ' ') {
         player.fall();
+    }
+    if (key === 's' || key === 'S'){
         floor.increaseSpeed();
     }
 }
 
 function keyReleased() {
-    if (key === ' ') {
+    if (key === 's' || key === 'S') {
         floor.decreaseSpeed();
     }
 }
