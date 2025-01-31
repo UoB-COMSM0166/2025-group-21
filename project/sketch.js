@@ -1,42 +1,38 @@
-let amplitudes = [];
-let frequencies = [];
-let phases = [];
-let speed = 5;
-let numWaves = 20; // Num sin waves to sum
-let step = 5;
 
+
+let offset = 0;  // Horizontal movement of screen position
+//let speed = 0;
+let changeSpeed = false
 
 function setup() {
-
-    createCanvas(1000, 500);
-
-    initSinParams();
-
-    //NEW--- Creation of Player----------
-    player = new Player(200, 10);
-    
+    createCanvas(window.innerWidth, window.innerHeight);
+    terrain = new Terrain();
+    player = new Player(150, 150);
 }
-
 
 function draw() {
-    
-    background('#C4F2FF');
+    background(135, 206, 250);  // Blue sky
+    terrain.drawHills();
+    offset += player.vel.x;  // Move hills to the left
 
-    stroke(1);
-    drawFloor();
-
-    //NEW---Updating player-------
     player.update();
-    //NEW---Render the player-----
-    player.show();
+    player.drawPlayer()
 
-}
+    if (changeSpeed) {
 
-
-//NEW----Jumping function with SpacebaR (DEMO)-----
-function keyPressed() {
-
-    if (key === ' ') {
-      player.jump();
+        if (player.vel.x < 5) {
+            player.vel.x = lerp(player.vel.x, 5, 1); //1
+            //player.vel.y = lerp(player.vel.y, 5, 0.1);
+        }
+        else if (player.vel.x < 20) {
+            player.vel.x *= 1.02; // 1.02
+        }
+        //player.vel.y += 0.5;
+    }
+    // else if (!player.inAir) {
+    //     player.vel.x *= 0.9
+    // }
+    else {
+        player.vel.x = lerp(player.vel.x, 0, 0.03); // 0.03
     }
 }
