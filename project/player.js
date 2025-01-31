@@ -1,165 +1,83 @@
-//-------------------- N E W -------------------- 
-
-//Idea:
-//-The ball/penguin should stay fixed in an X position
-//-The only thing that being updated is its Y position
 
 
 class Player {
 
-    constructor(x, radius) {
-
-        //---Fixed position fr the penguin----
-        this.x = x;
-
-        //---This will change according to the wave's Y (check floor.js / floorYatX())
-        this.y = 0;
-        this.radius = radius;
-        
-        //---Velicity: 1-Positive: goes down / 2:negative, goes up
-        this.velocity = 0;
-        this.gravity = 0.8;//-------------------- N E W --------------------
-
-//Idea:
-//-The ball/penguin should stay fixed in an X position
-//-The only thing that being updated is its Y position
-
-
-        class Player {
-
-            constructor(x, radius) {
-
-                //---Fixed position fr the penguin----
-                this.x = x;
-
-                //---This will change according to the wave's Y (check floor.js / floorYatX())
-                this.y = 0;
-                this.radius = radius;
-
-                //---Velicity: 1-Positive: goes down / 2:negative, goes up
-                this.velocity = 0;
-                this.gravity = 0.8;
-                this.isJumping = false;
-
-            }
-
-            //----Jump function is only for testing. I know that the idea is to make the penguin go down faster by increasing the gravity-------
-            jump() {
-                //--When jump called... only jump if ball is not in the air
-                if (!this.isJumping) {
-                    this.isJumping = true;
-                    this.velocity = -15; //Negative for jumping
-                }
-            }
-
-            //---Updating position according to velocity and gravity---------
-            update() {
-
-                this.y += this.velocity;
-                this.velocity += this.gravity;
-
-                //---Find the wave floor at penguin/ball X position (this.x)--------
-                let theFloor = floorYatX(this.x);
-                //NEW---Find the slope of the wave at this X position---------------
-                let slope = floorSlopeAtX(this.x);
-
-                //---NEW: Collision system will change velocity according to the slope measurement
-                if (this.y >= theFloor - this.radius) {
-                    //---This puts the ball in the required Y position
-                    this.y = theFloor - this.radius;
-
-                    //---NEW: This changes tghe velocity according to the slope
-                    //---If the slope is downhill (negative -) Ball velocity goes up------
-                    //---If the slope is uphill (positive +), Ball velocity goes down------
-                    //NOTE: this acceleration has nothing to do with the "real acceleration" of the game
-                    //      I'm talking about "vertical accelerations" just for the positioning of the ball/penguin
-
-                    this.velocity += slope * Math.abs(this.velocity);
-
-                    //---NEW: Jumping only when on the ground------------------------------
-                    if (this.y >= theFloor - this.radius && this.velocity >= 0) {
-                        this.isJumping = false;
-                    }
-                }
-            }
-
-
-            //---This is the method for rendering the penguin/ball--------------------
-            show() {
-                // Draw the ball
-                fill('rgb(104,240,30)');
-                noStroke();
-                ellipse(this.x, this.y, this.radius * 2);
-            }
-
-        }
-
-//---NEW: The slope function. This is the simplest one, but it works (Haven't tried with very steep waves tho)
-        function floorSlopeAtX(x) {
-            let dx = 0.01; // A very small change in x
-            let y1 = floorYatX(x); // Floor height at x
-            let y2 = floorYatX(x + dx); // Floor height at x + dx
-            return (y2 - y1) / dx; // Calculate the slope
-        }
-        this.isJumping = false;
-
+    constructor(x, y) {
+        this.radius = 10
+        this.pos = createVector(x, y);
+        this.vel = createVector(0, 0);
+        this.acc = createVector(0, 0);
+        this.gravity = 0.5;
+        this.inAir = true;
     }
-    
-    //----Jump function is only for testing. I know that the idea is to make the penguin go down faster by increasing the gravity-------
-    jump() {
-        //--When jump called... only jump if ball is not in the air
-        if (!this.isJumping) {
-            this.isJumping = true;
-            this.velocity = -15; //Negative for jumping
-        }
-    }
-  
-    //---Updating position according to velocity and gravity---------
+
     update() {
-        
-        this.y += this.velocity;
-        this.velocity += this.gravity;
-        
-        //---Find the wave floor at penguin/ball X position (this.x)--------
-        let theFloor = floorYatX(this.x);
-        //NEW---Find the slope of the wave at this X position---------------
-        let slope = floorSlopeAtX(this.x);
-        
-        //---NEW: Collision system will change velocity according to the slope measurement
-        if (this.y >= theFloor - this.radius) {
-            //---This puts the ball in the required Y position
-            this.y = theFloor - this.radius;
+        // keep ball at same x position on the screen
+        this.pos.x = 150;
+        //let ground =
 
-            //---NEW: This changes tghe velocity according to the slope
-            //---If the slope is downhill (negative -) Ball velocity goes up------
-            //---If the slope is uphill (positive +), Ball velocity goes down------
-            //NOTE: this acceleration has nothing to do with the "real acceleration" of the game
-            //      I'm talking about "vertical accelerations" just for the positioning of the ball/penguin
+        if (this.inAir) {
+            this.gravity = 0.5; // 0.4
+            this.vel.y += this.gravity;
+            this.pos.y += this.vel.y;
+            this.pos.x += this.vel.x;
 
-            this.velocity += slope * Math.abs(this.velocity);
+            let ground = terrain.f(this.pos.x);
 
-            //---NEW: Jumping only when on the ground------------------------------
-            if (this.y >= theFloor - this.radius && this.velocity >= 0) {
-                this.isJumping = false;
+            if (this.pos.y > ground) {
+                this.pos.y = ground;
+                //this.vel.y = 0;
+                this.inAir = false;
             }
+        }
+        else {
+            this.gravity = 1.2; // 0.5
+            let slope = terrain.slope(this.pos.x);  // Terrain gradient
+            //let curvature = terrain.secondDerivative(this.pos.x);
+
+            // Simulated gravity pulling along the slope
+            //this.acc = slope * 0.5;  // Adjust multiplier to control rolling effect
+            this.acc.x = (this.gravity + this.acc.y) * sin(slope); // mg sin(theta)
+            this.acc.y = (this.gravity) * cos(slope);
+            this.vel.x += this.acc.x;
+            this.vel.y += this.acc.y;
+
+            // Update position
+            this.pos.x += this.vel.x;
+            this.pos.y += this.vel.y;
+
+            let ground = terrain.f(this.pos.x);
+
+            let oldY = this.pos.y;
+
+            if (this.pos.y > ground) {
+                this.pos.y = ground;
+            }
+            let dY = this.pos.y - oldY;
+            this.vel.y += dY;
+            let velocityAngle = atan2(this.vel.y, this.vel.x);
+            let slopeAngle = atan(slope);
+
+            if (velocityAngle < slopeAngle) {
+                this.inAir = true;
+            }
+
+            // if (!changeSpeed && !this.inAir) {
+            //     this.vel.x *= 0.9;
+            // }
+
+
+            // does the ball leave the ground
+            //let trajectory = angleBetween(createVector(0, 0), this.vel);
+
+            // if (this.vel > slope) {
+            //     this.inAir = true;
+            // }
         }
     }
 
-  
-    //---This is the method for rendering the penguin/ball--------------------
-    show() {
-      // Draw the ball
-      fill('rgb(104,240,30)');
-      noStroke(); 
-      ellipse(this.x, this.y, this.radius * 2);
+    drawPlayer() {
+        fill(0);
+        ellipse(this.pos.x, this.pos.y - this.radius , this.radius * 2)
     }
-
-}
-
-//---NEW: The slope function. This is the simplest one, but it works (Haven't tried with very steep waves tho)
-function floorSlopeAtX(x) {
-    let dx = 0.01; // A very small change in x
-    let y1 = floorYatX(x); // Floor height at x
-    let y2 = floorYatX(x + dx); // Floor height at x + dx
-    return (y2 - y1) / dx; // Calculate the slope
 }
