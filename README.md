@@ -3,11 +3,13 @@
 
 ## Your Game
 - Product Design
+  - Product Introduction
   - [Product Flow](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Learn%20to%20fly%20-%20Product%20flow.png)
-  - prototypes Vidoes
+  - Prototypes Vidoes
     - [Penguin Game](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/penguinGameIdea2.mov)
     - [RocketGameIdea](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/rocketGameIdea1.MOV)
-  - Meeting records
+  - Product Mechanism
+  - Meeting Records
     - [Week 01 - Game Ideas](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week01_meeting.md)
     - [Week 02 - 3 GAME SHORTLIST](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week02_meeting.md)
 - Program Resource 
