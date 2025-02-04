@@ -1,15 +1,23 @@
 class Floor {
 
     constructor() {
-        this.yBelow = null;
-        this.yBehind = null;
+
+        // Params for sin curve generation
         this.amplitudes = [];
         this.frequencies = [];
         this.phases = [];
-        this.speed = 5;
         this.numWaves = 20; // Num sin waves to sum
+
+        // Floor speed
+        this.speed = 5;
         this.step = 5;
         this.frameMovement = 0;
+
+        // Floor under player
+        this.floorY1 = null;
+        this.floorY2 = null;
+        this.floorX1 = 200;
+        this.floorX2 = 199;
     }
 
     initSinParams() {
@@ -31,39 +39,29 @@ class Floor {
         this.frameMovement += this.speed;
 
         for (let x = 0; x <= width; x += this.step) {
-
-            let currentY = height / 1.5 - this.generateHills(x + this.frameMovement);
-
+            let y = height / 1.5 - this.generateHills(x + this.frameMovement);
             if (prevX !== null && prevY !== null) {
                 stroke(255);
-                line(prevX, prevY, x, currentY);
+                line(prevX, prevY, x, y);
             }
-
+            // Store vars under player
             if (x === player.x) {
-                this.yBelow = currentY;
-                this.yBehind = prevY || currentY;
+                this.floorY1 = y;
+                this.floorY2 = prevY;
             }
-
             prevX = x;
-            prevY = currentY;
-
+            prevY = y;
         }
 
     }
 
     generateHills(x) {
-
         // Sum randomised parameter sin curves for variation
         let y = 0;
         for (let i = 0; i < this.numWaves; i++) {
             y += this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
         }
         return y;
-    }
-
-    //---Needed for the calculus of Thetha
-    floorYatX(worldX) {
-        return height / 1.5 - this.generateHills(worldX);
     }
 
 }
