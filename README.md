@@ -13,7 +13,7 @@
     - [Week 01 - Game Ideas](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week01_meeting.md)
     - [Week 02 - 3 GAME SHORTLIST](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week02_meeting.md)
 - Program Resource 
-  - [Game Demo](https://peteinfo.github.io/COMSM0166-project-template/)
+  - [Game Demo](https://uob-comsm0166.github.io/2025-group-21/)
   - [Project Code](https://github.com/UoB-COMSM0166/2025-group-21/tree/main/project)
 
 ## Group members and details
