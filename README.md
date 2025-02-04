@@ -2,14 +2,19 @@
 2025 COMSM0166 group 21
 
 ## Your Game
+- Product Design
+  - [Product Flow](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Learn%20to%20fly%20-%20Product%20flow.png)
+  - prototypes Vidoes
+    - [Penguin Game](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/penguinGameIdea2.mov)
+    - [RocketGameIdea](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/rocketGameIdea1.MOV)
+  - Meeting records
+    - [Week 01 - Game Ideas](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week01_meeting.md)
+    - [Week 02 - 3 GAME SHORTLIST](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week02_meeting.md)
+- Program Resource 
+  - [Game Demo](https://peteinfo.github.io/COMSM0166-project-template/)
+  - [Project Code](https://github.com/UoB-COMSM0166/2025-group-21/tree/main/project)
 
-Link to your game [PLAY HERE](https://peteinfo.github.io/COMSM0166-project-template/)
-
-Your game lives in the [/docs](/docs) folder, and is published using Github pages to the link above.
-
-Include a demo video of your game here (you don't have to wait until the end, you can insert a work in progress video)
-
-## Your Group
+## Group members and details
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
 
