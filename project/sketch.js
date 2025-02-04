@@ -1,54 +1,38 @@
-let deltaTime = 60;
+
+
+let offset = 0;  // Horizontal movement of screen position
+//let speed = 0;
+let changeSpeed = false
 
 function setup() {
-
-    createCanvas(1000, 500);
-
-    // Create floor and initialise
-    floor = new Floor();
-    floor.initSinParams();
-
-    //--Display Creation-----
-    display = new Display(10, 10); // Position at (10, 10)
-    //NEW--- Creation of Player----------
-    player = new Player(200, 10,display);
-    
+    createCanvas(window.innerWidth, window.innerHeight);
+    terrain = new Terrain();
+    player = new Player(150, 150);
 }
-
 
 function draw() {
-    
-    background('#2C2F30');
+    background(135, 206, 250);  // Blue sky
+    terrain.drawHills();
+    offset += player.vel.x;  // Move hills to the left
 
-
-
-
-
-    floor.drawFloor();
-
-    //NEW---Updating player-------
     player.update();
-    //NEW---Render the player-----
-    player.show();
+    player.drawPlayer()
 
-}
+    if (changeSpeed) {
 
-function keyPressed() {
-
-    if (key === ' ') {
-      player.fall();
+        if (player.vel.x < 5) {
+            player.vel.x = lerp(player.vel.x, 5, 1); //1
+            //player.vel.y = lerp(player.vel.y, 5, 0.1);
+        }
+        else if (player.vel.x < 20) {
+            player.vel.x *= 1.02; // 1.02
+        }
+        //player.vel.y += 0.5;
     }
-    if (key == 's'){
-        floor.speed = 15;
-    }
-}
-
-function keyReleased() {
-
-    if (key == 's'){
-        floor.speed = 5;
-    }
-    if (key == ' '){
-        player.notFall();
+    // else if (!player.inAir) {
+    //     player.vel.x *= 0.9
+    // }
+    else {
+        player.vel.x = lerp(player.vel.x, 0, 0.03); // 0.03
     }
 }
