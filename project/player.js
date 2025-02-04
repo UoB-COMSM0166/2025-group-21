@@ -1,75 +1,83 @@
+
+
 class Player {
 
-    constructor(x, radius, display) {
-
-        //---Reference for the display on screen---------------------
-        this.display = display;
-
-        //---Fixed position fr the penguin----
-        this.x = x;
-        this.y = 0;
-        this.radius = radius;
-
-        //---Velicity: 1-Positive: goes down / 2:negative, goes up
-        this.velocity = 0;
-        this.gravity = 0.1;
-        this.isGrounded = false;
-
-    }
-
-    fall() {
-        this.gravity = 2;
-    }
-    notFall() {
+    constructor(x, y) {
+        this.radius = 10
+        this.pos = createVector(x, y);
+        this.vel = createVector(0, 0);
+        this.acc = createVector(0, 0);
         this.gravity = 0.5;
+        this.inAir = true;
     }
 
-    //---Updating position according to velocity and gravity---------
     update() {
+        // keep ball at same x position on the screen
+        this.pos.x = 150;
+        //let ground =
 
-        // Establish grounded
-        if (this.y > floor.floorY1 - this.radius) {
-            this.isGrounded = true;
-            this.y = floor.floorY1 - this.radius;
-        } else {
-            this.isGrounded = false;
+        if (this.inAir) {
+            this.gravity = 0.5; // 0.4
+            this.vel.y += this.gravity;
+            this.pos.y += this.vel.y;
+            this.pos.x += this.vel.x;
+
+            let ground = terrain.f(this.pos.x);
+
+            if (this.pos.y > ground) {
+                this.pos.y = ground;
+                //this.vel.y = 0;
+                this.inAir = false;
+            }
         }
+        else {
+            this.gravity = 0.6; // 0.5
+            let slope = terrain.slope(this.pos.x);  // Terrain gradient
+            //let curvature = terrain.secondDerivative(this.pos.x);
 
-        let slope = (floor.floorY1 - floor.floorY2) / (floor.floorX1 - floor.floorX2);
-        let theta;
+            // Simulated gravity pulling along the slope
+            //this.acc = slope * 0.5;  // Adjust multiplier to control rolling effect
+            this.acc.x = (this.gravity + this.acc.y) * sin(slope); // mg sin(theta)
+            this.acc.y = (this.gravity) * cos(slope);
+            this.vel.x += this.acc.x;
+            this.vel.y += this.acc.y;
 
-        if (slope > 0) {
-            theta = (Math.atan2((floor.floorY1 - floor.floorY2), (floor.floorX1 - floor.floorX2)) * 180 / Math.pi); // no abs()
+            // Update position
+            this.pos.x += this.vel.x;
+            this.pos.y += this.vel.y;
+
+            let ground = terrain.f(this.pos.x);
+
+            let oldY = this.pos.y;
+
+            if (this.pos.y > ground) {
+                this.pos.y = ground;
+            }
+            let dY = this.pos.y - oldY;
+            this.vel.y += dY;
+            let velocityAngle = atan2(this.vel.y, this.vel.x);
+            let slopeAngle = atan(slope);
+
+            if (velocityAngle < slopeAngle) {
+                this.inAir = true;
+            }
+
+            // if (!changeSpeed && !this.inAir) {
+            //     this.vel.x *= 0.9;
+            // }
+
+
+            // does the ball leave the ground
+            //let trajectory = angleBetween(createVector(0, 0), this.vel);
+
+            // if (this.vel > slope) {
+            //     this.inAir = true;
+            // }
         }
-        if (slope < 0) {
-            theta = Math.atan2((floor.floorY1 - floor.floorY2), (floor.floorX1 - floor.floorX2)) * 180 / Math.pi; // no abs()
-        }
-
-        // Update velocity and location
-        if (this.isGrounded) {
-            // Prevent falling through ground
-            let a = this.gravity * Math.sin(theta);
-            this.velocity += a;
-            // Update the x-axis with floor
-            floor.speed += Math.cos(theta) * this.velocity;
-            this.y += Math.sin(theta) * this.velocity;
-        }
-        else if (!this.isGrounded) {
-            this.velocity += this.gravity;
-            this.y += this.velocity;
-            floor.speed = this.velocity;
-        }
-
-        this.velocity /= 1.05;
-
-        //-----Update Parameter Display------------------------------------------------
-        this.display.show(slope, degrees(theta), floor.speed, this.velocity, this.gravity);
     }
 
-    //---This is the method for rendering the penguin/ball--------------------
-    show() {
-        fill('rgb(104,240,30)');
-        ellipse(this.x, this.y, this.radius * 2);
+    drawPlayer() {
+        fill(0);
+        ellipse(this.pos.x, this.pos.y - this.radius , this.radius * 2)
     }
-
 }
