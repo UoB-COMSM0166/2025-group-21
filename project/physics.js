@@ -1,5 +1,5 @@
 
-class Physics {
+//class Physics {
 
     // let gravity = 9.8;
 

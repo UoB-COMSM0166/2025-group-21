@@ -1,3 +1,5 @@
+let deltaTime = 60;
+
 function setup() {
 
     createCanvas(1000, 500);
