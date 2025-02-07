@@ -49,11 +49,4 @@ class Terrain {
         let y2 = this.f(x + dx/2);
         return (y2 - y1) / dx;
     }
-
-    secondDerivative(x) {
-        let dx = 0.01;
-        let y1 = this.slope(x);
-        let y2 = this.slope(x + dx);
-        return (y2 - y1) / dx;
-    }
 }
