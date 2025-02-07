@@ -7,17 +7,18 @@ class Player {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
-        this.gravity = 0.5;
+        //this.momentum = 0;
+        this.accDownSlope = 0;
+        this.gravity = 0.2;
         this.inAir = true;
+
     }
 
     update() {
         // keep ball at same x position on the screen
-        this.pos.x = 150;
-        //let ground =
+        this.pos.x = 150; // + 60 * this.acc.x;
 
         if (this.inAir) {
-            this.gravity = 0.5; // 0.4
             this.vel.y += this.gravity;
             this.pos.y += this.vel.y;
             this.pos.x += this.vel.x;
@@ -25,20 +26,29 @@ class Player {
             let ground = terrain.f(this.pos.x);
 
             if (this.pos.y > ground) {
+                //this.momentum = sqrt(pow(this.vel.x, 2) + pow(this.vel.y, 2));
                 this.pos.y = ground;
-                //this.vel.y = 0;
                 this.inAir = false;
             }
         }
         else {
-            this.gravity = 0.6; // 0.5
             let slope = terrain.slope(this.pos.x);  // Terrain gradient
-            //let curvature = terrain.secondDerivative(this.pos.x);
 
-            // Simulated gravity pulling along the slope
-            //this.acc = slope * 0.5;  // Adjust multiplier to control rolling effect
-            this.acc.x = (this.gravity + this.acc.y) * sin(slope); // mg sin(theta)
-            this.acc.y = (this.gravity) * cos(slope);
+            // slow speed if in contact with the ground
+            if (!spacePressed) {
+                this.vel.x /= 1.05;
+            }
+
+            //Handle effect of angle of slope on the gravity
+            this.accDownSlope = (this.gravity) * sin(atan(slope));
+
+            if (slope <= 0) {
+                this.accDownSlope *= 0.7;
+            }
+            this.acc.y = this.accDownSlope * sin(atan(slope));
+            this.acc.x = this.accDownSlope * cos(atan(slope));
+
+            // Update velocity
             this.vel.x += this.acc.x;
             this.vel.y += this.acc.y;
 
@@ -46,38 +56,41 @@ class Player {
             this.pos.x += this.vel.x;
             this.pos.y += this.vel.y;
 
+            // Change direction of velocity vector more upwards as gradient of curve increases
             let ground = terrain.f(this.pos.x);
-
             let oldY = this.pos.y;
 
             if (this.pos.y > ground) {
                 this.pos.y = ground;
             }
             let dY = this.pos.y - oldY;
-            this.vel.y += dY;
+            this.vel.y += 1.2*dY;
+
+            // inAir = true at the point of inflection of the curve
             let velocityAngle = atan2(this.vel.y, this.vel.x);
             let slopeAngle = atan(slope);
 
             if (velocityAngle < slopeAngle) {
                 this.inAir = true;
             }
-
-            // if (!changeSpeed && !this.inAir) {
-            //     this.vel.x *= 0.9;
-            // }
-
-
-            // does the ball leave the ground
-            //let trajectory = angleBetween(createVector(0, 0), this.vel);
-
-            // if (this.vel > slope) {
-            //     this.inAir = true;
-            // }
         }
     }
 
     drawPlayer() {
         fill(0);
-        ellipse(this.pos.x, this.pos.y - this.radius , this.radius * 2)
+        ellipse(this.pos.x, this.pos.y - this.radius , this.radius * 2);
+
+    }
+
+    isAlive() {
+        let posX = this.pos.x;
+        let velocityAngle = atan2(this.vel.y, this.vel.x);
+        let slope = terrain.slope(posX);
+
+
+        if (this.pos.y > terrain.f(posX) && slope < 0 && velocityAngle < 0) {
+            return false;
+        }
+        return true;
     }
 }

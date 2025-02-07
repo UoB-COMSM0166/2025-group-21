@@ -3,12 +3,12 @@
 function keyPressed() {
 
     if (key === ' ') {
-        changeSpeed = true;
+        spacePressed = true;
     }
 }
 function keyReleased() {
 
     if (key === ' ') {
-        changeSpeed = false;
+        spacePressed = false;
     }
 }
