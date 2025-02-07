@@ -20,22 +20,21 @@ class Terrain {
         noStroke();
         beginShape();
 
-        vertex(0, height); // Bottom-left corner
+        vertex(-170/zoom, height); // Bottom-left corner
 
-        for (let x = 0; x <= width; x += 5) {
+        for (let x = -170 / zoom; x <= width / zoom; x += 5) {
             let y = this.f(x);
             vertex(x, y);
         }
-        vertex(width, height); // Bottom-right corner
+        vertex(width / zoom, height); // Bottom-right corner
         endShape(CLOSE);
     }
 
-    // Generates hills using a sum of sine waves
     generateHills(x) {
         let y = height - 150;  // Base height
 
         for (let i = 0; i < this.numWaves; i++) {
-            y -= this.amplitudes[i] * sin(this.frequencies[i] * x + this.phases[i]);
+            y -= this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]);
         }
         return y;
     }
@@ -45,9 +44,9 @@ class Terrain {
         return this.generateHills(x + offset);
     }
     slope(x) {
-        let dx = 0.01;
-        let y1 = this.f(x);
-        let y2 = this.f(x + dx);
+        let dx = 1;
+        let y1 = this.f(x - dx/2);
+        let y2 = this.f(x + dx/2);
         return (y2 - y1) / dx;
     }
 

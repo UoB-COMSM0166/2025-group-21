@@ -1,8 +1,9 @@
 
 
 let offset = 0;  // Horizontal movement of screen position
-//let speed = 0;
-let changeSpeed = false
+let topMargin = 50;
+let spacePressed = false
+let zoom = 1;
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
@@ -11,28 +12,50 @@ function setup() {
 }
 
 function draw() {
-    background(135, 206, 250);  // Blue sky
-    terrain.drawHills();
-    offset += player.vel.x;  // Move hills to the left
 
-    player.update();
-    player.drawPlayer()
+    //zoom = 1;
+    let tx = 0, ty = 0;
 
-    if (changeSpeed) {
-
-        if (player.vel.x < 5) {
-            player.vel.x = lerp(player.vel.x, 5, 1); //1
-            //player.vel.y = lerp(player.vel.y, 5, 0.1);
-        }
-        else if (player.vel.x < 20) {
-            player.vel.x *= 1.02; // 1.02
-        }
-        //player.vel.y += 0.5;
+    if (player.pos.y - player.radius < topMargin) {
+        zoom = getZoom();
+        ty = topMargin - zoom * (player.pos.y - player.radius);
+        tx = 160 - zoom * (player.pos.x); // 160 seems to work better than 150
     }
-    // else if (!player.inAir) {
-    //     player.vel.x *= 0.9
-    // }
     else {
-        player.vel.x = lerp(player.vel.x, 0, 0.03); // 0.03
+        zoom = 1;
+    }
+
+    push();
+    translate(tx, ty);
+    scale(zoom);
+
+    background(135, 206, 250);  // Blue sky
+
+    offset += player.vel.x;  // Move terrain to the left
+
+    //if (player.isAlive()) {
+        player.update();
+    //}
+    player.drawPlayer()
+    terrain.drawHills();
+    pop();
+
+    if (spacePressed) {
+
+        if (player.pos.y < terrain.f(player.pos.x)) {
+            player.vel.y += 0.6;
+        }
+        else {
+            player.vel.x += 0.2;
+        }
+    }
+}
+
+function getZoom(){
+    if(player.pos.y < topMargin){
+        return 0.94 / (-player.pos.y/height + 1);
+    }
+    else{
+        return 1;
     }
 }
