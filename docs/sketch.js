@@ -16,9 +16,9 @@ function draw() {
     //zoom = 1;
     let tx = 0, ty = 0;
 
-    if (player.pos.y - player.radius < topMargin) {
+    if (player.pos.y < topMargin) {
         zoom = getZoom();
-        ty = topMargin - zoom * (player.pos.y - player.radius);
+        ty = topMargin - zoom * (player.pos.y);
         tx = 160 - zoom * (player.pos.x); // 160 seems to work better than 150
     }
     else {
@@ -26,18 +26,15 @@ function draw() {
     }
 
     push();
+
     translate(tx, ty);
     scale(zoom);
-
     background(135, 206, 250);  // Blue sky
-
     offset += player.vel.x;  // Move terrain to the left
-
-    //if (player.isAlive()) {
-        player.update();
-    //}
+    player.update();
     player.drawPlayer()
     terrain.drawHills();
+
     pop();
 
     if (spacePressed) {
@@ -51,8 +48,8 @@ function draw() {
     }
 }
 
-function getZoom(){
-    if(player.pos.y < topMargin){
+function getZoom() {
+    if(player.pos.y < topMargin) {
         return 0.94 / (-player.pos.y/height + 1);
     }
     else{
