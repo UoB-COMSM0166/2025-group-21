@@ -9,6 +9,7 @@
     - [Penguin Game](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/penguinGameIdea2.mov)
     - [RocketGameIdea](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/rocketGameIdea1.MOV)
   - Product Mechanism
+    - [UML Class Diagram](https://drive.google.com/file/d/12uO6DJcNUAnFiVZDADhV_41IlX5p1l19/view?usp=sharing)
   - Meeting Records
     - [Week 01 - Game Ideas](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week01_meeting.md)
     - [Week 02 - 3 GAME SHORTLIST](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week02_meeting.md)
