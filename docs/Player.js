@@ -7,7 +7,6 @@ class Player {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
-        //this.momentum = 0;
         this.accDownSlope = 0;
         this.gravity = 0.2;
         this.inAir = true;
@@ -16,17 +15,15 @@ class Player {
 
     update() {
         // keep ball at same x position on the screen
-        this.pos.x = 150; // + 60 * this.acc.x;
+        this.pos.x = 150;
 
         if (this.inAir) {
             this.vel.y += this.gravity;
-            this.pos.y += this.vel.y;
-            this.pos.x += this.vel.x;
+            this.updatePosition()
 
             let ground = terrain.f(this.pos.x);
 
             if (this.pos.y > ground) {
-                //this.momentum = sqrt(pow(this.vel.x, 2) + pow(this.vel.y, 2));
                 this.pos.y = ground;
                 this.inAir = false;
             }
@@ -38,39 +35,14 @@ class Player {
             if (!spacePressed) {
                 this.vel.x /= 1.05;
             }
+            this.updateAcceleration(slope);
+            this.updateVelocity();
+            this.updatePosition();
 
-            //Handle effect of angle of slope on the gravity
-            this.accDownSlope = (this.gravity) * sin(atan(slope));
+            // transfer momentum from x to y direction as curve steepens uphill
+            this.updateVerticalVelocityFromSlope();
 
-            if (slope <= 0) {
-                this.accDownSlope *= 0.7;
-            }
-            this.acc.y = this.accDownSlope * sin(atan(slope));
-            this.acc.x = this.accDownSlope * cos(atan(slope));
-
-            // Update velocity
-            this.vel.x += this.acc.x;
-            this.vel.y += this.acc.y;
-
-            // Update position
-            this.pos.x += this.vel.x;
-            this.pos.y += this.vel.y;
-
-            // Change direction of velocity vector more upwards as gradient of curve increases
-            let ground = terrain.f(this.pos.x);
-            let oldY = this.pos.y;
-
-            if (this.pos.y > ground) {
-                this.pos.y = ground;
-            }
-            let dY = this.pos.y - oldY;
-            this.vel.y += 1.2*dY;
-
-            // inAir = true at the point of inflection of the curve
-            let velocityAngle = atan2(this.vel.y, this.vel.x);
-            let slopeAngle = atan(slope);
-
-            if (velocityAngle < slopeAngle) {
+            if (this.playerIsInAir(slope)) {
                 this.inAir = true;
             }
         }
@@ -78,19 +50,48 @@ class Player {
 
     drawPlayer() {
         fill(0);
-        ellipse(this.pos.x, this.pos.y - this.radius , this.radius * 2);
-
+        ellipse(150, this.pos.y - this.radius , this.radius * 2);
     }
 
-    isAlive() {
-        let posX = this.pos.x;
-        let velocityAngle = atan2(this.vel.y, this.vel.x);
-        let slope = terrain.slope(posX);
+    updateAcceleration (slope) {
 
+        //Handle effect of angle of slope on the gravity
+        this.accDownSlope = (this.gravity) * sin(atan(slope));
 
-        if (this.pos.y > terrain.f(posX) && slope < 0 && velocityAngle < 0) {
-            return false;
+        if (slope <= 0) { // uphill
+            this.accDownSlope *= 0.7;
         }
-        return true;
+        this.acc.y = this.accDownSlope * sin(atan(slope));
+        this.acc.x = this.accDownSlope * cos(atan(slope));
+    }
+
+    updateVelocity () {
+
+        this.vel.y += this.acc.y;
+        this.vel.x += this.acc.x;
+    }
+
+    updatePosition () {
+
+        this.pos.x += this.vel.x;
+        this.pos.y += this.vel.y;
+    }
+
+    updateVerticalVelocityFromSlope () {
+        let ground = terrain.f(this.pos.x);
+        let oldY = this.pos.y;
+
+        if (this.pos.y > ground) {
+            this.pos.y = ground;
+        }
+        let dY = this.pos.y - oldY;
+        this.vel.y += 1.2 * dY;
+    }
+
+    playerIsInAir(slope) {
+
+        let velocityAngle = atan2(this.vel.y, this.vel.x);
+        let slopeAngle = atan(slope);
+        return velocityAngle < slopeAngle;
     }
 }
