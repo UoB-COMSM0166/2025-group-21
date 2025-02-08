@@ -22,6 +22,11 @@ function draw() {
         ty = topMargin - zoom * (player.pos.y);
         tx = 160 - zoom * (player.pos.x); // 160 seems to work better than 150
     }
+    else if (!player.alive) {
+        zoom = lerp(zoom, 1.25, 0.01);
+        ty = player.pos.y - zoom * (player.pos.y);
+        tx = 160 - zoom * (player.pos.x);
+    }
     else {
         zoom = 1;
     }
