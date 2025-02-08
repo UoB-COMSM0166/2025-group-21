@@ -51,6 +51,9 @@ class Player {
     }
 
     drawPlayer() {
+        if (!this.alive) {
+            this.radius = lerp(this.radius, 15, 0.01);
+        }
         fill(0);
         ellipse(150, this.pos.y - this.radius , this.radius * 2);
     }
