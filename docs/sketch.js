@@ -50,7 +50,7 @@ function draw() {
 
     if (!player.alive) {
         deathTimer.tick();
-        fill('rgba(200, 30, 0, 0.75)')
+        fill('rgba(255, 40, 0, 0.68)')
         rect(0, 0, width, height);
 
         if (deathTimer.time > 80) {
