@@ -22,7 +22,7 @@ class Terrain {
 
         vertex(-170/zoom, height); // Bottom-left corner
 
-        for (let x = -170 / zoom; x <= width / zoom; x += 5) {
+        for (let x = -170 / zoom; x <= width / zoom + 10; x += 5) {
             let y = this.f(x);
             vertex(x, y);
         }
