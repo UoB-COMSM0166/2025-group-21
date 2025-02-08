@@ -10,6 +10,7 @@ class Player {
         this.accDownSlope = 0;
         this.gravity = 0.2;
         this.inAir = true;
+        this.alive = true;
 
     }
 
@@ -101,9 +102,16 @@ class Player {
         let normalForce = this.vel.y - (terrain.f(this.pos.x + this.vel.x) - terrain.f(this.pos.x));
 
         if (normalForce > 10 && terrain.slope(this.pos.x) < -0.5) { // player hits uphill slope
-            //setup();
+
+            if (this.vel.x < 1) {
+                return;
+            }
+
             if (normalForce > 20) {
-                setup();
+                this.alive = false;
+                this.vel.x = -0.5;
+                this.vel.y = -2;
+                this.gravity = 0.02
             }
             else {
                 let bounceAngle = this.getBounceAngle();

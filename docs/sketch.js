@@ -9,6 +9,7 @@ function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
     terrain = new Terrain();
     player = new Player(150, 150);
+    deathTimer = new Clock();
 }
 
 function draw() {
@@ -37,13 +38,23 @@ function draw() {
 
     pop();
 
-    if (spacePressed) {
+    if (spacePressed && player.alive) {
 
         if (player.pos.y < terrain.f(player.pos.x)) {
             player.vel.y += 0.6;
         }
         else {
             player.vel.x += 0.2;
+        }
+    }
+
+    if (!player.alive) {
+        deathTimer.tick();
+        fill('rgba(255, 50, 0, 0.6)')
+        rect(0, 0, width, height);
+
+        if (deathTimer.time > 80) {
+            setup();
         }
     }
 }
