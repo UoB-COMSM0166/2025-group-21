@@ -26,6 +26,7 @@ class Player {
             if (this.pos.y > ground) {
                 this.pos.y = ground;
                 this.inAir = false;
+                this.calculateNormalForce();
             }
         }
         else {
@@ -93,5 +94,16 @@ class Player {
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(slope);
         return velocityAngle < slopeAngle;
+    }
+
+    calculateNormalForce () {
+
+        let normalForce = this.vel.y - (terrain.f(this.pos.x + this.vel.x) - terrain.f(this.pos.x));
+
+        if (normalForce > 15 && terrain.slope(this.pos.x) < -0.5) {
+            setup();
+            // this.vel.x = -0.5;
+            // this.vel.y = -3;
+        }
     }
 }
