@@ -1,7 +1,7 @@
 # 2025-group-21
 2025 COMSM0166 group 21
 
-## Your Game
+## Resource
 - Product Design
   - Product Introduction
   - [Product Flow](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Learn%20to%20fly%20-%20Product%20flow.png)
@@ -17,7 +17,17 @@
   - [Game Demo](https://uob-comsm0166.github.io/2025-group-21/)
   - [Project Code](https://github.com/UoB-COMSM0166/2025-group-21/tree/main/project)
 
-## Group members and details
+# Table of Contents
+- [1. Development Team]()
+- [2. Introduction]()
+- [3. Requirements]()
+- [4. Design]()
+- [5. Implementation]()
+- [6. Evaluation]()
+- [7. Process]()
+- [8. Conclusion]()
+- [9. References]()
+# 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
 
@@ -34,63 +44,48 @@
 
 </div>
 
-## Project Report
+# 2. Introduction
+### Game Setup Intro
+### Video Demonstration
+### Game Objects Table
 
-### Introduction
+# 3. Requirements 
+### Ideation Processing (Miro)
+### prototypes
+### Digital Paper Prototype tool
+### Feasibility Studies
+### Identifying Stakeholders
+### Identifying Top-Level Needs with User Stories
+### Persona
+### Use-Cases Breakdown
+- Use case Diagram
+- Use-Case Specification
 
-- 5% ~250 words 
-- Describe your game, what is based on, what makes it novel? 
 
-### Requirements 
+# 4. Design
+### Class Diagram
+- Game Mechanics
+### Behavioural diagrams
+### System architecture
+- Game Engine
+- Game Logic
+- Data Management
+- Asset Management
+- Networking
+- User Interface
 
-- 15% ~750 words
-- Use case diagrams, user stories. Early stages design. Ideation process. How did you decide as a team what to develop? 
 
-### Design
+# 5. Implementation
+### Challenges
 
-- 15% ~750 words 
-- System architecture. Class diagrams, behavioural diagrams. 
+# 6. Evaluation
+### Qualitative evaluation
 
-### Implementation
+# 7. Process 
+### Collaboration
+### Tools and Techniques
+### Agile Discussion
 
-- 15% ~750 words
+# 8. Conclusion
 
-- Describe implementation of your game, in particular highlighting the three areas of challenge in developing your game. 
-
-### Evaluation
-
-- 15% ~750 words
-
-- One qualitative evaluation (your choice) 
-
-- One quantitative evaluation (of your choice) 
-
-- Description of how code was tested. 
-
-### Process 
-
-- 15% ~750 words
-
-- Teamwork. How did you work together, what tools did you use. Did you have team roles? Reflection on how you worked together. 
-
-### Conclusion
-
-- 10% ~500 words
-
-- Reflect on project as a whole. Lessons learned. Reflect on challenges. Future work. 
-
-### Contribution Statement
-
-- Provide a table of everyone's contribution, which may be used to weight individual grades. We expect that the contribution will be split evenly across team-members in most cases. Let us know as soon as possible if there are any issues with teamwork as soon as they are apparent. 
-
-### Additional Marks
-
-You can delete this section in your own repo, it's just here for information. in addition to the marks above, we will be marking you on the following two points:
-
-- **Quality** of report writing, presentation, use of figures and visual material (5%) 
-  - Please write in a clear concise manner suitable for an interested layperson. Write as if this repo was publicly available.
-
-- **Documentation** of code (5%)
-
-  - Is your repo clearly organised? 
-  - Is code well commented throughout?
+# 9. Contribution Statement
