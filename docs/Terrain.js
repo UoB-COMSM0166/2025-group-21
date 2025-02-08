@@ -10,7 +10,7 @@ class Terrain {
         this.numWaves = 20;  // Number of sine waves to sum
 
         for (let i = 0; i < this.numWaves; i++) {
-            this.amplitudes.push(Math.random() * 20);
+            this.amplitudes.push(Math.random() * 10 + 10);
             this.frequencies.push(Math.random() * 0.015 + 0.01);
             this.phases.push(Math.random() * Math.PI * 4);
         }
