@@ -100,10 +100,23 @@ class Player {
 
         let normalForce = this.vel.y - (terrain.f(this.pos.x + this.vel.x) - terrain.f(this.pos.x));
 
-        if (normalForce > 15 && terrain.slope(this.pos.x) < -0.5) {
-            setup();
-            // this.vel.x = -0.5;
-            // this.vel.y = -3;
+        if (normalForce > 10 && terrain.slope(this.pos.x) < -0.5) { // player hits uphill slope
+            //setup();
+            if (normalForce > 20) {
+                setup();
+            }
+            else {
+                let bounceAngle = this.getBounceAngle();
+                this.vel.x = -0.2 * this.vel.y * cos(bounceAngle);
+                this.vel.y = -0.2 * this.vel.x * sin(bounceAngle);
+            }
         }
+    }
+
+    getBounceAngle() {
+
+        let velocityAngle = atan2(this.vel.y, this.vel.x);
+        let slopeAngle = atan(terrain.slope(this.pos.x));
+        return 2 * slopeAngle + velocityAngle;
     }
 }
