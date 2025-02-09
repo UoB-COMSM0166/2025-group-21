@@ -45,6 +45,10 @@ function draw() {
         }
         score.trackAirtime();
         score.printScore();
+
+        if (score.currentAirtime > 1) {
+            score.printAirtime();
+        }
     }
     else {
         runPlayerDeathSequence();
@@ -92,16 +96,16 @@ function getPlayerInput() {
 function runPlayerDeathSequence() {
 
     deathTimer.tick();
-    // overlay red screen tint
-    fill('rgba(255, 40, 0, 0.68)')
+
+    fill('rgba(255, 40, 0, 0.68)'); // overlay red screen tint
     rect(0, 0, width, height);
-    // overlay black tint under score
-    fill('rgba(0, 0, 0, 0.6)')
+
+    fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
     rect(0, height/2 - 280, width, height/1.8);
+
     score.printEndScore();
 
     if (deathTimer.time > 120) {
         setup();
     }
-
 }
