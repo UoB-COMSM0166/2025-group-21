@@ -1,4 +1,3 @@
-//import {BOLD, NORMAL} from "./p5";
 
 
 class Score {
@@ -11,8 +10,8 @@ class Score {
         this.endScore = createVector(width/2 - 400, height/2 - 200); // position of word 'score' at death
         this.numScore = createVector(width/2 - 400, height/2 + 50 ); // position of number at death
 
-        // this.StartAirtime = 0;
-        // this.EndAirtime = 0;
+        this.startAirtime = 0;
+        this.currentAirtime = 0;
 
     }
 
@@ -41,7 +40,23 @@ class Score {
         }
         else {
             this.airtime = 0;
+            this.currentAirtime = 0;
         }
+
+        if (this.airtime === 5) {
+            this.startAirtime = Date.now();
+        }
+        else if (this.airtime > 5) {
+            this.currentAirtime = (Date.now() - this.startAirtime) / 1000;
+        }
+    }
+
+    printAirtime() {
+
+        fill(0);
+        textFont('Trebuchet MS');
+        textSize(24);
+        text(`${this.currentAirtime} s`, width - 350, 40);
     }
 
     printScore() {
