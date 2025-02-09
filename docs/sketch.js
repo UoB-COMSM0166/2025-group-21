@@ -6,10 +6,11 @@ let spacePressed = false
 let zoom = 1;
 let tx = 0, ty = 0;
 let initialDrop = true;
-
+let invincibility = true;
 
 function setup() {
-    createCanvas(window.innerWidth, window.innerHeight);
+
+    page = new Page();
     terrain = new Terrain();
     player = new Player(150, 150);
     deathTimer = new Clock();
@@ -22,6 +23,8 @@ function draw() {
     adjustZoom();
 
     push();
+    // Scale the game size if they resize the window
+    scale(page.gameScale);
 
     translate(tx, ty); // Change coordinate origin to player position
     scale(zoom); // set screen zoom
@@ -30,10 +33,7 @@ function draw() {
     player.update();
     player.drawPlayer()
     terrain.drawHills();
-
     pop();
-
-
 
     if (((spacePressed || mouseIsPressed) && player.alive) || initialDrop) {
         getPlayerInput();
@@ -55,31 +55,19 @@ function draw() {
     }
 }
 
+
 function adjustZoom() {
 
     if (player.pos.y < topMargin) {
-        zoom = getZoom();
+        zoom = 0.94 / (-player.pos.y/height + 1);
         ty = topMargin - zoom * (player.pos.y);
         tx = 160 - zoom * (player.pos.x); // 160 seems to work better than 150
-    }
-    else if (!player.alive) {
-        zoom = lerp(zoom, 1.25, 0.01);
-        ty = player.pos.y - zoom * (player.pos.y);
-        tx = 160 - zoom * (player.pos.x);
     }
     else {
         zoom = 1;
         tx = ty = 0;
     }
-}
 
-function getZoom() {
-    if(player.pos.y < topMargin) {
-        return 0.94 / (-player.pos.y/height + 1);
-    }
-    else{
-        return 1;
-    }
 }
 
 function getPlayerInput() {
@@ -93,6 +81,13 @@ function getPlayerInput() {
 }
 
 function runPlayerDeathSequence() {
+
+    // Death animation
+    if (!player.alive) {
+        zoom = lerp(zoom, 1.25, 0.01);
+        ty = player.pos.y - zoom * (player.pos.y);
+        tx = 160 - zoom * (player.pos.x);
+    }
 
     deathTimer.tick();
 

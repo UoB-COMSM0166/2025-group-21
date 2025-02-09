@@ -111,7 +111,7 @@ class Player {
                 return;
             }
 
-            if (normalForce > 20) {
+            if (normalForce > 20 && !invincibility) {
                 this.alive = false;
                 this.vel.x = -0.5;
                 this.vel.y = -2;

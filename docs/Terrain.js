@@ -2,10 +2,10 @@
 
 class Terrain {
 
-    numWaves;
     amplitudes = [];
     frequencies = []; // Wavelengths
     phases = [];  // Phase offsets
+
     constructor() {
         this.numWaves = 20;  // Number of sine waves to sum
 
@@ -15,19 +15,24 @@ class Terrain {
             this.phases.push(Math.random() * Math.PI * 4);
         }
     }
+
     drawHills() {
         fill(187, 252, 252); // Ice colour
+
         noStroke();
         beginShape();
-
-        vertex(-170/zoom, height); // Bottom-left corner
 
         for (let x = -170 / zoom; x <= width / zoom + 10; x += 5) {
             let y = this.f(x);
             vertex(x, y);
         }
-        vertex(width / zoom, height); // Bottom-right corner
+
+        for (let x = width / zoom + 10; x >= -170 / zoom; x -= 5) {
+            let y = this.f(x) + 20;
+            vertex(x, y);
+        }
         endShape(CLOSE);
+
     }
 
     generateHills(x) {
@@ -43,6 +48,7 @@ class Terrain {
     f(x) {
         return this.generateHills(x + offset);
     }
+
     slope(x) {
         let dx = 1;
         let y1 = this.f(x - dx/2);
