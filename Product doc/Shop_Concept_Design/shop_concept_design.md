@@ -12,8 +12,8 @@
 
 #### Bamboo Dragonfly
 
-![Bamboo Dragonfly](bamboo%20dragonfly.png)
-![Bamboo Dragonfly 2](bamboo%20dragonfly2.jpg)
+<img src="bamboo dragonfly.png" width="30%" />
+<img src="bamboo dragonfly2.jpg" width="30%" />
 
 - **Usage Method:**
   
@@ -36,7 +36,7 @@
 
 #### UFO
 
-![UFO](ufo.png)
+<img src="ufo.png" width="30%" />
 
 **Usage Method:**
 
@@ -74,7 +74,7 @@
 
 - No level
 
-![Bird](bird.png)
+<img src="bird.png" width="30%" />
 
 ##### Airplane
 
@@ -90,7 +90,7 @@
 
 - No level
 
-![Airplane](airplane.png)
+<img src="airplane.png" width="30%" />
 
 ------
 
@@ -110,8 +110,8 @@
 
 ------
 
-![Outfit Entry Page](outfit%20entry%20page.png)
+<img src="outfit entry page.png" width="50%" />
 
-![Outfit Page](outfit%20page.png)
+<img src="outfit page.png" width="50%" />
 
-![Outfit](outfit.jpg)
+<img src="outfit.jpg" width="50%" />
