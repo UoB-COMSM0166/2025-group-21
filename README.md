@@ -36,7 +36,7 @@
 <div align="center">
 
 | Group # | Name | Email | Role |
-| :-: | :-: | :-: | :-: |(
+| :-: | :-: | :-: | :-: |
 | 01 | Jack May | jack.robert.may@gmail.com | |
 | 02 | Tom Raynes | nc19537@bristol.ac.uk | |
 | 03 | Kuan Jung Huang | jp24328@bristol.ac.uk | |
@@ -53,6 +53,7 @@
 
 # 3. Requirements 
 ### Ideation Processing (Miro)
+![Product doc/Game Ideas.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Ideas.png)
 ### prototypes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
