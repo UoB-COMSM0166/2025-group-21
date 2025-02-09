@@ -23,8 +23,8 @@ function draw() {
 
     push();
 
-    translate(tx, ty);
-    scale(zoom);
+    translate(tx, ty); // Change coordinate origin to player position
+    scale(zoom); // set screen zoom
     background(135, 206, 250);  // Blue sky
     offset += player.vel.x;  // Move terrain to the left
     player.update();
@@ -35,7 +35,7 @@ function draw() {
 
 
 
-    if ((spacePressed && player.alive) || initialDrop) {
+    if (((spacePressed || mouseIsPressed) && player.alive) || initialDrop) {
         getPlayerInput();
     }
     if (player.alive) {
@@ -69,8 +69,7 @@ function adjustZoom() {
     }
     else {
         zoom = 1;
-        tx = 0;
-        ty = 0;
+        tx = ty = 0;
     }
 }
 

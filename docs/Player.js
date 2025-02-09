@@ -35,7 +35,7 @@ class Player {
             let slope = terrain.slope(this.pos.x);  // Terrain gradient
 
             // slow speed if in contact with the ground
-            if (!spacePressed) {
+            if (!spacePressed && !mouseIsPressed) {
                 this.vel.x /= 1.05;
             }
             this.updateAcceleration(slope);
