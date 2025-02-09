@@ -6,7 +6,7 @@ let spacePressed = false
 let zoom = 1;
 let tx = 0, ty = 0;
 let initialDrop = true;
-let invincibility = true;
+let invincibility = false;
 
 function setup() {
 
