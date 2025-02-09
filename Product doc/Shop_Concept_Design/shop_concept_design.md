@@ -12,7 +12,8 @@
 
 #### Bamboo Dragonfly
 
-<img src="Product doc/Shop_Concept_Design/bamboo dragonfly.png />   <img src="Product doc/Shop_Concept_Design/bamboo dragonfly2.jpg" alt="bamboo dragonfly" style="zoom: 25%;" />
+![Bamboo Dragonfly](bamboo%20dragonfly.png)
+![Bamboo Dragonfly 2](bamboo%20dragonfly2.jpg)
 
 - **Usage Method:**
   
@@ -35,7 +36,7 @@
 
 #### UFO
 
-<img src="Product doc/Shop_Concept_Design/ufo.png" alt="ufo" style="zoom:25%;" />
+![UFO](ufo.png)
 
 **Usage Method:**
 
@@ -73,7 +74,7 @@
 
 - No level
 
-<img src="Product doc/Shop_Concept_Design/bird.png" alt="bird" style="zoom:25%;" />
+![Bird](bird.png)
 
 ##### Airplane
 
@@ -89,7 +90,7 @@
 
 - No level
 
-<img src="Product doc/Shop_Concept_Design/airplane.png" alt="airplane" style="zoom:25%;" />
+![Airplane](airplane.png)
 
 ------
 
@@ -109,8 +110,8 @@
 
 ------
 
-<img src="Product doc/Shop_Concept_Design/outfit entry page.png" alt="outfit entry page" style="zoom:50%;" />
+![Outfit Entry Page](outfit%20entry%20page.png)
 
-<img src="Product doc/Shop_Concept_Design/outfit page.png" alt="outfit page" style="zoom:50%;" />
+![Outfit Page](outfit%20page.png)
 
-<img src="Product doc/Shop_Concept_Design/outfit.jpg" alt="outfit" style="zoom: 25%;" />
+![Outfit](outfit.jpg)
