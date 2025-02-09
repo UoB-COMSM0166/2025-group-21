@@ -11,7 +11,7 @@ class Terrain {
 
         for (let i = 0; i < this.numWaves; i++) {
             this.amplitudes.push(Math.random() * 10 + 10);
-            this.frequencies.push(Math.random() * 0.015 + 0.01);
+            this.frequencies.push(Math.random() * 0.012 + 0.01);
             this.phases.push(Math.random() * Math.PI * 4);
         }
     }
