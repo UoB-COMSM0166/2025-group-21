@@ -10,6 +10,7 @@
     - [RocketGameIdea](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/rocketGameIdea1.MOV)
   - Product Mechanism
     - [UML Class Diagram](https://drive.google.com/file/d/12uO6DJcNUAnFiVZDADhV_41IlX5p1l19/view?usp=sharing)
+    - [Shop Concept Design](https://github.com/UoB-COMSM0166/2025-group-21/tree/main/Product%20doc/Shop_Concept_Design)
   - Meeting Records
     - [Week 01 - Game Ideas](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week01_meeting.md)
     - [Week 02 - 3 GAME SHORTLIST](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week02_meeting.md)
@@ -35,7 +36,7 @@
 <div align="center">
 
 | Group # | Name | Email | Role |
-| :-: | :-: | :-: | :-: |
+| :-: | :-: | :-: | :-: |(
 | 01 | Jack May | jack.robert.may@gmail.com | |
 | 02 | Tom Raynes | nc19537@bristol.ac.uk | |
 | 03 | Kuan Jung Huang | jp24328@bristol.ac.uk | |
