@@ -33,8 +33,9 @@
 - As a **computer science student**, I would like to gain experience in coding in JavaScript so I can be a more well-rounded programmer.
 - As a **computer science student**, I would like to learn how to build an efficient game with scalability.
 - As a **computer science student**, I would like to improve my abilities to build object-oriented programs.
-- As a **computer science student**, I would like to gain some experience in coordinating in a development environment.
-- As a **computer science student**, I would like to...
+- As a **computer science student**, I would like to gain some team coordination experience in a development environment.
+- As a **computer science student**, I would like to get use to the Agile working philosophy.
+- As a **computer science student**, I would like to share my work with other teams and get peer feedback.
 
 ## User Epics
 
