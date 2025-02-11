@@ -53,43 +53,65 @@
 
 # 3. Requirements 
 ### Ideation Processing (Miro)
-![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
+![Product doc/Game Ideas.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Ideas.png)
 ### prototypes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
 ### Identifying Stakeholders
 
-- Players – Be entertained.
-- Developers – Learn new skills and improve coding abilities.
-- Academics that run the unit – Be satisfied with student outcome and ensure that the game meets the learning objectives.
-- Instructor (teacher or supervisor) – Evaluate the game and provide guidance.
-- Family & Friends – May help with initial testing and feedback.
-- General Public that represents a broader audience – Provide unbiased feedback to improve the game.
-
-  ![Product doc/Game Stakeholders.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders.jpg)
+  ![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
 
 ### Identifying Top-Level Needs with User Stories
 
 
-- User stories for players:
-  - As a casual player, I want a simple and clear game so I can have fun without spending a lot of time learning how to play.
-  - As a casual player, I want a way of saving my progress so I can come back and resume my game.
-  - As a casual player, I would like to be able to pause my game.
-  - As an avid player, I want a game that has a lot of replay-ability so that I won’t finish it or get bored easily.
-  - As an avid player, I wand a progressive gameplay in which I can upgrade my character/player when achieving goals or gathering resources.
-  - As an avid player, I want a smooth gameplay with no considerable drops in the fps when playing.
-  - As a competitive player, I want there be a high-score leader board and to be able to see my record so I can try to beat it.
-  - As a non-player, I want an easy tutorial mode or guidance in my first try so i can easily learn how to play the game.
-  - As a young player, I would like an exciting introduction video and story line with a relatable character to keep me entertained.
-  - As a story-driven player, I want engaging dialogues and cutscenes so that I can immerse myself in the game world.
-  - As a story-driven player, I want multiple endings so that my choices impact the story.
-  - As a player, I want a visually appealing game so it can enhance my gaming experience and keep me engange.
+<table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+        <th>User</th>
+        <th>Epic</th>
+        <th>User Stories</th>
+        <th>Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td rowspan="3">Casual Player</td>
+        <td rowspan="3">Beginner-Friendly User Experience</td>
+        <td>As a casual player, I want a simple and intuitive game so that I can have fun without spending a lot of time learning how to play.</td>
+        <td>The game should have minimal controls and simple rules to ensure ease of play.</td>
+    </tr>
+    <tr>
+        <td>As a casual player, I want a clear and simple tutorial on my first attempt so that I can quickly learn how to play the game.</td>
+        <td>When entering the game for the first time, I should see an introductory tutorial explaining the basic controls and gameplay mechanics.</td>
+    </tr>
+    <tr>
+        <td>As a casual player, I want to pause the game and resume later so that I can play at my own pace.</td>
+        <td>I can click a “Pause” button to stop the game and a “Resume” button to continue from where I left off.</td>
+    </tr>
+    <tr>
+        <td rowspan="5">Avid Player</td>
+        <td>Replayability</td>
+        <td>As an avid player, I want to replay the game so that I can improve my skills and achieve a sense of accomplishment.</td>
+        <td>The game should allow multiple playthroughs without significant restrictions.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Character Upgrades</td>
+        <td>As an avid player, I want to upgrade my character’s gear so that I have a better chance of progressing to the next level.</td>
+        <td>Players can access a shop before, during, and after the game to purchase tools and outfits using in-game currency.</td>
+    </tr>
+    <tr>
+        <td>As an avid player, I want to earn rewards for upgrading my gear to stay competitive.</td>
+        <td>Successfully upgraded gear should provide gameplay advantages and be visually distinct.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Ranking System</td>
+        <td>As an avid player, I want to see the highest scores recorded so that I can compete for the top spot.</td>
+        <td>The main game page should display a real-time leaderboard showing the top 10 players.</td>
+    </tr>
+    <tr>
+        <td>As an avid player, I want to compare my scores with friends.</td>
+        <td>The game should include a friend leaderboard feature for score comparison.</td>
+    </tr>
+</table>
 
-- User stories for developers:
-  - As a computer science student, I would like to gain experience in coding in JavaScript so I can be a more well-rounded programmer.
-  - As a computer science student, I would like to learn how to build an efficient game with scalability
-  - As a computer science student, I would like to improve my abilities to build object-oriented programs.
-  - As a computer science student, I would like to gain some experience in coordinating in a development environment.
+
 
 ### Persona
 ### Use-Cases Breakdown
