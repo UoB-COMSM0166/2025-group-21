@@ -1,17 +1,5 @@
-Meeting Notes for Week 5 - 10/2/25
-----------------------------------
-Notetaker: Sam
-Meeting record 10/02/2025 
-1. @Jing: Decide the UIUX style by this week: Please out the options on the group  
-2. @Jing: Start to design UIUX from this week 
-3. @Sam @Jing @Jenny: Finish the Requirements part of the documents by this week
-4. @Jenny: Decide the tools and outfits by this week: Please out the options on the group 
-
-
-
 Meeting Notes for Week 5 - 11/2/25
-----------------------------------
-Notetaker: Jack
+
 1. Decided on a detailed pixelart style to move ahead with 
 2. Planned a sprint to do across the reading week (17/2 - 23/2/25)
   - @Sam finishing shop framework, connecting the pages together

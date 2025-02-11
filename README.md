@@ -77,13 +77,71 @@ Through voting and discussions, we shortlisted a few promising concepts that bes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
 ### Identifying Stakeholders
+
+  ![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
+
 ### Identifying Top-Level Needs with User Stories
+
+
+<table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+        <th>User</th>
+        <th>Epic</th>
+        <th>User Stories</th>
+        <th>Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td rowspan="3">Casual Player</td>
+        <td rowspan="3">Beginner-Friendly User Experience</td>
+        <td>As a casual player, I want a simple and intuitive game so that I can have fun without spending a lot of time learning how to play.</td>
+        <td>The game should have minimal controls and simple rules to ensure ease of play.</td>
+    </tr>
+    <tr>
+        <td>As a casual player, I want a clear and simple tutorial on my first attempt so that I can quickly learn how to play the game.</td>
+        <td>When entering the game for the first time, I should see an introductory tutorial explaining the basic controls and gameplay mechanics.</td>
+    </tr>
+    <tr>
+        <td>As a casual player, I want to pause the game and resume later so that I can play at my own pace.</td>
+        <td>I can click a “Pause” button to stop the game and a “Resume” button to continue from where I left off.</td>
+    </tr>
+    <tr>
+        <td rowspan="5">Avid Player</td>
+        <td>Replayability</td>
+        <td>As an avid player, I want to replay the game so that I can improve my skills and achieve a sense of accomplishment.</td>
+        <td>The game should allow multiple playthroughs without significant restrictions.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Character Upgrades</td>
+        <td>As an avid player, I want to upgrade my character’s gear so that I have a better chance of progressing to the next level.</td>
+        <td>Players can access a shop before, during, and after the game to purchase tools and outfits using in-game currency.</td>
+    </tr>
+    <tr>
+        <td>As an avid player, I want to earn rewards for upgrading my gear to stay competitive.</td>
+        <td>Successfully upgraded gear should provide gameplay advantages and be visually distinct.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Ranking System</td>
+        <td>As an avid player, I want to see the highest scores recorded so that I can compete for the top spot.</td>
+        <td>The main game page should display a real-time leaderboard showing the top 10 players.</td>
+    </tr>
+    <tr>
+        <td>As an avid player, I want to compare my scores with friends.</td>
+        <td>The game should include a friend leaderboard feature for score comparison.</td>
+    </tr>
+</table>
+
+
+
 ### Persona
 ### Use-Cases Breakdown
 - Use case Diagram
 - Use-Case Specification
-
+  
+#### User case flow
+![Product doc/User case flow.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/User%20case%20flow.jpg)
+#### Wireframe
 ![Product doc/Wireframe.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Wireframe.png)
+#### Wireframe and flow
 ![Product doc/Wireframe with flow.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Wireframe%20with%20flow.png)
 
 
