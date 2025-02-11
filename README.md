@@ -117,8 +117,12 @@
 ### Use-Cases Breakdown
 - Use case Diagram
 - Use-Case Specification
-
+  
+#### User case flow
+![Product doc/User case flow.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/User%20case%20flow.jpg)
+#### Wireframe
 ![Product doc/Wireframe.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Wireframe.png)
+#### Wireframe and flow
 ![Product doc/Wireframe with flow.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Wireframe%20with%20flow.png)
 
 
