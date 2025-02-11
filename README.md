@@ -53,7 +53,7 @@
 
 # 3. Requirements 
 ### Ideation Processing (Miro)
-![Product doc/Game Ideas.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Ideas.png)
+![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
 ### prototypes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
