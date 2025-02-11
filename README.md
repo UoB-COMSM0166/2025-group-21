@@ -66,6 +66,8 @@
 - Family & Friends – May help with initial testing and feedback.
 - General Public that represents a broader audience – Provide unbiased feedback to improve the game.
 
+  ![Product doc/Game Stakeholders.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders.jpg)
+
 ### Identifying Top-Level Needs with User Stories
 
 
