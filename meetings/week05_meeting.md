@@ -1,4 +1,5 @@
 Meeting Notes for Week 5 - 10/2/25
+----------------------------------
 Notetaker: Sam
 Meeting record 10/02/2025 
 1. @Jing: Decide the UIUX style by this week: Please out the options on the group  
@@ -9,6 +10,7 @@ Meeting record 10/02/2025
 
 
 Meeting Notes for Week 5 - 11/2/25
+----------------------------------
 Notetaker: Jack
 1. Decided on a detailed pixelart style to move ahead with 
 2. Planned a sprint to do across the reading week (17/2 - 23/2/25)
