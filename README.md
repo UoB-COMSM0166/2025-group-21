@@ -58,7 +58,37 @@
 ### Digital Paper Prototype tool
 ### Feasibility Studies
 ### Identifying Stakeholders
+
+- Players – Be entertained.
+- Developers – Learn new skills and improve coding abilities.
+- Academics that run the unit – Be satisfied with student outcome and ensure that the game meets the learning objectives.
+- Instructor (teacher or supervisor) – Evaluate the game and provide guidance.
+- Family & Friends – May help with initial testing and feedback.
+- General Public that represents a broader audience – Provide unbiased feedback to improve the game.
+
 ### Identifying Top-Level Needs with User Stories
+
+
+- User stories for players:
+  - As a casual player, I want a simple and clear game so I can have fun without spending a lot of time learning how to play.
+  - As a casual player, I want a way of saving my progress so I can come back and resume my game.
+  - As a casual player, I would like to be able to pause my game.
+  - As an avid player, I want a game that has a lot of replay-ability so that I won’t finish it or get bored easily.
+  - As an avid player, I wand a progressive gameplay in which I can upgrade my character/player when achieving goals or gathering resources.
+  - As an avid player, I want a smooth gameplay with no considerable drops in the fps when playing.
+  - As a competitive player, I want there be a high-score leader board and to be able to see my record so I can try to beat it.
+  - As a non-player, I want an easy tutorial mode or guidance in my first try so i can easily learn how to play the game.
+  - As a young player, I would like an exciting introduction video and story line with a relatable character to keep me entertained.
+  - As a story-driven player, I want engaging dialogues and cutscenes so that I can immerse myself in the game world.
+  - As a story-driven player, I want multiple endings so that my choices impact the story.
+  - As a player, I want a visually appealing game so it can enhance my gaming experience and keep me engange.
+
+- User stories for developers:
+  - As a computer science student, I would like to gain experience in coding in JavaScript so I can be a more well-rounded programmer.
+  - As a computer science student, I would like to learn how to build an efficient game with scalability
+  - As a computer science student, I would like to improve my abilities to build object-oriented programs.
+  - As a computer science student, I would like to gain some experience in coordinating in a development environment.
+
 ### Persona
 ### Use-Cases Breakdown
 - Use case Diagram
