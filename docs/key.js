@@ -3,12 +3,16 @@
 function keyPressed() {
 
     if (key === ' ') {
-        spacePressed = true;
+        game.spacePressed = true;
     }
 }
 function keyReleased() {
 
     if (key === ' ') {
-        spacePressed = false;
+        game.spacePressed = false;
+    }
+    else if (Domain === 'game' && key === 'a') {
+
+        game.pause.active = !game.pause.active;
     }
 }

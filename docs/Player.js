@@ -22,20 +22,20 @@ class Player {
             this.vel.y += this.gravity;
             this.updatePosition()
 
-            let ground = terrain.f(this.pos.x);
+            let ground = game.terrain.f(this.pos.x);
 
             if (this.pos.y > ground) {
                 this.pos.y = ground;
                 this.inAir = false;
-                initialDrop = false;
+                game.initialDrop = false;
                 this.calculateNormalForce();
             }
         }
         else {
-            let slope = terrain.slope(this.pos.x);  // Terrain gradient
+            let slope = game.terrain.slope(this.pos.x);  // Terrain gradient
 
             // slow speed if in contact with the ground
-            if (!spacePressed && !mouseIsPressed) {
+            if (!game.spacePressed && !mouseIsPressed) {
                 this.vel.x /= 1.05;
             }
             this.updateAcceleration(slope);
@@ -84,7 +84,7 @@ class Player {
     }
 
     updateVerticalVelocityFromSlope () {
-        let ground = terrain.f(this.pos.x);
+        let ground = game.terrain.f(this.pos.x);
         let oldY = this.pos.y;
 
         if (this.pos.y > ground) {
@@ -103,15 +103,17 @@ class Player {
 
     calculateNormalForce () {
 
-        let normalForce = this.vel.y - (terrain.f(this.pos.x + this.vel.x) - terrain.f(this.pos.x));
+        let normalForce = this.vel.y
+            - (game.terrain.f(this.pos.x + this.vel.x) - game.terrain.f(this.pos.x));
 
-        if (normalForce > 10 && terrain.slope(this.pos.x) < -0.5) { // player hits uphill slope
+        // player hits uphill slope at speed
+        if (normalForce > 10 && game.terrain.slope(this.pos.x) < -0.5) {
 
             if (this.vel.x < 1) {
                 return;
             }
 
-            if (normalForce > 20 && !invincibility) {
+            if (normalForce > 20 && !game.invincibility) {
                 this.alive = false;
                 this.vel.x = -0.5;
                 this.vel.y = -2;
@@ -128,7 +130,7 @@ class Player {
     getBounceAngle() {
 
         let velocityAngle = atan2(this.vel.y, this.vel.x);
-        let slopeAngle = atan(terrain.slope(this.pos.x));
+        let slopeAngle = atan(game.terrain.slope(this.pos.x));
         return 2 * slopeAngle + velocityAngle;
     }
 }
