@@ -52,7 +52,7 @@
 ### Game Objects Table
 
 # 3. Requirements 
-### Ideation Processing (Miro)
+### Ideation Processing
 
 During the first week of our game development project, our team of six engaged in an ideation session to generate and refine potential game ideas. Prior to our group discussion, each member independently brainstormed one to two initial concepts based on their personal interests, gaming experiences, and feasibility considerations. After preparing their concepts, team members presented them in our session, where we collectively discussed each idea in detail.
 
@@ -75,21 +75,31 @@ Through voting and discussions, we shortlisted a few promising concepts that bes
 
 <p align="center" style="margin-top: 10px;"><b>Figure 1</b></p>
 <p align="center"><i>Brainstormed Game Ideas on Miro</i></p>
-![Game Ideas](Product%20doc/Game%20Ideas.png)
+<img src="Product%20doc/Game%20Ideas.png" alt="Game Ideas" width="600">
+
 
 After brainstorming various game concepts, our team became particularly interested in physics-based mechanics, especially gravity. We decided to merge action and simulation elements, leading us to focus on the *Rocket Game*. Further research into space and flight-based games led Jack to discover a game called *Learn to Fly*, a game integrating gravity, air resistance, and propulsion. Inspired by its mechanics—and the idea that penguins are the only birds that cannot fly, making it our mission to help them take flight—we unanimously embraced this concept and included it as one of our final choices.
 <p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
 <p align="center"><i>Learn to Fly game animation</i></p>
-![Penguin Game GIF](Product%20doc/penguin_game_animation.gif)
+<img src="Product%20doc/penguin_game_animation.gif" alt="Penguin Game GIF" width="600">
 
+
+
+### Prototype
 In Workshop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*, which helped us visualize and test early game mechanics, including gravity, propulsion, and player interaction. Based on initial discussions, we made changes and added new elements to the game flow and format to enhance the fun of the gameplay. We also received feedback from our instructor and other teams, which gave us further insights into development challenges and market preferences. To facilitate clearer communication, we created simple animations simulating the paper prototype style, vividly showcasing the game flow and promoting better understanding and discussion within the team. These tools proved crucial for the development process moving forward.
 <p align="center" style="margin-top: 10px;"><b>Figure 3</b></p>
 <p align="center"><i>Paper Prototype of Rocket Game and Penguin Game</i></p>
-![Penguin Game GIF](Product%20doc/penguin_game_animation.gif)
-![Rocket Game GIF](Product%20doc/rocketGameIdea1.gif)
+<p align="center">
+    <img src="Product%20doc/rocketGameIdea1.gif" alt="Rocket Game GIF" height="500">
+</p>
+
+<p align="center" style="margin: 20px 0;"> </p>
+
+<p align="center">
+    <img src="Product%20doc/penguinGameIdea2.gif" alt="Penguin Game GIF" width="600">
+</p>
 
 
-### prototypes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
 Before starting the development process, we studied various representative game 
