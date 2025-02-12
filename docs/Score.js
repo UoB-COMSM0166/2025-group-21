@@ -18,7 +18,7 @@ class Score {
 
     update() {
 
-        if (!game.initialDrop) { // Don't increase score during the fall at the start
+        if (!game.initialDrop && !game.pause.active) { // Don't increase score during the fall at the start
             this.increment();
         }
         this.trackAirtime();

@@ -36,17 +36,16 @@ class Game {
         this.player.drawPlayer()
         this.terrain.drawHills();
 
+        if (!this.pause.active) {
+            this.offset += this.player.vel.x;  // Move terrain to the left
+            this.player.update();
+        }
+
+        pop();
+
         if (this.pause.active) {
             this.pause.showPauseScreen();
         }
-        else {
-            this.offset += this.player.vel.x;  // Move terrain to the left
-            this.player.update();
-
-        }
-
-
-        pop();
 
         //if (!this.gamePaused) {
 
