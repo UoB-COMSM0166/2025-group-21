@@ -58,7 +58,9 @@ During the first week of our game development project, our team of six engaged i
 
 In our meeting, each member shared their concepts. These proposed ideas spanned different genres, with a focus on game inspirations, fundamentals, and possible twists to ensure a diverse set of possibilities. We encouraged open discussion, asking questions, providing constructive feedback, and considering the difficulty level of each idea and how each idea aligned with our team's skills.
 
-Through voting and discussions, we shortlisted a few promising concepts that best fit our team’s capabilities and goals.
+Through voting and discussions, we shortlisted a few promising concepts that best fit our team’s capabilities and goals. We used Miro to organize the results of our brainstorming.
+<p align="center" style="margin-top: 10px;"><b>Table 1</b></p>
+<p align="center"><i>Team Game Idea Overview</i></p>
 
 | **Game Type**      | **Game Inspiration**        | **Game Description**                                         | **Possible Game Twists**                                     |
 | ------------------ | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -71,8 +73,16 @@ Through voting and discussions, we shortlisted a few promising concepts that bes
 | Simulation Game    | Into Space                  | A spaceflight game where players launch and control a rocket, adjusting for gravity, air resistance, and weather conditions while upgrading their craft. | Infinite map generation<br>High score system                 |
 
 
-
+<p align="center" style="margin-top: 10px;"><b>Figure 1</b></p>
+<p align="center"><i>Brainstormed Game Ideas on Miro</i></p>
 ![Product doc/Game Ideas.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Ideas.png)
+
+After brainstorming various game concepts, our team became particularly interested in physics-based mechanics, especially gravity. We decided to merge action and simulation elements, leading us to focus on the *Rocket Game*. Further research into space and flight-based games led Jack to discover a game called *Learn to Fly*, a game integrating gravity, air resistance, and propulsion. Inspired by its mechanics—and the idea that penguins are the only birds that cannot fly, making it our mission to help them take flight—we unanimously embraced this concept and included it as one of our final choices.
+<p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
+<p align="center"><i>Learn to Fly game animation</i></p>
+In Workshop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*, which helped us visualize and test early game mechanics, including gravity, propulsion, and player interaction. Based on initial discussions, we made changes and added new elements to the game flow and format to enhance the fun of the gameplay. We also received feedback from our instructor and other teams, which gave us further insights into development challenges and market preferences. To facilitate clearer communication, we created simple animations simulating the paper prototype style, vividly showcasing the game flow and promoting better understanding and discussion within the team. These tools proved crucial for the development process moving forward.
+
+
 ### prototypes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
