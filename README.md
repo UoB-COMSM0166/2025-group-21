@@ -106,10 +106,35 @@ In Workshop Three, we created paper prototypes for *Rocket Game* and *Penguin Ga
 
 
 ### Digital Paper Prototype tool
+
+To help people better understand the concept of the game, we also created a digital prototype. Jing attempted to generate the digital prototype using her iPad, which is closer to the actual game visuals compared to the paper prototype. 
+
+**Additionally, it introduced a visual representation of the relationship between the space key operation and the penguin's movement.**
+
+<p align="center"><b>Figure 4</b></p>
+<p align="center"><i>Digital Paper Prototype Tool.</i></p>
+
+<p align="center">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/prototype.gif?raw=true" alt="Rocket Game GIF" height="250">
+</p>
+
+<p align="center" style="margin: 20px 0;"> </p>
+
+<p align="center"><b>Figure 5</b></p>
+<p align="center"><i>Explaining the game’s ending conditions using a digital prototype.</i></p>
+
+<p align="center">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/GameOver.gif?raw=true" alt="Rocket Game GIF" height="250">
+</p>
+
+<p align="center" style="margin: 20px 0;"> </p>
+
+
+
 ### Feasibility Studies
 Before starting the development process, we studied various representative game 
 types and their core elements, reaching a consensus: we wanted to incorporate 
-physics-based elements, such as gravity. Our research helped verify that these 
+**physics-based elements**, such as gravity. Our research helped verify that these 
 ideas were feasible. For example, players could alter the in-game gravity value 
 by holding the space bar, allowing them to accelerate and take off from an upward slope.
 
