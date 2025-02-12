@@ -75,13 +75,18 @@ Through voting and discussions, we shortlisted a few promising concepts that bes
 
 <p align="center" style="margin-top: 10px;"><b>Figure 1</b></p>
 <p align="center"><i>Brainstormed Game Ideas on Miro</i></p>
-<img src="Product%20doc/Game%20Ideas.png" alt="Game Ideas" width="600">
+<div align="center">
+    <img src="Product%20doc/Game%20Ideas.png" alt="Game Ideas" width="600">
+</div>
+
 
 
 After brainstorming various game concepts, our team became particularly interested in physics-based mechanics, especially gravity. We decided to merge action and simulation elements, leading us to focus on the *Rocket Game*. Further research into space and flight-based games led Jack to discover a game called *Learn to Fly*, a game integrating gravity, air resistance, and propulsion. Inspired by its mechanics—and the idea that penguins are the only birds that cannot fly, making it our mission to help them take flight—we unanimously embraced this concept and included it as one of our final choices.
 <p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
 <p align="center"><i>Learn to Fly game animation</i></p>
-<img src="Product%20doc/penguin_game_animation.gif" alt="Penguin Game GIF" width="600">
+<div align="center">
+    <img src="Product%20doc/penguin_game_animation.gif" alt="Penguin Game GIF" width="400">
+</div>
 
 
 
@@ -96,7 +101,7 @@ In Workshop Three, we created paper prototypes for *Rocket Game* and *Penguin Ga
 <p align="center" style="margin: 20px 0;"> </p>
 
 <p align="center">
-    <img src="Product%20doc/penguinGameIdea2.gif" alt="Penguin Game GIF" width="600">
+    <img src="Product%20doc/penguinGameIdea2.gif" alt="Penguin Game GIF" width="400">
 </p>
 
 
