@@ -115,7 +115,7 @@ To help people better understand the concept of the game, we also created a digi
 <p align="center"><i>Digital Paper Prototype Tool.</i></p>
 
 <p align="center">
-    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/prototype.gif?raw=true" alt="Rocket Game GIF" height="250">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/prototype.gif?raw=true" alt="Rocket Game GIF" height="320">
 </p>
 
 <p align="center" style="margin: 20px 0;"> </p>
@@ -124,7 +124,7 @@ To help people better understand the concept of the game, we also created a digi
 <p align="center"><i>Explaining the game’s ending conditions using a digital prototype.</i></p>
 
 <p align="center">
-    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/GameOver.gif?raw=true" alt="Rocket Game GIF" height="250">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/GameOver.gif?raw=true" alt="Rocket Game GIF" height="350">
 </p>
 
 <p align="center" style="margin: 20px 0;"> </p>
