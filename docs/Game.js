@@ -11,8 +11,7 @@ class Game {
         this.tx = 0
         this.ty = 0;
         this.initialDrop = true;
-        this.invincibility = true;
-        //this.gamePaused = false;
+        this.invincibility = false;
 
         this.terrain = new Terrain();
         this.player = new Player(150, 150);
