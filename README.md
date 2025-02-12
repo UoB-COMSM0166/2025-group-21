@@ -76,6 +76,31 @@ Through voting and discussions, we shortlisted a few promising concepts that bes
 ### prototypes
 ### Digital Paper Prototype tool
 ### Feasibility Studies
+Before starting the development process, we studied various representative game 
+types and their core elements, reaching a consensus: we wanted to incorporate 
+physics-based elements, such as gravity. Our research helped verify that these 
+ideas were feasible. For example, players could alter the in-game gravity value 
+by holding the space bar, allowing them to accelerate and take off from an upward slope.
+
+To better illustrate our concept, we created a paper prototype and encouraged 
+players to try out our game demo. This allowed us to gather valuable feedback. However,
+after testing our prototype, some users found it unclear how to effectively control acceleration. 
+They also questioned the conditions under which the game would end, highlighting the need 
+for clearer rules and better feedback mechanisms.
+
+To address these concerns, we explored different ways to improve player understanding. 
+One suggestion was to add cracks between the glaciers where the penguin could fall, 
+introducing an additional challenge. Another improvement was to adjust the zoom levels, 
+as users found the zoom-out effect too wide, making it harder to track the penguin's movement.
+
+For game balancing, we considered setting a maximum gravity cap to prevent 
+unintended gameplay issues. Additionally, we decided that difficulty should 
+progressively increase, with obstacles appearing both on the ground and in the air.
+
+Given that we had previously designed an in-game store, we refined and upgraded the store’s items—such as flight-related props that provide acceleration—based on player feedback to enhance the gaming experience.
+
+External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air.the terrain itself becomes a key element of gameplay, making precise movement a challenge.Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
+
 ### Identifying Stakeholders
 
   ![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
