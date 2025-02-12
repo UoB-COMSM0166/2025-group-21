@@ -10,16 +10,30 @@ class Score {
         this.endScore = createVector(width/2 - 400, height/2 - 200); // position of word 'score' at death
         this.numScore = createVector(width/2 - 400, height/2 + 50 ); // position of number at death
 
-        this.startAirtime = 0;
         this.currentAirtime = 0;
+        this.pauseTime = null;
+        this.pauseStart = null;
+        this.airStartTime = null;
+    }
 
+    update() {
+
+        if (!game.initialDrop) { // Don't increase score during the fall at the start
+            this.increment();
+        }
+        this.trackAirtime();
+        this.printScore();
+
+        if (this.currentAirtime > 1) {
+            this.printAirtime();
+        }
     }
 
     increment() {
 
         let airtimeBonus = 0;
         let speedBonus;
-        let speed = player.vel.x;
+        let speed = game.player.vel.x;
 
         if (this.airtime > 50 ) {
             airtimeBonus = 0.02 * this.airtime;
@@ -35,33 +49,46 @@ class Score {
 
     trackAirtime() {
 
-        if (player.inAir) {
-            this.airtime++;
+        if (game.player.inAir) {
+
+            if (!game.pause.active) {
+
+                // start new airtime
+                if (this.airStartTime === null) {
+                    this.airStartTime = millis();
+                    this.pauseTime = 0;
+                }
+                // Game un-paused, update pauseTime
+                if (this.pauseStart !== null) {
+                    this.pauseTime += millis() - this.pauseStart;
+                    this.pauseStart = null;
+                }
+                // DISPLAYED AIRTIME
+                this.currentAirtime = (millis() - this.airStartTime - this.pauseTime) / 1000;
+            }
+            // Game paused, update pauseStart
+            else if (this.pauseStart === null) this.pauseStart = millis();
         }
         else {
-            this.airtime = 0;
+            this.airStartTime = null;
+            this.pauseStart = null;
+            this.pauseTime = 0;
             this.currentAirtime = 0;
         }
-
-        if (this.airtime === 5) {
-            this.startAirtime = Date.now();
-        }
-        else if (this.airtime > 5) {
-            this.currentAirtime = (Date.now() - this.startAirtime) / 1000;
-        }
     }
+
 
     printAirtime() {
 
         fill(0);
         textFont('Trebuchet MS');
         textSize(24);
-        text(`${this.currentAirtime} s`, width - 350, 40);
+        text(`${round(this.currentAirtime, 3)} s`, width - 350, 40);
     }
 
     printScore() {
 
-        let formattedScore = String(score.total).padStart(10, '0');
+        let formattedScore = String(game.score.total).padStart(10, '0');
         fill(0);
         textFont('Trebuchet MS');
         textSize(24);

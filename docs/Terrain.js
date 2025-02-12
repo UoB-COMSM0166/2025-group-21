@@ -22,12 +22,12 @@ class Terrain {
         noStroke();
         beginShape();
 
-        for (let x = -170 / zoom; x <= width / zoom + 10; x += 5) {
+        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5) {
             let y = this.f(x);
             vertex(x, y);
         }
 
-        for (let x = width / zoom + 10; x >= -170 / zoom; x -= 5) {
+        for (let x = width / game.zoom + 10; x >= -170 / game.zoom; x -= 5) {
             let y = this.f(x) + 20;
             vertex(x, y);
         }
@@ -46,7 +46,7 @@ class Terrain {
 
     // Calculate amplitude, y, of terrain curve at position x
     f(x) {
-        return this.generateHills(x + offset);
+        return this.generateHills(x + game.offset);
     }
 
     slope(x) {
