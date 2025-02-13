@@ -4,6 +4,8 @@ class Game {
 
     constructor() {
 
+        document.body.classList.remove("show-cursor");
+
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 50;
         this.spacePressed = false
@@ -20,7 +22,7 @@ class Game {
         this.pause = new Pause();
     }
 
-    runSimulation() {
+    runSimulation() { // Main loop for game
 
         this.adjustZoom();
 
@@ -30,7 +32,6 @@ class Game {
         translate(this.tx, this.ty); // Change coordinate origin to player position
         scale(this.zoom); // set screen zoom
         background(135, 206, 250);  // Blue sky
-
 
         this.player.drawPlayer()
         this.terrain.drawHills();
@@ -42,22 +43,18 @@ class Game {
 
         pop();
 
-        if (this.pause.active) {
-            this.pause.showPauseScreen();
+        if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
+        else this.pause.reset();
+
+        if ((((this.spacePressed || mouseIsPressed) && this.player.alive) || this.initialDrop) && !this.pause.active) {
+            this.getPlayerInput();
         }
-
-        //if (!this.gamePaused) {
-
-            if ((((this.spacePressed || mouseIsPressed) && this.player.alive) || this.initialDrop) && !this.pause.active) {
-                this.getPlayerInput();
-            }
-            if (this.player.alive) {
-                this.score.update();
-            }
-            else {
-                this.runPlayerDeathSequence();
-            }
-        //}
+        if (this.player.alive) {
+            this.score.update();
+        }
+        else {
+            this.runPlayerDeathSequence();
+        }
     }
 
     adjustZoom() {
@@ -87,11 +84,9 @@ class Game {
     runPlayerDeathSequence() {
 
         // Death animation
-        if (!this.player.alive) {
-            this.zoom = lerp(this.zoom, 1.25, 0.01);
-            this.ty = this.player.pos.y - this.zoom * (this.player.pos.y);
-            this.tx = 160 - this.zoom * (this.player.pos.x);
-        }
+        this.zoom = lerp(this.zoom, 1.25, 0.01);
+        this.ty = this.player.pos.y - this.zoom * (this.player.pos.y);
+        this.tx = 160 - this.zoom * (this.player.pos.x);
 
         this.deathTimer.tick();
 
@@ -99,12 +94,13 @@ class Game {
         rect(0, 0, width, height);
 
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
-        rect(0, height/2 - 280, width, height/1.8);
+        rect(0, height/5, width, height*3/5);
 
         this.score.printEndScore();
 
         if (this.deathTimer.time > 120) {
             game = null;
+            Domain = 'shop';
         }
     }
 }

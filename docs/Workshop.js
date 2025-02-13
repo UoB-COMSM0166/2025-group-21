@@ -1,0 +1,48 @@
+
+
+class Workshop {
+
+    constructor() {
+        document.body.classList.add("show-cursor");
+        this.playButton = createButton('PLAY');
+        this.updatePlayButtonSize();
+    }
+
+    openShop() { // Main loop for workshop
+        background(228, 221, 159);
+        this.updatePlayButtonSize();
+        this.printWorkshopTitle();
+        this.playButton.mousePressed(() => this.play());
+    }
+
+    play() {
+        this.playButton.remove();
+        shop = null;
+        Domain = 'game';
+    }
+
+    updatePlayButtonSize() {
+        let textSize = page.pageWidth / 400;
+        let numString = textSize.toString() + 'rem'
+
+        this.playButton.position(
+            page.xPadding + page.margin + 0.78*page.pageWidth,
+            page.yPadding + page.margin + 0.85*page.pageHeight);
+
+        this.playButton.size(page.pageWidth/5, page.pageHeight/8);
+        this.playButton.class('playButton');
+        this.playButton.style('font-size', numString);
+    }
+
+    printWorkshopTitle() {
+        let size = page.pageWidth/8;
+        fill(223, 162, 146);
+        textFont('Trebuchet MS');
+        textAlign(CENTER, TOP);
+        stroke(175, 84, 60);
+        strokeWeight(size/10);
+        textSize(size);
+        text('Workshop', width/2, 0.001*page.margin*page.pageWidth);
+        noStroke();
+    }
+}

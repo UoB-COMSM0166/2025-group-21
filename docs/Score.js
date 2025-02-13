@@ -7,8 +7,8 @@ class Score {
         this.total = 0
         this.airtime = 0
 
-        this.endScore = createVector(width/2 - 400, height/2 - 200); // position of word 'score' at death
-        this.numScore = createVector(width/2 - 400, height/2 + 50 ); // position of number at death
+        this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
+        this.numScore = createVector(width/7.5, height/2.8); // position of number at death
 
         this.currentAirtime = 0;
         this.pauseTime = null;
@@ -79,34 +79,38 @@ class Score {
 
 
     printAirtime() {
+        let size = page.pageWidth/50;
 
         fill(0);
         textFont('Trebuchet MS');
-        textSize(24);
-        text(`${round(this.currentAirtime, 3)} s`, width - 350, 40);
+        textSize(size);
+        text(`${round(this.currentAirtime, 3)} s`, 0.75*width, 0.02*height);
     }
 
     printScore() {
+        let size = page.pageWidth/50;
 
         let formattedScore = String(game.score.total).padStart(10, '0');
         fill(0);
         textFont('Trebuchet MS');
-        textSize(24);
-        text(`SCORE: ${formattedScore}`, width - 230, 40);
+        textSize(size);
+        text(`SCORE: ${formattedScore}`, 0.9*width, 0.02*height);
     }
 
     printEndScore() {
+        let size = page.pageWidth/4;
 
         this.updateEndScorePrintLocation();
 
         fill(0);
         textFont('Trebuchet MS');
-        textSize(50);
+        textSize(size/5);
         stroke(255);
-        strokeWeight(10);
+        strokeWeight(size/25);
         text('SCORE', this.endScore.x, this.endScore.y);
-        textSize(250);
+        textSize(size);
         textStyle(BOLD);
+        textAlign(LEFT);
         //textFont('Courier New');
         text(`${this.total}`, this.numScore.x, this.numScore.y);
         strokeWeight(0);
@@ -114,7 +118,8 @@ class Score {
     }
 
     updateEndScorePrintLocation() {
-        this.endScore.x -= 0.1;
-        this.numScore.x += 1;
+        let size = page.pageWidth;
+        this.endScore.x -= 0.0001*size;
+        this.numScore.x += 0.001*size;
     }
 }
