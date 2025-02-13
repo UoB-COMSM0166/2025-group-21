@@ -8,7 +8,7 @@ class Game {
 
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 50;
-        this.spacePressed = false
+        this.spacePressed = false // Activates boost
         this.zoom = 1;
         this.tx = 0
         this.ty = 0;
@@ -17,9 +17,9 @@ class Game {
 
         this.terrain = new Terrain();
         this.player = new Player(150, 150);
-        this.deathTimer = new Clock();
         this.score = new Score();
         this.pause = new Pause();
+        this.death = null;
     }
 
     runSimulation() { // Main loop for game
@@ -53,7 +53,8 @@ class Game {
             this.score.update();
         }
         else {
-            this.runPlayerDeathSequence();
+            if (this.death === null) this.death = new Death();
+            this.death.runPlayerDeathSequence();
         }
     }
 
@@ -68,7 +69,6 @@ class Game {
             this.zoom = 1;
             this.tx = this.ty = 0;
         }
-
     }
 
     getPlayerInput() {
@@ -78,29 +78,6 @@ class Game {
         }
         else {
             this.player.vel.x += 0.2;
-        }
-    }
-
-    runPlayerDeathSequence() {
-
-        // Death animation
-        this.zoom = lerp(this.zoom, 1.25, 0.01);
-        this.ty = this.player.pos.y - this.zoom * (this.player.pos.y);
-        this.tx = 160 - this.zoom * (this.player.pos.x);
-
-        this.deathTimer.tick();
-
-        fill('rgba(255, 40, 0, 0.68)'); // overlay red screen tint
-        rect(0, 0, width, height);
-
-        fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
-        rect(0, height/5, width, height*3/5);
-
-        this.score.printEndScore();
-
-        if (this.deathTimer.time > 120) {
-            game = null;
-            Domain = 'shop';
         }
     }
 }
