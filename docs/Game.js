@@ -19,6 +19,7 @@ class Game {
         this.player = new Player(150, 150);
         this.score = new Score();
         this.pause = new Pause();
+        this.stats = new Stats();
         this.death = null;
     }
 
@@ -43,6 +44,8 @@ class Game {
 
         pop();
 
+        this.stats.gameUpdate();
+
         if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
         else this.pause.reset();
 
@@ -53,7 +56,10 @@ class Game {
             this.score.update();
         }
         else {
-            if (this.death === null) this.death = new Death();
+            if (this.death === null) {
+                this.stats.deathUpdate();
+                this.death = new Death();
+            }
             this.death.runPlayerDeathSequence();
         }
     }

@@ -5,13 +5,12 @@ let Domain = 'shop'; // Determines which part of the game code is executed
 let game = null;
 let page = null;
 let shop = null;
-
+let inventory = null;
 
 function setup() {
 
     page = new Page();
-    //shop = new Workshop();
-    // instantiate workshop, main menu, etc objects here
+    inventory = new Attributes();
 }
 
 function draw() {

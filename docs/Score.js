@@ -49,6 +49,7 @@ class Score {
         if (game.player.inAir) {
 
             if (!game.pause.active) {
+                this.airtime++;
 
                 // start new airtime
                 if (this.airStartTime === null) {
@@ -67,6 +68,7 @@ class Score {
             else if (this.pauseStart === null) this.pauseStart = millis();
         }
         else {
+            this.airtime = 0;
             this.airStartTime = null;
             this.pauseStart = null;
             this.pauseTime = 0;
