@@ -4,6 +4,7 @@ class Death {
 
     constructor() {
         this.deathTimer = new Clock();
+        this.showStats = false;
         this.shopButton = null;
         this.playButton = null;
         this.statsButton = null;
@@ -18,10 +19,14 @@ class Death {
         if (this.deathTimer.time < 120) {
             this.showFinalScore();
         }
-        else this.showDeathScreen();
+        else if (!this.showStats) {
+            this.showDeathScreen();
+        }
+        else game.stats.showsStatsScreen();
     }
 
     showFinalScore() {
+        push()
         game.zoom = lerp(game.zoom, 1.25, 0.01);
         game.ty = game.player.pos.y - game.zoom * (game.player.pos.y);
         game.tx = 160 - game.zoom * (game.player.pos.x);
@@ -35,6 +40,7 @@ class Death {
         rect(0, height/5, width, height*3/5);
 
         this.printScore();
+        pop();
     }
 
     printScore() {
@@ -76,6 +82,7 @@ class Death {
         this.updateStatsButton();
         this.shopButton.mousePressed(() => this.shopButtonPressed());
         this.playButton.mousePressed(() => this.playButtonPressed());
+        this.statsButton.mousePressed(() => this.statsButtonPressed());
     }
     shopButtonPressed() {
         this.shopButton.remove();
@@ -89,6 +96,15 @@ class Death {
         this.playButton.remove();
         this.statsButton.remove();
         game = null;
+    }
+    statsButtonPressed() {
+        this.shopButton.remove();
+        this.playButton.remove();
+        this.statsButton.remove();
+        this.shopButton = null;
+        this.playButton = null;
+        this.statsButton = null;
+        this.showStats = true;
     }
 
     updateShopButton() {
