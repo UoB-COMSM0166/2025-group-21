@@ -9,3 +9,40 @@ canvas {
 * {
     cursor: none;
 }
+
+body.show-cursor, body.show-cursor * {
+    cursor: default !important;
+}
+
+button {
+    border: none;
+}
+
+.playButton {
+    background-color: rgb(135, 206, 250);
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    /*transition: background-color 0.3s ease-in-out;*/
+}
+
+.playButton:hover {
+    background-color: rgb(187, 252, 252);
+}
+
+.quitButton {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    padding: 10px 20px;
+}
+
+.quitButton:hover {
+    color: white;
+}
+
