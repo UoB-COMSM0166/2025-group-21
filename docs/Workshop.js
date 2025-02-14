@@ -57,7 +57,7 @@ class Workshop {
             stroke(0);
             strokeWeight(size/17);
             textSize(size/3);
-            ellipse(width*0.04, height*0.07, 50);
+            ellipse(width*0.04, height*0.07, size/2.5);
             fill(0);
             strokeWeight(size/40);
             //noStroke();
