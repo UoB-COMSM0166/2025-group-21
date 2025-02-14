@@ -10,6 +10,7 @@ class Death {
         this.statsButton = null;
         this.coinsEarned = null;
         this.coinsAddedToInventory = false;
+        this.skipCoinCount = false;
 
         this.redTint = 0.68;
         this.blackTintHeight = null;
@@ -25,7 +26,7 @@ class Death {
         if (this.deathTimer.time < 180) {
             this.showFinalScore();
         }
-        else if (this.deathTimer.time < 300) {
+        else if (this.deathTimer.time < 230) {
             this.displayCoinReward();
         }
         else if (!this.showStats) {
@@ -42,10 +43,16 @@ class Death {
     displayCoinReward() {
 
         push();
-        fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
+        fill('rgba(0, 0, 0, 0.6)');
         rect(0, 0, width, height);
-        this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
+
         fill(0);
+
+        if (this.skipCoinCount) {
+            this.skipCoinCount = false;
+            this.coinsEarned = game.score.total/11;
+        }
+        else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
         //text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
 
         let size = page.pageWidth/8;
@@ -65,7 +72,7 @@ class Death {
     }
 
     showFinalScore() {
-        push()
+        push();
         game.zoom = lerp(game.zoom, 1.25, 0.01);
         game.ty = game.player.pos.y - game.zoom * (game.player.pos.y);
         game.tx = 160 - game.zoom * (game.player.pos.x);

@@ -4,6 +4,10 @@ function keyPressed() {
 
     if (key === ' ') {
         game.spacePressed = true;
+
+        if (!game.player.alive && game.death.deathTimer.time >= 180) {
+            game.death.skipCoinCount = true;
+        }
     }
 }
 function keyReleased() {
