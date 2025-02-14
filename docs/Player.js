@@ -12,6 +12,10 @@ class Player {
         this.inAir = true;
         this.alive = true;
 
+        //-------Add a persistent frame index for animation--------
+        this.frameIndex = 0;
+        this.deathFrameIndex = 0; // Initialize death frame index only once
+
     }
 
     update() {
@@ -53,20 +57,74 @@ class Player {
 
 
     drawPlayer() {
+        const FRAME_WIDTH = 128;
+        const FRAME_HEIGHT = 128;
+        const NORMAL_FRAME_COUNT = 6;
+        const NORMAL_COLUMNS = 2;
+        const frameSpeed = 5;
+        const scaleFactor = 0.8;
 
+        push();
+        translate(150, this.pos.y - this.radius);
+        imageMode(CENTER);
+
+        //
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
 
-        push();
-            translate(150, this.pos.y - this.radius);
+        if (!this.alive) {
+            // --- Death Animation ---
+            const DEATH_COLUMNS = 4;
 
-            if (game.score.airtime > 3) rotate(velocityAngle);
+            const DEATH_FRAME_COUNT = 20;
 
-            else rotate(slopeAngle);
+            rotate(velocityAngle);
 
-            imageMode(CENTER);
+            if (frameCount % frameSpeed === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
+                this.deathFrameIndex++;
+            }
 
-            image(playerImg, 0, 0, this.radius * 9, this.radius * 9);
+            let deathCol = this.deathFrameIndex % DEATH_COLUMNS;
+            let deathRow = Math.floor(this.deathFrameIndex / DEATH_COLUMNS);
+
+            image(
+                deathSpriteSheet,
+                0, 0,  // Center the image at the origin
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,  // Destination size
+                deathCol * FRAME_WIDTH, deathRow * FRAME_HEIGHT,          // Source x, y
+                FRAME_WIDTH, FRAME_HEIGHT                                  // Source size
+            );
+        } else if (game.score.airtime > 3) {
+            // --- Running/Air Animation TESTING---
+            rotate(velocityAngle);
+            if (frameCount % frameSpeed === 0) {
+                this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
+            }
+            let col = this.frameIndex % NORMAL_COLUMNS;
+            let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+            image(
+                spriteSheet,
+                0, 0,
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH, row * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
+            );
+        } else {
+            // --- Idle Animation (or default image) SAME AS FLYING FOR NOW ---
+            rotate(slopeAngle);
+            this.frameIndex = 0;
+            let col = this.frameIndex % NORMAL_COLUMNS;
+            let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+            image(
+                spriteSheet,
+                0, 0,
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH, row * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
+            );
+        }
+
+
         pop();
     }
 
