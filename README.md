@@ -115,16 +115,18 @@ To help people better understand the concept of the game, we also created a digi
 <p align="center"><i>Digital Paper Prototype Tool.</i></p>
 
 <p align="center">
-    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/prototype.gif?raw=true" alt="Rocket Game GIF" height="320">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/prototype.gif?raw=true" alt="prototype tool" height="320">
 </p>
 
 <p align="center" style="margin: 20px 0;"> </p>
 
+
+
 <p align="center"><b>Figure 5</b></p>
-<p align="center"><i>Explaining the game’s ending conditions using a digital prototype.</i></p>
+<p align="center"><i>GameOver.</i></p>
 
 <p align="center">
-    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/GameOver.gif?raw=true" alt="Rocket Game GIF" height="350">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/GameOver.gif?raw=true" alt="GameOver" height="350">
 </p>
 
 <p align="center" style="margin: 20px 0;"> </p>
@@ -138,7 +140,7 @@ types and their core elements, reaching a consensus: we wanted to incorporate
 ideas were feasible. For example, players could alter the in-game gravity value 
 by holding the space bar, allowing them to accelerate and take off from an upward slope.
 
-To better illustrate our concept, we created a paper prototype and encouraged 
+To better illustrate our concept, we created a [paper prototype](#prototype) and encouraged 
 players to try out our game demo. This allowed us to gather valuable feedback. However,
 after testing our prototype, some users found it unclear how to effectively control acceleration. 
 They also questioned the conditions under which the game would end, highlighting the need 
