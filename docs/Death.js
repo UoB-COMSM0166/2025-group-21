@@ -43,27 +43,25 @@ class Death {
     displayCoinReward() {
 
         push();
-        fill('rgba(0, 0, 0, 0.6)');
-        rect(0, 0, width, height);
+            fill('rgba(0, 0, 0, 0.6)');
+            rect(0, 0, width, height);
+            fill(0);
 
-        fill(0);
+            if (this.skipCoinCount) {
+                this.skipCoinCount = false;
+                this.coinsEarned = game.score.total/11;
+            }
+            else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
 
-        if (this.skipCoinCount) {
-            this.skipCoinCount = false;
-            this.coinsEarned = game.score.total/11;
-        }
-        else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
-        //text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
-
-        let size = page.pageWidth/8;
-        fill(228, 221, 0);
-        textFont('Trebuchet MS');
-        textAlign(CENTER, CENTER);
-        stroke(0);
-        strokeWeight(size/10);
-        textSize(size);
-        text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
-        noStroke();
+            let size = page.pageWidth/8;
+            fill(228, 221, 0);
+            textFont('Trebuchet MS');
+            textAlign(CENTER, CENTER);
+            stroke(0);
+            strokeWeight(size/10);
+            textSize(size);
+            text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
+            noStroke();
         pop();
 
         if (this.coinsEarned * 11 >= game.score.total-0.5) {
@@ -72,31 +70,32 @@ class Death {
     }
 
     showFinalScore() {
+
         push();
-        game.zoom = lerp(game.zoom, 1.25, 0.01);
-        game.ty = game.player.pos.y - game.zoom * (game.player.pos.y);
-        game.tx = 160 - game.zoom * (game.player.pos.x);
+            game.zoom = lerp(game.zoom, 1.25, 0.01);
+            game.ty = game.player.pos.y - game.zoom * (game.player.pos.y);
+            game.tx = 160 - game.zoom * (game.player.pos.x);
 
-        this.deathTimer.tick();
+            this.deathTimer.tick();
 
-        if (this.deathTimer.time > 110) {
-            this.redTint = lerp(this.redTint, 0, 0.05);
-        }
-        fill(`rgba(255, 40, 0, ${this.redTint})`); // overlay red screen tint
-        rect(0, 0, width, height);
+            if (this.deathTimer.time > 110) {
+                this.redTint = lerp(this.redTint, 0, 0.05);
+            }
+            fill(`rgba(255, 40, 0, ${this.redTint})`); // overlay red screen tint
+            rect(0, 0, width, height);
 
-        if (this.blackTintHeight === null) {
-            this.blackTintHeight = height*3/5;
-            this.blackTintY = height/5;
-        }
-        if (this.deathTimer.time > 110) {
-            this.blackTintY = lerp(this.blackTintY, 0, 0.1);
-            this.blackTintHeight = lerp(this.blackTintHeight, height, 0.1);
-        }
-        fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
-        rect(0, this.blackTintY, width, this.blackTintHeight);
+            if (this.blackTintHeight === null) {
+                this.blackTintHeight = height*3/5;
+                this.blackTintY = height/5;
+            }
+            if (this.deathTimer.time > 110) {
+                this.blackTintY = lerp(this.blackTintY, 0, 0.1);
+                this.blackTintHeight = lerp(this.blackTintHeight, height, 0.1);
+            }
+            fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
+            rect(0, this.blackTintY, width, this.blackTintHeight);
 
-        this.printScore();
+            this.printScore();
         pop();
     }
 

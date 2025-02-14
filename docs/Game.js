@@ -28,19 +28,19 @@ class Game {
         this.adjustZoom();
 
         push();
-        // Scale the game size if they resize the window
-        scale(page.gameScale);
-        translate(this.tx, this.ty); // Change coordinate origin to player position
-        scale(this.zoom); // set screen zoom
-        background(135, 206, 250);  // Blue sky
+            // Scale the game size if they resize the window
+            scale(page.gameScale);
+            translate(this.tx, this.ty); // Change coordinate origin to player position
+            scale(this.zoom); // set screen zoom
+            background(135, 206, 250);  // Blue sky
 
-        this.player.drawPlayer()
-        this.terrain.drawHills();
+            this.terrain.drawHills();
+            this.player.drawPlayer()
 
-        if (!this.pause.active) {
-            this.offset += this.player.vel.x;  // Move terrain to the left
-            this.player.update();
-        }
+            if (!this.pause.active) {
+                this.offset += this.player.vel.x;  // Move terrain to the left
+                this.player.update();
+            }
 
         pop();
 

@@ -11,7 +11,7 @@ class Player {
         this.gravity = 0.2;
         this.inAir = true;
         this.alive = true;
-
+        this.deathAngle = null;
         //-------Add a persistent frame index for animation--------
         this.frameIndex = 0;
         this.deathFrameIndex = 0; // Initialize death frame index only once
@@ -28,7 +28,7 @@ class Player {
 
             let ground = game.terrain.f(this.pos.x);
 
-            if (this.pos.y > ground) {
+            if (this.pos.y > ground && this.alive) {
                 this.pos.y = ground;
                 this.inAir = false;
                 game.initialDrop = false;
@@ -68,6 +68,7 @@ class Player {
         translate(150, this.pos.y - this.radius);
         imageMode(CENTER);
 
+
         //
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
@@ -77,6 +78,11 @@ class Player {
             const DEATH_COLUMNS = 4;
 
             const DEATH_FRAME_COUNT = 20;
+
+            if (!this.alive) {
+                if (this.deathAngle === null) this.deathAngle = velocityAngle;
+                rotate(this.deathAngle-= 0.03);
+            }
 
             rotate(velocityAngle);
 

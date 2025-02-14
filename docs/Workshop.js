@@ -48,19 +48,20 @@ class Workshop {
     }
 
     printCoins() {
+
         push()
-        let size = page.pageWidth/8;
-        fill(228, 221, 0);
-        textFont('Courier New');
-        textAlign(LEFT, CENTER);
-        stroke(0);
-        strokeWeight(size/17);
-        textSize(size/3);
-        ellipse(width*0.04, height*0.07, 50);
-        fill(0);
-        strokeWeight(size/40);
-        //noStroke();
-        text(`×${inventory.coins}`, width*0.075, height*0.073);
+            let size = page.pageWidth/8;
+            fill(228, 221, 0);
+            textFont('Courier New');
+            textAlign(LEFT, CENTER);
+            stroke(0);
+            strokeWeight(size/17);
+            textSize(size/3);
+            ellipse(width*0.04, height*0.07, size/2.5);
+            fill(0);
+            strokeWeight(size/40);
+            //noStroke();
+            text(`×${inventory.coins}`, width*0.075, height*0.073);
         pop()
     }
 }
