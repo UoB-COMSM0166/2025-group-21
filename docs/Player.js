@@ -51,12 +51,23 @@ class Player {
         }
     }
 
+
     drawPlayer() {
-        if (!this.alive) {
-            this.radius = lerp(this.radius, 15, 0.01);
-        }
-        fill(0);
-        ellipse(150, this.pos.y - this.radius , this.radius * 2);
+
+        let velocityAngle = atan2(this.vel.y, this.vel.x);
+        let slopeAngle = atan(game.terrain.slope(this.pos.x));
+
+        push();
+            translate(150, this.pos.y - this.radius);
+
+            if (game.score.airtime > 3) rotate(velocityAngle);
+
+            else rotate(slopeAngle);
+
+            imageMode(CENTER);
+
+            image(playerImg, 0, 0, this.radius * 9, this.radius * 9);
+        pop();
     }
 
     updateAcceleration (slope) {

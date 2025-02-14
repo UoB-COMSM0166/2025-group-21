@@ -6,6 +6,7 @@ let game = null;
 let page = null;
 let shop = null;
 let inventory = null;
+let playerImg = null;
 
 function setup() {
 
@@ -24,4 +25,8 @@ function draw() {
         if (game === null) game = new Game();
         game.runSimulation();
     }
+}
+
+function preload() {
+    playerImg = loadImage('assets/player1.png');
 }
