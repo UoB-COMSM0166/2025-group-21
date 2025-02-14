@@ -34,8 +34,8 @@ class Game {
         scale(this.zoom); // set screen zoom
         background(135, 206, 250);  // Blue sky
 
-        this.player.drawPlayer()
         this.terrain.drawHills();
+        this.player.drawPlayer()
 
         if (!this.pause.active) {
             this.offset += this.player.vel.x;  // Move terrain to the left

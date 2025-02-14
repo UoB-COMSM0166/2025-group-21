@@ -11,6 +11,7 @@ class Player {
         this.gravity = 0.2;
         this.inAir = true;
         this.alive = true;
+        this.deathAngle = null;
 
     }
 
@@ -24,7 +25,7 @@ class Player {
 
             let ground = game.terrain.f(this.pos.x);
 
-            if (this.pos.y > ground) {
+            if (this.pos.y > ground && this.alive) {
                 this.pos.y = ground;
                 this.inAir = false;
                 game.initialDrop = false;
@@ -60,8 +61,11 @@ class Player {
         push();
             translate(150, this.pos.y - this.radius);
 
-            if (game.score.airtime > 3) rotate(velocityAngle);
-
+            if (!this.alive) {
+                if (this.deathAngle === null) this.deathAngle = velocityAngle;
+                rotate(this.deathAngle-= 0.03);
+            }
+            else if (game.score.airtime > 3) rotate(velocityAngle);
             else rotate(slopeAngle);
 
             imageMode(CENTER);
