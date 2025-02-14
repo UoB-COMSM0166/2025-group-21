@@ -61,7 +61,7 @@ class Player {
         const FRAME_HEIGHT = 128;
         const NORMAL_FRAME_COUNT = 6;
         const NORMAL_COLUMNS = 2;
-        const frameSpeed = 5;
+        const frameSpeed = 2;
         const scaleFactor = 0.8;
 
         push();
