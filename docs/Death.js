@@ -9,6 +9,10 @@ class Death {
         this.playButton = null;
         this.statsButton = null;
 
+        this.redTint = 0.68;
+        this.blackTintHeight = null;
+        this.blackTintY = null;
+
         this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
         this.numScore = createVector(width/7.5, height/2.8); // position of number at death
     }
@@ -16,7 +20,7 @@ class Death {
     runPlayerDeathSequence() {
 
         // Death animation
-        if (this.deathTimer.time < 120) {
+        if (this.deathTimer.time < 180) {
             this.showFinalScore();
         }
         else if (!this.showStats) {
@@ -33,11 +37,22 @@ class Death {
 
         this.deathTimer.tick();
 
-        fill('rgba(255, 40, 0, 0.68)'); // overlay red screen tint
+        if (this.deathTimer.time > 110) {
+            this.redTint = lerp(this.redTint, 0, 0.05);
+        }
+        fill(`rgba(255, 40, 0, ${this.redTint})`); // overlay red screen tint
         rect(0, 0, width, height);
 
+        if (this.blackTintHeight === null) {
+            this.blackTintHeight = height*3/5;
+            this.blackTintY = height/5;
+        }
+        if (this.deathTimer.time > 110) {
+            this.blackTintY = lerp(this.blackTintY, 0, 0.1);
+            this.blackTintHeight = lerp(this.blackTintHeight, height, 0.1);
+        }
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
-        rect(0, height/5, width, height*3/5);
+        rect(0, this.blackTintY, width, this.blackTintHeight);
 
         this.printScore();
         pop();
@@ -65,8 +80,15 @@ class Death {
 
     updateEndScorePrintLocation() {
         let size = page.pageWidth;
-        this.endScore.x -= 0.0001*size;
-        this.numScore.x += 0.001*size;
+
+        if (this.deathTimer.time < 110) {
+            this.endScore.x -= 0.0001*size;
+            this.numScore.x += 0.001*size;
+        }
+        else {
+            this.endScore.x -= 0.05*size;
+            this.numScore.x += 0.07*size;
+        }
     }
 
     showDeathScreen() {
