@@ -8,6 +8,8 @@ class Death {
         this.shopButton = null;
         this.playButton = null;
         this.statsButton = null;
+        this.coinsEarned = null;
+        this.coinsAddedToInventory = false;
 
         this.redTint = 0.68;
         this.blackTintHeight = null;
@@ -23,10 +25,43 @@ class Death {
         if (this.deathTimer.time < 180) {
             this.showFinalScore();
         }
+        else if (this.deathTimer.time < 300) {
+            this.displayCoinReward();
+        }
         else if (!this.showStats) {
+
+            if (!this.coinsAddedToInventory) {
+                this.coinsAddedToInventory = true;
+                inventory.coins += Math.round(this.coinsEarned);
+            }
             this.showDeathScreen();
         }
         else game.stats.showsStatsScreen();
+    }
+
+    displayCoinReward() {
+
+        push();
+        fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
+        rect(0, 0, width, height);
+        this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
+        fill(0);
+        //text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
+
+        let size = page.pageWidth/8;
+        fill(228, 221, 0);
+        textFont('Trebuchet MS');
+        textAlign(CENTER, CENTER);
+        stroke(0);
+        strokeWeight(size/10);
+        textSize(size);
+        text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
+        noStroke();
+        pop();
+
+        if (this.coinsEarned * 11 >= game.score.total-0.5) {
+            this.deathTimer.tick();
+        }
     }
 
     showFinalScore() {
