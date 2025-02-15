@@ -76,13 +76,11 @@ class Player {
         if (!this.alive) {
             // --- Death Animation ---
             const DEATH_COLUMNS = 4;
-
             const DEATH_FRAME_COUNT = 20;
 
-            if (!this.alive) {
-                if (this.deathAngle === null) this.deathAngle = velocityAngle;
-                rotate(this.deathAngle-= 0.03);
-            }
+            if (this.deathAngle === null) this.deathAngle = velocityAngle;
+            rotate(this.deathAngle-= 0.03);
+
 
             rotate(velocityAngle);
 
@@ -100,14 +98,17 @@ class Player {
                 deathCol * FRAME_WIDTH, deathRow * FRAME_HEIGHT,          // Source x, y
                 FRAME_WIDTH, FRAME_HEIGHT                                  // Source size
             );
-        } else if (game.score.airtime > 3) {
+        }
+        else if (game.score.airtime > 3) {
             // --- Running/Air Animation TESTING---
             rotate(velocityAngle);
-            if (frameCount % frameSpeed === 0) {
+
+            if (frameCount % frameSpeed === 0 && !game.pause.active) {
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
             }
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+
             image(
                 spriteSheet,
                 0, 0,
@@ -115,12 +116,14 @@ class Player {
                 col * FRAME_WIDTH, row * FRAME_HEIGHT,
                 FRAME_WIDTH, FRAME_HEIGHT
             );
-        } else {
+        }
+        else {
             // --- Idle Animation (or default image) SAME AS FLYING FOR NOW ---
             rotate(slopeAngle);
             this.frameIndex = 0;
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+
             image(
                 spriteSheet,
                 0, 0,
