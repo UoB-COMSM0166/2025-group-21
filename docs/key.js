@@ -15,6 +15,9 @@ function keyPressed() {
         if (key === 'w') {
             game.fly.active = true;
         }
+        if (key === 'd' && !game.pause.active) {
+            game.laser.shoot();
+        }
     }
 }
 function keyReleased() {

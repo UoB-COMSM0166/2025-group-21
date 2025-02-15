@@ -11,13 +11,20 @@ class FlyingAbility {
         this.active = false;
     }
 
-    performDoubleJump() {
+    applyUpwardForce() {
 
          if (this.chargeLeft > 0 && !game.pause.active) {
              game.player.vel.y -= game.fly.velocityBoost;
              this.chargeLeft -= 10;
          }
     }
+    glide() {
+        if (this.chargeLeft > 0 && !game.pause.active) {
+            game.player.vel.y -= game.player.gravity;
+            this.chargeLeft -= 10;
+        }
+    }
+
     charge() {
         if (this.chargeLeft < this.maxCharge) {
 

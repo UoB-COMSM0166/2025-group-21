@@ -23,6 +23,7 @@ class Game {
         this.death = null;
 
         this.fly = new FlyingAbility(inventory.flyLevel);
+        this.laser = new LaserAbility(inventory.laserLevel);
     }
 
     runSimulation() { // Main loop for game
@@ -38,6 +39,7 @@ class Game {
 
             this.terrain.drawHills();
             this.player.drawPlayer()
+            this.laser.updateLasers();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left
@@ -56,7 +58,8 @@ class Game {
             this.fly.charge();
 
             if (this.fly.active ) {
-                this.fly.performDoubleJump();
+                //this.fly.glide(); // apply upward force equal to gravity
+                this.fly.applyUpwardForce(); // greater then gravity
             }
         }
         else {
