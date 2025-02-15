@@ -20,7 +20,7 @@ class Pause {
         this.opacity = lerp(this.opacity, 100, 0.2);
         fill(0, 0, 0, this.opacity);
         rect(0, 0, window.innerWidth, window.innerHeight);
-        this.quitButton.mousePressed(() => this.quit());
+        this.quitButton.mousePressed(() => this.quitButtonPressed());
     }
 
     reset() {
@@ -33,7 +33,7 @@ class Pause {
         }
     }
 
-    quit() {
+    quitButtonPressed() {
         this.quitButton.remove();
         game = null;
         Domain = 'shop';

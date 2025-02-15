@@ -76,10 +76,9 @@ class Score {
         }
     }
 
-
     printAirtime() {
-        let size = page.pageWidth/50;
 
+        let size = page.pageWidth/50;
         fill(0);
         textFont('Trebuchet MS');
         textSize(size);
@@ -87,8 +86,8 @@ class Score {
     }
 
     printScore() {
-        let size = page.pageWidth/50;
 
+        let size = page.pageWidth/50;
         let formattedScore = String(game.score.total).padStart(10, '0');
         fill(0);
         textFont('Trebuchet MS');

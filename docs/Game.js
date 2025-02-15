@@ -22,8 +22,7 @@ class Game {
         this.stats = new Stats();
         this.death = null;
 
-        this.fly = new FlyingAbility(inventory.jumpLevel);
-        //this.doubleJumpActive = false;
+        this.fly = new FlyingAbility(inventory.flyLevel);
     }
 
     runSimulation() { // Main loop for game
@@ -44,13 +43,9 @@ class Game {
                 this.offset += this.player.vel.x;  // Move terrain to the left
                 this.player.update();
             }
-
         pop();
 
         this.stats.gameUpdate();
-
-        if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
-        else this.pause.reset();
 
         if ((((this.spacePressed || mouseIsPressed) && this.player.alive) || this.initialDrop) && !this.pause.active) {
             this.applyBoostToPlayer();
@@ -71,6 +66,9 @@ class Game {
             }
             this.death.runPlayerDeathSequence();
         }
+
+        if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
+        else this.pause.reset();
     }
 
     adjustZoom() {
@@ -95,6 +93,4 @@ class Game {
             this.player.vel.x += 0.2;
         }
     }
-
-
 }
