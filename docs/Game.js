@@ -21,6 +21,9 @@ class Game {
         this.pause = new Pause();
         this.stats = new Stats();
         this.death = null;
+
+        this.fly = new FlyingAbility(inventory.jumpLevel);
+        //this.doubleJumpActive = false;
     }
 
     runSimulation() { // Main loop for game
@@ -50,10 +53,16 @@ class Game {
         else this.pause.reset();
 
         if ((((this.spacePressed || mouseIsPressed) && this.player.alive) || this.initialDrop) && !this.pause.active) {
-            this.getPlayerInput();
+            this.applyBoostToPlayer();
         }
+
         if (this.player.alive) {
             this.score.update();
+            this.fly.charge();
+
+            if (this.fly.active ) {
+                this.fly.performDoubleJump();
+            }
         }
         else {
             if (this.death === null) {
@@ -77,7 +86,7 @@ class Game {
         }
     }
 
-    getPlayerInput() {
+    applyBoostToPlayer() {
 
         if (this.player.pos.y < this.terrain.f(this.player.pos.x)) {
             this.player.vel.y += 0.6;
@@ -86,4 +95,6 @@ class Game {
             this.player.vel.x += 0.2;
         }
     }
+
+
 }

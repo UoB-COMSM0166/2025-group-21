@@ -24,7 +24,7 @@ class Player {
 
         if (this.inAir) {
             this.vel.y += this.gravity;
-            this.updatePosition()
+            this.updatePosition();
 
             let ground = game.terrain.f(this.pos.x);
 
@@ -103,7 +103,7 @@ class Player {
             // --- Running/Air Animation TESTING---
             rotate(velocityAngle);
 
-            if (frameCount % frameSpeed === 0 && !game.pause.active) {
+            if (frameCount % frameSpeed === 0 && !game.pause.active && game.fly.active) {
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
             }
             let col = this.frameIndex % NORMAL_COLUMNS;
@@ -159,6 +159,8 @@ class Player {
 
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
+
+
     }
 
     updateVerticalVelocityFromSlope () {
