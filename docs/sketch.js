@@ -12,7 +12,7 @@ let spriteSheet = null;
 function setup() {
 
     page = new Page();
-    inventory = new Attributes();
+    inventory = new Inventory();
 }
 
 function draw() {

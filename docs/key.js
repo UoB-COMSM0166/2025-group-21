@@ -2,21 +2,34 @@
 
 function keyPressed() {
 
-    if (key === ' ') {
-        game.spacePressed = true;
+    if (Domain === 'game') {
+        if (key === ' ') {
+            game.spacePressed = true;
 
-        if (!game.player.alive && game.death.deathTimer.time >= 180) {
-            game.death.skipCoinCount = true;
+            if (!game.player.alive && game.death.deathTimer.time >= 180) {
+                game.death.skipCoinCount = true;
+            }
+        }
+
+        if (key === 'w') {
+            game.fly.active = true;
         }
     }
 }
 function keyReleased() {
 
-    if (key === ' ') {
-        game.spacePressed = false;
-    }
-    else if (Domain === 'game' && keyCode === 27) { // 27 == ESC key
+    if (Domain === 'game') {
 
-        game.pause.active = !game.pause.active;
+        if (key === ' ') {
+            game.spacePressed = false;
+        }
+        else if (Domain === 'game' && keyCode === 27) { // 27 == ESC key
+
+            game.pause.active = !game.pause.active;
+        }
+
+        if (key === 'w' && Domain === 'game') {
+            game.fly.active = false;
+        }
     }
 }
