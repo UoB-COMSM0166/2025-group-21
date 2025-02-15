@@ -6,6 +6,7 @@ let game = null;
 let page = null;
 let shop = null;
 let inventory = null;
+
 let playerImg = null;
 let spriteSheet = null;
 

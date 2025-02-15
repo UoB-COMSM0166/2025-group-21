@@ -74,7 +74,7 @@ class Player {
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
 
         if (!this.alive) {
-            // --- Death Animation ---
+            // Death Animation
             const DEATH_COLUMNS = 4;
             const DEATH_FRAME_COUNT = 20;
 
@@ -100,7 +100,7 @@ class Player {
             );
         }
         else if (game.score.airtime > 3) {
-            // --- Running/Air Animation TESTING---
+
             rotate(velocityAngle);
 
             if (frameCount % frameSpeed === 0 && !game.pause.active && game.fly.active) {
@@ -118,7 +118,7 @@ class Player {
             );
         }
         else {
-            // --- Idle Animation (or default image) SAME AS FLYING FOR NOW ---
+
             rotate(slopeAngle);
             this.frameIndex = 0;
             let col = this.frameIndex % NORMAL_COLUMNS;
@@ -139,7 +139,7 @@ class Player {
 
     updateAcceleration (slope) {
 
-        //Handle effect of angle of slope on the gravity
+        // Handle effect of angle of slope on the gravity
         this.accDownSlope = (this.gravity) * sin(atan(slope));
 
         if (slope <= 0) { // uphill

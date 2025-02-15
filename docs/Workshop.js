@@ -12,11 +12,11 @@ class Workshop {
         background(228, 221, 159);
         this.updatePlayButtonSize();
         this.printWorkshopTitle();
-        this.playButton.mousePressed(() => this.play());
+        this.playButton.mousePressed(() => this.playButtonPressed());
         this.printCoins();
     }
 
-    play() {
+    playButtonPressed() {
         this.playButton.remove();
         shop = null;
         Domain = 'game';
@@ -60,7 +60,6 @@ class Workshop {
             ellipse(width*0.04, height*0.07, size/2.5);
             fill(0);
             strokeWeight(size/40);
-            //noStroke();
             text(`×${inventory.coins}`, width*0.075, height*0.073);
         pop()
     }

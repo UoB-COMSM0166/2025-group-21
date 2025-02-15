@@ -9,7 +9,6 @@ class FlyingAbility {
         this.maxCharge = 300 + 20*powerLevel
         this.chargeLeft = this.maxCharge;
         this.active = false;
-        //this.reset = true;
     }
 
     performDoubleJump() {
@@ -23,7 +22,7 @@ class FlyingAbility {
         if (this.chargeLeft < this.maxCharge) {
 
             if (!game.pause.active) {
-                this.chargeLeft += this.level > 0 ? (this.level+1)/2: 0.5;
+                this.chargeLeft += (this.level+1) / 2;
             }
             this.displayChargeLeft();
         }
@@ -40,7 +39,6 @@ class FlyingAbility {
 
             let timeLeftFraction = this.chargeLeft/this.maxCharge;
             fill('rgb(184,44,110)');
-            //p5.fillGradient(width*0.82, height*0.08, width*0.82, height/70, color(255, 0, 0), color(0, 0, 255), "x");
             rect(width*0.82, height*0.08, timeLeftFraction*width/6.2, height/70);
         pop();
     }
