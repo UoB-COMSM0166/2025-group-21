@@ -15,7 +15,7 @@ class FlyingAbility {
 
          if (this.chargeLeft > 0 && !game.pause.active) {
              game.player.vel.y -= game.fly.velocityBoost;
-             this.chargeLeft -= 10;
+             if (!game.infiniteFly) this.chargeLeft -= 10;
          }
     }
     glide() {
