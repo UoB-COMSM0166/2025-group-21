@@ -132,8 +132,6 @@ class Player {
                 FRAME_WIDTH, FRAME_HEIGHT
             );
         }
-
-
         pop();
     }
 

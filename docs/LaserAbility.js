@@ -30,10 +30,32 @@ class LaserAbility {
             if (!game.pause.active) this.lasers[i].updatePosition();
             this.lasers[i].drawLaser();
 
-            if (this.lasers[i].pos.x < -100000 || this.lasers[i].pos.x > 100000 ||
-                this.lasers[i].pos.y < -100000 || this.lasers[i].pos.y > 100000) {
+            // if laser goes off the screen
+            if (this.lasers[i].pos.x > width/game.zoom ||
+                (this.lasers[i].pos.y < game.player.pos.y - game.topMargin/game.zoom && game.zoom < 1) ||
+                (this.lasers[i].pos.y < 0 && game.zoom === 1) ||
+                this.lasers[i].pos.y > height/game.zoom) {
 
                 this.lasers.splice(i, 1);
+            }
+            this.checkForUFOCollisions(i);
+        }
+    }
+
+    checkForUFOCollisions(l) {
+
+        for (let u=0; u<game.UFOs.length; u++) {
+
+            if (this.lasers[l] !== undefined && game.UFOs[u] !== undefined) {
+
+                let dx = abs(this.lasers[l].pos.x - game.UFOs[u].pos.x);
+                let dy = abs(this.lasers[l].pos.y - game.UFOs[u].pos.y);
+
+                if (Math.sqrt(dx**2 + dy**2) < 50) {
+                    this.lasers.splice(l, 1);
+                    game.explosions.push(new Explosion(game.UFOs[u].pos));
+                    game.UFOs.splice(u, 1);
+                }
             }
         }
     }
