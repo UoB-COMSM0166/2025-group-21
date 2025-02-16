@@ -12,10 +12,10 @@ function keyPressed() {
             }
         }
 
-        if (key === 'w') {
+        if (key === 'w' && game.fly != null) {
             game.fly.active = true;
         }
-        if (key === 'd' && !game.pause.active) {
+        if (key === 'd' && game.laser != null && !game.pause.active && game.player.alive) {
             game.laser.shoot();
         }
     }
@@ -31,7 +31,7 @@ function keyReleased() {
             game.pause.active = !game.pause.active;
         }
 
-        if (key === 'w') {
+        if (key === 'w' && game.fly != null) {
             game.fly.active = false;
         }
     }
