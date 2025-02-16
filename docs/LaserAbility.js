@@ -24,7 +24,6 @@ class LaserAbility {
 
     updateLasers() {
 
-        //push();
         for (let i=0; i<this.lasers.length; i++) {
 
             if (!game.pause.active) this.lasers[i].updatePosition();
@@ -36,6 +35,5 @@ class LaserAbility {
                 this.lasers.splice(i, 1);
             }
         }
-        //pop();
     }
 }
