@@ -165,9 +165,49 @@ In Workshop Three, we created paper prototypes for *Rocket Game* and *Penguin Ga
 
 ### Persona
 ### Use-Cases Breakdown
+Before designing the use-case diagram, we analyzed the stakeholders and user stories to ensure that all relevant interactions within the game system were captured. By breaking down the different needs and expectations of stakeholders, we structured the use-case diagram to accurately reflect player interactions and system functionalities.
 - Use case Diagram
+
 - Use-Case Specification
+
+  Since this is a game design project, we have focused our stakeholders primarily on the Player. The key interactions center around how the player engages with the game system and their environment, ensuring an immersive and enjoyable gaming experience.
   
+  **Actor**: Player
+  **Description**: The player interacts with the game system in several ways to engage in gameplay, earn rewards, and track progress.
+  
+  **Flow of Events**:
+  
+  1. The player selects **“Start Game”** from the main menu.
+     - If it's the first time playing, the system offers an option to **“View Tutorial”** to explain basic controls and mechanics.
+  2. During gameplay, the player **controls the character** to navigate and complete objectives.
+     - The system supports **Easy Character Control** to ensure smooth gameplay.
+  3. The player can **Pause/Resume** the game at any time to manage their session.
+  4. As the player progresses, they **earn coins** through in-game achievements.
+     - Coins can be used to **Upgrade Character**, which includes purchasing **Outfits** and **Tools**.
+  5. The player can access the **Leaderboard** to compare their scores with other players.
+     - The system retrieves and displays top scores, motivating competition.
+  
+  **Preconditions**:
+  
+  - The game must be installed and running.
+  - The player must have access to the necessary controls and menu options.
+  
+  **Postconditions**:
+  
+  - The player successfully engages in the game, accumulating rewards and tracking progress.
+  - Game states, scores, and upgrades are saved for continuity.
+  
+  **Key Scenarios**:
+  
+  - A new player starts the game for the first time and completes the tutorial.
+  - A returning player continues their progress and upgrades their character.
+  - A competitive player checks the leaderboard to compare scores.
+  - A player pauses and resumes the game during play.
+  
+  **Subflows**
+  
+  - If the player does not have enough coins to upgrade their character, the system prompts them to earn more.
+  - If the player disconnects during gameplay, the system ensures progress is saved automatically.
 #### User case flow
 ![Product doc/User case flow.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/User%20case%20flow.jpg)
 #### Wireframe
