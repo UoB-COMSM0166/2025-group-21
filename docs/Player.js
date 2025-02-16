@@ -103,7 +103,7 @@ class Player {
 
             rotate(velocityAngle);
 
-            if (frameCount % frameSpeed === 0 && !game.pause.active && game.fly.active) {
+            if (frameCount % frameSpeed === 0 && !game.pause.active && game.fly != null && game.fly.active) {
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
             }
             let col = this.frameIndex % NORMAL_COLUMNS;

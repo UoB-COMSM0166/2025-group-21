@@ -9,11 +9,12 @@ class LaserAbility {
 
     shoot() {
         let velocityAngle;
+
         if (game.score.airtime > 3) {
-            velocityAngle = atan2(game.player.vel.y, game.player.vel.x);
+            velocityAngle = atan2(game.player.vel.y, game.player.vel.x); // Angle of penguin
         }
         else {
-            velocityAngle = atan(game.terrain.slope(game.player.pos.x));
+            velocityAngle = atan(game.terrain.slope(game.player.pos.x)); // Slope gradient
         }
         let originX = game.player.pos.x - 10*sin(velocityAngle) - 10*cos(velocityAngle);
         let originY = game.player.pos.y - 10*cos(velocityAngle) - 10*sin(velocityAngle);
@@ -29,8 +30,8 @@ class LaserAbility {
             if (!game.pause.active) this.lasers[i].updatePosition();
             this.lasers[i].drawLaser();
 
-            if (this.lasers[i].pos.x < -10000 || this.lasers[i].pos.x > 10000 ||
-                this.lasers[i].pos.y < -10000 || this.lasers[i].pos.y > 10000) {
+            if (this.lasers[i].pos.x < -100000 || this.lasers[i].pos.x > 100000 ||
+                this.lasers[i].pos.y < -100000 || this.lasers[i].pos.y > 100000) {
 
                 this.lasers.splice(i, 1);
             }

@@ -82,7 +82,8 @@ class Score {
         fill(0);
         textFont('Trebuchet MS');
         textSize(size);
-        text(`${round(this.currentAirtime, 3)} s`, 0.75*width, 0.02*height);
+        textAlign(LEFT);
+        text(`${round(this.currentAirtime, 3)} s`, 0.7*width, 0.02*height);
     }
 
     printScore() {
@@ -92,6 +93,7 @@ class Score {
         fill(0);
         textFont('Trebuchet MS');
         textSize(size);
+        textAlign(CENTER);
         text(`SCORE: ${formattedScore}`, 0.9*width, 0.02*height);
     }
 }
