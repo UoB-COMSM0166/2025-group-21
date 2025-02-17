@@ -22,6 +22,7 @@ class LaserAbility {
         let position = createVector(originX, originY);
         let velocity = createVector(50*cos(velocityAngle), 50*sin(velocityAngle));
         this.lasers.push(new Laser(position, velocity));
+        laserSound.play();
     }
 
     updateLasers() {
@@ -57,6 +58,7 @@ class LaserAbility {
                     this.lasers.splice(l, 1);
                     game.UFOHandler.explosions.push(new Explosion(game.UFOHandler.UFOs[u].pos));
                     game.UFOHandler.UFOs.splice(u, 1);
+                    explosionSound.play();
                 }
             }
         }
