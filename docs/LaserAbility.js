@@ -5,6 +5,7 @@ class LaserAbility {
         this.level = powerLevel;
         this.coolDown = 100 - 10*powerLevel;
         this.lasers = [];
+        this.gatlingMode = false;
     }
 
     shoot() {
@@ -40,21 +41,22 @@ class LaserAbility {
             }
             this.checkForUFOCollisions(i);
         }
+        if (this.gatlingMode && game.player.alive && frameCount % 4 === 0) this.shoot();
     }
 
     checkForUFOCollisions(l) {
 
-        for (let u=0; u<game.UFOs.length; u++) {
+        for (let u=0; u<game.UFOHandler.UFOs.length; u++) {
 
-            if (this.lasers[l] !== undefined && game.UFOs[u] !== undefined) {
+            if (this.lasers[l] !== undefined && game.UFOHandler.UFOs[u] !== undefined) {
 
-                let dx = abs(this.lasers[l].pos.x - game.UFOs[u].pos.x);
-                let dy = abs(this.lasers[l].pos.y - game.UFOs[u].pos.y);
+                let dx = abs(this.lasers[l].pos.x - game.UFOHandler.UFOs[u].pos.x);
+                let dy = abs(this.lasers[l].pos.y - game.UFOHandler.UFOs[u].pos.y);
 
                 if (Math.sqrt(dx**2 + dy**2) < 50) {
                     this.lasers.splice(l, 1);
-                    game.explosions.push(new Explosion(game.UFOs[u].pos));
-                    game.UFOs.splice(u, 1);
+                    game.UFOHandler.explosions.push(new Explosion(game.UFOHandler.UFOs[u].pos));
+                    game.UFOHandler.UFOs.splice(u, 1);
                 }
             }
         }
