@@ -2,7 +2,10 @@
 
 class Death {
 
-    constructor() {
+    constructor(type) {
+        game.player.alive = false;
+        game.stats.deathUpdate();
+        this.type = type;
         this.deathTimer = new Clock();
         this.showStats = false;
         this.shopButton = null;
@@ -11,6 +14,8 @@ class Death {
         this.coinsEarned = null;
         this.coinsAddedToInventory = false;
         this.skipCoinCount = false;
+        this.currentY = game.player.pos.y;
+
 
         this.redTint = 0.68;
         this.blackTintHeight = null;
