@@ -19,8 +19,10 @@ class Player {
     }
 
     update() {
+
         // keep ball at same x position on the screen
         this.pos.x = 150;
+        if (!this.alive && game.death.type === 'UFO') this.pos.y = game.death.currentY;
 
         if (this.inAir) {
             this.vel.y += this.gravity;
@@ -57,6 +59,9 @@ class Player {
 
 
     drawPlayer() {
+
+        if (game.death != null && game.death.type === 'UFO') return;
+
         const FRAME_WIDTH = 128;
         const FRAME_HEIGHT = 128;
         const NORMAL_FRAME_COUNT = 6;
@@ -192,7 +197,7 @@ class Player {
             }
 
             if (normalForce > 20 && !game.invincibility) {
-                this.alive = false;
+                game.death = new Death('ground');
                 this.vel.x = -0.5;
                 this.vel.y = -2;
                 this.gravity = 0.02

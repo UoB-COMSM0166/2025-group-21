@@ -11,7 +11,7 @@ class Explosion {
     explode() {
         const FRAME_WIDTH = 96;
         const FRAME_HEIGHT = 96;
-        const frameSpeed = 3;
+        let frameSpeed = game.player.alive ? 3 : 12;
         const scaleFactor = 2;
         const FRAME_COUNT = 12;
         imageMode(CENTER);

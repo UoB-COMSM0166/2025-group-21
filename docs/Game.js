@@ -60,7 +60,7 @@ class Game {
             this.applyBoostToPlayer();
         }
 
-        if (this.player.alive) {
+        if (this.death === null) {
             this.score.update();
 
             if (this.fly != null) {
@@ -73,10 +73,6 @@ class Game {
             }
         }
         else {
-            if (this.death === null) {
-                this.stats.deathUpdate();
-                this.death = new Death();
-            }
             this.death.runPlayerDeathSequence();
         }
 
@@ -124,6 +120,26 @@ class Game {
                 this.UFOs[i].pos.y > height/game.zoom) {
 
                 this.UFOs.splice(i, 1);
+            }
+        }
+        this.checkForPlayerUFOCollision();
+    }
+    checkForPlayerUFOCollision() {
+
+        for (let u=0; u<game.UFOs.length; u++) {
+
+            if (game.UFOs[u] !== undefined) {
+
+                let dx = abs(game.player.pos.x - game.UFOs[u].pos.x);
+                let dy = abs(game.player.pos.y - game.UFOs[u].pos.y);
+
+                if (Math.sqrt(dx**2 + dy**2) < 50) {
+                    game.explosions.push(new Explosion(game.UFOs[u].pos));
+                    game.UFOs.splice(u, 1);
+                    game.death = new Death('UFO');
+                    game.player.vel.x = -0.5;
+                    game.player.vel.y = 0;
+                }
             }
         }
     }
