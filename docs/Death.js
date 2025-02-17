@@ -3,6 +3,7 @@
 class Death {
 
     constructor(type) {
+        deathSound.play();
         game.player.alive = false;
         game.stats.deathUpdate();
         this.type = type;

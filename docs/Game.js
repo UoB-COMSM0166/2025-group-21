@@ -24,9 +24,8 @@ class Game {
         this.pause = new Pause();
         this.stats = new Stats();
         this.UFOHandler = new UFOHandler();
+        this.wind = new Wind();
         this.death = null;
-        // this.UFOs = [];
-        // this.explosions = [];
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.laser = inventory.laserLevel > 0 ?  new LaserAbility(inventory.laserLevel) : null;
@@ -35,6 +34,7 @@ class Game {
     runSimulation() { // Main loop for game
 
         this.adjustZoom();
+        this.wind.adjustVolume();
 
         push();
             // Scale the game size if they resize the window

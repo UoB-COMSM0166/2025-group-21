@@ -53,6 +53,7 @@ class UFOHandler {
                 if (Math.sqrt(dx**2 + dy**2) < 50) {
                     this.explosions.push(new Explosion(this.UFOs[u].pos));
                     this.UFOs.splice(u, 1);
+                    explosionSound.play();
 
                     if (!game.invincibility) {
                         game.death = new Death('UFO');

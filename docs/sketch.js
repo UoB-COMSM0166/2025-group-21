@@ -12,6 +12,10 @@ let spriteSheet = null;
 let deathSpriteSheet = null
 let ufo = null;
 let explosion = null;
+let laserSound = null;
+let explosionSound = null;
+let deathSound = null;
+let windSound = null;
 
 function setup() {
 
@@ -38,5 +42,10 @@ function preload() {
     spriteSheet = loadImage('assets/playerFloor.png');
     deathSpriteSheet = loadImage('assets/playerDeath.png'); // Death animation sprite sheet
     ufo = loadImage('assets/ufo.png');
-    explosion = loadImage('assets/explosion.png')
+    explosion = loadImage('assets/explosion.png');
+
+    laserSound = loadSound('assets/laser.mp3');
+    explosionSound = loadSound('assets/explosionSound.mp3');
+    deathSound = loadSound('assets/deathSound.mp3');
+    windSound = loadSound('assets/windSound.mp3');
 }
