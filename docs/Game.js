@@ -23,9 +23,10 @@ class Game {
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();
+        this.UFOHandler = new UFOHandler();
         this.death = null;
-        this.UFOs = [];
-        this.explosions = [];
+        // this.UFOs = [];
+        // this.explosions = [];
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.laser = inventory.laserLevel > 0 ?  new LaserAbility(inventory.laserLevel) : null;
@@ -49,8 +50,8 @@ class Game {
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left
                 this.player.update();
-                this.updateUFOs();
-                this.updateExplosions();
+                this.UFOHandler.updateUFOs();
+                this.UFOHandler.updateExplosions();
             }
         pop();
 
@@ -100,58 +101,6 @@ class Game {
         }
         else {
             this.player.vel.x += 0.2;
-        }
-    }
-
-    updateUFOs() {
-
-        if (this.zoom < 0.8 && Math.random() > 0.975) {
-            this.UFOs.push(new UFO(this.player.pos.y + 0.3*(height - this.player.pos.y)*Math.random() + 50));
-        }
-
-        for (let i=0; i<this.UFOs.length; i++) {
-            this.UFOs[i].updatePosition();
-            this.UFOs[i].drawUFO();
-
-            // UFO crosses barrier slightly beyond edge of screen
-            if (this.UFOs[i].pos.x < -200/game.zoom || this.UFOs[i].pos.x > width/game.zoom ||
-                (this.UFOs[i].pos.y < game.player.pos.y - 10*game.topMargin/game.zoom && game.zoom < 1) ||
-                (this.UFOs[i].pos.y < -500 && game.zoom === 1) ||
-                this.UFOs[i].pos.y > height/game.zoom) {
-
-                this.UFOs.splice(i, 1);
-            }
-        }
-        this.checkForPlayerUFOCollision();
-    }
-    checkForPlayerUFOCollision() {
-
-        for (let u=0; u<game.UFOs.length; u++) {
-
-            if (game.UFOs[u] !== undefined) {
-
-                let dx = abs(game.player.pos.x - game.UFOs[u].pos.x);
-                let dy = abs(game.player.pos.y - game.UFOs[u].pos.y);
-
-                if (Math.sqrt(dx**2 + dy**2) < 50) {
-                    game.explosions.push(new Explosion(game.UFOs[u].pos));
-                    game.UFOs.splice(u, 1);
-                    game.death = new Death('UFO');
-                    game.player.vel.x = -0.5;
-                    game.player.vel.y = 0;
-                }
-            }
-        }
-    }
-
-    updateExplosions() {
-
-        for (let i=0; i<this.explosions.length; i++) {
-
-            if (this.explosions[i].explosionComplete) {
-                this.explosions.splice(i, 1);
-            }
-            else this.explosions[i].explode();
         }
     }
 }

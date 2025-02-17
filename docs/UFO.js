@@ -5,7 +5,7 @@ class UFO {
 
         this.height = height;
         this.pos = createVector(width/game.zoom, height);
-        this.moveFactor = 5*Math.random() + 1;
+        this.moveFactor = 3*Math.random() + 3;
     }
 
     drawUFO() {
@@ -14,7 +14,7 @@ class UFO {
     }
 
     updatePosition() {
-        this.pos.x -= game.player.vel.x;
+        this.pos.x -= (game.player.vel.x + 2*this.moveFactor);
 
         let nt = 0.03 * frameCount;
         noiseSeed(Date.now());
