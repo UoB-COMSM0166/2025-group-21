@@ -160,12 +160,26 @@ Given that we had previously designed an in-game store, we refined and upgraded 
 External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air.the terrain itself becomes a key element of gameplay, making precise movement a challenge.Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
 
 ### Identifying Stakeholders
+
+The stakeholder diagram illustrates the character system for the project, clearly identifying who is involved and their roles. Before implementation begins, it is crucial to understand the key stakeholders, including the development team, academics, and the instructor, as well as the end-users--our primary target audience: the players.
+
+Using the hierarchy of the onion model, we can see that every feature we develop aims to meet the needs of our target audience. Additionally, successful project delivery requires close collaboration with the development team and alignment with the guidance of the instructorand academics. By maintaining effective communication and progress tracking, we can ensure that the project meets all requirements and lauches the first version of the game on schedule.
+
 <p align="center" style="margin-top: 10px;"><b>Figure 6</b></p>
-<p align="center"><i>Stakeholders</i></p>
+<p align="center"><i>Onion Model of Learn To Fly Game</i></p>
 
   ![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
 
+### Persona
+
+For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring eveyrone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
+
+| **Figure 7**<br>_Persona 1._<br>![Product doc/Game doc - Persona 1.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%201.jpg) | **Figure 8**<br>_Persona 2._<br>![Product doc/Game doc - Persona 2.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%202.jpg) | **Figure 9**<br>_Persona 3._<br>![Product doc/Game doc - Persona 3.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%203.jpg) |
+|--|--|--|
+
 ### Identifying Top-Level Needs with User Stories
+
+Once the personas are established, user stories are created to represent the needs, and challenges of each user type. By grounding user stories in the personas, we ensure that the product's functionality aligns with user expectations, resulting in a more user-centered design and a better overall experience.
 
 <p align="center" style="margin-top: 10px;"><b>Table 2</b></p>
 <p align="center"><i>User Story</i></p>
@@ -216,13 +230,10 @@ External feedback also drew comparisons between our concept and existing physics
     </tr>
 </table>
 
-
-
-### Persona
 ### Use-Cases Breakdown
 
 Before designing the use-case diagram, we analyzed the stakeholders and user stories to ensure that all relevant interactions within the game system were captured. By breaking down the different needs and expectations of stakeholders, we structured the use-case diagram to accurately reflect player interactions and system functionalities.
-<p align="center" style="margin-top: 10px;"><b>Figure 7</b></p>
+<p align="center" style="margin-top: 10px;"><b>Figure 10</b></p>
 <p align="center"><i>use-case diagram</i></p>
 <div align="center">
     <img src="Product%20doc/use-case%20diagram.png" width="600">
@@ -275,14 +286,6 @@ Description: The player interacts with the game system in several ways to engage
 
   - If the player does not have enough coins to upgrade their character, the system prompts them to earn more.
   - If the player disconnects during gameplay, the system ensures progress is saved automatically.
-
-#### User case flow
-![Product doc/User case flow.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/User%20case%20flow.jpg)
-#### Wireframe
-![Product doc/Wireframe.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Wireframe.png)
-#### Wireframe and flow
-![Product doc/Wireframe with flow.png](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Wireframe%20with%20flow.png)
-
 
 # 4. Design
 ### Class Diagram
