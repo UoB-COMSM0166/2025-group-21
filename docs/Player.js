@@ -12,7 +12,6 @@ class Player {
         this.inAir = true;
         this.alive = true;
         this.deathAngle = null;
-        //-------Add a persistent frame index for animation--------
         this.frameIndex = 0;
         this.deathFrameIndex = 0; // Initialize death frame index only once
 
@@ -73,8 +72,6 @@ class Player {
         translate(150, this.pos.y - this.radius);
         imageMode(CENTER);
 
-
-        //
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
 
