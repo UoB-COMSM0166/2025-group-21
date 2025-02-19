@@ -12,10 +12,15 @@ let spriteSheet = null;
 let deathSpriteSheet = null
 let ufo = null;
 let explosion = null;
+let fish = null;
+let damagedUfo = null;
 let laserSound = null;
 let explosionSound = null;
 let deathSound = null;
 let windSound = null;
+let fishThrow = null;
+let fishImpactSound = null;
+let fishImpactCrash = null;
 
 function setup() {
 
@@ -38,14 +43,19 @@ function draw() {
 
 function preload() {
     playerImg = loadImage('assets/player1.png');
-    //playerFloor = loadImage('assets/playerFloor.png');
     spriteSheet = loadImage('assets/playerFloor.png');
-    deathSpriteSheet = loadImage('assets/playerDeath.png'); // Death animation sprite sheet
+    deathSpriteSheet = loadImage('assets/playerDeath.png');
     ufo = loadImage('assets/ufo.png');
     explosion = loadImage('assets/explosion.png');
+    fish = loadImage('assets/fish.png');
+    damagedUfo = loadImage('assets/damagedUfo.png')
 
     laserSound = loadSound('assets/laser.mp3');
     explosionSound = loadSound('assets/explosionSound.mp3');
     deathSound = loadSound('assets/deathSound.mp3');
     windSound = loadSound('assets/windSound.mp3');
+    fishThrow = loadSound('assets/fishThrow.mp3');
+    fishImpactSound = loadSound('assets/fishImpactSound.mp3')
+    fishImpactCrash = loadSound('assets/fishImpactCrash.mp3')
+
 }
