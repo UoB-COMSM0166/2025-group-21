@@ -30,14 +30,14 @@ class ProjectileAbility {
         }
     }
 
-    updateLasers() {
+    updateProjectiles() {
 
         for (let i=0; i<this.projectiles.length; i++) {
 
             if (!game.pause.active) this.projectiles[i].updatePosition();
-            this.projectiles[i].drawLaser();
+            this.projectiles[i].drawProjectile();
 
-            // if laser goes off the screen
+            // if projectile goes off the screen
             if (this.projectiles[i].pos.x > width/game.zoom ||
                 (this.projectiles[i].pos.y < game.player.pos.y - game.topMargin/game.zoom && game.zoom < 1) ||
                 (this.projectiles[i].pos.y < 0 && game.zoom === 1) ||
