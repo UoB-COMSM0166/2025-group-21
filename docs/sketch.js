@@ -56,6 +56,5 @@ function preload() {
     windSound = loadSound('assets/windSound.mp3');
     fishThrow = loadSound('assets/fishThrow.mp3');
     fishImpactSound = loadSound('assets/fishImpactSound.mp3')
-    fishImpactCrash = loadSound('assets/fishImpactCrash.mp3')
 
 }
