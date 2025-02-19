@@ -1,23 +1,8 @@
 # 2025-group-21
 2025 COMSM0166 group 21
 
-## Resource
-- Product Design
-  - Product Introduction
-  - [Product Flow](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Learn%20to%20fly%20-%20Product%20flow.png)
-  - Prototypes Vidoes
-    - [Penguin Game](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/penguinGameIdea2.mov)
-    - [RocketGameIdea](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/rocketGameIdea1.MOV)
-  - Product Mechanism
-    - [UML Class Diagram](https://drive.google.com/file/d/12uO6DJcNUAnFiVZDADhV_41IlX5p1l19/view?usp=sharing)
-    - [Shop Concept Design](https://github.com/UoB-COMSM0166/2025-group-21/tree/main/Product%20doc/Shop_Concept_Design)
-  - Meeting Records
-    - [Week 01 - Game Ideas](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week01_meeting.md)
-    - [Week 02 - 3 GAME SHORTLIST](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/meetings/week02_meeting.md)
-  - [Feedback](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Feedback.md)
-- Program Resource 
-  - [Game Demo](https://uob-comsm0166.github.io/2025-group-21/)
-  - [Project Code](https://github.com/UoB-COMSM0166/2025-group-21/tree/main/project)
+## Demonstration
+[Click me! You can play our game here! 🎮⚡🚀](https://uob-comsm0166.github.io/2025-group-21/)
 
 # Table of Contents
 - [1. Development Team]()
@@ -75,9 +60,12 @@ Through voting and discussions, we shortlisted a few promising concepts that bes
 
 <p align="center" style="margin-top: 10px;"><b>Figure 1</b></p>
 <p align="center"><i>Brainstormed Game Ideas on Miro</i></p>
+
 <div align="center">
     <img src="Product%20doc/Game%20Ideas.png" alt="Game Ideas" width="600">
 </div>
+<br>
+
 
 
 
@@ -173,9 +161,10 @@ Using the hierarchy of the onion model, we can see that every feature we develop
 ### Persona
 
 For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring eveyrone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
-
+<br>
 | **Figure 7**<br>_Persona 1._<br>![Product doc/Game doc - Persona 1.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%201.jpg) | **Figure 8**<br>_Persona 2._<br>![Product doc/Game doc - Persona 2.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%202.jpg) | **Figure 9**<br>_Persona 3._<br>![Product doc/Game doc - Persona 3.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%203.jpg) |
 |--|--|--|
+<br>
 
 ### Identifying Top-Level Needs with User Stories
 
