@@ -1,10 +1,9 @@
 
 
-class Laser{
+class Laser extends Projectile {
     constructor(position, velocity) {
-        this.pos = createVector(position.x, position.y);
-        this.vel = createVector(velocity.x, velocity.y);
-        this.opacity = 30;
+        super(position, velocity);
+        laserSound.play();
     }
 
     updatePosition() {

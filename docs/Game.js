@@ -28,7 +28,7 @@ class Game {
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
-        this.laser = inventory.laserLevel > 0 ?  new LaserAbility(inventory.laserLevel) : null;
+        this.laser = new ProjectileAbility(inventory.laserLevel);
     }
 
     runSimulation() { // Main loop for game
