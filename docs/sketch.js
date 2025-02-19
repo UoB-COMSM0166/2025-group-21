@@ -1,7 +1,8 @@
 
 
-let Domain = 'shop'; // Determines which part of the game code is executed
+let Domain = 'home'; // Determines which part of the game code is executed
 
+let homescreen = null;
 let game = null;
 let page = null;
 let shop = null;
@@ -20,7 +21,11 @@ let deathSound = null;
 let windSound = null;
 let fishThrow = null;
 let fishImpactSound = null;
-let fishImpactCrash = null;
+
+let homeBackground;
+let logo;
+let playNoPressed;
+let playIsPressed;
 
 function setup() {
 
@@ -29,6 +34,14 @@ function setup() {
 }
 
 function draw() {
+
+    if (Domain === 'home') {
+        if (homescreen === null) {
+            homescreen = new Homescreen();
+            homescreen.resetAnimation();
+        }
+        homescreen.showHomescreen();
+    }
 
     if (Domain === 'shop') {
         if (shop === null) shop = new Workshop();
@@ -42,19 +55,23 @@ function draw() {
 }
 
 function preload() {
-    playerImg = loadImage('assets/player1.png');
-    spriteSheet = loadImage('assets/playerFloor.png');
-    deathSpriteSheet = loadImage('assets/playerDeath.png');
-    ufo = loadImage('assets/ufo.png');
-    explosion = loadImage('assets/explosion.png');
-    fish = loadImage('assets/fish.png');
-    damagedUfo = loadImage('assets/damagedUfo.png')
+    playerImg = loadImage('assets/images/player1.png');
+    spriteSheet = loadImage('assets/sprites/playerFloor.png');
+    deathSpriteSheet = loadImage('assets/sprites/playerDeath.png');
+    ufo = loadImage('assets/images/ufo.png');
+    explosion = loadImage('assets/sprites/explosion.png');
+    fish = loadImage('assets/images/fish.png');
+    damagedUfo = loadImage('assets/images/damagedUfo.png')
 
-    laserSound = loadSound('assets/laser.mp3');
-    explosionSound = loadSound('assets/explosionSound.mp3');
-    deathSound = loadSound('assets/deathSound.mp3');
-    windSound = loadSound('assets/windSound.mp3');
-    fishThrow = loadSound('assets/fishThrow.mp3');
-    fishImpactSound = loadSound('assets/fishImpactSound.mp3')
+    laserSound = loadSound('assets/sounds/laser.mp3');
+    explosionSound = loadSound('assets/sounds/explosionSound.mp3');
+    deathSound = loadSound('assets/sounds/deathSound.mp3');
+    windSound = loadSound('assets/sounds/windSound.mp3');
+    fishThrow = loadSound('assets/sounds/fishThrow.mp3');
+    fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
 
+    homeBackground = loadImage('assets/gifs/background.gif');
+    logo = loadImage('assets/images/logo1.png');
+    playNoPressed = loadImage('assets/images/Play.png');
+    playIsPressed = loadImage('assets/images/Play2.png');
 }
