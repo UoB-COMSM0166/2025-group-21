@@ -28,7 +28,7 @@ class Game {
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
-        this.laser = new ProjectileAbility(inventory.laserLevel);
+        this.projectile = new ProjectileAbility(inventory.laserLevel);
     }
 
     runSimulation() { // Main loop for game
@@ -45,7 +45,7 @@ class Game {
 
             this.terrain.drawHills();
             this.player.drawPlayer()
-            if (this.laser != null) this.laser.updateLasers();
+            this.projectile.updateProjectiles();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left

@@ -4,7 +4,7 @@ class Fish extends Projectile {
 
     constructor(position, velocity) {
 
-        super(position, createVector(velocity.x/3, velocity.y/3));
+        super(position, createVector(velocity.x/2, velocity.y/2));
         this.gravity = 0.7;
         this.angle = 0;
         fishThrow.play();
@@ -17,7 +17,7 @@ class Fish extends Projectile {
         this.pos.y += this.vel.y;
     }
 
-    drawLaser() {
+    drawProjectile() {
         push();
         translate(this.pos.x, this.pos.y);
         imageMode(CENTER);

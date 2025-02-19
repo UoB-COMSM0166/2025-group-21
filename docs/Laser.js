@@ -11,9 +11,9 @@ class Laser extends Projectile {
         this.pos.y += this.vel.y;
     }
 
-    drawLaser() {
+    drawProjectile() {
 
-        switch (game.laser.level) {
+        switch (game.projectile.level) {
 
             case 1:
                 stroke('rgba(255,0,0,0.03)');
