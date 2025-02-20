@@ -7,8 +7,8 @@ class Homescreen {
         this.playIfpressed = false;
         this.penguin = null;
         this.state = "flyIn";
-        this.xPos = -100;
-        this.yPos = height * 2.1/ 5;
+        this.xPos = 50;
+        this.yPos = height * 0.5;
         this.xSpeed = 1;
         this.ySpeed = 0;
         this.waveAmplitude = 40;
@@ -54,7 +54,11 @@ class Homescreen {
             this.xPos += this.xSpeed;
             this.yPos = this.yBase + this.waveAmplitude * sin(frameCount * this.waveFrequency);
 
-            if (this.xPos >= width * 1.8/7) {
+            if (this.xPos >= 10) {
+                let fadeInProgress = Math.min(1, (this.xPos - 10) / 50);
+                this.penguin.style("opacity", fadeInProgress);
+            }
+            if (this.xPos >= width * 0.8 / 2) {
                 this.penguin.attribute("src", "assets/gifs/fall.gif");
                 this.state = "fall";
                 this.ySpeed = 0.3;
@@ -65,6 +69,10 @@ class Homescreen {
             this.yPos += this.ySpeed;
             this.ySpeed += this.gravity;
 
+            if (this.yPos >= height - 150) {
+                let fadeOutProgress = Math.max(0, 1 - (this.yPos - (height - 150)) / 100);
+                this.penguin.style("opacity", fadeOutProgress);
+            }
             if (this.yPos >= height) {
                 this.penguin.hide();
                 this.state = "balloonWait";
@@ -76,8 +84,8 @@ class Homescreen {
 
                 this.state = "balloonRise";
                 this.penguin.attribute("src", "assets/gifs/spin.gif");
-                this.xPos = width/2 - 20;
-                this.yPos = height + 50;
+                this.xPos = width/2 + 170;
+                this.yPos = height - 70;
                 this.stateStartTime = millis();
             }
         }
@@ -92,11 +100,20 @@ class Homescreen {
             this.xPos += this.xSpeed;
             this.balloonX += this.xSpeed;
 
+            let fadeInProgress = Math.min(1, (millis() - this.stateStartTime) / 800); // 800ms 渐显
+            this.penguin.style("opacity", fadeInProgress);
+            this.balloon.style("opacity", fadeInProgress);
 
-            if (this.xPos >= width-50) {
-                this.penguin.hide();
-                this.balloon.hide();
-                this.resetAnimation();
+            if (this.balloonY <= 50) {
+                let fadeOutProgress = Math.max(0, this.balloonY / 50);
+                this.penguin.style("opacity", fadeOutProgress);
+                this.balloon.style("opacity", fadeOutProgress);
+
+                if (fadeOutProgress <= 0) {
+                    this.penguin.hide();
+                    this.balloon.hide();
+                    this.resetAnimation();
+                }
             }
         }
     }
@@ -104,20 +121,23 @@ class Homescreen {
 
     resetAnimation() {
         this.state = "flyIn";
-        this.xPos = -100;
-        this.yBase = height * 2.1/ 5;
+        this.xPos = 50;
+        this.yBase = height * 0.5;
         this.yPos = this.yBase;
         this.xSpeed = 1;
         this.ySpeed = 0;
-        this.balloonX = width / 2;
-        this.balloonY = height;
+        this.balloonX = width / 2 + 190;
+        this.balloonY = height - 120;
 
+
+        if (this.penguin) this.penguin.remove();
         this.penguin = createImg('assets/gifs/fly.gif');
         this.penguin.size(180, 180);
         this.penguin.position(this.xPos, this.yPos);
+        this.penguin.style("opacity", "0");
         this.penguin.show();
         this.balloon = createImg('assets/gifs/balloon.gif');
-
+        this.balloon.style("opacity", "0");
         this.balloon.hide();
         this.stateStartTime = millis();
     }
