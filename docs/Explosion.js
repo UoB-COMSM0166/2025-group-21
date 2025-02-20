@@ -16,10 +16,13 @@ class Explosion {
         const FRAME_COUNT = 12;
         imageMode(CENTER);
 
-        if (frameCount % frameSpeed === 0) {
-            this.frameIndex++;
+        if (!game.pause.active) {
+
+            if (frameCount % frameSpeed === 0) {
+                this.frameIndex++;
+            }
+            this.updatePosition();
         }
-        this.updatePosition();
 
         image(
             explosion,
