@@ -58,7 +58,7 @@ class Homescreen {
                 let fadeInProgress = Math.min(1, (this.xPos - 10) / 50);
                 this.penguin.style("opacity", fadeInProgress);
             }
-            if (this.xPos >= width * 0.8 / 2) {
+            if (this.xPos >= width * 0.7 / 2) {
                 this.penguin.attribute("src", "assets/gifs/fall.gif");
                 this.state = "fall";
                 this.ySpeed = 0.3;
@@ -84,7 +84,7 @@ class Homescreen {
 
                 this.state = "balloonRise";
                 this.penguin.attribute("src", "assets/gifs/spin.gif");
-                this.xPos = width/2 + 170;
+                this.xPos = width/2 + 140;
                 this.yPos = height - 70;
                 this.stateStartTime = millis();
             }
@@ -126,7 +126,7 @@ class Homescreen {
         this.yPos = this.yBase;
         this.xSpeed = 1;
         this.ySpeed = 0;
-        this.balloonX = width / 2 + 190;
+        this.balloonX = width / 2 + 160;
         this.balloonY = height - 120;
 
 
