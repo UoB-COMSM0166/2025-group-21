@@ -30,7 +30,7 @@ class Terrain {
         fill(`rgb(${r},${g},${b})`);
         vertex(-170 / game.zoom, height);
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5) {
+        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
             let y = this.f(x) + 50*layer + 10;
             vertex(x, y);
         }
@@ -42,12 +42,12 @@ class Terrain {
         fill('rgb(255,238,241)');
         beginShape();
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5) {
+        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
             let y = this.f(x);
             let newY = y + 2*sin((x + game.offset) * 0.05) + 2*cos((x + game.offset) * 0.07) - 3;
             vertex(x, newY);
         }
-        for (let x = width / game.zoom + 10; x >= -170 / game.zoom; x -= 5) {
+        for (let x = width / game.zoom + 10; x >= -170 / game.zoom; x -= 5 / game.zoom) {
             let y = this.f(x) + 20;
             let newY = y + 2*sin((x + game.offset) * 0.04) + 2*cos((x + game.offset) * 0.05) - 3;
             vertex(x, newY);

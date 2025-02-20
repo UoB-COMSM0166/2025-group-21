@@ -36,7 +36,6 @@ class Game {
         this.adjustZoom();
         this.wind.adjustVolume();
 
-        //imageMode(CORNER);
         image(homeBackground, 0, 0, width, height);
 
         push();
