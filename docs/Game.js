@@ -36,23 +36,26 @@ class Game {
         this.adjustZoom();
         this.wind.adjustVolume();
 
+        //imageMode(CORNER);
+        image(homeBackground, 0, 0, width, height);
+
         push();
             // Scale the game size if they resize the window
             scale(page.gameScale);
             translate(this.tx, this.ty); // Change coordinate origin to player position
             scale(this.zoom); // set screen zoom
-            background(135, 206, 250);  // Blue sky
 
             this.terrain.drawHills();
             this.player.drawPlayer()
             this.projectile.updateProjectiles();
+            this.UFOHandler.updateUFOs();
+            this.UFOHandler.updateExplosions();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left
                 this.player.update();
-                this.UFOHandler.updateUFOs();
-                this.UFOHandler.updateExplosions();
             }
+
         pop();
 
         this.stats.gameUpdate();

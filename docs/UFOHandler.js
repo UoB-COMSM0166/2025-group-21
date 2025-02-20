@@ -12,12 +12,14 @@ class UFOHandler {
     }
     updateUFOs() {
 
-        if (game.zoom < 1 && Math.random() > 0.99 - 0.005*this.spawnRate) { // 0.975
+        if (!game.pause.active && game.zoom < 1 &&
+            Math.random() > 0.99 - 0.005*this.spawnRate) { // 0.975
+
             this.UFOs.push(new UFO(game.player.pos.y + 0.3*(height - game.player.pos.y)*Math.random() + 50));
         }
 
         for (let i=0; i<this.UFOs.length; i++) {
-            this.UFOs[i].updatePosition();
+            if (!game.pause.active) this.UFOs[i].updatePosition();
             this.UFOs[i].drawUFO();
 
             // UFO crosses barrier slightly beyond edge of screen
