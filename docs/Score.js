@@ -78,7 +78,7 @@ class Score {
 
     printAirtime() {
 
-        let size = page.pageWidth/50;
+        let size = (game.page.pageWidth/20) * game.page.scaleX;
         fill(0);
         textFont('Trebuchet MS');
         textSize(size);
@@ -88,7 +88,7 @@ class Score {
 
     printScore() {
 
-        let size = page.pageWidth/50;
+        let size = (game.page.pageWidth/20) * game.page.scaleX;
         let formattedScore = String(game.score.total).padStart(10, '0');
         fill(0);
         textFont('Trebuchet MS');
@@ -96,4 +96,10 @@ class Score {
         textAlign(CENTER);
         text(`SCORE: ${formattedScore}`, 0.9*width, 0.02*height);
     }
+
+    updateHighScores() {
+        readFile();
+
+    }
+
 }

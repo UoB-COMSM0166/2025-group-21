@@ -13,11 +13,11 @@ class Game {
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 100; // 50
         this.spacePressed = false // Activates boost
-        this.zoom = 1;
         this.tx = 0
         this.ty = 0;
         this.initialDrop = true;
 
+        this.page = new Page();
         this.terrain = new Terrain();
         this.player = new Player(150, 150);
         this.score = new Score();
@@ -34,22 +34,20 @@ class Game {
 
     runSimulation() { // Main loop for game
 
-        this.adjustZoom();
         this.wind.adjustVolume();
-
         image(homeBackground, 0, 0, width, height);
+        this.page.updateZoom();
 
         push();
-            // Scale the game size if they resize the window
-            scale(page.gameScale);
-            translate(this.tx, this.ty); // Change coordinate origin to player position
-            scale(this.zoom); // set screen zoom
-
+            translate((this.page.pageWidth/2), (this.page.pageHeight/2));
+            scale(this.page.getXScale(), this.page.getYScale());
+            translate(0, this.page.translateY);
+            translate(this.tx, this.ty); // Separate death translate?
             this.terrain.drawHills();
-            this.player.drawPlayer()
+            this.player.drawPlayer();
             this.projectile.updateProjectiles();
-            this.UFOHandler.updateUFOs();
-            this.UFOHandler.updateExplosions();
+            // this.UFOHandler.updateUFOs();
+            // this.UFOHandler.updateExplosions();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left
@@ -61,6 +59,7 @@ class Game {
 
         pop();
 
+        this.player.lives.drawLives();
         this.stats.gameUpdate();
 
         if (((this.spacePressed && this.player.alive) || this.initialDrop) && !this.pause.active) {
@@ -87,18 +86,6 @@ class Game {
         else this.pause.reset();
     }
 
-    adjustZoom() {
-
-        if (this.player.pos.y < this.topMargin) {
-            this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
-            this.ty = this.topMargin - this.zoom * (this.player.pos.y);
-            this.tx = 160 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
-        }
-        else {
-            this.zoom = 1;
-            this.tx = this.ty = 0;
-        }
-    }
 
     applyBoostToPlayer() {
 
