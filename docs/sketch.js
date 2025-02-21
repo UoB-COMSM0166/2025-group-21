@@ -9,8 +9,8 @@ let shop = null;
 let inventory = null;
 
 let playerImg = null;
-let spriteSheet = null;
-let deathSpriteSheet = null
+let playerFly = null;
+let playerDeath = null
 let ufo = null;
 let explosion = null;
 let fish = null;
@@ -57,8 +57,8 @@ function draw() {
 
 function preload() {
     playerImg = loadImage('assets/images/player1.png');
-    spriteSheet = loadImage('assets/sprites/playerFloor.png');
-    deathSpriteSheet = loadImage('assets/sprites/playerDeath.png');
+    playerFly = loadImage('assets/sprites/playerFly.png');
+    playerDeath = loadImage('assets/sprites/playerDeath.png');
     ufo = loadImage('assets/images/ufo.png');
     explosion = loadImage('assets/sprites/explosion.png');
     fish = loadImage('assets/images/fish.png');
@@ -73,7 +73,7 @@ function preload() {
     forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
 
     homeBackground = loadImage('assets/gifs/background.gif');
-    logo = loadImage('assets/images/logo1.png');
-    playNoPressed = loadImage('assets/images/Play.png');
-    playIsPressed = loadImage('assets/images/Play2.png');
+    logo = loadImage('assets/images/learnToFly.png');
+    playNoPressed = loadImage('assets/images/playButton.png');
+    playIsPressed = loadImage('assets/images/playButtonHover.png');
 }

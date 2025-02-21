@@ -59,7 +59,7 @@ class Homescreen {
                 this.penguin.style("opacity", fadeInProgress);
             }
             if (this.xPos >= width * 0.7 / 2) {
-                this.penguin.attribute("src", "assets/gifs/fall.gif");
+                this.penguin.attribute("src", "assets/gifs/penguinFall.gif");
                 this.state = "fall";
                 this.ySpeed = 0.3;
                 this.stateStartTime = millis();
@@ -83,7 +83,7 @@ class Homescreen {
             if (elapsedTime > 1300) {
 
                 this.state = "balloonRise";
-                this.penguin.attribute("src", "assets/gifs/spin.gif");
+                this.penguin.attribute("src", "assets/gifs/penguinSpin.gif");
                 this.xPos = width/2 + 140;
                 this.yPos = height - 70;
                 this.stateStartTime = millis();
@@ -131,7 +131,7 @@ class Homescreen {
 
 
         if (this.penguin) this.penguin.remove();
-        this.penguin = createImg('assets/gifs/fly.gif');
+        this.penguin = createImg('assets/gifs/penguinFly.gif');
         this.penguin.size(180, 180);
         this.penguin.position(this.xPos, this.yPos);
         this.penguin.style("opacity", "0");
