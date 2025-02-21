@@ -1,5 +1,3 @@
-
-
 class Terrain {
 
     amplitudes = [];
@@ -8,7 +6,6 @@ class Terrain {
 
     constructor() {
         this.numWaves = 20;  // Number of sine waves to sum
-
         for (let i = 0; i < this.numWaves; i++) {
             this.amplitudes.push(Math.random() * 10 + 10);
             this.frequencies.push(Math.random() * 0.012 + 0.01);
@@ -17,6 +14,20 @@ class Terrain {
     }
 
     drawHills() {
+        // let step = 5;
+        //
+        // // Init shape and define colour
+        // noStroke();
+        // beginShape();
+        // fill(187, 252, 252);
+        //
+        // // Set shape vertices
+        // vertex(game.page.getXLeft(), game.page.getYBottom());
+        // for (let x = game.page.getXLeft() - step; x <= game.page.getXRight() + step; x += step) {
+        //     vertex(x, this.f(x));
+        // }
+        // vertex(game.page.getXRight(), game.page.getYBottom());
+        // endShape(CLOSE);
 
         for (let i=0; i<6; i++) {
             this.drawLayer(159, 216 - 10*i, 251, i);
@@ -26,15 +37,13 @@ class Terrain {
 
     drawLayer(r, g, b, layer) {
         beginShape();
-
         fill(`rgb(${r},${g},${b})`);
-        vertex(-170 / game.zoom, height);
-
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
+        vertex(game.page.getXLeft(), game.page.getYBottom());
+        for (let x = game.page.getXLeft() - 5; x <= game.page.getXRight() + 5; x += 5) {
             let y = this.f(x) + 50*layer + 10;
             vertex(x, y);
         }
-        vertex(width/game.zoom + 10, height);
+        vertex(game.page.getXRight(), game.page.getYBottom());
         endShape(CLOSE);
     }
 
@@ -42,12 +51,12 @@ class Terrain {
         fill('rgb(255,238,241)');
         beginShape();
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
+        for (let x = game.page.getXLeft(); x <= game.page.getXRight(); x += 5) {
             let y = this.f(x);
-            let newY = y + 2*sin((x + game.offset) * 0.05) + 2*cos((x + game.offset) * 0.07) - 3;
+            let newY = y + 2 * sin((x + game.offset) * 0.05) + 2*cos((x + game.offset) * 0.07) - 3;
             vertex(x, newY);
         }
-        for (let x = width / game.zoom + 10; x >= -170 / game.zoom; x -= 5 / game.zoom) {
+        for (let x = game.page.getXRight(); x >= game.page.getXLeft(); x -= 5) {
             let y = this.f(x) + 20;
             let newY = y + 2*sin((x + game.offset) * 0.04) + 2*cos((x + game.offset) * 0.05) - 3;
             vertex(x, newY);
@@ -56,10 +65,10 @@ class Terrain {
     }
 
     generateHills(x) {
-        let y = height - 150;  // Base height
+        let y = game.page.getYBottom() * 0.6;  // Base height
 
         for (let i = 0; i < this.numWaves; i++) {
-            y -= this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]);
+            y -= (this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]));
         }
         return y;
     }

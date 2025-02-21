@@ -1,5 +1,3 @@
-
-
 class Player {
 
     constructor(x, y) {
@@ -15,12 +13,14 @@ class Player {
         this.frameIndex = 0;
         this.deathFrameIndex = 0; // Initialize death frame index only once
 
+        this.lives = new Lives(this);
+        this.trail = new Trail(this);
     }
 
     update() {
-
         // keep ball at same x position on the screen
-        this.pos.x = 150;
+        this.pos.x = game.page.getXLeft() * 0.75;
+
         if (!this.alive && game.death.type === 'UFO') this.pos.y = game.death.currentY;
 
         if (this.inAir) {
@@ -56,8 +56,10 @@ class Player {
         }
     }
 
-
     drawPlayer() {
+
+        this.trail.draw();
+        this.lives.drawChangeLife();
 
         if (game.death != null && game.death.type === 'UFO') return;
 
@@ -69,11 +71,13 @@ class Player {
         const scaleFactor = 0.8;
 
         push();
-        translate(150, this.pos.y - this.radius);
+        translate(this.pos.x, this.pos.y - this.radius);
+
         imageMode(CENTER);
 
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
+
 
         if (!this.alive) {
             // Death Animation
@@ -82,7 +86,6 @@ class Player {
 
             if (this.deathAngle === null) this.deathAngle = velocityAngle;
             rotate(this.deathAngle-= 0.03);
-
 
             rotate(velocityAngle);
 
@@ -95,10 +98,10 @@ class Player {
 
             image(
                 deathSpriteSheet,
-                0, 0,  // Center the image at the origin
-                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,  // Destination size
+                this.pos.x, this.pos.y,  // Center the image at the origin
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,    // Destination size
                 deathCol * FRAME_WIDTH, deathRow * FRAME_HEIGHT,          // Source x, y
-                FRAME_WIDTH, FRAME_HEIGHT                                  // Source size
+                FRAME_WIDTH, FRAME_HEIGHT                                 // Source size
             );
         }
         else if (game.score.airtime > 3) {
@@ -159,8 +162,6 @@ class Player {
 
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
-
-
     }
 
     updateVerticalVelocityFromSlope () {
@@ -194,10 +195,18 @@ class Player {
             }
 
             if (normalForce > 20 && !game.invincibility) {
-                game.death = new Death('ground');
-                this.vel.x = -0.5;
-                this.vel.y = -2;
-                this.gravity = 0.02
+
+                this.vel.x = this.vel.y = 0;
+                this.acc.x = this.acc.y = 0;
+
+                this.lives.removeLife();
+
+                if (this.lives.getLives() === 0) {
+                    game.death = new Death('ground');
+                    this.vel.x = -0.5;
+                    this.vel.y = -2;
+                    this.gravity = 0.02
+                }
             }
             else {
                 let bounceAngle = this.getBounceAngle();

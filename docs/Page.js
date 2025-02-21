@@ -1,74 +1,100 @@
 class Page {
 
-    // Not ideal constructor, will rewrite later
-    constructor () {
-        this.xPadding = 0;
-        this.yPadding = 0;
+    constructor() {
         this.margin = 25;
-        this.gameScale = 1;
-        this.pageHeight;
-        this.pageWidth;
         this.canvas = null;
+        this.scaleX = 1;
+        this.scaleY = 1;
+        this.zoom = 1;
+        this.translateY = 0;
+
+        this.defaultWidth = 1280;
+        this.defaultHeight = 720;
 
         this.setPageSize();
-        this.setPadding();
         this.setCanvas();
+
+        this.initialWidth = this.pageWidth;
+        this.initialHeight = this.pageHeight;
     }
 
     setPageSize() {
-
-        // Calc maximum dimensions
         let maxWidth = window.innerWidth - this.margin * 2;
         let maxHeight = window.innerHeight - this.margin * 2;
 
-        // Calc maximum dimensions, but still in 16:9
-        let widthBasedHeight = maxWidth * 9 / 16;
-        let heightBasedWidth = maxHeight * 16 / 9;
-
-        // Use limiting dimension
-        if (widthBasedHeight <= maxHeight) {
+        // Calculate dimensions, maintaining 16:9 aspect ratio
+        if (maxWidth * (9 / 16) <= maxHeight) {
             this.pageWidth = maxWidth;
-            this.pageHeight = widthBasedHeight;
+            this.pageHeight = maxWidth * (9 / 16);
         } else {
+            this.pageWidth = maxHeight * (16 / 9);
             this.pageHeight = maxHeight;
-            this.pageWidth = heightBasedWidth;
         }
+
+        // Set scaling and padding
+        this.updateScaling();
+        this.setPadding();
     }
 
     setPadding() {
+        // Calculate padding
         this.xPadding = (window.innerWidth - this.pageWidth - this.margin * 2) / 2;
         this.yPadding = (window.innerHeight - this.pageHeight - this.margin * 2) / 2;
     }
 
     setCanvas() {
-        // Create canvas var, pad and position
+        // Create Canvas variable, pad the sides and centre position
         this.canvas = createCanvas(this.pageWidth, this.pageHeight);
         this.canvas.position(this.xPadding + this.margin, this.yPadding + this.margin);
     }
 
-    adjustGameScale() {
-
-        // Store old height
-        let oldHeight = this.pageHeight;
-        let oldWidth = this.pageWidth;
-
-        // Update dimensions
-        page.setPageSize();
-        page.setPadding();
-
-        // Calc ratio of change
-        // this.gameScale *= min(this.pageHeight / oldHeight, this.pageWidth / oldWidth);
+    updateScaling() {
+        // this.scaleX = (this.pageWidth / this.initialWidth) * 0.85;
+        // this.scaleY = (this.pageHeight / this.initialHeight) * 0.85;
+        this.scaleX = this.pageWidth / this.defaultWidth;
+        this.scaleY = this.pageHeight / this.defaultHeight;
     }
 
+    resize() {
+        this.setPageSize();
+        resizeCanvas(this.pageWidth, this.pageHeight);
+        this.canvas.position(this.xPadding + this.margin, this.yPadding + this.margin);
+        this.updateScaling(this.pageWidth, this.pageHeight);
+    }
+
+    updateZoom() {
+        let zoomThreshold = (-this.pageHeight/2) * 0.95;
+
+        if (game.player.pos.y >= zoomThreshold) {
+            this.zoom = 1;
+            this.translateY = 0;
+        }
+        else {
+            let visible_height = (this.pageHeight/2) - game.player.pos.y;
+            this.zoom = Math.min(1, this.pageHeight / visible_height);
+            this.translateY = (zoomThreshold / this.zoom) - game.player.pos.y;
+        }
+    }
+
+    // Returns complete scaling factor on X axis
+    getXScale() { return this.scaleX * this.zoom; }
+    // Returns complete scaling factor on Y axis
+    getYScale() { return this.scaleY * this.zoom; }
+    // Returns left X axis boundary
+    getXLeft() { return (-this.pageWidth / 2) / this.getXScale(); }
+    // Returns right X axis boundary
+    getXRight() { return (this.pageWidth / 2) / this.getXScale(); }
+    // Returns top Y axis boundary
+    getYTop() { return (-this.pageHeight / 2) / this.getYScale(); }
+    // Returns bottom Y axis boundary
+    getYBottom() { return (this.pageHeight / 2) / this.getYScale(); }
+    // Returns centre X value
+    getXCentre() {}
+    // Returns centre Y value
+    getYCentre() {}
 }
 
-
 function windowResized() {
-
-    // Update the page scale
-    page.adjustGameScale();
-
-    // Resize and reposition the canvas
-    resizeCanvas(page.pageWidth, page.pageHeight);
-    page.canvas.position(page.xPadding + page.margin, page.yPadding + page.margin);
+    game.page.resize();
+    game.page.updateZoom();
 }
