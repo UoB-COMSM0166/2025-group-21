@@ -8,6 +8,7 @@ class Terrain {
 
     constructor() {
         this.numWaves = 20;  // Number of sine waves to sum
+        this.floorLevel = 0
 
         for (let i = 0; i < this.numWaves; i++) {
             this.amplitudes.push(Math.random() * 10 + 10);
@@ -17,29 +18,31 @@ class Terrain {
     }
 
     drawHills() {
-        fill(187, 252, 252); // Ice colour
 
         noStroke();
         beginShape();
 
-        for (let x = -170 / zoom; x <= width / zoom + 10; x += 5) {
+        fill(187, 252, 252); // Ice colour
+
+        vertex((-page.pageWidth/2 / page.scaleX) / zoom, (page.pageHeight/2 / page.scaleX) / zoom);
+
+        for (let x = ((-page.pageWidth / 2) / page.scaleX) / zoom; x <= ((page.pageWidth / 2) / page.scaleX) / zoom; x += 5) {
             let y = this.f(x);
             vertex(x, y);
         }
+        vertex((page.pageWidth/2 / page.scaleX) / zoom, (page.pageHeight/2 / page.scaleX) / zoom);
 
-        for (let x = width / zoom + 10; x >= -170 / zoom; x -= 5) {
-            let y = this.f(x) + 20;
-            vertex(x, y);
-        }
+
         endShape(CLOSE);
 
     }
 
     generateHills(x) {
-        let y = height - 150;  // Base height
+        let y = (((page.pageHeight / 2) * 0.5) / page.scaleX);  // Base height
+        this.floorLevel = y;
 
         for (let i = 0; i < this.numWaves; i++) {
-            y -= this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]);
+            y -= (this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]));
         }
         return y;
     }

@@ -90,4 +90,13 @@ class Score {
         this.endScore.x -= 0.1;
         this.numScore.x += 1;
     }
+
+    updateHighScores() {
+
+        readFile();
+
+
+
+    }
+
 }
