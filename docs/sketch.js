@@ -21,6 +21,7 @@ let deathSound = null;
 let windSound = null;
 let fishThrow = null;
 let fishImpactSound = null;
+let forceFieldSound = null;
 
 let homeBackground;
 let logo;
@@ -69,6 +70,7 @@ function preload() {
     windSound = loadSound('assets/sounds/windSound.mp3');
     fishThrow = loadSound('assets/sounds/fishThrow.mp3');
     fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
+    forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/logo1.png');

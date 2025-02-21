@@ -7,6 +7,8 @@ class UFOHandler {
         this.nextSpawnThreshold = 100;
         this.UFOs = [];
         this.explosions = [];
+        this.collisionRadius = 50;
+
 
 
     }
@@ -52,7 +54,7 @@ class UFOHandler {
                 let dx = abs(game.player.pos.x - this.UFOs[u].pos.x);
                 let dy = abs(game.player.pos.y - this.UFOs[u].pos.y);
 
-                if (Math.sqrt(dx**2 + dy**2) < 50) {
+                if (Math.sqrt(dx**2 + dy**2) < this.collisionRadius) {
                     this.explosions.push(new Explosion(this.UFOs[u].pos));
                     this.UFOs.splice(u, 1);
                     explosionSound.play();
@@ -77,4 +79,7 @@ class UFOHandler {
             else this.explosions[i].explode();
         }
     }
+
+
+
 }

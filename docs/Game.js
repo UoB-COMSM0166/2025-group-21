@@ -28,6 +28,7 @@ class Game {
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
+        this.shield = inventory.forceFieldLevel > 0 ? new ForceField() : null;
         this.projectile = new ProjectileAbility(inventory.laserLevel);
     }
 
@@ -54,12 +55,15 @@ class Game {
                 this.offset += this.player.vel.x;  // Move terrain to the left
                 this.player.update();
             }
+            if (this.shield != null && this.shield.active) {
+                this.shield.activate();
+            }
 
         pop();
 
         this.stats.gameUpdate();
 
-        if ((((this.spacePressed || mouseIsPressed) && this.player.alive) || this.initialDrop) && !this.pause.active) {
+        if (((this.spacePressed && this.player.alive) || this.initialDrop) && !this.pause.active) {
             this.applyBoostToPlayer();
         }
 
