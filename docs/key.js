@@ -15,12 +15,21 @@ function keyPressed() {
         if (key === 'w' && game.fly != null) {
             game.fly.active = true;
         }
-        if (key === 'd' && !game.pause.active && game.player.alive) {
 
-            if (inventory.laserLevel < 5) {
-                game.projectile.shoot();
+        if (!game.pause.active && game.player.alive) {
+
+            if (key === 'd') {
+
+                if (inventory.laserLevel < 5) {
+                    game.projectile.shoot();
+                }
+                else game.projectile.gatlingMode = true;
             }
-            else game.projectile.gatlingMode = true;
+
+            if (key === 'f' && game.shield != null) {
+                game.shield.active = true;
+                game.shield.initialise();
+            }
         }
     }
 }
@@ -40,8 +49,12 @@ function keyReleased() {
         }
 
         if (key === 'd') {
-
             game.projectile.gatlingMode = false;
+        }
+
+        if (key === 'f' && game.shield != null) {
+            game.shield.active = false;
+            game.shield.resetAbility();
         }
     }
 }
