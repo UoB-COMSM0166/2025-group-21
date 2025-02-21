@@ -2,6 +2,7 @@
 
 class Player {
 
+
     constructor(x, y) {
         this.radius = 10
         this.pos = createVector(x, y);
@@ -12,11 +13,13 @@ class Player {
         this.inAir = true;
         this.alive = true;
 
+        this.lives = new Lives(this);
+        this.trail = new Trail(this);
     }
 
     update() {
         // keep ball at same x position on the screen
-        this.pos.x = (((-page.pageWidth/2) * 0.75) / page.scaleX) / zoom;
+        this.pos.x = (((-page.pageWidth/2) * 0.75) / page.getXScale());
 
         if (this.inAir) {
             this.vel.y += this.gravity;
@@ -55,6 +58,8 @@ class Player {
         if (!this.alive) {
             this.radius = lerp(this.radius, 15, 0.01);
         }
+        this.trail.draw();
+        this.lives.drawChangeLife();
         fill(0);
         ellipse(this.pos.x, this.pos.y - this.radius , this.radius * 2);
     }
@@ -112,10 +117,18 @@ class Player {
             }
 
             if (normalForce > 20 && !invincibility) {
-                this.alive = false;
-                this.vel.x = -0.5;
-                this.vel.y = -2;
-                this.gravity = 0.02
+
+                this.vel.x = this.vel.y = 0;
+                this.acc.x = this.acc.y = 0;
+
+                this.lives.removeLife();
+
+                if (this.lives.getLives() === 0) {
+                    this.alive = false;
+                    this.vel.x = -0.5;
+                    this.vel.y = -2;
+                    this.gravity = 0.02;
+                }
             }
             else {
                 let bounceAngle = this.getBounceAngle();
