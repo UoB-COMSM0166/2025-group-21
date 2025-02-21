@@ -1,5 +1,3 @@
-
-
 function keyPressed() {
 
     if (Domain === 'game') {
@@ -33,6 +31,7 @@ function keyPressed() {
         }
     }
 }
+
 function keyReleased() {
 
     if (Domain === 'game') {

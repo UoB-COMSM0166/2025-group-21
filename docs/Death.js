@@ -57,9 +57,11 @@ class Death {
                 this.skipCoinCount = false;
                 this.coinsEarned = game.score.total/11;
             }
-            else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
+            else {
+                this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
+            }
 
-            let size = page.pageWidth/8;
+            let size = game.page.pageWidth/8;
             fill(228, 221, 0);
             textFont('Trebuchet MS');
             textAlign(CENTER, CENTER);
@@ -78,9 +80,9 @@ class Death {
     showFinalScore() {
 
         push();
-            game.zoom = lerp(game.zoom, 1.25, 0.01);
-            game.ty = game.player.pos.y - game.zoom * (game.player.pos.y);
-            game.tx = 160 - game.zoom * (game.player.pos.x);
+            game.page.zoom = lerp(game.page.zoom, 1.25, 0.01);
+            game.ty = game.player.pos.y - game.page.zoom * (game.player.pos.y);
+            game.tx = game.page.zoom * (game.player.pos.x);
 
             this.deathTimer.tick();
 
@@ -106,7 +108,7 @@ class Death {
     }
 
     printScore() {
-        let size = page.pageWidth/4;
+        let size = game.page.pageWidth/4;
 
         this.updateEndScorePrintLocation();
 
@@ -126,7 +128,7 @@ class Death {
     }
 
     updateEndScorePrintLocation() {
-        let size = page.pageWidth;
+        let size = game.page.pageWidth;
 
         if (this.deathTimer.time < 110) {
             this.endScore.x -= 0.0001*size;
@@ -178,41 +180,41 @@ class Death {
 
     updateShopButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = game.page.pageWidth / 300;
         let numString = textSize.toString() + 'rem'
 
         this.shopButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.43*page.pageHeight);
+            game.page.xPadding + game.page.margin + 0.11*game.page.pageWidth,
+            game.page.yPadding + game.page.margin + 0.43*game.page.pageHeight);
 
         this.shopButton.class('quitButton')
         this.shopButton.style('font-size', numString);
-        this.shopButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.shopButton.size(game.page.pageWidth*0.8, game.page.pageHeight/10);
     }
     updatePlayButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = game.page.pageWidth / 300;
         let numString = textSize.toString() + 'rem'
 
         this.playButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.23*page.pageHeight);
+            game.page.xPadding + game.page.margin + 0.11*game.page.pageWidth,
+            game.page.yPadding + game.page.margin + 0.23*game.page.pageHeight);
 
         this.playButton.class('quitButton')
         this.playButton.style('font-size', numString);
-        this.playButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.playButton.size(game.page.pageWidth*0.8, game.page.pageHeight/10);
     }
     updateStatsButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = game.page.pageWidth / 300;
         let numString = textSize.toString() + 'rem'
 
         this.statsButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.63*page.pageHeight);
+            game.page.xPadding + game.page.margin + 0.11*game.page.pageWidth,
+            game.page.yPadding + game.page.margin + 0.63*game.page.pageHeight);
 
         this.statsButton.class('quitButton')
         this.statsButton.style('font-size', numString);
-        this.statsButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.statsButton.size(game.page.pageWidth*0.8, game.page.pageHeight/10);
     }
 }
