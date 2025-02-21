@@ -26,7 +26,7 @@ function keyPressed() {
                 else game.projectile.gatlingMode = true;
             }
 
-            if (key === 'f' && game.shield != null) {
+            if (key === 'f' && game.shield != null && game.shield.chargeFraction === 1) {
                 game.shield.active = true;
                 game.shield.initialise();
             }
@@ -50,11 +50,6 @@ function keyReleased() {
 
         if (key === 'd') {
             game.projectile.gatlingMode = false;
-        }
-
-        if (key === 'f' && game.shield != null) {
-            game.shield.active = false;
-            game.shield.resetAbility();
         }
     }
 }
