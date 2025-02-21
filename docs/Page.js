@@ -1,74 +1,60 @@
+
 class Page {
 
     // Not ideal constructor, will rewrite later
-    constructor () {
-        this.xPadding = 0;
-        this.yPadding = 0;
+    constructor() {
         this.margin = 25;
-        this.gameScale = 1;
-        this.pageHeight;
-        this.pageWidth;
         this.canvas = null;
+        this.scaleX = 0.75;
+        this.scaleY = 0.75;
 
         this.setPageSize();
-        this.setPadding();
         this.setCanvas();
+
+        this.initialWidth = this.pageWidth;
+        this.initialHeight = this.pageHeight;
     }
 
     setPageSize() {
-
-        // Calc maximum dimensions
         let maxWidth = window.innerWidth - this.margin * 2;
         let maxHeight = window.innerHeight - this.margin * 2;
 
-        // Calc maximum dimensions, but still in 16:9
-        let widthBasedHeight = maxWidth * 9 / 16;
-        let heightBasedWidth = maxHeight * 16 / 9;
-
-        // Use limiting dimension
-        if (widthBasedHeight <= maxHeight) {
+        // Calculate dimensions, maintaining 16:9 aspect ratio
+        if (maxWidth * (9 / 16) <= maxHeight) {
             this.pageWidth = maxWidth;
-            this.pageHeight = widthBasedHeight;
+            this.pageHeight = maxWidth * (9 / 16);
         } else {
+            this.pageWidth = maxHeight * (16 / 9);
             this.pageHeight = maxHeight;
-            this.pageWidth = heightBasedWidth;
         }
-    }
 
-    setPadding() {
+        // Calculate padding
         this.xPadding = (window.innerWidth - this.pageWidth - this.margin * 2) / 2;
         this.yPadding = (window.innerHeight - this.pageHeight - this.margin * 2) / 2;
     }
 
     setCanvas() {
-        // Create canvas var, pad and position
+        // Create Canvas variable, pad the sides and centre position
         this.canvas = createCanvas(this.pageWidth, this.pageHeight);
         this.canvas.position(this.xPadding + this.margin, this.yPadding + this.margin);
     }
 
     adjustGameScale() {
-
-        // Store old height
-        let oldHeight = this.pageHeight;
-        let oldWidth = this.pageWidth;
-
-        // Update dimensions
-        page.setPageSize();
-        page.setPadding();
-
-        // Calc ratio of change
-        // this.gameScale *= min(this.pageHeight / oldHeight, this.pageWidth / oldWidth);
+        this.scaleX = this.pageWidth / this.initialWidth * 0.75;
+        this.scaleY = this.pageHeight / this.initialHeight * 0.75;
     }
-
 }
-
 
 function windowResized() {
 
-    // Update the page scale
+    // Resize page
+    page.setPageSize();
+    resizeCanvas(page.pageWidth, page.pageHeight);
+    page.canvas.position(page.xPadding, page.yPadding);
     page.adjustGameScale();
 
-    // Resize and reposition the canvas
-    resizeCanvas(page.pageWidth, page.pageHeight);
-    page.canvas.position(page.xPadding + page.margin, page.yPadding + page.margin);
+    // Lock player to terrain while resizing
+    player.pos.y = terrain.f(player.pos.x);
+    player.vel.y = 0;
+    player.acc.y = 0;
 }
