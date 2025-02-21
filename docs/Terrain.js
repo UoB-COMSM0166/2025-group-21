@@ -8,38 +8,32 @@ class Terrain {
 
     constructor() {
         this.numWaves = 20;  // Number of sine waves to sum
-        this.floorLevel = 0
-
         for (let i = 0; i < this.numWaves; i++) {
-            this.amplitudes.push(Math.random() * 10 + 10);
+            this.amplitudes.push(Math.random() * 7 + 10);
             this.frequencies.push(Math.random() * 0.012 + 0.01);
             this.phases.push(Math.random() * Math.PI * 4);
         }
     }
 
     drawHills() {
+        let step = 5;
 
+        // Init shape and define colour
         noStroke();
         beginShape();
+        fill(187, 252, 252);
 
-        fill(187, 252, 252); // Ice colour
-
-        vertex((-page.pageWidth/2 / page.scaleX) / zoom, (page.pageHeight/2 / page.scaleX) / zoom);
-
-        for (let x = ((-page.pageWidth / 2) / page.scaleX) / zoom; x <= ((page.pageWidth / 2) / page.scaleX) / zoom; x += 5) {
-            let y = this.f(x);
-            vertex(x, y);
+        // Set shape vertices
+        vertex(page.getXLeft(), page.getYBottom());
+        for (let x = page.getXLeft() - step; x <= page.getXRight() + step; x += step) {
+            vertex(x, this.f(x));
         }
-        vertex((page.pageWidth/2 / page.scaleX) / zoom, (page.pageHeight/2 / page.scaleX) / zoom);
-
-
+        vertex(page.getXRight(), page.getYBottom());
         endShape(CLOSE);
-
     }
 
     generateHills(x) {
-        let y = (((page.pageHeight / 2) * 0.5) / page.scaleX);  // Base height
-        this.floorLevel = y;
+        let y = ((page.pageHeight / 2) * 0.5);  // Base height
 
         for (let i = 0; i < this.numWaves; i++) {
             y -= (this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]));
