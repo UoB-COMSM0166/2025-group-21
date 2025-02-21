@@ -28,7 +28,7 @@ class Game {
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
-        this.shield = inventory.forceFieldLevel > 0 ? new ForceField() : null;
+        this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
         this.projectile = new ProjectileAbility(inventory.laserLevel);
     }
 
@@ -77,6 +77,10 @@ class Game {
                     //this.fly.glide(); // apply upward force equal to gravity
                     this.fly.applyUpwardForce(); // greater then gravity
                 }
+            }
+            if (this.shield != null) {
+                this.shield.charge();
+                this.shield.drawChargeBar();
             }
         }
         else {

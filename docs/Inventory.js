@@ -6,6 +6,6 @@ class Inventory {
         this.coins = 0;
         this.flyLevel = 5;
         this.laserLevel = 5;
-        this.forceFieldLevel = 1;
+        this.forceFieldLevel = 5;
     }
 }

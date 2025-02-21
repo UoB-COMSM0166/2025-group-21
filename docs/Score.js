@@ -83,7 +83,7 @@ class Score {
         textFont('Trebuchet MS');
         textSize(size);
         textAlign(LEFT);
-        text(`${round(this.currentAirtime, 3)} s`, 0.7*width, 0.02*height);
+        text(`${round(this.currentAirtime, 3)} s`, 0.65*width, 0.02*height);
     }
 
     printScore() {
