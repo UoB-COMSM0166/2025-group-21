@@ -58,7 +58,7 @@ class Player {
 
     drawPlayer() {
 
-        this.trail.draw();
+        //this.trail.draw();
         this.lives.drawChangeLife();
 
         if (game.death != null && game.death.type === 'UFO') return;
@@ -97,7 +97,7 @@ class Player {
             let deathRow = Math.floor(this.deathFrameIndex / DEATH_COLUMNS);
 
             image(
-                deathSpriteSheet,
+                playerDeath,
                 this.pos.x, this.pos.y,  // Center the image at the origin
                 FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,    // Destination size
                 deathCol * FRAME_WIDTH, deathRow * FRAME_HEIGHT,          // Source x, y
@@ -115,7 +115,7 @@ class Player {
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
             image(
-                spriteSheet,
+                playerFly,
                 0, 0,
                 FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
                 col * FRAME_WIDTH, row * FRAME_HEIGHT,
@@ -130,7 +130,7 @@ class Player {
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
             image(
-                spriteSheet,
+                playerFly,
                 0, 0,
                 FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
                 col * FRAME_WIDTH, row * FRAME_HEIGHT,
