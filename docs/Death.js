@@ -80,9 +80,9 @@ class Death {
     showFinalScore() {
 
         push();
-            game.page.zoom = lerp(game.page.zoom, 1.25, 0.01);
-            game.ty = game.player.pos.y - game.page.zoom * (game.player.pos.y);
-            game.tx = game.page.zoom * (game.player.pos.x);
+            // game.page.zoom = lerp(game.page.zoom, 1.25, 0.01);
+            // game.ty = game.player.pos.y - game.page.zoom * (game.player.pos.y);
+            // game.tx = game.page.zoom * (game.player.pos.x);
 
             this.deathTimer.tick();
 

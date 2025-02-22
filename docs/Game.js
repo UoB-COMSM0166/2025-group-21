@@ -42,7 +42,7 @@ class Game {
             translate((this.page.pageWidth/2), (this.page.pageHeight/2));
             scale(this.page.getXScale(), this.page.getYScale());
             translate(0, this.page.translateY);
-            translate(this.tx, this.ty); // Separate death translate?
+            //translate(this.tx, this.ty); // Separate death translate?
             this.terrain.drawHills();
             this.player.drawPlayer();
             this.projectile.updateProjectiles();

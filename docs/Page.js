@@ -26,7 +26,8 @@ class Page {
         if (maxWidth * (9 / 16) <= maxHeight) {
             this.pageWidth = maxWidth;
             this.pageHeight = maxWidth * (9 / 16);
-        } else {
+        }
+        else {
             this.pageWidth = maxHeight * (16 / 9);
             this.pageHeight = maxHeight;
         }
