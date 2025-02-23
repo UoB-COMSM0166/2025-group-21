@@ -49,7 +49,7 @@ function keyPressed() {
             if (keyCode === ENTER) {
                 game.menu.selectButton();
             }
-            return;  // ✅ 如果 `Menu` 打开，阻止其他按键
+            return;
         }
     }
 }
