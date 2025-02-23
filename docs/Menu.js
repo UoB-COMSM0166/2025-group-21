@@ -127,7 +127,7 @@ class Menu {
         this.backgroundDrawn = false;
         game.menuOpen = false;
         //this.resumeGame();
-        //this.startCountdown(); // 开始倒计时
+        //this.startCountdown();
         game.pause.active = false;
     }
 
@@ -159,12 +159,10 @@ class Menu {
         if (this.buttons.length === 0) return;
 
         if (this.selectedIndex === -1) {
-            // ✅ 只有按 `↓` 才能激活 `START AGAIN`
             if (direction === 1) {
                 this.selectedIndex = 0;
             }
         } else {
-            // ✅ 循环移动
             this.selectedIndex = (this.selectedIndex + direction + this.buttons.length) % this.buttons.length;
         }
 
@@ -174,18 +172,18 @@ class Menu {
     updateButtonStyles() {
         for (let i = 0; i < this.buttons.length; i++) {
             if (i === this.selectedIndex) {
-                this.buttons[i].style("background-color", "rgb(187, 252, 252)");  // ✅ 让键盘选中的按钮变亮
+                this.buttons[i].style("background-color", "rgb(187, 252, 252)");
             } else {
-                this.buttons[i].style("background-color", "rgb(135, 206, 250)");  // ❌ 让未选中的按钮恢复默认颜色
+                this.buttons[i].style("background-color", "rgb(135, 206, 250)");
             }
         }
     }
 
     selectButton() {
         if (this.selectedIndex !== -1) {
-            const buttonAction = this.buttons[this.selectedIndex].mousePressedHandler;  // ✅ 直接获取绑定的函数
+            const buttonAction = this.buttons[this.selectedIndex].mousePressedHandler;
             if (buttonAction) {
-                buttonAction();  // ✅ 直接执行按钮的功能
+                buttonAction();
             }
         }
     }
