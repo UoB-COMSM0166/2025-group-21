@@ -19,6 +19,28 @@ button {
     border: none;
 }
 
+
+.quitButton {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    padding: 10px 20px;
+}
+
+.quitButton:hover {
+    color: white;
+}
+
+/*----------------Shop-----------------*/
+
+p {
+    font-family: Arial;
+    width: 30%;
+    word-wrap: break-word;
+}
+
 .playButton {
     background-color: rgb(135, 206, 250);
     color: white;
@@ -34,16 +56,32 @@ button {
     background-color: rgb(187, 252, 252);
 }
 
-.quitButton {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-    padding: 10px 20px;
-}
-
-.quitButton:hover {
+.tabButton {
+    background-color: rgb(10, 25, 87);
+    font-size: 1.2rem;
     color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
 }
 
+.tabButton:hover {
+    background-color: rgb(244, 208, 255);
+}
+
+.OptionButton{
+    background-color: rgb(253, 158, 188);
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.OptionButton:hover {
+    background-color: rgb(255, 57, 121);
+}
