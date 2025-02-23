@@ -4,16 +4,34 @@ class Workshop {
 
     constructor() {
         document.body.classList.add("show-cursor");
-        this.playButton = createButton('PLAY');
-        this.updatePlayButtonSize();
+        this.playButton = createButton('Play');
+        this.Tools = createButton('Tools');
+        this.Outfits = createButton('Outfits');
+        // this.PlayButtonDefault();
+        // this.ToolsButtonDefault();
     }
 
     openShop() { // Main loop for workshop
         background(228, 221, 159);
-        this.updatePlayButtonSize();
+        this.PlayButtonDefault();
+        this.ToolsButtonDefault();
         this.printWorkshopTitle();
+        this.printToolButton();
         this.playButton.mousePressed(() => this.playButtonPressed());
         this.printCoins();
+    }
+
+    PlayButtonDefault() {
+        let textSize = page.pageWidth / 400;
+        let numString = textSize.toString() + 'rem'
+
+        this.playButton.position(
+            page.xPadding + page.margin + 0.78*page.pageWidth,
+            page.yPadding + page.margin + 0.85*page.pageHeight);
+
+        this.playButton.size(page.pageWidth/5, page.pageHeight/8);
+        this.playButton.class('playButton');
+        this.playButton.style('font-size', numString);
     }
 
     playButtonPressed() {
@@ -22,7 +40,7 @@ class Workshop {
         Domain = 'game';
     }
 
-    updatePlayButtonSize() {
+    ToolsButtonDefault() {
         let textSize = page.pageWidth / 400;
         let numString = textSize.toString() + 'rem'
 
@@ -36,15 +54,25 @@ class Workshop {
     }
 
     printWorkshopTitle() {
-        let size = page.pageWidth/8;
+        let size = page.pageWidth/15;
         fill(223, 162, 146);
         textFont('Trebuchet MS');
         textAlign(CENTER, TOP);
         stroke(175, 84, 60);
         strokeWeight(size/10);
         textSize(size);
-        text('Workshop', width/2, 0.001*page.margin*page.pageWidth);
-        noStroke();
+        text('Shop', width/2, 0.001*page.margin*page.pageWidth);
+    }
+
+    printToolButton() {
+        let size = page.pageWidth/15;
+        fill(223, 162, 146);
+        textFont('Trebuchet MS');
+        textAlign(CENTER, TOP);
+        stroke(175, 84, 60);
+        strokeWeight(size/10);
+        textSize(size);
+        text('Shop', width/2, 0.001*page.margin*page.pageWidth);
     }
 
     printCoins() {
