@@ -29,6 +29,28 @@ function keyPressed() {
                 game.shield.initialise();
             }
         }
+
+        if (key.toLowerCase() === 'm' && Domain === 'game' && game.player.alive) {
+            if (!game.menuOpen) {
+                game.menuOpen = true;
+                game.menu.showMenuScreen();
+            } else {
+                game.menu.closeMenu();
+            }
+        }
+//
+        if (game.menuOpen) {
+            if (keyCode === DOWN_ARROW) {
+                game.menu.moveSelection(1);
+            }
+            if (keyCode === UP_ARROW) {
+                game.menu.moveSelection(-1);
+            }
+            if (keyCode === ENTER) {
+                game.menu.selectButton();
+            }
+            return;  // ✅ 如果 `Menu` 打开，阻止其他按键
+        }
     }
 }
 
