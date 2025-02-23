@@ -28,6 +28,7 @@ let logo;
 let playNoPressed;
 let playIsPressed;
 
+
 function setup() {
 
     page = new Page();
@@ -45,7 +46,7 @@ function draw() {
     }
 
     if (Domain === 'shop') {
-        if (shop === null) shop = new Workshop();
+        if (shop === null) shop = new Shop();
         shop.openShop();
     }
 
