@@ -16,6 +16,8 @@ class Game {
         this.tx = 0
         this.ty = 0;
         this.initialDrop = true;
+        this.menuOpen = false;
+        //this.menuPauseActive = false;
 
         this.page = new Page();
         this.terrain = new Terrain();
@@ -26,6 +28,7 @@ class Game {
         this.UFOHandler = new UFOHandler();
         this.wind = new Wind();
         this.death = null;
+        this.menu = new Menu();
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
@@ -33,6 +36,11 @@ class Game {
     }
 
     runSimulation() { // Main loop for game
+
+        if(this.menuOpen) {
+            this.menu.showMenuScreen();
+            return;
+        }
 
         this.wind.adjustVolume();
         image(homeBackground, 0, 0, width, height);
@@ -62,7 +70,7 @@ class Game {
         this.player.lives.drawLives();
         this.stats.gameUpdate();
 
-        if (((this.spacePressed && this.player.alive) || this.initialDrop) && !this.pause.active) {
+        if ((this.spacePressed && this.player.alive) || this.initialDrop) {
             this.applyBoostToPlayer();
         }
 
@@ -88,6 +96,21 @@ class Game {
 
         if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
         else this.pause.reset();
+
+//        if (this.menuPauseActive) {
+//            this.menu.showMenuScreen();
+//            return;
+//        } else if (this.pause.active && this.player.alive) {
+//            this.pause.showPauseScreen();
+//        } else {
+//            this.pause.reset();
+//        }
+
+        if(this.player.alive) {
+            this.menu.drawMenuButton();
+        }
+
+        //this.menu.drawCountdown();
     }
 
 
@@ -100,4 +123,15 @@ class Game {
             this.player.vel.x += 0.2;
         }
     }
+
+    handleMenuClick(mx, my) {
+        if (!this.menuOpen && mx > 120 && mx < 220 && my > 20 && my < 60) {
+            this.menuOpen = true;
+            this.menu.showMenuScreen();
+        }
+    }
+}
+
+function mousePressed() {
+    game.handleMenuClick(mouseX, mouseY);
 }

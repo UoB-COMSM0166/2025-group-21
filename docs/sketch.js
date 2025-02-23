@@ -51,7 +51,12 @@ function draw() {
 
     if (Domain === 'game') {
         if (game === null) game = new Game();
-        game.runSimulation();
+        if(game.menuOpen) {
+            game.menu.showMenuScreen();
+            return;
+        } else {
+            game.runSimulation();
+        }
     }
 }
 

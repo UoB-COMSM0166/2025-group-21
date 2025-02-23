@@ -22,12 +22,12 @@ class Death {
         this.blackTintHeight = null;
         this.blackTintY = null;
 
-        this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
-        this.numScore = createVector(width/7.5, height/2.8); // position of number at death
+        this.endScore = createVector(width/5, height / 3.5); // position of word 'score' at death
+        this.numScore = createVector(width/7.5, height/1.8); // position of number at death
     }
 
     runPlayerDeathSequence() {
-
+        game.menu.hideButtons();
         // Death animation
         if (this.deathTimer.time < 180) {
             this.showFinalScore();
