@@ -48,7 +48,7 @@ class Homescreen {
             this.penguin.hide();
             this.penguin = null;
             this.balloon.hide();
-            Domain = 'shop';
+            Domain = 'instruction';
             homescreen = null;
         }
     }
