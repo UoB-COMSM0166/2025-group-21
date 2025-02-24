@@ -28,6 +28,7 @@ let logo;
 let playNoPressed;
 let playIsPressed;
 
+
 function setup() {
 
     page = new Page();
@@ -45,8 +46,13 @@ function draw() {
         homescreen.showHomescreen();
     }
 
+    if (Domain === 'instruction') {
+        drawInstructionPage();
+    }
+
+
     if (Domain === 'shop') {
-        if (shop === null) shop = new Workshop();
+        if (shop === null) shop = new Shop();
         shop.openShop();
     }
 
@@ -82,4 +88,5 @@ function preload() {
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
+    gloriaFont = loadFont("assets/gloria.ttf");
 }

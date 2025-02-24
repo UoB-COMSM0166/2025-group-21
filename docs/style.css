@@ -19,6 +19,35 @@ button {
     border: none;
 }
 
+
+.quitButton {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    padding: 10px 20px;
+}
+
+.quitButton:hover {
+    color: white;
+}
+
+/*----------------Shop-----------------*/
+
+
+* {
+    font-family: Trebuchet MS;
+}
+h3 {
+    font-size: 2.5rem;
+}
+
+p {
+    width: 30%;
+    word-wrap: break-word;
+}
+
 .playButton {
     background-color: rgb(135, 206, 250);
     color: white;
@@ -34,16 +63,121 @@ button {
     background-color: rgb(187, 252, 252);
 }
 
-.quitButton {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-    padding: 10px 20px;
-}
-
-.quitButton:hover {
+.purchaseButton {
+    background-color: rgb(253, 158, 188);
     color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    /*transition: background-color 0.3s ease-in-out;*/
 }
 
+.purchaseButton:hover {
+    background-color: rgb(255, 57, 121);
+}
+
+#invalidPurchasePop {
+    display: none;
+    background: #b64ad4;
+    position: absolute;
+    padding: 1rem;
+    border-radius: 1rem;
+    gap: 20px;
+}
+
+#invalidPurchasePop p {
+    width: 80%;
+    word-wrap: break-word;
+}
+
+#invalidPurchasePop button {
+    display: none;
+    background-color: rgb(10, 25, 87);
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+#invalidPurchasePop button:hover {
+    background-color: rgb(244, 208, 255);
+}
+
+#validPurchasePop {
+    display: none;
+    background: #6366f1;
+    position: absolute;
+    padding: 1rem;
+    border-radius: 1rem;
+    gap: 20px;
+}
+
+#validPurchasePop p {
+    width: 80%;
+    word-wrap: break-word;
+}
+
+#validPurchasePop button {
+    display:none;
+    background-color: rgb(10, 25, 87);
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+#validPurchasePop button:hover {
+    background-color: rgb(244, 208, 255);
+}
+
+#tabDiv {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+}
+
+
+#tabDiv button {
+    background-color: rgb(10, 25, 87);
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+#tabDiv button:hover {
+    background-color: rgb(244, 208, 255);
+}
+
+#itemDiv {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+#itemDiv button{
+    background-color: rgb(253, 158, 188);
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+#itemDiv button:hover {
+    background-color: rgb(255, 57, 121);
+}

@@ -79,7 +79,7 @@ After brainstorming various game concepts, our team became particularly interest
 
 
 ### Prototype
-In Workshop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*, which helped us visualize and test early game mechanics, including gravity, propulsion, and player interaction. Based on initial discussions, we made changes and added new elements to the game flow and format to enhance the fun of the gameplay. We also received feedback from our instructor and other teams, which gave us further insights into development challenges and market preferences. To facilitate clearer communication, we created simple animations simulating the paper prototype style, vividly showcasing the game flow and promoting better understanding and discussion within the team. These tools proved crucial for the development process moving forward.
+In Shop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*, which helped us visualize and test early game mechanics, including gravity, propulsion, and player interaction. Based on initial discussions, we made changes and added new elements to the game flow and format to enhance the fun of the gameplay. We also received feedback from our instructor and other teams, which gave us further insights into development challenges and market preferences. To facilitate clearer communication, we created simple animations simulating the paper prototype style, vividly showcasing the game flow and promoting better understanding and discussion within the team. These tools proved crucial for the development process moving forward.
 <p align="center" style="margin-top: 10px;"><b>Figure 3</b></p>
 <p align="center"><i>Paper Prototype of Rocket Game and Penguin Game</i></p>
 <p align="center">
