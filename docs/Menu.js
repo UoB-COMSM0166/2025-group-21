@@ -81,12 +81,12 @@ class Menu {
     drawMenuButton() {
         if (!this.menuButtonVisible) return;
 
-        let thirdLifeX = (50 + 2 * 30) * game.page.scaleX;  // ✅ 固定在第三个生命的 `X` 位置
-        let menuX = thirdLifeX + 50 * game.page.scaleX;  // ✅ `MENU` 按钮在其右侧 50px 处
+        let thirdLifeX = (50 + 2 * 30) * game.page.scaleX;
+        let menuX = thirdLifeX + 50 * game.page.scaleX;
 
         let menuWidth = 100 * game.page.scaleX;
         let menuHeight = 40 * game.page.scaleY;
-        let menuY = (50 * game.page.scaleY) - (menuHeight / 2);  // ✅ 按钮水平居中对齐生命值圆心
+        let menuY = (50 * game.page.scaleY) - (menuHeight / 2);
 
         if (mouseX > menuX && mouseX < menuX + menuWidth && mouseY > menuY && mouseY < menuY + menuHeight) {
             this.menuHovered = true;
