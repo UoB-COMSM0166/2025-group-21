@@ -32,6 +32,7 @@ function setup() {
 
     page = new Page();
     inventory = new Inventory();
+    homescreen = new Homescreen(page);
 }
 
 function draw() {
