@@ -1,0 +1,55 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #dff6ff, #92d5f3);
+}
+
+/* Instruction Box */
+.instruction-box {
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 20px;
+    padding: 30px;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* OK Button */
+.ok-button {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 120px;
+    height: 60px;
+    font-size: 28px;
+    transition: background-color 0.3s;
+}
+
+.ok-button:hover {
+    background-color: blue;
+}
+
+/* Menu Text */
+.menu-text {
+    text-align: center;
+    color: #333;
+    font-size: 32px;
+    margin-top: 30%;
+}
+
+/* Game Screen Text */
+.game-text {
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    margin-top: 30%;
+}

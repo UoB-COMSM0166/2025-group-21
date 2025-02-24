@@ -154,7 +154,7 @@ class Menu {
     }
 
     showInstructions() {
-        console.log("Show Instructions screen (future implementation)");
+        // console.log("Show Instructions screen (future implementation)");
     }
 
     showSettings() {
