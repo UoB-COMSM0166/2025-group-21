@@ -28,12 +28,10 @@ let logo;
 let playNoPressed;
 let playIsPressed;
 
-
 function setup() {
 
     page = new Page();
     inventory = new Inventory();
-    homescreen = new Homescreen(page);
 }
 
 function draw() {
@@ -46,24 +44,14 @@ function draw() {
         homescreen.showHomescreen();
     }
 
-    if (Domain === 'instruction') {
-        drawInstructionPage();
-    }
-
-
     if (Domain === 'shop') {
-        if (shop === null) shop = new Shop();
+        if (shop === null) shop = new Workshop();
         shop.openShop();
     }
 
     if (Domain === 'game') {
         if (game === null) game = new Game();
-        if(game.menuOpen) {
-            game.menu.showMenuScreen();
-            return;
-        } else {
-            game.runSimulation();
-        }
+        game.runSimulation();
     }
 }
 
@@ -88,5 +76,4 @@ function preload() {
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
-    gloriaFont = loadFont("assets/gloria.ttf");
 }
