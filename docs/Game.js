@@ -13,13 +13,11 @@ class Game {
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 100; // 50
         this.spacePressed = false // Activates boost
+        this.zoom = 1;
         this.tx = 0
         this.ty = 0;
         this.initialDrop = true;
-        this.menuOpen = false;
-        //this.menuPauseActive = false;
 
-        this.page = new Page();
         this.terrain = new Terrain();
         this.player = new Player(150, 150);
         this.score = new Score();
@@ -28,7 +26,6 @@ class Game {
         this.UFOHandler = new UFOHandler();
         this.wind = new Wind();
         this.death = null;
-        this.menu = new Menu();
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
@@ -37,25 +34,22 @@ class Game {
 
     runSimulation() { // Main loop for game
 
-        if(this.menuOpen) {
-            this.menu.showMenuScreen();
-            return;
-        }
-
+        this.adjustZoom();
         this.wind.adjustVolume();
+
         image(homeBackground, 0, 0, width, height);
-        this.page.updateZoom();
 
         push();
-            translate((this.page.pageWidth/2), (this.page.pageHeight/2));
-            scale(this.page.getXScale(), this.page.getYScale());
-            translate(0, this.page.translateY);
-            //translate(this.tx, this.ty); // Separate death translate?
+            // Scale the game size if they resize the window
+            scale(page.gameScale);
+            translate(this.tx, this.ty); // Change coordinate origin to player position
+            scale(this.zoom); // set screen zoom
+
             this.terrain.drawHills();
-            this.player.drawPlayer();
+            this.player.drawPlayer()
             this.projectile.updateProjectiles();
-            // this.UFOHandler.updateUFOs();
-            // this.UFOHandler.updateExplosions();
+            this.UFOHandler.updateUFOs();
+            this.UFOHandler.updateExplosions();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left
@@ -70,7 +64,7 @@ class Game {
         this.player.lives.drawLives();
         this.stats.gameUpdate();
 
-        if ((this.spacePressed && this.player.alive) || this.initialDrop) {
+        if (((this.spacePressed && this.player.alive) || this.initialDrop) && !this.pause.active) {
             this.applyBoostToPlayer();
         }
 
@@ -96,23 +90,20 @@ class Game {
 
         if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
         else this.pause.reset();
-
-//        if (this.menuPauseActive) {
-//            this.menu.showMenuScreen();
-//            return;
-//        } else if (this.pause.active && this.player.alive) {
-//            this.pause.showPauseScreen();
-//        } else {
-//            this.pause.reset();
-//        }
-
-        if(this.player.alive) {
-            this.menu.drawMenuButton();
-        }
-
-        //this.menu.drawCountdown();
     }
 
+    adjustZoom() {
+
+        if (this.player.pos.y < this.topMargin) {
+            this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
+            this.ty = this.topMargin - this.zoom * (this.player.pos.y);
+            this.tx = 160 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
+        }
+        else {
+            this.zoom = 1;
+            this.tx = this.ty = 0;
+        }
+    }
 
     applyBoostToPlayer() {
 
@@ -123,15 +114,4 @@ class Game {
             this.player.vel.x += 0.2;
         }
     }
-
-    handleMenuClick(mx, my) {
-        if (!this.menuOpen && mx > 120 && mx < 220 && my > 20 && my < 60) {
-            this.menuOpen = true;
-            this.menu.showMenuScreen();
-        }
-    }
-}
-
-function mousePressed() {
-    game.handleMenuClick(mouseX, mouseY);
 }

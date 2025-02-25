@@ -41,7 +41,7 @@ class ForceField {
         strokeWeight(5);
 
         push();
-        translate(game.player.pos.x, game.player.pos.y - game.player.radius);
+        translate(150, game.player.pos.y - width/100);
 
         if (game.score.airtime > 3) rotate(-velocityAngle + Math.PI/2);
         else rotate(velocityAngle);
