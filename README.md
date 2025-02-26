@@ -321,10 +321,10 @@ Description: The player interacts with the game system in several ways to engage
 | 9 | 842 | 1386 | 1355 | - | - | - | - | 
 
 
-| Tester No |  During Playing | Feedback |
+| Tester No |  Behavior During Playing | Feedback |
 |:--:|--|--|
 | 1 |  1. “Oh no”<br>2. “What happened” | 1. Need instruction<br>2. Playing better after playing few times |
-| 2 | 1. murmuring to make sure how to play | 1. A bit confused how to play<br>2. Operation ways are special (not just use arrows to go up and down) and the tools are quite cool<br>3. UFO is quite a different element with the game theme |
+| 2 | 1. Murmuring to make sure how to play | 1. A bit confused how to play<br>2. Operation ways are special (not just use arrows to go up and down) and the tools are quite cool<br>3. UFO is quite a different element with the game theme |
 | 3 | 1. Trying to understand the rules<br>2. Trying to use the tools<br>3. “Oh can shoot things”<br>4. “I am not good at playing games” | 1. Pretty fun<br>2. Its okay if going up, but have no idea how to play while on the ground  <br>3. Don’t know when to click the tools<br>4. Don’t know when to trigger the jump |
 | 4 | 1. “What am I doing right now?”<br>2. “Oh no I’m not good at this”<br>3. Seems doesn’t know how and when to use the tools  | 1. Too easy to lost the game<br>2. Hills are too high<br>3. It’s better if I have more life<br>4. Suggest can gain life after having gone for a while such as reach certain score or distance |
 | 5 | 1. Trying to figure out how to land, when to click space<br>2. Seems playing well since the attempt 2<br>3. “Oh I’m trying to do a perfect landing”  | 1. This game is really simple that’s nice |
