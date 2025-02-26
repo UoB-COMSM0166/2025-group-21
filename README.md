@@ -5,15 +5,15 @@
 [Click me! You can play our game here! 🎮⚡🚀](https://uob-comsm0166.github.io/2025-group-21/)
 
 # Table of Contents
-- [1. Development Team]()
-- [2. Introduction]()
-- [3. Requirements]()
-- [4. Design]()
-- [5. Implementation]()
-- [6. Evaluation]()
-- [7. Process]()
-- [8. Conclusion]()
-- [9. References]()
+- [1. Development Team](#1-development-team)
+- [2. Introduction](#2-introduction)
+- [3. Requirements](#3-requirements)
+- [4. Design](#4-design)
+- [5. Implementation](#5-implementation)
+- [6. Evaluation](#6-evaluation)
+- [7. Process](#7-process)
+- [8. Conclusion](#8-conclusion)
+- [9. References](#9-contribution-statement)
 # 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
