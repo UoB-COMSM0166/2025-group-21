@@ -301,7 +301,12 @@ Description: The player interacts with the game system in several ways to engage
 
 #### Brief Sum 
 1. A **CLEAR** instruction is really important, especially the testers are asked to control the character with multiple keys, it’s hard to  let’em remember all the functions mapped to the keys. 
-2. the difficulty could increase as the process goes, our background generates itself from the very beginning, which could lead to a problem that our testers are likely to feel our game hard from the beginning , so there’s not a good chance for them to learn how to play step by step.
+2. The difficulty could increase as the process goes, our background generates itself from the very beginning, which could lead to a problem that our testers are likely to feel our game hard from the beginning , so there’s not a good chance for them to learn how to play step by step.
+
+<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
+<p align="center"><i>Mind Map of Penguin Game</i></p>
+
+![Product doc/Mind Map.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Mind%20Map.jpg)
 
 | Tester No | Score - Attempt 1 | Score - Attempt 2 | Score - Attempt 3 | Difficulty (N/10) | Enjoyability (N/10) | UI/UX (N/10)  | Rate Overall (N/10) | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -318,15 +323,15 @@ Description: The player interacts with the game system in several ways to engage
 
 | Tester No |  During Playing | Feedback |
 |:--:|--|--|
-| 1 |  1. “oh no”<br>2. “what happened” | 1. Need instruction<br>2, Playing better after playing few times |
+| 1 |  1. “Oh no”<br>2. “What happened” | 1. Need instruction<br>2. Playing better after playing few times |
 | 2 | 1. murmuring to make sure how to play | 1. A bit confused how to play<br>2. Operation ways are special (not just use arrows to go up and down) and the tools are quite cool<br>3. UFO is quite a different element with the game theme |
-| 3 | 1. Trying to understand the rules<br>2. Trying to use the tools<br>3. “oh can shoot things”<br>4. “I am not good at playing games” | 1. Pretty fun<br>2. Its okay if going up, but have no idea how to play while on the ground  <br>3. Don’t know when to click the tools<br>4. Don’t know when to trigger the jump |
+| 3 | 1. Trying to understand the rules<br>2. Trying to use the tools<br>3. “Oh can shoot things”<br>4. “I am not good at playing games” | 1. Pretty fun<br>2. Its okay if going up, but have no idea how to play while on the ground  <br>3. Don’t know when to click the tools<br>4. Don’t know when to trigger the jump |
 | 4 | 1. “What am I doing right now?”<br>2. “Oh no I’m not good at this”<br>3. Seems doesn’t know how and when to use the tools  | 1. Too easy to lost the game<br>2. Hills are too high<br>3. It’s better if I have more life<br>4. Suggest can gain life after having gone for a while such as reach certain score or distance |
 | 5 | 1. Trying to figure out how to land, when to click space<br>2. Seems playing well since the attempt 2<br>3. “Oh I’m trying to do a perfect landing”  | 1. This game is really simple that’s nice |
 | 6 | 1. “What is the red bar?”<br>2. “How to play?” | 1. Need instructions to figure out what’s happening |
 | 7 | 1. “How to keep it in air?”<br>2. Trying to know how to play<br>3. “Shit the curve is too deep, I kept crashing into it”<br>4. “When should I kick the space bar? Should I press the space bar once or keep holding it?”  | 1. That’s cool but hard as well<br>2. Unsure how to stay in air |
-| 8 | 1. “what’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. the sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
-| 9 | 1. “what is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
+| 8 | 1. “What’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. The sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
+| 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
 
 ### Qualitative evaluation
 ### Difficulties
