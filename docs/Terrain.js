@@ -11,30 +11,30 @@ class Terrain {
         this.stage = 1;
         this.randomnessFactor = 0;
 
-        // for (let i = 0; i < 26; i++) {
-        //     this.amplitudes.push(2);
-        //     this.frequencies.push(0.01);
-        //     this.phases.push(0);
-        // }
-        //
-        // let ampVariation = 1 * 10 + 2;
-        // let freqVariation = 1 * 0.01 + 0.01;
-        // let phaseVariation = Math.PI * (1 + 1 * 0.5);
-        //
-        // for (let i = 0; i < 4; i++) {
-        //     this.amplitudes.push(Math.random() * ampVariation);
-        //     this.frequencies.push(Math.random() * freqVariation);
-        //     this.phases.push(Math.random() * phaseVariation);
-        // }
+        for (let i = 0; i < 27; i++) {
+            this.amplitudes.push(2);
+            this.frequencies.push(0.01);
+            this.phases.push(0);
+        }
+
+        let ampVariation = 1 * 10 + 2;
+        let freqVariation = 1 * 0.01 + 0.01;
+        let phaseVariation = Math.PI * (1 + 1 * 0.5);
+
+        for (let i = 0; i < 3; i++) {
+            this.amplitudes.push(Math.random() * ampVariation);
+            this.frequencies.push(Math.random() * freqVariation);
+            this.phases.push(Math.random() * phaseVariation);
+        }
 
         // Add new (more random) elements to end
 
-        // // // OLD RANDOMISED HILLS PARAMS PRIOR TO INCREASING DIFFICULTY CHANGE
-        for (let i = 0; i < this.numWaves; i++) {
-            this.amplitudes.push(Math.random() * 10 + 10);
-            this.frequencies.push(Math.random() * 0.012 + 0.01);
-            this.phases.push(Math.random() * Math.PI * 4);
-        }
+        // OLD RANDOMISED HILLS PARAMS PRIOR TO INCREASING DIFFICULTY CHANGE
+        // for (let i = 0; i < this.numWaves; i++) {
+        //     this.amplitudes.push(Math.random() * 10 + 10);
+        //     this.frequencies.push(Math.random() * 0.012 + 0.01);
+        //     this.phases.push(Math.random() * Math.PI * 4);
+        // }
     }
 
     updateHillParams() {
