@@ -5,15 +5,15 @@
 [Click me! You can play our game here! 🎮⚡🚀](https://uob-comsm0166.github.io/2025-group-21/)
 
 # Table of Contents
-- [1. Development Team]()
-- [2. Introduction]()
-- [3. Requirements]()
-- [4. Design]()
-- [5. Implementation]()
-- [6. Evaluation]()
-- [7. Process]()
-- [8. Conclusion]()
-- [9. References]()
+- [1. Development Team](#1-development-team)
+- [2. Introduction](#2-introduction)
+- [3. Requirements](#3-requirements)
+- [4. Design](#4-design)
+- [5. Implementation](#5-implementation)
+- [6. Evaluation](#6-evaluation)
+- [7. Process](#7-process)
+- [8. Conclusion](#8-conclusion)
+- [9. References](#9-contribution-statement)
 # 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
@@ -293,7 +293,50 @@ Description: The player interacts with the game system in several ways to engage
 ### Challenges
 
 # 6. Evaluation
+
+### Overall Feedback
+#### Evaluation Flow Insights
+1. For testers 1 to 7, we introduced the gameplay through **verbal instructions and key demonstrations**. However, this approach led to noticeable confusion among the testers regarding how to play.
+2. Starting from tester 8, we implemented a **brief demonstration** before their gameplay session. This adjustment significantly improved their understanding, resulting in a smoother and more intuitive experience compared to those who did not receive a demonstration.
+
+#### Brief Sum 
+1. A **CLEAR** instruction is really important, especially the testers are asked to control the character with multiple keys, it’s hard to  let’em remember all the functions mapped to the keys. 
+2. The difficulty could increase as the process goes, our background generates itself from the very beginning, which could lead to a problem that our testers are likely to feel our game hard from the beginning , so there’s not a good chance for them to learn how to play step by step.
+
+<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
+<p align="center"><i>Mind Map of Penguin Game</i></p>
+
+![Product doc/Mind Map.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Mind%20Map.jpg)
+
+| Tester No | Score - Attempt 1 | Score - Attempt 2 | Score - Attempt 3 | Difficulty (N/10) | Enjoyability (N/10) | UI/UX (N/10)  | Rate Overall (N/10) | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 1 | 427 | 634 | 674 | 6 | 7 | 8 | 7 | 
+| 2 | 1816 | 4223 | 1505 | 8 | 9 | 7 | 8 |
+| 3 | 861 | 1940 | - | - | - | - | - |  
+| 4 | 487 | 1507 | - | 8 | 10 | 10 | 9 | 
+| 5 | 740 | 4209 | 576 | - | - | - | - | 
+| 6 | 453 | - | - | - | - | - | - | 
+| 7 | 425 | 873 | 5575 | 6 | 7 | 10 | 6 | 
+| 8 | 6709 | 2064 | 15921 | 6 | 8 | 7 | 9 | 
+| 9 | 842 | 1386 | 1355 | - | - | - | - | 
+
+
+| Tester No |  Behavior During Playing | Feedback |
+|:--:|--|--|
+| 1 |  1. “Oh no”<br>2. “What happened” | 1. Need instruction<br>2. Playing better after playing few times |
+| 2 | 1. Murmuring to make sure how to play | 1. A bit confused how to play<br>2. Operation ways are special (not just use arrows to go up and down) and the tools are quite cool<br>3. UFO is quite a different element with the game theme |
+| 3 | 1. Trying to understand the rules<br>2. Trying to use the tools<br>3. “Oh can shoot things”<br>4. “I am not good at playing games” | 1. Pretty fun<br>2. Its okay if going up, but have no idea how to play while on the ground  <br>3. Don’t know when to click the tools<br>4. Don’t know when to trigger the jump |
+| 4 | 1. “What am I doing right now?”<br>2. “Oh no I’m not good at this”<br>3. Seems doesn’t know how and when to use the tools  | 1. Too easy to lost the game<br>2. Hills are too high<br>3. It’s better if I have more life<br>4. Suggest can gain life after having gone for a while such as reach certain score or distance |
+| 5 | 1. Trying to figure out how to land, when to click space<br>2. Seems playing well since the attempt 2<br>3. “Oh I’m trying to do a perfect landing”  | 1. This game is really simple that’s nice |
+| 6 | 1. “What is the red bar?”<br>2. “How to play?” | 1. Need instructions to figure out what’s happening |
+| 7 | 1. “How to keep it in air?”<br>2. Trying to know how to play<br>3. “Shit the curve is too deep, I kept crashing into it”<br>4. “When should I kick the space bar? Should I press the space bar once or keep holding it?”  | 1. That’s cool but hard as well<br>2. Unsure how to stay in air |
+| 8 | 1. “What’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. The sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
+| 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
+
 ### Qualitative evaluation
+### Difficulties
+### Quantitative Analysis
+### Description of how code was tested
 
 # 7. Process 
 ### Collaboration
