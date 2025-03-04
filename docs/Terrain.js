@@ -9,23 +9,37 @@ class Terrain {
     constructor() {
         this.numWaves = 30;  // Number of sine waves to sum
         this.stage = 1;
-        for (let i = 0; i < this.numWaves; i++) {
-            this.amplitudes.push(2);
-            this.frequencies.push(0.01);
-            this.phases.push(0);
-        }
+        this.randomnessFactor = 0;
 
-        // OLD RANDOMISED HILLS PARAMS PRIOR TO INCREASING DIFFICULTY CHANGE
-        // for (let i = 0; i < this.numWaves; i++) {
-        //     this.amplitudes.push(Math.random() * 10 + 10);
-        //     this.frequencies.push(Math.random() * 0.012 + 0.01);
-        //     this.phases.push(Math.random() * Math.PI * 4);
+        // for (let i = 0; i < 26; i++) {
+        //     this.amplitudes.push(2);
+        //     this.frequencies.push(0.01);
+        //     this.phases.push(0);
         // }
+        //
+        // let ampVariation = 1 * 10 + 2;
+        // let freqVariation = 1 * 0.01 + 0.01;
+        // let phaseVariation = Math.PI * (1 + 1 * 0.5);
+        //
+        // for (let i = 0; i < 4; i++) {
+        //     this.amplitudes.push(Math.random() * ampVariation);
+        //     this.frequencies.push(Math.random() * freqVariation);
+        //     this.phases.push(Math.random() * phaseVariation);
+        // }
+
+        // Add new (more random) elements to end
+
+        // // // OLD RANDOMISED HILLS PARAMS PRIOR TO INCREASING DIFFICULTY CHANGE
+        for (let i = 0; i < this.numWaves; i++) {
+            this.amplitudes.push(Math.random() * 10 + 10);
+            this.frequencies.push(Math.random() * 0.012 + 0.01);
+            this.phases.push(Math.random() * Math.PI * 4);
+        }
     }
 
     updateHillParams() {
         // Calc a randomness factor based on offset
-        let randomnessFactor = Math.min(game.offset / 10000, 1);
+        this.randomnessFactor = Math.min(50000 / 10000, 1);
 
         // Remove first element (oldest / least random)
         this.amplitudes.shift();
@@ -33,9 +47,9 @@ class Terrain {
         this.phases.shift();
 
         // Calc variation to apply relative to each param
-        let ampVariation = randomnessFactor * 10 + 2;
-        let freqVariation = randomnessFactor * 0.01 + 0.01;
-        let phaseVariation = Math.PI * (1 + randomnessFactor * 0.5);
+        let ampVariation = this.randomnessFactor * 10 + 2;
+        let freqVariation = this.randomnessFactor * 0.01 + 0.01;
+        let phaseVariation = Math.PI * (1 + this.randomnessFactor * 0.5);
 
         // Add new (more random) elements to end
         this.amplitudes.push(Math.random() * ampVariation);
@@ -45,10 +59,12 @@ class Terrain {
 
     drawHills() {
         // If reached new stage distance, make hill parameters more randomised
-        if (game.offset / 1000 > this.stage) {
-            this.updateHillParams();
-            this.stage++;
-        }
+        // if (game.offset / 10000 > this.stage) {
+        //     this.updateHillParams();
+        //     this.stage++;
+        // }
+
+        console.log(this.randomnessFactor);
 
         for (let i=0; i<6; i++) {
             this.drawLayer(159, 216 - 10*i, 251, i);
