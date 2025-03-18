@@ -217,6 +217,52 @@ Once the personas are established, user stories are created to represent the nee
         <td>As an avid player, I want to compare my scores with friends.</td>
         <td>The game should include a friend leaderboard feature for score comparison.</td>
     </tr>
+
+
+
+    <tr>
+        <td rowspan="5">Sustainable Player</td>
+        <td>Technically sustainable</td>
+        <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
+        <td>The high-score data storage should be persistent and maintained.</td>
+    </tr>
+    <tr>
+        <td>As a techically-minded player, I want to be able to see and learn from the code bases of the games I play.</td>
+        <td>The open-source code should be maintained and accessible.</td>
+    </tr>
+    
+    <tr>
+        <td rowspan="2">Social Players</td>
+        <td>As a social player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
+        <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
+    </tr>
+    <tr>
+        <td>As a social player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
+        <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Economic Players</td>
+        <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
+        <td>The game should be free and fun with any costs only being for avid players.</td>
+    </tr>
+    <tr>
+        <td>As a casual player, I want to be able to just connect to the internet and be able to play.</td>
+        <td>The game should be accessible on a web browser without anything extra required.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Environmental Players</td>
+        <td>As an environmentally-minded player, I want a game that feels representative of my interests.</td>
+        <td>The game should feel grounded in its environment.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Individual Players</td>
+        <td>As a safety-minded player, I want a game that doesn't require my data or is a safety risk.</td>
+        <td>The game should not require any important data from the users, to make the games' data usage sustainble.</td>
+    </tr>
+    <tr>
+        <td>As a health-minded player, I don't want to feel addicted or in pain after playing for periods of time.</td>
+        <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
+    </tr>
 </table>
 
 ### Use-Cases Breakdown
