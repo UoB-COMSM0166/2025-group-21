@@ -194,7 +194,7 @@ Once the personas are established, user stories are created to represent the nee
         <td>I can click a “Pause” button to stop the game and a “Resume” button to continue from where I left off.</td>
     </tr>
     <tr>
-        <td rowspan="1">Avid Player</td>
+        <td rowspan="5">Avid Player</td>
         <td>Replayability</td>
         <td>As an avid player, I want to replay the game so that I can improve my skills and achieve a sense of accomplishment.</td>
         <td>The game should allow multiple playthroughs without significant restrictions.</td>
@@ -218,8 +218,8 @@ Once the personas are established, user stories are created to represent the nee
         <td>The game should include a friend leaderboard feature for score comparison.</td>
     </tr>
     <tr>
-        <td rowspan="2">Sustainable Player</td>
-        <td>Technically sustainable</td>
+        <td rowspan="9">Sustainable Player</td>
+        <td rowspan="2">Technically sustainable</td>
         <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
         <td>The high-score data storage should be persistent and maintained.</td>
     </tr>
