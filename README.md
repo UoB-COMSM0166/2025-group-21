@@ -194,7 +194,7 @@ Once the personas are established, user stories are created to represent the nee
         <td>I can click a “Pause” button to stop the game and a “Resume” button to continue from where I left off.</td>
     </tr>
     <tr>
-        <td rowspan="5">Avid Player</td>
+        <td rowspan="1">Avid Player</td>
         <td>Replayability</td>
         <td>As an avid player, I want to replay the game so that I can improve my skills and achieve a sense of accomplishment.</td>
         <td>The game should allow multiple playthroughs without significant restrictions.</td>
@@ -217,11 +217,8 @@ Once the personas are established, user stories are created to represent the nee
         <td>As an avid player, I want to compare my scores with friends.</td>
         <td>The game should include a friend leaderboard feature for score comparison.</td>
     </tr>
-
-
-
     <tr>
-        <td rowspan="5">Sustainable Player</td>
+        <td rowspan="2">Sustainable Player</td>
         <td>Technically sustainable</td>
         <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
         <td>The high-score data storage should be persistent and maintained.</td>
@@ -230,7 +227,6 @@ Once the personas are established, user stories are created to represent the nee
         <td>As a techically-minded player, I want to be able to see and learn from the code bases of the games I play.</td>
         <td>The open-source code should be maintained and accessible.</td>
     </tr>
-    
     <tr>
         <td rowspan="2">Social Players</td>
         <td>As a social player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
@@ -250,7 +246,7 @@ Once the personas are established, user stories are created to represent the nee
         <td>The game should be accessible on a web browser without anything extra required.</td>
     </tr>
     <tr>
-        <td rowspan="2">Environmental Players</td>
+        <td rowspan="1">Environmental Players</td>
         <td>As an environmentally-minded player, I want a game that feels representative of my interests.</td>
         <td>The game should feel grounded in its environment.</td>
     </tr>
