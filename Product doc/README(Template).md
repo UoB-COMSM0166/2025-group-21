@@ -26,6 +26,8 @@
 - One quantitative evaluation (of your choice)
 - Description of how code was tested.
 
+#### NOTE: adding more quantitative and qualitative gets extra marks
+
 <h3>Process</h3>
 
 - 15% ~750 words
