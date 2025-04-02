@@ -5,69 +5,59 @@ class Workshop {
     constructor() {
         document.body.classList.add("show-cursor");
 
+        this.selectedItem = null;
+
         // Tab Buttons
-        this.tabDiv = createDiv();
-        this.tabDiv.id('tabDiv');
-        this.tabDiv.position(width*0.2, height*0.25);
-        let tabSize = page.pageWidth/35;
-        this.toolsButton = createButton('Tools');
-        this.toolsButton.style('font-size', tabSize + 'px');
-        this.tabDiv.child(this.toolsButton);
+        // this.tabDiv = createDiv();
+        // this.tabDiv.id('tabDiv');
+        // this.tabDiv.position(width*0.2, height*0.25);
+        // let tabSize = page.pageWidth/35;
+        // this.toolsButton = createButton('Tools');
+        // this.toolsButton.style('font-size', tabSize + 'px');
+        // this.tabDiv.child(this.toolsButton);
 
         this.playButton = createButton('Play');
-        this.purchaseButton = createButton('Purchase');
+        this.purchaseButton = createButton('BUY!');
 
         // Items Buttons
-        this.itemDiv = createDiv();
-        this.itemDiv.id('itemDiv');
-        this.itemDiv.position(width*0.5, height*0.45);
+        // this.itemDiv = createDiv();
+        // this.itemDiv.id('itemDiv');
+        // this.itemDiv.position(width*0.5, height*0.45);
         let itemSize = page.pageWidth/55;
-        this.BDFlyButton = createButton('BDFly');
-        this.UFOButton = createButton('UFO');
-        this.MountButton = createButton('Mount');
-        this.BDFlyButton.style('font-size', itemSize + 'px');
-        this.UFOButton.style('font-size', itemSize + 'px');
-        this.MountButton.style('font-size', itemSize + 'px');
-        this.itemDiv.child(this.BDFlyButton);
-        this.itemDiv.child(this.UFOButton);
-        this.itemDiv.child(this.MountButton);
+
+        this.laser = createButton('Laser');
+        this.flying = createButton('Flying');
+        this.forceField = createButton('Force Field');
+        this.laser.style('font-size', itemSize + 'px');
+        this.laser.class('upgradeItemButton');
+        this.laser.position(page.xPadding + page.margin + 0.2*page.pageWidth,
+                            page.yPadding + page.margin + 0.2*page.pageHeight);
+        this.flying.style('font-size', itemSize + 'px');
+        this.flying.class('upgradeItemButton');
+        this.flying.position(page.xPadding + page.margin + 0.4*page.pageWidth,
+                             page.yPadding + page.margin + 0.2*page.pageHeight);
+        this.forceField.style('font-size', itemSize + 'px');
+        this.forceField.class('upgradeItemButton');
+        this.forceField.position(page.xPadding + page.margin + 0.6*page.pageWidth,
+                                 page.yPadding + page.margin + 0.2*page.pageHeight);
+        // this.itemDiv.child(this.laser);
+        // this.itemDiv.child(this.flying);
+        // this.itemDiv.child(this.forceField);
 
         // Item Details
-        this.BDFlyDetail = createP("- Click the button Q<br>- Use in segments: The player can use it multiple times within the total duration.<br>- Effect -- Increase height: When the player presses the button, the penguin will be elevated to a fixed Y-axis height and simultaneously move along the X-axis at a fixed low speed.\n");
-        this.UFODetail = createP("- Click the button U<br>- One-time use<br>- Speed boost for 5 seconds<br>- Rewind to the starting point<br>- Vertical lift to an extremely high altitude");
-        this.MountDetail = createP("- Click the button W<br>- One-time use<br>- Effect -- After summoning, it will assist in flying (at a relatively fast speed) for 7 seconds.");
+        // this.BDFlyDetail = createP("- Click the button Q<br>- Use in segments: The player can use it multiple times within the total duration.<br>- Effect -- Increase height: When the player presses the button, the penguin will be elevated to a fixed Y-axis height and simultaneously move along the X-axis at a fixed low speed.\n");
+        // this.UFODetail = createP("- Click the button U<br>- One-time use<br>- Speed boost for 5 seconds<br>- Rewind to the starting point<br>- Vertical lift to an extremely high altitude");
+        // this.MountDetail = createP("- Click the button W<br>- One-time use<br>- Effect -- After summoning, it will assist in flying (at a relatively fast speed) for 7 seconds.");
 
         // Item Prices
         this.BDFlyPrice = 1;
         this.UFOPrice = 60;
         this.MountPrice = 70;
-        this.itemPrice = createElement('h3', this.BDFlyPrice);
-        this.currentPrice = this.BDFlyPrice;
+        //this.itemPrice = createElement('h3', this.BDFlyPrice);
+        //this.currentPrice = this.BDFlyPrice;
         this.purchaseValid = null;
 
-        // Invalid Purchase Popup
-        this.invalidPurchasePop = createDiv();
-        this.invalidPurchasePop.id('invalidPurchasePop');
-        this.invalidPurchasePop.position(width*0.5, height*0.25);
-        this.invalidPurchasePop.html("<h3>Insufficient</h3><p>Play more game to earn more coins :D</p>");
-        this.closePopupButton = createButton('close');
-        let closeButtonSize = page.pageWidth/55;
-        this.closePopupButton.style('font-size', closeButtonSize + 'px');
-        this.invalidPurchasePop.child(this.closePopupButton);
-
-        // Valid Purchase Popup
-        this.validPurchasePop = createDiv();
-        this.validPurchasePop.id('validPurchasePop');
-        this.validPurchasePop.position(width*0.5, height*0.25);
-        this.validPurchasePop.html("<h3>Purchase</h3><p>Make sure you wanna buy this tool!</p>");
-        this.confirmPopupButton = createButton('confirm');
-        let confirmButtonSize = page.pageWidth/55;
-        this.closePopupButton.style('font-size', confirmButtonSize + 'px');
-        this.validPurchasePop.child(this.confirmPopupButton);
-
-
-        this.tools = true;
-        this.currentItem = this.BDFlyDetail;
+        //this.currentItem = this.BDFlyDetail;
     }
 
 
@@ -83,141 +73,121 @@ class Workshop {
         // Buttons
         this.playButtonDefault();
         this.purchaseButtonDefault();
-        this.toolsContent();
+        this.showUpgradeDescription();
 
         // Color blocks
-        background(89,133,231,255);
+        //background(89,133,231,255);
+        image(workshopBackground, 0, 0, width, height);
         fill(244,208,255,255);
         noStroke();
         rect(width*0.1, height*0.4, page.pageWidth/3.5, page.pageWidth/3.5, 10);
-        fill(255,240,255,255);
+        //fill(244,208,255,255);
         noStroke();
-        rect(width*0.55, height*0.63, page.pageWidth/2.5, page.pageWidth/6.5, 10);
+        rect(width*0.45, height*0.4, page.pageWidth/2.2, page.pageWidth/6.5, 10);
 
         // Price
-        this.priceDiv = createDiv();
-        this.priceDiv.id('priceDiv');
-        fill(228, 221, 0);
-        stroke(0);
-        this.priceIcon = ellipse(width*0.57, height*0.44, 35);
-        fill(0);
-        strokeWeight(5);
-        this.itemPrice.position(width*0.7, height*0.39, 260);
+
+        // this.priceDiv = createDiv();
+        // this.priceDiv.id('priceDiv');
+        // fill(228, 221, 0);
+        // stroke(0);
+        // this.priceIcon = ellipse(width*0.57, height*0.44, 35);
+        // fill(0);
+        // strokeWeight(5);
+        // this.itemPrice.position(width*0.7, height*0.39, 260);
     }
 
     clickButton(){
         this.playButton.mousePressed(() => this.playButtonPressed());
-        this.toolsButton.mousePressed(()=>this.toolsButtonPressed());
-        this.purchaseButton.mousePressed(() => this.checkPurchaseValid(this.currentPrice));
+        //this.purchaseButton.mousePressed(() => this.checkPurchaseValid(this.currentPrice));
 
-        this.BDFlyButton.mousePressed(() => this.showBDFlyDetail());
-        this.UFOButton.mousePressed(() => this.showUFODetail());
-        this.MountButton.mousePressed(() => this.showMountDetail());
+        this.laser.mousePressed(() => this.selectedItem = "laser");
+        this.flying.mousePressed(() => this.selectedItem = "flying");
+        this.forceField.mousePressed(() => this.selectedItem = "force field");
 
-        this.closePopupButton.mousePressed(() => this.closePopup());
-        this.confirmPopupButton.mousePressed(() => {
-            this.decrementCoin(this.currentPrice);
-            this.closePopup()
-        });
+        // this.closePopupButton.mousePressed(() => this.closePopup());
+        // this.confirmPopupButton.mousePressed(() => {
+        //     this.decrementCoin(this.currentPrice);
+        //     this.closePopup()
+        // });
     }
 
-    updatePrice(item){
-        this.itemPrice.html(item);
-    }
+    // updatePrice(item){
+    //     this.itemPrice.html(item);
+    // }
 
     /*------------ToolsButton-----------------*/
 
-    toolsButtonPressed(){
-        this.tools = true;
-        this.toolsContent();
-    }
+    showUpgradeDescription(){
 
-    toolsContent(){
-        this.BDFlyDetail.position(width*0.67, height*0.7);
-        this.UFODetail.position(width*0.67, height*0.7);
-        this.MountDetail.position(width*0.67, height*0.7);
-        this.BDFlyDetail.hide(); this.UFODetail.hide(); this.MountDetail.hide();
-        this.currentItem.show();
+        let size = page.pageWidth/20;
+        fill(10,25,87,255);
+        textFont('Trebuchet MS');
+        textAlign(CENTER, TOP);
+        stroke(10,25,87,255);
+        strokeWeight(size/8);
+        textSize(size);
 
-        if(this.tools){
-            this.BDFlyButton.show(); this.UFOButton.show(); this.MountButton.show();
+        switch (this.selectedItem) {
+            case "laser": this.showLaserDescription(); break;
+            case "flying": this.showFLyingDescription(); break;
+            case "force field": this.showForceFieldDescription(); break;
         }
     }
 
-    showBDFlyDetail(){
-        this.hideAllToolsDetails();
-        this.BDFlyDetail.show();
-        this.currentItem = this.BDFlyDetail;
-        this.updatePrice(this.BDFlyPrice);
-        this.currentPrice = this.BDFlyPrice;
+    showLaserDescription(){
+        text('[Laser Description]', width/2, 0.001*page.margin*page.pageWidth);
     }
 
-    showUFODetail(){
-        this.hideAllToolsDetails();
-        this.UFODetail.show();
-        this.currentItem = this.UFODetail;
-        this.updatePrice(this.UFOPrice);
-        this.currentPrice = this.UFOPrice;
+    showFLyingDescription(){
+        text('[Flying Description]', width/2, 0.001*page.margin*page.pageWidth);
     }
 
-    showMountDetail(){
-        this.hideAllToolsDetails();
-        this.MountDetail.show();
-        this.currentItem = this.MountDetail;
-        this.updatePrice(this.MountPrice);
-        this.currentPrice = this.MountPrice;
-    }
-
-    hideAllToolsDetails(){
-        this.BDFlyDetail.hide();
-        this.UFODetail.hide();
-        this.MountDetail.hide();
+    showForceFieldDescription(){
+        text('[Force Field Description]', width/2, 0.001*page.margin*page.pageWidth);
     }
 
     /*------------PurchaseButton--------------*/
     purchaseButtonDefault(){
         this.purchaseButton.class('purchaseButton');
         this.purchaseButton.position(
-            page.xPadding + page.margin + 0.8*page.pageWidth,
-            page.yPadding + page.margin + 0.39*page.pageHeight);
+            page.xPadding + page.margin + 0.55*page.pageWidth,
+            page.yPadding + page.margin + 0.75*page.pageHeight);
 
         let tabSize = page.pageWidth/40;
         this.purchaseButton.style('font-size', tabSize + 'px');
     }
 
     checkPurchaseValid(itemPrice){
-        if (itemPrice > inventory.coins) {
-            this.purchaseValid = false;
-        } else {
-            this.purchaseValid = true;
-        }
+        this.purchaseValid = itemPrice <= inventory.coins;
 
-        if(this.purchaseValid){
+        if (this.purchaseValid){
             this.purchaseIsValid();
-        }else{
+        }
+        else {
             this.purchaseInValid();
         }
     }
 
-    purchaseIsValid(){
-        this.validPurchasePop.style('display','block');
-        this.confirmPopupButton.style('display','block');
-    }
-
-    purchaseInValid(){
-        this.invalidPurchasePop.style('display','block');
-        this.closePopupButton.style('display','block');
-    }
-
-    closePopup(){
-        this.invalidPurchasePop.style('display','none');
-        this.validPurchasePop.style('display','none');
-    }
-
-    decrementCoin(itemPrice){
-        inventory.coins = inventory.coins - itemPrice;
-        return inventory.coins;
-    }
+    // purchaseIsValid(){
+    //     this.validPurchasePop.style('display','block');
+    //     this.confirmPopupButton.style('display','block');
+    // }
+    //
+    // purchaseInValid(){
+    //     this.invalidPurchasePop.style('display','block');
+    //     this.closePopupButton.style('display','block');
+    // }
+    //
+    // closePopup(){
+    //     this.invalidPurchasePop.style('display','none');
+    //     this.validPurchasePop.style('display','none');
+    // }
+    //
+    // decrementCoin(itemPrice){
+    //     inventory.coins = inventory.coins - itemPrice;
+    //     return inventory.coins;
+    // }
 
     /*------------PlayButton------------------*/
     playButtonDefault() {
@@ -226,7 +196,7 @@ class Workshop {
 
         this.playButton.position(
             page.xPadding + page.margin + 0.8*page.pageWidth,
-            page.yPadding + page.margin + 0.2*page.pageHeight);
+            page.yPadding + page.margin + 0.8*page.pageHeight);
 
         this.playButton.size(page.pageWidth/7, page.pageHeight/9);
         this.playButton.class('playButton');
@@ -234,6 +204,7 @@ class Workshop {
     }
 
     playButtonPressed() {
+        noStroke();
         this.removeAll();
         shop = null;
         Domain = 'game';
@@ -241,17 +212,13 @@ class Workshop {
 
     removeAll(){
         this.playButton.remove();
-        this.toolsButton.remove();
-        this.BDFlyButton.remove();
-        this.UFOButton.remove();
-        this.MountButton.remove();
-        this.BDFlyDetail.remove();
-        this.UFODetail.remove();
-        this.MountDetail.remove();
-        this.itemPrice.remove();
+        this.laser.remove();
+        this.flying.remove();
+        this.forceField.remove();
+        //this.itemPrice.remove();
         this.purchaseButton.remove();
-        this.invalidPurchasePop.remove();
-        this.validPurchasePop.remove();
+        //this.invalidPurchasePop.remove();
+        //this.validPurchasePop.remove();
 
     }
 

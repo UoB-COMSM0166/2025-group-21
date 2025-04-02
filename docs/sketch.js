@@ -27,6 +27,7 @@ let homeBackground;
 let logo;
 let playNoPressed;
 let playIsPressed;
+let workshopBackground;
 
 function setup() {
 
@@ -76,4 +77,5 @@ function preload() {
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
+    workshopBackground = loadImage('assets/images/workshop_background.png');
 }
