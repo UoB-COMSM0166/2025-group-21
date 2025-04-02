@@ -46,3 +46,33 @@ button {
     color: white;
 }
 
+.purchaseButton {
+    background-color: rgb(255, 250, 0);
+    color: black;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    /*transition: background-color 0.3s ease-in-out;*/
+}
+
+.purchaseButton:hover {
+    background-color: rgb(255, 253, 188);
+}
+
+.upgradeItemButton {
+    background-color: rgb(10, 25, 87);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    /*transition: background-color 0.3s ease-in-out;*/
+}
+
+.upgradeItemButton:hover {
+    background-color: rgb(36, 58, 152);
+}
+
