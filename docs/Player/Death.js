@@ -59,7 +59,7 @@ class Death {
             }
             else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
 
-            let size = page.pageWidth/8;
+            let size = width/8;
             fill(228, 221, 0);
             textFont('Trebuchet MS');
             textAlign(CENTER, CENTER);
@@ -106,7 +106,7 @@ class Death {
     }
 
     printScore() {
-        let size = page.pageWidth/4;
+        let size = width/4;
 
         this.updateEndScorePrintLocation();
 
@@ -126,7 +126,7 @@ class Death {
     }
 
     updateEndScorePrintLocation() {
-        let size = page.pageWidth;
+        let size = width;
 
         if (this.deathTimer.time < 110) {
             this.endScore.x -= 0.0001*size;
@@ -178,41 +178,41 @@ class Death {
 
     updateShopButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = width / 300;
         let numString = textSize.toString() + 'rem'
 
         this.shopButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.43*page.pageHeight);
+            0.11*width,
+            0.43*height);
 
         this.shopButton.class('quitButton')
         this.shopButton.style('font-size', numString);
-        this.shopButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.shopButton.size(width*0.8, height/10);
     }
     updatePlayButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = width / 300;
         let numString = textSize.toString() + 'rem'
 
         this.playButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.23*page.pageHeight);
+            0.11*width,
+            0.23*height);
 
         this.playButton.class('quitButton')
         this.playButton.style('font-size', numString);
-        this.playButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.playButton.size(width*0.8, height/10);
     }
     updateStatsButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = width / 300;
         let numString = textSize.toString() + 'rem'
 
         this.statsButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.63*page.pageHeight);
+            0.11*width,
+            0.63*height);
 
         this.statsButton.class('quitButton')
         this.statsButton.style('font-size', numString);
-        this.statsButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.statsButton.size(width*0.8, height/10);
     }
 }

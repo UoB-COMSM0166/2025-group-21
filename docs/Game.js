@@ -40,8 +40,6 @@ class Game {
         image(homeBackground, 0, 0, width, height);
 
         push();
-            // Scale the game size if they resize the window
-            scale(page.gameScale);
             translate(this.tx, this.ty); // Change coordinate origin to player position
             scale(this.zoom); // set screen zoom
 

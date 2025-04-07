@@ -1,5 +1,3 @@
-
-
 class Pause {
 
     constructor() {
@@ -19,7 +17,7 @@ class Pause {
         this.updateQuitButton()
         this.opacity = lerp(this.opacity, 100, 0.2);
         fill(0, 0, 0, this.opacity);
-        rect(0, 0, window.innerWidth, window.innerHeight);
+        rect(0, 0, width, height);
         this.quitButton.mousePressed(() => this.quitButtonPressed());
     }
 
@@ -42,15 +40,17 @@ class Pause {
 
     updateQuitButton() {
 
-        let textSize = page.pageWidth / 300;
-        let numString = textSize.toString() + 'rem'
+        const rect = canvas.getBoundingClientRect();
+
+        let textSize = rect.width/30;
+        let numString = textSize.toString() + 'px'
 
         this.quitButton.position(
-            page.xPadding + page.margin + 0.11*page.pageWidth,
-            page.yPadding + page.margin + 0.43*page.pageHeight);
+            0.11*rect.width,
+            0.43*rect.height);
 
         this.quitButton.class('quitButton')
         this.quitButton.style('font-size', numString);
-        this.quitButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.quitButton.size(rect.width*0.8, rect.height/10);
     }
 }

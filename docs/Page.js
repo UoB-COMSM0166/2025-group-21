@@ -5,9 +5,10 @@ class Page {
         this.xPadding = 0;
         this.yPadding = 0;
         this.margin = 25;
-        this.gameScale = 1;
+
         this.pageHeight;
         this.pageWidth;
+
         this.canvas = null;
 
         this.setPageSize();
@@ -63,12 +64,12 @@ class Page {
 }
 
 
-function windowResized() {
-
-    // Update the page scale
-    page.adjustGameScale();
-
-    // Resize and reposition the canvas
-    resizeCanvas(page.pageWidth, page.pageHeight);
-    page.canvas.position(page.xPadding + page.margin, page.yPadding + page.margin);
-}
+// function windowResized() {
+//
+//     // Update the page scale
+//     page.adjustGameScale();
+//
+//     // Resize and reposition the canvas
+//     resizeCanvas(page.pageWidth, page.pageHeight);
+//     page.canvas.position(page.xPadding + page.margin, page.yPadding + page.margin);
+// }

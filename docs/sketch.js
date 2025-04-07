@@ -30,8 +30,13 @@ let playIsPressed;
 
 function setup() {
 
-    page = new Page();
+    const{x, y} = initialDimensions();
+    createCanvas(x, y).id("myCanvas");
+
+    // page = new Page();
     inventory = new Inventory();
+    resizeCanvasCSS();
+    window.addEventListener("resize", resizeCanvasCSS);
 }
 
 function draw() {
@@ -76,4 +81,37 @@ function preload() {
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
+}
+
+function initialDimensions() {
+    // Calc maximum dimensions
+    let maxWidth = window.innerWidth - 20*2;
+    let maxHeight = window.innerHeight - 20*2;
+
+    // Calc maximum dimensions, but still in 16:9
+    let widthBasedHeight = maxWidth * 9 / 16;
+    let heightBasedWidth = maxHeight * 16 / 9;
+
+    // Use limiting dimension
+    if (widthBasedHeight <= maxHeight) return {x: maxWidth, y: widthBasedHeight};
+    else return {x: heightBasedWidth, y: maxHeight};
+}
+
+function resizeCanvasCSS() {
+
+    let canvas = document.getElementById("myCanvas");
+    // Maintain aspect ratio while scaling to fit window
+    let aspectRatio = 16 / 9;
+    let newWidth = window.innerWidth - 20*2;
+    let newHeight = window.innerHeight - 20*2;
+
+    if (newWidth / newHeight > aspectRatio) {
+        newWidth = newHeight * aspectRatio;
+    } else {
+        newHeight = newWidth / aspectRatio;
+    }
+
+    canvas.style.width = `${newWidth}px`;
+    canvas.style.height = `${newHeight}px`;
+    canvas.style.imageRendering = "pixelated"; // Ensures crisp pixels
 }

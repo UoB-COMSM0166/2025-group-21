@@ -38,7 +38,6 @@ class Lives {
         for (let i = 0; i < this.totalLives ; i++) {
             strokeWeight(0);
             fill('black');
-            // ellipse((page.pageWidth*0.05+i*25) * page.scaleX, page.pageHeight*0.1, 20*page.scaleX);
             ellipse((50 + i*30), 50, 20);
         }
     }
