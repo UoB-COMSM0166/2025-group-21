@@ -18,21 +18,6 @@ button {
     border: none;
 }
 
-.playButton {
-    background-color: rgb(135, 206, 250);
-    color: white;
-    font-weight: bold;
-    border-radius: 50px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    /*transition: background-color 0.3s ease-in-out;*/
-}
-
-.playButton:hover {
-    background-color: rgb(187, 252, 252);
-}
-
 .quitButton {
     background-color: rgba(0, 0, 0, 0);
     border: none;
@@ -46,19 +31,49 @@ button {
     color: white;
 }
 
-.purchaseButton {
-    background-color: rgb(255, 250, 0);
-    color: black;
+.playButton {
+    background-color: rgb(135, 206, 250);
+    color: white;
     font-weight: bold;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 0;
     cursor: pointer;
     border: none;
     /*transition: background-color 0.3s ease-in-out;*/
 }
 
-.purchaseButton:hover {
-    background-color: rgb(255, 253, 188);
+.playButton:hover {
+    background-color: rgb(187, 252, 252);
+}
+
+.purchaseButtonActive {
+    background-color: rgb(255, 250, 0);
+    color: black;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 0;
+    cursor: pointer;
+    /*border: 5px solid black;*/
+    /*transition: background-color 0.3s ease-in-out;*/
+}
+
+.purchaseButtonActive:hover {
+    background-color: rgb(1, 255, 7);
+}
+
+.purchaseButtonInactive {
+    background-color: rgb(255, 250, 0);
+    color: black;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 0;
+    cursor: pointer;
+    /*border: 5px solid black;*/
+    /*transition: background-color 0.3s ease-in-out;*/
+}
+
+.purchaseButtonInactive:hover {
+    background-color: rgb(255, 0, 0);
 }
 
 .upgradeItemButton {
@@ -66,7 +81,7 @@ button {
     color: white;
     font-weight: bold;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 0;
     cursor: pointer;
     border: none;
     /*transition: background-color 0.3s ease-in-out;*/
