@@ -173,14 +173,29 @@ class Workshop {
         let size = width / 4;
         imageMode(CENTER);
         translate(0.25*width, 0.65*height)
-        rotate(2.357);
 
         switch (inventory.laserLevel) {
-            case 4: image(greenLaser, 0, 0, size, size/5); break;
+            case 1:
+                rotate(-0.78);
+                image(fish, 0, 0, size/1.5, size/1.5);
+                break;
+            case 2:
+                rotate(-0.78);
+                image(snowball, 0, 0, size/1.5, size/1.5);
+                break;
+            case 3:
+                rotate(-0.78);
+                image(arrow, 0, 0, size/1.5, size/10, 0, 0, 60, 9);
+                break;
+            case 4:
+                rotate(2.357);
+                image(greenLaser, 0, 0, size, size/5);
+                break;
             case 5:
-                image(purpleLaser, -size/4, size/6, size/2, size/6);
-                image(purpleLaser, size/10, size/20, size/2, size/6);
-
+                rotate(2.357);
+                image(purpleLaser, size/10, size/6, size/2, size/6);
+                image(purpleLaser, size/3, size/20, size/2, size/6);
+                image(purpleLaser, -size/4, -size/30, size/2, size/6);
                 break
         }
 
@@ -256,39 +271,6 @@ class Workshop {
         let lineHeight = (width/100).toString() + 'px'
         this.playButton.style('line-height', lineHeight);
     }
-
-    checkPurchaseValid(itemPrice){
-        this.purchaseValid = itemPrice <= inventory.coins;
-
-        if (this.purchaseValid){
-            this.purchaseIsValid();
-        }
-        else {
-            this.purchaseInValid();
-        }
-    }
-
-    // purchaseIsValid(){
-    //     this.validPurchasePop.style('display','block');
-    //     this.confirmPopupButton.style('display','block');
-    // }
-    //
-    // purchaseInValid(){
-    //     this.invalidPurchasePop.style('display','block');
-    //     this.closePopupButton.style('display','block');
-    // }
-    //
-    // closePopup(){
-    //     this.invalidPurchasePop.style('display','none');
-    //     this.validPurchasePop.style('display','none');
-    // }
-    //
-    // decrementCoin(itemPrice){
-    //     inventory.coins = inventory.coins - itemPrice;
-    //     return inventory.coins;
-    // }
-
-
 
     playButtonPressed() {
         noStroke();

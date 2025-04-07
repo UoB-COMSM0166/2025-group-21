@@ -32,6 +32,7 @@ class Pause {
             this.opacity = 0;
             document.body.classList.remove("show-cursor");
             this.quitButton.remove();
+            this.continueButton.remove();
             this.fieldsReset = true;
         }
     }
