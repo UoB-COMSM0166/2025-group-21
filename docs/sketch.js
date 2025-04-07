@@ -34,6 +34,8 @@ let arrow = null;
 let arrowSound = null;
 let ufoArrowImpact = null;
 let ufoArrowImpactSound = null;
+let greenLaser = null;
+let purpleLaser = null;
 
 let homeBackground;
 let logo;
@@ -87,6 +89,8 @@ function preload() {
     frozenUfo = loadImage('assets/images/frozenUfo.png');
     arrow = loadImage('assets/sprites/arrow.png');
     ufoArrowImpact = loadImage('assets/sprites/ufoArrowImpact.png')
+    greenLaser = loadImage('assets/images/greenLaser.png');
+    purpleLaser = loadImage('assets/images/purpleLaser.png');
 
     loadSounds();
 
