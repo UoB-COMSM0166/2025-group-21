@@ -22,11 +22,12 @@ class ProjectileAbility {
         let position = createVector(originX, originY);
         let velocity = createVector(50*cos(velocityAngle), 50*sin(velocityAngle));
 
-        if (this.level > 0) {
-            this.projectiles.push(new Laser(position, velocity));
-        }
-        else {
-            this.projectiles.push(new Fish(position, velocity));
+        switch (this.level) {
+            case 1: this.projectiles.push(new Fish(position, velocity)); break;
+            case 2: this.projectiles.push(new Snowball(position, velocity)); break;
+            case 3: this.projectiles.push(new Arrow(position, velocity, velocityAngle)); break;
+            case 4: this.projectiles.push(new Laser(position, velocity)); break;
+            case 5: this.projectiles.push(new Laser(position, velocity)); break;
         }
     }
 
@@ -65,6 +66,16 @@ class ProjectileAbility {
                         game.UFOHandler.UFOs[u].hitByFish = true;
                         fishImpactSound.play();
                         this.projectiles[l].vel.y -= 10;
+                    }
+                    else if (this.projectiles[l] instanceof Snowball) {
+                        this.projectiles.splice(l, 1);
+                        game.UFOHandler.UFOs[u].freezing = true;
+                        freezeSound.play();
+                    }
+                    else if (this.projectiles[l] instanceof Arrow) {
+                        this.projectiles.splice(l, 1);
+                        game.UFOHandler.UFOs[u].hitByArrow = true;
+                        ufoArrowImpactSound.play();
                     }
                     else {
                         this.projectiles.splice(l, 1);

@@ -189,6 +189,7 @@ class Death {
         this.shopButton.style('font-size', numString);
         this.shopButton.size(page.pageWidth*0.8, page.pageHeight/10);
     }
+
     updatePlayButton() {
 
         let textSize = page.pageWidth / 300;
@@ -202,6 +203,7 @@ class Death {
         this.playButton.style('font-size', numString);
         this.playButton.size(page.pageWidth*0.8, page.pageHeight/10);
     }
+
     updateStatsButton() {
 
         let textSize = page.pageWidth / 300;

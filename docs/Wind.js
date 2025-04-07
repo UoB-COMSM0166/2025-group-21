@@ -15,7 +15,7 @@ class Wind {
             windSound.setVolume(0.0, 0.0);
         }
         else if (game.player.pos.y < height/4 && !game.pause.active) {
-            windSound.setVolume(0.5, 2.0);
+            windSound.setVolume(0.13, 3);
         }
         else {
             windSound.setVolume(0.0, 1.0);

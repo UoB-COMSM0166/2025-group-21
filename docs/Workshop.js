@@ -6,58 +6,26 @@ class Workshop {
         document.body.classList.add("show-cursor");
 
         this.selectedItem = null;
+        this.purchaseIsValid = false;
 
-        // Tab Buttons
-        // this.tabDiv = createDiv();
-        // this.tabDiv.id('tabDiv');
-        // this.tabDiv.position(width*0.2, height*0.25);
-        // let tabSize = page.pageWidth/35;
-        // this.toolsButton = createButton('Tools');
-        // this.toolsButton.style('font-size', tabSize + 'px');
-        // this.tabDiv.child(this.toolsButton);
-
-        this.playButton = createButton('Play');
+        this.playButton = createButton('PLAY');
+        this.playButton.class('playButton');
         this.purchaseButton = createButton('BUY!');
+        this.purchaseButton.class('purchaseButtonInactive');
 
-        // Items Buttons
-        // this.itemDiv = createDiv();
-        // this.itemDiv.id('itemDiv');
-        // this.itemDiv.position(width*0.5, height*0.45);
-        let itemSize = page.pageWidth/55;
-
-        this.laser = createButton('Laser');
-        this.flying = createButton('Flying');
-        this.forceField = createButton('Force Field');
-        this.laser.style('font-size', itemSize + 'px');
-        this.laser.class('upgradeItemButton');
-        this.laser.position(page.xPadding + page.margin + 0.2*page.pageWidth,
-                            page.yPadding + page.margin + 0.2*page.pageHeight);
-        this.flying.style('font-size', itemSize + 'px');
-        this.flying.class('upgradeItemButton');
-        this.flying.position(page.xPadding + page.margin + 0.4*page.pageWidth,
-                             page.yPadding + page.margin + 0.2*page.pageHeight);
-        this.forceField.style('font-size', itemSize + 'px');
-        this.forceField.class('upgradeItemButton');
-        this.forceField.position(page.xPadding + page.margin + 0.6*page.pageWidth,
-                                 page.yPadding + page.margin + 0.2*page.pageHeight);
-        // this.itemDiv.child(this.laser);
-        // this.itemDiv.child(this.flying);
-        // this.itemDiv.child(this.forceField);
-
-        // Item Details
-        // this.BDFlyDetail = createP("- Click the button Q<br>- Use in segments: The player can use it multiple times within the total duration.<br>- Effect -- Increase height: When the player presses the button, the penguin will be elevated to a fixed Y-axis height and simultaneously move along the X-axis at a fixed low speed.\n");
-        // this.UFODetail = createP("- Click the button U<br>- One-time use<br>- Speed boost for 5 seconds<br>- Rewind to the starting point<br>- Vertical lift to an extremely high altitude");
-        // this.MountDetail = createP("- Click the button W<br>- One-time use<br>- Effect -- After summoning, it will assist in flying (at a relatively fast speed) for 7 seconds.");
+        this.laserButton = createButton('Projectile');
+        this.laserButton.class('upgradeItemButton');
+        this.laserButton.offset = 1;
+        this.flyingButton = createButton('Flying');
+        this.flyingButton.class('upgradeItemButton');
+        this.flyingButton.offset = 4;
+        this.forceFieldButton = createButton('Force Field');
+        this.forceFieldButton.class('upgradeItemButton');
+        this.forceFieldButton.offset = 7;
 
         // Item Prices
-        this.BDFlyPrice = 1;
-        this.UFOPrice = 60;
-        this.MountPrice = 70;
-        //this.itemPrice = createElement('h3', this.BDFlyPrice);
-        //this.currentPrice = this.BDFlyPrice;
-        this.purchaseValid = null;
+        this.updateItemPrices();
 
-        //this.currentItem = this.BDFlyDetail;
     }
 
 
@@ -65,97 +33,209 @@ class Workshop {
         this.display();
         this.printTitle();
         this.printCoins();
-        this.clickButton();
+        this.listenForButtonPresses();
+
+        if (this.playerHasEnoughCoins()) {
+            this.purchaseIsValid = true;
+            this.purchaseButton.class('purchaseButtonActive');
+        }
+        else {
+            this.purchaseIsValid = false;
+            this.purchaseButton.class('purchaseButtonInactive');
+        }
     }
 
     display() {
 
-        // Buttons
-        this.playButtonDefault();
-        this.purchaseButtonDefault();
-        this.showUpgradeDescription();
-
-        // Color blocks
-        //background(89,133,231,255);
+        // background
         image(workshopBackground, 0, 0, width, height);
+
+        // Update button positions
+        this.updatePlayButton();
+        this.updatePurchaseButton();
+        this.updateUpgradeButton(this.laserButton);
+        this.updateUpgradeButton(this.flyingButton);
+        this.updateUpgradeButton(this.forceFieldButton);
+
+        // Print colour blocks
+        noStroke();
         fill(244,208,255,255);
-        noStroke();
         rect(width*0.1, height*0.4, page.pageWidth/3.5, page.pageWidth/3.5, 10);
-        //fill(244,208,255,255);
-        noStroke();
         rect(width*0.45, height*0.4, page.pageWidth/2.2, page.pageWidth/6.5, 10);
 
-        // Price
-
-        // this.priceDiv = createDiv();
-        // this.priceDiv.id('priceDiv');
-        // fill(228, 221, 0);
-        // stroke(0);
-        // this.priceIcon = ellipse(width*0.57, height*0.44, 35);
-        // fill(0);
-        // strokeWeight(5);
-        // this.itemPrice.position(width*0.7, height*0.39, 260);
+        this.showUpgradeDescription();
     }
 
-    clickButton(){
+    playerHasEnoughCoins() {
+
+        if (this.selectedItem === null) return false;
+
+        switch (this.selectedItem) {
+            case 'laser':
+                if (inventory.laserLevel < 5) {
+                    return inventory.coins >= this.laserUpgradePrice;
+                }
+                break;
+            case 'flying':
+                if (inventory.flyLevel < 5) {
+                    return inventory.coins >= this.flyingUpgradePrice;
+                }
+                break;
+            case 'force field':
+                if (inventory.forceFieldLevel < 5) {
+                    return inventory.coins >= this.forceFieldUpgradePrice;
+                }
+                break;
+        }
+        return false;
+    }
+
+    listenForButtonPresses(){
         this.playButton.mousePressed(() => this.playButtonPressed());
-        //this.purchaseButton.mousePressed(() => this.checkPurchaseValid(this.currentPrice));
-
-        this.laser.mousePressed(() => this.selectedItem = "laser");
-        this.flying.mousePressed(() => this.selectedItem = "flying");
-        this.forceField.mousePressed(() => this.selectedItem = "force field");
-
-        // this.closePopupButton.mousePressed(() => this.closePopup());
-        // this.confirmPopupButton.mousePressed(() => {
-        //     this.decrementCoin(this.currentPrice);
-        //     this.closePopup()
-        // });
+        this.purchaseButton.mousePressed(() => this.purchaseButtonButtonPressed());
+        this.laserButton.mousePressed(() => this.selectedItem = 'laser');
+        this.flyingButton.mousePressed(() => this.selectedItem = 'flying');
+        this.forceFieldButton.mousePressed(() => this.selectedItem = 'force field');
     }
 
-    // updatePrice(item){
-    //     this.itemPrice.html(item);
-    // }
+    purchaseButtonButtonPressed() {
 
-    /*------------ToolsButton-----------------*/
+        if (this.purchaseIsValid) {
+            switch (this.selectedItem) {
+                case 'laser':
+                    inventory.laserLevel++;
+                    inventory.coins -= this.laserUpgradePrice;
+                    break;
+                case 'flying':
+                    inventory.flyLevel++;
+                    inventory.coins -= this.flyingUpgradePrice;
+                    break;
+                case 'force field':
+                    inventory.forceFieldLevel++;
+                    inventory.coins -= this.forceFieldUpgradePrice;
+                    break;
+            }
+            purchaseSound.play();
+            this.updateItemPrices();
+        }
+        else illegalPurchaseSound.play();
+    }
+
+    updateItemPrices() {
+        this.laserUpgradePrice = inventory.getLaserUpgradePrice();
+        this.flyingUpgradePrice = inventory.getFlyingUpgradePrice();
+        this.forceFieldUpgradePrice = inventory.getForceFieldUpgradePrice();
+    }
 
     showUpgradeDescription(){
 
-        let size = page.pageWidth/20;
+        let size = page.pageWidth/70;
         fill(10,25,87,255);
         textFont('Trebuchet MS');
-        textAlign(CENTER, TOP);
+        textAlign(LEFT, TOP);
         stroke(10,25,87,255);
-        strokeWeight(size/8);
+        strokeWeight(size);
         textSize(size);
+        noStroke();
 
         switch (this.selectedItem) {
-            case "laser": this.showLaserDescription(); break;
-            case "flying": this.showFLyingDescription(); break;
-            case "force field": this.showForceFieldDescription(); break;
+            case 'laser': this.showLaserDescription(); break;
+            case 'flying': this.showFlyingDescription(); break;
+            case 'force field': this.showForceFieldDescription(); break;
         }
     }
 
-    showLaserDescription(){
-        text('[Laser Description]', width/2, 0.001*page.margin*page.pageWidth);
+    printAbilityLevel(abilityLevel) {
+        fill('rgb(0,0,0)')
+        rect(width*0.11, height*0.42, page.pageWidth/13, page.pageWidth/13, 5);
+        textAlign(CENTER, TOP);
+        fill('rgb(255,255,255)');
+        let size = width/55
+        textSize(size);
+        text('LEVEL', width*0.148, height*0.425);
+        textSize(3*size);
+        text(`${abilityLevel}`, width*0.148, height*0.46);
     }
 
-    showFLyingDescription(){
-        text('[Flying Description]', width/2, 0.001*page.margin*page.pageWidth);
+    showLaserDescription(){
+
+        if (inventory.laserLevel < 5) {
+            text(`Projectile level ${inventory.laserLevel+1}: ${this.laserUpgradePrice}\n` +
+                  '[Upgrade Description]', width/2.15, height/2.37);
+            // TODO: add description
+        }
+        else {
+            text('MAX', width/2.15, height/2.37);
+        }
+        this.printAbilityLevel(inventory.laserLevel);
+    }
+
+    showFlyingDescription(){
+
+        if (inventory.flyLevel < 5) {
+            text(`Flying level ${inventory.flyLevel+1}: ${this.flyingUpgradePrice}\n` +
+                  '[Upgrade Description]', width/2.15, height/2.37);
+            // TODO: add description
+        }
+        else {
+            text('MAX', width/2.15, height/2.37);
+        }
+        this.printAbilityLevel(inventory.flyLevel);
     }
 
     showForceFieldDescription(){
-        text('[Force Field Description]', width/2, 0.001*page.margin*page.pageWidth);
+
+        if (inventory.forceFieldLevel < 5) {
+            text(`Force Field level ${inventory.forceFieldLevel+1}: ${this.forceFieldUpgradePrice}\n` +
+                  '[Upgrade Description]', width/2.15, height/2.37);
+            // TODO: add description
+        }
+        else {
+            text('MAX', width/2.15, height/2.37);
+        }
+        this.printAbilityLevel(inventory.forceFieldLevel);
+    }
+
+    updateUpgradeButton(button) {
+        button.position(page.xPadding + page.margin + 0.0945*width*button.offset,
+                            page.yPadding + page.margin + 0.2*height);
+
+        button.size(width/4, height/12);
+
+        let size = (width / 40).toString() + 'px';
+        button.style('font-size', size);
+        let lineHeight = (width/100).toString() + 'px';
+        button.style('line-height', lineHeight);
     }
 
     /*------------PurchaseButton--------------*/
-    purchaseButtonDefault(){
-        this.purchaseButton.class('purchaseButton');
+    updatePurchaseButton(){
         this.purchaseButton.position(
-            page.xPadding + page.margin + 0.55*page.pageWidth,
+            page.xPadding + page.margin + 0.45*page.pageWidth,
             page.yPadding + page.margin + 0.75*page.pageHeight);
 
-        let tabSize = page.pageWidth/40;
-        this.purchaseButton.style('font-size', tabSize + 'px');
+        this.purchaseButton.size(page.pageWidth/8.2, page.pageHeight/9);
+
+        let size = (page.pageWidth / 40).toString() + 'px';
+        this.purchaseButton.style('font-size', size);
+        let lineHeight = (width/100).toString() + 'px';
+        this.purchaseButton.style('line-height', lineHeight);
+        let borderWeight = (width/200).toString() + 'px solid black';
+        this.purchaseButton.style('border', borderWeight)
+    }
+
+    /*------------PlayButton------------------*/
+    updatePlayButton() {
+        this.playButton.position(
+            page.xPadding + page.margin + 0.8*page.pageWidth,
+            page.yPadding + page.margin + 0.8*page.pageHeight);
+
+        this.playButton.size(page.pageWidth/7, page.pageHeight/9);
+
+        let size = (page.pageWidth / 40).toString() + 'px';
+        this.playButton.style('font-size', size);
+        let lineHeight = (width/100).toString() + 'px'
+        this.playButton.style('line-height', lineHeight);
     }
 
     checkPurchaseValid(itemPrice){
@@ -189,37 +269,21 @@ class Workshop {
     //     return inventory.coins;
     // }
 
-    /*------------PlayButton------------------*/
-    playButtonDefault() {
-        let textSize = page.pageWidth / 400;
-        let numString = textSize.toString() + 'rem'
 
-        this.playButton.position(
-            page.xPadding + page.margin + 0.8*page.pageWidth,
-            page.yPadding + page.margin + 0.8*page.pageHeight);
-
-        this.playButton.size(page.pageWidth/7, page.pageHeight/9);
-        this.playButton.class('playButton');
-        this.playButton.style('font-size', numString);
-    }
 
     playButtonPressed() {
         noStroke();
-        this.removeAll();
+        this.removeAllButtons();
         shop = null;
         Domain = 'game';
     }
 
-    removeAll(){
+    removeAllButtons(){
         this.playButton.remove();
-        this.laser.remove();
-        this.flying.remove();
-        this.forceField.remove();
-        //this.itemPrice.remove();
+        this.laserButton.remove();
+        this.flyingButton.remove();
+        this.forceFieldButton.remove();
         this.purchaseButton.remove();
-        //this.invalidPurchasePop.remove();
-        //this.validPurchasePop.remove();
-
     }
 
     /*------------Others---------------*/
