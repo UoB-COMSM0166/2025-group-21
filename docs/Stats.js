@@ -34,7 +34,7 @@ class Stats {
 
     showsStatsScreen() {
         push()
-        let size = page.pageWidth/40;
+        let size = width/40;
         let d = width - height;
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
@@ -52,6 +52,7 @@ class Stats {
         text(`DISTANCE TRAVELED: ${round(this.distanceTraveled/100, 2)} m`, width/2, height*0.7);
 
         if (this.backButton === null) this.backButton = createButton('BACK');
+
         this.updateBackButton();
         this.backButton.mousePressed(() => this.backButtonPressed());
         pop();
@@ -65,15 +66,15 @@ class Stats {
 
     updateBackButton() {
 
-        let textSize = page.pageWidth / 300;
+        let textSize = width / 300;
         let numString = textSize.toString() + 'rem'
 
         this.backButton.position(
-            page.xPadding + page.margin + 0.1*page.pageWidth,
-            page.yPadding + page.margin + 0.84*page.pageHeight);
+            0.1*width,
+            0.84*height);
 
         this.backButton.class('quitButton')
         this.backButton.style('font-size', numString);
-        this.backButton.size(page.pageWidth*0.8, page.pageHeight/10);
+        this.backButton.size(width*0.8, height/10);
     }
 }

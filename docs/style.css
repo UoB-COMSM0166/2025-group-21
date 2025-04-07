@@ -2,8 +2,11 @@ html, body {
     margin: 0;
     padding: 0;
 }
-canvas {
+#myCanvas {
+    margin: 20px auto; /* 20px margin top/bottom, centered horizontally */
     display: block;
+    border: 2px solid #444; /* optional: add a visible border */
+    background-color: #000; /* optional: set canvas background */
 }
 
 * {
