@@ -168,6 +168,25 @@ class Workshop {
             text('MAX', width/2.15, height/2.37);
         }
         this.printAbilityLevel(inventory.laserLevel);
+
+        push();
+        let size = width / 4;
+        imageMode(CENTER);
+        translate(0.25*width, 0.65*height)
+        rotate(2.357);
+
+        switch (inventory.laserLevel) {
+            case 4: image(greenLaser, 0, 0, size, size/5); break;
+            case 5:
+                image(purpleLaser, -size/4, size/6, size/2, size/6);
+                image(purpleLaser, size/10, size/20, size/2, size/6);
+
+                break
+        }
+
+        pop();
+
+
     }
 
     showFlyingDescription(){
