@@ -46,3 +46,20 @@ button {
     color: white;
 }
 
+.menuButton {
+    /*background-color: rgb(135, 206, 250);*/
+    /*background-color: rgb(65, 145, 200); */
+    background-color: transparent;
+    color: rgb(25,90,150);
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid rgb(65, 145, 200);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.menuButton:hover, .menuButton.selectedButton {
+    background-color: rgb(135, 206, 235);
+}
+
