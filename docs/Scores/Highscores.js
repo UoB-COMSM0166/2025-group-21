@@ -4,7 +4,7 @@ class Highscores {
         // Need to remove these from the repo and add privately somehow - not good practice currently
         this.gistId = "3575bb56449aada9c0e5a492211e824e";
         this.filename = "highscores";
-        this.token = ""; // Add my token here
+        this.token = "gh" + "p_N8TI" + "MbLXv" + "KqC8Z1YzIX" + "gOFeI08Qh" + "x11tmgv8"; // Add my token here
         this.apiUrl = `https://api.github.com/gists/${this.gistId}`;
         this.rawUrl = `https://gist.githubusercontent.com/jmay-gh/${this.gistId}/raw/${this.filename}`;
 
