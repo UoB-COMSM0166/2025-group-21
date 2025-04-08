@@ -3,6 +3,9 @@
 class Death {
 
     constructor(type) {
+        if (laserAutomaticSound.isPlaying()) {
+            laserAutomaticSound.stop();
+        }
         deathSound.play();
         game.player.alive = false;
         game.stats.deathUpdate();
@@ -16,7 +19,8 @@ class Death {
         this.coinsAddedToInventory = false;
         this.skipCoinCount = false;
         this.currentY = game.player.pos.y;
-
+        this.pos = createVector(game.player.pos.x - width/100, game.player.pos.y - width/100);
+        this.slope = atan2(game.player.vel.y, game.player.vel.x); //atan(game.terrain.slope(game.player.pos.x));
 
         this.redTint = 0.68;
         this.blackTintHeight = null;

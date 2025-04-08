@@ -48,7 +48,27 @@ class ProjectileAbility {
             }
             this.checkForUFOCollisions(i);
         }
-        if (this.gatlingMode && game.player.alive && frameCount % 4 === 0) this.shoot();
+        if (this.gatlingMode) {
+            if (!game.pause.active && game.player.alive && frameCount % 4 === 0) {
+                this.shoot();
+            }
+            if (game.pause.active && laserAutomaticSound.isPlaying()) {
+                laserAutomaticSound.stop();
+            }
+            if (!game.pause.active && !laserAutomaticSound.isPlaying()) {
+                laserAutomaticSound.loop();
+            }
+        }
+        else if (laserAutomaticSound.isPlaying()) {
+            laserAutomaticSound.stop();
+        }
+        // if (game.player.alive && !game.pause.active && frameCount % 4 === 0) {
+        //     this.shoot();
+        // }
+        // if (game.pause.active && laserAutomaticSound.isPlaying()) {
+        //     laserAutomaticSound.stop();
+        // }
+        // else if (!game.pause.active)
     }
 
     checkForUFOCollisions(l) {

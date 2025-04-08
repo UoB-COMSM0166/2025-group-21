@@ -25,13 +25,11 @@ function keyPressed() {
                 }
                 else {
                     game.projectile.gatlingMode = true;
-                    laserAutomaticSound.loop();
                 }
             }
 
             if (key === 'f' && game.shield != null && game.shield.chargeFraction === 1) {
                 game.shield.active = true;
-                game.shield.initialise();
             }
         }
     }
@@ -53,7 +51,6 @@ function keyReleased() {
 
         if (key === 'd') {
             game.projectile.gatlingMode = false;
-            laserAutomaticSound.stop();
         }
     }
 }
