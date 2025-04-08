@@ -48,6 +48,29 @@ function keyPressed() {
             return;
         }
     }
+
+    if (Domain === 'game' && game.pause.active) {
+        if (keyCode === UP_ARROW) {
+            if (game.pause.selectedButtonIndex === -1) {
+                game.pause.selectedButtonIndex = 0;
+                game.pause.updateButtonStyles();
+            } else {
+                game.pause.moveSelection(-1);
+            }
+            return;
+        } else if (keyCode === DOWN_ARROW) {
+            if (game.pause.selectedButtonIndex === -1) {
+                game.pause.selectedButtonIndex = 0;
+                game.pause.updateButtonStyles();
+            } else {
+                game.pause.moveSelection(1);
+            }
+            return;
+        } else if (keyCode === ENTER) {
+            game.pause.selectCurrentButton();
+            return;
+        }
+    }
 }
 function keyReleased() {
 

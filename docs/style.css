@@ -29,7 +29,7 @@ button {
     /*transition: background-color 0.3s ease-in-out;*/
 }
 
-.playButton:hover {
+.playButton:hover, .playButton.selectedButton {
     background-color: rgb(187, 252, 252);
 }
 

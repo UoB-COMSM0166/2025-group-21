@@ -2,20 +2,21 @@ class MainMenu {
     constructor() {
         document.body.classList.add("show-cursor");
 
-        this.logoDrawWidth = width * 0.7;
+        this.logoDrawWidth = page.pageWidth * 0.7;
         this.logoDrawHeight = this.logoDrawWidth * (logo.height / logo.width) * 1.2;
-        this.logoX = width * 0.5;
-        this.logoY = height * 0.4;
-        this.targetLogoY = height * 0.3;
-        this.iconX = width * 0.5;
-        this.iconY = height * 0.95;
-        this.iconWidth = width * 0.15;
+        this.logoX = page.pageWidth * 0.5;
+        this.logoY = page.pageHeight * 0.4;
+        this.targetLogoY = page.pageHeight * 0.3;
+        this.iconX = page.pageWidth * 0.5;
+        this.iconY = page.pageHeight * 0.95;
+        this.iconWidth = page.pageWidth * 0.15;
         this.iconHeight = this.iconWidth * (keyboardIcon.height / keyboardIcon.width);
 
         this.animationStartTime = millis();
         this.animationDuration = 800;
         this.animationComplete = false;
 
+        this.buttons = [];
         this.selectedButtonIndex = -1;
         this.buttonGrid = [
             [0, 1],
@@ -32,35 +33,34 @@ class MainMenu {
 
     createButtons() {
 
-        this.startButton = createButton('START GAME');
-        this.shopButton = createButton('SHOP');
-        this.instructionButton = createButton('INSTRUCTION');
-        this.settingButton = createButton('SETTING');
+        const buttonLabels = ["START GAME", "SHOP", "INSTRUCTION", "SETTING"];
+        const buttonActions = [
+            () => this.startButtonPressed(),
+            () => this.shopButtonPressed(),
+            () => this.instructionButtonPressed(),
+            () => this.settingButtonPressed()
+        ];
 
-        this.startButton.class('menuButton');
-        this.shopButton.class('menuButton');
-        this.instructionButton.class('menuButton');
-        this.settingButton.class('menuButton');
-
-        this.startButton.mousePressed(() => this.startButtonPressed());
-        this.shopButton.mousePressed(() => this.shopButtonPressed());
-        this.instructionButton.mousePressed(() => this.instructionButtonPressed());
-        this.settingButton.mousePressed(() => this.settingButtonPressed());
+        for (let i = 0; i < buttonLabels.length; i++) {
+            let btn = createButton(buttonLabels[i]);
+            btn.class('menuButton');
+            btn.mousePressed(buttonActions[i]);
+            this.buttons.push(btn);
+            btn.hide(); // Initially hide buttons
+        }
 
     }
 
     hideButtons() {
-        this.startButton.hide();
-        this.shopButton.hide();
-        this.instructionButton.hide();
-        this.settingButton.hide();
+        for (let btn of this.buttons) {
+            btn.hide();
+        }
     }
 
     showButtons() {
-        this.startButton.show();
-        this.shopButton.show();
-        this.instructionButton.show();
-        this.settingButton.show();
+        for (let btn of this.buttons) {
+            btn.show();
+        }
         this.updateButtonStyles();
     }
 
@@ -68,7 +68,7 @@ class MainMenu {
         let elapsed = millis() - this.animationStartTime;
         let progress = min(1, elapsed / this.animationDuration);
 
-        this.logoY = height * 0.4 + progress * (this.targetLogoY - height * 0.4);
+        this.logoY = page.pageHeight * 0.4 + progress * (this.targetLogoY - page.pageHeight * 0.4);
 
         if (progress >= 1 && !this.animationComplete) {
             this.animationComplete = true;
@@ -97,37 +97,23 @@ class MainMenu {
         let fontSizeStr = fontSize.toFixed(2) + 'rem';
 
         // Set positions for each button in the 2x2 grid
-        // Top row
-        this.startButton.position(
-            page.xPadding + page.margin + leftStart,
-            page.yPadding + page.margin + topStart
-        );
-        this.shopButton.position(
-            page.xPadding + page.margin + leftStart + buttonWidth + horizontalSpacing,
-            page.yPadding + page.margin + topStart
-        );
+        for (let i = 0; i < this.buttons.length; i++) {
+            let row = Math.floor(i / 2);
+            let col = i % 2;
 
-        // Bottom row
-        this.instructionButton.position(
-            page.xPadding + page.margin + leftStart,
-            page.yPadding + page.margin + topStart + buttonHeight + verticalSpacing
-        );
-        this.settingButton.position(
-            page.xPadding + page.margin + leftStart + buttonWidth + horizontalSpacing,
-            page.yPadding + page.margin + topStart + buttonHeight + verticalSpacing
-        );
+            this.buttons[i].position(
+                page.xPadding + page.margin + leftStart + (col * (buttonWidth + horizontalSpacing)),
+                page.yPadding + page.margin + topStart + (row * (buttonHeight + verticalSpacing))
+            );
+            this.buttons[i].size(buttonWidth, buttonHeight);
+            this.buttons[i].style('font-size', fontSizeStr);
 
-        // Set size for all buttons
-        this.startButton.size(buttonWidth, buttonHeight);
-        this.shopButton.size(buttonWidth, buttonHeight);
-        this.instructionButton.size(buttonWidth, buttonHeight);
-        this.settingButton.size(buttonWidth, buttonHeight);
-
-         // Update font size for all buttons
-        this.startButton.style('font-size', fontSizeStr);
-        this.shopButton.style('font-size', fontSizeStr);
-        this.instructionButton.style('font-size', fontSizeStr);
-        this.settingButton.style('font-size', fontSizeStr);
+            if (i === this.selectedButtonIndex) {
+                this.buttons[i].addClass('selectedButton');
+            } else {
+                this.buttons[i].removeClass('selectedButton');
+            }
+        }
     }
 
     startButtonPressed() {
@@ -153,10 +139,12 @@ class MainMenu {
     }
 
     removeButtons() {
-        this.startButton.remove();
-        this.shopButton.remove();
-        this.instructionButton.remove();
-        this.settingButton.remove();
+        mainMenu = null;
+        for (let btn of this.buttons) {
+            btn.remove();
+        }
+        this.buttons = [];
+        this.selectedButtonIndex = -1;
         mainMenu = null;
     }
 
@@ -164,7 +152,7 @@ class MainMenu {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, width, height);
+        image(homeBackground, 0, 0, page.pageWidth, page.pageHeight);
 
         this.updateAnimation();
         this.updatePenguinAnimation();
@@ -187,9 +175,12 @@ class MainMenu {
             this.currentRow = 0;
             this.currentCol = 0;
             this.anyKeyPressed = true;
-            this.updateSelectedButtonStyle();
+            this.updateButtonStyles();
             return;
         }
+
+        let oldRow = this.currentRow;
+        let oldCol = this.currentCol;
 
         switch(keyCode) {
             case UP_ARROW:
@@ -213,60 +204,39 @@ class MainMenu {
                 }
                 break;
             case ENTER:
-                this.activateSelectedButton();
+                //this.activateSelectedButton();
+                this.selectCurrentButton();
                 break;
         }
 
-        this.selectedButtonIndex = this.buttonGrid[this.currentRow][this.currentCol];
-        this.updateSelectedButtonStyle();
-    }
-
-    updateSelectedButtonStyle() {
-        this.startButton.removeClass('selectedButton');
-        this.shopButton.removeClass('selectedButton');
-        this.instructionButton.removeClass('selectedButton');
-        this.settingButton.removeClass('selectedButton');
-
-        switch(this.selectedButtonIndex) {
-            case 0:
-                this.startButton.addClass('selectedButton');
-                break;
-            case 1:
-                this.shopButton.addClass('selectedButton');
-                break;
-            case 2:
-                this.instructionButton.addClass('selectedButton');
-                break;
-            case 3:
-                this.settingButton.addClass('selectedButton');
-                break;
+        if (oldRow !== this.currentRow || oldCol !== this.currentCol) {
+            this.selectedButtonIndex = this.buttonGrid[this.currentRow][this.currentCol];
+            this.updateButtonStyles();
         }
     }
 
-    activateSelectedButton() {
-        switch(this.selectedButtonIndex) {
-            case 0:
+    selectCurrentButton() {
+        if (this.selectedButtonIndex !== -1 && this.selectedButtonIndex < this.buttons.length) {
+            // Execute the appropriate action based on the selected button
+            if (this.selectedButtonIndex === 0) {
                 this.startButtonPressed();
-                break;
-            case 1:
+            } else if (this.selectedButtonIndex === 1) {
                 this.shopButtonPressed();
-                break;
-            case 2:
+            } else if (this.selectedButtonIndex === 2) {
                 this.instructionButtonPressed();
-                break;
-            case 3:
+            } else if (this.selectedButtonIndex === 3) {
                 this.settingButtonPressed();
-                break;
+            }
         }
     }
 
     setupPenguinAnimation() {
-        this.penguinSize = width * 0.2;
+        this.penguinSize = page.pageWidth * 0.2;
         this.waypoints = [
-            {x: -this.penguinSize/2, y: height * 0.5},
-            {x: width * 0.5, y: -this.penguinSize/3},
-            {x: width + this.penguinSize/2, y: height * 0.5},
-            {x: width * 0.5, y: height + this.penguinSize/2}
+            {x: -this.penguinSize/2, y: page.pageHeight * 0.5},
+            {x: page.pageWidth * 0.5, y: -this.penguinSize/3},
+            {x: page.pageWidth + this.penguinSize/2, y: page.pageHeight * 0.5},
+            {x: page.pageWidth * 0.5, y: page.pageHeight + this.penguinSize/2}
         ];
 
         this.currentWaypoint = 0;
@@ -275,7 +245,7 @@ class MainMenu {
         this.penguinX = this.waypoints[0].x;
         this.penguinY = this.waypoints[0].y;
 
-        this.penguinSpeed = width * 0.002;
+        this.penguinSpeed = page.pageWidth * 0.002;
     }
 
     updatePenguinAnimation() {
