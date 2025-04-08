@@ -17,13 +17,15 @@ class Death {
         this.skipCoinCount = false;
         this.currentY = game.player.pos.y;
 
-
         this.redTint = 0.68;
         this.blackTintHeight = null;
         this.blackTintY = null;
 
         this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
         this.numScore = createVector(width/7.5, height/2.8); // position of number at death
+
+        this.highscoreAdded = false;
+        this.highscoreSeen = false;
     }
 
     runPlayerDeathSequence() {
@@ -35,8 +37,22 @@ class Death {
         else if (this.deathTimer.time < 230) {
             this.displayCoinReward();
         }
+        // Check if they broke a highscore, then add them and display highscores
+        else if (!this.highscoreAdded) {
+            // Check if they got a highscore, get username if so, else break out
+            if (game.highscores.isHighscore(game.stats.score)) {
+                game.highscores.getUserName(game.stats.score);
+            }
+            else {
+                this.highscoreAdded = true;
+                this.highscoreSeen = true;
+            }
+        }
+        else if (!this.highscoreSeen) {
+            // If they did get a highscore, show where they are on the list
+            game.highscores.printHighscores();
+        }
         else if (!this.showStats) {
-
             if (!this.coinsAddedToInventory) {
                 this.coinsAddedToInventory = true;
                 inventory.coins += Math.round(this.coinsEarned);
@@ -68,7 +84,7 @@ class Death {
             textSize(size);
             text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
             noStroke();
-        pop();
+        pop()
 
         if (this.coinsEarned * 11 >= game.score.total-0.5) {
             this.deathTimer.tick();

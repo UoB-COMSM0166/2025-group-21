@@ -15,8 +15,10 @@ class Player {
         this.frameIndex = 0;
         this.deathFrameIndex = 0; // Initialize death frame index only once
 
+        // Player lives
         this.lives = new Lives(this);
-
+        this.lostLife = false;
+        this.gainedLife = false;
     }
 
     update() {
@@ -79,6 +81,11 @@ class Player {
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
 
+        // Flash red when lost life and green when gained life
+        if (this.lostLife) tint(250, 95, 85);
+        else if (this.gainedLife) tint(80, 200, 120);
+        else noTint();
+
         if (!this.alive) {
             // Death Animation
             const DEATH_COLUMNS = 4;
@@ -86,7 +93,6 @@ class Player {
 
             if (this.deathAngle === null) this.deathAngle = velocityAngle;
             rotate(this.deathAngle-= 0.03);
-
 
             rotate(velocityAngle);
 

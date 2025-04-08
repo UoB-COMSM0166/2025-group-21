@@ -22,7 +22,7 @@ let windSound = null;
 let fishThrow = null;
 let fishImpactSound = null;
 let forceFieldSound = null;
-
+let heart = null;
 let homeBackground;
 let logo;
 let playNoPressed;
@@ -68,7 +68,7 @@ function preload() {
     explosion = loadImage('assets/sprites/explosion.png');
     fish = loadImage('assets/images/fish.png');
     damagedUfo = loadImage('assets/images/damagedUfo.png')
-
+    heartImage = loadImage('assets/images/hearts2.png')
     laserSound = loadSound('assets/sounds/laser.mp3');
     explosionSound = loadSound('assets/sounds/explosionSound.mp3');
     deathSound = loadSound('assets/sounds/deathSound.mp3');

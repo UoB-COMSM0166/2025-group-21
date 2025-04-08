@@ -19,26 +19,22 @@ class Lives {
     }
 
     drawChangeLife() {
-        // Text settings
-        textSize(30);
-        fill('black');
-        textFont('Trebuchet MS');
+        let timeLostDif = millis()-this.timeLifeLost;
+        let timeGainedDif = millis()-this.timeLifeGained;
 
-        // Display life change for 1000 milliseconds
-        if (millis() - this.timeLifeLost < 1000 && this.totalLives > 0) {
-            text('-1 life', game.player.pos.x - 50, game.player.pos.y - 50);
-        }
-        else if (millis() - this.timeLifeGained < 1000) {
-            text('+1 life', game.player.pos.x - 50, game.player.pos.y - 50);
-        }
+        // Flash on and off for 3 seconds
+        if (timeLostDif < 3000 && this.totalLives > 0) game.player.lostLife = (timeLostDif % 1000) < 500;
+        else game.player.lostLife = false;
+
+        // Flash on and off for 3 seconds
+        if (timeGainedDif < 3000 && this.totalLives > 0) game.player.gainedLife = (timeGainedDif % 1000) < 500;
+        else game.player.gainedLife = false;
     }
 
     drawLives() {
         // Display total lives
-        for (let i = 0; i < this.totalLives ; i++) {
-            strokeWeight(0);
-            fill('black');
-            ellipse((50 + i*30), 50, 20);
+        for (let i = 1; i <= this.totalLives ; i++) {
+            image(heartImage, -20 + i*40, height-65, 60, 60);
         }
     }
 }
