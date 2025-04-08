@@ -29,6 +29,13 @@ let logo;
 let playNoPressed;
 let playIsPressed;
 
+//----------------Preload function for assets----------------
+function preload() {
+    preloadBackgroundImages();
+}
+//-----------------------------------------------------------
+
+
 function setup() {
 
     page = new Page();
