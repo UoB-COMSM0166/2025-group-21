@@ -3,7 +3,7 @@
 class Inventory {
 
     constructor() {
-        this.coins = 9999999999;
+        this.coins = 0;
         this.flyLevel = 0;
         this.laserLevel = 1;
         this.forceFieldLevel = 0;

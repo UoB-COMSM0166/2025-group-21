@@ -14,7 +14,6 @@ class Pause {
             document.body.classList.add("show-cursor");
             this.quitButton = createButton('RETURN TO WORKSHOP');
             this.continueButton = createButton('CONTINUE');
-            //this.updateQuitButton();
             this.fieldsReset = false;
         }
         this.updateQuitButton();
@@ -38,6 +37,9 @@ class Pause {
     }
 
     quitButtonPressed() {
+        if (laserAutomaticSound.isPlaying) {
+            laserAutomaticSound.stop();
+        }
         this.quitButton.remove();
         this.continueButton.remove();
         inventory.coins += Math.round(game.score.total / 11);
