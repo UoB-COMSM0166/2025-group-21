@@ -29,13 +29,6 @@ let logo;
 let playNoPressed;
 let playIsPressed;
 
-//----------------Preload function for assets----------------
-function preload() {
-    preloadBackgroundImages();
-}
-//-----------------------------------------------------------
-
-
 function setup() {
 
     page = new Page();
@@ -98,4 +91,8 @@ function preload() {
     penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
     penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
+
+    //-------------------------------------
+    preloadBackgroundImages();
+    //-------------------------------------
 }

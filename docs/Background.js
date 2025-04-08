@@ -10,7 +10,7 @@ function preloadBackgroundImages() {
     //---Loading all the assets for the background----------.
     let totalBackImages = 17;
     for (let i = 1; i <= totalBackImages; i++) {
-        bgImages.push(loadImage(`assets/layer${i}.png`));
+        bgImages.push(loadImage(`assets/backgroundAssets/layer${i}.png`));
     }
 }
 
@@ -49,7 +49,7 @@ class Background {
             0.765, 0.765, 0.72, 0.72, 0.72, 0.65,
             0.65, 0.63, 0.63, 0.63, 0.558, 0.558,
             0.45, 0.45, 0.45, 0.27, 0.27, 0.27,
-            0.09, 0.09, 0.09, 0.09, 0.09
+            0.09, 0.09, 0.09, 0.09, 0.00000000000001
         ];
 
         //-----Size adjustment factors for each layer.-------
@@ -65,7 +65,7 @@ class Background {
         // For each layer, specify where the bottom center should be on screen.
         // (These values are in screen coordinates; you can adjust them as needed.)
         this.anchorBottomCenters = [
-            { x: 600, y: 1000},//Front fuLL LAYER
+            { x: 600, y: 990},//Front fuLL LAYER
             { x: 600, y: 995 },//2 TWO assets
             { x: 631, y: 950 },//3
             { x: 641, y: 960 },//4 TWO ASSETS
@@ -96,7 +96,7 @@ class Background {
     }
 
     // Update horizontal offsets and wrap them using the final (scaled) image width.
-    update(floorSpeed) {
+    update(floorSpeed, zoom) {
         let scaleFactor = width / this.baseWidth;
         for (let i = 0; i < this.bgImages.length; i++) {
             //------First update the offset using your parallax multiplier.
@@ -121,26 +121,26 @@ class Background {
     }
 
     // Helper function for Y adjustment.
-    zoomParallax(factor) {
+    zoomParallax(factor, zoom) {
         // When zoom is 1, (1 - zoom) is 0. When zoom < 1 (zooming out),
         // this returns a positive value (the layer is drawn lower).
         return factor * (1 - zoom) * 100;
     }
 
     // Helper function for size scaling.
-    sizeParallax(factor) {
+    sizeParallax(factor, zoom) {
         // When zoom is 1, no change (returns 1). When zoom < 1, returns a value less than 1.
         return 1 + (zoom - 1) * factor;
     }
 
-    draw() {
+    draw(zoom) {
         // Loop through each background layer
         for (let i = this.bgImages.length - 1; i >= 0; i--) {
             //----Computing overall scaling:
             //    - scaleFactor adapts your design coordinates (baseWidth) to the current canvas.
             //    - sizeScale accounts for zoom (or any per-layer size adjustments).
             let scaleFactor = width / this.baseWidth;
-            let sizeScale = this.sizeParallax(this.sizeAdjustmentFactors[i]);
+            let sizeScale = this.sizeParallax(this.sizeAdjustmentFactors[i], zoom);
             let overallScale = scaleFactor * sizeScale;
 
             //----gettingt the current image and its natural dimensions.
@@ -156,7 +156,7 @@ class Background {
             let anchorScreenY = anchorDesign.y * scaleFactor + this.yOffset;
 
             //----Applying Y adjustment factor here
-            let yAdjustment = this.zoomParallax(this.yAdjustmentFactors[i]);
+            let yAdjustment = this.zoomParallax(this.yAdjustmentFactors[i], zoom);
             let anchorX = anchorScreenX + this.xOffsets[i];
             let anchorY = anchorScreenY + yAdjustment;
 
