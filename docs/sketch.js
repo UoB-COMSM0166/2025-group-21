@@ -60,6 +60,10 @@ function draw() {
     if (Domain === 'game') {
         if (game === null) game = new Game();
         game.runSimulation();
+
+        if (game.pause.isCountingDown) {
+            game.pause.showCountdown();
+        }
     }
 }
 

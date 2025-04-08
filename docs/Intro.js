@@ -53,15 +53,16 @@ class Intro {
         imageMode(CORNER);
         image(homeBackground, 0, 0, width, height);
 
-        imageMode(CENTER);
         push();
-            tint(255, this.logoOpacity * 255);
-            image(logo, this.logoX, this.logoY, this.logoDrawWidth, this.logoDrawHeight);
+        imageMode(CENTER);
+        int(255, this.logoOpacity * 255);
+        image(logo, this.logoX, this.logoY, this.logoDrawWidth, this.logoDrawHeight);
         pop();
 
         push();
-            tint(255, this.penguinOpacity * 255);
-            image(this.penguinGif, this.xPos, this.yPos, this.penguinSize, this.penguinSize);
+        imageMode(CENTER);
+        tint(255, this.penguinOpacity * 255);
+        image(this.penguinGif, this.xPos, this.yPos, this.penguinSize, this.penguinSize);
         pop();
 
         imageMode(CORNER);

@@ -157,12 +157,14 @@ class MainMenu {
         this.updateAnimation();
         this.updatePenguinAnimation();
 
+        push();
         // Draw logo
         imageMode(CENTER);
         image(logo, this.logoX, this.logoY, this.logoDrawWidth, this.logoDrawHeight);
         if (this.animationComplete) {
             image(keyboardIcon, this.iconX, this.iconY, this.iconWidth, this.iconHeight);
         }
+        pop();
         imageMode(CORNER);
 
     }
@@ -269,7 +271,6 @@ class MainMenu {
         imageMode(CENTER);
         image(penguinSpinGif, this.penguinX, this.penguinY, this.penguinSize, this.penguinSize);
         pop();
-        imageMode(CORNER);
     }
 
 }
