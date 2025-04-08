@@ -1,6 +1,15 @@
 
 
 function keyPressed() {
+    if (Domain === 'intro') {
+
+        if (key === ' ') {
+            if (intro !== null) {
+                intro.skipAnimation();
+            }
+        }
+    }
+
 
     if (Domain === 'game') {
 
@@ -30,6 +39,13 @@ function keyPressed() {
                 game.shield.active = true;
                 game.shield.initialise();
             }
+        }
+    }
+
+    if (Domain === 'mainMenu') {
+        if(mainMenu !== null && mainMenu.animationComplete) {
+            mainMenu.handleKeyNavigation(keyCode);
+            return;
         }
     }
 }

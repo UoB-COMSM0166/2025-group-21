@@ -1,8 +1,9 @@
 
 
-let Domain = 'home'; // Determines which part of the game code is executed
+let Domain = 'intro'; // Determines which part of the game code is executed
 
-let homescreen = null;
+let intro = null;
+let mainMenu = null;
 let game = null;
 let page = null;
 let shop = null;
@@ -36,12 +37,19 @@ function setup() {
 
 function draw() {
 
-    if (Domain === 'home') {
-        if (homescreen === null) {
-            homescreen = new Homescreen();
-            homescreen.resetAnimation();
+    if (Domain === 'intro') {
+        if(intro == null) {
+            intro = new Intro();
+            intro.resetAnimation();
         }
-        homescreen.showHomescreen();
+        intro.showIntro();
+    }
+
+    if (Domain === 'mainMenu') {
+        if (mainMenu === null) {
+            mainMenu = new MainMenu();
+        }
+        mainMenu.showMainMenu();
     }
 
     if (Domain === 'shop') {
@@ -76,4 +84,7 @@ function preload() {
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
+    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
+    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
+    keyboardIcon = loadImage('assets/images/keyboardIcon.png');
 }
