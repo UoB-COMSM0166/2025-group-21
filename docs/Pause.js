@@ -9,6 +9,8 @@ class Pause {
         this.buttons = [];
         this.selectedButtonIndex = -1;
         this.backgroundDrawn = false;
+        this.countdown = null;
+        this.isCountingDown = false;
     }
 
     showPauseScreen() {
@@ -20,12 +22,25 @@ class Pause {
         }
 
         this.updateButtonPositions();
+        if (!this.isCountingDown) {
+            this.drawCloth();
+        }
 
+//        push();
+//        this.opacity = lerp(this.opacity, 100, 0.2);
+//        fill(0, 0, 0, this.opacity);
+//        rect(0, 0, window.innerWidth, window.innerHeight);
+//        pop();
+        this.backgroundDrawn = true;
+
+    }
+
+    drawCloth() {
+        push();
         this.opacity = lerp(this.opacity, 100, 0.2);
         fill(0, 0, 0, this.opacity);
         rect(0, 0, window.innerWidth, window.innerHeight);
-
-        this.backgroundDrawn = true;
+        pop();
     }
 
     createButtons() {
@@ -107,8 +122,19 @@ class Pause {
     }
 
     continueButtonPressed() {
-        this.reset();
-        this.active = false;
+        this.removeButtonsForCountdown();
+//        this.reset();
+//        this.active = false;
+        this.countdown = new Countdown();
+        this.isCountingDown = true;
+    }
+
+    removeButtonsForCountdown() {
+        for (let btn of this.buttons) {
+            btn.remove();
+        }
+        this.buttons = [];
+        this.opacity = 0;
     }
 
     inventoryButtonPressed() {
@@ -125,6 +151,21 @@ class Pause {
         Domain = 'mainMenu';
     }
 
+    showCountdown() {
+        if (this.countdown) {
+            this.countdown.display();
+            if (this.countdown.completed) {
+                this.isCountingDown = false;
+                this.active = false;
+                this.reset();
+                this.countdown = null;
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
     reset() {
         if (!this.fieldsReset) {
             this.opacity = 0;
@@ -138,25 +179,4 @@ class Pause {
             this.backgroundDrawn = false;
         }
     }
-
-//    quitButtonPressed() {
-//        this.quitButton.remove();
-//        game = null;
-//        Domain = 'shop';
-//
-//    }
-//
-//    updateQuitButton() {
-//
-//        let textSize = page.pageWidth / 300;
-//        let numString = textSize.toString() + 'rem'
-//
-//        this.quitButton.position(
-//            page.xPadding + page.margin + 0.11*page.pageWidth,
-//            page.yPadding + page.margin + 0.43*page.pageHeight);
-//
-//        this.quitButton.class('quitButton')
-//        this.quitButton.style('font-size', numString);
-//        this.quitButton.size(page.pageWidth*0.8, page.pageHeight/10);
-//    }
 }
