@@ -34,7 +34,7 @@ class Lives {
     drawLives() {
         // Display total lives
         for (let i = 1; i <= this.totalLives ; i++) {
-            image(heartImage, -20 + i*40, height-65, 60, 60);
+            image(heartImages[0], -20 + i*50, height-65, 50, 50);
         }
     }
 }

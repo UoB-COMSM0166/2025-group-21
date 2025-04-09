@@ -11,22 +11,25 @@ class Hearts {
         while (this.lastX < offset + width + 500) {
             let x = this.lastX + this.spacing + random(-200, 200);
             let y = game.terrain.generateHills(x);
-            this.hearts.push(createVector(x, y));
+            this.hearts.push({
+                pos: createVector(x, y),
+                num: floor(random(1, 4))
+            });
             this.lastX = x;
         }
 
         // Draw hearts at correct screen position (rather than total position)
         for (let heart of this.hearts) {
-            let screenX = heart.x - offset;
-            let screenY = heart.y - 45; // Added 45 extra so it sits above the snow nicely
-            image(heartImage, screenX, screenY, 60, 60);
+            let screenX = heart.pos.x - offset;
+            let screenY = heart.pos.y - 45; // Added 45 extra so it sits above the snow nicely
+            image(heartImages[heart.num], screenX, screenY, 50, 50);
         }
     }
 
     checkCollision() {
         for (let i = this.hearts.length - 1; i >= 0; i--) {
             let heart = this.hearts[i];
-            let d = dist(game.player.pos.x, game.player.pos.y, heart.x - game.offset, heart.y);
+            let d = dist(game.player.pos.x, game.player.pos.y, heart.pos.x - game.offset, heart.pos.y);
             if (d < 30) {
                 game.player.lives.addLife();
                 this.hearts.splice(i, 1);

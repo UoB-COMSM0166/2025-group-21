@@ -4,10 +4,9 @@ html, body {
 }
 
 #myCanvas {
-    margin: 20px auto;
+    margin: 18px auto; /*Made this slightly smaller than the actual gap to prevent scroll bar*/
     display: block;
     border: 2px solid #444;
-    background-color: #000;
 }
 
 * {
