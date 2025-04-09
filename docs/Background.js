@@ -14,6 +14,20 @@ function preloadBackgroundImages() {
     }
 }
 
+function smoothWrap(x, w, prev) {
+    // Standard wrap into [-w/2, w/2)
+    let wrapped = (((x + w/2) % w) + w) % w - w/2;
+    // Calculate difference relative to previous value
+    let diff = wrapped - prev;
+    // Adjust so that the jump is minimized:
+    if (diff > w/2) {
+        wrapped -= w;
+    } else if (diff < -w/2) {
+        wrapped += w;
+    }
+    return wrapped;
+}
+
 class Background {
     constructor() {
         this.bgImages = bgImages;
@@ -201,7 +215,7 @@ class Background {
             { x: 870, y: 200 } // 47
         ];
 
-        this.speedZoomAdjustments = Array(this.bgImages.length).fill(1);
+        this.speedZoomAdjustments = Array(this.bgImages.length).fill(-2);
 
         this.alwaysTile = Array(this.bgImages.length).fill(false);
         this.alwaysTile[0] = true;  // Layer 1 will always tile continuously.
@@ -220,26 +234,33 @@ class Background {
 
     }
 
+
     update(floorSpeed, zoom) {
         let scaleFactor = width / this.baseWidth;
+        // Ensure we have a prevXOffsets array; if not, initialize it.
+        if (!this.prevXOffsets) {
+            this.prevXOffsets = this.xOffsets.slice();
+        }
         for (let i = 0; i < this.bgImages.length; i++) {
-            // Compute the sizeScale based on zoom and this layer's sizeAdjustmentFactor.
+            // Compute the sizeScale based on zoom and this layer's factor.
             let sizeScale = 1 + (zoom - 1) * this.sizeAdjustmentFactors[i];
 
-            // Compute the extra speed adjustment factor based on zoom and this layer's speedZoomAdjustment.
+            // Compute the extra speed adjustment factor.
             let speedZoomFactor = 1 + this.speedZoomAdjustments[i] * (zoom - 1);
 
-            // Update the xOffset with floorSpeed, the base speed multiplier, the image scaling, and our zoom factor.
+            // Update the world xOffset without wrapping (using constant offset update).
             this.xOffsets[i] -= floorSpeed * this.speedMultipliers[i] * sizeScale * speedZoomFactor;
 
             // Compute the base (unscaled) width.
             let baseWidth_i = this.bgImages[i].width * scaleFactor;
-            // Compute the final drawn width after applying the scaling factor.
+            // Compute the final drawn width.
             let finalWidth = baseWidth_i * sizeScale;
 
-            // Wrap the offset so it stays within one copy of the final width.
-// Wrap the offset to be in [-finalWidth/2, finalWidth/2)
-            this.xOffsets[i] = (((this.xOffsets[i] + finalWidth/2) % finalWidth) + finalWidth) % finalWidth - finalWidth/2;
+            // Use our smooth wrapping function instead of while loops.
+            this.xOffsets[i] = smoothWrap(this.xOffsets[i], finalWidth, this.prevXOffsets[i]);
+
+            // Store current offset as previous for the next frame.
+            this.prevXOffsets[i] = this.xOffsets[i];
         }
     }
 
@@ -311,4 +332,9 @@ class Background {
             pop();
         }
     }
+
+    // A helper function that wraps "x" into [-w/2, w/2)
+// and then adjusts the wrapped value so that the difference
+// from "prev" is minimized.
+
 }
