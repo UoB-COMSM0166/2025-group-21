@@ -45,16 +45,16 @@ class Game {
         this.adjustZoom();
         this.wind.adjustVolume();
 
+        //---------------------------------------
+        //image(homeBackground, 0, 0, width, height);
+        this.background.update(this.player.vel.x, this.zoom);
 
+        // 2) Draw the new parallax layers
+        this.background.draw(this.zoom);
+        //---------------------------------------
 
         push();
-            //---------------------------------------
-            //image(homeBackground, 0, 0, width, height);
-            this.background.update(this.player.vel.x, this.zoom);
 
-            // 2) Draw the new parallax layers
-            this.background.draw(this.zoom);
-            //---------------------------------------
             // Scale the game size if they resize the window
             scale(page.gameScale);
             translate(this.tx, this.ty); // Change coordinate origin to player position
