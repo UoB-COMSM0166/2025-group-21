@@ -151,8 +151,6 @@ class Background {
         ];
 
 
-        // For each layer, specify where the bottom center should be on screen.
-        // (These values are in screen coordinates; you can adjust them as needed.)
         this.anchorBottomCenters = [
             { x: 600, y: 650 }, // 1
             { x: 600, y: 655 }, // 2
@@ -163,15 +161,15 @@ class Background {
             { x: 759, y: 600 }, // 7
             { x: 600, y: 595 }, // 8
             { x: 861, y: 590 }, // 9
-            { x: 650, y: 630 }, // 10
+            { x: 650, y: 630 }, // 10 ---- ocean
             { x: 600, y: 600 }, // 11
             { x: 508, y: 595 }, // 12
             { x: 600, y: 580 }, // 13
             { x: 600, y: 565 }, // 14
             { x: 857, y: 560 }, // 15
-            { x: 600, y: 590 }, // 16
+            { x: 600, y: 590 }, // 16 ---- ocean
             { x: 534, y: 589 }, // 17
-            { x: 600, y: 588 }, // 18
+            { x: 600, y: 588 }, // 18 ---- ocean
             { x: 857, y: 520 }, // 19
             { x: 600, y: 518 }, // 20
             { x: 600, y: 516 }, // 21
@@ -195,37 +193,53 @@ class Background {
             { x: 600, y: 500 }, // ----------- 39: Snow
             { x: 615, y: 420 }, // 40
             { x: 870, y: 415 }, // 41
-            { x: 296, y: 470 }, // 42
+            { x: 296, y: 470 }, // 42 ------ snow
             { x: 600, y: 300 }, // 43
             { x: 200, y: 350 }, // 44
             { x: 870, y: 340 }, // 45
-            { x: 870, y: 450 }, // 46
+            { x: 870, y: 450 }, // 46 ----snow
             { x: 870, y: 200 } // 47
         ];
+
+        this.speedZoomAdjustments = Array(this.bgImages.length).fill(1);
+
+        this.alwaysTile = Array(this.bgImages.length).fill(false);
+        this.alwaysTile[0] = true;  // Layer 1 will always tile continuously.
+        this.alwaysTile[1] = true;  // Layer 2 as well.
+        this.alwaysTile[9] = true;  // Layer 2 as well.
+        this.alwaysTile[15] = true;  // Layer 2 as well.
+        this.alwaysTile[17] = true;  // Layer 2 as well.
+        this.alwaysTile[21] = true;  // Layer 2 as well.
+        this.alwaysTile[23] = true;  // Layer 2 as well.
+        this.alwaysTile[26] = true;  // Layer 2 as well.
+        this.alwaysTile[28] = true;  // Layer 2 as well.
+        this.alwaysTile[38] = true;  // Layer 2 as well.
+        this.alwaysTile[41] = true;  // Layer 2 as well.
+        this.alwaysTile[45] = true;  // Layer 2 as well.
+
+
     }
 
-    // Update horizontal offsets and wrap them using the final (scaled) image width.
     update(floorSpeed, zoom) {
         let scaleFactor = width / this.baseWidth;
         for (let i = 0; i < this.bgImages.length; i++) {
-            // Compute sizeScale based on current zoom for this layer:
+            // Compute the sizeScale based on zoom and this layer's sizeAdjustmentFactor.
             let sizeScale = 1 + (zoom - 1) * this.sizeAdjustmentFactors[i];
 
-            // Adjust the x offset proportionally to the scaled width:
-            this.xOffsets[i] -= floorSpeed * this.speedMultipliers[i] * sizeScale;
+            // Compute the extra speed adjustment factor based on zoom and this layer's speedZoomAdjustment.
+            let speedZoomFactor = 1 + this.speedZoomAdjustments[i] * (zoom - 1);
 
-            // Compute the base (un-extra-scaled) width.
+            // Update the xOffset with floorSpeed, the base speed multiplier, the image scaling, and our zoom factor.
+            this.xOffsets[i] -= floorSpeed * this.speedMultipliers[i] * sizeScale * speedZoomFactor;
+
+            // Compute the base (unscaled) width.
             let baseWidth_i = this.bgImages[i].width * scaleFactor;
-            // Calculate the final width after applying the scaling factor.
+            // Compute the final drawn width after applying the scaling factor.
             let finalWidth = baseWidth_i * sizeScale;
 
             // Wrap the offset so it stays within one copy of the final width.
-            while (this.xOffsets[i] <= -finalWidth / 2) {
-                this.xOffsets[i] += finalWidth;
-            }
-            while (this.xOffsets[i] >= finalWidth / 2) {
-                this.xOffsets[i] -= finalWidth;
-            }
+// Wrap the offset to be in [-finalWidth/2, finalWidth/2)
+            this.xOffsets[i] = (((this.xOffsets[i] + finalWidth/2) % finalWidth) + finalWidth) % finalWidth - finalWidth/2;
         }
     }
 
@@ -243,55 +257,56 @@ class Background {
     }
 
     draw(zoom) {
-        // Loop through each background layer
+        // Loop through each background layer from back to front.
         for (let i = this.bgImages.length - 1; i >= 0; i--) {
-            //----Computing overall scaling:
-            //    - scaleFactor adapts your design coordinates (baseWidth) to the current canvas.
-            //    - sizeScale accounts for zoom (or any per-layer size adjustments).
             let scaleFactor = width / this.baseWidth;
             let sizeScale = this.sizeParallax(this.sizeAdjustmentFactors[i], zoom);
             let overallScale = scaleFactor * sizeScale;
 
-            //----gettingt the current image and its natural dimensions.
             let img = this.bgImages[i];
             let imgW = img.width;
             let imgH = img.height;
 
-            //----DeterminINING the anchor point in screen coordinates.
-            //     anchorBottomCenters HOLDS THE ANCHOR points for every image.. center
-            //    Then add the horizontal parallax offset (xOffsets).
+            // Compute anchor position in screen coordinates.
             let anchorDesign = this.anchorBottomCenters[i];
             let anchorScreenX = anchorDesign.x * scaleFactor;
             let anchorScreenY = anchorDesign.y * scaleFactor + this.yOffset;
 
-            //----Applying Y adjustment factor here
             let yAdjustment = this.zoomParallax(this.yAdjustmentFactors[i], zoom);
             let anchorX = anchorScreenX + this.xOffsets[i];
             let anchorY = anchorScreenY + yAdjustment;
 
-            // 4. Now set up the transformation so that scaling happens about the anchor.
             push();
-            //----Moveing the origin to the anchor position.----
             translate(anchorX, anchorY);
-            //----Scale the coordinate system by the overall scale.------
             scale(overallScale);
-            // Translate so that the image’s natural anchor (its bottom center)
-            // is at (0, 0). For a bottom-center anchor, subtract half the image’s width
-            // and the full image height.
             translate(-imgW / 2, -imgH / 2);
 
-            // 5. Horizontal tiling:
-            //    In this transformed coordinate system, one image tile is drawn at (0, 0)
-            //    and it covers from x = -imgW/2 to x = +imgW/2.
-            //    The effective drawn width in screen pixels is: imgW * overallScale.
-            //    The visible width (in these transformed units) is: width / overallScale.
-            //    To cover the canvas, we calculate how many copies we might need.
-            let copies = Math.ceil((width / overallScale) / imgW) + 1;
+            // *** Tiling Loop: ***
+            // Determine the gap between drawn images.
+            let gap = 0;
+            // If the layer is NOT forced to tile (alwaysTile == false)
+            // and we are zoomed out (zoom < 1), compute a gap.
+            if (zoom < 1 && !this.alwaysTile[i]) {
+                // When zoomed out, the drawn width becomes imgW * sizeScale.
+                // The natural gap could be the difference between the unscaled image width and its drawn width.
+                gap = imgW * (1 - sizeScale);
+            }
+            // The spacing between copies is then:
+            let spacing = imgW + gap;
 
-            //----Drawing copies to the left and right of the central tile.
-            //--->?>>> The central tile is at offset dx = 0. Each tile is offset by imgW.
+            // Determine how many copies to draw.
+            // For continuous tiling layers, spacing is just imgW.
+            // For non-continuous, fewer copies may reveal gaps.
+            let copies;
+            if (zoom < 1 && !this.alwaysTile[i]) {
+                // Draw only a couple of copies to let the gap show.
+                copies = 1;
+            } else {
+                copies = Math.ceil((width / overallScale) / imgW) + 1;
+            }
+
             for (let dx = -copies; dx <= copies; dx++) {
-                image(img, dx * imgW, 0);
+                image(img, dx * spacing, 0);
             }
             pop();
         }
