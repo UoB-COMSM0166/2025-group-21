@@ -28,6 +28,17 @@ let logo;
 let playNoPressed;
 let playIsPressed;
 
+let continueButton = null;
+let continueButtonHover = null;
+let returnToWorkshopButton = null;
+let returnToWorkshopButtonHover = null;
+let playAgainButton = null;
+let playAgainButtonHover = null;
+let statsButton = null;
+let statsButtonHover = null;
+let backButton = null;
+let backButtonHover = null;
+
 function setup() {
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
@@ -59,6 +70,18 @@ function draw() {
 }
 
 function preload() {
+
+    returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');
+    returnToWorkshopButtonHover = loadImage('assets/buttons/returnToWorkshopButtonHover.png');
+    continueButton = loadImage('assets/buttons/continueButton.png');
+    continueButtonHover = loadImage('assets/buttons/continueButtonHover.png');
+    playAgainButton = loadImage('assets/buttons/playAgainButton.png');
+    playAgainButtonHover = loadImage('assets/buttons/playAgainButtonHover.png');
+    statsButton = loadImage('assets/buttons/statsButton.png');
+    statsButtonHover = loadImage('assets/buttons/statsButtonHover.png');
+    backButton = loadImage('assets/buttons/backButton.png');
+    backButtonHover = loadImage('assets/buttons/backButtonHover.png');
+
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
     playerDeath = loadImage('assets/sprites/playerDeath.png');
@@ -116,4 +139,9 @@ function resizeCanvasCSS() {
     canvas.style.width = `${newWidth}px`;
     canvas.style.height = `${newHeight}px`;
     canvas.style.imageRendering = "pixelated"; // Ensures crisp pixels
+}
+
+function hoveringOverButton(pos, size) {
+    return mouseX > pos.x - size.x/2 && mouseX < pos.x + size.x/2 &&
+        mouseY > pos.y - size.y/2 && mouseY < pos.y + size.y/2;
 }

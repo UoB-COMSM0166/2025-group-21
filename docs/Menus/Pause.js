@@ -10,15 +10,13 @@ class Pause {
 
         if (this.fieldsReset) {
             document.body.classList.add("show-cursor");
-            this.quitButton = createButton('RETURN TO WORKSHOP');
-            this.updateQuitButton();
             this.fieldsReset = false;
         }
-        this.updateQuitButton()
-        this.opacity = lerp(this.opacity, 100, 0.2);
+        this.opacity = lerp(this.opacity, 130, 0.2);
         fill(0, 0, 0, this.opacity);
         rect(0, 0, width, height);
-        this.quitButton.mousePressed(() => this.quitButtonPressed());
+        this.updateContinueButton();
+        this.updateReturnToWorkshopButton();
     }
 
     reset() {
@@ -26,31 +24,48 @@ class Pause {
         if (!this.fieldsReset) {
             this.opacity = 0;
             document.body.classList.remove("show-cursor");
-            this.quitButton.remove();
             this.fieldsReset = true;
         }
     }
 
-    quitButtonPressed() {
-        this.quitButton.remove();
-        game = null;
-        Domain = 'shop';
+    updateReturnToWorkshopButton() {
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(returnToWorkshopButton.width / scale, returnToWorkshopButton.height / scale);
+        let pos = createVector(0.5*width, 0.6*height);
+        imageMode(CENTER);
 
+        if (hoveringOverButton(pos, size)) {
+            image(returnToWorkshopButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                game = null;
+                Domain = 'shop';
+            }
+        }
+        else {
+            image(returnToWorkshopButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
-    updateQuitButton() {
+    updateContinueButton() {
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(continueButton.width / scale, continueButton.height / scale);
+        let pos = createVector(0.5*width, 0.4*height);
+        imageMode(CENTER);
 
-        const rect = canvas.getBoundingClientRect();
+        if (hoveringOverButton(pos, size)) {
+            image(continueButtonHover, pos.x, pos.y, size.x, size.y);
 
-        let textSize = rect.width/30;
-        let numString = textSize.toString() + 'px'
-
-        this.quitButton.position(
-            0.11*rect.width,
-            0.43*rect.height);
-
-        this.quitButton.class('quitButton')
-        this.quitButton.style('font-size', numString);
-        this.quitButton.size(rect.width*0.8, rect.height/10);
+            if (mouseIsPressed) {
+                this.active = false;
+            }
+        }
+        else {
+            image(continueButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 }
