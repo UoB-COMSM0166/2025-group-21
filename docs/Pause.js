@@ -159,7 +159,13 @@ class Pause {
     }
 
     settingButtonPressed() {
-        console.log("Setting button pressed - functionality to be implemented");
+        for (let btn of this.buttons) {
+            btn.remove();
+        }
+        this.buttons = [];
+        this.fieldsReset = true;
+        Domain = 'setting';
+        setting = new Setting('pause');
     }
 
     quitButtonPressed() {

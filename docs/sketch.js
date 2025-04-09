@@ -7,7 +7,9 @@ let mainMenu = null;
 let game = null;
 let page = null;
 let shop = null;
+let instruction = null;
 let inventory = null;
+let setting = null;
 
 let playerImg = null;
 let playerFly = null;
@@ -28,6 +30,10 @@ let homeBackground;
 let logo;
 let playNoPressed;
 let playIsPressed;
+
+let tipsBox;
+let penguinClaw;
+let instructionFont;
 
 function setup() {
 
@@ -55,6 +61,18 @@ function draw() {
     if (Domain === 'shop') {
         if (shop === null) shop = new Workshop();
         shop.openShop();
+    }
+
+    if (Domain === 'instruction') {
+        if (instruction == null) {
+            instruction = new Instruction();
+        }
+        instruction.draw();
+    }
+
+    if (Domain === 'setting') {
+        if (setting === null) setting = new Setting();
+        setting.draw();
     }
 
     if (Domain === 'game') {
@@ -89,4 +107,8 @@ function preload() {
     penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
     penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
+
+    tipsBox = loadImage('assets/images/tipsBox.png');
+    penguinClaw = loadImage('assets/images/penguinClaw(1).png');
+    instructionFont = loadFont('assets/fonts/Noteworthy.ttf');
 }

@@ -78,7 +78,65 @@ function keyPressed() {
             return;
         }
     }
+
+
+    // 设置界面键盘处理逻辑：用于切换选项卡和调节音量
+    // 修改部分开始：设置界面键盘处理逻辑
+    if (Domain === 'setting') {
+        // 防止默认按键行为
+        if (event && event.preventDefault) {
+            event.preventDefault();
+        }
+
+        if (keyCode === UP_ARROW) {
+            // 切换选项卡向上
+            if (setting.selectedOptionIndex === -1) {
+                setting.selectedOptionIndex = 0;
+                setting.updateFocusDisplay();
+            } else {
+                setting.moveSelection(-1);
+            }
+            // 主动移除当前元素的默认焦点
+            if (setting.options[setting.selectedOptionIndex] && setting.options[setting.selectedOptionIndex].elt) {
+                setting.options[setting.selectedOptionIndex].elt.blur();
+            }
+            return false;
+        } else if (keyCode === DOWN_ARROW) {
+            // 切换选项卡向下
+            if (setting.selectedOptionIndex === -1) {
+                setting.selectedOptionIndex = 0;
+                setting.updateFocusDisplay();
+            } else {
+                setting.moveSelection(1);
+            }
+            if (setting.options[setting.selectedOptionIndex] && setting.options[setting.selectedOptionIndex].elt) {
+                setting.options[setting.selectedOptionIndex].elt.blur();
+            }
+            return false;
+        } else if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+            let step = (keyCode === LEFT_ARROW ? -5 : 5);
+            if (setting.selectedOptionIndex === 0) {
+                let newVal = constrain(setting.sfxSlider.value() + step, 0, 100);
+                setting.sfxSlider.value(newVal);
+            } else if (setting.selectedOptionIndex === 1) {
+                let newVal = constrain(setting.bgmSlider.value() + step, 0, 100);
+                setting.bgmSlider.value(newVal);
+            }
+            if (setting.options[setting.selectedOptionIndex] && setting.options[setting.selectedOptionIndex].elt) {
+                setting.options[setting.selectedOptionIndex].elt.blur();
+            }
+            return false;
+        } else if (keyCode === ENTER) {
+            if (setting.selectedOptionIndex === 2) {
+                // 调用设置界面返回方法
+                setting.backToMainMenu();
+            }
+            return false;
+        }
+    }
 }
+
+
 function keyReleased() {
 
     if (Domain === 'game') {

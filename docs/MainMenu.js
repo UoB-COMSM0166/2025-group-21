@@ -130,15 +130,18 @@ class MainMenu {
 
     instructionButtonPressed() {
         // To be implemented
-        console.log("Instruction button pressed");
-        // this.removeButtons();
-        // Domain = 'instruction';
-        // instruction = null;
+        // console.log("Instruction button pressed");
+        this.removeButtons();
+        Domain = 'instruction';
+        instruction = null;
     }
 
     settingButtonPressed() {
         // To be implemented
-        console.log("Setting button pressed");
+        // console.log("Setting button pressed");
+        this.removeButtons();
+        Domain = 'setting';
+        setting = new Setting('mainMenu');
     }
 
     removeButtons() {
