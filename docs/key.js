@@ -80,29 +80,23 @@ function keyPressed() {
     }
 
 
-    // 设置界面键盘处理逻辑：用于切换选项卡和调节音量
-    // 修改部分开始：设置界面键盘处理逻辑
     if (Domain === 'setting') {
-        // 防止默认按键行为
         if (event && event.preventDefault) {
             event.preventDefault();
         }
 
         if (keyCode === UP_ARROW) {
-            // 切换选项卡向上
             if (setting.selectedOptionIndex === -1) {
                 setting.selectedOptionIndex = 0;
                 setting.updateFocusDisplay();
             } else {
                 setting.moveSelection(-1);
             }
-            // 主动移除当前元素的默认焦点
             if (setting.options[setting.selectedOptionIndex] && setting.options[setting.selectedOptionIndex].elt) {
                 setting.options[setting.selectedOptionIndex].elt.blur();
             }
             return false;
         } else if (keyCode === DOWN_ARROW) {
-            // 切换选项卡向下
             if (setting.selectedOptionIndex === -1) {
                 setting.selectedOptionIndex = 0;
                 setting.updateFocusDisplay();
@@ -128,7 +122,6 @@ function keyPressed() {
             return false;
         } else if (keyCode === ENTER) {
             if (setting.selectedOptionIndex === 2) {
-                // 调用设置界面返回方法
                 setting.backToMainMenu();
             }
             return false;
