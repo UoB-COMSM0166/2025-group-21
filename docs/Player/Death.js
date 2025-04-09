@@ -3,16 +3,24 @@
 class Death {
 
     constructor(type) {
+        if (laserAutomaticSound.isPlaying()) {
+            laserAutomaticSound.stop();
+        }
         deathSound.play();
         game.player.alive = false;
         game.stats.deathUpdate();
         this.type = type;
         this.deathTimer = new Clock();
         this.showStats = false;
+        this.shopButton = null;
+        this.playButton = null;
+        this.statsButton = null;
         this.coinsEarned = null;
         this.coinsAddedToInventory = false;
         this.skipCoinCount = false;
         this.currentY = game.player.pos.y;
+        this.pos = createVector(game.player.pos.x - width/100, game.player.pos.y - width/100);
+        this.slope = atan2(game.player.vel.y, game.player.vel.x); //atan(game.terrain.slope(game.player.pos.x));
 
         this.redTint = 0.68;
         this.blackTintHeight = null;
@@ -20,9 +28,6 @@ class Death {
 
         this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
         this.numScore = createVector(width/7.5, height/2.8); // position of number at death
-
-        this.highscoreAdded = false;
-        this.highscoreSeen = false;
     }
 
     runPlayerDeathSequence() {
@@ -50,6 +55,7 @@ class Death {
             game.highscores.printHighscores();
         }
         else if (!this.showStats) {
+
             if (!this.coinsAddedToInventory) {
                 this.coinsAddedToInventory = true;
                 inventory.coins += Math.round(this.coinsEarned);
@@ -81,7 +87,7 @@ class Death {
             textSize(size);
             text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
             noStroke();
-        pop()
+        pop();
 
         if (this.coinsEarned * 11 >= game.score.total-0.5) {
             this.deathTimer.tick();
@@ -154,10 +160,17 @@ class Death {
     showDeathScreen() {
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
+
         document.body.classList.add("show-cursor");
+        if (this.shopButton === null) this.shopButton = createButton('RETURN TO WORKSHOP');
+        if (this.playButton === null) this.playButton = createButton('PLAY AGAIN');
+        if (this.statsButton === null) this.statsButton = createButton('STATS');
         this.updateShopButton();
         this.updatePlayButton();
         this.updateStatsButton();
+        this.shopButton.mousePressed(() => this.shopButtonPressed());
+        this.playButton.mousePressed(() => this.playButtonPressed());
+        this.statsButton.mousePressed(() => this.statsButtonPressed());
     }
 
     updateShopButton() {
