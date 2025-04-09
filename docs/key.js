@@ -59,7 +59,9 @@ function keyPressed() {
             }
             return;
         } else if (keyCode === DOWN_ARROW) {
-            if (game.pause.selectedButtonIndex === -1) {
+            if (game.pause.invPanel.isVisible()) {
+                game.pause.invPanel.setCloseButtonSelected(true);
+            } else if (game.pause.selectedButtonIndex === -1) {
                 game.pause.selectedButtonIndex = 0;
                 game.pause.updateButtonStyles();
             } else {
@@ -67,7 +69,12 @@ function keyPressed() {
             }
             return;
         } else if (keyCode === ENTER) {
-            game.pause.selectCurrentButton();
+            if (game.pause.invPanel.isVisible() && game.pause.invPanel.isCloseButtonSelected) {
+                // If inventory panel is visible and CLOSE button is selected, activate it
+                game.pause.invPanel.activateCloseButton();
+            } else {
+                game.pause.selectCurrentButton();
+            }
             return;
         }
     }

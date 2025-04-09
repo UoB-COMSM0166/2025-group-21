@@ -11,6 +11,7 @@ class Pause {
         this.backgroundDrawn = false;
         this.countdown = null;
         this.isCountingDown = false;
+        this.invPanel = new InvPanel();
     }
 
     showPauseScreen() {
@@ -26,11 +27,7 @@ class Pause {
             this.drawCloth();
         }
 
-//        push();
-//        this.opacity = lerp(this.opacity, 100, 0.2);
-//        fill(0, 0, 0, this.opacity);
-//        rect(0, 0, window.innerWidth, window.innerHeight);
-//        pop();
+        this.invPanel.draw();
         this.backgroundDrawn = true;
 
     }
@@ -100,6 +97,14 @@ class Pause {
 
     // using up and down arrow keys
     moveSelection(direction) {
+        // If inventory panel is visible, handle its navigation
+        if (this.invPanel.isVisible()) {
+            if (direction === 1) { // Down arrow
+                this.invPanel.setCloseButtonSelected(true);
+            }
+            // We don't need up arrow logic for inventory panel since there's only one button
+            return;
+        }
         if (this.buttons.length === 0) return;
 
         this.selectedButtonIndex = (this.selectedButtonIndex + direction + this.buttons.length) % this.buttons.length;
@@ -107,6 +112,11 @@ class Pause {
     }
 
     selectCurrentButton() {
+        // If inventory panel is visible, check if we need to activate its close button
+        if (this.invPanel.isVisible()) {
+            this.invPanel.activateCloseButton();
+            return;
+        }
         if (this.selectedButtonIndex !== -1 && this.selectedButtonIndex < this.buttons.length) {
             // Execute the appropriate action based on the selected button
             if (this.selectedButtonIndex === 0) {
@@ -122,9 +132,12 @@ class Pause {
     }
 
     continueButtonPressed() {
+        // If inventory panel is open, close it first
+        if (this.invPanel.isVisible()) {
+            this.invPanel.hide();
+            return;
+        }
         this.removeButtonsForCountdown();
-//        this.reset();
-//        this.active = false;
         this.countdown = new Countdown();
         this.isCountingDown = true;
     }
@@ -138,7 +151,11 @@ class Pause {
     }
 
     inventoryButtonPressed() {
-        console.log("Inventory button pressed - functionality to be implemented");
+        for (let btn of this.buttons) {
+            btn.hide();
+            btn.style('z-index', '-1');
+        }
+        this.invPanel.show();
     }
 
     settingButtonPressed() {
@@ -174,6 +191,7 @@ class Pause {
                 btn.remove();
             }
             this.buttons = [];
+            this.invPanel.hide();
             this.selectedButtonIndex = -1;
             this.fieldsReset = true;
             this.backgroundDrawn = false;
