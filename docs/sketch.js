@@ -22,21 +22,19 @@ let windSound = null;
 let fishThrow = null;
 let fishImpactSound = null;
 let forceFieldSound = null;
-let heart = null;
+let heartImages = [];
 let homeBackground;
 let logo;
 let playNoPressed;
 let playIsPressed;
 
 function setup() {
-
-    const{x, y} = initialDimensions();
-    createCanvas(x, y).id("myCanvas");
-
-    // page = new Page();
-    inventory = new Inventory();
+    // Set up canvas aspect ratio and resize to current window size
+    createCanvas(1280, 720).id("myCanvas");
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
+    // Instantiate inventory
+    inventory = new Inventory();
 }
 
 function draw() {
@@ -68,7 +66,13 @@ function preload() {
     explosion = loadImage('assets/sprites/explosion.png');
     fish = loadImage('assets/images/fish.png');
     damagedUfo = loadImage('assets/images/damagedUfo.png')
-    heartImage = loadImage('assets/images/hearts2.png')
+    // Load variety of hearts
+
+    heartImages[0] = loadImage('assets/images/heart1.png')
+    heartImages[1] = loadImage('assets/images/heart2.png')
+    heartImages[2] = loadImage('assets/images/heart3.png')
+    heartImages[3] = loadImage('assets/images/heart4.png')
+
     laserSound = loadSound('assets/sounds/laser.mp3');
     explosionSound = loadSound('assets/sounds/explosionSound.mp3');
     deathSound = loadSound('assets/sounds/deathSound.mp3');
@@ -98,18 +102,16 @@ function initialDimensions() {
 }
 
 function resizeCanvasCSS() {
-
     let canvas = document.getElementById("myCanvas");
+
     // Maintain aspect ratio while scaling to fit window
     let aspectRatio = 16 / 9;
-    let newWidth = window.innerWidth - 20*2;
+    let newWidth = window.innerWidth - 20*2; // Subtract the margin off
     let newHeight = window.innerHeight - 20*2;
 
-    if (newWidth / newHeight > aspectRatio) {
-        newWidth = newHeight * aspectRatio;
-    } else {
-        newHeight = newWidth / aspectRatio;
-    }
+    // Pick the larger of two
+    if (newWidth / newHeight > aspectRatio) newWidth = newHeight * aspectRatio;
+    else newHeight = newWidth / aspectRatio;
 
     canvas.style.width = `${newWidth}px`;
     canvas.style.height = `${newHeight}px`;

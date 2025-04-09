@@ -98,7 +98,7 @@ class Highscores {
 
         // Allow loop to pass
         game.death.highscoreAdded = true;
-
+    
         // And save the updated highscores asynchronously
         this.saveHighscores();
     }
