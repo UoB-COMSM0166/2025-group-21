@@ -8,7 +8,7 @@ let bgImages = [];
 //-------Function to Preload the images in sketch.js-------------
 function preloadBackgroundImages() {
     //---Loading all the assets for the background----------.
-    let totalBackImages = 17;
+    let totalBackImages = 47;
     for (let i = 1; i <= totalBackImages; i++) {
         bgImages.push(loadImage(`assets/backgroundAssets/layer${i}.png`));
     }
@@ -23,12 +23,19 @@ class Background {
         this.yOffset = 200;
         //---Horizontal speed multipliers for parallax movement-----------
         this.speedMultipliers = [
-            0.8,
-            0.75, 0.72, 0.68, 0.55, 0.44,
-            0.35, 0.28, 0.25, 0.22, 0.19,
-            0.16, 0.13, 0.11, 0.05, 0.03,
-            0.02, 0.018, 0.016, 0.015, 0.014, 0.013,
-            0.012, 0.011, 0.010, 0.009, 0.008
+            // front layers move faster
+            0.8, 0.75, 0.72, 0.7, 0.68,
+            0.65, 0.6, 0.55, 0.5, 0.45,
+            // middle
+            0.4, 0.35, 0.3, 0.28, 0.25,
+            0.22, 0.2, 0.18, 0.16, 0.14,
+            // far
+            0.12, 0.10, 0.09, 0.08, 0.07,
+            0.06, 0.05, 0.04, 0.03, 0.02,
+            // very far
+            0.02, 0.02, 0.015, 0.015, 0.01,
+            0.01, 0.009, 0.008, 0.008, 0.008,
+            0.007, 0.006, 0.004, 0.004, 0.004, 0.004, 0.00000001
         ];
 
         //====================OLD=============================================
@@ -45,53 +52,85 @@ class Background {
         //------Y adjustment factors for each layer.-------
         //Front image: 7.5
         this.yAdjustmentFactors = [
-            0.9, 0.9, 0.9, 0.81, 0.81,
-            0.765, 0.765, 0.72, 0.72, 0.72, 0.65,
-            0.65, 0.63, 0.63, 0.63, 0.558, 0.558,
-            0.45, 0.45, 0.45, 0.27, 0.27, 0.27,
-            0.09, 0.09, 0.09, 0.09, 0.00000000000001
+            1.0, 0.98, 0.96, 0.95, 0.93,
+            0.91, 0.89, 0.87, 0.84, 0.82,
+            0.80, 0.78, 0.76, 0.73, 0.71,
+            0.69, 0.67, 0.64, 0.62, 0.60,
+            0.58, 0.56, 0.53, 0.51, 0.49,
+            0.47, 0.44, 0.42, 0.40, 0.38,
+            0.36, 0.33, 0.31, 0.29, 0.27,
+            0.24, 0.22, 0.20, 0.18, 0.16,
+            0.13, 0.11, 0.04, 0.04, 0.04, 0.04, 0
         ];
 
         //-----Size adjustment factors for each layer.-------
         this.sizeAdjustmentFactors = [
+            // close layers (don’t shrink or slow too drastically)
             1, 1, 1, 0.9, 0.9,
-            0.85, 0.85, 0.80, 0.80, 0.80, 0.75,
-            0.75, 0.7, 0.7, 0.7, 0.62, 0.62,
-            0.5, 0.5, 0.5, 0.3, 0.3, 0.3,
-            0.1, 0.1, 0.1, 0.1, 0.1
+            // mid
+            0.8, 0.8, 0.75, 0.75, 0.7,
+            0.7, 0.65, 0.65, 0.6, 0.6,
+            // far
+            0.5, 0.5, 0.45, 0.45, 0.4,
+            0.35, 0.35, 0.3, 0.3, 0.3,
+            0.25, 0.25, 0.2, 0.2, 0.2,
+            // very far
+            0.15, 0.15, 0.1, 0.1, 0.08,
+            0.08, 0.07, 0.07, 0.06, 0.06,
+            0.05, 0.05, 0.04, 0.04, 0.04, 0.04, 0
         ];
 
 
         // For each layer, specify where the bottom center should be on screen.
         // (These values are in screen coordinates; you can adjust them as needed.)
         this.anchorBottomCenters = [
-            { x: 600, y: 990},//Front fuLL LAYER
-            { x: 600, y: 995 },//2 TWO assets
-            { x: 631, y: 950 },//3
-            { x: 641, y: 960 },//4 TWO ASSETS
-            { x: 600, y: 955 },//5 MULTIPLE assets
-            { x: 600, y: 955 },//6 floor
-            { x: 759, y: 940 },//7
-            { x: 600, y: 935 },//8 floor
-            { x: 861, y: 930 },//9
-            { x: 650, y: 970 },//10 Ocean ----------
-            { x: 600, y: 940 },//11 small ice
-            { x: 508, y: 935 },//12 small ice
-            { x: 600, y: 920 },//13 ICE
-            { x: 600, y: 905 },//14 ICE
-            { x: 857, y: 900 },//15 small ice
-            { x: 600, y: 930 },//16 Ocean ----------
-            { x: 534, y: 890 },//17 ICE
-            { x: 600, y: 920 },//18 floor
-            { x: 857, y: 540 },//19
-            { x: 600, y: 532 },//20
-            { x: 600, y: 525 },//21 floor
-            { x: 170, y: 518 },//22
-            { x: 723, y: 520 },//23
-            { x: 600, y: 521 },//24 floor
-            { x: 615, y: 520 },//25
-            { x: 870, y: 518 },//26
-            { x: 296, y: 520 }//27
+            { x: 600, y: 650 }, // 1
+            { x: 600, y: 655 }, // 2
+            { x: 631, y: 610 }, // 3
+            { x: 641, y: 620 }, // 4
+            { x: 600, y: 615 }, // 5
+            { x: 600, y: 615 }, // 6
+            { x: 759, y: 600 }, // 7
+            { x: 600, y: 595 }, // 8
+            { x: 861, y: 590 }, // 9
+            { x: 650, y: 630 }, // 10
+            { x: 600, y: 600 }, // 11
+            { x: 508, y: 595 }, // 12
+            { x: 600, y: 580 }, // 13
+            { x: 600, y: 565 }, // 14
+            { x: 857, y: 560 }, // 15
+            { x: 600, y: 590 }, // 16
+            { x: 534, y: 589 }, // 17
+            { x: 600, y: 588 }, // 18
+            { x: 857, y: 520 }, // 19
+            { x: 600, y: 518 }, // 20
+            { x: 600, y: 516 }, // 21
+            { x: 170, y: 580 }, // ------- 22: Ocean
+            { x: 723, y: 500 }, // 23
+            { x: 600, y: 560 }, // ------- 24: Snow
+            { x: 615, y: 450 }, // 25: Mountain 1
+            { x: 870, y: 480 }, // 26: Mountain 2
+            { x: 296, y: 510 }, // ------- 27: Snow
+            { x: 600, y: 450 }, // 28: Moubntain 3
+            { x: 170, y: 510 }, // -------- 29: sNOW
+            { x: 723, y: 405 }, // 30: Mountain 4
+            { x: 600, y: 451 }, // 31
+            { x: 615, y: 450 }, // 32
+            { x: 870, y: 449 }, // 33
+            { x: 296, y: 448 }, // 34
+            { x: 600, y: 447 }, // 35
+            { x: 615, y: 445 }, // 36
+            { x: 870, y: 444 }, // 37
+            { x: 296, y: 442 }, // 38
+            { x: 600, y: 500 }, // ----------- 39: Snow
+            { x: 615, y: 420 }, // 40
+            { x: 870, y: 415 }, // 41
+            { x: 296, y: 470 }, // 42
+            { x: 600, y: 300 }, // 43
+            { x: 200, y: 350 }, // 44
+            { x: 870, y: 340 }, // 45
+            { x: 870, y: 450 }, // 46
+            { x: 870, y: 200 } // 47
         ];
     }
 
@@ -99,18 +138,18 @@ class Background {
     update(floorSpeed, zoom) {
         let scaleFactor = width / this.baseWidth;
         for (let i = 0; i < this.bgImages.length; i++) {
-            //------First update the offset using your parallax multiplier.
-            this.xOffsets[i] -= floorSpeed * this.speedMultipliers[i]
-
-            //-------Compute the base (un-extra-scaled) width.
-            let baseWidth_i = this.bgImages[i].width * scaleFactor;
-            //------Compute the extra size scale.
+            // Compute sizeScale based on current zoom for this layer:
             let sizeScale = 1 + (zoom - 1) * this.sizeAdjustmentFactors[i];
-            //-------And compute the final drawn width.
+
+            // Adjust the x offset proportionally to the scaled width:
+            this.xOffsets[i] -= floorSpeed * this.speedMultipliers[i] * sizeScale;
+
+            // Compute the base (un-extra-scaled) width.
+            let baseWidth_i = this.bgImages[i].width * scaleFactor;
+            // Calculate the final width after applying the scaling factor.
             let finalWidth = baseWidth_i * sizeScale;
 
-            //---- Wrap the offset so it stays within one copy of the final width.
-            // (This ensures the tiling remains seamless even if the drawn size changes.)
+            // Wrap the offset so it stays within one copy of the final width.
             while (this.xOffsets[i] <= -finalWidth / 2) {
                 this.xOffsets[i] += finalWidth;
             }
@@ -169,7 +208,7 @@ class Background {
             // Translate so that the image’s natural anchor (its bottom center)
             // is at (0, 0). For a bottom-center anchor, subtract half the image’s width
             // and the full image height.
-            translate(-imgW / 2, -imgH);
+            translate(-imgW / 2, -imgH / 2);
 
             // 5. Horizontal tiling:
             //    In this transformed coordinate system, one image tile is drawn at (0, 0)
