@@ -9,6 +9,7 @@ class Game {
         this.infiniteFly = false;
 
         document.body.classList.remove("show-cursor");
+        noStroke();
 
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 100; // 50

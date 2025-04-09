@@ -92,11 +92,12 @@ class Player {
             const DEATH_COLUMNS = 4;
             const DEATH_FRAME_COUNT = 27;
 
-            if (this.deathAngle === null) this.deathAngle = velocityAngle;
+            //if (this.deathAngle === null) this.deathAngle = velocityAngle;
             //rotate(this.deathAngle-= 0.03);
 
 
             rotate(game.death.slope);
+            //console.log(game.death.slope);
             //let speed = Math.round(1000/game.death.deathSpeed);
 
             if (frameCount % 12 === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
@@ -213,9 +214,6 @@ class Player {
 
             if (normalForce > 20 && !game.invincibility) {
 
-                this.vel.x = this.vel.y = 0;
-                this.acc.x = this.acc.y = 0;
-
                 this.lives.removeLife();
 
                 if (this.lives.getLives() === 0) {
@@ -223,6 +221,10 @@ class Player {
                     this.vel.x = -0.5;
                     this.vel.y = -2;
                     //this.gravity = 0.02
+                }
+                else {
+                    this.vel.x = this.vel.y = 0;
+                    this.acc.x = this.acc.y = 0;
                 }
             }
             else {
