@@ -8,8 +8,6 @@ class Stats {
         this.numJumps = 0;
         this.distanceTraveled = 0;
         this.highestJump = 0;
-
-        this.backButton = null;
     }
 
     gameUpdate() {
@@ -51,30 +49,28 @@ class Stats {
         text(`HIGHEST JUMP: ${round(this.highestJump/100)} m`, width/2, height*0.6);
         text(`DISTANCE TRAVELED: ${round(this.distanceTraveled/100, 2)} m`, width/2, height*0.7);
 
-        if (this.backButton === null) this.backButton = createButton('BACK');
-
         this.updateBackButton();
-        this.backButton.mousePressed(() => this.backButtonPressed());
         pop();
-    }
-
-    backButtonPressed() {
-        this.backButton.remove();
-        this.backButton = null;
-        game.death.showStats = false;
     }
 
     updateBackButton() {
 
-        let textSize = width / 300;
-        let numString = textSize.toString() + 'rem'
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(backButton.width / scale, backButton.height / scale);
+        let pos = createVector(0.5*width, 0.9*height);
+        imageMode(CENTER);
 
-        this.backButton.position(
-            0.1*width,
-            0.84*height);
+        if (hoveringOverButton(pos, size)) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
-        this.backButton.class('quitButton')
-        this.backButton.style('font-size', numString);
-        this.backButton.size(width*0.8, height/10);
+            if (mouseIsPressed) {
+                game.death.showStats = false;
+            }
+        }
+        else {
+            image(backButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 }
