@@ -16,6 +16,7 @@ let explosion = null;
 let fish = null;
 let damagedUfo = null;
 let laserSound = null;
+let laserAutomaticSound = null;
 let explosionSound = null;
 let deathSound = null;
 let windSound = null;
@@ -23,10 +24,25 @@ let fishThrow = null;
 let fishImpactSound = null;
 let forceFieldSound = null;
 let heartImages = [];
+let purchaseSound = null;
+let illegalPurchaseSound = null;
+let snowball = null;
+let snowballSound = null;
+let freezingUfo = null;
+let frozenUfo = null;
+let freezeSound = null;
+let arrow = null;
+let arrowSound = null;
+let ufoArrowImpact = null;
+let ufoArrowImpactSound = null;
+let greenLaser = null;
+let purpleLaser = null;
+
 let homeBackground;
 let logo;
 let playNoPressed;
 let playIsPressed;
+let workshopBackground;
 
 let continueButton = null;
 let continueButtonHover = null;
@@ -59,12 +75,17 @@ function draw() {
     }
 
     if (Domain === 'shop') {
-        if (shop === null) shop = new Workshop();
+        if (shop === null) {
+            loadSounds();
+            shop = new Workshop();
+        }
         shop.openShop();
     }
 
     if (Domain === 'game') {
-        if (game === null) game = new Game();
+        if (game === null) {
+            game = new Game();
+        }
         game.runSimulation();
     }
 }
@@ -95,19 +116,53 @@ function preload() {
     heartImages[1] = loadImage('assets/images/heart2.png')
     heartImages[2] = loadImage('assets/images/heart3.png')
     heartImages[3] = loadImage('assets/images/heart4.png')
+    damagedUfo = loadImage('assets/images/damagedUfo.png');
+    snowball = loadImage('assets/images/snowball.png');
+    freezingUfo = loadImage('assets/sprites/freezingUfo.png');
+    frozenUfo = loadImage('assets/images/frozenUfo.png');
+    arrow = loadImage('assets/sprites/arrow.png');
+    ufoArrowImpact = loadImage('assets/sprites/ufoArrowImpact.png')
+    greenLaser = loadImage('assets/images/greenLaser.png');
+    purpleLaser = loadImage('assets/images/purpleLaser.png');
 
-    laserSound = loadSound('assets/sounds/laser.mp3');
-    explosionSound = loadSound('assets/sounds/explosionSound.mp3');
-    deathSound = loadSound('assets/sounds/deathSound.mp3');
-    windSound = loadSound('assets/sounds/windSound.mp3');
-    fishThrow = loadSound('assets/sounds/fishThrow.mp3');
-    fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
-    forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
+    loadSounds();
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
+    workshopBackground = loadImage('assets/images/workshop_background.png');
+}
+
+function loadSounds() {
+    let volume = 0.2;
+    windSound = loadSound('assets/sounds/windSound.mp3');
+    laserSound = loadSound('assets/sounds/laser.mp3');
+    laserSound.setVolume(volume);
+    laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
+    laserAutomaticSound.setVolume(volume);
+    explosionSound = loadSound('assets/sounds/explosionSound.mp3');
+    explosionSound.setVolume(volume);
+    deathSound = loadSound('assets/sounds/deathSound.mp3');
+    deathSound.setVolume(volume);
+    fishThrow = loadSound('assets/sounds/fishThrow.mp3');
+    fishThrow.setVolume(volume);
+    fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
+    fishImpactSound.setVolume(volume);
+    forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
+    forceFieldSound.setVolume(volume);
+    purchaseSound = loadSound('assets/sounds/purchaseSound.mp3');
+    purchaseSound.setVolume(volume);
+    illegalPurchaseSound = loadSound('assets/sounds/illegalPurchaseSound.mp3');
+    illegalPurchaseSound.setVolume(volume);
+    snowballSound = loadSound('assets/sounds/snowballSound.mp3');
+    snowballSound.setVolume(volume);
+    freezeSound = loadSound('assets/sounds/freezeSound.mp3');
+    freezeSound.setVolume(volume/2);
+    arrowSound = loadSound('assets/sounds/arrowSound.mp3');
+    arrowSound.setVolume(volume/2);
+    ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
+    ufoArrowImpactSound.setVolume(volume);
 }
 
 function initialDimensions() {
