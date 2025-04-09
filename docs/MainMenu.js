@@ -131,6 +131,9 @@ class MainMenu {
     instructionButtonPressed() {
         // To be implemented
         console.log("Instruction button pressed");
+        // this.removeButtons();
+        // Domain = 'instruction';
+        // instruction = null;
     }
 
     settingButtonPressed() {

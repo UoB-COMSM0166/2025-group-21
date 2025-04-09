@@ -86,8 +86,6 @@ function preload() {
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/learnToFly.png');
-    playNoPressed = loadImage('assets/images/playButton.png');
-    playIsPressed = loadImage('assets/images/playButtonHover.png');
     penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
     penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
