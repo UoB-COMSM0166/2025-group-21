@@ -4,28 +4,11 @@ class Workshop {
 
     constructor() {
         document.body.classList.add("show-cursor");
-
         this.selectedItem = null;
-        this.purchaseIsValid = false;
-
-        this.playButton = createButton('PLAY');
-        this.playButton.class('playButton');
-        this.purchaseButton = createButton('BUY!');
-        this.purchaseButton.class('purchaseButtonInactive');
-
-        this.laserButton = createButton('Projectile');
-        this.laserButton.class('upgradeItemButton');
-        this.laserButton.offset = 1;
-        this.flyingButton = createButton('Flying');
-        this.flyingButton.class('upgradeItemButton');
-        this.flyingButton.offset = 4;
-        this.forceFieldButton = createButton('Force Field');
-        this.forceFieldButton.class('upgradeItemButton');
-        this.forceFieldButton.offset = 7;
-
-        // Item Prices
+        this.buttonsActive = false;
+        this.buttonCooldownTimer = new Clock();
+        this.buttonCooldownTimer.tick();
         this.updateItemPrices();
-
     }
 
 
@@ -33,15 +16,17 @@ class Workshop {
         this.display();
         this.printTitle();
         this.printCoins();
-        this.listenForButtonPresses();
+        this.updateButtonCooldown();
+    }
 
-        if (this.playerHasEnoughCoins()) {
-            this.purchaseIsValid = true;
-            this.purchaseButton.class('purchaseButtonActive');
+    updateButtonCooldown() {
+
+        if (this.buttonCooldownTimer.time > 0) {
+            this.buttonCooldownTimer.tick();
         }
-        else {
-            this.purchaseIsValid = false;
-            this.purchaseButton.class('purchaseButtonInactive');
+        if (this.buttonCooldownTimer.time > 30) {
+            this.buttonCooldownTimer.reset();
+            this.buttonsActive = true
         }
     }
 
@@ -53,15 +38,15 @@ class Workshop {
         // Update button positions
         this.updatePlayButton();
         this.updatePurchaseButton();
-        this.updateUpgradeButton(this.laserButton);
-        this.updateUpgradeButton(this.flyingButton);
-        this.updateUpgradeButton(this.forceFieldButton);
+        this.updateProjectileButton();
+        this.updateFlyingButton();
+        this.updateForceFieldButton();
 
         // Print colour blocks
         noStroke();
         fill(244,208,255,255);
-        rect(width*0.1, height*0.4, page.pageWidth/3.5, page.pageWidth/3.5, 10);
-        rect(width*0.45, height*0.4, page.pageWidth/2.2, page.pageWidth/6.5, 10);
+        rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
+        rect(width*0.45, height*0.4, width/2.2, width/6.5, 10);
 
         this.showUpgradeDescription();
     }
@@ -90,37 +75,6 @@ class Workshop {
         return false;
     }
 
-    listenForButtonPresses(){
-        this.playButton.mousePressed(() => this.playButtonPressed());
-        this.purchaseButton.mousePressed(() => this.purchaseButtonButtonPressed());
-        this.laserButton.mousePressed(() => this.selectedItem = 'laser');
-        this.flyingButton.mousePressed(() => this.selectedItem = 'flying');
-        this.forceFieldButton.mousePressed(() => this.selectedItem = 'force field');
-    }
-
-    purchaseButtonButtonPressed() {
-
-        if (this.purchaseIsValid) {
-            switch (this.selectedItem) {
-                case 'laser':
-                    inventory.laserLevel++;
-                    inventory.coins -= this.laserUpgradePrice;
-                    break;
-                case 'flying':
-                    inventory.flyLevel++;
-                    inventory.coins -= this.flyingUpgradePrice;
-                    break;
-                case 'force field':
-                    inventory.forceFieldLevel++;
-                    inventory.coins -= this.forceFieldUpgradePrice;
-                    break;
-            }
-            purchaseSound.play();
-            this.updateItemPrices();
-        }
-        else illegalPurchaseSound.play();
-    }
-
     updateItemPrices() {
         this.laserUpgradePrice = inventory.getLaserUpgradePrice();
         this.flyingUpgradePrice = inventory.getFlyingUpgradePrice();
@@ -129,7 +83,7 @@ class Workshop {
 
     showUpgradeDescription(){
 
-        let size = page.pageWidth/70;
+        let size = width/70;
         fill(10,25,87,255);
         textFont('Trebuchet MS');
         textAlign(LEFT, TOP);
@@ -147,7 +101,7 @@ class Workshop {
 
     printAbilityLevel(abilityLevel) {
         fill('rgb(0,0,0)')
-        rect(width*0.11, height*0.42, page.pageWidth/13, page.pageWidth/13, 5);
+        rect(width*0.11, height*0.416, width/13, width/13, 5);
         textAlign(CENTER, TOP);
         fill('rgb(255,255,255)');
         let size = width/55
@@ -230,86 +184,166 @@ class Workshop {
         this.printAbilityLevel(inventory.forceFieldLevel);
     }
 
-    updateUpgradeButton(button) {
-        button.position(page.xPadding + page.margin + 0.0945*width*button.offset,
-                            page.yPadding + page.margin + 0.2*height);
+    updateProjectileButton() {
+        push();
+        let scale = 0.002 * width;
+        let size = createVector(projectileButton.width / scale, projectileButton.height / scale);
+        let pos = createVector(0.2*width, 0.27*height);
+        imageMode(CENTER);
 
-        button.size(width/4, height/12);
+        if (hoveringOverButton(pos, size) || this.selectedItem === 'laser') {
+            image(projectileButtonHover, pos.x, pos.y, size.x, size.y);
 
-        let size = (width / 40).toString() + 'px';
-        button.style('font-size', size);
-        let lineHeight = (width/100).toString() + 'px';
-        button.style('line-height', lineHeight);
+            if (mouseIsPressed) {
+                this.selectedItem = 'laser';
+            }
+        }
+        else {
+            image(projectileButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
+    }
+
+    updateFlyingButton() {
+        push();
+        let scale = 0.00178 * width;
+        let size = createVector(flyingButton.width / scale, flyingButton.height / scale);
+        let pos = createVector(0.5*width, 0.27*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size) || this.selectedItem === 'flying') {
+            image(flyingButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                this.selectedItem = 'flying';
+            }
+        }
+        else {
+            image(flyingButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
+    }
+
+    updateForceFieldButton() {
+        push();
+        let scale = 0.0018 * width;
+        let size = createVector(forceFieldButton.width / scale, forceFieldButton.height / scale);
+        let pos = createVector(0.8*width, 0.27*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size) || this.selectedItem === 'force field') {
+            image(forceFieldButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                this.selectedItem = 'force field';
+            }
+        }
+        else {
+            image(forceFieldButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     /*------------PurchaseButton--------------*/
     updatePurchaseButton(){
-        this.purchaseButton.position(
-            page.xPadding + page.margin + 0.45*page.pageWidth,
-            page.yPadding + page.margin + 0.75*page.pageHeight);
+        push();
+        let scale = 0.002 * width;
+        let size = createVector(buyButtonYellow.width / scale, buyButtonYellow.height / scale);
+        let pos = createVector(0.513*width, 0.8*height);
+        imageMode(CENTER);
 
-        this.purchaseButton.size(page.pageWidth/8.2, page.pageHeight/9);
+        if (hoveringOverButton(pos, size)) {
+            if (this.playerHasEnoughCoins()) {
+                image(buyButtonGreen, pos.x, pos.y, size.x, size.y);
 
-        let size = (page.pageWidth / 40).toString() + 'px';
-        this.purchaseButton.style('font-size', size);
-        let lineHeight = (width/100).toString() + 'px';
-        this.purchaseButton.style('line-height', lineHeight);
-        let borderWeight = (width/200).toString() + 'px solid black';
-        this.purchaseButton.style('border', borderWeight)
+                if (mouseIsPressed && this.buttonsActive) {
+                    this.buttonsActive = false;
+                    this.buttonCooldownTimer.tick();
+                    this.upgradeItem();
+                }
+            }
+            else {
+                image(buyButtonRed, pos.x, pos.y, size.x, size.y);
+
+                if (mouseIsPressed && this.buttonsActive) {
+                    this.buttonsActive = false;
+                    this.buttonCooldownTimer.tick();
+                    illegalPurchaseSound.play();
+                }
+            }
+        }
+        else {
+            image(buyButtonYellow, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     /*------------PlayButton------------------*/
     updatePlayButton() {
-        this.playButton.position(
-            page.xPadding + page.margin + 0.8*page.pageWidth,
-            page.yPadding + page.margin + 0.8*page.pageHeight);
+        push();
+        let scale = 0.0018 * width;
+        let size = createVector(playButton.width / scale, playButton.height / scale);
+        let pos = createVector(0.88*width, 0.89*height);
+        imageMode(CENTER);
 
-        this.playButton.size(page.pageWidth/7, page.pageHeight/9);
+        if (hoveringOverButton(pos, size)) {
+            image(playButtonHover, pos.x, pos.y, size.x, size.y);
 
-        let size = (page.pageWidth / 40).toString() + 'px';
-        this.playButton.style('font-size', size);
-        let lineHeight = (width/100).toString() + 'px'
-        this.playButton.style('line-height', lineHeight);
+            if (mouseIsPressed) {
+                shop = null;
+                Domain = 'game';
+            }
+        }
+        else {
+            image(playButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
-    playButtonPressed() {
-        noStroke();
-        this.removeAllButtons();
-        shop = null;
-        Domain = 'game';
-    }
-
-    removeAllButtons(){
-        this.playButton.remove();
-        this.laserButton.remove();
-        this.flyingButton.remove();
-        this.forceFieldButton.remove();
-        this.purchaseButton.remove();
+    upgradeItem() {
+        switch (this.selectedItem) {
+            case 'laser':
+                inventory.laserLevel++;
+                inventory.coins -= this.laserUpgradePrice;
+                break;
+            case 'flying':
+                inventory.flyLevel++;
+                inventory.coins -= this.flyingUpgradePrice;
+                break;
+            case 'force field':
+                inventory.forceFieldLevel++;
+                inventory.coins -= this.forceFieldUpgradePrice;
+                break;
+        }
+        purchaseSound.play();
+        this.updateItemPrices();
     }
 
     /*------------Others---------------*/
     printTitle() {
-        let size = page.pageWidth/15;
+        let size = width/15;
         fill(10,25,87,255);
         textFont('Trebuchet MS');
         textAlign(CENTER, TOP);
         stroke(10,25,87,255);
         strokeWeight(size/8);
         textSize(size);
-        text('Shop', width/2, 0.001*page.margin*page.pageWidth);
+        text('Shop', width/2, 0.06*height);
     }
 
     printCoins() {
 
         push()
-        let size = page.pageWidth/8;
+        let size = width/8;
         fill(228, 221, 0);
         textFont('Courier New');
         textAlign(LEFT, CENTER);
         stroke(0);
         strokeWeight(size/17);
         textSize(size/3);
-        ellipse(width*0.04, height*0.07, size/2.5);
+        imageMode(CENTER);
+        image(coin, width*0.04, height*0.07, 0.4*size, 0.4*size);
+        //ellipse(width*0.04, height*0.07, size/2.5);
         fill(0);
         strokeWeight(size/40);
         text(`×${inventory.coins}`, width*0.075, height*0.073);

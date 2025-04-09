@@ -11,7 +11,6 @@ class Highscores {
         this.maxScores = 10;
         this.usernameEntered = false; // Flag to track if username has been entered
         this.userName = '';
-        this.backButton = null;
         // Load the highscores from the Gist when the game starts
         this.loadHighscores();
     }
@@ -150,8 +149,10 @@ class Highscores {
             textAlign(CENTER, CENTER);
             text("Highscores", width / 2, height / 2 - 160);
             textSize(size);
+
             for (let i = 0; i < this.highscores.length; i++) {
                 let entry = this.highscores[i];
+
                 if (entry.score === game.stats.score && entry.name === this.userName) {
                     fill(255, 215, 0);
                     text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 100 + i * 30);
@@ -162,27 +163,29 @@ class Highscores {
                 }
             }
 
-        if (this.backButton === null) this.backButton = createButton('BACK');
-
-        this.updateBackButton();
-        this.backButton.mousePressed(() => this.backButtonPressed());
+            this.updateBackButton();
         pop();
     }
 
-    backButtonPressed() {
-        this.backButton.remove();
-        this.backButton = null;
-        game.death.highscoreSeen = true;
-    }
-
     updateBackButton() {
-        let textSize = width / 300;
-        let numString = textSize.toString() + 'rem'
 
-        this.backButton.position(CENTER, 0.85*height);
-        this.backButton.class('quitButton')
-        this.backButton.style('font-size', numString);
-        this.backButton.size(width*0.8, height/10);
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(backButton.width / scale, backButton.height / scale);
+        let pos = createVector(0.5*width, 0.9*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                game.death.highscoreSeen = true;
+            }
+        }
+        else {
+            image(backButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
 }

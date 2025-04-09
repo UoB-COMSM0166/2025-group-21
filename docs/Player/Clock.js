@@ -9,4 +9,8 @@ class Clock {
     tick() {
         this.time++;
     }
+
+    reset() {
+        this.time = 0;
+    }
 }

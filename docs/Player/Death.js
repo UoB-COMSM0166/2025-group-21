@@ -12,9 +12,6 @@ class Death {
         this.type = type;
         this.deathTimer = new Clock();
         this.showStats = false;
-        this.shopButton = null;
-        this.playButton = null;
-        this.statsButton = null;
         this.coinsEarned = null;
         this.coinsAddedToInventory = false;
         this.skipCoinCount = false;
@@ -162,15 +159,9 @@ class Death {
         rect(0, 0, width, height);
 
         document.body.classList.add("show-cursor");
-        if (this.shopButton === null) this.shopButton = createButton('RETURN TO WORKSHOP');
-        if (this.playButton === null) this.playButton = createButton('PLAY AGAIN');
-        if (this.statsButton === null) this.statsButton = createButton('STATS');
         this.updateShopButton();
         this.updatePlayButton();
         this.updateStatsButton();
-        this.shopButton.mousePressed(() => this.shopButtonPressed());
-        this.playButton.mousePressed(() => this.playButtonPressed());
-        this.statsButton.mousePressed(() => this.statsButtonPressed());
     }
 
     updateShopButton() {
