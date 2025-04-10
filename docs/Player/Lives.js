@@ -2,6 +2,9 @@ class Lives {
 
     constructor() {
         this.totalLives = 3;
+        this.playingAnimation = false;
+        this.tintIntensity = 0;
+        this.tintIntensityHasPeaked = false;
     }
 
     getLives() {
@@ -36,5 +39,30 @@ class Lives {
         for (let i = 1; i <= this.totalLives ; i++) {
             image(heartImages[0], -20 + i*50, height-65, heartImages[0].width*0.045, heartImages[0].height*0.045);
         }
+    }
+
+    playLoseLifeAnimation() {
+        push();
+        if (this.tintIntensityHasPeaked) {
+            this.tintIntensity = lerp(this.tintIntensity, 0, 0.06);
+
+            if (this.tintIntensity < 0.001) {
+                this.tintIntensity = 0;
+                this.playingAnimation = false;
+                this.tintIntensityHasPeaked = false;
+            }
+        }
+        else {
+            this.tintIntensity = lerp(this.tintIntensity, 0.9, 0.3);
+
+            if (this.tintIntensity > 0.8) {
+                this.tintIntensityHasPeaked = true;
+            }
+        }
+        fill('rgb(122,33,0)')
+        fill(`rgba(180, 15, 0, ${this.tintIntensity})`);
+        rect(0, 0, width, height);
+
+        pop();
     }
 }

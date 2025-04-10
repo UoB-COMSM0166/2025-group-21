@@ -23,6 +23,8 @@ let snowballSound = null;
 let freezingUfo = null;
 let frozenUfo = null;
 let freezeSound = null;
+let loseLifeSound = null;
+let gainLifeSound = null;
 let arrow = null;
 let arrowSound = null;
 let ufoArrowImpact = null;
@@ -111,9 +113,9 @@ function preload() {
     let volume = 0.2;
     windSound = loadSound('assets/sounds/windSound.mp3');
     laserSound = loadSound('assets/sounds/laser.mp3');
-    laserSound.setVolume(volume);
+    laserSound.setVolume(2*volume);
     laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
-    laserAutomaticSound.setVolume(volume);
+    laserAutomaticSound.setVolume(2*volume);
     explosionSound = loadSound('assets/sounds/explosionSound.mp3');
     explosionSound.setVolume(volume);
     deathSound = loadSound('assets/sounds/deathSound.mp3');
@@ -136,6 +138,12 @@ function preload() {
     arrowSound.setVolume(volume/2);
     ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
     ufoArrowImpactSound.setVolume(volume);
+    loseLifeSound = loadSound('assets/sounds/loseLifeSound.mp3');
+    loseLifeSound.setVolume(2*volume);
+    gainLifeSound = loadSound('assets/sounds/gainLifeSound.mp3');
+    gainLifeSound.setVolume(1.5*volume);
+
+
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/learnToFly.png');
     playNoPressed = loadImage('assets/images/playButton.png');
