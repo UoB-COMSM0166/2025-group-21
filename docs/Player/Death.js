@@ -3,19 +3,21 @@
 class Death {
 
     constructor(type) {
+        if (laserAutomaticSound.isPlaying()) {
+            laserAutomaticSound.stop();
+        }
         deathSound.play();
         game.player.alive = false;
         game.stats.deathUpdate();
         this.type = type;
         this.deathTimer = new Clock();
         this.showStats = false;
-        this.shopButton = null;
-        this.playButton = null;
-        this.statsButton = null;
         this.coinsEarned = null;
         this.coinsAddedToInventory = false;
         this.skipCoinCount = false;
         this.currentY = game.player.pos.y;
+        this.pos = createVector(game.player.pos.x - width/100, game.player.pos.y - width/100);
+        this.slope = atan2(game.player.vel.y, game.player.vel.x); //atan(game.terrain.slope(game.player.pos.x));
 
         this.redTint = 0.68;
         this.blackTintHeight = null;
@@ -23,9 +25,6 @@ class Death {
 
         this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
         this.numScore = createVector(width/7.5, height/2.8); // position of number at death
-
-        this.highscoreAdded = false;
-        this.highscoreSeen = false;
     }
 
     runPlayerDeathSequence() {
@@ -53,6 +52,7 @@ class Death {
             game.highscores.printHighscores();
         }
         else if (!this.showStats) {
+
             if (!this.coinsAddedToInventory) {
                 this.coinsAddedToInventory = true;
                 inventory.coins += Math.round(this.coinsEarned);
@@ -84,7 +84,7 @@ class Death {
             textSize(size);
             text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
             noStroke();
-        pop()
+        pop();
 
         if (this.coinsEarned * 11 >= game.score.total-0.5) {
             this.deathTimer.tick();
@@ -159,76 +159,70 @@ class Death {
         rect(0, 0, width, height);
 
         document.body.classList.add("show-cursor");
-        if (this.shopButton === null) this.shopButton = createButton('RETURN TO WORKSHOP');
-        if (this.playButton === null) this.playButton = createButton('PLAY AGAIN');
-        if (this.statsButton === null) this.statsButton = createButton('STATS');
         this.updateShopButton();
         this.updatePlayButton();
         this.updateStatsButton();
-        this.shopButton.mousePressed(() => this.shopButtonPressed());
-        this.playButton.mousePressed(() => this.playButtonPressed());
-        this.statsButton.mousePressed(() => this.statsButtonPressed());
-    }
-    shopButtonPressed() {
-        this.shopButton.remove();
-        this.playButton.remove();
-        this.statsButton.remove();
-        game = null;
-        Domain = 'shop';
-    }
-    playButtonPressed() {
-        this.shopButton.remove();
-        this.playButton.remove();
-        this.statsButton.remove();
-        game = null;
-    }
-    statsButtonPressed() {
-        this.shopButton.remove();
-        this.playButton.remove();
-        this.statsButton.remove();
-        this.shopButton = null;
-        this.playButton = null;
-        this.statsButton = null;
-        this.showStats = true;
     }
 
     updateShopButton() {
 
-        let textSize = width / 300;
-        let numString = textSize.toString() + 'rem'
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(returnToWorkshopButton.width / scale, returnToWorkshopButton.height / scale);
+        let pos = createVector(0.5*width, 0.5*height);
+        imageMode(CENTER);
 
-        this.shopButton.position(
-            0.11*width,
-            0.43*height);
+        if (hoveringOverButton(pos, size)) {
+            image(returnToWorkshopButtonHover, pos.x, pos.y, size.x, size.y);
 
-        this.shopButton.class('quitButton')
-        this.shopButton.style('font-size', numString);
-        this.shopButton.size(width*0.8, height/10);
+            if (mouseIsPressed) {
+                game = null;
+                Domain = 'shop';
+            }
+        }
+        else {
+            image(returnToWorkshopButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
     updatePlayButton() {
 
-        let textSize = width / 300;
-        let numString = textSize.toString() + 'rem'
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(playAgainButton.width / scale, playAgainButton.height / scale);
+        let pos = createVector(0.5*width, 0.3*height);
+        imageMode(CENTER);
 
-        this.playButton.position(
-            0.11*width,
-            0.23*height);
+        if (hoveringOverButton(pos, size)) {
+            image(playAgainButtonHover, pos.x, pos.y, size.x, size.y);
 
-        this.playButton.class('quitButton')
-        this.playButton.style('font-size', numString);
-        this.playButton.size(width*0.8, height/10);
+            if (mouseIsPressed) {
+                game = null;
+            }
+        }
+        else {
+            image(playAgainButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
     updateStatsButton() {
 
-        let textSize = width / 300;
-        let numString = textSize.toString() + 'rem'
+        push();
+        let scale = 0.0015 * width;
+        let size = createVector(statsButton.width / scale, statsButton.height / scale);
+        let pos = createVector(0.5*width, 0.7*height);
+        imageMode(CENTER);
 
-        this.statsButton.position(
-            0.11*width,
-            0.63*height);
+        if (hoveringOverButton(pos, size)) {
+            image(statsButtonHover, pos.x, pos.y, size.x, size.y);
 
-        this.statsButton.class('quitButton')
-        this.statsButton.style('font-size', numString);
-        this.statsButton.size(width*0.8, height/10);
+            if (mouseIsPressed) {
+                this.showStats = true;
+            }
+        }
+        else {
+            image(statsButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 }

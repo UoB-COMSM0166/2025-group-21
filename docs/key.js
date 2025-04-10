@@ -23,12 +23,13 @@ function keyPressed() {
                 if (inventory.laserLevel < 5) {
                     game.projectile.shoot();
                 }
-                else game.projectile.gatlingMode = true;
+                else {
+                    game.projectile.gatlingMode = true;
+                }
             }
 
             if (key === 'f' && game.shield != null && game.shield.chargeFraction === 1) {
                 game.shield.active = true;
-                game.shield.initialise();
             }
         }
     }
