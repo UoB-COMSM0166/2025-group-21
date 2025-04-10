@@ -1,13 +1,5 @@
 
 
-let Domain = 'home'; // Determines which part of the game code is executed
-
-let homescreen = null;
-let game = null;
-let page = null;
-let shop = null;
-let inventory = null;
-
 let playerImg = null;
 let playerFly = null;
 let playerDeath = null
@@ -67,41 +59,6 @@ let buyButtonGreen = null;
 let playButton = null;
 let playButtonHover = null;
 
-function setup() {
-    // Set up canvas aspect ratio and resize to current window size
-    createCanvas(1280, 720).id("myCanvas");
-    resizeCanvasCSS();
-    window.addEventListener("resize", resizeCanvasCSS);
-    // Instantiate inventory
-    inventory = new Inventory();
-}
-
-function draw() {
-
-    if (Domain === 'home') {
-        if (homescreen === null) {
-            homescreen = new Homescreen();
-            homescreen.resetAnimation();
-        }
-        homescreen.showHomescreen();
-    }
-
-    if (Domain === 'shop') {
-        if (shop === null) {
-            //loadSounds();
-            shop = new Workshop();
-        }
-        shop.openShop();
-    }
-
-    if (Domain === 'game') {
-        if (game === null) {
-            game = new Game();
-        }
-        game.runSimulation();
-    }
-}
-
 function preload() {
 
     returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');
@@ -134,12 +91,13 @@ function preload() {
     fish = loadImage('assets/images/fish.png');
     damagedUfo = loadImage('assets/images/damagedUfo.png');
     coin = loadImage('assets/images/coin.png');
-    // Load variety of hearts
 
+    // Load variety of hearts
     heartImages[0] = loadImage('assets/images/heart1.png');
     heartImages[1] = loadImage('assets/images/heart2.png');
     heartImages[2] = loadImage('assets/images/heart3.png');
     heartImages[3] = loadImage('assets/images/heart4.png');
+
     damagedUfo = loadImage('assets/images/damagedUfo.png');
     snowball = loadImage('assets/images/snowball.png');
     freezingUfo = loadImage('assets/sprites/freezingUfo.png');
@@ -149,16 +107,7 @@ function preload() {
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
 
-    loadSounds();
-
-    homeBackground = loadImage('assets/gifs/background.gif');
-    logo = loadImage('assets/images/learnToFly.png');
-    playNoPressed = loadImage('assets/images/playButton.png');
-    playIsPressed = loadImage('assets/images/playButtonHover.png');
-    workshopBackground = loadImage('assets/images/workshop_background.png');
-}
-
-function loadSounds() {
+    // load sounds
     let volume = 0.2;
     windSound = loadSound('assets/sounds/windSound.mp3');
     laserSound = loadSound('assets/sounds/laser.mp3');
@@ -187,39 +136,9 @@ function loadSounds() {
     arrowSound.setVolume(volume/2);
     ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
     ufoArrowImpactSound.setVolume(volume);
-}
-
-function initialDimensions() {
-    // Calc maximum dimensions
-    let maxWidth = window.innerWidth - 20*2;
-    let maxHeight = window.innerHeight - 20*2;
-
-    // Calc maximum dimensions, but still in 16:9
-    let widthBasedHeight = maxWidth * 9 / 16;
-    let heightBasedWidth = maxHeight * 16 / 9;
-
-    // Use limiting dimension
-    if (widthBasedHeight <= maxHeight) return {x: maxWidth, y: widthBasedHeight};
-    else return {x: heightBasedWidth, y: maxHeight};
-}
-
-function resizeCanvasCSS() {
-    let canvas = document.getElementById("myCanvas");
-
-    // Maintain aspect ratio while scaling to fit window
-    let aspectRatio = 16 / 9;
-    let newWidth = window.innerWidth - 20*2; // Subtract the margin off
-    let newHeight = window.innerHeight - 20*2;
-
-    // Pick the larger of two
-    if (newWidth / newHeight > aspectRatio) newWidth = newHeight * aspectRatio;
-    else newHeight = newWidth / aspectRatio;
-
-    canvas.style.width = `${newWidth}px`;
-    canvas.style.height = `${newHeight}px`;
-}
-
-function hoveringOverButton(pos, size) {
-    return mouseX > pos.x - size.x/2 && mouseX < pos.x + size.x/2 &&
-        mouseY > pos.y - size.y/2 && mouseY < pos.y + size.y/2;
+    homeBackground = loadImage('assets/gifs/background.gif');
+    logo = loadImage('assets/images/learnToFly.png');
+    playNoPressed = loadImage('assets/images/playButton.png');
+    playIsPressed = loadImage('assets/images/playButtonHover.png');
+    workshopBackground = loadImage('assets/images/workshop_background.png');
 }
