@@ -66,6 +66,9 @@ class Game {
 
         pop();
 
+        if (this.player.lives.playingAnimation) {
+            this.player.lives.playLoseLifeAnimation();
+        }
         this.player.lives.drawLives();
         this.stats.gameUpdate();
 
