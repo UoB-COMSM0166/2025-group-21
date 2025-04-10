@@ -62,7 +62,7 @@ class Player {
 
 
     drawPlayer() {
-
+        push();
         this.lives.drawChangeLife();
 
         if (game.death != null && game.death.type === 'UFO') return;
@@ -153,7 +153,7 @@ class Player {
             );
             pop();
         }
-        //pop();
+        pop();
     }
 
     updateAcceleration (slope) {
