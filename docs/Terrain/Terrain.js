@@ -64,7 +64,7 @@ class Terrain {
         //     this.stage++;
         // }
 
-        console.log(this.randomnessFactor);
+        //console.log(this.randomnessFactor);
 
         for (let i=0; i<6; i++) {
             this.drawLayer(159, 216 - 10*i, 251, i);

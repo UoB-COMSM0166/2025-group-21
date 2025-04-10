@@ -74,8 +74,6 @@ class Player {
         const frameSpeed = 2;
         const scaleFactor = 0.8;
 
-        push();
-        translate(150, this.pos.y - this.radius);
         imageMode(CENTER);
 
         let velocityAngle = atan2(this.vel.y, this.vel.x);
@@ -87,16 +85,22 @@ class Player {
         else noTint();
 
         if (!this.alive) {
+            push();
+            translate(game.death.pos.x, game.death.pos.y - this.radius);
+            game.death.pos.x += 0.55;
             // Death Animation
             const DEATH_COLUMNS = 4;
-            const DEATH_FRAME_COUNT = 20;
+            const DEATH_FRAME_COUNT = 27;
 
-            if (this.deathAngle === null) this.deathAngle = velocityAngle;
-            rotate(this.deathAngle-= 0.03);
+            //if (this.deathAngle === null) this.deathAngle = velocityAngle;
+            //rotate(this.deathAngle-= 0.03);
 
-            rotate(velocityAngle);
 
-            if (frameCount % frameSpeed === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
+            rotate(game.death.slope);
+            //console.log(game.death.slope);
+            //let speed = Math.round(1000/game.death.deathSpeed);
+
+            if (frameCount % 12 === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
                 this.deathFrameIndex++;
             }
 
@@ -110,9 +114,11 @@ class Player {
                 deathCol * FRAME_WIDTH, deathRow * FRAME_HEIGHT,          // Source x, y
                 FRAME_WIDTH, FRAME_HEIGHT                                  // Source size
             );
+            pop();
         }
         else if (game.score.airtime > 3) {
-
+            push();
+            translate(150, this.pos.y - this.radius);
             rotate(velocityAngle);
 
             if (frameCount % frameSpeed === 0 && !game.pause.active && game.fly != null && game.fly.active) {
@@ -128,9 +134,11 @@ class Player {
                 col * FRAME_WIDTH, row * FRAME_HEIGHT,
                 FRAME_WIDTH, FRAME_HEIGHT
             );
+            pop();
         }
         else {
-
+            push();
+            translate(150, this.pos.y - this.radius);
             rotate(slopeAngle);
             this.frameIndex = 0;
             let col = this.frameIndex % NORMAL_COLUMNS;
@@ -143,8 +151,9 @@ class Player {
                 col * FRAME_WIDTH, row * FRAME_HEIGHT,
                 FRAME_WIDTH, FRAME_HEIGHT
             );
+            pop();
         }
-        pop();
+        //pop();
     }
 
     updateAcceleration (slope) {
@@ -205,16 +214,17 @@ class Player {
 
             if (normalForce > 20 && !game.invincibility) {
 
-                this.vel.x = this.vel.y = 0;
-                this.acc.x = this.acc.y = 0;
-
                 this.lives.removeLife();
 
                 if (this.lives.getLives() === 0) {
                     game.death = new Death('ground');
                     this.vel.x = -0.5;
                     this.vel.y = -2;
-                    this.gravity = 0.02
+                    //this.gravity = 0.02
+                }
+                else {
+                    this.vel.x = this.vel.y = 0;
+                    this.acc.x = this.acc.y = 0;
                 }
             }
             else {

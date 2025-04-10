@@ -10,13 +10,32 @@ class ForceField {
     }
 
     activate() {
-        if (this.chargeFraction <= 0) {
-            this.resetAbility();
-            return;
+        if (this.chargeFraction === 1) {
+            game.invincibility = true;
+            game.UFOHandler.collisionRadius = width/8;
+
+            if (!forceFieldSound.isPlaying()) {
+                forceFieldSound.play();
+            }
+        }
+        if (forceFieldSound.isPlaying() && game.pause.active) {
+            forceFieldSound.stop();
+        }
+        else if (!forceFieldSound.isPlaying() && !game.pause.active) {
+            forceFieldSound.play();
+        }
+        if (!game.pause.active) {
+            this.chargeFraction -= (0.003 - 0.0004*this.powerLevel);
         }
         this.stretchFactor = this.getStretchFactor();
         this.drawForceField();
-        this.chargeFraction -= (0.003 - 0.0004*this.powerLevel);
+
+        if (this.chargeFraction <= 0) {
+            forceFieldSound.stop();
+            this.active = false;
+            game.invincibility = false;
+            game.UFOHandler.collisionRadius = 50;
+        }
     }
 
     drawForceField() {
@@ -64,20 +83,6 @@ class ForceField {
         return 0.075 * velocity;
     }
 
-    initialise() {
-        game.invincibility = true;
-        game.UFOHandler.collisionRadius = width/8;
-        forceFieldSound.play();
-
-    }
-
-    resetAbility() {
-        this.active = false;
-        game.invincibility = false;
-        game.UFOHandler.collisionRadius = 50;
-        forceFieldSound.stop();
-    }
-
     drawChargeBar() {
 
         push();
@@ -120,7 +125,7 @@ class ForceField {
 
     charge() {
 
-        if (this.chargeFraction < 1 && !this.active) {
+        if (this.chargeFraction < 1 && !this.active && !game.pause.active) {
             this.chargeFraction += 0.001;
         }
         else if (this.chargeFraction > 1) this.chargeFraction = 1;
