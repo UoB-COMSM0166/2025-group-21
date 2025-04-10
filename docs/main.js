@@ -60,7 +60,7 @@ function resizeCanvasCSS() {
 
     canvas.style.width = `${newWidth}px`;
     canvas.style.height = `${newHeight}px`;
-    canvas.style.imageRendering = "crisp-edges"; // Ensures crisp pixels
+    // canvas.style.imageRendering = "crisp-edges"; // Ensures crisp pixels
 }
 
 function hoveringOverButton(pos, size) {
