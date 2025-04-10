@@ -22,7 +22,8 @@ class Hearts {
         for (let heart of this.hearts) {
             let screenX = heart.pos.x - offset;
             let screenY = heart.pos.y - 45; // Added 45 extra so it sits above the snow nicely
-            image(heartImages[heart.num], screenX, screenY, 50, 50);
+            image(heartImages[heart.num], screenX, screenY,
+                heartImages[heart.num].width*0.05, heartImages[heart.num].height*0.05);
         }
     }
 
