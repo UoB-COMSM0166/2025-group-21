@@ -62,7 +62,7 @@ class Player {
 
 
     drawPlayer() {
-        push();
+        //push();
         this.lives.drawChangeLife();
 
         if (game.death != null && game.death.type === 'UFO') return;
@@ -79,10 +79,10 @@ class Player {
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
 
-        // Flash red when lost life and green when gained life
-        if (this.lostLife) tint(250, 95, 85);
-        else if (this.gainedLife) tint(80, 200, 120);
-        else noTint();
+        // // Flash red when lost life and green when gained life
+        // if (this.lostLife) tint(250, 95, 85);
+        // else if (this.gainedLife) tint(80, 200, 120);
+        // else noTint();
 
         if (!this.alive) {
             push();
@@ -92,13 +92,7 @@ class Player {
             const DEATH_COLUMNS = 4;
             const DEATH_FRAME_COUNT = 27;
 
-            //if (this.deathAngle === null) this.deathAngle = velocityAngle;
-            //rotate(this.deathAngle-= 0.03);
-
-
             rotate(game.death.slope);
-            //console.log(game.death.slope);
-            //let speed = Math.round(1000/game.death.deathSpeed);
 
             if (frameCount % 12 === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
                 this.deathFrameIndex++;
@@ -153,7 +147,7 @@ class Player {
             );
             pop();
         }
-        pop();
+        //pop();
     }
 
     updateAcceleration (slope) {
@@ -223,6 +217,8 @@ class Player {
                     //this.gravity = 0.02
                 }
                 else {
+                    loseLifeSound.play();
+                    this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }
