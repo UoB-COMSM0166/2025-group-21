@@ -15,7 +15,7 @@ class Intro {
         this.xSpeed = width * 0.0025;
 
         // logo attributes
-        this.logoDrawWidth = width * 0.7;
+        this.logoDrawWidth = width * 0.5;
         this.logoDrawHeight = this.logoDrawWidth * (logo.height / logo.width) * 1.2;
 
         this.logoOffset = -this.penguinSize * 2;

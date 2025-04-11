@@ -36,13 +36,21 @@ let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
 let workshopMusic = null;
+let workshopBackground = null;
 
 let homeBackground;
 let logo;
 let penguinFlyGif = null;
 let penguinSpinGif = null;
 let keyboardIcon = null;
-let workshopBackground;
+let startGameButton = null;
+let startGameButtonHover = null;
+let shopButton = null;
+let shopButtonHover = null;
+let instructionsButton = null;
+let instructionsButtonHover = null;
+let settingsButton = null;
+let settingsButtonHover = null;
 
 let continueButton = null;
 let continueButtonHover = null;
@@ -93,6 +101,15 @@ function preload() {
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
     submitButton = loadImage('assets/buttons/submitButton.png');
     submitButtonHover = loadImage('assets/buttons/submitButtonHover.png');
+
+    startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');
+    startGameButtonHover = loadImage('assets/buttons/mainMenu/startGameButtonHover.png');
+    shopButton = loadImage('assets/buttons/mainMenu/shopButton.png');
+    shopButtonHover = loadImage('assets/buttons/mainMenu/shopButtonHover.png');
+    instructionsButton = loadImage('assets/buttons/mainMenu/instructionsButton.png');
+    instructionsButtonHover = loadImage('assets/buttons/mainMenu/instructionsButtonHover.png');
+    settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
+    settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
 
 
     playerImg = loadImage('assets/images/player1.png');
@@ -160,7 +177,7 @@ function preload() {
 
 
     homeBackground = loadImage('assets/gifs/background.gif');
-    logo = loadImage('assets/images/learnToFly.png');
+    logo = loadImage('assets/images/pengwingsTitle.png');
     penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
     penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
