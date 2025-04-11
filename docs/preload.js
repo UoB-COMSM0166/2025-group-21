@@ -142,4 +142,6 @@ function preload() {
     playNoPressed = loadImage('assets/images/playButton.png');
     playIsPressed = loadImage('assets/images/playButtonHover.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
+
+    preloadBackgroundImages();
 }

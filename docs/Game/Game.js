@@ -33,14 +33,28 @@ class Game {
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
         this.projectile = new ProjectileAbility(inventory.laserLevel);
+
+        //---------------------------------------
+        this.background = new Background();
+        //---------------------------------------
     }
 
     runSimulation() { // Main loop for game
 
+        //--------------------
+        clear();
+        //--------------------
+
         this.adjustZoom();
         this.wind.adjustVolume();
 
-        image(homeBackground, 0, 0, width, height);
+        //---------------------------------------
+        //image(homeBackground, 0, 0, width, height);
+        this.background.update(this.player.vel.x, this.zoom);
+
+        // 2) Draw the new parallax layers
+        this.background.draw(this.zoom);
+        //---------------------------------------
 
         push();
             translate(this.tx, this.ty); // Change coordinate origin to player position

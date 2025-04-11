@@ -1,6 +1,15 @@
 
 
 function keyPressed() {
+    if (Domain === 'intro') {
+
+        if (key === ' ') {
+            if (intro !== null) {
+                intro.skipAnimation();
+            }
+        }
+    }
+
 
     if (Domain === 'game') {
 
@@ -31,6 +40,36 @@ function keyPressed() {
             if (key === 'f' && game.shield != null && game.shield.chargeFraction === 1) {
                 game.shield.active = true;
             }
+        }
+    }
+
+    if (Domain === 'mainMenu') {
+        if(mainMenu !== null && mainMenu.animationComplete) {
+            mainMenu.handleKeyNavigation(keyCode);
+            return;
+        }
+    }
+
+    if (Domain === 'game' && game.pause.active) {
+        if (keyCode === UP_ARROW) {
+            if (game.pause.selectedButtonIndex === -1) {
+                game.pause.selectedButtonIndex = 0;
+                game.pause.updateButtonStyles();
+            } else {
+                game.pause.moveSelection(-1);
+            }
+            return;
+        } else if (keyCode === DOWN_ARROW) {
+            if (game.pause.selectedButtonIndex === -1) {
+                game.pause.selectedButtonIndex = 0;
+                game.pause.updateButtonStyles();
+            } else {
+                game.pause.moveSelection(1);
+            }
+            return;
+        } else if (keyCode === ENTER) {
+            game.pause.selectCurrentButton();
+            return;
         }
     }
 }
