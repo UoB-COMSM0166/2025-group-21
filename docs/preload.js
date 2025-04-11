@@ -32,6 +32,9 @@ let ufoArrowImpactSound = null;
 let greenLaser = null;
 let purpleLaser = null;
 let coin = null;
+let usernameInputBar = null;
+let submitButton = null;
+let submitButtonHover = null;
 
 let homeBackground;
 let logo;
@@ -84,6 +87,9 @@ function preload() {
     buyButtonGreen = loadImage('assets/buttons/buyButtonGreen.png');
     playButton = loadImage('assets/buttons/shopPlayButton.png');
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
+    submitButton = loadImage('assets/buttons/submitButton.png');
+    submitButtonHover = loadImage('assets/buttons/submitButtonHover.png');
+
 
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
@@ -93,6 +99,7 @@ function preload() {
     fish = loadImage('assets/images/fish.png');
     damagedUfo = loadImage('assets/images/damagedUfo.png');
     coin = loadImage('assets/images/coin.png');
+    usernameInputBar = loadImage('assets/images/usernameInputBar.png');
 
     // Load variety of hearts
     heartImages[0] = loadImage('assets/images/heart1.png');
