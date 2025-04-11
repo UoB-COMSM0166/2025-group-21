@@ -10,11 +10,6 @@ let inventory = null;
 function setup() {
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
-
-    // let ctx = canvas.getContext('2d');
-    // ctx.imageSmoothingEnabled = false;
-    // pixelDensity(1);
-
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
     inventory = new Inventory();
@@ -60,7 +55,6 @@ function resizeCanvasCSS() {
 
     canvas.style.width = `${newWidth}px`;
     canvas.style.height = `${newHeight}px`;
-    // canvas.style.imageRendering = "crisp-edges"; // Ensures crisp pixels
 }
 
 function hoveringOverButton(pos, size) {

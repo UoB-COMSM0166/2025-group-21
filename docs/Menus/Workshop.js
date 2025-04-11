@@ -9,15 +9,44 @@ class Workshop {
         this.buttonCooldownTimer = new Clock();
         this.buttonCooldownTimer.tick();
         this.updateItemPrices();
+        this.musicVolume = 0.4;
+        workshopMusic.setVolume(this.musicVolume);
         workshopMusic.loop();
+        this.fadeOut = false;
+        this.screenTint = 0;
+        this.fadeOutTimer = new Clock()
+
     }
 
 
     openShop() {
         this.display();
-        //this.printTitle();
         this.printCoins();
         this.updateButtonCooldown();
+
+        if (this.fadeOut) {
+            if (this.fadeOutTimer.time > 20) {
+                workshopMusic.stop();
+                shop = null;
+                Domain = 'game';
+            }
+            this.musicVolume = lerp(this.musicVolume, 0, 0.04);
+            workshopMusic.setVolume(this.musicVolume);
+            fill(`rgba(0, 0, 0, ${this.screenTint})`);
+            rect(0, 0, width, height);
+
+            if (this.screenTint >= 0.95) {
+                this.screenTint = lerp(this.screenTint, 1, 0.5);
+
+                if (this.screenTint >= 0.9999) {
+                    ///this.screenTint = 1;
+                    this.fadeOutTimer.tick();
+                }
+            }
+            else {
+                this.screenTint = lerp(this.screenTint, 1, 0.04);
+            }
+        }
     }
 
     updateButtonCooldown() {
@@ -297,9 +326,8 @@ class Workshop {
             image(playButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                workshopMusic.stop();
-                shop = null;
-                Domain = 'game';
+                document.body.classList.remove("show-cursor");
+                this.fadeOut = true;
             }
         }
         else {
@@ -327,22 +355,6 @@ class Workshop {
         this.updateItemPrices();
     }
 
-    /*------------Others---------------*/
-    // printTitle() {
-    //     push()
-    //     let size = width/15;
-    //     fill('rgb(199, 209, 255)');
-    //     textFont('Trebuchet MS');
-    //     textAlign(CENTER, TOP);
-    //     stroke('rgb(199, 209, 255)');
-    //     strokeWeight(size/10);
-    //     textStyle(BOLD);
-    //
-    //     textSize(size);
-    //     text('Shop', width/2, 0.06*height);
-    //     pop();
-    // }
-
     printCoins() {
 
         push()
@@ -355,7 +367,6 @@ class Workshop {
         textSize(size/3);
         imageMode(CENTER);
         image(coin, width*0.04, height*0.07, 0.4*size, 0.4*size);
-        //ellipse(width*0.04, height*0.07, size/2.5);
         fill(0);
         stroke(255);
         strokeWeight(size/70);
