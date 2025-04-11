@@ -1,6 +1,15 @@
 
 
 function keyPressed() {
+    if (Domain === 'intro') {
+
+        if (key === ' ') {
+            if (intro !== null) {
+                intro.skipAnimation();
+            }
+        }
+    }
+
 
 
     if (Domain === 'game') {
@@ -37,6 +46,43 @@ function keyPressed() {
             if (key === 'f' && game.shield != null && game.shield.chargeFraction === 1) {
                 game.shield.active = true;
             }
+        }
+    }
+
+    if (Domain === 'mainMenu') {
+        if(mainMenu !== null && mainMenu.animationComplete) {
+            mainMenu.handleKeyNavigation(keyCode);
+            return;
+        }
+    }
+
+    if (Domain === 'game' && game.pause.active) {
+        if (keyCode === UP_ARROW) {
+            if (game.pause.selectedButtonIndex === -1) {
+                game.pause.selectedButtonIndex = 0;
+                game.pause.updateButtonStyles();
+            } else {
+                game.pause.moveSelection(-1);
+            }
+            return;
+        } else if (keyCode === DOWN_ARROW) {
+            if (game.pause.invPanel.isVisible()) {
+                game.pause.invPanel.setCloseButtonSelected(true);
+            } else if (game.pause.selectedButtonIndex === -1) {
+                game.pause.selectedButtonIndex = 0;
+                game.pause.updateButtonStyles();
+            } else {
+                game.pause.moveSelection(1);
+            }
+            return;
+        } else if (keyCode === ENTER) {
+            if (game.pause.invPanel.isVisible() && game.pause.invPanel.isCloseButtonSelected) {
+                // If inventory panel is visible and CLOSE button is selected, activate it
+                game.pause.invPanel.activateCloseButton();
+            } else {
+                game.pause.selectCurrentButton();
+            }
+            return;
         }
     }
 }
