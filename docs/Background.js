@@ -14,20 +14,6 @@ function preloadBackgroundImages() {
     }
 }
 
-function smoothWrap(x, w, prev) {
-    // Standard wrap into [-w/2, w/2)
-    let wrapped = (((x + w/2) % w) + w) % w - w/2;
-    // Calculate difference relative to previous value
-    let diff = wrapped - prev;
-    // Adjust so that the jump is minimized:
-    if (diff > w/2) {
-        wrapped -= w;
-    } else if (diff < -w/2) {
-        wrapped += w;
-    }
-    return wrapped;
-}
-
 class Background {
     constructor() {
         this.bgImages = bgImages;
@@ -146,19 +132,19 @@ class Background {
             0.31, 0.3,
 
             //25 - 27
-            0.25, 0.24, 0.22,
+            0.13, 0.11, 0.09,
 
             //28-29
-            0.21, 0.2,
+            0.07, 0.06,
 
             //30-39
-            0.13, 0.12, 0.11, 0.1, 0.09, 0.08, 0.08, 0.07, 0.07, 0.06,
+            0.04, 0.038, 0.036, 0.034, 0.032, 0.03, 0.028, 0.026, 0.07, 0.023,
 
             //40-42
-            0.050, 0.047, 0.045,
+            0.02, 0.018, 0.016,
 
             //43-46
-            0.04, 0.04, 0.04, 0.04,
+            0.015, 0.015, 0.01, 0.01,
 
             //sky
             0
@@ -208,18 +194,18 @@ class Background {
             { x: 615, y: 420 }, // 40
             { x: 870, y: 415 }, // 41
             { x: 296, y: 470 }, // 42 ------ snow
-            { x: 600, y: 300 }, // 43
+            { x: 600, y: 360 }, // 43
             { x: 200, y: 350 }, // 44
-            { x: 870, y: 340 }, // 45
+            { x: 870, y: 280 }, // 45
             { x: 870, y: 450 }, // 46 ----snow
             { x: 870, y: 200 } // 47
         ];
 
-        this.speedZoomAdjustments = Array(this.bgImages.length).fill(-2);
+        this.speedZoomAdjustments = Array(this.bgImages.length).fill(1);
 
-        //--This is for continuos Tiling (Only for ocean and ground layers) --------
+        //-----This determines which layers tile continuously ----------
         this.alwaysTile = Array(this.bgImages.length).fill(false);
-        this.alwaysTile[0] = true;  // Layer 1 will always tile continuously.
+        this.alwaysTile[0] = true;
         this.alwaysTile[1] = true;
         this.alwaysTile[9] = true;
         this.alwaysTile[15] = true;
@@ -231,49 +217,39 @@ class Background {
         this.alwaysTile[38] = true;
         this.alwaysTile[41] = true;
         this.alwaysTile[45] = true;
-        //--------------------------------------------------------------------------
-
-
     }
-
 
     update(floorSpeed, zoom) {
         let scaleFactor = width / this.baseWidth;
-        // Ensure we have a prevXOffsets array; if not, initialize it.
-        if (!this.prevXOffsets) {
-            this.prevXOffsets = this.xOffsets.slice();
-        }
         for (let i = 0; i < this.bgImages.length; i++) {
-            // ----Compute the sizeScale based on zoom and this layer's factor.
+            // Compute the sizeScale based on zoom and this layer's sizeAdjustmentFactor.
             let sizeScale = 1 + (zoom - 1) * this.sizeAdjustmentFactors[i];
 
-            // ------Compute the extra speed adjustment factor.
+            // Compute the extra speed adjustment factor based on zoom and this layer's speedZoomAdjustment.
             let speedZoomFactor = 1 + this.speedZoomAdjustments[i] * (zoom - 1);
 
-            // ----Update the world xOffset without wrapping (using constant offset update).
+            // Update the xOffset with floorSpeed, the base speed multiplier, the image scaling, and our zoom factor.
             this.xOffsets[i] -= floorSpeed * this.speedMultipliers[i] * sizeScale * speedZoomFactor;
 
-            // ----Compute the base (unscaled) width.
+            // Compute the base (unscaled) width.
             let baseWidth_i = this.bgImages[i].width * scaleFactor;
-            // -----Compute the final drawn width.
+            // Compute the final drawn width after applying the scaling factor.
             let finalWidth = baseWidth_i * sizeScale;
 
-            //----- Use our smooth wrapping function instead of while loops.
-            this.xOffsets[i] = smoothWrap(this.xOffsets[i], finalWidth, this.prevXOffsets[i]);
-
-            // -----Store current offset as previous for the next frame.
-            this.prevXOffsets[i] = this.xOffsets[i];
+            // Wrap the offset so it stays within one copy of the final width.
+// Wrap the offset to be in [-finalWidth/2, finalWidth/2)
+            this.xOffsets[i] = (((this.xOffsets[i] + finalWidth/2) % finalWidth) + finalWidth) % finalWidth - finalWidth/2;
         }
     }
 
-    // ------Helper function for Y adjustment.------
+    // Helper function for Y adjustment.
     zoomParallax(factor, zoom) {
         // When zoom is 1, (1 - zoom) is 0. When zoom < 1 (zooming out),
         // this returns a positive value (the layer is drawn lower).
         return factor * (1 - zoom) * 100;
     }
 
-    // ------Helper function for size scaling.------
+    // Helper function for size scaling.
     sizeParallax(factor, zoom) {
         // When zoom is 1, no change (returns 1). When zoom < 1, returns a value less than 1.
         return 1 + (zoom - 1) * factor;
@@ -334,6 +310,4 @@ class Background {
             pop();
         }
     }
-
-
 }
