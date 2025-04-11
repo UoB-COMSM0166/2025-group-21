@@ -39,8 +39,9 @@ let workshopMusic = null;
 
 let homeBackground;
 let logo;
-let playNoPressed;
-let playIsPressed;
+let penguinFlyGif = null;
+let penguinSpinGif = null;
+let keyboardIcon = null;
 let workshopBackground;
 
 let continueButton = null;
@@ -160,7 +161,8 @@ function preload() {
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/learnToFly.png');
-    playNoPressed = loadImage('assets/images/playButton.png');
-    playIsPressed = loadImage('assets/images/playButtonHover.png');
+    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
+    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
+    keyboardIcon = loadImage('assets/images/keyboardIcon.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
 }

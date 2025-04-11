@@ -98,6 +98,10 @@ class Game {
 
         if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
         else this.pause.reset();
+
+        if (this.pause.isCountingDown) {
+            this.pause.showCountdown();
+        }
     }
 
     adjustZoom() {

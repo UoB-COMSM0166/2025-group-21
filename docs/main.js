@@ -1,8 +1,9 @@
 
 
-let Domain = 'home'; // Determines which part of the game code is executed
+let Domain = 'intro'; // Determines which part of the game code is executed
 
-let homescreen = null;
+let intro = null;
+let mainMenu = null;
 let game = null;
 let shop = null;
 let inventory = null;
@@ -17,17 +18,23 @@ function setup() {
 
 function draw() {
 
-    if (Domain === 'home') {
-        if (homescreen === null) {
-            homescreen = new Homescreen();
-            homescreen.resetAnimation();
+    if (Domain === 'intro') {
+        if(intro == null) {
+            intro = new Intro();
+            intro.resetAnimation();
         }
-        homescreen.showHomescreen();
+        intro.showIntro();
+    }
+
+    if (Domain === 'mainMenu') {
+        if (mainMenu === null) {
+            mainMenu = new MainMenu();
+        }
+        mainMenu.showMainMenu();
     }
 
     if (Domain === 'shop') {
         if (shop === null) {
-            //loadSounds();
             shop = new Workshop();
         }
         shop.openShop();

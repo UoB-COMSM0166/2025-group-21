@@ -41,10 +41,10 @@ class InvPanel {
 
         push();
         // Panel dimensions
-        let panelWidth = page.pageWidth * 0.5;
-        let panelHeight = page.pageHeight * 0.5;
-        let panelX = (page.pageWidth - panelWidth) / 2;
-        let panelY = (page.pageHeight - panelHeight) / 2;
+        let panelWidth = width * 0.5;
+        let panelHeight = height * 0.5;
+        let panelX = (width - panelWidth) / 2;
+        let panelY = (height - panelHeight) / 2;
 
         // Draw white rounded rectangle
         fill(255);
@@ -132,10 +132,10 @@ class InvPanel {
     }
 
     createCloseButton() {
-        let panelWidth = page.pageWidth * 0.5;
-        let panelHeight = page.pageHeight * 0.5;
-        let panelX = (page.pageWidth - panelWidth) / 2;
-        let panelY = (page.pageHeight - panelHeight) / 2;
+        let panelWidth = width * 0.5;
+        let panelHeight = height * 0.5;
+        let panelX = (width - panelWidth) / 2;
+        let panelY = (height - panelHeight) / 2;
 
         let buttonWidth = panelWidth * 0.4;
         let buttonHeight = panelHeight * 0.12;
@@ -143,10 +143,7 @@ class InvPanel {
         let buttonY = panelY + panelHeight - buttonHeight - panelHeight * 0.1; // 10% bottom margin
 
         this.closeButton = createButton('CLOSE');
-        this.closeButton.position(
-            page.xPadding + page.margin + buttonX,
-            page.yPadding + page.margin + buttonY
-        );
+        this.closeButton.position(buttonX, buttonY);
         this.closeButton.size(buttonWidth, buttonHeight);
         this.closeButton.class('menuButton');
         this.closeButton.mousePressed(() => this.hide());
