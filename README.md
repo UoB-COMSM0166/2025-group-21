@@ -336,7 +336,7 @@ Description: The player interacts with the game system in several ways to engage
 
 # 6. Evaluation
 
-### Overall Feedback
+### Think Aloud Evaluation
 #### Evaluation Flow Insights
 1. For testers 1 to 7, we introduced the gameplay through **verbal instructions and key demonstrations**. However, this approach led to noticeable confusion among the testers regarding how to play.
 2. Starting from tester 8, we implemented a **brief demonstration** before their gameplay session. This adjustment significantly improved their understanding, resulting in a smoother and more intuitive experience compared to those who did not receive a demonstration.
@@ -375,6 +375,20 @@ Description: The player interacts with the game system in several ways to engage
 | 8 | 1. “What’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. The sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
 | 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
 
+### Heuristic Evaluation
+***Tick it if you think there have relative probelems in our game
+| The usability principle|Tester 1|Tester 2|Tester 3|Tester 4|
+|--|:--:|:--:|:--:|:--:|
+|Visibility of system status - Feedback|||||
+|Match between system and real world - Conventions|||||
+|User control and freedom - Emergency exits|||||
+|Consistency and standards - Consistency|||||
+|Error prevention|||||
+|Recognition not recall|||||
+|Flexibility and efficiency of use - Flexibility|||||
+|Aesthetic and minimalist design - Minimalist design|||||
+|Help users recognise, diagnose and recover from errors - Error recognition and recovery|||||
+|Help and documentation - Help|||||
 ### Qualitative evaluation
 ### Difficulties
 ### Quantitative Analysis
