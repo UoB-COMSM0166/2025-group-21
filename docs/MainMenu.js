@@ -2,14 +2,14 @@ class MainMenu {
     constructor() {
         document.body.classList.add("show-cursor");
 
-        this.logoDrawWidth = page.pageWidth * 0.7;
+        this.logoDrawWidth = width * 0.7;
         this.logoDrawHeight = this.logoDrawWidth * (logo.height / logo.width) * 1.2;
-        this.logoX = page.pageWidth * 0.5;
-        this.logoY = page.pageHeight * 0.4;
-        this.targetLogoY = page.pageHeight * 0.3;
-        this.iconX = page.pageWidth * 0.5;
-        this.iconY = page.pageHeight * 0.95;
-        this.iconWidth = page.pageWidth * 0.15;
+        this.logoX = width * 0.5;
+        this.logoY = height * 0.4;
+        this.targetLogoY = height * 0.3;
+        this.iconX = width * 0.5;
+        this.iconY = height * 0.95;
+        this.iconWidth = height * 0.15;
         this.iconHeight = this.iconWidth * (keyboardIcon.height / keyboardIcon.width);
 
         this.animationStartTime = millis();
@@ -48,7 +48,6 @@ class MainMenu {
             this.buttons.push(btn);
             btn.hide(); // Initially hide buttons
         }
-
     }
 
     hideButtons() {
@@ -68,7 +67,7 @@ class MainMenu {
         let elapsed = millis() - this.animationStartTime;
         let progress = min(1, elapsed / this.animationDuration);
 
-        this.logoY = page.pageHeight * 0.4 + progress * (this.targetLogoY - page.pageHeight * 0.4);
+        this.logoY = height * 0.4 + progress * (this.targetLogoY - height * 0.4);
 
         if (progress >= 1 && !this.animationComplete) {
             this.animationComplete = true;
@@ -78,19 +77,19 @@ class MainMenu {
 
     updateButtonStyles() {
         // Calculate button size based on page size
-        let buttonWidth = page.pageWidth * 0.25;
-        let buttonHeight = page.pageHeight * 0.1;
-        let horizontalSpacing = page.pageWidth * 0.15;
-        let verticalSpacing = page.pageHeight * 0.1;
+        let buttonWidth = width * 0.25;
+        let buttonHeight = height * 0.1;
+        let horizontalSpacing = width * 0.15;
+        let verticalSpacing = height * 0.1;
 
 
         // Calculate the total width of the button grid
         let totalGridWidth = (2 * buttonWidth) + horizontalSpacing;
 
         // Calculate left position to center the grid horizontally
-        let leftStart = (page.pageWidth - totalGridWidth) / 2;
+        let leftStart = (width - totalGridWidth) / 2;
 
-        let topStart = this.logoY + (this.logoDrawHeight / 2) + (page.pageHeight * 0.1);
+        let topStart = this.logoY + (this.logoDrawHeight / 2) + (height * 0.1);
 
         // Calculate appropriate font size relative to button size
         let fontSize = Math.min(buttonWidth * 0.005, buttonHeight * 0.1);
@@ -102,8 +101,8 @@ class MainMenu {
             let col = i % 2;
 
             this.buttons[i].position(
-                page.xPadding + page.margin + leftStart + (col * (buttonWidth + horizontalSpacing)),
-                page.yPadding + page.margin + topStart + (row * (buttonHeight + verticalSpacing))
+                leftStart + (col * (buttonWidth + horizontalSpacing)),
+                topStart + (row * (buttonHeight + verticalSpacing))
             );
             this.buttons[i].size(buttonWidth, buttonHeight);
             this.buttons[i].style('font-size', fontSizeStr);
@@ -155,7 +154,7 @@ class MainMenu {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, page.pageWidth, page.pageHeight);
+        image(homeBackground, 0, 0, width, height);
 
         this.updateAnimation();
         this.updatePenguinAnimation();
@@ -236,12 +235,12 @@ class MainMenu {
     }
 
     setupPenguinAnimation() {
-        this.penguinSize = page.pageWidth * 0.2;
+        this.penguinSize = width * 0.2;
         this.waypoints = [
-            {x: -this.penguinSize/2, y: page.pageHeight * 0.5},
-            {x: page.pageWidth * 0.5, y: -this.penguinSize/3},
-            {x: page.pageWidth + this.penguinSize/2, y: page.pageHeight * 0.5},
-            {x: page.pageWidth * 0.5, y: page.pageHeight + this.penguinSize/2}
+            {x: -this.penguinSize/2, y: height * 0.5},
+            {x: width * 0.5, y: -this.penguinSize/3},
+            {x: width + this.penguinSize/2, y: height * 0.5},
+            {x: width * 0.5, y: height + this.penguinSize/2}
         ];
 
         this.currentWaypoint = 0;
@@ -250,7 +249,7 @@ class MainMenu {
         this.penguinX = this.waypoints[0].x;
         this.penguinY = this.waypoints[0].y;
 
-        this.penguinSpeed = page.pageWidth * 0.002;
+        this.penguinSpeed = width * 0.002;
     }
 
     updatePenguinAnimation() {
