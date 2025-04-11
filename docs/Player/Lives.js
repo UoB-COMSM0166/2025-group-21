@@ -36,8 +36,10 @@ class Lives {
 
     drawLives() {
         // Display total lives
-        for (let i = 1; i <= this.totalLives ; i++) {
-            image(heartImages[0], -20 + i*50, height-65, heartImages[0].width*0.045, heartImages[0].height*0.045);
+        if (game.player.alive) {
+            for (let i = 1; i <= this.totalLives ; i++) {
+                image(heartImages[0], -20 + i*50, height-65, heartImages[0].width*0.045, heartImages[0].height*0.045);
+            }
         }
     }
 
