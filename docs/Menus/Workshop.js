@@ -9,12 +9,13 @@ class Workshop {
         this.buttonCooldownTimer = new Clock();
         this.buttonCooldownTimer.tick();
         this.updateItemPrices();
+        workshopMusic.loop();
     }
 
 
     openShop() {
         this.display();
-        this.printTitle();
+        //this.printTitle();
         this.printCoins();
         this.updateButtonCooldown();
     }
@@ -32,8 +33,13 @@ class Workshop {
 
     display() {
 
+        push();
         // background
         image(workshopBackground, 0, 0, width, height);
+        // title
+        imageMode(CENTER);
+        image(shopTitle, width/2, height/10, shopTitle.width/2.5, shopTitle.height/2.5);
+        pop();
 
         // Update button positions
         this.updatePlayButton();
@@ -44,8 +50,9 @@ class Workshop {
 
         // Print colour blocks
         noStroke();
-        fill(244,208,255,255);
-        rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
+        fill('rgb(199, 209, 255)');
+        //rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
+        image(displayBox, width*0.09, height*0.38, width/3.2, width/3.2);
         rect(width*0.45, height*0.4, width/2.2, width/6.5, 10);
 
         this.showUpgradeDescription();
@@ -290,6 +297,7 @@ class Workshop {
             image(playButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
+                workshopMusic.stop();
                 shop = null;
                 Domain = 'game';
             }
@@ -320,16 +328,20 @@ class Workshop {
     }
 
     /*------------Others---------------*/
-    printTitle() {
-        let size = width/15;
-        fill(10,25,87,255);
-        textFont('Trebuchet MS');
-        textAlign(CENTER, TOP);
-        stroke(10,25,87,255);
-        strokeWeight(size/8);
-        textSize(size);
-        text('Shop', width/2, 0.06*height);
-    }
+    // printTitle() {
+    //     push()
+    //     let size = width/15;
+    //     fill('rgb(199, 209, 255)');
+    //     textFont('Trebuchet MS');
+    //     textAlign(CENTER, TOP);
+    //     stroke('rgb(199, 209, 255)');
+    //     strokeWeight(size/10);
+    //     textStyle(BOLD);
+    //
+    //     textSize(size);
+    //     text('Shop', width/2, 0.06*height);
+    //     pop();
+    // }
 
     printCoins() {
 
@@ -345,7 +357,9 @@ class Workshop {
         image(coin, width*0.04, height*0.07, 0.4*size, 0.4*size);
         //ellipse(width*0.04, height*0.07, size/2.5);
         fill(0);
-        strokeWeight(size/40);
+        stroke(255);
+        strokeWeight(size/70);
+        textStyle(BOLD);
         text(`×${inventory.coins}`, width*0.075, height*0.073);
         pop();
     }

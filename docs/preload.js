@@ -33,8 +33,9 @@ let greenLaser = null;
 let purpleLaser = null;
 let coin = null;
 let usernameInputBar = null;
-let submitButton = null;
-let submitButtonHover = null;
+let displayBox = null;
+let shopTitle = null
+let workshopMusic = null;
 
 let homeBackground;
 let logo;
@@ -63,6 +64,8 @@ let buyButtonRed = null;
 let buyButtonGreen = null;
 let playButton = null;
 let playButtonHover = null;
+let submitButton = null;
+let submitButtonHover = null;
 
 function preload() {
 
@@ -100,6 +103,8 @@ function preload() {
     damagedUfo = loadImage('assets/images/damagedUfo.png');
     coin = loadImage('assets/images/coin.png');
     usernameInputBar = loadImage('assets/images/usernameInputBar.png');
+    displayBox = loadImage('assets/images/displayBox.png');
+    shopTitle = loadImage('assets/images/shopTitle.png');
 
     // Load variety of hearts
     heartImages[0] = loadImage('assets/images/heart1.png');
@@ -119,6 +124,8 @@ function preload() {
     // load sounds
     let volume = 0.2;
     windSound = loadSound('assets/sounds/windSound.mp3');
+    workshopMusic = loadSound('assets/sounds/workshopMusic.mp3');
+    workshopMusic.setVolume(2*volume);
     laserSound = loadSound('assets/sounds/laser.mp3');
     laserSound.setVolume(2*volume);
     laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
