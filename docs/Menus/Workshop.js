@@ -76,6 +76,7 @@ class Workshop {
         this.updateProjectileButton();
         this.updateFlyingButton();
         this.updateForceFieldButton();
+        this.updateMainMenuButton();
 
         // Print colour blocks
         noStroke();
@@ -332,6 +333,28 @@ class Workshop {
         }
         else {
             image(playButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
+    }
+
+    updateMainMenuButton() {
+        push();
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935*width, 0.04*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                workshopMusic.stop();
+                shop = null;
+                Domain = 'mainMenu';
+            }
+        }
+        else {
+            image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         }
         pop();
     }
