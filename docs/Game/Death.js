@@ -40,12 +40,16 @@ class Death {
         else if (!this.highscoreAdded) {
             // Check if they got a highscore, get username if so, else break out
             if (game.highscores.isHighscore(game.stats.score)) {
+                game.highscores.savingScore = true;
                 game.highscores.getUserName(game.stats.score);
             }
             else {
                 this.highscoreAdded = true;
                 this.highscoreSeen = true;
             }
+        }
+        else if (game.highscores.savingScore) {
+            text('SAVING SCORE...', width/2, height/2);
         }
         else if (!this.highscoreSeen) {
             // If they did get a highscore, show where they are on the list
