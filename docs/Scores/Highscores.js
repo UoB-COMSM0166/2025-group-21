@@ -8,6 +8,7 @@ class Highscores {
         this.apiUrl = `https://api.github.com/gists/${this.gistId}`;
         this.rawUrl = `https://gist.githubusercontent.com/jmay-gh/${this.gistId}/raw/${this.filename}`;
 
+        this.highscores = [];
         this.maxScores = 10;
         this.usernameEntered = false; // Flag to track if username has been entered
         this.userIsTyping = false;
