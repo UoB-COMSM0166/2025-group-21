@@ -44,6 +44,7 @@ class MainMenu {
         this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
         this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
     }
+
     updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
         push();
         let scale = 0.008 * width;

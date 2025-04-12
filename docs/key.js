@@ -60,29 +60,27 @@ function keyPressed() {
         if (keyCode === UP_ARROW) {
             if (game.pause.selectedButtonIndex === -1) {
                 game.pause.selectedButtonIndex = 0;
-                game.pause.updateButtonStyles();
+                //game.pause.updateButtonStyles();
             } else {
                 game.pause.moveSelection(-1);
             }
-            return;
         } else if (keyCode === DOWN_ARROW) {
-            if (game.pause.invPanel.isVisible()) {
+            if (game.pause.showInvPanel) {
                 game.pause.invPanel.setCloseButtonSelected(true);
             } else if (game.pause.selectedButtonIndex === -1) {
                 game.pause.selectedButtonIndex = 0;
-                game.pause.updateButtonStyles();
+                //game.pause.updateButtonStyles();
             } else {
                 game.pause.moveSelection(1);
             }
-            return;
         } else if (keyCode === ENTER) {
-            if (game.pause.invPanel.isVisible() && game.pause.invPanel.isCloseButtonSelected) {
+            if (game.pause.showInvPanel && game.pause.invPanel.isCloseButtonSelected) {
                 // If inventory panel is visible and CLOSE button is selected, activate it
-                game.pause.invPanel.activateCloseButton();
+                game.pause.showInvPanel = false;
+                game.pause.invPanel.isCloseButtonSelected = false;
             } else {
                 game.pause.selectCurrentButton();
             }
-            return;
         }
     }
 }
@@ -94,7 +92,12 @@ function keyReleased() {
             game.spacePressed = false;
         }
         else if (keyCode === 27) { // 27 == ESC key
-            game.pause.active = !game.pause.active;
+            if (game.pause.active) {
+                game.pause.showInvPanel = false;
+                game.pause.continueButtonPressed();
+            }
+            else game.pause.active = true;
+            //game.pause.active = !game.pause.active;
         }
 
         if (key === 'w' && game.fly != null) {

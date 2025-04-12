@@ -6,163 +6,118 @@ class Pause {
         this.active = false;
         this.fieldsReset = true;
         this.opacity = 0;
-        this.buttons = [];
         this.selectedButtonIndex = -1;
-        this.backgroundDrawn = false;
         this.countdown = null;
         this.isCountingDown = false;
         this.invPanel = new InvPanel();
+
+        this.showButtons = false
+        this.returnToShop = false;
+        this.showInvPanel = false;
     }
 
     showPauseScreen() {
 
         if (this.fieldsReset) {
             document.body.classList.add("show-cursor");
-            this.createButtons();
+            this.showButtons = true;
             this.fieldsReset = false;
         }
-
-        this.updateButtonPositions();
-        if (!this.isCountingDown) {
-            this.drawCloth();
-        }
-
+        this.drawCloth();
+        this.updateButtons();
         this.invPanel.draw();
-        this.backgroundDrawn = true;
 
+        if (this.returnToShop) {
+            this.shopButtonPressed();
+        }
+    }
+
+    updateButtons() {
+        if (!this.showButtons) return;
+
+        // button positions
+        let continue_ = createVector(0.5*width, 0.35*height);
+        let inventory = createVector(0.5*width, 0.45*height);
+        let shop = createVector(0.5*width, 0.55*height);
+        let settings = createVector(0.5*width, 0.65*height);
+
+        this.updateButton(0, continue_, continueButton, continueButtonHover, this.continueButtonPressed)
+        this.updateButton(1, inventory, inventoryButton, inventoryButtonHover, () => game.pause.showInvPanel = true);
+        this.updateButton(2, shop, pauseShopButton, pauseShopButtonHover, () => game.pause.returnToShop = true);
+        this.updateButton(3, settings, pauseSettingsButton, pauseSettingsButtonHover, this.settingButtonPressed);
+    }
+
+    updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
+        push();
+        let scale = 0.006 * width;
+        let size = createVector(buttonDefault.width / scale, buttonDefault.height / scale);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(buttonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                buttonPressed();
+            }
+        }
+        else if (this.selectedButtonIndex === buttonID) {
+            image(buttonHover, pos.x, pos.y, size.x, size.y);
+        }
+        else {
+            image(buttonDefault, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     drawCloth() {
         push();
-        this.opacity = lerp(this.opacity, 100, 0.2);
+        this.opacity = lerp(this.opacity, 100, 0.4);
         fill(0, 0, 0, this.opacity);
-        rect(0, 0, window.innerWidth, window.innerHeight);
+        rect(0, 0, width, height);
         pop();
-    }
-
-    createButtons() {
-        const buttonLabels = ["CONTINUE", "INVENTORY", "SETTING", "QUIT"];
-        const buttonActions = [
-            () => this.continueButtonPressed(),
-            () => this.inventoryButtonPressed(),
-            () => this.settingButtonPressed(),
-            () => this.quitButtonPressed()
-        ];
-
-        for (let i = 0; i < buttonLabels.length; i++) {
-            let btn = createButton(buttonLabels[i]);
-            btn.class('playButton');
-            btn.mousePressed(buttonActions[i]);
-            this.buttons.push(btn);
-            btn.show();
-        }
-    }
-
-    updateButtonPositions() {
-        if (this.buttons.length === 0) return;
-
-        let buttonWidth = width * 0.4;
-        let buttonHeight = height / 10;
-        let totalHeight = this.buttons.length * buttonHeight + (this.buttons.length - 1) * (height * 0.03);
-        let startX = (width - buttonWidth) / 2;
-        let startY = (width - totalHeight) / 2;
-
-        let fontSize = buttonHeight * 0.3;
-        let fontSizeRem = (fontSize / 16).toFixed(2) + 'rem';
-
-        for (let i = 0; i < this.buttons.length; i++) {
-            this.buttons[i].position(startX, startY + i * (buttonHeight + height * 0.03));
-            this.buttons[i].size(buttonWidth, buttonHeight);
-            this.buttons[i].style('font-size', fontSizeRem);
-            this.buttons[i].style('display', 'flex');
-            this.buttons[i].style('align-items', 'center');
-            this.buttons[i].style('justify-content', 'center');
-            this.buttons[i].style('padding', '0');
-
-        }
-    }
-
-    updateButtonStyles() {
-        for (let i = 0; i < this.buttons.length; i++) {
-            this.buttons[i].removeClass('selectedButton');
-
-            if (i === this.selectedButtonIndex) {
-                this.buttons[i].addClass('selectedButton');
-            }
-        }
     }
 
     // using up and down arrow keys
     moveSelection(direction) {
-        // If inventory panel is visible, handle its navigation
-        if (this.invPanel.isVisible()) {
-            if (direction === 1) { // Down arrow
-                this.invPanel.setCloseButtonSelected(true);
-            }
-            // We don't need up arrow logic for inventory panel since there's only one button
-            return;
-        }
-        if (this.buttons.length === 0) return;
-
-        this.selectedButtonIndex = (this.selectedButtonIndex + direction + this.buttons.length) % this.buttons.length;
-        this.updateButtonStyles();
+        this.selectedButtonIndex = (this.selectedButtonIndex + direction + 4) % 4;
     }
 
     selectCurrentButton() {
         // If inventory panel is visible, check if we need to activate its close button
-        if (this.invPanel.isVisible()) {
-            this.invPanel.activateCloseButton();
+        if (this.showInvPanel) {
+            this.invPanel.isCloseButtonSelected = true;
             return;
         }
-        if (this.selectedButtonIndex !== -1 && this.selectedButtonIndex < this.buttons.length) {
+        if (this.selectedButtonIndex !== -1) { // && this.selectedButtonIndex < this.buttons.length
             // Execute the appropriate action based on the selected button
             if (this.selectedButtonIndex === 0) {
                 this.continueButtonPressed();
             } else if (this.selectedButtonIndex === 1) {
-                this.inventoryButtonPressed();
+                this.showInvPanel = true;
             } else if (this.selectedButtonIndex === 2) {
-                this.settingButtonPressed();
+                this.shopButtonPressed();
             } else if (this.selectedButtonIndex === 3) {
-                this.quitButtonPressed();
+                this.settingButtonPressed();
+
             }
         }
     }
 
     continueButtonPressed() {
-        // If inventory panel is open, close it first
-        if (this.invPanel.isVisible()) {
-            this.invPanel.hide();
-            return;
-        }
-        this.removeButtonsForCountdown();
-        this.countdown = new Countdown();
-        this.isCountingDown = true;
-    }
-
-    removeButtonsForCountdown() {
-        for (let btn of this.buttons) {
-            btn.remove();
-        }
-        this.buttons = [];
-        this.opacity = 0;
-    }
-
-    inventoryButtonPressed() {
-        for (let btn of this.buttons) {
-            btn.hide();
-            btn.style('z-index', '-1');
-        }
-        this.invPanel.show();
+        document.body.classList.remove("show-cursor");
+        game.pause.showButtons = false;
+        game.pause.countdown = new Countdown();
+        game.pause.isCountingDown = true;
     }
 
     settingButtonPressed() {
         console.log("Setting button pressed - functionality to be implemented");
     }
 
-    quitButtonPressed() {
-        this.reset();
+    shopButtonPressed() {
+        game.pause.reset();
         game = null;
-        Domain = 'mainMenu';
+        Domain = 'shop';
     }
 
     showCountdown() {
@@ -184,14 +139,8 @@ class Pause {
         if (!this.fieldsReset) {
             this.opacity = 0;
             document.body.classList.remove("show-cursor");
-            for (let btn of this.buttons) {
-                btn.remove();
-            }
-            this.buttons = [];
-            this.invPanel.hide();
             this.selectedButtonIndex = -1;
             this.fieldsReset = true;
-            this.backgroundDrawn = false;
         }
     }
 }

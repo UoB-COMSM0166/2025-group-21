@@ -1,5 +1,6 @@
 
 
+// images
 let playerImg = null;
 let playerFly = null;
 let playerDeath = null
@@ -8,6 +9,20 @@ let explosion = null;
 let fish = null;
 let damagedUfo = null;
 let laserSound = null;
+let heartImages = [];
+let freezingUfo = null;
+let frozenUfo = null;
+let arrow = null;
+let ufoArrowImpact = null;
+let greenLaser = null;
+let purpleLaser = null;
+let coin = null;
+let usernameInputBar = null;
+let displayBox = null;
+let shopTitle = null
+let workshopBackground = null;
+
+// audio
 let laserAutomaticSound = null;
 let explosionSound = null;
 let deathSound = null;
@@ -15,29 +30,19 @@ let windSound = null;
 let fishThrow = null;
 let fishImpactSound = null;
 let forceFieldSound = null;
-let heartImages = [];
 let purchaseSound = null;
 let illegalPurchaseSound = null;
 let snowball = null;
 let snowballSound = null;
-let freezingUfo = null;
-let frozenUfo = null;
 let freezeSound = null;
 let loseLifeSound = null;
 let gainLifeSound = null;
-let arrow = null;
 let arrowSound = null;
-let ufoArrowImpact = null;
 let ufoArrowImpactSound = null;
-let greenLaser = null;
-let purpleLaser = null;
-let coin = null;
-let usernameInputBar = null;
-let displayBox = null;
-let shopTitle = null
 let workshopMusic = null;
-let workshopBackground = null;
 
+// BUTTONS
+// main menu
 let homeBackground;
 let logo;
 let penguinFlyGif = null;
@@ -52,16 +57,21 @@ let instructionsButtonHover = null;
 let settingsButton = null;
 let settingsButtonHover = null;
 
-let continueButton = null;
-let continueButtonHover = null;
+// death menu
 let returnToWorkshopButton = null;
 let returnToWorkshopButtonHover = null;
 let playAgainButton = null;
 let playAgainButtonHover = null;
 let statsButton = null;
 let statsButtonHover = null;
+
+// other
 let backButton = null;
 let backButtonHover = null;
+let submitButton = null;
+let submitButtonHover = null;
+
+// shop
 let projectileButton = null
 let projectileButtonHover = null;
 let flyingButton = null;
@@ -73,21 +83,47 @@ let buyButtonRed = null;
 let buyButtonGreen = null;
 let playButton = null;
 let playButtonHover = null;
-let submitButton = null;
-let submitButtonHover = null;
+
+// pause menu
+let continueButton = null;
+let continueButtonHover = null;
+let inventoryButton = null;
+let inventoryButtonHover = null;
+let pauseShopButton = null;
+let pauseShopButtonHover = null;
+let pauseSettingsButton = null;
+let pauseSettingsButtonHover = null;
+let closeButton = null;
+let closeButtonHover = null;
 
 function preload() {
+    // pause menu
+    continueButton = loadImage('assets/buttons/pauseMenu/continueButton.png');
+    continueButtonHover = loadImage('assets/buttons/pauseMenu/continueButtonHover.png');
+    inventoryButton = loadImage('assets/buttons/pauseMenu/inventoryButton.png');
+    inventoryButtonHover = loadImage('assets/buttons/pauseMenu/inventoryButtonHover.png');
+    pauseShopButton = loadImage('assets/buttons/pauseMenu/shopButton.png');
+    pauseShopButtonHover = loadImage('assets/buttons/pauseMenu/shopButtonHover.png');
+    pauseSettingsButton = loadImage('assets/buttons/pauseMenu/settingsButton.png');
+    pauseSettingsButtonHover = loadImage('assets/buttons/pauseMenu/settingsButtonHover.png');
+    closeButton = loadImage('assets/buttons/pauseMenu/closeButton.png');
+    closeButtonHover = loadImage('assets/buttons/pauseMenu/closeButtonHover.png');
 
+    // death menu
     returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');
     returnToWorkshopButtonHover = loadImage('assets/buttons/returnToWorkshopButtonHover.png');
-    continueButton = loadImage('assets/buttons/continueButton.png');
-    continueButtonHover = loadImage('assets/buttons/continueButtonHover.png');
     playAgainButton = loadImage('assets/buttons/playAgainButton.png');
     playAgainButtonHover = loadImage('assets/buttons/playAgainButtonHover.png');
     statsButton = loadImage('assets/buttons/statsButton.png');
     statsButtonHover = loadImage('assets/buttons/statsButtonHover.png');
+
+    // other
     backButton = loadImage('assets/buttons/backButton.png');
     backButtonHover = loadImage('assets/buttons/backButtonHover.png');
+    submitButton = loadImage('assets/buttons/submitButton.png');
+    submitButtonHover = loadImage('assets/buttons/submitButtonHover.png');
+
+    // shop
     projectileButton = loadImage('assets/buttons/projectileButton.png');
     projectileButtonHover = loadImage('assets/buttons/projectileButtonHover.png');
     flyingButton = loadImage('assets/buttons/flyingButton.png');
@@ -99,9 +135,8 @@ function preload() {
     buyButtonGreen = loadImage('assets/buttons/buyButtonGreen.png');
     playButton = loadImage('assets/buttons/shopPlayButton.png');
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
-    submitButton = loadImage('assets/buttons/submitButton.png');
-    submitButtonHover = loadImage('assets/buttons/submitButtonHover.png');
 
+    // main menu
     startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');
     startGameButtonHover = loadImage('assets/buttons/mainMenu/startGameButtonHover.png');
     shopButton = loadImage('assets/buttons/mainMenu/shopButton.png');
@@ -139,6 +174,13 @@ function preload() {
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
 
+    homeBackground = loadImage('assets/gifs/background.gif');
+    logo = loadImage('assets/images/pengwingsTitle.png');
+    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
+    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
+    keyboardIcon = loadImage('assets/images/keyboardIcon.png');
+    workshopBackground = loadImage('assets/images/workshop_background.png');
+
     // load sounds
     let volume = 0.2;
     windSound = loadSound('assets/sounds/windSound.mp3');
@@ -174,12 +216,4 @@ function preload() {
     loseLifeSound.setVolume(2*volume);
     gainLifeSound = loadSound('assets/sounds/gainLifeSound.mp3');
     gainLifeSound.setVolume(1.5*volume);
-
-
-    homeBackground = loadImage('assets/gifs/background.gif');
-    logo = loadImage('assets/images/pengwingsTitle.png');
-    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
-    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
-    keyboardIcon = loadImage('assets/images/keyboardIcon.png');
-    workshopBackground = loadImage('assets/images/workshop_background.png');
 }
