@@ -10,7 +10,7 @@ class Hearts {
         // Generate a new heart ahead of player once they get past the last
         while (this.lastX < offset + width + 500) {
             let x = this.lastX + this.spacing + random(-200, 200);
-            let y = game.terrain.generateHills(x);
+            let y = game.terrain.generateHills(x) - 25;
             this.hearts.push({
                 pos: createVector(x, y),
                 num: floor(random(1, 4))
@@ -21,7 +21,7 @@ class Hearts {
         // Draw hearts at correct screen position (rather than total position)
         for (let heart of this.hearts) {
             let screenX = heart.pos.x - offset;
-            let screenY = heart.pos.y - 45; // Added 45 extra so it sits above the snow nicely
+            let screenY = heart.pos.y;
             image(heartImages[heart.num], screenX, screenY,
                 heartImages[heart.num].width*0.05, heartImages[heart.num].height*0.05);
         }
