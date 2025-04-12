@@ -1,43 +1,36 @@
 class InvPanel {
     constructor() {
-        this.visible = false;
-        this.closeButton = null;
         this.abilityLabels = ["PROJECTILE", "FLYING", "FORCE FIELD"];
         this.abilityLevels = [5, 3, 5]; // Default values, will be updated from inventory
         this.isCloseButtonSelected = false;
     }
 
-    show() {
-        this.visible = true;
+    updateCloseButton() {
+        push();
+        let pos = createVector(0.5*width, 0.67*height)
+        let scale = 0.01 * width;
+        let size = createVector(closeButton.width / scale, closeButton.height / scale);
+        imageMode(CENTER);
 
-        // Update ability levels from inventory
-        if (inventory) {
-            this.abilityLevels = [
-                inventory.laserLevel,
-                inventory.flyLevel,
-                inventory.forceFieldLevel
-            ];
-        }
+        if (hoveringOverButton(pos, size)) {
+            image(closeButtonHover, pos.x, pos.y, size.x, size.y);
 
-        // Create close button
-        this.createCloseButton();
-    }
-
-    hide() {
-        this.visible = false;
-        this.removeCloseButton();
-        this.isCloseButtonSelected = false;
-
-        if (game && game.pause) {
-            for (let btn of game.pause.buttons) {
-                btn.show();
-                btn.style('z-index', 'auto');
+            if (mouseIsPressed) {
+                game.pause.showInvPanel = false;
+                this.isCloseButtonSelected = false;
             }
         }
+        else if (this.isCloseButtonSelected) {
+            image(closeButtonHover, pos.x, pos.y, size.x, size.y);
+        }
+        else {
+            image(closeButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     draw() {
-        if (!this.visible) return;
+        if (!game.pause.showInvPanel) return;
 
         push();
         // Panel dimensions
@@ -106,7 +99,7 @@ class InvPanel {
             }
             fill(0); // Reset to black for text
         }
-        this.updateCloseButtonStyle();
+        this.updateCloseButton();
         pop();
     }
 
@@ -131,58 +124,7 @@ class InvPanel {
         pop();
     }
 
-    createCloseButton() {
-        let panelWidth = width * 0.5;
-        let panelHeight = height * 0.5;
-        let panelX = (width - panelWidth) / 2;
-        let panelY = (height - panelHeight) / 2;
-
-        let buttonWidth = panelWidth * 0.4;
-        let buttonHeight = panelHeight * 0.12;
-        let buttonX = panelX + (panelWidth - buttonWidth) / 2;
-        let buttonY = panelY + panelHeight - buttonHeight - panelHeight * 0.1; // 10% bottom margin
-
-        this.closeButton = createButton('CLOSE');
-        this.closeButton.position(buttonX, buttonY);
-        this.closeButton.size(buttonWidth, buttonHeight);
-        this.closeButton.class('menuButton');
-        this.closeButton.mousePressed(() => this.hide());
-        this.closeButton.style('z-index', '10'); // Ensure button is above canvas
-
-        // Set font size relative to button size
-        let fontSize = buttonHeight * 0.3;
-        let fontSizeRem = (fontSize / 16).toFixed(2) + 'rem';
-        this.closeButton.style('font-size', fontSizeRem);
-    }
-
-    updateCloseButtonStyle() {
-        if (this.closeButton) {
-            if (this.isCloseButtonSelected) {
-                this.closeButton.addClass('selectedButton');
-            } else {
-                this.closeButton.removeClass('selectedButton');
-            }
-        }
-    }
-
     setCloseButtonSelected(selected) {
         this.isCloseButtonSelected = selected;
-    }
-
-    activateCloseButton() {
-        if (this.isCloseButtonSelected) {
-            this.hide();
-        }
-    }
-
-    removeCloseButton() {
-        if (this.closeButton !== null) {
-            this.closeButton.remove();
-            this.closeButton = null;
-        }
-    }
-
-    isVisible() {
-        return this.visible;
     }
 }

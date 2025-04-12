@@ -3,10 +3,10 @@
 class Inventory {
 
     constructor() {
-        this.coins = 9999;
-        this.flyLevel = 5;
-        this.laserLevel = 5;
-        this.forceFieldLevel = 5;
+        this.coins = 0;
+        this.flyLevel =0;
+        this.laserLevel = 1;
+        this.forceFieldLevel = 0;
     }
 
     getFlyingUpgradePrice() {
