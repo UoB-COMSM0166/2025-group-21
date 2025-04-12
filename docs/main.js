@@ -7,6 +7,9 @@ let game = null;
 let shop = null;
 let inventory = null;
 
+let frameCounter = 0;
+let fps = 0;
+
 function setup() {
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
@@ -44,6 +47,13 @@ function draw() {
         }
         game.runSimulation();
     }
+
+    frameCounter++;
+    if (frameCounter % 60 === 0) {
+        fps = floor(frameRate());
+        frameCounter = 0;
+    }
+    text(fps, 50, 50);
 }
 
 function resizeCanvasCSS() {
