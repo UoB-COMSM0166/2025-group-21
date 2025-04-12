@@ -16,7 +16,7 @@ let arrow = null;
 let ufoArrowImpact = null;
 let greenLaser = null;
 let purpleLaser = null;
-let coin = null;
+let coinImage = null;
 let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
@@ -154,7 +154,7 @@ function preload() {
     explosion = loadImage('assets/sprites/explosion.png');
     fish = loadImage('assets/images/fish.png');
     damagedUfo = loadImage('assets/images/damagedUfo.png');
-    coin = loadImage('assets/images/coin.png');
+    coinImage = loadImage('assets/images/coin.png');
     usernameInputBar = loadImage('assets/images/usernameInputBar.png');
     displayBox = loadImage('assets/images/displayBox.png');
     shopTitle = loadImage('assets/images/shopTitle.png');
@@ -216,4 +216,6 @@ function preload() {
     loseLifeSound.setVolume(2*volume);
     gainLifeSound = loadSound('assets/sounds/gainLifeSound.mp3');
     gainLifeSound.setVolume(1.5*volume);
+    collectCoinSound = loadSound('assets/sounds/coinSound.mp3');
+    collectCoinSound.setVolume(volume/2);
 }

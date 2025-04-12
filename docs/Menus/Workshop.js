@@ -366,7 +366,7 @@ class Workshop {
         strokeWeight(size/17);
         textSize(size/3);
         imageMode(CENTER);
-        image(coin, width*0.04, height*0.07, 0.4*size, 0.4*size);
+        image(coinImage, width*0.04, height*0.07, 0.4*size, 0.4*size);
         fill(0);
         stroke(255);
         strokeWeight(size/70);
