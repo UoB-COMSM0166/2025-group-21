@@ -83,6 +83,9 @@ let buyButtonRed = null;
 let buyButtonGreen = null;
 let playButton = null;
 let playButtonHover = null;
+let mainMenuButton = null;
+let mainMenuButtonHover = null;
+
 
 // pause menu
 let continueButton = null;
@@ -135,6 +138,8 @@ function preload() {
     buyButtonGreen = loadImage('assets/buttons/buyButtonGreen.png');
     playButton = loadImage('assets/buttons/shopPlayButton.png');
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
+    mainMenuButton = loadImage('assets/buttons/mainMenuButton.png');
+    mainMenuButtonHover = loadImage('assets/buttons/mainMenuButtonHover.png');
 
     // main menu
     startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');

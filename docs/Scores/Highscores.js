@@ -18,6 +18,7 @@ class Highscores {
 
         this.buttonsActive = true;
         this.buttonCooldownTimer = new Clock();
+        this.savingScore = false;
     }
 
     // async load highscores from the Gist on game start only
@@ -159,20 +160,42 @@ class Highscores {
     // asynchronously save to the Gist
     async saveHighscores() {
         const contentText = this.highscores.map(entry => `${entry.score} ${entry.name}`).join("\n");
-        await fetch(this.apiUrl, {
-            method: "PATCH",
-            headers: {
-                "Authorization": `token ${this.token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                files: {
-                    [this.filename]: {
-                        content: contentText
+
+        try {
+            const response = await fetch(this.apiUrl, {
+                method: "PATCH",
+                headers: {
+                    "Authorization": `token ${this.token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    files: {
+                        [this.filename]: {
+                            content: contentText
+                        }
                     }
-                }
-            })
-        });
+                })
+            });
+            if (!response.ok) {
+                console.log("SAVE ERROR: ", response.status, response.statusText);
+                return;
+            }
+            const freshUrl = `${this.apiUrl}?cacheBuster=${new Date().getTime()}`;
+            fetch(freshUrl).then(response => response.json())
+                .then(data => {
+                    if (data.files && data.files[this.filename] && data.files[this.filename].content === contentText) {
+                        console.log("Score saved successfully");
+                    } else {
+                        console.log("Error saving score");
+                    }
+                });
+        }
+        catch (error) {
+            console.error("Error saving score: ", error);
+        }
+        finally {
+            this.savingScore = false;
+        }
     }
 
     parseHighscores(text) {
