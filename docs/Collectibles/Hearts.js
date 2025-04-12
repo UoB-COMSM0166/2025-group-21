@@ -2,14 +2,16 @@ class Hearts {
 
     constructor() {
         this.hearts = [];
-        this.spacing = 10000;
+        this.spacing = 11000;
         this.lastX = 0;
     }
 
     update(offset) {
+        // Remove hearts that leave the screen to stop build up
+        // this.hearts = this.hearts.filter(heart => heart.x > offset - 200);
         // Generate a new heart ahead of player once they get past the last
         while (this.lastX < offset + width + 500) {
-            let x = this.lastX + this.spacing + random(-200, 200);
+            let x = this.lastX + this.spacing + random(-500, 500);
             let y = game.terrain.generateHills(x) - 25;
             this.hearts.push({
                 pos: createVector(x, y),

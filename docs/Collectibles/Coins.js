@@ -4,15 +4,19 @@ class Coins {
         this.coins = [];
         this.collectedCoins = [];
         this.totalCoinsCollected = 0;
-        this.spacing = 5000;
+        this.spacing = 4000;
         this.lastX = 0;
     }
 
     update(offset) {
         this.coins = this.coins.filter(coin => coin.x > offset - 200);
+        // Make sure coins and hearts don't overlap
+        let newCoinX = this.lastX + this.spacing + random(-500, 500);
+        let nextHeartX = game.hearts.hearts[game.hearts.hearts.length-1];
+        let differenceCoinHeart = abs(newCoinX - nextHeartX);
         // Generate new coins ahead of player once they get past the last set
-        while (this.lastX < offset + width + 500) {
-            let startX = this.lastX + this.spacing + random(-200, 200);
+        while (this.lastX < offset + width + 500 && !(differenceCoinHeart < 200)) {
+            let startX = newCoinX;
             let numCoins = floor(random(3, 7));
             for (let i = 0; i < numCoins; i++) {
                 let x = startX + i*40;
