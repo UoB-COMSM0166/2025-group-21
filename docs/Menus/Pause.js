@@ -14,6 +14,8 @@ class Pause {
         this.showButtons = false
         this.returnToShop = false;
         this.showInvPanel = false;
+
+        this.showSettings = false;
     }
 
     showPauseScreen() {
@@ -23,12 +25,18 @@ class Pause {
             this.showButtons = true;
             this.fieldsReset = false;
         }
-        this.drawCloth();
-        this.updateButtons();
-        this.invPanel.draw();
 
-        if (this.returnToShop) {
-            this.shopButtonPressed();
+        if (this.showSettings) {
+            settings.showSettingsScreen();
+        }
+        else {
+            this.drawCloth();
+            this.updateButtons();
+            this.invPanel.draw();
+
+            if (this.returnToShop) {
+                this.shopButtonPressed();
+            }
         }
     }
 
@@ -111,7 +119,8 @@ class Pause {
     }
 
     settingButtonPressed() {
-        console.log("Setting button pressed - functionality to be implemented");
+        game.pause.showSettings = true;
+        settings.startCooldown();
     }
 
     shopButtonPressed() {

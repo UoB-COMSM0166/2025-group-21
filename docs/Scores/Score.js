@@ -4,7 +4,7 @@ class Score {
 
     constructor() {
 
-        this.total = 20000;
+        this.total = 0;
         this.airtime = 0
 
         this.currentAirtime = 0;

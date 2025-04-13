@@ -5,8 +5,9 @@ class Game {
     constructor() {
 
         // Cheats
-        this.invincibility = false;
-        this.infiniteFly = false;
+        this.invincibility = settings.enableCheats;
+        this.infiniteFly = settings.enableCheats;
+        this.cheatsEnabled = settings.enableCheats;
 
         document.body.classList.remove("show-cursor");
         noStroke();
@@ -124,6 +125,15 @@ class Game {
         }
         else {
             this.player.vel.x += 0.2;
+        }
+    }
+
+    updateCheats() {
+        this.invincibility = settings.enableCheats;
+        this.infiniteFly = settings.enableCheats
+
+        if (!this.cheatsEnabled && settings.enableCheats) {
+            this.cheatsEnabled = true;
         }
     }
 }
