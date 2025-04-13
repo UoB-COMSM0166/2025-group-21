@@ -75,9 +75,9 @@ class Death {
 
             if (this.skipCoinCount) {
                 this.skipCoinCount = false;
-                this.coinsEarned = game.score.total/11;
+                this.coinsEarned = game.score.total/11 + game.coins.totalCoinsCollected;
             }
-            else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11, 0.02);
+            else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11 + game.coins.totalCoinsCollected, 0.02);
 
             let size = width/8;
             fill(228, 221, 0);

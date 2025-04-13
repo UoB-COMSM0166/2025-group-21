@@ -26,6 +26,8 @@ class Game {
         this.pause = new Pause();
         this.stats = new Stats();
         this.hearts = new Hearts();
+        this.coins = new Coins();
+
         this.highscores = new Highscores();
         this.UFOHandler = new UFOHandler();
         this.wind = new Wind();
@@ -64,6 +66,11 @@ class Game {
             // Generate lifeup+ hearts
             this.hearts.update(this.offset);
             this.hearts.checkCollision();
+
+            // Generate coins on the floor
+            this.coins.update(this.offset);
+            this.coins.checkCollision();
+            this.coins.playCoinCollection(this.offset);
 
         pop();
 
