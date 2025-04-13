@@ -10,8 +10,6 @@ class Highscores {
 
         this.maxScores = 10;
         this.usernameEntered = false; // Flag to track if username has been entered
-        this.userIsTyping = false;
-        this.inputCharacter = null;
         this.userName = '';
         // Load the highscores from the Gist when the game starts
         this.loadHighscores();
@@ -30,6 +28,7 @@ class Highscores {
 
     // Check if the current score is a high score
     isHighscore(score) {
+        if (game.cheatsEnabled) return false;
         // If less than 10 highscores add it
         if (this.highscores.length < this.maxScores) return true;
         // Else check if it beats the lowest score
@@ -38,13 +37,16 @@ class Highscores {
     }
 
     getUserName(score) {
-        this.userIsTyping = true;
+        userIsTyping = true;
         this.drawText();
         // Create the input field and submit button once - had problems with it overwriting it every tick
         if (!this.usernameEntered) {
             this.createInputField();
         }
-        else this.addHighscore(this.userName, score);
+        else {
+            userIsTyping = false;
+            this.addHighscore(this.userName, score);
+        }
         // If username has been entered, add and save the score
 
 
@@ -63,10 +65,10 @@ class Highscores {
 
         if (keyIsDown(BACKSPACE) && this.buttonsActive) {
             this.buttonsActive = false;
-            this.inputCharacter = 'Backspace';
+            inputCharacter = 'Backspace';
             this.buttonCooldownTimer.tick();
         }
-        if (this.inputCharacter !== null) {
+        if (inputCharacter !== null) {
             this.updateUsernameFromInput();
         }
         textFont('Trebuchet MS');
@@ -90,7 +92,7 @@ class Highscores {
 
             if (mouseIsPressed && this.userName.length > 0) {
                 this.usernameEntered = true;
-                this.userIsTyping = false;
+                userIsTyping = false;
                 this.buttonsActive = false;
                 this.buttonCooldownTimer.tick();
             }
@@ -103,26 +105,26 @@ class Highscores {
 
     updateUsernameFromInput() {
 
-        if (this.inputCharacter === 'Backspace') {
+        if (inputCharacter === 'Backspace') {
             if (this.userName.length > 0) {
                 this.userName = this.userName.slice(0, -1);
-                this.inputCharacter = null;
+                inputCharacter = null;
                 return;
             }
         }
-        else if (this.inputCharacter === 'Enter') {
+        else if (inputCharacter === 'Enter') {
             if (this.userName.length > 0) {
                 this.usernameEntered = true;
-                this.userIsTyping = false;
-                this.inputCharacter = null;
+                userIsTyping = false;
+                inputCharacter = null;
                 return;
             }
         }
         else if (this.userName.length < 15) {
-            this.userName = this.userName.concat(this.inputCharacter);
+            this.userName = this.userName.concat(inputCharacter);
             this.buttonCooldownTimer.tick();
         }
-        this.inputCharacter = null;
+        inputCharacter = null;
         //console.log(this.userName + ', ' + this.userName.length);
     }
 

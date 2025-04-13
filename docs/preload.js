@@ -99,6 +99,25 @@ let pauseSettingsButtonHover = null;
 let closeButton = null;
 let closeButtonHover = null;
 
+// settings menu
+let volumeDial = null;
+let volumeDialHover = null;
+let volumeBar = null;
+let incrementArrow = null;
+let incrementArrowHover = null;
+let decrementArrow = null;
+let decrementArrowHover = null;
+let soundOn = null;
+let soundOff = null;
+let onButton = null;
+let onButtonHover = null;
+let offButton = null;
+let offButtonHover = null;
+let controlsButton = null;
+let controlsButtonHover = null;
+let changeButton = null;
+let changeButtonHover = null;
+
 function preload() {
     // pause menu
     continueButton = loadImage('assets/buttons/pauseMenu/continueButton.png');
@@ -186,39 +205,62 @@ function preload() {
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
 
+    // settings menu
+    volumeDial = loadImage('assets/settings/volumeDial.png');
+    volumeDialHover = loadImage('assets/settings/volumeDialHover.png');
+    volumeBar = loadImage('assets/settings/volumeBar.png');
+    incrementArrow = loadImage('assets/settings/incrementArrow.png');
+    incrementArrowHover = loadImage('assets/settings/incrementArrowHover.png');
+    decrementArrow = loadImage('assets/settings/decrementArrow.png');
+    decrementArrowHover = loadImage('assets/settings/decrementArrowHover.png');
+    soundOn = loadImage('assets/settings/soundOn.png');
+    soundOff = loadImage('assets/settings/soundOff.png');
+    onButton = loadImage('assets/settings/onButton.png');
+    onButtonHover = loadImage('assets/settings/onButtonHover.png');
+    offButton = loadImage('assets/settings/offButton.png');
+    offButtonHover = loadImage('assets/settings/offButtonHover.png');
+    controlsButton = loadImage('assets/settings/changeControlsButton.png');
+    controlsButtonHover = loadImage('assets/settings/changeControlsButtonHover.png');
+    changeButton = loadImage('assets/settings/changeButton.png');
+    changeButtonHover = loadImage('assets/settings/changeButtonHover.png');
+
     // load sounds
-    let volume = 0.2;
     windSound = loadSound('assets/sounds/windSound.mp3');
     workshopMusic = loadSound('assets/sounds/workshopMusic.mp3');
-    workshopMusic.setVolume(2*volume);
     laserSound = loadSound('assets/sounds/laser.mp3');
-    laserSound.setVolume(2*volume);
     laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
-    laserAutomaticSound.setVolume(2*volume);
     explosionSound = loadSound('assets/sounds/explosionSound.mp3');
-    explosionSound.setVolume(volume);
     deathSound = loadSound('assets/sounds/deathSound.mp3');
-    deathSound.setVolume(volume);
     fishThrow = loadSound('assets/sounds/fishThrow.mp3');
-    fishThrow.setVolume(volume);
     fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
-    fishImpactSound.setVolume(volume);
     forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
-    forceFieldSound.setVolume(volume);
     purchaseSound = loadSound('assets/sounds/purchaseSound.mp3');
-    purchaseSound.setVolume(volume);
     illegalPurchaseSound = loadSound('assets/sounds/illegalPurchaseSound.mp3');
-    illegalPurchaseSound.setVolume(volume);
     snowballSound = loadSound('assets/sounds/snowballSound.mp3');
-    snowballSound.setVolume(volume);
     freezeSound = loadSound('assets/sounds/freezeSound.mp3');
-    freezeSound.setVolume(volume/2);
     arrowSound = loadSound('assets/sounds/arrowSound.mp3');
-    arrowSound.setVolume(volume/2);
     ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
-    ufoArrowImpactSound.setVolume(volume);
     loseLifeSound = loadSound('assets/sounds/loseLifeSound.mp3');
-    loseLifeSound.setVolume(2*volume);
     gainLifeSound = loadSound('assets/sounds/gainLifeSound.mp3');
-    gainLifeSound.setVolume(1.5*volume);
+    setMasterVolume(1);
+}
+
+function setMasterVolume(masterVolume) {
+    let volume = 0.2;
+    workshopMusic.setVolume(2*volume*masterVolume);
+    laserSound.setVolume(2*volume*masterVolume);
+    laserAutomaticSound.setVolume(2*volume*masterVolume);
+    explosionSound.setVolume(volume*masterVolume);
+    deathSound.setVolume(volume*masterVolume);
+    fishThrow.setVolume(volume*masterVolume);
+    fishImpactSound.setVolume(volume*masterVolume);
+    forceFieldSound.setVolume(volume*masterVolume);
+    purchaseSound.setVolume(volume*masterVolume);
+    illegalPurchaseSound.setVolume(volume*masterVolume);
+    snowballSound.setVolume(volume*masterVolume);
+    freezeSound.setVolume(0.5*volume*masterVolume);
+    arrowSound.setVolume(0.5*volume*masterVolume);
+    ufoArrowImpactSound.setVolume(volume*masterVolume);
+    loseLifeSound.setVolume(2*volume*masterVolume);
+    gainLifeSound.setVolume(1.5*volume*masterVolume);
 }

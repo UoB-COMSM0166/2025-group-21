@@ -28,6 +28,8 @@ class MainMenu {
 
         this.showButtons = false;
         this.setupPenguinAnimation();
+
+        this.showSettings = false;
     }
 
     updateButtons() {
@@ -95,8 +97,8 @@ class MainMenu {
     }
 
     settingButtonPressed() {
-        // To be implemented
-        console.log("Setting button pressed");
+        mainMenu.showSettings = true;
+        settings.startCooldown();
     }
 
     showMainMenu() {

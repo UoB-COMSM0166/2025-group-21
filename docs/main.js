@@ -7,6 +7,10 @@ let mainMenu = null;
 let game = null;
 let shop = null;
 let inventory = null;
+let settings = null;
+
+let userIsTyping = false;
+let inputCharacter = null;
 
 function setup() {
     // Set up canvas aspect ratio and resize to current window size
@@ -14,6 +18,7 @@ function setup() {
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
     inventory = new Inventory();
+    settings = new Settings();
 }
 
 function draw() {
@@ -30,7 +35,10 @@ function draw() {
         if (mainMenu === null) {
             mainMenu = new MainMenu();
         }
-        mainMenu.showMainMenu();
+        if (mainMenu.showSettings) {
+            settings.showSettingsScreen();
+        }
+        else mainMenu.showMainMenu();
     }
 
     if (Domain === 'shop') {
