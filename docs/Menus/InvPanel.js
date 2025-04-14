@@ -18,6 +18,7 @@ class InvPanel {
             if (mouseIsPressed) {
                 game.pause.showInvPanel = false;
                 this.isCloseButtonSelected = false;
+                game.pause.startCooldown();
             }
         }
         else if (this.isCloseButtonSelected) {
@@ -30,7 +31,6 @@ class InvPanel {
     }
 
     draw() {
-        if (!game.pause.showInvPanel) return;
 
         push();
         // Panel dimensions
@@ -106,6 +106,7 @@ class InvPanel {
     drawStar(x, y, size) {
         push();
         translate(x, y);
+        rotate(PI);
 
         beginShape();
         for (let i = 0; i < 5; i++) {
