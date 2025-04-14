@@ -49,7 +49,14 @@ class Death {
             }
         }
         else if (game.highscores.savingScore) {
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(width/20);
+            strokeWeight(width/120);
+            stroke(0);
+            fill(255);
             text('SAVING SCORE...', width/2, height/2);
+            pop();
         }
         else if (!this.highscoreSeen) {
             // If they did get a highscore, show where they are on the list

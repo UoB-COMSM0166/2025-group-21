@@ -16,6 +16,8 @@ class Pause {
         this.showInvPanel = false;
 
         this.showSettings = false;
+        this.buttonCooldownTimer = new Clock();
+        this.buttonsActive = true;
     }
 
     showPauseScreen() {
@@ -25,19 +27,38 @@ class Pause {
             this.showButtons = true;
             this.fieldsReset = false;
         }
-
+        if (this.buttonCooldownTimer.time > 0) {
+            this.updateButtonCooldown();
+        }
         if (this.showSettings) {
             settings.showSettingsScreen();
         }
         else {
             this.drawCloth();
-            this.updateButtons();
-            this.invPanel.draw();
+
+            if (this.showInvPanel) {
+                this.invPanel.draw();
+            }
+            else this.updateButtons();
 
             if (this.returnToShop) {
                 this.shopButtonPressed();
             }
         }
+    }
+
+    updateButtonCooldown() {
+        this.buttonCooldownTimer.tick();
+
+        if (this.buttonCooldownTimer.time > 30) {
+            this.buttonCooldownTimer.reset();
+            this.buttonsActive = true
+        }
+    }
+
+    startCooldown() {
+        this.buttonsActive = false;
+        this.buttonCooldownTimer.tick();
     }
 
     updateButtons() {
@@ -64,7 +85,7 @@ class Pause {
         if (hoveringOverButton(pos, size)) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed) {
+            if (mouseIsPressed && this.buttonsActive) {
                 buttonPressed();
             }
         }
@@ -119,6 +140,10 @@ class Pause {
     }
 
     settingButtonPressed() {
+        // console.log(game.pause.buttonsActive);
+        // if (!game.pause.buttonsActive) {
+        //     return;
+        // }
         game.pause.showSettings = true;
         settings.startCooldown();
     }
