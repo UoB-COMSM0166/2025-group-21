@@ -20,4 +20,26 @@ class Inventory {
     getForceFieldUpgradePrice() {
         return (this.forceFieldLevel+1)*750;
     }
+
+    drawStar(x, y, size) {
+        push();
+        translate(x, y);
+        rotate(PI);
+
+        beginShape();
+        for (let i = 0; i < 5; i++) {
+            let angle = PI / 2 + i * TWO_PI / 5;
+            let outerX = cos(angle) * size / 2;
+            let outerY = sin(angle) * size / 2;
+            vertex(outerX, outerY);
+
+            angle += TWO_PI / 10;
+            let innerX = cos(angle) * size / 5;
+            let innerY = sin(angle) * size / 5;
+            vertex(innerX, innerY);
+        }
+        endShape(CLOSE);
+
+        pop();
+    }
 }
