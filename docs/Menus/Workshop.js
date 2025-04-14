@@ -151,8 +151,8 @@ class Workshop {
     showLaserDescription(){
 
         if (inventory.laserLevel < 5) {
-            text(`Projectile level ${inventory.laserLevel+1}: ${this.laserUpgradePrice}\n` +
-                  '[Upgrade Description]', width/2.15, height/2.37);
+            text(`Projectile level ${inventory.laserLevel+1}: ${this.laserUpgradePrice} coins\n\n` +
+                  `${inventory.getProjectileDescription()}`, width/2.15, height/2.37);
             // TODO: add description
         }
         else {

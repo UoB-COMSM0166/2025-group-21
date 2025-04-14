@@ -21,6 +21,18 @@ class Inventory {
         return (this.forceFieldLevel+1)*750;
     }
 
+    getProjectileDescription() {
+        switch(this.laserLevel+1) {
+            case 2: return 'Upgrade to snowball:\n\n   - Shoot further with improved accuracy\n' +
+                                                   '   - Better collision knock back';
+            case 3: return 'Upgrade to arrow:\n\n   - Path of an arrow follows a straight line\n' +
+                                                '   - Improved path clearance after collisions';
+            case 4: return 'Upgrade to laser:\n\n   - Increased projectile speed\n' +
+                                                '   - Explosion upon collision and instant clearance';
+            case 5: return 'Upgrade to automatic laser:\n\n   - Shoot lasers from a Gatling gun';
+        }
+    }
+
     drawStar(x, y, size) {
         push();
         translate(x, y);
