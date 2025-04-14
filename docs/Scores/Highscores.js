@@ -142,7 +142,7 @@ class Highscores {
         textSize(width / 15);
         text(`You're on the leaderboard!`, width / 2, height / 3.5);
         textSize(width / 30);
-        text(`Enter your username`, width / 2, height / 2.5);
+        text(`Enter your username (not your real name)`, width / 2, height / 2.5);
         pop();
     }
 
