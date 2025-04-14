@@ -9,7 +9,7 @@ class Workshop {
         this.buttonCooldownTimer = new Clock();
         this.buttonCooldownTimer.tick();
         this.updateItemPrices();
-        this.musicVolume = 0.4;
+        this.musicVolume = 0.4*settings.masterVolume*settings.mute;
         workshopMusic.setVolume(this.musicVolume);
         workshopMusic.loop();
         this.fadeOut = false;
@@ -137,15 +137,15 @@ class Workshop {
     }
 
     printAbilityLevel(abilityLevel) {
-        fill('rgb(0,0,0)')
-        rect(width*0.11, height*0.416, width/13, width/13, 5);
-        textAlign(CENTER, TOP);
-        fill('rgb(255,255,255)');
-        let size = width/55
-        textSize(size);
-        text('LEVEL', width*0.148, height*0.425);
-        textSize(3*size);
-        text(`${abilityLevel}`, width*0.148, height*0.46);
+        push();
+        stroke(0);
+        strokeWeight(width/1000);
+        fill('rgb(246,208,55)');
+
+        for (let i = 0; i < abilityLevel; i++) {
+            inventory.drawStar((0.125 + 0.0185*i)*width, 0.44*height, width/60)
+        }
+        pop();
     }
 
     showLaserDescription(){

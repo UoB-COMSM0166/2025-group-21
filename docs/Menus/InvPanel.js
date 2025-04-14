@@ -87,41 +87,19 @@ class InvPanel {
             for (let j = 0; j < 5; j++) {
                 if (j < this.abilityLevels[i]) {
                     // Filled star for levels achieved - larger size
-                    this.drawStar(starStartX + j * starSpacing, itemY, filledStarSize);
+                    inventory.drawStar(starStartX + j * starSpacing, itemY, filledStarSize);
                 } else {
                     // Empty star (outline) for levels not achieved - smaller size
                     stroke(255, 215, 0);
                     strokeWeight(2);
                     noFill();
-                    this.drawStar(starStartX + j * starSpacing, itemY, emptyStarSize);
+                    inventory.drawStar(starStartX + j * starSpacing, itemY, emptyStarSize);
                     noStroke();
                 }
             }
             fill(0); // Reset to black for text
         }
         this.updateCloseButton();
-        pop();
-    }
-
-    drawStar(x, y, size) {
-        push();
-        translate(x, y);
-        rotate(PI);
-
-        beginShape();
-        for (let i = 0; i < 5; i++) {
-            let angle = PI / 2 + i * TWO_PI / 5;
-            let outerX = cos(angle) * size / 2;
-            let outerY = sin(angle) * size / 2;
-            vertex(outerX, outerY);
-
-            angle += TWO_PI / 10;
-            let innerX = cos(angle) * size / 5;
-            let innerY = sin(angle) * size / 5;
-            vertex(innerX, innerY);
-        }
-        endShape(CLOSE);
-
         pop();
     }
 
