@@ -1,7 +1,7 @@
 class InvPanel {
     constructor() {
         this.abilityLabels = ["PROJECTILE", "FLYING", "FORCE FIELD"];
-        this.abilityLevels = [5, 3, 5]; // Default values, will be updated from inventory
+        this.abilityLevels = [inventory.laserLevel, inventory.flyLevel, inventory.forceFieldLevel];
         this.isCloseButtonSelected = false;
     }
 
