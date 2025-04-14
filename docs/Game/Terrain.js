@@ -104,10 +104,52 @@ class Terrain {
     }
 
     generateHills(x) {
-        let y = height - 150;  // Base height
+        let y = height * 0.8;
+        // Generate initial ramp at start
+        if (x < 1600) {
+            y = this.generateIntialRamp(x, y);
+        }
+        else {
+            for (let i = 0; i < this.numWaves; i++) {
+                y -= this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
+            }
+        }
 
-        for (let i = 0; i < this.numWaves; i++) {
-            y -= this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]);
+        return y;
+    }
+
+    generateIntialRamp(x, y) {
+        // Y params
+        let platformHeight = height * 0.2;
+        let downRampHeight = height * 0.3;
+        let upRampHeight = height * 0.15;
+        // X parameters
+        let platformLength = 200;
+        let downRampLenth = 500;
+        let upRampLength = 500;
+        let blendLength = 400;
+
+        // Flat platform to start
+        if (x < platformLength) {
+            y = platformHeight;
+        }
+        // Down ramp
+        else if (x < platformLength + downRampLenth) {
+            let t = (x - platformLength) / downRampLenth;
+            y = platformHeight + downRampHeight * (1 - cos(t * Math.PI));
+        }
+        // Up ramp for launch
+        else if (x < platformLength + downRampLenth + upRampLength) {
+            // let init_Y = initHeight + cosAmplitude1 * (1 - cos(Math.PI));
+            let t = 2*(x - (platformLength + downRampLenth)) / upRampLength;
+            y -= upRampHeight * (1 - cos(t * Math.PI));
+        }
+        // Blend into sine curves
+        else if (x < platformLength + downRampLenth + upRampLength + blendLength) {
+            let t = (x - (platformLength + downRampLenth + upRampLength)) / blendLength;
+            for (let i = 0; i < this.numWaves; i++) {
+                y -= t*this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
+            }
         }
         return y;
     }
