@@ -397,71 +397,60 @@ Description: The player interacts with the game system in several ways to engage
 # 7. Process 
 ### Collaboration
 
-Our six-member team employed agile development methodology for game development, maintaining efficient communication through a hybrid online-offline collaboration approach. In the project's initial phase, we established a flat team structure where all members participated equally in decision-making while claiming specific tasks based on individual expertise. This model effectively leveraged our diverse skill sets while maintaining collective responsibility for project progress.
+Our six-member team adopted the Agile development methodology to manage our game project, combining both online and offline collaboration to maintain efficient communication. At the beginning of the project, we agreed on a flat team structure in which all members contributed equally to decision-making while taking ownership of specific tasks based on their individual strengths. This approach allowed us to make full use of our diverse skills while maintaining shared accountability for the project’s overall progress.
 
-We established a consistent weekly workflow to keep development on track:
+To keep development on track, we maintained a consistent weekly routine. During term time, we used the Tuesday workshop sessions to collaborate on in-class tasks. On Fridays from 2 to 3 PM, we held in-person team meetings (except during assessment-heavy weeks) to reflect on the week’s work, showcase progress—mostly in code—and discuss areas for improvement. Sam and Jack took meeting notes, which were saved in the `/meetings/weekXX_meeting.md` folder for reference.
 
-**During course week:**
+During holidays, we transitioned to a remote setup. We held weekly online meetings every Wednesday from 11 AM to 12 PM via Google Meet. These meetings were used to share individual updates, identify and discuss blockers, and conduct peer testing and feedback sessions.
 
-- **Tuesdays**: Dedicated workshop time for core development tasks
-- **Fridays 2-3 PM**: Mandatory team sync (in-person when possible)
-  - Review key learnings and module progress
-  - Demo completed work (code/design/docs)
-  - Collect live feedback from teammates
-  - *Note-takers*: Sam & Jack (archived in `/meetings/weekXX_meeting.md`)
-
-**During holiday:**
-
-- **Wednesdays 11-12 AM**: Mandatory remote sync (Google Meet)
-
-  - Report individual progress
-  - Flag blockers (with error logs/screenshots) and discuss solutions
-  - Conduct peer testing and feedback
-
-  - *Note-takers*: Sam & Jenny
-
-Throughout the project lifecycle, we completed three Sprint iterations(Sprint 1: 2.11-2.27, Sprint 2: 4.2-4.26, Sprint 3: [TBD]), with each Sprint spanning two weeks. Before each Sprint, we conducted planning meetings to carefully discuss the Product Backlog and determine the Sprint Backlog, prioritizing tasks by importance to ensure the team focused on the most critical components first. At the end of each Sprint, we held review meetings where members showcased their deliverables, shared challenges, and participated in collective evaluations to provide optimization suggestions. 
-
-### Tools and Techniques
-
-Throughout the development cycle, we utilized various tools to facilitate decision-making, communication, planning, and documentation. 
-
-**Miro:** In the early stages, after brainstorming ideas, we used Miro to organize and visualize our thoughts. During the Week 5 workshop, we also used Miro's Planning Poker Online feature to estimate tasks.
-
-[photo of planningpokeronline]
-
-**Microsoft Word:** After each weekly workshop, we usually worked together on Microsoft Word documents, for example, we used Word to update requirements, organize quantitative test reports, and complete sustainability impact analyses.
-
-**Google Meet:** During holidays, we held online meetings using Google Meet. 
-
-**WhatsApp:** For daily communication, our team used WhatsApp for discussions.
-
-**Lucid:** Before starting each sprint cycle, we created sprint planning diagrams using Lucid to ensure all team members clearly understood their tasks. All documents and outputs were saved in the `meeting` folders for reference.
+Over the course of the project, we went through three Sprint cycles (Sprint 1: 2.11–2.27, Sprint 2: 4.2–4.16, Sprint 3: [TBD]), each lasting two weeks. Each Sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed on clear goals. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear to everyone.
 
 [photo of sprint planning]
 
-**GitHub Kanban board:** Most importantly, we consistently implemented Kanban methodology throughout the entire project for effective task management and progress tracking.
+To estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we took into account each person’s strengths, how much time they could realistically commit, and any dependencies or technical challenges that might come up. We also considered which features would have the most impact on gameplay so we could focus on what mattered most.
+
+[photo of planningpokeronline]
+
+During the Sprint, we tracked progress using GitHub Projects with a Kanban board, dividing tasks into “To Do,” “In Progress,” and “Done.” Everyone updated their task status regularly so we could see how things were moving and spot any issues early.
+
+[photo of Kanban]
+
+At the end of each Sprint, we ran a Sprint Review and Retrospective. Team members presented what they’d completed—whether it was new game mechanics, interface updates, or documentation improvements—using screen sharing or quick demos. We then discussed what went well, what didn’t, and how we could work better in the next Sprint. Some of the main issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing. However, we always talked these through openly and came up with practical solutions together.
+
+### Tools and Techniques
+
+To support communication, planning, and documentation throughout development, we used a range of tools:
+
+**Miro: **Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
+
+**Microsoft Word:** Used collaboratively to edit documents such as requirement updates, test reports, and sustainability analyses.
+
+**Google Meet:** Our primary tool for online meetings during the holiday period.
+
+**WhatsApp:** Used for day-to-day team communication.
+
+**GitHub Kanban board:** Enabled us to apply the Kanban method for task tracking and progress visibility.
 
 ### Reflection
 
 **Successes:**
 
 - Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
-- Balanced workload distribution maintained consistent member engagement
+- Balanced task allocation kept everyone consistently involved
 - Open communication channels accelerated technical problem-solving
-- GitHub workflows (branches + pull requests) maintained a stable codebase throughout development
+- GitHub branching and pull request workflows maintained a stable codebase
 - Kanban implementation enabled clear progress tracking
 
 **Problems:**
 
-- One significant challenge was code integration. Since some members co-developed overlapping modules, we initially had disagreements on how to merge changes. However, these conflicts were ultimately resolved through open discussion and mutual understanding.
-- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members.
-- Some members were initially hesitant to voice their ideas. Through mutual encouragement and support, we fostered a more open environment where everyone felt comfortable contributing.
+- One significant challenge was code integration. Since some members co-developed overlapping modules, we had disagreements on how to merge changes
+- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members
+- Some team members were initially hesitant to share ideas, but this improved over time with mutual support
 
 **Key Learnings:**
 
 - Early prototyping (paper + digital) significantly reduced development ambiguity
-- Regular external user testing informed priority decisions
+- Frequent user testing outside the team helped prioritize what to improve
 - Comprehensive documentation system enabled rapid task onboarding
 - Visual tools proved particularly effective for distributed team collaboration
 - Transparent communication significantly improved team coordination and built mutual trust among members
