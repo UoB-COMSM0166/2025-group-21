@@ -273,6 +273,7 @@ Before designing the use-case diagram, we analyzed the stakeholders and user sto
     <img src="Product%20doc/use-case%20diagram.png" width="600">
 </div>
 
+
 Since this is a game design project, we have focused our stakeholders primarily on the Player. The key interactions center around how the player engages with the game system and their environment, ensuring an immersive and enjoyable gaming experience.
 
 **Actor:** Player
