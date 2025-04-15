@@ -421,7 +421,7 @@ At the end of each Sprint, we ran a Sprint Review and Retrospective. Team member
 
 To support communication, planning, and documentation throughout development, we used a range of tools:
 
-**Miro: **Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
+**Miro:** Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
 
 **Microsoft Word:** Used collaboratively to edit documents such as requirement updates, test reports, and sustainability analyses.
 
