@@ -106,7 +106,7 @@ class Terrain {
     generateHills(x) {
         let y = height * 0.8;
         // Generate initial ramp at start
-        if (x < 1600) {
+        if (x < 2300) {
             y = this.generateIntialRamp(x, y);
         }
         else {
@@ -118,15 +118,16 @@ class Terrain {
         return y;
     }
 
-    generateIntialRamp(x, y) {
+    generateIntialRamp(x) {
+        let y = height * 0.8;
         // Y params
-        let platformHeight = height * 0.2;
-        let downRampHeight = height * 0.3;
-        let upRampHeight = height * 0.15;
+        let platformHeight = height * 0.3;
+        let downRampHeight = height * 0.25;
+        let upRampHeight = height * 0.125;
         // X parameters
         let platformLength = 200;
-        let downRampLenth = 500;
-        let upRampLength = 500;
+        let downRampLenth = 700;
+        let upRampLength = 1000;
         let blendLength = 400;
 
         // Flat platform to start
@@ -136,19 +137,18 @@ class Terrain {
         // Down ramp
         else if (x < platformLength + downRampLenth) {
             let t = (x - platformLength) / downRampLenth;
-            y = platformHeight + downRampHeight * (1 - cos(t * Math.PI));
+            y = platformHeight + downRampHeight * (1 - sin(t * Math.PI + Math.PI / 2));
         }
         // Up ramp for launch
         else if (x < platformLength + downRampLenth + upRampLength) {
-            // let init_Y = initHeight + cosAmplitude1 * (1 - cos(Math.PI));
-            let t = 2*(x - (platformLength + downRampLenth)) / upRampLength;
-            y -= upRampHeight * (1 - cos(t * Math.PI));
+            let t = 2 * (x - (platformLength + downRampLenth)) / upRampLength;
+            y -= upRampHeight * (1 - sin(t * Math.PI + Math.PI / 2));
         }
         // Blend into sine curves
         else if (x < platformLength + downRampLenth + upRampLength + blendLength) {
             let t = (x - (platformLength + downRampLenth + upRampLength)) / blendLength;
             for (let i = 0; i < this.numWaves; i++) {
-                y -= t*this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
+                y -= t * this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
             }
         }
         return y;
