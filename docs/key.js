@@ -2,11 +2,6 @@
 
 function keyPressed() {
 
-    // console.log('pressed = ' + key);
-    // console.log(settings.boostKey);
-    // console.log(settings.boostKey === key);
-    console.log(userIsTyping);
-
     if (userIsTyping) {
         getInputCharacter();
         return;
@@ -28,7 +23,6 @@ function keyPressed() {
         }
 
         if (key === ' ') {
-            //game.spacePressed = true;
 
             if (!game.player.alive && game.death.deathTimer.time >= 180) {
                 game.death.skipCoinCount = true;

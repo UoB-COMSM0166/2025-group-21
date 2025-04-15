@@ -21,7 +21,10 @@ class Snowball extends Projectile {
         push();
         translate(this.pos.x, this.pos.y);
         imageMode(CENTER);
-        rotate(this.angle += 0.5);
+
+        if (!game.pause.active) {
+            rotate(this.angle += 0.5);
+        }
         image(snowball, 0, 0, 40, 40);
         pop();
     }

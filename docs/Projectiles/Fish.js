@@ -21,7 +21,10 @@ class Fish extends Projectile {
         push();
         translate(this.pos.x, this.pos.y);
         imageMode(CENTER);
-        rotate(this.angle += 0.1);
+
+        if (!game.pause.active) {
+            rotate(this.angle += 0.1);
+        }
         image(fish, 0, 0, 30, 30);
         pop();
     }
