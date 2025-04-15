@@ -11,9 +11,10 @@
 - [4. Design](#4-design)
 - [5. Implementation](#5-implementation)
 - [6. Evaluation](#6-evaluation)
-- [7. Process](#7-process)
-- [8. Conclusion](#8-conclusion)
-- [9. References](#9-contribution-statement)
+- [7. Sustainability](#7-sustainability)
+- [8. Process](#8-process)
+- [9. Conclusion](#9-conclusion)
+- [10. References](#10-contribution-statement)
 # 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
@@ -415,8 +416,44 @@ Description: The player interacts with the system through multiple phases: start
 ### Difficulties
 ### Quantitative Analysis
 ### Description of how code was tested
+# 7. Sustainability 
+### SusA Framework: Questions
+| |Social|
+|--|:--|
+|Sense of community|How can the product or service affect a person’s sense of belonging to these groups?|
+|Trust|How can the product or service change the trust between the users and the business that owns the system?|
+|Inclusiveness and diversity|● How can the product or service impact on how people perceive others?<br>● What effects can it have on users with different backgrounds, age groups,education levels, or other differences?|
+|Equity|How can the system make people to be treated differently from each other? (think data analytics or decision support)|
+|Participation and communication|How can the product or service change the way people:<br>○ create networks?<br>○ participate in group work?<br>○ support, criticize or argue with others?|
+| |**Individual**|
+|Health|How can the product or service improve or worsen a person’s physical, mental, and/or emotional health?|
+|Lifelong learning|How can the product or service affect people’s competencies?|
+|Privacy|How can the product or service expose (or help to hide) a person’s identity, whereabouts or relations?|
+|Safety|● How can the product or service expose (or protect) a person from physical harm?<br>● How can it make a person feel more (or less) exposed to harm?<br>● What if used in an unintended way?|
+|Agency| ●How can the product or service empower (or prevent) a person from taking an action/ decision when necessary?<br>● Can those affected by the product or service understand its implications, expressconcerns or be represented by someone?|
+| |**Environmental**|
+|Material and resources|● How are materials consumed to produce the product or service?<br>● What about to operate the product or service? E.g., requires hardware.<br>● How can it change the way people consume material? E.g., encourage to buy more?|
+|Waste & pollution|● How can producing parts or supplies generate waste or emissions?<br>● How can the use itself produce waste or emissions?<br>● How can it influence how much waste or emissions are generated?<br>● How can it promote (or impair) recycling?|
+|Biodiversity|● How can it impact the plants or animals around it? Or elsewhere?<br>● How can it change composition of the soil around it? E.g., occupying / cropland?<br>○ What about elsewhere?|
+|Energy|● How can the product of service affect the need for production of energy?<br>● What about the use of energy? E.g. encourages less energy.<br>● Does the hardware run on renewable energy? Is there a way to incentivise that?|
+|Logistics|● How can it affect the<br>○ need (and distance) for moving people or goods?<br>○ means by which people or goods move? |
+| |**Economic**|
+|Value|● How can the product or service create or destroy monetary value? For whom?<br>● Are there any other related types of business value? For whom? |
+|Customer Relationship Management|● How can the product or service affect the relationship between the business and its customers?<br>● How can it enable co-creation or co-destruction of value?<br>● How can it impact the financial situation of their customers & others?|
+|Supply Chain|● How can the product or service affect the supply chain of the business who owns it?<br>● How can these changes in supply chain impact the financial situation?<br>● How can it impact the financial situation of their customers & others?|
+|Governance|● How can the product or service affect○ how and by whom such decisions are made?<br>○ the communication channels by which the relationships takes place?<br>● How can these changes impact the financial situation of the business and partners?|
+|Innovation|● Do (parts of) the product or service affect the investment on research &development?<br>● How can changes in innovation and R&D impact the financial situation?<br>● Can it also impact the financial situation of their customers & others?|
+| |**Technical**|
+|Maintainability|● (a)(b) How are the operating system and runtime environment expected to changewhat does that required from maintainers of this system?● (a)(b) How can the correctness of the system be affected by other systems oraffect the correctness of others?|
+|Usability|(a)(b) What kind of knowledge or physical properties are required to use the system and how can this affect different types of users? For example, is good eyesight and small, sensitive hands required to operate a system on a small handheld device?|
+|Adaptability|● (a)(b) How could someone want to use the system in another context?○ (a)(b) What can make that easier/more difficult?● (a)(b) What can make that easier/more difficult for the system to adapt itself to fit new usage scenarios?|
+|Security|● (a)(b) Which assets controlled by this system would be desirable to an attacker?E.g. financial information, people’s whereabouts or preferences, etc.<br>○ (a)(b) What are the risks associated with these assets?<br>● (a)(b) What are other likely vulnerabilities of the system?|
+|Scalability|● (a)(b) How can the system support changes in workload?● (a)(b) What can make that easier/more difficult?|
+### SusA Framework: Analysis
+![image](https://github.com/user-attachments/assets/b453a5d1-1ce3-4a92-bebc-090d9c1d9313)
+![image](https://github.com/user-attachments/assets/a1334887-bf03-4913-bce1-e3376a574623)
 
-# 7. Process 
+# 8. Process 
 ### Collaboration
 
 Our six-member team adopted the Agile development methodology to manage our game project, combining both online and offline collaboration to maintain efficient communication. At the beginning of the project, we agreed on a flat team structure in which all members contributed equally to decision-making while taking ownership of specific tasks based on their individual strengths. This approach allowed us to make full use of our diverse skills while maintaining shared accountability for the project’s overall progress.
@@ -477,6 +514,6 @@ To support communication, planning, and documentation throughout development, we
 - Visual tools proved particularly effective for distributed team collaboration
 - Transparent communication significantly improved team coordination and built mutual trust among members
 
-# 8. Conclusion
+# 9. Conclusion
 
-# 9. Contribution Statement
+# 10. Contribution Statement
