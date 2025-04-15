@@ -73,8 +73,9 @@ After brainstorming various game concepts, our team became particularly interest
 <p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
 <p align="center"><i>Learn to Fly game animation</i></p>
 <div align="center">
-    <img src="Product%20doc/penguin_game_animation.gif" alt="Penguin Game GIF" width="400">
+    <img src="Videos/learn_to_fly_video.mp4" alt="Learn to Fly GIF" width="400">
 </div>
+
 
 
 
@@ -83,14 +84,16 @@ In Shop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*,
 <p align="center" style="margin-top: 10px;"><b>Figure 3</b></p>
 <p align="center"><i>Paper Prototype of Rocket Game and Penguin Game</i></p>
 <p align="center">
-    <img src="Product%20doc/rocketGameIdea1.gif" alt="Rocket Game GIF" height="500">
+    <img src="Videos/Rocket_game_paper_prototype.mp4" alt="Rocket Game GIF" height="500">
 </p>
+
 
 <p align="center" style="margin: 20px 0;"> </p>
 
 <p align="center">
-    <img src="Product%20doc/penguinGameIdea2.gif" alt="Penguin Game GIF" width="400">
+    <img src="Videos/Penguin_game_paper_prototype.mp4" alt="Penguin Game GIF" width="400">
 </p>
+
 
 
 ### Digital Paper Prototype tool
