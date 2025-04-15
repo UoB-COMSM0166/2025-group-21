@@ -274,6 +274,8 @@ Before designing the use-case diagram, we analyzed the stakeholders and user sto
 </div>
 
 
+
+
 As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
 
 **Actor:** Player
