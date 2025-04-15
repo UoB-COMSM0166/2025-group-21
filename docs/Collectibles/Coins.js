@@ -9,7 +9,7 @@ class Coins {
     }
 
     update(offset) {
-        this.coins = this.coins.filter(coin => coin.x > offset - 200);
+        this.coins = this.coins.filter(coin => coin.x > offset - 600);
         // Make sure coins and hearts don't overlap
         let newCoinX = this.lastX + this.spacing + random(-500, 500);
         let nextHeartX = game.hearts.hearts[game.hearts.hearts.length-1];
