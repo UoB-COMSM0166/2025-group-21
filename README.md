@@ -443,7 +443,7 @@ Description: The player interacts with the system through multiple phases: start
 |Supply Chain|● How can the product or service affect the supply chain of the business who owns it?<br>● How can these changes in supply chain impact the financial situation?<br>● How can it impact the financial situation of their customers & others?|
 |Governance|● How can the product or service affect○ how and by whom such decisions are made?<br>○ the communication channels by which the relationships takes place?<br>● How can these changes impact the financial situation of the business and partners?|
 |Innovation|● Do (parts of) the product or service affect the investment on research &development?<br>● How can changes in innovation and R&D impact the financial situation?<br>● Can it also impact the financial situation of their customers & others?|
-| |**Technical**|
+| |**Technical**| 
 |Maintainability|● (a)(b) How are the operating system and runtime environment expected to changewhat does that required from maintainers of this system?● (a)(b) How can the correctness of the system be affected by other systems oraffect the correctness of others?|
 |Usability|(a)(b) What kind of knowledge or physical properties are required to use the system and how can this affect different types of users? For example, is good eyesight and small, sensitive hands required to operate a system on a small handheld device?|
 |Adaptability|● (a)(b) How could someone want to use the system in another context?○ (a)(b) What can make that easier/more difficult?● (a)(b) What can make that easier/more difficult for the system to adapt itself to fit new usage scenarios?|
