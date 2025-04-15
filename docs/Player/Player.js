@@ -79,11 +79,6 @@ class Player {
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(game.terrain.slope(this.pos.x));
 
-        // // Flash red when lost life and green when gained life
-        // if (this.lostLife) tint(250, 95, 85);
-        // else if (this.gainedLife) tint(80, 200, 120);
-        // else noTint();
-
         if (!this.alive) {
             push();
             translate(game.death.pos.x, game.death.pos.y - this.radius);
@@ -172,6 +167,7 @@ class Player {
 
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
+
 
     }
 
