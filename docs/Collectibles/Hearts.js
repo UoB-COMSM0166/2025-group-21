@@ -2,11 +2,25 @@ class Hearts {
 
     constructor() {
         this.hearts = [];
-        this.spacing = 11000;
+        switch (settings.difficulty) {
+            case 0:
+                this.spacing = 11000;
+                this.heartsOn = true;
+                break;
+            case 1:
+                this.spacing = 22000;
+                this.heartsOn = true;
+                break;
+            case 2:
+                this.spacing = 0;
+                this.heartsOn = false;
+                break;
+        }
         this.lastX = 0;
     }
 
     update(offset) {
+        if (!this.heartsOn) return;
         // Remove hearts that leave the screen to stop build up
         // this.hearts = this.hearts.filter(heart => heart.x > offset - 200);
         // Generate a new heart ahead of player once they get past the last
