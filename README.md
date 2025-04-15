@@ -336,7 +336,7 @@ Description: The player interacts with the game system in several ways to engage
 
 # 6. Evaluation
 
-### Overall Feedback
+### Think Aloud Evaluation
 #### Evaluation Flow Insights
 1. For testers 1 to 7, we introduced the gameplay through **verbal instructions and key demonstrations**. However, this approach led to noticeable confusion among the testers regarding how to play.
 2. Starting from tester 8, we implemented a **brief demonstration** before their gameplay session. This adjustment significantly improved their understanding, resulting in a smoother and more intuitive experience compared to those who did not receive a demonstration.
@@ -375,6 +375,20 @@ Description: The player interacts with the game system in several ways to engage
 | 8 | 1. “What’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. The sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
 | 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
 
+### Heuristic Evaluation
+***Tick it if you think there have relative probelems in our game
+| The usability principle|Tester 1|Tester 2|Tester 3|Tester 4|
+|--|:--:|:--:|:--:|:--:|
+|Visibility of system status - Feedback|||||
+|Match between system and real world - Conventions|||||
+|User control and freedom - Emergency exits|||||
+|Consistency and standards - Consistency|||||
+|Error prevention|||||
+|Recognition not recall|||||
+|Flexibility and efficiency of use - Flexibility|||||
+|Aesthetic and minimalist design - Minimalist design|||||
+|Help users recognise, diagnose and recover from errors - Error recognition and recovery|||||
+|Help and documentation - Help|||||
 ### Qualitative evaluation
 ### Difficulties
 ### Quantitative Analysis
@@ -382,8 +396,75 @@ Description: The player interacts with the game system in several ways to engage
 
 # 7. Process 
 ### Collaboration
+
+Our six-member team employed agile development methodology for game development, maintaining efficient communication through a hybrid online-offline collaboration approach. In the project's initial phase, we established a flat team structure where all members participated equally in decision-making while claiming specific tasks based on individual expertise. This model effectively leveraged our diverse skill sets while maintaining collective responsibility for project progress.
+
+We established a consistent weekly workflow to keep development on track:
+
+**During course week:**
+
+- **Tuesdays**: Dedicated workshop time for core development tasks
+- **Fridays 2-3 PM**: Mandatory team sync (in-person when possible)
+  - Review key learnings and module progress
+  - Demo completed work (code/design/docs)
+  - Collect live feedback from teammates
+  - *Note-takers*: Sam & Jack (archived in `/meetings/weekXX_meeting.md`)
+
+**During holiday:**
+
+- **Wednesdays 11-12 AM**: Mandatory remote sync (Google Meet)
+
+  - Report individual progress
+  - Flag blockers (with error logs/screenshots) and discuss solutions
+  - Conduct peer testing and feedback
+
+  - *Note-takers*: Sam & Jenny
+
+Throughout the project lifecycle, we completed three Sprint iterations(Sprint 1: 2.11-2.27, Sprint 2: 4.2-4.26, Sprint 3: [TBD]), with each Sprint spanning two weeks. Before each Sprint, we conducted planning meetings to carefully discuss the Product Backlog and determine the Sprint Backlog, prioritizing tasks by importance to ensure the team focused on the most critical components first. At the end of each Sprint, we held review meetings where members showcased their deliverables, shared challenges, and participated in collective evaluations to provide optimization suggestions. 
+
 ### Tools and Techniques
-### Agile Discussion
+
+Throughout the development cycle, we utilized various tools to facilitate decision-making, communication, planning, and documentation. 
+
+**Miro:** In the early stages, after brainstorming ideas, we used Miro to organize and visualize our thoughts. During the Week 5 workshop, we also used Miro's Planning Poker Online feature to estimate tasks.
+
+[photo of planningpokeronline]
+
+**Microsoft Word:** After each weekly workshop, we usually worked together on Microsoft Word documents, for example, we used Word to update requirements, organize quantitative test reports, and complete sustainability impact analyses.
+
+**Google Meet:** During holidays, we held online meetings using Google Meet. 
+
+**WhatsApp:** For daily communication, our team used WhatsApp for discussions.
+
+**Lucid:** Before starting each sprint cycle, we created sprint planning diagrams using Lucid to ensure all team members clearly understood their tasks. All documents and outputs were saved in the `meeting` folders for reference.
+
+[photo of sprint planning]
+
+**GitHub Kanban board:** Most importantly, we consistently implemented Kanban methodology throughout the entire project for effective task management and progress tracking.
+
+### Reflection
+
+**Successes:**
+
+- Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
+- Balanced workload distribution maintained consistent member engagement
+- Open communication channels accelerated technical problem-solving
+- GitHub workflows (branches + pull requests) maintained a stable codebase throughout development
+- Kanban implementation enabled clear progress tracking
+
+**Problems:**
+
+- One significant challenge was code integration. Since some members co-developed overlapping modules, we initially had disagreements on how to merge changes. However, these conflicts were ultimately resolved through open discussion and mutual understanding.
+- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members.
+- Some members were initially hesitant to voice their ideas. Through mutual encouragement and support, we fostered a more open environment where everyone felt comfortable contributing.
+
+**Key Learnings:**
+
+- Early prototyping (paper + digital) significantly reduced development ambiguity
+- Regular external user testing informed priority decisions
+- Comprehensive documentation system enabled rapid task onboarding
+- Visual tools proved particularly effective for distributed team collaboration
+- Transparent communication significantly improved team coordination and built mutual trust among members
 
 # 8. Conclusion
 
