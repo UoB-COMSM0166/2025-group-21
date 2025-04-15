@@ -274,53 +274,71 @@ Before designing the use-case diagram, we analyzed the stakeholders and user sto
 </div>
 
 
-Since this is a game design project, we have focused our stakeholders primarily on the Player. The key interactions center around how the player engages with the game system and their environment, ensuring an immersive and enjoyable gaming experience.
+As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
 
 **Actor:** Player
 
-Description: The player interacts with the game system in several ways to engage in gameplay, earn rewards, and track progress.
+Description: The player interacts with the system through multiple phases: starting with a guided tutorial, exploring menu functions, playing the game, and utilizing post-game features like score tracking, ability upgrades, and leaderboard comparison. These interactions support gameplay progression, reward accumulation, and customization.
 
 **Flow of Events**:
 
-- The player selects “Start Game” from the main menu
+- The player selects "Enter Game" to begin.
 
-  If it's the first time playing, the system offers an option to “View Tutorial” to explain basic controls and mechanics.
-
-- During gameplay, the player controls the character to navigate and complete objectives
-
-  The system supports Easy Character Control to ensure smooth gameplay.
-
-- The player can Pause/Resume the game at any time to manage their session.
-
-- As the player progresses, they earn coins through in-game achievements
-
-  Coins can be used to Upgrade Character, which includes purchasing Outfits and Tools.
-
-- The player can access the Leaderboard to compare their scores with other players
-
-  The system retrieves and displays top scores, motivating competition.
+- If this is the first session, the system automatically launches a Tutorial, introducing core mechanics and basic controls.
+- After the tutorial, the player accesses the Main Menu, which includes options to:
+  - Adjust Settings (e.g., volume, difficulty, key bindings);
+  - View Tutorial again;
+  - Log in with a username;
+  - Access the Shop.
+- Within the Shop, the player can:
+  - Upgrade Abilities, such as flying, shielding, or projectile attacks;
+  - View Inventory to browse current equipment or owned items.
+- The player enters the Gameplay Phase, where they can:
+  - Pick Up Life to extend their survival;
+  - Earn Coins through in-game performance;
+  - Use Abilities to enhance gameplay;
+  - Pause/Resume the Game at any time.
+- When the game is paused, a semi-transparent menu is displayed with the following options:
+  - Return to Game, with a 3-second Countdown before resuming;
+  - Access Shop during pause;
+  - Adjust Settings;
+  - View Inventory.
+- Upon losing all lives, the system transitions to the Game Over screen, where the player can:
+  - Retry the Game;
+  - View Statistics to review performance;
+  - Store the Score under their Username for record-keeping;
+  - View Leaderboard to compare with others;
+  - Access the Shop to upgrade or manage rewards.
 
 **Preconditions**:
 
-  - The game must be installed and running.
-  - The player must have access to the necessary controls and menu options.
+  - The game is properly installed and running;
+  - The player has access to all necessary input controls and menu interfaces;
+  - Internet connection is available for login and leaderboard functionality.
 
 **Postconditions**:
 
-  - The player successfully engages in the game, accumulating rewards and tracking progress.
-  - Game states, scores, and upgrades are saved for continuity.
+- The player completes a full game loop, from tutorial to gameplay and post-game actions;
+
+- Game state, including score, coins, upgrades, and settings, is saved correctly;
+
+- The player’s progress and customizations persist across future sessions.
 
 **Key Scenarios**:
 
-  - A new player starts the game for the first time and completes the tutorial.
-  - A returning player continues their progress and upgrades their character.
-  - A competitive player checks the leaderboard to compare scores.
-  - A player pauses and resumes the game during play.
+  - A new player launches the game for the first time, completes the tutorial, and explores menu options;
+  - A returning player logs in, recovers their previous coin balance, and upgrades abilities;
+  - During gameplay, the player picks up life and earns coins to enhance performance;
+  - After a session ends, the player stores their score and checks the leaderboard;
+  - The player pauses mid-game and resumes later using the countdown feature;
+  - The player can access the shop from the menu, during pause, or after a game ends to upgrade abilities;
+  - In-game events allow the player to dynamically collect life and coins.
 
 **Subflows**
 
-  - If the player does not have enough coins to upgrade their character, the system prompts them to earn more.
-  - If the player disconnects during gameplay, the system ensures progress is saved automatically.
+  - If the player lacks sufficient coins to upgrade in the shop, the system prompts them to earn more through gameplay;
+  - If the login attempt fails, the system offers options to retry or proceed as a guest;
+  - If the player enables infinite mode or changes control bindings, the settings are applied instantly and saved automatically.
 
 # 4. Design
 ### Class Diagram
