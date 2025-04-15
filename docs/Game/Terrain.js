@@ -16,15 +16,32 @@ class Terrain {
             this.frequencies.push(0.01);
             this.phases.push(0);
         }
+        let ampFactor;
+        let freqFactor;
+        let phaseFactor;
 
-        let ampVariation = 1 * 10 + 2;
-        let freqVariation = 1 * 0.01 + 0.01;
-        let phaseVariation = Math.PI * (1 + 1 * 0.5);
+        switch (settings.difficulty) {
+            case 0:
+                ampFactor = 10;
+                freqFactor = 0.007;
+                phaseFactor = 4;
+                break;
+            case 1:
+                ampFactor = 30;
+                freqFactor = 0.012;
+                phaseFactor = 6;
+                break;
+            case 2:
+                ampFactor = 40;
+                freqFactor = 0.016;
+                phaseFactor = 9;
+                break;
+        }
 
-        for (let i = 0; i < 3; i++) {
-            this.amplitudes.push(Math.random() * ampVariation);
-            this.frequencies.push(Math.random() * freqVariation);
-            this.phases.push(Math.random() * phaseVariation);
+        for (let i = 0; i < 4; i++) {
+            this.amplitudes.push(ampFactor + 0.25*ampFactor*Math.random() - 0.125*ampFactor);
+            this.frequencies.push(freqFactor + 0.3*freqFactor*Math.random());
+            this.phases.push(phaseFactor * Math.PI);
         }
 
         // Add new (more random) elements to end
