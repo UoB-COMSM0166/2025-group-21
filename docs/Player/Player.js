@@ -151,15 +151,15 @@ class Player {
     }
 
     updateAcceleration (slope) {
-
         // Handle effect of angle of slope on the gravity
         this.accDownSlope = (this.gravity) * sin(atan(slope));
 
         if (slope <= 0) { // uphill
             this.accDownSlope *= 0.7;
         }
-        this.acc.y = this.accDownSlope * sin(atan(slope));
-        this.acc.x = this.accDownSlope * cos(atan(slope));
+
+        this.acc.y = this.accDownSlope * sin(atan(slope)) + 0.02 * this.vel.y;
+        this.acc.x = this.accDownSlope * cos(atan(slope)) + 0.02 * this.vel.x;
     }
 
     updateVelocity () {
@@ -172,7 +172,6 @@ class Player {
 
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
-
 
     }
 

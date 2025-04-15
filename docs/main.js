@@ -8,7 +8,8 @@ let game = null;
 let shop = null;
 let inventory = null;
 let settings = null;
-
+let frameCount = 0;
+let fps = 0;
 let userIsTyping = false;
 let inputCharacter = null;
 
@@ -54,6 +55,13 @@ function draw() {
         }
         game.runSimulation();
     }
+
+    frameCount++
+    if (frameCount%30 === 0) {
+        fps = floor(frameRate());
+        frameCount = 0;
+    }
+    text(fps, 50, 50);
 }
 
 function resizeCanvasCSS() {

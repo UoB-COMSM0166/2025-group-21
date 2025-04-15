@@ -117,7 +117,7 @@ class Game {
         if (this.player.pos.y < this.topMargin) {
             this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
             this.ty = this.topMargin - this.zoom * (this.player.pos.y);
-            this.tx = 160 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
+            this.tx = 175 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
         }
         else {
             this.zoom = 1;
@@ -128,7 +128,7 @@ class Game {
     applyBoostToPlayer() {
 
         if (this.player.pos.y < this.terrain.f(this.player.pos.x)) {
-            this.player.vel.y += 0.6;
+            this.player.vel.y += 0.4;
         }
         else {
             this.player.vel.x += 0.2;
