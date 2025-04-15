@@ -134,9 +134,16 @@ class Pause {
 
     continueButtonPressed() {
         document.body.classList.remove("show-cursor");
-        game.pause.showButtons = false;
-        game.pause.countdown = new Countdown();
-        game.pause.isCountingDown = true;
+
+        if (settings.difficulty !== settings.currentDifficulty) {
+            settings.currentDifficulty = settings.difficulty;
+            game = null;
+        }
+        else {
+            game.pause.showButtons = false;
+            game.pause.countdown = new Countdown();
+            game.pause.isCountingDown = true;
+        }
     }
 
     settingButtonPressed() {

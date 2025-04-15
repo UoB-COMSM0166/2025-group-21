@@ -3,7 +3,6 @@
 class Settings {
 
     constructor() {
-        //workshopMusic.loop();
         this.masterVolume = 1;
         this.mute = 1 // sound on = 1, sound off = 0;
         this.muteButton = soundOn;
@@ -12,8 +11,9 @@ class Settings {
         this.dialPos = createVector(0.73*width, 0.3*height);
         this.offset = null;
 
-        this.difficulties = ['Easy', 'Normal', 'Hard'];
-        this.difficulty = 1;
+        this.difficulties = ['Beginner', 'Intermediate', 'Advanced'];
+        this.difficulty = 0;
+        this.currentDifficulty = 0;
 
         this.enableCheats = false;
         this.cheatsButton = offButton;
@@ -91,6 +91,7 @@ class Settings {
 
             if (mouseIsPressed && settings.buttonsActive) {
                 if (Domain === 'mainMenu') {
+                    settings.currentDifficulty = settings.difficulty;
                     mainMenu.showSettings = false;
                 }
                 else game.pause.showSettings = false;
@@ -132,8 +133,8 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.6*width, 0.4*height);
-        let downPos = createVector(0.6*width, 0.44*height);
+        let upPos = createVector(0.635*width, 0.4*height);
+        let downPos = createVector(0.635*width, 0.44*height);
 
         // up arrow
         if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
@@ -244,7 +245,7 @@ class Settings {
         text('Master Volume', width/2, height/3.9); // volume
 
         textAlign(LEFT);
-        text('Difficulty:', width/2.55, 0.42*height); // difficulty
+        text('Difficulty:', width/2.8, 0.42*height); // difficulty
         textAlign(CENTER);
         text(`${this.difficulties[this.difficulty]}`, 0.534*width, 0.42*height)
 
