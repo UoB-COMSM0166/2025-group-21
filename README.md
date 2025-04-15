@@ -11,9 +11,10 @@
 - [4. Design](#4-design)
 - [5. Implementation](#5-implementation)
 - [6. Evaluation](#6-evaluation)
-- [7. Process](#7-process)
-- [8. Conclusion](#8-conclusion)
-- [9. References](#9-contribution-statement)
+- [7. Sustainability](#7-sustainability)
+- [8. Process](#8-process)
+- [9. Conclusion](#9-conclusion)
+- [10. References](#10-contribution-statement)
 # 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
@@ -73,9 +74,8 @@ After brainstorming various game concepts, our team became particularly interest
 <p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
 <p align="center"><i>Learn to Fly game animation</i></p>
 <div align="center">
-    <img src="Videos/learn_to_fly.gif" alt="Learn to Fly GIF" width="400">
+    <img src="Product%20doc/penguin_game_animation.gif" alt="Penguin Game GIF" width="400">
 </div>
-
 
 
 
@@ -84,16 +84,14 @@ In Shop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*,
 <p align="center" style="margin-top: 10px;"><b>Figure 3</b></p>
 <p align="center"><i>Paper Prototype of Rocket Game and Penguin Game</i></p>
 <p align="center">
-    <img src="Videos/Rocket_game_paper_prototype.gif" alt="Rocket Game GIF" height="500">
+    <img src="Product%20doc/rocketGameIdea1.gif" alt="Rocket Game GIF" height="500">
 </p>
-
 
 <p align="center" style="margin: 20px 0;"> </p>
 
 <p align="center">
-    <img src="Videos/Penguin_game_paper_prototype.gif" alt="Penguin Game GIF" width="400">
+    <img src="Product%20doc/penguinGameIdea2.gif" alt="Penguin Game GIF" width="400">
 </p>
-
 
 
 ### Digital Paper Prototype tool
@@ -272,73 +270,54 @@ Before designing the use-case diagram, we analyzed the stakeholders and user sto
 <div align="center">
     <img src="Product%20doc/use-case%20diagram.png" width="600">
 </div>
-<br>
 
-As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
+Since this is a game design project, we have focused our stakeholders primarily on the Player. The key interactions center around how the player engages with the game system and their environment, ensuring an immersive and enjoyable gaming experience.
 
 **Actor:** Player
 
-Description: The player interacts with the system through multiple phases: starting with a guided tutorial, exploring menu functions, playing the game, and utilizing post-game features like score tracking, ability upgrades, and leaderboard comparison. These interactions support gameplay progression, reward accumulation, and customization.
+Description: The player interacts with the game system in several ways to engage in gameplay, earn rewards, and track progress.
 
 **Flow of Events**:
 
-- The player selects "Enter Game" to begin.
+- The player selects “Start Game” from the main menu
 
-- If this is the first session, the system automatically launches a Tutorial, introducing core mechanics and basic controls.
-- After the tutorial, the player accesses the Main Menu, which includes options to:
-  - Adjust Settings (e.g., volume, difficulty, key bindings);
-  - View Tutorial again;
-  - Log in with a username;
-  - Access the Shop.
-- Within the Shop, the player can:
-  - Upgrade Abilities, such as flying, shielding, or projectile attacks;
-  - View Inventory to browse current equipment or owned items.
-- The player enters the Gameplay Phase, where they can:
-  - Pick Up Life to extend their survival;
-  - Earn Coins through in-game performance;
-  - Use Abilities to enhance gameplay;
-  - Pause/Resume the Game at any time.
-- When the game is paused, a semi-transparent menu is displayed with the following options:
-  - Return to Game, with a 3-second Countdown before resuming;
-  - Access Shop during pause;
-  - Adjust Settings;
-  - View Inventory.
-- Upon losing all lives, the system transitions to the Game Over screen, where the player can:
-  - Retry the Game;
-  - View Statistics to review performance;
-  - Store the Score under their Username for record-keeping;
-  - View Leaderboard to compare with others;
-  - Access the Shop to upgrade or manage rewards.
+  If it's the first time playing, the system offers an option to “View Tutorial” to explain basic controls and mechanics.
+
+- During gameplay, the player controls the character to navigate and complete objectives
+
+  The system supports Easy Character Control to ensure smooth gameplay.
+
+- The player can Pause/Resume the game at any time to manage their session.
+
+- As the player progresses, they earn coins through in-game achievements
+
+  Coins can be used to Upgrade Character, which includes purchasing Outfits and Tools.
+
+- The player can access the Leaderboard to compare their scores with other players
+
+  The system retrieves and displays top scores, motivating competition.
 
 **Preconditions**:
 
-  - The game is properly installed and running;
-  - The player has access to all necessary input controls and menu interfaces;
-  - Internet connection is available for login and leaderboard functionality.
+  - The game must be installed and running.
+  - The player must have access to the necessary controls and menu options.
 
 **Postconditions**:
 
-- The player completes a full game loop, from tutorial to gameplay and post-game actions;
-
-- Game state, including score, coins, upgrades, and settings, is saved correctly;
-
-- The player’s progress and customizations persist across future sessions.
+  - The player successfully engages in the game, accumulating rewards and tracking progress.
+  - Game states, scores, and upgrades are saved for continuity.
 
 **Key Scenarios**:
 
-  - A new player launches the game for the first time, completes the tutorial, and explores menu options;
-  - A returning player logs in, recovers their previous coin balance, and upgrades abilities;
-  - During gameplay, the player picks up life and earns coins to enhance performance;
-  - After a session ends, the player stores their score and checks the leaderboard;
-  - The player pauses mid-game and resumes later using the countdown feature;
-  - The player can access the shop from the menu, during pause, or after a game ends to upgrade abilities;
-  - In-game events allow the player to dynamically collect life and coins.
+  - A new player starts the game for the first time and completes the tutorial.
+  - A returning player continues their progress and upgrades their character.
+  - A competitive player checks the leaderboard to compare scores.
+  - A player pauses and resumes the game during play.
 
 **Subflows**
 
-  - If the player lacks sufficient coins to upgrade in the shop, the system prompts them to earn more through gameplay;
-  - If the login attempt fails, the system offers options to retry or proceed as a guest;
-  - If the player enables infinite mode or changes control bindings, the settings are applied instantly and saved automatically.
+  - If the player does not have enough coins to upgrade their character, the system prompts them to earn more.
+  - If the player disconnects during gameplay, the system ensures progress is saved automatically.
 
 # 4. Design
 ### Class Diagram
@@ -415,68 +394,48 @@ Description: The player interacts with the system through multiple phases: start
 ### Difficulties
 ### Quantitative Analysis
 ### Description of how code was tested
+# 7. Sustainability 
+### SusA Framework: Questions
+| |Social|
+|--|:--|
+|Sense of community|How can the product or service affect a person’s sense of belonging to these groups?|
+|Trust|How can the product or service change the trust between the users and the business that owns the system?|
+|Inclusiveness and diversity|● How can the product or service impact on how people perceive others?<br>● What effects can it have on users with different backgrounds, age groups,education levels, or other differences?|
+|Equity|How can the system make people to be treated differently from each other? (think data analytics or decision support)|
+|Participation and communication|How can the product or service change the way people:<br>○ create networks?<br>○ participate in group work?<br>○ support, criticize or argue with others?|
+| |**Individual**|
+|Health|How can the product or service improve or worsen a person’s physical, mental, and/or emotional health?|
+|Lifelong learning|How can the product or service affect people’s competencies?|
+|Privacy|How can the product or service expose (or help to hide) a person’s identity, whereabouts or relations?|
+|Safety|● How can the product or service expose (or protect) a person from physical harm?<br>● How can it make a person feel more (or less) exposed to harm?<br>● What if used in an unintended way?|
+|Agency| ●How can the product or service empower (or prevent) a person from taking an action/ decision when necessary?<br>● Can those affected by the product or service understand its implications, expressconcerns or be represented by someone?|
+| |**Environmental**|
+|Material and resources|● How are materials consumed to produce the product or service?<br>● What about to operate the product or service? E.g., requires hardware.<br>● How can it change the way people consume material? E.g., encourage to buy more?|
+|Waste & pollution|● How can producing parts or supplies generate waste or emissions?<br>● How can the use itself produce waste or emissions?<br>● How can it influence how much waste or emissions are generated?<br>● How can it promote (or impair) recycling?|
+|Biodiversity|● How can it impact the plants or animals around it? Or elsewhere?<br>● How can it change composition of the soil around it? E.g., occupying / cropland?<br>○ What about elsewhere?|
+|Energy|● How can the product of service affect the need for production of energy?<br>● What about the use of energy? E.g. encourages less energy.<br>● Does the hardware run on renewable energy? Is there a way to incentivise that?|
+|Logistics|● How can it affect the<br>○ need (and distance) for moving people or goods?<br>○ means by which people or goods move? |
+| |**Economic**|
+|Value|● How can the product or service create or destroy monetary value? For whom?<br>● Are there any other related types of business value? For whom? |
+|Customer Relationship Management|● How can the product or service affect the relationship between the business and its customers?<br>● How can it enable co-creation or co-destruction of value?<br>● How can it impact the financial situation of their customers & others?|
+|Supply Chain|● How can the product or service affect the supply chain of the business who owns it?<br>● How can these changes in supply chain impact the financial situation?<br>● How can it impact the financial situation of their customers & others?|
+|Governance|● How can the product or service affect○ how and by whom such decisions are made?<br>○ the communication channels by which the relationships takes place?<br>● How can these changes impact the financial situation of the business and partners?|
+|Innovation|● Do (parts of) the product or service affect the investment on research &development?<br>● How can changes in innovation and R&D impact the financial situation?<br>● Can it also impact the financial situation of their customers & others?|
+| |**Technical**|
+|Maintainability|● (a)(b) How are the operating system and runtime environment expected to changewhat does that required from maintainers of this system?● (a)(b) How can the correctness of the system be affected by other systems oraffect the correctness of others?|
+|Usability|(a)(b) What kind of knowledge or physical properties are required to use the system and how can this affect different types of users? For example, is good eyesight and small, sensitive hands required to operate a system on a small handheld device?|
+|Adaptability|● (a)(b) How could someone want to use the system in another context?○ (a)(b) What can make that easier/more difficult?● (a)(b) What can make that easier/more difficult for the system to adapt itself to fit new usage scenarios?|
+|Security|● (a)(b) Which assets controlled by this system would be desirable to an attacker?E.g. financial information, people’s whereabouts or preferences, etc.<br>○ (a)(b) What are the risks associated with these assets?<br>● (a)(b) What are other likely vulnerabilities of the system?|
+|Scalability|● (a)(b) How can the system support changes in workload?● (a)(b) What can make that easier/more difficult?|
+### SusA Framework: Analysis
+![image](https://github.com/user-attachments/assets/b453a5d1-1ce3-4a92-bebc-090d9c1d9313)
+![image](https://github.com/user-attachments/assets/a1334887-bf03-4913-bce1-e3376a574623)
 
-# 7. Process 
+# 8. Process 
 ### Collaboration
-
-Our six-member team adopted the Agile development methodology to manage our game project, combining both online and offline collaboration to maintain efficient communication. At the beginning of the project, we agreed on a flat team structure in which all members contributed equally to decision-making while taking ownership of specific tasks based on their individual strengths. This approach allowed us to make full use of our diverse skills while maintaining shared accountability for the project’s overall progress.
-
-To keep development on track, we maintained a consistent weekly routine. During term time, we used the Tuesday workshop sessions to collaborate on in-class tasks. On Fridays from 2 to 3 PM, we held in-person team meetings (except during assessment-heavy weeks) to reflect on the week’s work, showcase progress—mostly in code—and discuss areas for improvement. Sam and Jack took meeting notes, which were saved in the `/meetings/weekXX_meeting.md` folder for reference.
-
-During holidays, we transitioned to a remote setup. We held weekly online meetings every Wednesday from 11 AM to 12 PM via Google Meet. These meetings were used to share individual updates, identify and discuss blockers, and conduct peer testing and feedback sessions.
-
-Over the course of the project, we went through three Sprint cycles (Sprint 1: 2.11–2.27, Sprint 2: 4.2–4.16, Sprint 3: [TBD]), each lasting two weeks. Each Sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed on clear goals. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear to everyone.
-
-[photo of sprint planning]
-
-To estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we took into account each person’s strengths, how much time they could realistically commit, and any dependencies or technical challenges that might come up. We also considered which features would have the most impact on gameplay so we could focus on what mattered most.
-
-[photo of planningpokeronline]
-
-During the Sprint, we tracked progress using GitHub Projects with a Kanban board, dividing tasks into “To Do,” “In Progress,” and “Done.” Everyone updated their task status regularly so we could see how things were moving and spot any issues early.
-
-[photo of Kanban]
-
-At the end of each Sprint, we ran a Sprint Review and Retrospective. Team members presented what they’d completed—whether it was new game mechanics, interface updates, or documentation improvements—using screen sharing or quick demos. We then discussed what went well, what didn’t, and how we could work better in the next Sprint. Some of the main issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing. However, we always talked these through openly and came up with practical solutions together.
-
 ### Tools and Techniques
+### Agile Discussion
 
-To support communication, planning, and documentation throughout development, we used a range of tools:
+# 9. Conclusion
 
-**Miro:** Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
-
-**Microsoft Word:** Used collaboratively to edit documents such as requirement updates, test reports, and sustainability analyses.
-
-**Google Meet:** Our primary tool for online meetings during the holiday period.
-
-**WhatsApp:** Used for day-to-day team communication.
-
-**GitHub Kanban board:** Enabled us to apply the Kanban method for task tracking and progress visibility.
-
-### Reflection
-
-**Successes:**
-
-- Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
-- Balanced task allocation kept everyone consistently involved
-- Open communication channels accelerated technical problem-solving
-- GitHub branching and pull request workflows maintained a stable codebase
-- Kanban implementation enabled clear progress tracking
-
-**Problems:**
-
-- One significant challenge was code integration. Since some members co-developed overlapping modules, we had disagreements on how to merge changes
-- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members
-- Some team members were initially hesitant to share ideas, but this improved over time with mutual support
-
-**Key Learnings:**
-
-- Early prototyping (paper + digital) significantly reduced development ambiguity
-- Frequent user testing outside the team helped prioritize what to improve
-- Comprehensive documentation system enabled rapid task onboarding
-- Visual tools proved particularly effective for distributed team collaboration
-- Transparent communication significantly improved team coordination and built mutual trust among members
-
-# 8. Conclusion
-
-# 9. Contribution Statement
+# 10. Contribution Statement
