@@ -74,8 +74,9 @@ After brainstorming various game concepts, our team became particularly interest
 <p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
 <p align="center"><i>Learn to Fly game animation</i></p>
 <div align="center">
-    <img src="Product%20doc/penguin_game_animation.gif" alt="Penguin Game GIF" width="400">
+    <img src="Videos/learn_to_fly.gif" alt="Learn to Fly GIF" width="400">
 </div>
+
 
 
 
@@ -84,14 +85,16 @@ In Shop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*,
 <p align="center" style="margin-top: 10px;"><b>Figure 3</b></p>
 <p align="center"><i>Paper Prototype of Rocket Game and Penguin Game</i></p>
 <p align="center">
-    <img src="Product%20doc/rocketGameIdea1.gif" alt="Rocket Game GIF" height="500">
+    <img src="Videos/Rocket_game_paper_prototype.gif" alt="Rocket Game GIF" height="500">
 </p>
+
 
 <p align="center" style="margin: 20px 0;"> </p>
 
 <p align="center">
-    <img src="Product%20doc/penguinGameIdea2.gif" alt="Penguin Game GIF" width="400">
+    <img src="Videos/Penguin_game_paper_prototype.gif" alt="Penguin Game GIF" width="400">
 </p>
+
 
 
 ### Digital Paper Prototype tool
@@ -270,54 +273,73 @@ Before designing the use-case diagram, we analyzed the stakeholders and user sto
 <div align="center">
     <img src="Product%20doc/use-case%20diagram.png" width="600">
 </div>
+<br>
 
-Since this is a game design project, we have focused our stakeholders primarily on the Player. The key interactions center around how the player engages with the game system and their environment, ensuring an immersive and enjoyable gaming experience.
+As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
 
 **Actor:** Player
 
-Description: The player interacts with the game system in several ways to engage in gameplay, earn rewards, and track progress.
+Description: The player interacts with the system through multiple phases: starting with a guided tutorial, exploring menu functions, playing the game, and utilizing post-game features like score tracking, ability upgrades, and leaderboard comparison. These interactions support gameplay progression, reward accumulation, and customization.
 
 **Flow of Events**:
 
-- The player selects “Start Game” from the main menu
+- The player selects "Enter Game" to begin.
 
-  If it's the first time playing, the system offers an option to “View Tutorial” to explain basic controls and mechanics.
-
-- During gameplay, the player controls the character to navigate and complete objectives
-
-  The system supports Easy Character Control to ensure smooth gameplay.
-
-- The player can Pause/Resume the game at any time to manage their session.
-
-- As the player progresses, they earn coins through in-game achievements
-
-  Coins can be used to Upgrade Character, which includes purchasing Outfits and Tools.
-
-- The player can access the Leaderboard to compare their scores with other players
-
-  The system retrieves and displays top scores, motivating competition.
+- If this is the first session, the system automatically launches a Tutorial, introducing core mechanics and basic controls.
+- After the tutorial, the player accesses the Main Menu, which includes options to:
+  - Adjust Settings (e.g., volume, difficulty, key bindings);
+  - View Tutorial again;
+  - Log in with a username;
+  - Access the Shop.
+- Within the Shop, the player can:
+  - Upgrade Abilities, such as flying, shielding, or projectile attacks;
+  - View Inventory to browse current equipment or owned items.
+- The player enters the Gameplay Phase, where they can:
+  - Pick Up Life to extend their survival;
+  - Earn Coins through in-game performance;
+  - Use Abilities to enhance gameplay;
+  - Pause/Resume the Game at any time.
+- When the game is paused, a semi-transparent menu is displayed with the following options:
+  - Return to Game, with a 3-second Countdown before resuming;
+  - Access Shop during pause;
+  - Adjust Settings;
+  - View Inventory.
+- Upon losing all lives, the system transitions to the Game Over screen, where the player can:
+  - Retry the Game;
+  - View Statistics to review performance;
+  - Store the Score under their Username for record-keeping;
+  - View Leaderboard to compare with others;
+  - Access the Shop to upgrade or manage rewards.
 
 **Preconditions**:
 
-  - The game must be installed and running.
-  - The player must have access to the necessary controls and menu options.
+  - The game is properly installed and running;
+  - The player has access to all necessary input controls and menu interfaces;
+  - Internet connection is available for login and leaderboard functionality.
 
 **Postconditions**:
 
-  - The player successfully engages in the game, accumulating rewards and tracking progress.
-  - Game states, scores, and upgrades are saved for continuity.
+- The player completes a full game loop, from tutorial to gameplay and post-game actions;
+
+- Game state, including score, coins, upgrades, and settings, is saved correctly;
+
+- The player’s progress and customizations persist across future sessions.
 
 **Key Scenarios**:
 
-  - A new player starts the game for the first time and completes the tutorial.
-  - A returning player continues their progress and upgrades their character.
-  - A competitive player checks the leaderboard to compare scores.
-  - A player pauses and resumes the game during play.
+  - A new player launches the game for the first time, completes the tutorial, and explores menu options;
+  - A returning player logs in, recovers their previous coin balance, and upgrades abilities;
+  - During gameplay, the player picks up life and earns coins to enhance performance;
+  - After a session ends, the player stores their score and checks the leaderboard;
+  - The player pauses mid-game and resumes later using the countdown feature;
+  - The player can access the shop from the menu, during pause, or after a game ends to upgrade abilities;
+  - In-game events allow the player to dynamically collect life and coins.
 
 **Subflows**
 
-  - If the player does not have enough coins to upgrade their character, the system prompts them to earn more.
-  - If the player disconnects during gameplay, the system ensures progress is saved automatically.
+  - If the player lacks sufficient coins to upgrade in the shop, the system prompts them to earn more through gameplay;
+  - If the login attempt fails, the system offers options to retry or proceed as a guest;
+  - If the player enables infinite mode or changes control bindings, the settings are applied instantly and saved automatically.
 
 # 4. Design
 ### Class Diagram
@@ -433,8 +455,64 @@ Description: The player interacts with the game system in several ways to engage
 
 # 8. Process 
 ### Collaboration
+
+Our six-member team adopted the Agile development methodology to manage our game project, combining both online and offline collaboration to maintain efficient communication. At the beginning of the project, we agreed on a flat team structure in which all members contributed equally to decision-making while taking ownership of specific tasks based on their individual strengths. This approach allowed us to make full use of our diverse skills while maintaining shared accountability for the project’s overall progress.
+
+To keep development on track, we maintained a consistent weekly routine. During term time, we used the Tuesday workshop sessions to collaborate on in-class tasks. On Fridays from 2 to 3 PM, we held in-person team meetings (except during assessment-heavy weeks) to reflect on the week’s work, showcase progress—mostly in code—and discuss areas for improvement. Sam and Jack took meeting notes, which were saved in the `/meetings/weekXX_meeting.md` folder for reference.
+
+During holidays, we transitioned to a remote setup. We held weekly online meetings every Wednesday from 11 AM to 12 PM via Google Meet. These meetings were used to share individual updates, identify and discuss blockers, and conduct peer testing and feedback sessions.
+
+Over the course of the project, we went through three Sprint cycles (Sprint 1: 2.11–2.27, Sprint 2: 4.2–4.16, Sprint 3: [TBD]), each lasting two weeks. Each Sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed on clear goals. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear to everyone.
+
+[photo of sprint planning]
+
+To estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we took into account each person’s strengths, how much time they could realistically commit, and any dependencies or technical challenges that might come up. We also considered which features would have the most impact on gameplay so we could focus on what mattered most.
+
+[photo of planningpokeronline]
+
+During the Sprint, we tracked progress using GitHub Projects with a Kanban board, dividing tasks into “To Do,” “In Progress,” and “Done.” Everyone updated their task status regularly so we could see how things were moving and spot any issues early.
+
+[photo of Kanban]
+
+At the end of each Sprint, we ran a Sprint Review and Retrospective. Team members presented what they’d completed—whether it was new game mechanics, interface updates, or documentation improvements—using screen sharing or quick demos. We then discussed what went well, what didn’t, and how we could work better in the next Sprint. Some of the main issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing. However, we always talked these through openly and came up with practical solutions together.
+
 ### Tools and Techniques
-### Agile Discussion
+
+To support communication, planning, and documentation throughout development, we used a range of tools:
+
+**Miro:** Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
+
+**Microsoft Word:** Used collaboratively to edit documents such as requirement updates, test reports, and sustainability analyses.
+
+**Google Meet:** Our primary tool for online meetings during the holiday period.
+
+**WhatsApp:** Used for day-to-day team communication.
+
+**GitHub Kanban board:** Enabled us to apply the Kanban method for task tracking and progress visibility.
+
+### Reflection
+
+**Successes:**
+
+- Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
+- Balanced task allocation kept everyone consistently involved
+- Open communication channels accelerated technical problem-solving
+- GitHub branching and pull request workflows maintained a stable codebase
+- Kanban implementation enabled clear progress tracking
+
+**Problems:**
+
+- One significant challenge was code integration. Since some members co-developed overlapping modules, we had disagreements on how to merge changes
+- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members
+- Some team members were initially hesitant to share ideas, but this improved over time with mutual support
+
+**Key Learnings:**
+
+- Early prototyping (paper + digital) significantly reduced development ambiguity
+- Frequent user testing outside the team helped prioritize what to improve
+- Comprehensive documentation system enabled rapid task onboarding
+- Visual tools proved particularly effective for distributed team collaboration
+- Transparent communication significantly improved team coordination and built mutual trust among members
 
 # 9. Conclusion
 
