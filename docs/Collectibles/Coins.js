@@ -15,12 +15,15 @@ class Coins {
         let nextHeartX = game.hearts.hearts[game.hearts.hearts.length-1];
         let differenceCoinHeart = abs(newCoinX - nextHeartX);
         // Generate new coins ahead of player once they get past the last set
-        while (this.lastX < offset + width + 500 && !(differenceCoinHeart < 200)) {
+        while (this.lastX < offset + width + 500) {
             let startX = newCoinX;
             let numCoins = floor(random(3, 7));
             for (let i = 0; i < numCoins; i++) {
-                let x = startX + i*40;
-                let y = game.terrain.generateHills(x) - 25;
+                let coinCoords = this.calculateCoords(startX);
+                let offsetCoinCoords = this.calculateOffset(coinCoords.x, coinCoords.y);
+                let x = offsetCoinCoords.x;
+                let y = offsetCoinCoords.y;
+                startX = coinCoords.x
                 this.coins.push(createVector(x, y));
             }
             this.lastX = startX;
@@ -32,6 +35,53 @@ class Coins {
             let screenY = singleCoin.y;
             image(coinImage, screenX, screenY, coinImage.width*0.07, coinImage.height*0.07);
         }
+    }
+
+    calculateCoords(startX) {
+        let coinGap = 45;
+        let currentGap = 0;
+        let shift = 0;
+
+        let prevX = startX;
+        let prevY = game.terrain.generateHills(startX);
+        let currentX = 0;
+        let currentY = 0;
+
+        while (currentGap < coinGap) {
+            shift++;
+            currentX = prevX + shift;
+            currentY = game.terrain.generateHills(currentX);
+            let dx = currentX - prevX;
+            let dy = currentY - prevY
+            currentGap = Math.hypot(dx, dy);
+        }
+
+        let finalPoint = {
+            x: currentX,
+            y: currentY
+        }
+
+        return finalPoint;
+    }
+
+    calculateOffset(coinX, coinY) {
+        let tangent = {
+            x: coinX - (coinX-0.1),
+            y: coinY - game.terrain.generateHills(coinX-0.1)
+        };
+
+        let tangentLength = Math.hypot(tangent.x, tangent.y);
+
+        let normal = {
+            x: -tangent.y / tangentLength,
+            y: tangent.x / tangentLength
+        }
+
+        let offsetPoint = {
+            x: coinX - normal.x * 20,
+            y: coinY - normal.y * 20
+        }
+        return offsetPoint;
     }
 
     checkCollision() {
