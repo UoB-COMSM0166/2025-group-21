@@ -1,7 +1,8 @@
 ## Script
 
-### Intro - [David Attenborough Voice Over]TRO]
+### Intro
 
+[David Attenborough Voice Over]
 Amidst the icy expanse of the Antarctic, a remarkable creature thrives against all odds. In this frozen realm, life is harsh… but the resilience of the penguin is nothing short of extraordinary - as they beginning their seasonal migration to warmer climates. Unlike their airborne avian cousins, the penguins are flightless birds, and this journey must be taken across the ice, waddling with comical charm.
 
 Ooh, where is this little chap going… did he hear me? Someone stop him…
