@@ -38,7 +38,9 @@ We faced a number of challenges throughout our development process:
 Now, meet the team behind PengWings…
 
 Samantha - our project manager
+
 Tom and Jack - our backend developers
+
 Jing, Jenny and Nico - our frontend developers
 
 Together, we worked tirelessly day and night to bring PengWings to life.
