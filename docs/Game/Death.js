@@ -3,10 +3,10 @@
 class Death {
 
     constructor(type) {
-        if (laserAutomaticSound.isPlaying()) {
-            laserAutomaticSound.stop();
+        if (game.laserAutomaticSound.isPlaying()) {
+            game.laserAutomaticSound.stop();
         }
-        deathSound.play();
+        game.deathSound.play();
         game.player.alive = false;
         game.stats.deathUpdate();
         this.type = type;
@@ -187,6 +187,8 @@ class Death {
             image(returnToWorkshopButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
+                game.disconnectAudio();
+                //game.dispose();
                 game = null;
                 Domain = 'shop';
             }
@@ -208,6 +210,9 @@ class Death {
             image(playAgainButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
+                game.disconnectAudio();
+                //soundBoard.disposeAll();
+                //game.dispose();
                 game = null;
             }
         }

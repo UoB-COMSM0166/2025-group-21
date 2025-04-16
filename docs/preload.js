@@ -12,6 +12,7 @@ let laserSound = null;
 let heartImages = [];
 let freezingUfo = null;
 let frozenUfo = null;
+let snowball = null;
 let arrow = null;
 let ufoArrowImpact = null;
 let greenLaser = null;
@@ -23,23 +24,23 @@ let shopTitle = null
 let workshopBackground = null;
 
 // audio
-let laserAutomaticSound = null;
-let explosionSound = null;
-let deathSound = null;
-let windSound = null;
-let fishThrow = null;
-let fishImpactSound = null;
-let forceFieldSound = null;
-let purchaseSound = null;
-let illegalPurchaseSound = null;
-let snowball = null;
-let snowballSound = null;
-let freezeSound = null;
-let loseLifeSound = null;
-let gainLifeSound = null;
-let arrowSound = null;
-let ufoArrowImpactSound = null;
-let workshopMusic = null;
+// let laserAutomaticSound = null;
+// let explosionSound = null;
+// let deathSound = null;
+// let windSound = null;
+// let fishThrow = null;
+// let fishImpactSound = null;
+// let forceFieldSound = null;
+// let purchaseSound = null;
+// let illegalPurchaseSound = null;
+// let snowballSound = null;
+// let freezeSound = null;
+// let loseLifeSound = null;
+// let gainLifeSound = null;
+// let arrowSound = null;
+// let ufoArrowImpactSound = null;
+// let workshopMusic = null;
+// let collectCoinSound = null
 
 // BUTTONS
 // main menu
@@ -223,46 +224,31 @@ function preload() {
     controlsButtonHover = loadImage('assets/settings/changeControlsButtonHover.png');
     changeButton = loadImage('assets/settings/changeButton.png');
     changeButtonHover = loadImage('assets/settings/changeButtonHover.png');
-
-    // load sounds
-    windSound = loadSound('assets/sounds/windSound.mp3');
-    workshopMusic = loadSound('assets/sounds/workshopMusic.mp3');
-    laserSound = loadSound('assets/sounds/laser.mp3');
-    laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
-    explosionSound = loadSound('assets/sounds/explosionSound.mp3');
-    deathSound = loadSound('assets/sounds/deathSound.mp3');
-    fishThrow = loadSound('assets/sounds/fishThrow.mp3');
-    fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
-    forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
-    purchaseSound = loadSound('assets/sounds/purchaseSound.mp3');
-    illegalPurchaseSound = loadSound('assets/sounds/illegalPurchaseSound.mp3');
-    snowballSound = loadSound('assets/sounds/snowballSound.mp3');
-    freezeSound = loadSound('assets/sounds/freezeSound.mp3');
-    arrowSound = loadSound('assets/sounds/arrowSound.mp3');
-    ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
-    loseLifeSound = loadSound('assets/sounds/loseLifeSound.mp3');
-    gainLifeSound = loadSound('assets/sounds/gainLifeSound.mp3');
-    collectCoinSound = loadSound('assets/sounds/coinSound.mp3');
-    setMasterVolume(1);
 }
 
+let volume = 0.2;
+
 function setMasterVolume(masterVolume) {
-    let volume = 0.2;
-    workshopMusic.setVolume(2*volume*masterVolume);
-    laserSound.setVolume(2*volume*masterVolume);
-    laserAutomaticSound.setVolume(2*volume*masterVolume);
-    explosionSound.setVolume(volume*masterVolume);
-    deathSound.setVolume(volume*masterVolume);
-    fishThrow.setVolume(volume*masterVolume);
-    fishImpactSound.setVolume(volume*masterVolume);
-    forceFieldSound.setVolume(volume*masterVolume);
-    purchaseSound.setVolume(volume*masterVolume);
-    illegalPurchaseSound.setVolume(volume*masterVolume);
-    snowballSound.setVolume(volume*masterVolume);
-    freezeSound.setVolume(0.5*volume*masterVolume);
-    arrowSound.setVolume(0.5*volume*masterVolume);
-    ufoArrowImpactSound.setVolume(volume*masterVolume);
-    loseLifeSound.setVolume(2*volume*masterVolume);
-    gainLifeSound.setVolume(1.5*volume*masterVolume);
-    collectCoinSound.setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['illegalPurchaseSound'].setVolume(volume*masterVolume);
+
+    soundBoard.cache['laserSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['laserAutomaticSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['explosionSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['deathSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['fishThrow'].setVolume(volume*masterVolume);
+    soundBoard.cache['fishImpactSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['forceFieldSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['snowballSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['freezeSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['arrowSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['ufoArrowImpactSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
+    soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
+}
+
+function loadSoundAsync(path) {
+    return new Promise((resolve, reject) => loadSound(path, resolve, reject));
 }

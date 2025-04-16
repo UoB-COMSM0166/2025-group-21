@@ -5,7 +5,7 @@ class Laser extends Projectile {
         super(position, velocity);
 
         if (inventory.laserLevel < 5) {
-            laserSound.play();
+            game.laserSound.play();
         }
     }
 

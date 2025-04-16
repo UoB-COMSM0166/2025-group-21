@@ -7,7 +7,7 @@ class Snowball extends Projectile {
         super(position, createVector(velocity.x/2, velocity.y/2));
         this.gravity = 0.5;
         this.angle = 0;
-        snowballSound.play();
+        game.snowballSound.play();
     }
 
     updatePosition() {

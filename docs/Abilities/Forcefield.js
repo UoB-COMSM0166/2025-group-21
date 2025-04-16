@@ -14,15 +14,15 @@ class ForceField {
             game.invincibility = true;
             game.UFOHandler.collisionRadius = width/8;
 
-            if (!forceFieldSound.isPlaying()) {
-                forceFieldSound.play();
+            if (!game.forceFieldSound.isPlaying()) {
+                game.forceFieldSound.play();
             }
         }
-        if (forceFieldSound.isPlaying() && game.pause.active) {
-            forceFieldSound.stop();
+        if (game.forceFieldSound.isPlaying() && game.pause.active) {
+            game.forceFieldSound.stop();
         }
-        else if (!forceFieldSound.isPlaying() && !game.pause.active) {
-            forceFieldSound.play();
+        else if (!game.forceFieldSound.isPlaying() && !game.pause.active) {
+            game.forceFieldSound.play();
         }
         if (!game.pause.active) {
             this.chargeFraction -= (0.003 - 0.0004*this.powerLevel);
@@ -31,7 +31,7 @@ class ForceField {
         this.drawForceField();
 
         if (this.chargeFraction <= 0) {
-            forceFieldSound.stop();
+            game.forceFieldSound.stop();
             this.active = false;
             game.invincibility = false;
             game.UFOHandler.collisionRadius = 50;

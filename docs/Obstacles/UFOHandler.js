@@ -30,6 +30,7 @@ class UFOHandler {
                 (this.UFOs[i].pos.y < -500 && game.zoom === 1) ||
                 this.UFOs[i].pos.y > height/game.zoom) {
 
+                this.UFOs[i] = null;
                 this.UFOs.splice(i, 1);
             }
         }
@@ -57,7 +58,11 @@ class UFOHandler {
                 if (Math.sqrt(dx**2 + dy**2) < this.collisionRadius) {
                     this.explosions.push(new Explosion(this.UFOs[u].pos));
                     this.UFOs.splice(u, 1);
-                    explosionSound.play();
+
+                    if (game.explosionSound.isPlaying()) {
+                        game.explosionSound.stop();
+                    }
+                    game.explosionSound.play();
 
                     if (!game.invincibility) {
                         game.death = new Death('UFO');
@@ -74,6 +79,7 @@ class UFOHandler {
         for (let i=0; i<this.explosions.length; i++) {
 
             if (this.explosions[i].explosionComplete) {
+                this.explosions[i] = null;
                 this.explosions.splice(i, 1);
             }
             else this.explosions[i].explode();

@@ -4,7 +4,7 @@ class Arrow extends Projectile {
 
     constructor(position, velocity, angle) {
         super(position, velocity);
-        arrowSound.play();
+        game.arrowSound.play();
         this.angle = angle;
         this.frameIndex = 0;
     }

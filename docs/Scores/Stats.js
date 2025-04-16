@@ -8,6 +8,7 @@ class Stats {
         this.numJumps = 0;
         this.distanceTraveled = 0;
         this.highestJump = 0;
+        this.ufoHits = 0;
     }
 
     gameUpdate() {

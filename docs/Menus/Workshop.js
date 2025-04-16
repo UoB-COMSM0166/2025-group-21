@@ -3,35 +3,54 @@
 class Workshop {
 
     constructor() {
+        this.workshopMusic = null;
+        this.purchaseSound = null;
+        this.illegalPurchaseSound = null;
+
         document.body.classList.add("show-cursor");
         this.selectedItem = null;
         this.buttonsActive = false;
         this.buttonCooldownTimer = new Clock();
         this.buttonCooldownTimer.tick();
         this.updateItemPrices();
-        this.musicVolume = 0.4*settings.masterVolume*settings.mute;
-        workshopMusic.setVolume(this.musicVolume);
-        workshopMusic.loop();
+        this.masterVolume = settings.masterVolume*settings.mute;
+        this.soundsLoaded = false;
+        this.loadAudio().then(() => this.soundsLoaded = true);
+
         this.fadeOut = false;
         this.screenTint = 0;
         this.fadeOutTimer = new Clock()
 
     }
 
+    async loadAudio() {
+        this.workshopMusic = await soundBoard.getSound('workshopMusic');
+        this.purchaseSound = await soundBoard.getSound('purchaseSound');
+        this.illegalPurchaseSound = await soundBoard.getSound('illegalPurchaseSound');
+
+        setMasterVolume(this.masterVolume);
+        this.workshopMusic.loop();
+    }
+
+    disconnectAudio() {
+        this.workshopMusic.stop();
+        this.purchaseSound.stop();
+        this.illegalPurchaseSound.stop();
+        this.workshopMusic = null;
+        this.purchaseSound = null;
+        this.illegalPurchaseSound = null;
+    }
 
     openShop() {
+        if (!this.soundsLoaded) return;
+
         this.display();
         this.printCoins();
         this.updateButtonCooldown();
 
         if (this.fadeOut) {
-            if (this.fadeOutTimer.time > 20) {
-                workshopMusic.stop();
-                shop = null;
-                Domain = 'game';
-            }
-            this.musicVolume = lerp(this.musicVolume, 0, 0.04);
-            workshopMusic.setVolume(this.musicVolume);
+            this.masterVolume = lerp(this.masterVolume, 0, 0.04);
+            this.workshopMusic.setVolume(volume*this.masterVolume);
             fill(`rgba(0, 0, 0, ${this.screenTint})`);
             rect(0, 0, width, height);
 
@@ -45,6 +64,14 @@ class Workshop {
             }
             else {
                 this.screenTint = lerp(this.screenTint, 1, 0.04);
+            }
+
+            if (this.fadeOutTimer.time > 20) {
+                this.disconnectAudio();
+                //soundBoard.disposeAll();
+                //shop.dispose();
+                shop = null;
+                Domain = 'game';
             }
         }
     }
@@ -305,7 +332,7 @@ class Workshop {
                 if (mouseIsPressed && this.buttonsActive) {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
-                    illegalPurchaseSound.play();
+                    this.illegalPurchaseSound.play();
                 }
             }
         }
@@ -348,7 +375,7 @@ class Workshop {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                workshopMusic.stop();
+                this.disconnectAudio();
                 shop = null;
                 Domain = 'mainMenu';
             }
@@ -374,7 +401,7 @@ class Workshop {
                 inventory.coins -= this.forceFieldUpgradePrice;
                 break;
         }
-        purchaseSound.play();
+        this.purchaseSound.play();
         this.updateItemPrices();
     }
 
