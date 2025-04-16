@@ -3,6 +3,7 @@
 ### Intro
 
 [David Attenborough Voice Over]
+
 Amidst the icy expanse of the Antarctic, a remarkable creature thrives against all odds. In this frozen realm, life is harsh… but the resilience of the penguin is nothing short of extraordinary - as they beginning their seasonal migration to warmer climates. Unlike their airborne avian cousins, the penguins are flightless birds, and this journey must be taken across the ice, waddling with comical charm.
 
 Ooh, where is this little chap going… did he hear me? Someone stop him…
@@ -10,14 +11,17 @@ Ooh, where is this little chap going… did he hear me? Someone stop him…
 ### Game Description
 
 [Announcer voice over]
+
 PENGWINGS - Help your fluffy, winged friend take flight!
 
 [Tom voice over]
+
 In this reimagined version of the classic flash game Learn to Fly, you’re in charge of upgrading your penguin and launching him into the air. But this time, things are taken to the next level! We've introduced procedurally generated rolling hills, creating dynamic, ever-changing landscapes for your penguin to navigate. Thanks to our cutting-edge physics and motion algorithms, your penguin can now slide up and down hills, catching air time. Guide him through the slopes, unlock upgrades, and push the limits of his flight! Can you help him finally fulfil his dream of taking to the skies?
 
 ### Challenges
 
 [Team / Tom voice over]
+
 We faced a number of challenges throughout our development process:
 
 1. Procedurally generated infinite map
