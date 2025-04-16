@@ -48,7 +48,7 @@ class Hearts {
             let heart = this.hearts[i];
             let d = dist(game.player.pos.x, game.player.pos.y, heart.pos.x - game.offset, heart.pos.y);
             if (d < 30) {
-                gainLifeSound.play();
+                game.gainLifeSound.play();
                 game.player.lives.addLife();
                 this.hearts.splice(i, 1);
             }

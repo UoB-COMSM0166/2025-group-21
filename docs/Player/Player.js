@@ -153,8 +153,13 @@ class Player {
             this.accDownSlope *= 0.7;
         }
 
-        this.acc.y = this.accDownSlope * sin(atan(slope)) + 0.02 * this.vel.y;
-        this.acc.x = this.accDownSlope * cos(atan(slope)) + 0.02 * this.vel.x;
+        this.acc.y = this.accDownSlope * sin(atan(slope)) + 0.005 * this.vel.y;
+        this.acc.x = this.accDownSlope * cos(atan(slope)) + 0.005 * this.vel.x;
+
+        // if (game.stats.numJumps < 1) {
+        //     this.acc.y += 0.02 * this.vel.y;
+        //     this.acc.x += 0.02 * this.vel.x;
+        // }
     }
 
     updateVelocity () {
@@ -167,8 +172,6 @@ class Player {
 
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
-
-
     }
 
     updateVerticalVelocityFromSlope () {
@@ -212,7 +215,7 @@ class Player {
                     //this.gravity = 0.02
                 }
                 else {
-                    loseLifeSound.play();
+                    game.loseLifeSound.play();
                     this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;

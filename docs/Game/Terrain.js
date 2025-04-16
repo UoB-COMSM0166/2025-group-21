@@ -124,7 +124,7 @@ class Terrain {
         let y = height * 0.8;
         // Generate initial ramp at start
         if (x < 2300) {
-            y = this.generateIntialRamp(x, y);
+            y = this.generateInitialRamp(x, y);
         }
         else {
             for (let i = 0; i < this.numWaves; i++) {
@@ -135,7 +135,7 @@ class Terrain {
         return y;
     }
 
-    generateIntialRamp(x) {
+    generateInitialRamp(x) {
         let y = height * 0.8;
         // Y params
         let platformHeight = height * 0.3;

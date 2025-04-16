@@ -97,7 +97,7 @@ class Coins {
                     size: 0.07,
                     height: 0
                 });
-                collectCoinSound.play();
+                game.collectCoinSound.play();
                 this.totalCoinsCollected++;
             }
         }

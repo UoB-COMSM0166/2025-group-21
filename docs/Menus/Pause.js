@@ -157,6 +157,7 @@ class Pause {
 
     shopButtonPressed() {
         game.pause.reset();
+        game.disconnectAudio();
         game = null;
         Domain = 'shop';
     }

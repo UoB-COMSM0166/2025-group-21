@@ -39,11 +39,12 @@ class ProjectileAbility {
             this.projectiles[i].drawProjectile();
 
             // if projectile goes off the screen
-            if (this.projectiles[i].pos.x > width/game.zoom ||
+            if (this.projectiles[i].pos.x > width/game.zoom || this.projectiles[i].pos.x < 0 ||
                 (this.projectiles[i].pos.y < game.player.pos.y - game.topMargin/game.zoom && game.zoom < 1) ||
                 (this.projectiles[i].pos.y < 0 && game.zoom === 1) ||
                 this.projectiles[i].pos.y > height/game.zoom) {
 
+                this.projectiles[i] = null;
                 this.projectiles.splice(i, 1);
             }
             this.checkForUFOCollisions(i);
@@ -52,15 +53,15 @@ class ProjectileAbility {
             if (!game.pause.active && game.player.alive && frameCount % 4 === 0) {
                 this.shoot();
             }
-            if (game.pause.active && laserAutomaticSound.isPlaying()) {
-                laserAutomaticSound.stop();
+            if (game.pause.active && game.laserAutomaticSound.isPlaying()) {
+                game.laserAutomaticSound.stop();
             }
-            if (!game.pause.active && !laserAutomaticSound.isPlaying()) {
-                laserAutomaticSound.loop();
+            if (!game.pause.active && !game.laserAutomaticSound.isPlaying()) {
+                game.laserAutomaticSound.loop();
             }
         }
-        else if (laserAutomaticSound.isPlaying()) {
-            laserAutomaticSound.stop();
+        else if (game.laserAutomaticSound.isPlaying()) {
+            game.laserAutomaticSound.stop();
         }
         // if (game.player.alive && !game.pause.active && frameCount % 4 === 0) {
         //     this.shoot();
@@ -81,27 +82,33 @@ class ProjectileAbility {
                 let dy = abs(this.projectiles[l].pos.y - game.UFOHandler.UFOs[u].pos.y);
 
                 if (Math.sqrt(dx**2 + dy**2) < 50) {
+                    game.stats.ufoHits++;
+                    game.score.total += 100;
 
                     if (this.projectiles[l] instanceof Fish) {
                         game.UFOHandler.UFOs[u].hitByFish = true;
-                        fishImpactSound.play();
+                        game.fishImpactSound.play();
                         this.projectiles[l].vel.y -= 10;
                     }
                     else if (this.projectiles[l] instanceof Snowball) {
                         this.projectiles.splice(l, 1);
                         game.UFOHandler.UFOs[u].freezing = true;
-                        freezeSound.play();
+                        game.freezeSound.play();
                     }
                     else if (this.projectiles[l] instanceof Arrow) {
                         this.projectiles.splice(l, 1);
                         game.UFOHandler.UFOs[u].hitByArrow = true;
-                        ufoArrowImpactSound.play();
+                        game.ufoArrowImpactSound.play();
                     }
                     else {
                         this.projectiles.splice(l, 1);
                         game.UFOHandler.explosions.push(new Explosion(game.UFOHandler.UFOs[u].pos));
                         game.UFOHandler.UFOs.splice(u, 1);
-                        explosionSound.play();
+
+                        if (game.explosionSound.isPlaying()) {
+                            game.explosionSound.stop();
+                        }
+                        game.explosionSound.play();
                     }
                 }
             }

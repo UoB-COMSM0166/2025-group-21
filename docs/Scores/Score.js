@@ -33,10 +33,10 @@ class Score {
         let speed = game.player.vel.x;
 
         if (this.airtime > 50 ) {
-            airtimeBonus = 0.02 * this.airtime;
+            airtimeBonus = 0.002 * this.airtime;
         }
         if (speed > 0) {
-            speedBonus = speed * 0.1;
+            speedBonus = speed * 0.04;
         }
         else {
             speedBonus = 0;

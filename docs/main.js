@@ -13,6 +13,8 @@ let fps = 0;
 let userIsTyping = false;
 let inputCharacter = null;
 
+let soundBoard = null;
+
 function setup() {
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
@@ -20,6 +22,7 @@ function setup() {
     window.addEventListener("resize", resizeCanvasCSS);
     inventory = new Inventory();
     settings = new Settings();
+    soundBoard = new SoundBoard();
 }
 
 function draw() {
@@ -62,7 +65,19 @@ function draw() {
         frameCount = 0;
     }
     text(fps, 50, 50);
+
+    push();
+    if (game !== null) {
+        textAlign(LEFT);
+        textSize(15);
+        text('Projectiles = ' + game.projectile.projectiles.length, 10, 80);
+        text('UFOs = ' + game.UFOHandler.UFOs.length, 10, 105);
+        text('Explosions = ' + game.UFOHandler.explosions.length, 10, 130);
+    }
+    pop();
 }
+
+
 
 function resizeCanvasCSS() {
     let canvas = document.getElementById("myCanvas");
