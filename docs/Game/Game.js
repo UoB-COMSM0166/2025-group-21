@@ -38,10 +38,9 @@ class Game {
         this.zoom = 1;
         this.tx = 0
         this.ty = 0;
-        this.initialDrop = true;
 
         this.terrain = new Terrain();
-        this.player = new Player(150, 150);
+        this.player = new Player(150, this.terrain.generateHills(150));
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();
@@ -101,7 +100,7 @@ class Game {
         this.player.lives.drawLives();
         this.stats.gameUpdate();
 
-        if (((this.spacePressed && this.player.alive) || this.initialDrop) && !this.pause.active) {
+        if (this.spacePressed && this.player.alive && !this.pause.active) {
             this.applyBoostToPlayer();
         }
 

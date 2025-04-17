@@ -59,7 +59,9 @@ function keyPressed() {
     }
 
     if (Domain === 'loadGame') {
-        domains.gameLoader.handleKeyNavigation(keyCode);
+        if (domains !== null) {
+            domains.gameLoader.handleKeyNavigation(keyCode);
+        }
     }
 
     if (Domain === 'game' && domains.game.pause.active) {

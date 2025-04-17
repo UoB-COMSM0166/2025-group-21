@@ -26,7 +26,7 @@ class GameLoader {
         if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
             this.selectedButtonIndex = (this.selectedButtonIndex + 1) % 2;
         }
-        else if (keyCode === ENTER) {
+        else if (keyCode === ENTER || keyCode === 32) { // 32 == space
             switch (this.selectedButtonIndex) {
                 case 0: this.yesButtonPressed(); break;
                 case 1: this.noButtonPressed(); break;

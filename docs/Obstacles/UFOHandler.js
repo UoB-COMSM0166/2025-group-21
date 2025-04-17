@@ -8,14 +8,11 @@ class UFOHandler {
         this.UFOs = [];
         this.explosions = [];
         this.collisionRadius = 50;
-
-
-
     }
     updateUFOs() {
 
         if (!domains.game.pause.active && domains.game.zoom < 1 &&
-            Math.random() > 0.99 - 0.005*this.spawnRate) { // 0.975
+            Math.random() > 0.99 - 0.005*this.spawnRate) {
 
             this.UFOs.push(new UFO(domains.game.player.pos.y + 0.3*(height - domains.game.player.pos.y)*Math.random() + 50));
         }
