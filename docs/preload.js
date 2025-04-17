@@ -22,6 +22,9 @@ let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
 let workshopBackground = null;
+let tipsBox = null;
+let penguinClaw = null;
+
 
 // audio
 // let laserAutomaticSound = null;
@@ -77,6 +80,9 @@ let backButton = null;
 let backButtonHover = null;
 let submitButton = null;
 let submitButtonHover = null;
+
+// fonts
+let instructionFont = null;
 
 // shop
 let projectileButton = null
@@ -172,6 +178,11 @@ function preload() {
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
     mainMenuButton = loadImage('assets/buttons/mainMenuButton.png');
     mainMenuButtonHover = loadImage('assets/buttons/mainMenuButtonHover.png');
+
+    // instruction
+    instructionFont = loadFont('assets/fonts/Noteworthy.ttf');
+    tipsBox = loadImage('assets/images/tipsBox.png');
+    penguinClaw = loadImage('assets/images/penguinClaw(1).png');
 
     // main menu
     startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');

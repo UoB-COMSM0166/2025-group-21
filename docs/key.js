@@ -58,6 +58,18 @@ function keyPressed() {
         }
     }
 
+    if (Domain === 'instruction') {
+        if (keyCode === DOWN_ARROW) {
+            domains.instruction.moveSelection(1);
+        } else if (keyCode === UP_ARROW) {
+            domains.instruction.moveSelection(-1);
+        } else if (keyCode === ENTER || key === ' ') {
+                domains.instruction.selectCurrentButton();
+        }
+        return;
+    }
+
+
     if (Domain === 'loadGame') {
         if (domains !== null) {
             domains.gameLoader.handleKeyNavigation(keyCode);

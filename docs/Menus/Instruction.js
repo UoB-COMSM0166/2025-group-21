@@ -1,33 +1,28 @@
-// Instruction.js
-
 class Instruction {
     constructor() {
         document.body.classList.add("show-cursor");
+        this.selectedButtonIndex = -1;
 
-        this.continueButton = createButton('');
-        this.continueButton.html('<img src="assets/images/penguinClaw(1).png" style="width:100%; height:100%;">');
-        this.continueButton.class('instructionButton');
-        this.continueButton.mousePressed(() => this.continueButtonPressed());
     }
 
     draw() {
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, page.pageWidth, page.pageHeight);
+        image(homeBackground, 0, 0, width, height);
 
-        let boxWidth = page.pageWidth * 0.9;
-        let boxHeight = page.pageHeight * 0.9;
+        let boxWidth = width * 0.9;
+        let boxHeight = height * 0.9;
 
 
         push();
         imageMode(CENTER);
-        image(tipsBox, page.pageWidth / 2, page.pageHeight / 2, boxWidth, boxHeight);
+        image(tipsBox, width / 2, height / 2, boxWidth, boxHeight);
         pop();
 
         this.drawInstructions(boxWidth, boxHeight);
 
-
-        this.updateButton(boxWidth, boxHeight);
+        // this.updateButton(boxWidth, boxHeight);
+        this.drawClawButton(boxWidth, boxHeight);
     }
 
     drawInstructions(boxWidth, boxHeight) {
@@ -35,11 +30,11 @@ class Instruction {
         textFont(instructionFont);
         fill(0);
         textAlign(LEFT, TOP);
-        textSize(page.pageWidth * 0.018);
+        textSize(width * 0.018);
 
         let textMargin = boxWidth * 0.01;
-        let textX = page.pageWidth / 2 - boxWidth / 3 + textMargin;
-        let textY = page.pageHeight / 2 - boxHeight / 4 + textMargin;
+        let textX = width / 2 - boxWidth / 3 + textMargin;
+        let textY = height / 2 - boxHeight / 4 + textMargin;
         let textW = boxWidth - textMargin * 2;
         let textH = boxHeight - textMargin * 2;
 
@@ -58,34 +53,50 @@ class Instruction {
         pop();
     }
 
-    updateButton(boxWidth, boxHeight) {
-        let buttonWidth = page.pageWidth * 0.2;
-        let buttonHeight = page.pageHeight * 0.1;
+    drawClawButton(boxWidth, boxHeight) {
+        const buttonWidth = boxWidth  * 0.15;
+        const buttonHeight = boxHeight * 0.08;
 
-        let tipsBoxCenterX = page.pageWidth / 2;
-        let tipsBoxCenterY = page.pageHeight / 2;
+        const boxX = (width  - boxWidth)  / 2;
+        const boxY = (height - boxHeight) / 2;
 
-        let x = page.xPadding + page.margin + (page.pageWidth - buttonWidth) / 2;
-        let y = page.yPadding + page.margin +
-            (tipsBoxCenterY + boxHeight / 2 - buttonHeight - 10);
+        const gap  = -70;
 
-        this.continueButton.position(x, y);
-        this.continueButton.size(buttonWidth, buttonHeight);
+        const x = boxX + (boxWidth - buttonWidth) / 2;
+        const y = boxY +  boxHeight + gap;
+
+        let isHover = mouseX > x && mouseX < x + buttonWidth
+                              && mouseY > y && mouseY < y + buttonHeight;
+        if (isHover || this.selectedButtonIndex === 0) {
+            push();
+            noStroke();
+            fill(135, 206, 235, 127);
+            rect(x, y, buttonWidth, buttonHeight, 8);
+            pop();
+        }
+        image(penguinClaw, x, y, buttonWidth, buttonHeight);
+
+        if (isHover && mouseIsPressed) {
+                       this.continueButtonPressed();
+                   }
+
     }
 
+    moveSelection(direction) {
+        this.selectedButtonIndex = direction > 0 ? 0 : -1;
+    }
+
+    selectCurrentButton() {
+        if (this.selectedButtonIndex === 0) {
+            this.continueButtonPressed();
+        }
+    }
 
     continueButtonPressed() {
-        this.continueButton.remove();
+        domains.instruction = null;
         Domain = 'game';
-        game = new Game();
     }
 
 }
 
-if (typeof MainMenu !== 'undefined') {
-    MainMenu.prototype.instructionButtonPressed = function() {
-        this.removeButtons();
-        Domain = 'instruction';
-        instruction = new Instruction();
-    }
-}
+

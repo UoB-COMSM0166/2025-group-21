@@ -9,6 +9,7 @@ class DomainManager {
         this.mainMenu = null;
         this.game = null;
         this.shop = null;
+        this.instruction = null;
         //this.progressLoaded = false;
     }
 
@@ -43,6 +44,13 @@ class DomainManager {
                 this.shop = new Workshop();
             }
             this.shop.openShop();
+        }
+
+        if (Domain === 'instruction') {
+            if (this.instruction === null) {
+                this.instruction = new Instruction();
+            }
+            this.instruction.draw();
         }
 
         if (Domain === 'game') {
