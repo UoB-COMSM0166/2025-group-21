@@ -1,6 +1,6 @@
 
 
-let Domain = 'intro'; // Determines which part of the game code is executed
+let Domain = 'loadGame'; // Determines which part of the game code is executed
 
 let domains = null;
 let inventory = null;
@@ -14,18 +14,18 @@ let soundBoard = null;
 function setup() {
     let gameProgress = loadGameProgress();
 
-    if (!gameProgress) {
-        gameProgress = NEW_GAME_STATE;
-    }
+    // if (!gameProgress) {
+    //     gameProgress = NEW_GAME_STATE;
+    // }
 
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
-    inventory = new Inventory(gameProgress);
-    settings = new Settings(gameProgress);
+    inventory = null; // new Inventory(gameProgress);
+    settings = null; // new Settings(gameProgress);
     soundBoard = new SoundBoard();
-    domains = new DomainManager();
+    domains = new DomainManager(gameProgress);
 }
 
 function draw() {

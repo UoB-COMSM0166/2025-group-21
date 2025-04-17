@@ -26,6 +26,7 @@ class Pause {
             document.body.classList.add("show-cursor");
             this.showButtons = true;
             this.fieldsReset = false;
+            domains.game.windSound.setVolume(0);
         }
         if (this.buttonCooldownTimer.time > 0) {
             this.updateButtonCooldown();
@@ -165,16 +166,17 @@ class Pause {
     showCountdown() {
         if (this.countdown) {
             this.countdown.display();
+
             if (this.countdown.completed) {
                 this.isCountingDown = false;
                 this.active = false;
                 this.reset();
                 this.countdown = null;
-                return false;
+                //return false;
             }
-            return true;
+            //return true;
         }
-        return false;
+        //return false;
     }
 
     reset() {
