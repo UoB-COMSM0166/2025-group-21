@@ -49,7 +49,7 @@ class Game {
         this.coins = new Coins();
 
         this.highscores = new Highscores();
-        this.UFOHandler = new UFOHandler();
+        this.obstacleHandler = new ObstacleHandler();
         this.wind = null;
         this.death = null;
 
@@ -73,8 +73,8 @@ class Game {
             this.terrain.drawHills();
             this.player.drawPlayer()
             this.projectile.updateProjectiles();
-            this.UFOHandler.updateUFOs();
-            this.UFOHandler.updateExplosions();
+            this.obstacleHandler.updateObstacles();
+            this.obstacleHandler.updateExplosions();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left

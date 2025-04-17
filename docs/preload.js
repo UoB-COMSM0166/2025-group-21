@@ -199,6 +199,9 @@ function preload() {
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
 
+    seagull = loadImage('assets/sprites/seagull.png');
+    airplane = loadImage('assets/images/airplane.png')
+
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');
     penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');

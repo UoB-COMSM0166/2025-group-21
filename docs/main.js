@@ -44,8 +44,8 @@ function draw() {
         textAlign(LEFT);
         textSize(15);
         text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
-        text('UFOs = ' + domains.game.UFOHandler.UFOs.length, 10, 105);
-        text('Explosions = ' + domains.game.UFOHandler.explosions.length, 10, 130);
+        text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
+        text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
     }
     pop();
 }

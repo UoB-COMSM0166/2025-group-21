@@ -48,7 +48,7 @@ class ProjectileAbility {
                 this.projectiles[i] = null;
                 this.projectiles.splice(i, 1);
             }
-            this.checkForUFOCollisions(i);
+            this.checkForCollisions(i);
         }
         if (this.gatlingMode) {
             if (!domains.game.pause.active && domains.game.player.alive && frameCount % 4 === 0) {
@@ -73,21 +73,21 @@ class ProjectileAbility {
         // else if (!game.pause.active)
     }
 
-    checkForUFOCollisions(l) {
+    checkForCollisions(l) {
 
-        for (let u=0; u<domains.game.UFOHandler.UFOs.length; u++) {
+        for (let u=0; u<domains.game.obstacleHandler.aerialObstacles.length; u++) {
 
-            if (this.projectiles[l] !== undefined && domains.game.UFOHandler.UFOs[u] !== undefined) {
+            if (this.projectiles[l] !== undefined && domains.game.obstacleHandler.aerialObstacles[u] !== undefined) {
 
-                let dx = abs(this.projectiles[l].pos.x - domains.game.UFOHandler.UFOs[u].pos.x);
-                let dy = abs(this.projectiles[l].pos.y - domains.game.UFOHandler.UFOs[u].pos.y);
+                let dx = abs(this.projectiles[l].pos.x - domains.game.obstacleHandler.aerialObstacles[u].pos.x);
+                let dy = abs(this.projectiles[l].pos.y - domains.game.obstacleHandler.aerialObstacles[u].pos.y);
 
                 if (Math.sqrt(dx**2 + dy**2) < 50) {
                     domains.game.stats.ufoHits++;
                     domains.game.score.total += 100;
 
                     if (this.projectiles[l] instanceof Fish) {
-                        domains.game.UFOHandler.UFOs[u].hitByFish = true;
+                        domains.game.obstacleHandler.aerialObstacles[u].hitByFish = true;
 
                         if (domains.game.fishImpactSound.isPlaying()) {
                             domains.game.fishImpactSound.stop();
@@ -97,7 +97,7 @@ class ProjectileAbility {
                     }
                     else if (this.projectiles[l] instanceof Snowball) {
                         this.projectiles.splice(l, 1);
-                        domains.game.UFOHandler.UFOs[u].freezing = true;
+                        domains.game.obstacleHandler.aerialObstacles[u].freezing = true;
 
                         if (domains.game.freezeSound.isPlaying()) {
                             domains.game.freezeSound.stop();
@@ -106,7 +106,7 @@ class ProjectileAbility {
                     }
                     else if (this.projectiles[l] instanceof Arrow) {
                         this.projectiles.splice(l, 1);
-                        domains.game.UFOHandler.UFOs[u].hitByArrow = true;
+                        domains.game.obstacleHandler.aerialObstacles[u].hitByArrow = true;
 
                         if (domains.game.ufoArrowImpactSound.isPlaying()) {
                             domains.game.ufoArrowImpactSound.stop();
@@ -115,8 +115,8 @@ class ProjectileAbility {
                     }
                     else {
                         this.projectiles.splice(l, 1);
-                        domains.game.UFOHandler.explosions.push(new Explosion(domains.game.UFOHandler.UFOs[u].pos));
-                        domains.game.UFOHandler.UFOs.splice(u, 1);
+                        domains.game.obstacleHandler.explosions.push(new Explosion(domains.game.obstacleHandler.aerialObstacles[u].pos));
+                        domains.game.obstacleHandler.aerialObstacles.splice(u, 1);
 
                         if (domains.game.explosionSound.isPlaying()) {
                             domains.game.explosionSound.stop();
