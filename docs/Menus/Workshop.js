@@ -324,6 +324,7 @@ class Workshop {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
                     this.upgradeItem();
+                    saveGameProgress();
                 }
             }
             else {
@@ -333,7 +334,6 @@ class Workshop {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
                     this.illegalPurchaseSound.play();
-                    saveGameProgress();
                 }
             }
         }

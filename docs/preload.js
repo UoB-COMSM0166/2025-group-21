@@ -58,6 +58,12 @@ let instructionsButtonHover = null;
 let settingsButton = null;
 let settingsButtonHover = null;
 
+// load game
+let yesButton = null;
+let yesButtonHover = null;
+let noButton = null;
+let noButtonHover = null;
+
 // death menu
 let returnToWorkshopButton = null;
 let returnToWorkshopButtonHover = null;
@@ -131,6 +137,12 @@ function preload() {
     pauseSettingsButtonHover = loadImage('assets/buttons/pauseMenu/settingsButtonHover.png');
     closeButton = loadImage('assets/buttons/pauseMenu/closeButton.png');
     closeButtonHover = loadImage('assets/buttons/pauseMenu/closeButtonHover.png');
+
+    // load game
+    yesButton = loadImage('assets/buttons/loadGame/yesButton.png');
+    yesButtonHover = loadImage('assets/buttons/loadGame/yesButtonHover.png');
+    noButton = loadImage('assets/buttons/loadGame/noButton.png');
+    noButtonHover = loadImage('assets/buttons/loadGame/noButtonHover.png');
 
     // death menu
     returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');

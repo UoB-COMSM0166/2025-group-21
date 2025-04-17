@@ -25,6 +25,8 @@ class Death {
 
         this.endScore = createVector(width/5, height/5 + height/30); // position of word 'score' at death
         this.numScore = createVector(width/7.5, height/2.8); // position of number at death
+
+        this.progressSaved = false;
     }
 
     runPlayerDeathSequence() {
@@ -167,6 +169,10 @@ class Death {
     }
 
     showDeathScreen() {
+        if (!this.progressSaved) {
+            saveGameProgress();
+            this.progressSaved = true;
+        }
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
 

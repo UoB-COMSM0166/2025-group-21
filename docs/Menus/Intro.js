@@ -2,7 +2,7 @@
 
 class Intro {
     constructor() {
-        document.body.classList.add("show-cursor");
+        document.body.classList.remove("show-cursor");
         this.resetAnimation();
     }
 

@@ -9,7 +9,7 @@ function keyPressed() {
 
     if (Domain === 'intro') {
 
-        if (key === ' ') {
+        if (key === ' ' || keyCode === ENTER) {
             if (domains.intro !== null) {
                 domains.intro.skipAnimation();
             }
@@ -56,6 +56,10 @@ function keyPressed() {
             domains.mainMenu.handleKeyNavigation(keyCode);
             return;
         }
+    }
+
+    if (Domain === 'loadGame') {
+        domains.gameLoader.handleKeyNavigation(keyCode);
     }
 
     if (Domain === 'game' && domains.game.pause.active) {
