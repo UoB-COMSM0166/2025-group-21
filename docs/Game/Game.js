@@ -74,10 +74,9 @@ class Game {
 
         //---------------------------------------
         //image(homeBackground, 0, 0, width, height);
-        this.background.update(this.player.vel.x, this.zoom);
-
-        // 2) Draw the new parallax layers
-        this.background.draw(this.zoom);
+        const floorSpeed = this.pause.active ? 0 : this.player.vel.x;
+        this.background.update(floorSpeed, this.zoom);
+        this.background.draw( this.zoom, floorSpeed );
         //---------------------------------------
 
         push();

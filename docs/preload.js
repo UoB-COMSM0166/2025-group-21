@@ -171,6 +171,7 @@ function preload() {
     settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
     settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
 
+    preloadBackgroundImages();
 
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
