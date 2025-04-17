@@ -25,26 +25,26 @@ class Player {
 
         // keep ball at same x position on the screen
         this.pos.x = 150;
-        if (!this.alive && game.death.type === 'UFO') this.pos.y = game.death.currentY;
+        if (!this.alive && domains.game.death.type === 'UFO') this.pos.y = domains.game.death.currentY;
 
         if (this.inAir) {
             this.vel.y += this.gravity;
             this.updatePosition();
 
-            let ground = game.terrain.f(this.pos.x);
+            let ground = domains.game.terrain.f(this.pos.x);
 
             if (this.pos.y > ground && this.alive) {
                 this.pos.y = ground;
                 this.inAir = false;
-                game.initialDrop = false;
+                domains.game.initialDrop = false;
                 this.calculateNormalForce();
             }
         }
         else {
-            let slope = game.terrain.slope(this.pos.x);  // Terrain gradient
+            let slope = domains.game.terrain.slope(this.pos.x);  // Terrain gradient
 
             // slow speed if in contact with the ground
-            if (!game.spacePressed && !mouseIsPressed) {
+            if (!domains.game.spacePressed && !mouseIsPressed) { //TODO: remove mouse pressed
                 this.vel.x /= 1.05;
             }
             this.updateAcceleration(slope);
@@ -62,10 +62,10 @@ class Player {
 
 
     drawPlayer() {
-        push();
+        //push();
         this.lives.drawChangeLife();
 
-        if (game.death != null && game.death.type === 'UFO') return;
+        if (domains.game.death != null && domains.game.death.type === 'UFO') return;
 
         const FRAME_WIDTH = 128;
         const FRAME_HEIGHT = 128;
@@ -77,28 +77,17 @@ class Player {
         imageMode(CENTER);
 
         let velocityAngle = atan2(this.vel.y, this.vel.x);
-        let slopeAngle = atan(game.terrain.slope(this.pos.x));
-
-        // Flash red when lost life and green when gained life
-        if (this.lostLife) tint(250, 95, 85);
-        else if (this.gainedLife) tint(80, 200, 120);
-        else noTint();
+        let slopeAngle = atan(domains.game.terrain.slope(this.pos.x));
 
         if (!this.alive) {
             push();
-            translate(game.death.pos.x, game.death.pos.y - this.radius);
-            game.death.pos.x += 0.55;
+            translate(domains.game.death.pos.x, domains.game.death.pos.y - this.radius);
+            domains.game.death.pos.x += 0.55;
             // Death Animation
             const DEATH_COLUMNS = 4;
             const DEATH_FRAME_COUNT = 27;
 
-            //if (this.deathAngle === null) this.deathAngle = velocityAngle;
-            //rotate(this.deathAngle-= 0.03);
-
-
-            rotate(game.death.slope);
-            //console.log(game.death.slope);
-            //let speed = Math.round(1000/game.death.deathSpeed);
+            rotate(domains.game.death.slope);
 
             if (frameCount % 12 === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
                 this.deathFrameIndex++;
@@ -116,12 +105,14 @@ class Player {
             );
             pop();
         }
-        else if (game.score.airtime > 3) {
+        else if (domains.game.score.airtime > 3) {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(velocityAngle);
 
-            if (frameCount % frameSpeed === 0 && !game.pause.active && game.fly != null && game.fly.active) {
+            if (frameCount % frameSpeed === 0 && !domains.game.pause.active && domains.game.fly != null
+                    && domains.game.fly.active) {
+
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
             }
             let col = this.frameIndex % NORMAL_COLUMNS;
@@ -153,19 +144,24 @@ class Player {
             );
             pop();
         }
-        pop();
+        //pop();
     }
 
     updateAcceleration (slope) {
-
         // Handle effect of angle of slope on the gravity
         this.accDownSlope = (this.gravity) * sin(atan(slope));
 
         if (slope <= 0) { // uphill
             this.accDownSlope *= 0.7;
         }
-        this.acc.y = this.accDownSlope * sin(atan(slope));
-        this.acc.x = this.accDownSlope * cos(atan(slope));
+
+        this.acc.y = this.accDownSlope * sin(atan(slope)) + 0.005 * this.vel.y;
+        this.acc.x = this.accDownSlope * cos(atan(slope)) + 0.005 * this.vel.x;
+
+        // if (game.stats.numJumps < 1) {
+        //     this.acc.y += 0.02 * this.vel.y;
+        //     this.acc.x += 0.02 * this.vel.x;
+        // }
     }
 
     updateVelocity () {
@@ -178,12 +174,10 @@ class Player {
 
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
-
-
     }
 
     updateVerticalVelocityFromSlope () {
-        let ground = game.terrain.f(this.pos.x);
+        let ground = domains.game.terrain.f(this.pos.x);
         let oldY = this.pos.y;
 
         if (this.pos.y > ground) {
@@ -203,26 +197,28 @@ class Player {
     calculateNormalForce () {
 
         let normalForce = this.vel.y
-            - (game.terrain.f(this.pos.x + this.vel.x) - game.terrain.f(this.pos.x));
+            - (domains.game.terrain.f(this.pos.x + this.vel.x) - domains.game.terrain.f(this.pos.x));
 
         // player hits uphill slope at speed
-        if (normalForce > 10 && game.terrain.slope(this.pos.x) < -0.5) {
+        if (normalForce > 10 && domains.game.terrain.slope(this.pos.x) < -0.5) {
 
             if (this.vel.x < 1) {
                 return;
             }
 
-            if (normalForce > 20 && !game.invincibility) {
+            if (normalForce > 20 && !domains.game.invincibility) {
 
                 this.lives.removeLife();
 
                 if (this.lives.getLives() === 0) {
-                    game.death = new Death('ground');
+                    domains.game.death = new Death('ground');
                     this.vel.x = -0.5;
                     this.vel.y = -2;
                     //this.gravity = 0.02
                 }
                 else {
+                    domains.game.loseLifeSound.play();
+                    this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }
@@ -238,7 +234,7 @@ class Player {
     getBounceAngle() {
 
         let velocityAngle = atan2(this.vel.y, this.vel.x);
-        let slopeAngle = atan(game.terrain.slope(this.pos.x));
+        let slopeAngle = atan(domains.game.terrain.slope(this.pos.x));
         return 2 * slopeAngle + velocityAngle;
     }
 }

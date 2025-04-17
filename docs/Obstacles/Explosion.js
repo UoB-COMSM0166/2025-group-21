@@ -11,12 +11,12 @@ class Explosion {
     explode() {
         const FRAME_WIDTH = 96;
         const FRAME_HEIGHT = 96;
-        let frameSpeed = game.player.alive ? 3 : 12;
+        let frameSpeed = domains.game.player.alive ? 3 : 12;
         const scaleFactor = 2;
         const FRAME_COUNT = 12;
         imageMode(CENTER);
 
-        if (!game.pause.active) {
+        if (!domains.game.pause.active) {
 
             if (frameCount % frameSpeed === 0) {
                 this.frameIndex++;
@@ -38,6 +38,6 @@ class Explosion {
     }
 
     updatePosition() {
-        this.pos.x -= game.player.vel.x;
+        this.pos.x -= domains.game.player.vel.x;
     }
 }

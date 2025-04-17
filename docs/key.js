@@ -1,75 +1,88 @@
 
 
 function keyPressed() {
+
+    if (userIsTyping) {
+        getInputCharacter();
+        return;
+    }
+
     if (Domain === 'intro') {
 
         if (key === ' ') {
-            if (intro !== null) {
-                intro.skipAnimation();
+            if (domains.intro !== null) {
+                domains.intro.skipAnimation();
             }
         }
     }
 
-
     if (Domain === 'game') {
 
-        if (key === ' ') {
-            game.spacePressed = true;
+        if (key === settings.boostKey) {
+            domains.game.spacePressed = true;
+        }
 
-            if (!game.player.alive && game.death.deathTimer.time >= 180) {
-                game.death.skipCoinCount = true;
+        if (key === ' ') {
+
+            if (!domains.game.player.alive && domains.game.death.deathTimer.time >= 180) {
+                domains.game.death.skipCoinCount = true;
             }
         }
 
-        if (key === 'w' && game.fly != null) {
-            game.fly.active = true;
+        if (key === settings.flyKey && domains.game.fly != null) {
+            domains.game.fly.active = true;
         }
 
-        if (!game.pause.active && game.player.alive) {
+        if (!domains.game.pause.active && domains.game.player.alive) {
 
-            if (key === 'd') {
+            if (key === settings.shootKey) {
 
                 if (inventory.laserLevel < 5) {
-                    game.projectile.shoot();
+                    domains.game.projectile.shoot();
                 }
                 else {
-                    game.projectile.gatlingMode = true;
+                    domains.game.projectile.gatlingMode = true;
                 }
             }
 
-            if (key === 'f' && game.shield != null && game.shield.chargeFraction === 1) {
-                game.shield.active = true;
+            if (key === settings.shieldKey && domains.game.shield != null && domains.game.shield.chargeFraction === 1) {
+                domains.game.shield.active = true;
             }
         }
     }
 
     if (Domain === 'mainMenu') {
-        if(mainMenu !== null && mainMenu.animationComplete) {
-            mainMenu.handleKeyNavigation(keyCode);
+        if(domains.mainMenu !== null && domains.mainMenu.animationComplete) {
+            domains.mainMenu.handleKeyNavigation(keyCode);
             return;
         }
     }
 
-    if (Domain === 'game' && game.pause.active) {
+    if (Domain === 'game' && domains.game.pause.active) {
         if (keyCode === UP_ARROW) {
-            if (game.pause.selectedButtonIndex === -1) {
-                game.pause.selectedButtonIndex = 0;
-                game.pause.updateButtonStyles();
+            if (domains.game.pause.selectedButtonIndex === -1) {
+                domains.game.pause.selectedButtonIndex = 0;
+                //game.pause.updateButtonStyles();
             } else {
-                game.pause.moveSelection(-1);
+                domains.game.pause.moveSelection(-1);
             }
-            return;
         } else if (keyCode === DOWN_ARROW) {
-            if (game.pause.selectedButtonIndex === -1) {
-                game.pause.selectedButtonIndex = 0;
-                game.pause.updateButtonStyles();
+            if (domains.game.pause.showInvPanel) {
+                domains.game.pause.invPanel.setCloseButtonSelected(true);
+            } else if (domains.game.pause.selectedButtonIndex === -1) {
+                domains.game.pause.selectedButtonIndex = 0;
+                //game.pause.updateButtonStyles();
             } else {
-                game.pause.moveSelection(1);
+                domains.game.pause.moveSelection(1);
             }
-            return;
         } else if (keyCode === ENTER) {
-            game.pause.selectCurrentButton();
-            return;
+            if (domains.game.pause.showInvPanel && domains.game.pause.invPanel.isCloseButtonSelected) {
+                // If inventory panel is visible and CLOSE button is selected, activate it
+                domains.game.pause.showInvPanel = false;
+                domains.game.pause.invPanel.isCloseButtonSelected = false;
+            } else {
+                domains.game.pause.selectCurrentButton();
+            }
         }
     }
 }
@@ -77,19 +90,128 @@ function keyReleased() {
 
     if (Domain === 'game') {
 
-        if (key === ' ') {
-            game.spacePressed = false;
+        if (key === settings.boostKey) {
+            domains.game.spacePressed = false;
         }
         else if (keyCode === 27) { // 27 == ESC key
-            game.pause.active = !game.pause.active;
+            if (domains.game.pause.active && !domains.game.pause.showSettings) {
+                domains.game.pause.showInvPanel = false;
+                domains.game.pause.continueButtonPressed();
+            }
+            else domains.game.pause.active = true;
+            //game.pause.active = !game.pause.active;
         }
 
-        if (key === 'w' && game.fly != null) {
-            game.fly.active = false;
+        if (key === settings.flyKey && domains.game.fly != null) {
+            domains.game.fly.active = false;
         }
 
-        if (key === 'd') {
-            game.projectile.gatlingMode = false;
+        if (key === settings.shootKey) {
+            domains.game.projectile.gatlingMode = false;
         }
+    }
+}
+
+function getInputCharacter() {
+
+    switch (key) {
+        case 'A': inputCharacter = 'A'; break;
+        case 'B': inputCharacter = 'B'; break;
+        case 'C': inputCharacter = 'C'; break;
+        case 'D': inputCharacter = 'D'; break;
+        case 'E': inputCharacter = 'E'; break;
+        case 'F': inputCharacter = 'F'; break;
+        case 'G': inputCharacter = 'G'; break;
+        case 'H': inputCharacter = 'H'; break;
+        case 'I': inputCharacter = 'I'; break;
+        case 'J': inputCharacter = 'J'; break;
+        case 'K': inputCharacter = 'K'; break;
+        case 'L': inputCharacter = 'L'; break;
+        case 'M': inputCharacter = 'M'; break;
+        case 'N': inputCharacter = 'N'; break;
+        case 'O': inputCharacter = 'O'; break;
+        case 'P': inputCharacter = 'P'; break;
+        case 'Q': inputCharacter = 'Q'; break;
+        case 'R': inputCharacter = 'R'; break;
+        case 'S': inputCharacter = 'S'; break;
+        case 'T': inputCharacter = 'T'; break;
+        case 'U': inputCharacter = 'U'; break;
+        case 'V': inputCharacter = 'V'; break;
+        case 'W': inputCharacter = 'W'; break;
+        case 'X': inputCharacter = 'X'; break;
+        case 'Y': inputCharacter = 'Y'; break;
+        case 'Z': inputCharacter = 'Z'; break;
+        case 'a': inputCharacter = 'a'; break;
+        case 'b': inputCharacter = 'b'; break;
+        case 'c': inputCharacter = 'c'; break;
+        case 'd': inputCharacter = 'd'; break;
+        case 'e': inputCharacter = 'e'; break;
+        case 'f': inputCharacter = 'f'; break;
+        case 'g': inputCharacter = 'g'; break;
+        case 'h': inputCharacter = 'h'; break;
+        case 'i': inputCharacter = 'i'; break;
+        case 'j': inputCharacter = 'j'; break;
+        case 'k': inputCharacter = 'k'; break;
+        case 'l': inputCharacter = 'l'; break;
+        case 'm': inputCharacter = 'm'; break;
+        case 'n': inputCharacter = 'n'; break;
+        case 'o': inputCharacter = 'o'; break;
+        case 'p': inputCharacter = 'p'; break;
+        case 'q': inputCharacter = 'q'; break;
+        case 'r': inputCharacter = 'r'; break;
+        case 's': inputCharacter = 's'; break;
+        case 't': inputCharacter = 't'; break;
+        case 'u': inputCharacter = 'u'; break;
+        case 'v': inputCharacter = 'v'; break;
+        case 'w': inputCharacter = 'w'; break;
+        case 'x': inputCharacter = 'x'; break;
+        case 'y': inputCharacter = 'y'; break;
+        case 'z': inputCharacter = 'z'; break;
+        case '0': inputCharacter = '0'; break;
+        case '1': inputCharacter = '1'; break;
+        case '2': inputCharacter = '2'; break;
+        case '3': inputCharacter = '3'; break;
+        case '4': inputCharacter = '4'; break;
+        case '5': inputCharacter = '5'; break;
+        case '6': inputCharacter = '6'; break;
+        case '7': inputCharacter = '7'; break;
+        case '8': inputCharacter = '8'; break;
+        case '9': inputCharacter = '9'; break;
+        case ' ': inputCharacter = ' '; break;
+        case '!': inputCharacter = '!'; break;
+        case '@': inputCharacter = '@'; break;
+        case '£': inputCharacter = '£'; break;
+        case '$': inputCharacter = '$'; break;
+        case '%': inputCharacter = '%'; break;
+        case '^': inputCharacter = '^'; break;
+        case '&': inputCharacter = '&'; break;
+        case '*': inputCharacter = '*'; break;
+        case '(': inputCharacter = '('; break;
+        case ')': inputCharacter = ')'; break;
+        case '-': inputCharacter = '-'; break;
+        case '_': inputCharacter = '_'; break;
+        case '=': inputCharacter = '='; break;
+        case '+': inputCharacter = '+'; break;
+        case '[': inputCharacter = '['; break;
+        case ']': inputCharacter = ']'; break;
+        case '{': inputCharacter = '{'; break;
+        case '}': inputCharacter = '}'; break;
+        case '\'': inputCharacter = '\''; break;
+        case '"': inputCharacter = '"'; break;
+        case '\\': inputCharacter = '\\'; break;
+        case '|': inputCharacter = '|'; break;
+        case ';': inputCharacter = ';'; break;
+        case ':': inputCharacter = ':'; break;
+        case '<': inputCharacter = '<'; break;
+        case '>': inputCharacter = '>'; break;
+        case ',': inputCharacter = ','; break;
+        case '.': inputCharacter = '.'; break;
+        case '/': inputCharacter = '/'; break;
+        case '?': inputCharacter = '?'; break;
+        case '~': inputCharacter = '~'; break;
+        case '`': inputCharacter = '`'; break;
+        case 'Enter': inputCharacter = 'Enter'; break;
+        case 'Backspace': inputCharacter = 'Backspace'; break;
+        default: inputCharacter = null;
     }
 }

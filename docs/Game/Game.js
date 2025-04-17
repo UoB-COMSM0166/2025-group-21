@@ -4,12 +4,33 @@ class Game {
 
     constructor() {
 
+        this.windSound = null;
+        this.laserSound = null;
+        this.laserAutomaticSound = null;
+        this.explosionSound = null;
+        this.deathSound = null;
+        this.fishThrow = null;
+        this.fishImpactSound = null;
+        this.forceFieldSound = null;
+        this.snowballSound = null;
+        this.freezeSound = null;
+        this.arrowSound = null;
+        this.ufoArrowImpactSound = null;
+        this.loseLifeSound = null;
+        this.gainLifeSound = null;
+        this.collectCoinSound = null;
+
         // Cheats
-        this.invincibility = false;
-        this.infiniteFly = false;
+        this.invincibility = settings.enableCheats;
+        this.infiniteFly = settings.enableCheats;
+        this.cheatsEnabled = settings.enableCheats;
 
         document.body.classList.remove("show-cursor");
         noStroke();
+
+        this.masterVolume = settings.masterVolume*settings.mute;
+        this.soundsLoaded = false;
+        this.loadAudio().then(() => this.soundsLoaded = true);
 
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 100; // 50
@@ -25,9 +46,11 @@ class Game {
         this.pause = new Pause();
         this.stats = new Stats();
         this.hearts = new Hearts();
+        this.coins = new Coins();
+
         this.highscores = new Highscores();
         this.UFOHandler = new UFOHandler();
-        this.wind = new Wind();
+        this.wind = null;
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
@@ -40,6 +63,7 @@ class Game {
     }
 
     runSimulation() { // Main loop for game
+        if (!this.soundsLoaded) return;
 
         //--------------------
         clear();
@@ -78,8 +102,16 @@ class Game {
             this.hearts.update(this.offset);
             this.hearts.checkCollision();
 
+            // Generate coins on the floor
+            this.coins.update(this.offset);
+            this.coins.checkCollision();
+            this.coins.playCoinCollection(this.offset);
+
         pop();
 
+        if (this.player.lives.playingAnimation) {
+            this.player.lives.playLoseLifeAnimation();
+        }
         this.player.lives.drawLives();
         this.stats.gameUpdate();
 
@@ -109,6 +141,10 @@ class Game {
 
         if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
         else this.pause.reset();
+
+        if (this.pause.isCountingDown) {
+            this.pause.showCountdown();
+        }
     }
 
     adjustZoom() {
@@ -116,7 +152,7 @@ class Game {
         if (this.player.pos.y < this.topMargin) {
             this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
             this.ty = this.topMargin - this.zoom * (this.player.pos.y);
-            this.tx = 160 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
+            this.tx = 175 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
         }
         else {
             this.zoom = 1;
@@ -132,5 +168,70 @@ class Game {
         else {
             this.player.vel.x += 0.2;
         }
+    }
+
+    updateCheats() {
+        this.invincibility = settings.enableCheats;
+        this.infiniteFly = settings.enableCheats
+
+        if (!this.cheatsEnabled && settings.enableCheats) {
+            this.cheatsEnabled = true;
+        }
+    }
+
+    async loadAudio() {
+        this.windSound = await soundBoard.getSound('windSound');
+        this.laserSound = await soundBoard.getSound('laserSound');
+        this.laserAutomaticSound = await soundBoard.getSound('laserAutomaticSound');
+        this.explosionSound = await soundBoard.getSound('explosionSound');
+        this.deathSound = await soundBoard.getSound('deathSound');
+        this.fishThrow = await soundBoard.getSound('fishThrow');
+        this.fishImpactSound = await soundBoard.getSound('fishImpactSound');
+        this.forceFieldSound = await soundBoard.getSound('forceFieldSound');
+        this.snowballSound = await soundBoard.getSound('snowballSound');
+        this.freezeSound = await soundBoard.getSound('freezeSound');
+        this.arrowSound = await soundBoard.getSound('arrowSound');
+        this.ufoArrowImpactSound = await soundBoard.getSound('ufoArrowImpactSound');
+        this.loseLifeSound = await soundBoard.getSound('loseLifeSound');
+        this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
+        this.collectCoinSound = await soundBoard.getSound('coinSound');
+
+        setMasterVolume(this.masterVolume);
+        this.wind = new Wind();
+    }
+
+    disconnectAudio() {
+
+        this.windSound.stop();
+        this.laserSound.stop();
+        this.laserAutomaticSound.stop();
+        this.explosionSound.stop();
+        this.deathSound.stop();
+        this.fishThrow.stop();
+        this.fishImpactSound.stop();
+        this.forceFieldSound.stop();
+        this.snowballSound.stop();
+        this.freezeSound.stop();
+        this.arrowSound.stop();
+        this.ufoArrowImpactSound.stop();
+        this.loseLifeSound.stop();
+        this.gainLifeSound.stop();
+        this.collectCoinSound.stop();
+
+        this.windSound = null;
+        this.laserSound = null;
+        this.laserAutomaticSound = null;
+        this.explosionSound = null;
+        this.deathSound = null;
+        this.fishThrow = null;
+        this.fishImpactSound = null;
+        this.forceFieldSound = null;
+        this.snowballSound = null;
+        this.freezeSound = null;
+        this.arrowSound = null;
+        this.ufoArrowImpactSound = null;
+        this.loseLifeSound = null;
+        this.gainLifeSound = null;
+        this.collectCoinSound = null;
     }
 }

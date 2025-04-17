@@ -1,50 +1,56 @@
 
 
-let Domain = 'home'; // Determines which part of the game code is executed
+let Domain = 'intro'; // Determines which part of the game code is executed
 
-let homescreen = null;
-let game = null;
-let shop = null;
+let domains = null;
 let inventory = null;
+let settings = null;
+let frameCount = 0;
+let fps = 0;
+let userIsTyping = false;
+let inputCharacter = null;
+let soundBoard = null;
 
 function setup() {
+    let gameProgress = loadGameProgress();
+
+    if (!gameProgress) {
+        gameProgress = NEW_GAME_STATE;
+    }
+
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
-
-    // let ctx = canvas.getContext('2d');
-    // ctx.imageSmoothingEnabled = false;
-    // pixelDensity(1);
-
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
-    inventory = new Inventory();
+    inventory = new Inventory(gameProgress);
+    settings = new Settings(gameProgress);
+    soundBoard = new SoundBoard();
+    domains = new DomainManager();
 }
 
 function draw() {
 
-    if (Domain === 'home') {
-        if (homescreen === null) {
-            homescreen = new Homescreen();
-            homescreen.resetAnimation();
-        }
-        homescreen.showHomescreen();
-    }
+    domains.run();
 
-    if (Domain === 'shop') {
-        if (shop === null) {
-            //loadSounds();
-            shop = new Workshop();
-        }
-        shop.openShop();
+    frameCount++
+    if (frameCount%30 === 0) {
+        fps = floor(frameRate());
+        frameCount = 0;
     }
+    text(fps, 50, 50);
 
-    if (Domain === 'game') {
-        if (game === null) {
-            game = new Game();
-        }
-        game.runSimulation();
+    push();
+    if (domains.game !== null) {
+        textAlign(LEFT);
+        textSize(15);
+        text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
+        text('UFOs = ' + domains.game.UFOHandler.UFOs.length, 10, 105);
+        text('Explosions = ' + domains.game.UFOHandler.explosions.length, 10, 130);
     }
+    pop();
 }
+
+
 
 function resizeCanvasCSS() {
     let canvas = document.getElementById("myCanvas");
@@ -60,7 +66,6 @@ function resizeCanvasCSS() {
 
     canvas.style.width = `${newWidth}px`;
     canvas.style.height = `${newHeight}px`;
-    // canvas.style.imageRendering = "crisp-edges"; // Ensures crisp pixels
 }
 
 function hoveringOverButton(pos, size) {

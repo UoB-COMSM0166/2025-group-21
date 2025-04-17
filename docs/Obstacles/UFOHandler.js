@@ -14,33 +14,35 @@ class UFOHandler {
     }
     updateUFOs() {
 
-        if (!game.pause.active && game.zoom < 1 &&
+        if (!domains.game.pause.active && domains.game.zoom < 1 &&
             Math.random() > 0.99 - 0.005*this.spawnRate) { // 0.975
 
-            this.UFOs.push(new UFO(game.player.pos.y + 0.3*(height - game.player.pos.y)*Math.random() + 50));
+            this.UFOs.push(new UFO(domains.game.player.pos.y + 0.3*(height - domains.game.player.pos.y)*Math.random() + 50));
         }
 
         for (let i=0; i<this.UFOs.length; i++) {
-            if (!game.pause.active) this.UFOs[i].updatePosition();
+            if (!domains.game.pause.active) this.UFOs[i].updatePosition();
             this.UFOs[i].drawUFO();
 
             // UFO crosses barrier slightly beyond edge of screen
-            if (this.UFOs[i].pos.x < -200/game.zoom || this.UFOs[i].pos.x > width/game.zoom ||
-                (this.UFOs[i].pos.y < game.player.pos.y - 10*game.topMargin/game.zoom && game.zoom < 1) ||
-                (this.UFOs[i].pos.y < -500 && game.zoom === 1) ||
-                this.UFOs[i].pos.y > height/game.zoom) {
+            if (this.UFOs[i].pos.x < -200/domains.game.zoom || this.UFOs[i].pos.x > width/domains.game.zoom ||
+                (this.UFOs[i].pos.y < domains.game.player.pos.y - 10*domains.game.topMargin/domains.game.zoom
+                    && domains.game.zoom < 1) ||
+                (this.UFOs[i].pos.y < -500 && domains.game.zoom === 1) ||
+                this.UFOs[i].pos.y > height/domains.game.zoom) {
 
+                this.UFOs[i] = null;
                 this.UFOs.splice(i, 1);
             }
         }
-        if (game.player.alive) {
+        if (domains.game.player.alive) {
             this.checkForPlayerUFOCollision();
             this.updateSpawnRate();
         }
     }
 
     updateSpawnRate() {
-        if (game.offset/100 > this.nextSpawnThreshold) {
+        if (domains.game.offset/100 > this.nextSpawnThreshold) {
             this.nextSpawnThreshold += 100;
             this.spawnRate++;
         }
@@ -51,18 +53,22 @@ class UFOHandler {
 
             if (this.UFOs[u] !== undefined) {
 
-                let dx = abs(game.player.pos.x - this.UFOs[u].pos.x);
-                let dy = abs(game.player.pos.y - this.UFOs[u].pos.y);
+                let dx = abs(domains.game.player.pos.x - this.UFOs[u].pos.x);
+                let dy = abs(domains.game.player.pos.y - this.UFOs[u].pos.y);
 
                 if (Math.sqrt(dx**2 + dy**2) < this.collisionRadius) {
                     this.explosions.push(new Explosion(this.UFOs[u].pos));
                     this.UFOs.splice(u, 1);
-                    explosionSound.play();
 
-                    if (!game.invincibility) {
-                        game.death = new Death('UFO');
-                        game.player.vel.x = -0.5;
-                        game.player.vel.y = 0;
+                    if (domains.game.explosionSound.isPlaying()) {
+                        domains.game.explosionSound.stop();
+                    }
+                    domains.game.explosionSound.play();
+
+                    if (!domains.game.invincibility) {
+                        domains.game.death = new Death('UFO');
+                        domains.game.player.vel.x = -0.5;
+                        domains.game.player.vel.y = 0;
                     }
                 }
             }
@@ -74,12 +80,10 @@ class UFOHandler {
         for (let i=0; i<this.explosions.length; i++) {
 
             if (this.explosions[i].explosionComplete) {
+                this.explosions[i] = null;
                 this.explosions.splice(i, 1);
             }
             else this.explosions[i].explode();
         }
     }
-
-
-
 }

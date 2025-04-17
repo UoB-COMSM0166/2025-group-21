@@ -21,12 +21,12 @@ class Countdown {
         push();
         textAlign(CENTER, CENTER);
         textFont('Trebuchet MS');
-        textSize(page.pageWidth / 10);
+        textSize(width / 10);
         fill(255);
 
         // Add slight shadow/outline effect
         stroke(0);
-        strokeWeight(page.pageWidth / 100);
+        strokeWeight(width / 100);
         text(this.currentNumber, width/2, height/2);
         pop();
     }

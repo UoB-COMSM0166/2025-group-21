@@ -15,7 +15,7 @@ class Intro {
         this.xSpeed = width * 0.0025;
 
         // logo attributes
-        this.logoDrawWidth = width * 0.7;
+        this.logoDrawWidth = width * 0.5;
         this.logoDrawHeight = this.logoDrawWidth * (logo.height / logo.width) * 1.2;
 
         this.logoOffset = -this.penguinSize * 2;
@@ -24,9 +24,6 @@ class Intro {
 
         this.penguinOpacity = 1
         this.logoOpacity = 1;
-
-        // record the time to start
-        this.stateStartTime = millis();
         }
 
     updatePenguinState() {
@@ -36,9 +33,6 @@ class Intro {
         if (this.logoX > width * 0.5) {
             this.logoX = width * 0.5;
         }
-        //this.logoY = height * 0.5;
-
-
         this.penguinOpacity = 1;
         this.logoOpacity = 1;
 

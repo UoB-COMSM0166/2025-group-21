@@ -4,7 +4,11 @@ class Arrow extends Projectile {
 
     constructor(position, velocity, angle) {
         super(position, velocity);
-        arrowSound.play();
+
+        if (domains.game.arrowSound.isPlaying()) {
+            domains.game.arrowSound.stop();
+        }
+        domains.game.arrowSound.play();
         this.angle = angle;
         this.frameIndex = 0;
     }
@@ -23,7 +27,7 @@ class Arrow extends Projectile {
         const FRAME_COUNT = 4;
         imageMode(CENTER);
 
-        if (!game.pause.active) {
+        if (!domains.game.pause.active) {
 
             if (frameCount % frameSpeed === 0) {
                 this.frameIndex++;

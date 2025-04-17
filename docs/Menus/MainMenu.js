@@ -2,14 +2,14 @@ class MainMenu {
     constructor() {
         document.body.classList.add("show-cursor");
 
-        this.logoDrawWidth = page.pageWidth * 0.7;
+        this.logoDrawWidth = width * 0.5;
         this.logoDrawHeight = this.logoDrawWidth * (logo.height / logo.width) * 1.2;
-        this.logoX = page.pageWidth * 0.5;
-        this.logoY = page.pageHeight * 0.4;
-        this.targetLogoY = page.pageHeight * 0.3;
-        this.iconX = page.pageWidth * 0.5;
-        this.iconY = page.pageHeight * 0.95;
-        this.iconWidth = page.pageWidth * 0.15;
+        this.logoX = width * 0.5;
+        this.logoY = height * 0.4;
+        this.targetLogoY = height * 0.3;
+        this.iconX = width * 0.5;
+        this.iconY = height * 0.95;
+        this.iconWidth = height * 0.25;
         this.iconHeight = this.iconWidth * (keyboardIcon.height / keyboardIcon.width);
 
         this.animationStartTime = millis();
@@ -26,106 +26,69 @@ class MainMenu {
         this.currentCol = 0;
         this.anyKeyPressed = false;
 
+        this.showButtons = false;
         this.setupPenguinAnimation();
-        this.createButtons();
-        this.hideButtons();
+
+        this.showSettings = false;
     }
 
-    createButtons() {
+    updateButtons() {
+        if (!this.showButtons) return;
 
-        const buttonLabels = ["START GAME", "SHOP", "INSTRUCTION", "SETTING"];
-        const buttonActions = [
-            () => this.startButtonPressed(),
-            () => this.shopButtonPressed(),
-            () => this.instructionButtonPressed(),
-            () => this.settingButtonPressed()
-        ];
+        // button positions
+        let startGame = createVector(0.38*width, 0.6*height);
+        let shop = createVector(0.62*width, 0.6*height);
+        let instructions = createVector(0.38*width, 0.7*height);
+        let settings = createVector(0.62*width, 0.7*height);
 
-        for (let i = 0; i < buttonLabels.length; i++) {
-            let btn = createButton(buttonLabels[i]);
-            btn.class('menuButton');
-            btn.mousePressed(buttonActions[i]);
-            this.buttons.push(btn);
-            btn.hide(); // Initially hide buttons
-        }
-
+        this.updateButton(0, startGame, startGameButton, startGameButtonHover, this.startButtonPressed)
+        this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
+        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
+        this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
     }
 
-    hideButtons() {
-        for (let btn of this.buttons) {
-            btn.hide();
-        }
-    }
+    updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
+        push();
+        let scale = 0.008 * width;
+        let size = createVector(buttonDefault.width / scale, buttonDefault.height / scale);
+        imageMode(CENTER);
 
-    showButtons() {
-        for (let btn of this.buttons) {
-            btn.show();
+        if (hoveringOverButton(pos, size)) {
+            image(buttonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                buttonPressed();
+            }
         }
-        this.updateButtonStyles();
+        else if (this.selectedButtonIndex === buttonID) {
+            image(buttonHover, pos.x, pos.y, size.x, size.y);
+        }
+        else {
+            image(buttonDefault, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     updateAnimation() {
         let elapsed = millis() - this.animationStartTime;
         let progress = min(1, elapsed / this.animationDuration);
 
-        this.logoY = page.pageHeight * 0.4 + progress * (this.targetLogoY - page.pageHeight * 0.4);
+        this.logoY = height * 0.4 + progress * (this.targetLogoY - height * 0.4);
 
         if (progress >= 1 && !this.animationComplete) {
             this.animationComplete = true;
-            this.showButtons();
-        }
-    }
-
-    updateButtonStyles() {
-        // Calculate button size based on page size
-        let buttonWidth = page.pageWidth * 0.25;
-        let buttonHeight = page.pageHeight * 0.1;
-        let horizontalSpacing = page.pageWidth * 0.15;
-        let verticalSpacing = page.pageHeight * 0.1;
-
-
-        // Calculate the total width of the button grid
-        let totalGridWidth = (2 * buttonWidth) + horizontalSpacing;
-
-        // Calculate left position to center the grid horizontally
-        let leftStart = (page.pageWidth - totalGridWidth) / 2;
-
-        let topStart = this.logoY + (this.logoDrawHeight / 2) + (page.pageHeight * 0.1);
-
-        // Calculate appropriate font size relative to button size
-        let fontSize = Math.min(buttonWidth * 0.005, buttonHeight * 0.1);
-        let fontSizeStr = fontSize.toFixed(2) + 'rem';
-
-        // Set positions for each button in the 2x2 grid
-        for (let i = 0; i < this.buttons.length; i++) {
-            let row = Math.floor(i / 2);
-            let col = i % 2;
-
-            this.buttons[i].position(
-                page.xPadding + page.margin + leftStart + (col * (buttonWidth + horizontalSpacing)),
-                page.yPadding + page.margin + topStart + (row * (buttonHeight + verticalSpacing))
-            );
-            this.buttons[i].size(buttonWidth, buttonHeight);
-            this.buttons[i].style('font-size', fontSizeStr);
-
-            if (i === this.selectedButtonIndex) {
-                this.buttons[i].addClass('selectedButton');
-            } else {
-                this.buttons[i].removeClass('selectedButton');
-            }
+            this.showButtons = true;
         }
     }
 
     startButtonPressed() {
-        this.removeButtons();
+        domains.mainMenu = null;
         Domain = 'game';
-        game = null;
     }
 
     shopButtonPressed() {
-        this.removeButtons();
+        domains.mainMenu = null;
         Domain = 'shop';
-        shop = null;
     }
 
     instructionButtonPressed() {
@@ -134,27 +97,18 @@ class MainMenu {
     }
 
     settingButtonPressed() {
-        // To be implemented
-        console.log("Setting button pressed");
-    }
-
-    removeButtons() {
-        mainMenu = null;
-        for (let btn of this.buttons) {
-            btn.remove();
-        }
-        this.buttons = [];
-        this.selectedButtonIndex = -1;
-        mainMenu = null;
+        domains.mainMenu.showSettings = true;
+        settings.startCooldown();
     }
 
     showMainMenu() {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, page.pageWidth, page.pageHeight);
+        image(homeBackground, 0, 0, width, height);
 
         this.updateAnimation();
+        this.updateButtons();
         this.updatePenguinAnimation();
 
         push();
@@ -166,18 +120,16 @@ class MainMenu {
         }
         pop();
         imageMode(CORNER);
-
     }
 
     handleKeyNavigation(keyCode) {
-        if (!this.animationComplete)  return;
+        if (!this.animationComplete) return;
 
         if (!this.anyKeyPressed) {
             this.selectedButtonIndex = 0;
             this.currentRow = 0;
             this.currentCol = 0;
             this.anyKeyPressed = true;
-            this.updateButtonStyles();
             return;
         }
 
@@ -206,19 +158,17 @@ class MainMenu {
                 }
                 break;
             case ENTER:
-                //this.activateSelectedButton();
                 this.selectCurrentButton();
                 break;
         }
 
         if (oldRow !== this.currentRow || oldCol !== this.currentCol) {
             this.selectedButtonIndex = this.buttonGrid[this.currentRow][this.currentCol];
-            this.updateButtonStyles();
         }
     }
 
     selectCurrentButton() {
-        if (this.selectedButtonIndex !== -1 && this.selectedButtonIndex < this.buttons.length) {
+        if (this.selectedButtonIndex !== -1) {
             // Execute the appropriate action based on the selected button
             if (this.selectedButtonIndex === 0) {
                 this.startButtonPressed();
@@ -233,12 +183,12 @@ class MainMenu {
     }
 
     setupPenguinAnimation() {
-        this.penguinSize = page.pageWidth * 0.2;
+        this.penguinSize = width * 0.2;
         this.waypoints = [
-            {x: -this.penguinSize/2, y: page.pageHeight * 0.5},
-            {x: page.pageWidth * 0.5, y: -this.penguinSize/3},
-            {x: page.pageWidth + this.penguinSize/2, y: page.pageHeight * 0.5},
-            {x: page.pageWidth * 0.5, y: page.pageHeight + this.penguinSize/2}
+            {x: -this.penguinSize/2, y: height * 0.5},
+            {x: width * 0.5, y: -this.penguinSize/3},
+            {x: width + this.penguinSize/2, y: height * 0.5},
+            {x: width * 0.5, y: height + this.penguinSize/2}
         ];
 
         this.currentWaypoint = 0;
@@ -247,7 +197,7 @@ class MainMenu {
         this.penguinX = this.waypoints[0].x;
         this.penguinY = this.waypoints[0].y;
 
-        this.penguinSpeed = page.pageWidth * 0.002;
+        this.penguinSpeed = width * 0.002;
     }
 
     updatePenguinAnimation() {

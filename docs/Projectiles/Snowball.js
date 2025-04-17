@@ -7,7 +7,11 @@ class Snowball extends Projectile {
         super(position, createVector(velocity.x/2, velocity.y/2));
         this.gravity = 0.5;
         this.angle = 0;
-        snowballSound.play();
+
+        if (domains.game.snowballSound.isPlaying()) {
+            domains.game.snowballSound.stop();
+        }
+        domains.game.snowballSound.play();
     }
 
     updatePosition() {
@@ -21,7 +25,10 @@ class Snowball extends Projectile {
         push();
         translate(this.pos.x, this.pos.y);
         imageMode(CENTER);
-        rotate(this.angle += 0.5);
+
+        if (!domains.game.pause.active) {
+            rotate(this.angle += 0.5);
+        }
         image(snowball, 0, 0, 40, 40);
         pop();
     }

@@ -16,15 +16,32 @@ class Terrain {
             this.frequencies.push(0.01);
             this.phases.push(0);
         }
+        let ampFactor;
+        let freqFactor;
+        let phaseFactor;
 
-        let ampVariation = 1 * 10 + 2;
-        let freqVariation = 1 * 0.01 + 0.01;
-        let phaseVariation = Math.PI * (1 + 1 * 0.5);
+        switch (settings.difficulty) {
+            case 0:
+                ampFactor = 10;
+                freqFactor = 0.007;
+                phaseFactor = 4;
+                break;
+            case 1:
+                ampFactor = 30;
+                freqFactor = 0.012;
+                phaseFactor = 6;
+                break;
+            case 2:
+                ampFactor = 40;
+                freqFactor = 0.016;
+                phaseFactor = 9;
+                break;
+        }
 
-        for (let i = 0; i < 3; i++) {
-            this.amplitudes.push(Math.random() * ampVariation);
-            this.frequencies.push(Math.random() * freqVariation);
-            this.phases.push(Math.random() * phaseVariation);
+        for (let i = 0; i < 4; i++) {
+            this.amplitudes.push(ampFactor + 0.25*ampFactor*Math.random() - 0.125*ampFactor);
+            this.frequencies.push(freqFactor + 0.3*freqFactor*Math.random());
+            this.phases.push(phaseFactor * Math.PI);
         }
 
         // Add new (more random) elements to end
@@ -76,13 +93,13 @@ class Terrain {
         beginShape();
 
         fill(`rgb(${r},${g},${b})`);
-        vertex(-170 / game.zoom, height);
+        vertex(-170 / domains.game.zoom, height);
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
+        for (let x = -170 / domains.game.zoom; x <= width / domains.game.zoom + 10; x += 5 / domains.game.zoom) {
             let y = this.f(x) + 50*layer + 10;
             vertex(x, y);
         }
-        vertex(width/game.zoom + 10, height);
+        vertex(width/domains.game.zoom + 10, height);
         endShape(CLOSE);
     }
 
@@ -90,31 +107,73 @@ class Terrain {
         fill('rgb(255,238,241)');
         beginShape();
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
+        for (let x = -170 / domains.game.zoom; x <= width / domains.game.zoom + 10; x += 5 / domains.game.zoom) {
             let y = this.f(x);
-            let newY = y + 2*sin((x + game.offset) * 0.05) + 2*cos((x + game.offset) * 0.07) - 3;
+            let newY = y + 2*sin((x + domains.game.offset) * 0.05) + 2*cos((x + domains.game.offset) * 0.07) - 3;
             vertex(x, newY);
         }
-        for (let x = width / game.zoom + 10; x >= -170 / game.zoom; x -= 5 / game.zoom) {
+        for (let x = width / domains.game.zoom + 10; x >= -170 / domains.game.zoom; x -= 5 / domains.game.zoom) {
             let y = this.f(x) + 20;
-            let newY = y + 2*sin((x + game.offset) * 0.04) + 2*cos((x + game.offset) * 0.05) - 3;
+            let newY = y + 2*sin((x + domains.game.offset) * 0.04) + 2*cos((x + domains.game.offset) * 0.05) - 3;
             vertex(x, newY);
         }
         endShape(CLOSE);
     }
 
     generateHills(x) {
-        let y = height - 150;  // Base height
+        let y = height * 0.8;
+        // Generate initial ramp at start
+        if (x < 2300) {
+            y = this.generateInitialRamp(x, y);
+        }
+        else {
+            for (let i = 0; i < this.numWaves; i++) {
+                y -= this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
+            }
+        }
 
-        for (let i = 0; i < this.numWaves; i++) {
-            y -= this.amplitudes[i] * sin(this.frequencies[i] * (x) + this.phases[i]);
+        return y;
+    }
+
+    generateInitialRamp(x) {
+        let y = height * 0.8;
+        // Y params
+        let platformHeight = height * 0.3;
+        let downRampHeight = height * 0.25;
+        let upRampHeight = height * 0.125;
+        // X parameters
+        let platformLength = 200;
+        let downRampLenth = 700;
+        let upRampLength = 1000;
+        let blendLength = 400;
+
+        // Flat platform to start
+        if (x < platformLength) {
+            y = platformHeight;
+        }
+        // Down ramp
+        else if (x < platformLength + downRampLenth) {
+            let t = (x - platformLength) / downRampLenth;
+            y = platformHeight + downRampHeight * (1 - sin(t * Math.PI + Math.PI / 2));
+        }
+        // Up ramp for launch
+        else if (x < platformLength + downRampLenth + upRampLength) {
+            let t = 2 * (x - (platformLength + downRampLenth)) / upRampLength;
+            y -= upRampHeight * (1 - sin(t * Math.PI + Math.PI / 2));
+        }
+        // Blend into sine curves
+        else if (x < platformLength + downRampLenth + upRampLength + blendLength) {
+            let t = (x - (platformLength + downRampLenth + upRampLength)) / blendLength;
+            for (let i = 0; i < this.numWaves; i++) {
+                y -= t * this.amplitudes[i] * Math.sin(this.frequencies[i] * x + this.phases[i]);
+            }
         }
         return y;
     }
 
     // Calculate amplitude, y, of terrain curve at position x
     f(x) {
-        return this.generateHills(x + game.offset);
+        return this.generateHills(x + domains.game.offset);
     }
 
     slope(x) {

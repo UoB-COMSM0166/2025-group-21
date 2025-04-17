@@ -8,17 +8,18 @@ class Stats {
         this.numJumps = 0;
         this.distanceTraveled = 0;
         this.highestJump = 0;
+        this.ufoHits = 0;
     }
 
     gameUpdate() {
 
-        if (game.score.currentAirtime > this.maxAirTime) {
-            this.maxAirTime = game.score.currentAirtime
+        if (domains.game.score.currentAirtime > this.maxAirTime) {
+            this.maxAirTime = domains.game.score.currentAirtime
         }
-        if (game.score.airtime === 10 && game.player.vel.x > 1) this.numJumps++;
+        if (domains.game.score.airtime === 10 && domains.game.player.vel.x > 1) this.numJumps++;
 
-        if (game.score.airtime > 10) {
-            let playerHeight = height - game.player.pos.y
+        if (domains.game.score.airtime > 10) {
+            let playerHeight = height - domains.game.player.pos.y
 
             if (playerHeight > this.highestJump) {
                 this.highestJump = playerHeight;
@@ -26,8 +27,8 @@ class Stats {
         }
     }
     deathUpdate() {
-        this.score = game.score.total;
-        this.distanceTraveled = game.offset;
+        this.score = domains.game.score.total;
+        this.distanceTraveled = domains.game.offset;
     }
 
     showsStatsScreen() {
@@ -65,7 +66,7 @@ class Stats {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                game.death.showStats = false;
+                domains.game.death.showStats = false;
             }
         }
         else {

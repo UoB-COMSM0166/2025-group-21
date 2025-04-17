@@ -3,20 +3,77 @@
 class Workshop {
 
     constructor() {
+        this.workshopMusic = null;
+        this.purchaseSound = null;
+        this.illegalPurchaseSound = null;
+
         document.body.classList.add("show-cursor");
         this.selectedItem = null;
         this.buttonsActive = false;
         this.buttonCooldownTimer = new Clock();
         this.buttonCooldownTimer.tick();
         this.updateItemPrices();
+        this.masterVolume = settings.masterVolume*settings.mute;
+        this.soundsLoaded = false;
+        this.loadAudio().then(() => this.soundsLoaded = true);
+
+        this.fadeOut = false;
+        this.screenTint = 0;
+        this.fadeOutTimer = new Clock()
+
     }
 
+    async loadAudio() {
+        this.workshopMusic = await soundBoard.getSound('workshopMusic');
+        this.purchaseSound = await soundBoard.getSound('purchaseSound');
+        this.illegalPurchaseSound = await soundBoard.getSound('illegalPurchaseSound');
+
+        setMasterVolume(this.masterVolume);
+        this.workshopMusic.loop();
+    }
+
+    disconnectAudio() {
+        this.workshopMusic.stop();
+        this.purchaseSound.stop();
+        this.illegalPurchaseSound.stop();
+        this.workshopMusic = null;
+        this.purchaseSound = null;
+        this.illegalPurchaseSound = null;
+    }
 
     openShop() {
+        if (!this.soundsLoaded) return;
+
         this.display();
-        this.printTitle();
         this.printCoins();
         this.updateButtonCooldown();
+
+        if (this.fadeOut) {
+            this.masterVolume = lerp(this.masterVolume, 0, 0.04);
+            this.workshopMusic.setVolume(volume*this.masterVolume);
+            fill(`rgba(0, 0, 0, ${this.screenTint})`);
+            rect(0, 0, width, height);
+
+            if (this.screenTint >= 0.95) {
+                this.screenTint = lerp(this.screenTint, 1, 0.5);
+
+                if (this.screenTint >= 0.9999) {
+                    ///this.screenTint = 1;
+                    this.fadeOutTimer.tick();
+                }
+            }
+            else {
+                this.screenTint = lerp(this.screenTint, 1, 0.04);
+            }
+
+            if (this.fadeOutTimer.time > 20) {
+                this.disconnectAudio();
+                //soundBoard.disposeAll();
+                //shop.dispose();
+                domains.shop = null;
+                Domain = 'game';
+            }
+        }
     }
 
     updateButtonCooldown() {
@@ -32,8 +89,13 @@ class Workshop {
 
     display() {
 
+        push();
         // background
         image(workshopBackground, 0, 0, width, height);
+        // title
+        imageMode(CENTER);
+        image(shopTitle, width/2, height/10, shopTitle.width/2.5, shopTitle.height/2.5);
+        pop();
 
         // Update button positions
         this.updatePlayButton();
@@ -41,11 +103,13 @@ class Workshop {
         this.updateProjectileButton();
         this.updateFlyingButton();
         this.updateForceFieldButton();
+        this.updateMainMenuButton();
 
         // Print colour blocks
         noStroke();
-        fill(244,208,255,255);
-        rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
+        fill('rgb(199, 209, 255)');
+        //rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
+        image(displayBox, width*0.09, height*0.38, width/3.2, width/3.2);
         rect(width*0.45, height*0.4, width/2.2, width/6.5, 10);
 
         this.showUpgradeDescription();
@@ -100,22 +164,22 @@ class Workshop {
     }
 
     printAbilityLevel(abilityLevel) {
-        fill('rgb(0,0,0)')
-        rect(width*0.11, height*0.416, width/13, width/13, 5);
-        textAlign(CENTER, TOP);
-        fill('rgb(255,255,255)');
-        let size = width/55
-        textSize(size);
-        text('LEVEL', width*0.148, height*0.425);
-        textSize(3*size);
-        text(`${abilityLevel}`, width*0.148, height*0.46);
+        push();
+        stroke(0);
+        strokeWeight(width/1000);
+        fill('rgb(246,208,55)');
+
+        for (let i = 0; i < abilityLevel; i++) {
+            inventory.drawStar((0.125 + 0.0185*i)*width, 0.44*height, width/60)
+        }
+        pop();
     }
 
     showLaserDescription(){
 
         if (inventory.laserLevel < 5) {
-            text(`Projectile level ${inventory.laserLevel+1}: ${this.laserUpgradePrice}\n` +
-                  '[Upgrade Description]', width/2.15, height/2.37);
+            text(`Projectile level ${inventory.laserLevel+1}: ${this.laserUpgradePrice} coins\n\n` +
+                  `${inventory.getProjectileDescription()}`, width/2.15, height/2.37);
             // TODO: add description
         }
         else {
@@ -268,7 +332,8 @@ class Workshop {
                 if (mouseIsPressed && this.buttonsActive) {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
-                    illegalPurchaseSound.play();
+                    this.illegalPurchaseSound.play();
+                    saveGameProgress();
                 }
             }
         }
@@ -290,12 +355,34 @@ class Workshop {
             image(playButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                shop = null;
-                Domain = 'game';
+                document.body.classList.remove("show-cursor");
+                this.fadeOut = true;
             }
         }
         else {
             image(playButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
+    }
+
+    updateMainMenuButton() {
+        push();
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935*width, 0.04*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                this.disconnectAudio();
+                domains.shop = null;
+                Domain = 'mainMenu';
+            }
+        }
+        else {
+            image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         }
         pop();
     }
@@ -315,20 +402,8 @@ class Workshop {
                 inventory.coins -= this.forceFieldUpgradePrice;
                 break;
         }
-        purchaseSound.play();
+        this.purchaseSound.play();
         this.updateItemPrices();
-    }
-
-    /*------------Others---------------*/
-    printTitle() {
-        let size = width/15;
-        fill(10,25,87,255);
-        textFont('Trebuchet MS');
-        textAlign(CENTER, TOP);
-        stroke(10,25,87,255);
-        strokeWeight(size/8);
-        textSize(size);
-        text('Shop', width/2, 0.06*height);
     }
 
     printCoins() {
@@ -342,10 +417,11 @@ class Workshop {
         strokeWeight(size/17);
         textSize(size/3);
         imageMode(CENTER);
-        image(coin, width*0.04, height*0.07, 0.4*size, 0.4*size);
-        //ellipse(width*0.04, height*0.07, size/2.5);
+        image(coinImage, width*0.04, height*0.07, 0.4*size, 0.4*size);
         fill(0);
-        strokeWeight(size/40);
+        stroke(255);
+        strokeWeight(size/70);
+        textStyle(BOLD);
         text(`×${inventory.coins}`, width*0.075, height*0.073);
         pop();
     }

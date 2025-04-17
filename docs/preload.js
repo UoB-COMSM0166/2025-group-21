@@ -1,5 +1,6 @@
 
 
+// images
 let playerImg = null;
 let playerFly = null;
 let playerDeath = null
@@ -8,45 +9,70 @@ let explosion = null;
 let fish = null;
 let damagedUfo = null;
 let laserSound = null;
-let laserAutomaticSound = null;
-let explosionSound = null;
-let deathSound = null;
-let windSound = null;
-let fishThrow = null;
-let fishImpactSound = null;
-let forceFieldSound = null;
 let heartImages = [];
-let purchaseSound = null;
-let illegalPurchaseSound = null;
-let snowball = null;
-let snowballSound = null;
 let freezingUfo = null;
 let frozenUfo = null;
-let freezeSound = null;
+let snowball = null;
 let arrow = null;
-let arrowSound = null;
 let ufoArrowImpact = null;
-let ufoArrowImpactSound = null;
 let greenLaser = null;
 let purpleLaser = null;
-let coin = null;
+let coinImage = null;
+let usernameInputBar = null;
+let displayBox = null;
+let shopTitle = null
+let workshopBackground = null;
 
+// audio
+// let laserAutomaticSound = null;
+// let explosionSound = null;
+// let deathSound = null;
+// let windSound = null;
+// let fishThrow = null;
+// let fishImpactSound = null;
+// let forceFieldSound = null;
+// let purchaseSound = null;
+// let illegalPurchaseSound = null;
+// let snowballSound = null;
+// let freezeSound = null;
+// let loseLifeSound = null;
+// let gainLifeSound = null;
+// let arrowSound = null;
+// let ufoArrowImpactSound = null;
+// let workshopMusic = null;
+// let collectCoinSound = null
+
+// BUTTONS
+// main menu
 let homeBackground;
 let logo;
-let playNoPressed;
-let playIsPressed;
-let workshopBackground;
+let penguinFlyGif = null;
+let penguinSpinGif = null;
+let keyboardIcon = null;
+let startGameButton = null;
+let startGameButtonHover = null;
+let shopButton = null;
+let shopButtonHover = null;
+let instructionsButton = null;
+let instructionsButtonHover = null;
+let settingsButton = null;
+let settingsButtonHover = null;
 
-let continueButton = null;
-let continueButtonHover = null;
+// death menu
 let returnToWorkshopButton = null;
 let returnToWorkshopButtonHover = null;
 let playAgainButton = null;
 let playAgainButtonHover = null;
 let statsButton = null;
 let statsButtonHover = null;
+
+// other
 let backButton = null;
 let backButtonHover = null;
+let submitButton = null;
+let submitButtonHover = null;
+
+// shop
 let projectileButton = null
 let projectileButtonHover = null;
 let flyingButton = null;
@@ -58,19 +84,69 @@ let buyButtonRed = null;
 let buyButtonGreen = null;
 let playButton = null;
 let playButtonHover = null;
+let mainMenuButton = null;
+let mainMenuButtonHover = null;
+
+
+// pause menu
+let continueButton = null;
+let continueButtonHover = null;
+let inventoryButton = null;
+let inventoryButtonHover = null;
+let pauseShopButton = null;
+let pauseShopButtonHover = null;
+let pauseSettingsButton = null;
+let pauseSettingsButtonHover = null;
+let closeButton = null;
+let closeButtonHover = null;
+
+// settings menu
+let volumeDial = null;
+let volumeDialHover = null;
+let volumeBar = null;
+let incrementArrow = null;
+let incrementArrowHover = null;
+let decrementArrow = null;
+let decrementArrowHover = null;
+let soundOn = null;
+let soundOff = null;
+let onButton = null;
+let onButtonHover = null;
+let offButton = null;
+let offButtonHover = null;
+let controlsButton = null;
+let controlsButtonHover = null;
+let changeButton = null;
+let changeButtonHover = null;
 
 function preload() {
+    // pause menu
+    continueButton = loadImage('assets/buttons/pauseMenu/continueButton.png');
+    continueButtonHover = loadImage('assets/buttons/pauseMenu/continueButtonHover.png');
+    inventoryButton = loadImage('assets/buttons/pauseMenu/inventoryButton.png');
+    inventoryButtonHover = loadImage('assets/buttons/pauseMenu/inventoryButtonHover.png');
+    pauseShopButton = loadImage('assets/buttons/pauseMenu/shopButton.png');
+    pauseShopButtonHover = loadImage('assets/buttons/pauseMenu/shopButtonHover.png');
+    pauseSettingsButton = loadImage('assets/buttons/pauseMenu/settingsButton.png');
+    pauseSettingsButtonHover = loadImage('assets/buttons/pauseMenu/settingsButtonHover.png');
+    closeButton = loadImage('assets/buttons/pauseMenu/closeButton.png');
+    closeButtonHover = loadImage('assets/buttons/pauseMenu/closeButtonHover.png');
 
+    // death menu
     returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');
     returnToWorkshopButtonHover = loadImage('assets/buttons/returnToWorkshopButtonHover.png');
-    continueButton = loadImage('assets/buttons/continueButton.png');
-    continueButtonHover = loadImage('assets/buttons/continueButtonHover.png');
     playAgainButton = loadImage('assets/buttons/playAgainButton.png');
     playAgainButtonHover = loadImage('assets/buttons/playAgainButtonHover.png');
     statsButton = loadImage('assets/buttons/statsButton.png');
     statsButtonHover = loadImage('assets/buttons/statsButtonHover.png');
+
+    // other
     backButton = loadImage('assets/buttons/backButton.png');
     backButtonHover = loadImage('assets/buttons/backButtonHover.png');
+    submitButton = loadImage('assets/buttons/submitButton.png');
+    submitButtonHover = loadImage('assets/buttons/submitButtonHover.png');
+
+    // shop
     projectileButton = loadImage('assets/buttons/projectileButton.png');
     projectileButtonHover = loadImage('assets/buttons/projectileButtonHover.png');
     flyingButton = loadImage('assets/buttons/flyingButton.png');
@@ -82,6 +158,19 @@ function preload() {
     buyButtonGreen = loadImage('assets/buttons/buyButtonGreen.png');
     playButton = loadImage('assets/buttons/shopPlayButton.png');
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
+    mainMenuButton = loadImage('assets/buttons/mainMenuButton.png');
+    mainMenuButtonHover = loadImage('assets/buttons/mainMenuButtonHover.png');
+
+    // main menu
+    startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');
+    startGameButtonHover = loadImage('assets/buttons/mainMenu/startGameButtonHover.png');
+    shopButton = loadImage('assets/buttons/mainMenu/shopButton.png');
+    shopButtonHover = loadImage('assets/buttons/mainMenu/shopButtonHover.png');
+    instructionsButton = loadImage('assets/buttons/mainMenu/instructionsButton.png');
+    instructionsButtonHover = loadImage('assets/buttons/mainMenu/instructionsButtonHover.png');
+    settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
+    settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
+
 
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
@@ -90,7 +179,10 @@ function preload() {
     explosion = loadImage('assets/sprites/explosion.png');
     fish = loadImage('assets/images/fish.png');
     damagedUfo = loadImage('assets/images/damagedUfo.png');
-    coin = loadImage('assets/images/coin.png');
+    coinImage = loadImage('assets/images/coin.png');
+    usernameInputBar = loadImage('assets/images/usernameInputBar.png');
+    displayBox = loadImage('assets/images/displayBox.png');
+    shopTitle = loadImage('assets/images/shopTitle.png');
 
     // Load variety of hearts
     heartImages[0] = loadImage('assets/images/heart1.png');
@@ -107,41 +199,56 @@ function preload() {
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
 
-    // load sounds
-    let volume = 0.2;
-    windSound = loadSound('assets/sounds/windSound.mp3');
-    laserSound = loadSound('assets/sounds/laser.mp3');
-    laserSound.setVolume(volume);
-    laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
-    laserAutomaticSound.setVolume(volume);
-    explosionSound = loadSound('assets/sounds/explosionSound.mp3');
-    explosionSound.setVolume(volume);
-    deathSound = loadSound('assets/sounds/deathSound.mp3');
-    deathSound.setVolume(volume);
-    fishThrow = loadSound('assets/sounds/fishThrow.mp3');
-    fishThrow.setVolume(volume);
-    fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
-    fishImpactSound.setVolume(volume);
-    forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
-    forceFieldSound.setVolume(volume);
-    purchaseSound = loadSound('assets/sounds/purchaseSound.mp3');
-    purchaseSound.setVolume(volume);
-    illegalPurchaseSound = loadSound('assets/sounds/illegalPurchaseSound.mp3');
-    illegalPurchaseSound.setVolume(volume);
-    snowballSound = loadSound('assets/sounds/snowballSound.mp3');
-    snowballSound.setVolume(volume);
-    freezeSound = loadSound('assets/sounds/freezeSound.mp3');
-    freezeSound.setVolume(volume/2);
-    arrowSound = loadSound('assets/sounds/arrowSound.mp3');
-    arrowSound.setVolume(volume/2);
-    ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
-    ufoArrowImpactSound.setVolume(volume);
-
     homeBackground = loadImage('assets/gifs/background.gif');
-    logo = loadImage('assets/images/learnToFly.png');
-    playNoPressed = loadImage('assets/images/playButton.png');
-    playIsPressed = loadImage('assets/images/playButtonHover.png');
+    logo = loadImage('assets/images/pengwingsTitle.png');
+    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
+    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
+    keyboardIcon = loadImage('assets/images/keyboardIcon.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
 
-    preloadBackgroundImages();
+    // settings menu
+    volumeDial = loadImage('assets/settings/volumeDial.png');
+    volumeDialHover = loadImage('assets/settings/volumeDialHover.png');
+    volumeBar = loadImage('assets/settings/volumeBar.png');
+    incrementArrow = loadImage('assets/settings/incrementArrow.png');
+    incrementArrowHover = loadImage('assets/settings/incrementArrowHover.png');
+    decrementArrow = loadImage('assets/settings/decrementArrow.png');
+    decrementArrowHover = loadImage('assets/settings/decrementArrowHover.png');
+    soundOn = loadImage('assets/settings/soundOn.png');
+    soundOff = loadImage('assets/settings/soundOff.png');
+    onButton = loadImage('assets/settings/onButton.png');
+    onButtonHover = loadImage('assets/settings/onButtonHover.png');
+    offButton = loadImage('assets/settings/offButton.png');
+    offButtonHover = loadImage('assets/settings/offButtonHover.png');
+    controlsButton = loadImage('assets/settings/changeControlsButton.png');
+    controlsButtonHover = loadImage('assets/settings/changeControlsButtonHover.png');
+    changeButton = loadImage('assets/settings/changeButton.png');
+    changeButtonHover = loadImage('assets/settings/changeButtonHover.png');
+}
+
+let volume = 0.2;
+
+function setMasterVolume(masterVolume) {
+    soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['illegalPurchaseSound'].setVolume(volume*masterVolume);
+
+    soundBoard.cache['laserSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['laserAutomaticSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['explosionSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['deathSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['fishThrow'].setVolume(volume*masterVolume);
+    soundBoard.cache['fishImpactSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['forceFieldSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['snowballSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['freezeSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['arrowSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['ufoArrowImpactSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
+    soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
+}
+
+function loadSoundAsync(path) {
+    return new Promise((resolve, reject) => loadSound(path, resolve, reject));
 }
