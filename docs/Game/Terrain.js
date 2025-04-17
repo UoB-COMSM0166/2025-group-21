@@ -93,13 +93,13 @@ class Terrain {
         beginShape();
 
         fill(`rgb(${r},${g},${b})`);
-        vertex(-170 / game.zoom, height);
+        vertex(-170 / domains.game.zoom, height);
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
+        for (let x = -170 / domains.game.zoom; x <= width / domains.game.zoom + 10; x += 5 / domains.game.zoom) {
             let y = this.f(x) + 50*layer + 10;
             vertex(x, y);
         }
-        vertex(width/game.zoom + 10, height);
+        vertex(width/domains.game.zoom + 10, height);
         endShape(CLOSE);
     }
 
@@ -107,14 +107,14 @@ class Terrain {
         fill('rgb(255,238,241)');
         beginShape();
 
-        for (let x = -170 / game.zoom; x <= width / game.zoom + 10; x += 5 / game.zoom) {
+        for (let x = -170 / domains.game.zoom; x <= width / domains.game.zoom + 10; x += 5 / domains.game.zoom) {
             let y = this.f(x);
-            let newY = y + 2*sin((x + game.offset) * 0.05) + 2*cos((x + game.offset) * 0.07) - 3;
+            let newY = y + 2*sin((x + domains.game.offset) * 0.05) + 2*cos((x + domains.game.offset) * 0.07) - 3;
             vertex(x, newY);
         }
-        for (let x = width / game.zoom + 10; x >= -170 / game.zoom; x -= 5 / game.zoom) {
+        for (let x = width / domains.game.zoom + 10; x >= -170 / domains.game.zoom; x -= 5 / domains.game.zoom) {
             let y = this.f(x) + 20;
-            let newY = y + 2*sin((x + game.offset) * 0.04) + 2*cos((x + game.offset) * 0.05) - 3;
+            let newY = y + 2*sin((x + domains.game.offset) * 0.04) + 2*cos((x + domains.game.offset) * 0.05) - 3;
             vertex(x, newY);
         }
         endShape(CLOSE);
@@ -173,7 +173,7 @@ class Terrain {
 
     // Calculate amplitude, y, of terrain curve at position x
     f(x) {
-        return this.generateHills(x + game.offset);
+        return this.generateHills(x + domains.game.offset);
     }
 
     slope(x) {

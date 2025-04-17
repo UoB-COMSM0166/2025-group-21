@@ -82,12 +82,12 @@ class MainMenu {
     }
 
     startButtonPressed() {
-        mainMenu = null;
+        domains.mainMenu = null;
         Domain = 'game';
     }
 
     shopButtonPressed() {
-        mainMenu = null;
+        domains.mainMenu = null;
         Domain = 'shop';
     }
 
@@ -97,7 +97,7 @@ class MainMenu {
     }
 
     settingButtonPressed() {
-        mainMenu.showSettings = true;
+        domains.mainMenu.showSettings = true;
         settings.startCooldown();
     }
 

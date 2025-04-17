@@ -3,21 +3,21 @@
 class Death {
 
     constructor(type) {
-        if (game.laserAutomaticSound.isPlaying()) {
-            game.laserAutomaticSound.stop();
+        if (domains.game.laserAutomaticSound.isPlaying()) {
+            domains.game.laserAutomaticSound.stop();
         }
-        game.deathSound.play();
-        game.player.alive = false;
-        game.stats.deathUpdate();
+        domains.game.deathSound.play();
+        domains.game.player.alive = false;
+        domains.game.stats.deathUpdate();
         this.type = type;
         this.deathTimer = new Clock();
         this.showStats = false;
         this.coinsEarned = null;
         this.coinsAddedToInventory = false;
         this.skipCoinCount = false;
-        this.currentY = game.player.pos.y;
-        this.pos = createVector(game.player.pos.x - width/100, game.player.pos.y - width/100);
-        this.slope = atan2(game.player.vel.y, game.player.vel.x); //atan(game.terrain.slope(game.player.pos.x));
+        this.currentY = domains.game.player.pos.y;
+        this.pos = createVector(domains.game.player.pos.x - width/100, domains.game.player.pos.y - width/100);
+        this.slope = atan2(domains.game.player.vel.y, domains.game.player.vel.x);
 
         this.redTint = 0.68;
         this.blackTintHeight = null;
@@ -39,16 +39,16 @@ class Death {
         // Check if they broke a highscore, then add them and display highscores
         else if (!this.highscoreAdded) {
             // Check if they got a highscore, get username if so, else break out
-            if (game.highscores.isHighscore(game.stats.score)) {
-                game.highscores.savingScore = true;
-                game.highscores.getUserName(game.stats.score);
+            if (domains.game.highscores.isHighscore(domains.game.stats.score)) {
+                domains.game.highscores.savingScore = true;
+                domains.game.highscores.getUserName(domains.game.stats.score);
             }
             else {
                 this.highscoreAdded = true;
                 this.highscoreSeen = true;
             }
         }
-        else if (game.highscores.savingScore) {
+        else if (domains.game.highscores.savingScore) {
             push();
             textAlign(CENTER, CENTER);
             textSize(width/20);
@@ -60,7 +60,7 @@ class Death {
         }
         else if (!this.highscoreSeen) {
             // If they did get a highscore, show where they are on the list
-            game.highscores.printHighscores();
+            domains.game.highscores.printHighscores();
         }
         else if (!this.showStats) {
 
@@ -70,7 +70,7 @@ class Death {
             }
             this.showDeathScreen();
         }
-        else game.stats.showsStatsScreen();
+        else domains.game.stats.showsStatsScreen();
     }
 
     displayCoinReward() {
@@ -82,9 +82,10 @@ class Death {
 
             if (this.skipCoinCount) {
                 this.skipCoinCount = false;
-                this.coinsEarned = game.score.total/11 + game.coins.totalCoinsCollected;
+                this.coinsEarned = domains.game.score.total/11 + domains.game.coins.totalCoinsCollected;
             }
-            else this.coinsEarned = lerp(this.coinsEarned, game.score.total/11 + game.coins.totalCoinsCollected, 0.02);
+            else this.coinsEarned = lerp(this.coinsEarned,
+                            domains.game.score.total/11 + domains.game.coins.totalCoinsCollected, 0.02);
 
             let size = width/8;
             fill(228, 221, 0);
@@ -97,7 +98,7 @@ class Death {
             noStroke();
         pop();
 
-        if (this.coinsEarned * 11 >= game.score.total-0.5) {
+        if (this.coinsEarned * 11 >= domains.game.score.total-0.5) {
             this.deathTimer.tick();
         }
     }
@@ -105,9 +106,9 @@ class Death {
     showFinalScore() {
 
         push();
-            game.zoom = lerp(game.zoom, 1.25, 0.01);
-            game.ty = game.player.pos.y - game.zoom * (game.player.pos.y);
-            game.tx = 160 - game.zoom * (game.player.pos.x);
+        domains.game.zoom = lerp(domains.game.zoom, 1.25, 0.01);
+        domains.game.ty = domains.game.player.pos.y - domains.game.zoom * (domains.game.player.pos.y);
+        domains.game.tx = 160 - domains.game.zoom * (domains.game.player.pos.x);
 
             this.deathTimer.tick();
 
@@ -147,7 +148,7 @@ class Death {
         textStyle(BOLD);
         textAlign(LEFT);
         //textFont('Courier New');
-        text(`${game.score.total}`, this.numScore.x, this.numScore.y);
+        text(`${domains.game.score.total}`, this.numScore.x, this.numScore.y);
         strokeWeight(0);
         textStyle(NORMAL);
     }
@@ -187,9 +188,9 @@ class Death {
             image(returnToWorkshopButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                game.disconnectAudio();
+                domains.game.disconnectAudio();
                 //game.dispose();
-                game = null;
+                domains.game = null;
                 Domain = 'shop';
             }
         }
@@ -210,10 +211,10 @@ class Death {
             image(playAgainButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                game.disconnectAudio();
+                domains.game.disconnectAudio();
                 //soundBoard.disposeAll();
                 //game.dispose();
-                game = null;
+                domains.game = null;
             }
         }
         else {

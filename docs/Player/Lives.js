@@ -26,17 +26,17 @@ class Lives {
         let timeGainedDif = millis()-this.timeLifeGained;
 
         // Flash on and off for 3 seconds
-        if (timeLostDif < 3000 && this.totalLives > 0) game.player.lostLife = (timeLostDif % 1000) < 500;
-        else game.player.lostLife = false;
+        if (timeLostDif < 3000 && this.totalLives > 0) domains.game.player.lostLife = (timeLostDif % 1000) < 500;
+        else domains.game.player.lostLife = false;
 
         // Flash on and off for 3 seconds
-        if (timeGainedDif < 3000 && this.totalLives > 0) game.player.gainedLife = (timeGainedDif % 1000) < 500;
-        else game.player.gainedLife = false;
+        if (timeGainedDif < 3000 && this.totalLives > 0) domains.game.player.gainedLife = (timeGainedDif % 1000) < 500;
+        else domains.game.player.gainedLife = false;
     }
 
     drawLives() {
         // Display total lives
-        if (game.player.alive) {
+        if (domains.game.player.alive) {
             for (let i = 1; i <= this.totalLives ; i++) {
                 image(heartImages[0], -20 + i*50, height-65, heartImages[0].width*0.045, heartImages[0].height*0.045);
             }

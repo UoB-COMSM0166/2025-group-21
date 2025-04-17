@@ -71,8 +71,8 @@ class Pause {
         let settings = createVector(0.5*width, 0.65*height);
 
         this.updateButton(0, continue_, continueButton, continueButtonHover, this.continueButtonPressed)
-        this.updateButton(1, inventory, inventoryButton, inventoryButtonHover, () => game.pause.showInvPanel = true);
-        this.updateButton(2, shop, pauseShopButton, pauseShopButtonHover, () => game.pause.returnToShop = true);
+        this.updateButton(1, inventory, inventoryButton, inventoryButtonHover, () => domains.game.pause.showInvPanel = true);
+        this.updateButton(2, shop, pauseShopButton, pauseShopButtonHover, () => domains.game.pause.returnToShop = true);
         this.updateButton(3, settings, pauseSettingsButton, pauseSettingsButtonHover, this.settingButtonPressed);
     }
 
@@ -137,12 +137,12 @@ class Pause {
 
         if (settings.difficulty !== settings.currentDifficulty) {
             settings.currentDifficulty = settings.difficulty;
-            game = null;
+            domains.game = null;
         }
         else {
-            game.pause.showButtons = false;
-            game.pause.countdown = new Countdown();
-            game.pause.isCountingDown = true;
+            domains.game.pause.showButtons = false;
+            domains.game.pause.countdown = new Countdown();
+            domains.game.pause.isCountingDown = true;
         }
     }
 
@@ -151,14 +151,14 @@ class Pause {
         // if (!game.pause.buttonsActive) {
         //     return;
         // }
-        game.pause.showSettings = true;
+        domains.game.pause.showSettings = true;
         settings.startCooldown();
     }
 
     shopButtonPressed() {
-        game.pause.reset();
-        game.disconnectAudio();
-        game = null;
+        domains.game.pause.reset();
+        domains.game.disconnectAudio();
+        domains.game = null;
         Domain = 'shop';
     }
 

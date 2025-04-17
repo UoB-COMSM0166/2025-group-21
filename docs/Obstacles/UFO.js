@@ -4,7 +4,7 @@ class UFO {
     constructor(height) {
 
         this.height = height;
-        this.pos = createVector(width/game.zoom, height);
+        this.pos = createVector(width/domains.game.zoom, height);
         this.moveFactor = 3*Math.random() + 3;
         this.hitByFish = false;
 
@@ -39,7 +39,7 @@ class UFO {
             const FRAME_COUNT = 10;
             imageMode(CENTER);
 
-            if (!game.pause.active) {
+            if (!domains.game.pause.active) {
 
                 if (frameCount % frameSpeed === 0) {
                     this.frameIndex++;
@@ -67,7 +67,7 @@ class UFO {
             const FRAME_COUNT = 11;
             imageMode(CENTER);
 
-            if (!game.pause.active) {
+            if (!domains.game.pause.active) {
 
                 if (this.frameIndex < FRAME_COUNT && frameCount % frameSpeed === 0) {
                     this.frameIndex++;
@@ -91,17 +91,17 @@ class UFO {
     updatePosition() {
 
         if (this.freezing) {
-            this.pos.x += 6 - game.player.vel.x;
+            this.pos.x += 6 - domains.game.player.vel.x;
             this.downVelocity+= 0.5
             this.pos.y += this.downVelocity;
             this.angle += 0.1;
         }
         else if (this.hitByArrow) {
-            this.pos.x -= game.player.vel.x;
+            this.pos.x -= domains.game.player.vel.x;
             this.pos.y += 15;
         }
         else {
-            this.pos.x -= (game.player.vel.x + 2*this.moveFactor);
+            this.pos.x -= (domains.game.player.vel.x + 2*this.moveFactor);
 
             if (this.hitByFish) {
                 this.pos.y += 7;

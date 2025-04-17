@@ -70,7 +70,7 @@ class Workshop {
                 this.disconnectAudio();
                 //soundBoard.disposeAll();
                 //shop.dispose();
-                shop = null;
+                domains.shop = null;
                 Domain = 'game';
             }
         }
@@ -333,6 +333,7 @@ class Workshop {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
                     this.illegalPurchaseSound.play();
+                    saveGameProgress();
                 }
             }
         }
@@ -376,7 +377,7 @@ class Workshop {
 
             if (mouseIsPressed) {
                 this.disconnectAudio();
-                shop = null;
+                domains.shop = null;
                 Domain = 'mainMenu';
             }
         }

@@ -29,7 +29,7 @@ class Highscores {
 
     // Check if the current score is a high score
     isHighscore(score) {
-        if (game.cheatsEnabled) return false;
+        if (domains.game.cheatsEnabled) return false;
         // If less than 10 highscores add it
         if (this.highscores.length < this.maxScores) return true;
         // Else check if it beats the lowest score
@@ -154,7 +154,7 @@ class Highscores {
         this.highscores = this.highscores.slice(0, this.maxScores);
 
         // Allow loop to pass
-        game.death.highscoreAdded = true;
+        domains.game.death.highscoreAdded = true;
     
         // And save the updated highscores asynchronously
         this.saveHighscores();
@@ -236,7 +236,7 @@ class Highscores {
         for (let i = 0; i < this.highscores.length; i++) {
                 let entry = this.highscores[i];
 
-                if (entry.score === game.stats.score && entry.name === this.userName) {
+                if (entry.score === domains.game.stats.score && entry.name === this.userName) {
                     fill(255, 215, 0);
                     text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
                 }
@@ -262,7 +262,7 @@ class Highscores {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
-                game.death.highscoreSeen = true;
+                domains.game.death.highscoreSeen = true;
             }
         }
         else {

@@ -2,11 +2,11 @@
 
 class Inventory {
 
-    constructor() {
-        this.coins = 0;
-        this.flyLevel = 0;
-        this.laserLevel = 1;
-        this.forceFieldLevel = 0;
+    constructor(gameProgress) {
+        this.coins = gameProgress.coins;
+        this.flyLevel = gameProgress.flyLevel;
+        this.laserLevel = gameProgress.projectileLevel;
+        this.forceFieldLevel = gameProgress.forceFieldLevel;
     }
 
     getFlyingUpgradePrice() {
