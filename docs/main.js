@@ -2,62 +2,35 @@
 
 let Domain = 'intro'; // Determines which part of the game code is executed
 
-let intro = null;
-let mainMenu = null;
-let game = null;
-let shop = null;
+let domains = null;
 let inventory = null;
 let settings = null;
 let frameCount = 0;
 let fps = 0;
 let userIsTyping = false;
 let inputCharacter = null;
-
 let soundBoard = null;
 
 function setup() {
+    let gameProgress = loadGameProgress();
+
+    if (!gameProgress) {
+        gameProgress = NEW_GAME_STATE;
+    }
+
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
-    inventory = new Inventory();
-    settings = new Settings();
+    inventory = new Inventory(gameProgress);
+    settings = new Settings(gameProgress);
     soundBoard = new SoundBoard();
+    domains = new DomainManager();
 }
 
 function draw() {
 
-    if (Domain === 'intro') {
-        if(intro == null) {
-            intro = new Intro();
-            intro.resetAnimation();
-        }
-        intro.showIntro();
-    }
-
-    if (Domain === 'mainMenu') {
-        if (mainMenu === null) {
-            mainMenu = new MainMenu();
-        }
-        if (mainMenu.showSettings) {
-            settings.showSettingsScreen();
-        }
-        else mainMenu.showMainMenu();
-    }
-
-    if (Domain === 'shop') {
-        if (shop === null) {
-            shop = new Workshop();
-        }
-        shop.openShop();
-    }
-
-    if (Domain === 'game') {
-        if (game === null) {
-            game = new Game();
-        }
-        game.runSimulation();
-    }
+    domains.run();
 
     frameCount++
     if (frameCount%30 === 0) {
@@ -67,12 +40,12 @@ function draw() {
     text(fps, 50, 50);
 
     push();
-    if (game !== null) {
+    if (domains.game !== null) {
         textAlign(LEFT);
         textSize(15);
-        text('Projectiles = ' + game.projectile.projectiles.length, 10, 80);
-        text('UFOs = ' + game.UFOHandler.UFOs.length, 10, 105);
-        text('Explosions = ' + game.UFOHandler.explosions.length, 10, 130);
+        text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
+        text('UFOs = ' + domains.game.UFOHandler.UFOs.length, 10, 105);
+        text('Explosions = ' + domains.game.UFOHandler.explosions.length, 10, 130);
     }
     pop();
 }

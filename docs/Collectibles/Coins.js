@@ -12,7 +12,7 @@ class Coins {
         this.coins = this.coins.filter(coin => coin.x > offset - 600);
         // Make sure coins and hearts don't overlap
         let newCoinX = this.lastX + this.spacing + random(-500, 500);
-        let nextHeartX = game.hearts.hearts[game.hearts.hearts.length-1];
+        let nextHeartX = domains.game.hearts.hearts[domains.game.hearts.hearts.length-1];
         let differenceCoinHeart = abs(newCoinX - nextHeartX);
         // Generate new coins ahead of player once they get past the last set
         while (this.lastX < offset + width + 500) {
@@ -43,14 +43,14 @@ class Coins {
         let shift = 0;
 
         let prevX = startX;
-        let prevY = game.terrain.generateHills(startX);
+        let prevY = domains.game.terrain.generateHills(startX);
         let currentX = 0;
         let currentY = 0;
 
         while (currentGap < coinGap) {
             shift++;
             currentX = prevX + shift;
-            currentY = game.terrain.generateHills(currentX);
+            currentY = domains.game.terrain.generateHills(currentX);
             let dx = currentX - prevX;
             let dy = currentY - prevY
             currentGap = Math.hypot(dx, dy);
@@ -67,7 +67,7 @@ class Coins {
     calculateOffset(coinX, coinY) {
         let tangent = {
             x: coinX - (coinX-0.1),
-            y: coinY - game.terrain.generateHills(coinX-0.1)
+            y: coinY - domains.game.terrain.generateHills(coinX-0.1)
         };
 
         let tangentLength = Math.hypot(tangent.x, tangent.y);
@@ -87,7 +87,8 @@ class Coins {
     checkCollision() {
         for (let i = this.coins.length - 1; i >= 0; i--) {
             let singleCoin = this.coins[i];
-            let d = dist(game.player.pos.x, game.player.pos.y, singleCoin.x - game.offset, singleCoin.y);
+            let d = dist(domains.game.player.pos.x, domains.game.player.pos.y,
+                         singleCoin.x - domains.game.offset, singleCoin.y);
             if (d < 30) {
 
                 // Save and remove from coins
@@ -97,7 +98,7 @@ class Coins {
                     size: 0.07,
                     height: 0
                 });
-                game.collectCoinSound.play();
+                domains.game.collectCoinSound.play();
                 this.totalCoinsCollected++;
             }
         }

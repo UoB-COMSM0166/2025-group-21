@@ -16,9 +16,9 @@ class InvPanel {
             image(closeButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                game.pause.showInvPanel = false;
+                domains.game.pause.showInvPanel = false;
                 this.isCloseButtonSelected = false;
-                game.pause.startCooldown();
+                domains.game.pause.startCooldown();
             }
         }
         else if (this.isCloseButtonSelected) {

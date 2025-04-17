@@ -2,18 +2,18 @@
 
 class Settings {
 
-    constructor() {
-        this.masterVolume = 1;
-        this.mute = 1 // sound on = 1, sound off = 0;
+    constructor(gameProgress) {
+        this.masterVolume = gameProgress.masterVolume;
+        this.mute = gameProgress.mute; // sound on = 1, sound off = 0;
         this.muteButton = soundOn;
         this.buttonCooldownTimer = new Clock();
         this.buttonsActive = true;
-        this.dialPos = createVector(0.73*width, 0.3*height);
+        this.dialPos = this.initialiseDialPos(this.masterVolume);
         this.offset = null;
 
         this.difficulties = ['Beginner', 'Intermediate', 'Advanced'];
-        this.difficulty = 0;
-        this.currentDifficulty = 0;
+        this.difficulty = gameProgress.difficulty;
+        this.currentDifficulty = this.difficulty;
 
         this.enableCheats = false;
         this.cheatsButton = offButton;
@@ -22,10 +22,10 @@ class Settings {
         // key binds
         this.changeControls = false;
         this.controlsPanel = null;
-        this.flyKey = 'w';
-        this.boostKey = ' ';
-        this.shootKey = 'd';
-        this.shieldKey = 'f';
+        this.flyKey = gameProgress.flyKey;
+        this.boostKey = gameProgress.boostKey;
+        this.shootKey = gameProgress.shootKey;
+        this.shieldKey = gameProgress.shieldKey;
     }
 
     keyIsAvailable(key) {
@@ -90,11 +90,13 @@ class Settings {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
+                saveGameProgress();
+
                 if (Domain === 'mainMenu') {
                     settings.currentDifficulty = settings.difficulty;
-                    mainMenu.showSettings = false;
+                    domains.mainMenu.showSettings = false;
                 }
-                else game.pause.showSettings = false;
+                else domains.game.pause.showSettings = false;
             }
         }
         else image(backButton, pos.x, pos.y, size.x, size.y);
@@ -114,7 +116,7 @@ class Settings {
                 this.startCooldown();
 
                 if (Domain === 'game') {
-                    game.updateCheats();
+                    domains.game.updateCheats();
                 }
             }
         }
@@ -221,6 +223,11 @@ class Settings {
             this.dialPos.x = 0.73*width;
         }
         this.masterVolume = (this.dialPos.x/width - 0.27) / 0.46;
+    }
+
+    initialiseDialPos(masterVolume) {
+        let xPos = (0.27 + 0.46*masterVolume) * width;
+        return createVector(xPos, 0.3*height);
     }
 
     drawVolumeBar() {

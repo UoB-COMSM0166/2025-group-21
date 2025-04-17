@@ -15,7 +15,7 @@ class Score {
 
     update() {
 
-        if (!game.initialDrop && !game.pause.active) { // Don't increase score during the fall at the start
+        if (!domains.game.initialDrop && !domains.game.pause.active) { // Don't increase score during the fall at the start
             this.increment();
         }
         this.trackAirtime();
@@ -30,7 +30,7 @@ class Score {
 
         let airtimeBonus = 0;
         let speedBonus;
-        let speed = game.player.vel.x;
+        let speed = domains.game.player.vel.x;
 
         if (this.airtime > 50 ) {
             airtimeBonus = 0.002 * this.airtime;
@@ -46,9 +46,9 @@ class Score {
 
     trackAirtime() {
 
-        if (game.player.inAir) {
+        if (domains.game.player.inAir) {
 
-            if (!game.pause.active) {
+            if (!domains.game.pause.active) {
                 this.airtime++;
 
                 // start new airtime
@@ -89,7 +89,7 @@ class Score {
     printScore() {
 
         let size = width/50;
-        let formattedScore = String(game.score.total).padStart(10, '0');
+        let formattedScore = String(domains.game.score.total).padStart(10, '0');
         fill(0);
         textFont('Trebuchet MS');
         textSize(size);
