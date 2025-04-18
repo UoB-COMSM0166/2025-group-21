@@ -41,6 +41,7 @@ class Game {
 
         this.terrain = new Terrain();
         this.player = new Player(150, this.terrain.generateHills(150));
+        this.player.headImg = inventory.getHeadImage();
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();

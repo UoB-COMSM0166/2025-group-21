@@ -1,4 +1,5 @@
 // images
+let playerHead = null;
 let playerImg = null;
 let playerFly = null;
 let playerDeath = null
@@ -22,6 +23,8 @@ let shopTitle = null
 let workshopBackground = null;
 let tipsBox = null;
 let penguinClaw = null;
+
+let playerHeadFish, playerHeadSnowball, playerHeadArrow, playerHeadLaser, playerHeadGatling;
 
 
 // audio
@@ -194,6 +197,12 @@ function preload() {
 
     preloadBackgroundImages();
 
+    playerHead = loadImage('assets/sprites/playerHead.png')
+    playerHeadFish       = loadImage('assets/sprites/playerHead_fish.png');
+    playerHeadSnowball   = loadImage('assets/sprites/playerHead_snowball.png');
+    playerHeadArrow      = loadImage('assets/sprites/playerHead_arrow.png');
+    playerHeadLaser      = loadImage('assets/sprites/playerHead_laser.png');
+    playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
     playerDeath = loadImage('assets/sprites/playerDeath.png');
