@@ -11,10 +11,15 @@ class UFO extends AerialObstacle {
         this.frozenImage = frozenUfo;
         this.freezingImage = freezingUfo;
         this.arrowDamageImage = ufoArrowImpact;
+
+        this.frameWidth = 51;
+        this.frameHeight = 22;
+        this.scale = 3;
+        this.frameCount = 10;
     }
 
     getBaseImage() {
-        image(this.baseImage, 0, 0, 100, 50);
+        image(this.baseImage, 0, 0, this.frameWidth * this.scale, this.frameHeight * this.scale);
     }
 
     // UFO movement override
@@ -28,6 +33,7 @@ class UFO extends AerialObstacle {
         else if (this.hitByArrow) {
             this.pos.x -= domains.game.player.vel.x;
             this.pos.y += 15;
+            this.angle += 0.3;
         }
         else {
             this.pos.x -= (domains.game.player.vel.x + 2*this.moveFactor);

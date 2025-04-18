@@ -3,7 +3,7 @@
 const SAVE_KEY = 'pengwingsSaveData'
 
 const NEW_GAME_STATE = {
-    coins: 0,
+    coins: 99999,
     flyLevel: 0,
     projectileLevel: 1,
     forceFieldLevel: 0,

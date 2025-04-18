@@ -131,6 +131,14 @@ let controlsButtonHover = null;
 let changeButton = null;
 let changeButtonHover = null;
 
+let seagull = null;
+let damagedSeagull = null;
+let frozenSeagull = null;
+let freezingSeagull = null;
+let seagullArrow = null;
+let airplane = null;
+let freezingAirplane = null;
+
 function preload() {
     // pause menu
     continueButton = loadImage('assets/buttons/pauseMenu/continueButton.png');
@@ -218,12 +226,18 @@ function preload() {
     freezingUfo = loadImage('assets/sprites/freezingUfo.png');
     frozenUfo = loadImage('assets/images/frozenUfo.png');
     arrow = loadImage('assets/sprites/arrow.png');
-    ufoArrowImpact = loadImage('assets/sprites/ufoArrowImpact.png');
+    ufoArrowImpact = loadImage('assets/images/ufoArrowImpact.png');
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
 
     seagull = loadImage('assets/sprites/seagull.png');
+    damagedSeagull = loadImage('assets/images/damagedSeagull.png');
+    freezingSeagull = loadImage('assets/sprites/freezingBird.png');
+    frozenSeagull = loadImage('assets/images/frozenBird.png');
+    seagullArrow = loadImage('assets/images/birdArrow.png');
     airplane = loadImage('assets/images/airplane.png')
+    freezingAirplane = loadImage('assets/sprites/freezingPlane.png');
+
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');

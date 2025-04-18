@@ -9,10 +9,15 @@ class Bird extends AerialObstacle {
 
         // Images for Bird
         this.baseImage = seagull;
-        this.damagedImage = damagedUfo;
-        this.frozenImage = frozenUfo;
-        this.freezingImage = freezingUfo;
-        this.arrowDamageImage = ufoArrowImpact;
+        this.damagedImage = damagedSeagull;
+        this.frozenImage = frozenSeagull;
+        this.freezingImage = freezingSeagull;
+        this.arrowDamageImage = seagullArrow;
+
+        this.frameWidth = 80;
+        this.frameHeight = 64;
+        this.scale = 1.3;
+        this.frameCount = 8;
     }
 
     getBaseImage() {
