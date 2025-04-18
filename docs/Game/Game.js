@@ -71,7 +71,7 @@ class Game {
         this.adjustZoom();
         this.wind.adjustVolume();
 
-        image(homeBackground, 0, 0, width, height);
+        //image(homeBackground, 0, 0, width, height);
         //---------------------------------------
         //image(homeBackground, 0, 0, width, height);
         const floorSpeed = this.pause.active ? 0 : this.player.vel.x;

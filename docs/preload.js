@@ -45,8 +45,8 @@ let penguinClaw = null;
 
 // BUTTONS
 // main menu
-let homeBackground;
-let logo;
+let homeBackground = null;
+let logo = null;
 let penguinFlyGif = null;
 let penguinSpinGif = null;
 let keyboardIcon = null;
