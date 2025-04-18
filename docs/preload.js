@@ -1,5 +1,3 @@
-
-
 // images
 let playerImg = null;
 let playerFly = null;
@@ -202,6 +200,7 @@ function preload() {
     settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
     settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
 
+    preloadBackgroundImages();
 
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
@@ -287,6 +286,7 @@ function setMasterVolume(masterVolume) {
     soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
     soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
     soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
 }
 
 function loadSoundAsync(path) {

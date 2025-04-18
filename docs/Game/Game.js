@@ -55,15 +55,29 @@ class Game {
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
         this.projectile = new ProjectileAbility(inventory.laserLevel);
+
+        //---------------------------------------
+        this.background = new Background();
+        //---------------------------------------
     }
 
     runSimulation() { // Main loop for game
         if (!this.soundsLoaded) return;
 
+        //--------------------
+        clear();
+        //--------------------
+
         this.adjustZoom();
         this.wind.adjustVolume();
 
         image(homeBackground, 0, 0, width, height);
+        //---------------------------------------
+        //image(homeBackground, 0, 0, width, height);
+        const floorSpeed = this.pause.active ? 0 : this.player.vel.x;
+        this.background.update(floorSpeed, this.zoom);
+        this.background.draw( this.zoom, floorSpeed );
+        //---------------------------------------
 
         push();
             translate(this.tx, this.ty); // Change coordinate origin to player position
@@ -180,6 +194,7 @@ class Game {
         this.loseLifeSound = await soundBoard.getSound('loseLifeSound');
         this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
         this.collectCoinSound = await soundBoard.getSound('coinSound');
+        this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
 
         setMasterVolume(this.masterVolume);
         this.wind = new Wind();
