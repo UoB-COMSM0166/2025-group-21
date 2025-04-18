@@ -92,8 +92,8 @@ class MainMenu {
     }
 
     instructionButtonPressed() {
-        // To be implemented
-        console.log("Instruction button pressed");
+        domains.mainMenu = null;
+        Domain = 'instruction';
     }
 
     settingButtonPressed() {

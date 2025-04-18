@@ -1,5 +1,3 @@
-
-
 // images
 let playerImg = null;
 let playerFly = null;
@@ -22,6 +20,9 @@ let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
 let workshopBackground = null;
+let tipsBox = null;
+let penguinClaw = null;
+
 
 // audio
 // let laserAutomaticSound = null;
@@ -58,6 +59,12 @@ let instructionsButtonHover = null;
 let settingsButton = null;
 let settingsButtonHover = null;
 
+// load game
+let yesButton = null;
+let yesButtonHover = null;
+let noButton = null;
+let noButtonHover = null;
+
 // death menu
 let returnToWorkshopButton = null;
 let returnToWorkshopButtonHover = null;
@@ -71,6 +78,9 @@ let backButton = null;
 let backButtonHover = null;
 let submitButton = null;
 let submitButtonHover = null;
+
+// fonts
+let instructionFont = null;
 
 // shop
 let projectileButton = null
@@ -132,6 +142,12 @@ function preload() {
     closeButton = loadImage('assets/buttons/pauseMenu/closeButton.png');
     closeButtonHover = loadImage('assets/buttons/pauseMenu/closeButtonHover.png');
 
+    // load game
+    yesButton = loadImage('assets/buttons/loadGame/yesButton.png');
+    yesButtonHover = loadImage('assets/buttons/loadGame/yesButtonHover.png');
+    noButton = loadImage('assets/buttons/loadGame/noButton.png');
+    noButtonHover = loadImage('assets/buttons/loadGame/noButtonHover.png');
+
     // death menu
     returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');
     returnToWorkshopButtonHover = loadImage('assets/buttons/returnToWorkshopButtonHover.png');
@@ -160,6 +176,11 @@ function preload() {
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
     mainMenuButton = loadImage('assets/buttons/mainMenuButton.png');
     mainMenuButtonHover = loadImage('assets/buttons/mainMenuButtonHover.png');
+
+    // instruction
+    instructionFont = loadFont('assets/fonts/Noteworthy.ttf');
+    tipsBox = loadImage('assets/images/tipsBox.png');
+    penguinClaw = loadImage('assets/images/penguinClaw(1).png');
 
     // main menu
     startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');
@@ -199,6 +220,9 @@ function preload() {
     ufoArrowImpact = loadImage('assets/sprites/ufoArrowImpact.png');
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
+
+    seagull = loadImage('assets/sprites/seagull.png');
+    airplane = loadImage('assets/images/airplane.png')
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');

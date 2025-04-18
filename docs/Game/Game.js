@@ -38,10 +38,9 @@ class Game {
         this.zoom = 1;
         this.tx = 0
         this.ty = 0;
-        this.initialDrop = true;
 
         this.terrain = new Terrain();
-        this.player = new Player(150, 150);
+        this.player = new Player(150, this.terrain.generateHills(150));
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();
@@ -49,7 +48,7 @@ class Game {
         this.coins = new Coins();
 
         this.highscores = new Highscores();
-        this.UFOHandler = new UFOHandler();
+        this.obstacleHandler = new ObstacleHandler();
         this.wind = null;
         this.death = null;
 
@@ -72,6 +71,7 @@ class Game {
         this.adjustZoom();
         this.wind.adjustVolume();
 
+        image(homeBackground, 0, 0, width, height);
         //---------------------------------------
         //image(homeBackground, 0, 0, width, height);
         const floorSpeed = this.pause.active ? 0 : this.player.vel.x;
@@ -86,8 +86,8 @@ class Game {
             this.terrain.drawHills();
             this.player.drawPlayer()
             this.projectile.updateProjectiles();
-            this.UFOHandler.updateUFOs();
-            this.UFOHandler.updateExplosions();
+            this.obstacleHandler.updateObstacles();
+            this.obstacleHandler.updateExplosions();
 
             if (!this.pause.active) {
                 this.offset += this.player.vel.x;  // Move terrain to the left
@@ -114,7 +114,7 @@ class Game {
         this.player.lives.drawLives();
         this.stats.gameUpdate();
 
-        if (((this.spacePressed && this.player.alive) || this.initialDrop) && !this.pause.active) {
+        if (this.spacePressed && this.player.alive && !this.pause.active) {
             this.applyBoostToPlayer();
         }
 

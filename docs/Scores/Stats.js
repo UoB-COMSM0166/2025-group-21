@@ -44,11 +44,12 @@ class Stats {
         noStroke();
         textSize(size);
         textAlign(CENTER, CENTER);
-        text(`SCORE: ${this.score}`, width/2, height*0.3);
-        text(`MAX AIRTIME: ${round(this.maxAirTime, 3)} s`, width/2, height*0.4);
-        text(`TOTAL JUMPS: ${this.numJumps}`, width/2, height*0.5);
-        text(`HIGHEST JUMP: ${round(this.highestJump/100)} m`, width/2, height*0.6);
-        text(`DISTANCE TRAVELED: ${round(this.distanceTraveled/100, 2)} m`, width/2, height*0.7);
+        text(`SCORE: ${this.score}`, width/2, height*0.25);
+        text(`UFO HITS: ${this.ufoHits}`, width/2, height*0.35);
+        text(`MAX AIRTIME: ${round(this.maxAirTime, 3)} s`, width/2, height*0.45);
+        text(`TOTAL JUMPS: ${this.numJumps}`, width/2, height*0.55);
+        text(`HIGHEST JUMP: ${round(this.highestJump/100)} m`, width/2, height*0.65);
+        text(`DISTANCE: ${round(this.distanceTraveled/100, 2)} m`, width/2, height*0.75);
 
         this.updateBackButton();
         pop();

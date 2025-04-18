@@ -36,7 +36,6 @@ class Player {
             if (this.pos.y > ground && this.alive) {
                 this.pos.y = ground;
                 this.inAir = false;
-                domains.game.initialDrop = false;
                 this.calculateNormalForce();
             }
         }

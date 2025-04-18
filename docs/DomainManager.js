@@ -1,17 +1,28 @@
 
 
 class DomainManager {
-    constructor() {
-        this.domain = Domain;
+    constructor(gameProgress) {
+        //this.domain = Domain;
+        this.gameProgress = gameProgress;
+        this.gameLoader = null;
         this.intro = null;
         this.mainMenu = null;
         this.game = null;
         this.shop = null;
+        this.instruction = null;
+        //this.progressLoaded = false;
     }
 
     run() {
+        if (Domain === 'loadGame') {
+            if (this.gameLoader === null) {
+                this.gameLoader = new GameLoader(this.gameProgress);
+            }
+            this.gameLoader.showLoadScreen();
+        }
+
         if (Domain === 'intro') {
-            if(this.intro == null) {
+            if(this.intro === null) {
                 this.intro = new Intro();
                 this.intro.resetAnimation();
             }
@@ -33,6 +44,13 @@ class DomainManager {
                 this.shop = new Workshop();
             }
             this.shop.openShop();
+        }
+
+        if (Domain === 'instruction') {
+            if (this.instruction === null) {
+                this.instruction = new Instruction();
+            }
+            this.instruction.draw();
         }
 
         if (Domain === 'game') {
