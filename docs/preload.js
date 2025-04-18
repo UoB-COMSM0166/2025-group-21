@@ -248,6 +248,7 @@ function setMasterVolume(masterVolume) {
     soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
     soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
     soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
 }
 
 function loadSoundAsync(path) {

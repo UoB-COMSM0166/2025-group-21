@@ -114,6 +114,9 @@ class Player {
                     && domains.game.fly.active) {
 
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
+                if (!domains.game.wingFlapSound.isPlaying()) {
+                    domains.game.wingFlapSound.play();
+                }
             }
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);

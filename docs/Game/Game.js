@@ -194,6 +194,7 @@ class Game {
         this.loseLifeSound = await soundBoard.getSound('loseLifeSound');
         this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
         this.collectCoinSound = await soundBoard.getSound('coinSound');
+        this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
 
         setMasterVolume(this.masterVolume);
         this.wind = new Wind();
