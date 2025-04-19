@@ -84,7 +84,7 @@ class Terrain {
         //console.log(this.randomnessFactor);
 
         for (let i=0; i<6; i++) {
-            this.drawLayer(159, 216 - 10*i, 251, i);
+            this.drawLayer(160 - 10*i, 205 - 15*i, 230 - 5*i, i);
         }
         this.drawSnow();
     }
