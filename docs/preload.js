@@ -25,7 +25,18 @@ let workshopBackground = null;
 let tipsBox = null;
 let penguinClaw = null;
 
-let playerHeadFish, playerHeadSnowball, playerHeadArrow, playerHeadLaser, playerHeadGatling;
+let fishWorkshop = null;
+let snowballWorkshop = null;
+let arrowWorkshop = null;
+let flyingWorkshop = null;
+let shieldWorkshop = null;
+let shadow = null;
+
+let playerHeadFish = null;
+let playerHeadSnowball = null;
+let playerHeadArrow = null;
+let playerHeadLaser = null;
+let playerHeadGatling = null;
 
 
 // audio
@@ -239,6 +250,13 @@ function preload() {
     ufoArrowImpact = loadImage('assets/images/ufoArrowImpact.png');
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
+
+    fishWorkshop = loadImage('assets/images/fishWorkshop.png');
+    snowballWorkshop = loadImage('assets/images/snowballWorkshop.png');
+    arrowWorkshop = loadImage('assets/images/arrowWorkshop.png');
+    flyingWorkshop = loadImage('assets/images/flyingAbility.png');
+    shieldWorkshop = loadImage('assets/images/forceFieldAbility.png');
+    shadow = loadImage('assets/images/shadow.png');
 
     seagull = loadImage('assets/sprites/seagull.png');
     damagedSeagull = loadImage('assets/images/damagedSeagull.png');

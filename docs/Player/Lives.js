@@ -21,7 +21,7 @@ class Lives {
         this.timeLifeLost = millis();
         this.playingAnimation = true;
 
-        if (!domains.game.loseLifeSound.isPlaying()) {
+        if (!domains.game.loseLifeSound.isPlaying() && this.totalLives > 0) {
             domains.game.loseLifeSound.play();
         }
     }
