@@ -1,5 +1,3 @@
-
-
 class Player {
 
     constructor(x, y) {
@@ -19,6 +17,9 @@ class Player {
         this.lives = new Lives(this);
         this.lostLife = false;
         this.gainedLife = false;
+
+        this.shooting = false;
+        this.headImg   = playerHead;
     }
 
     update() {
@@ -61,9 +62,7 @@ class Player {
 
 
     drawPlayer() {
-        //push();
         this.lives.drawChangeLife();
-
         if (domains.game.death != null && domains.game.death.type === 'UFO') return;
 
         const FRAME_WIDTH = 128;
@@ -72,6 +71,7 @@ class Player {
         const NORMAL_COLUMNS = 2;
         const frameSpeed = 2;
         const scaleFactor = 0.8;
+        const headImg = this.headImg;
 
         imageMode(CENTER);
 
@@ -104,49 +104,91 @@ class Player {
             );
             pop();
         }
+        //------- Penguin Flying -------
         else if (domains.game.score.airtime > 3) {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(velocityAngle);
 
-            if (frameCount % frameSpeed === 0 && !domains.game.pause.active && domains.game.fly != null
-                    && domains.game.fly.active) {
-
+            if (frameCount % frameSpeed === 0
+                && !domains.game.pause.active
+                && domains.game.fly != null
+                && domains.game.fly.active) {
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
                 if (!domains.game.wingFlapSound.isPlaying()) {
                     domains.game.wingFlapSound.play();
                 }
             }
+
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
+            // draw body
             image(
                 playerFly,
                 0, 0,
-                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH, row * FRAME_HEIGHT,
-                FRAME_WIDTH, FRAME_HEIGHT
+                FRAME_WIDTH * scaleFactor,
+                FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT
             );
+
+            // **HEAD OVERLAY** (flying)
+            const HEAD_FRAME_W = 128;
+            const HEAD_FRAME_H = 128;
+            let headRow = this.shooting ? 1 : 0;
+            image(
+                headImg,
+                0, 0,
+                HEAD_FRAME_W * scaleFactor,
+                HEAD_FRAME_H * scaleFactor,
+                0, headRow * HEAD_FRAME_H,
+                HEAD_FRAME_W,
+                HEAD_FRAME_H
+            );
+
             pop();
         }
+        // ------- Penguin grounded -------
         else {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(slopeAngle);
-            this.frameIndex = 0;
+
+            this.frameIndex = 0;  // always 0 on ground
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
+            // draw body
             image(
                 playerFly,
                 0, 0,
-                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH, row * FRAME_HEIGHT,
-                FRAME_WIDTH, FRAME_HEIGHT
+                FRAME_WIDTH * scaleFactor,
+                FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT
             );
+
+            // **HEAD OVERLAY** (ground)
+            const HEAD_FRAME_W = 128;
+            const HEAD_FRAME_H = 128;
+            let headRow = this.shooting ? 1 : 0;
+            image(
+                headImg,
+                0, 0,
+                HEAD_FRAME_W * scaleFactor,
+                HEAD_FRAME_H * scaleFactor,
+                0, headRow * HEAD_FRAME_H,
+                HEAD_FRAME_W,
+                HEAD_FRAME_H
+            );
+
             pop();
         }
-        //pop();
     }
 
     updateAcceleration (slope) {

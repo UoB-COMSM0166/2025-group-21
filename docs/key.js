@@ -36,6 +36,7 @@ function keyPressed() {
         if (!domains.game.pause.active && domains.game.player.alive) {
 
             if (key === settings.shootKey) {
+                domains.game.player.shooting = true;
 
                 if (inventory.laserLevel < 5) {
                     domains.game.projectile.shoot();
@@ -125,6 +126,7 @@ function keyReleased() {
         }
 
         if (key === settings.shootKey) {
+            domains.game.player.shooting = false;
             domains.game.projectile.gatlingMode = false;
         }
     }

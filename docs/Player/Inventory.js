@@ -33,6 +33,18 @@ class Inventory {
         }
     }
 
+    getHeadImage() {
+        console.log('laserLevel =', this.laserLevel);
+        switch (this.laserLevel) {
+            case 1: return playerHeadFish;
+            case 2: return playerHeadSnowball;
+            case 3: return playerHeadArrow;
+            case 4: return playerHeadLaser;
+            case 5: return playerHeadGatling;
+            default: return playerHead;
+        }
+    }
+
     drawStar(x, y, size) {
         push();
         translate(x, y);
