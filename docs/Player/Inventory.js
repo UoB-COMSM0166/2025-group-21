@@ -45,6 +45,18 @@ class Inventory {
         }
     }
 
+    getFeetImage() {
+        console.log('flylevel =', this.laserLevel);
+        switch (this.flyLevel) {
+            case 1: return playerFlyFeet;
+            case 2: return playerFlyFeet;
+            case 3: return playerFlyFeet;
+            case 4: return playerFlyBooster;
+            case 5: return playerFlyBooster;
+            default: return playerFlyFeet;
+        }
+    }
+
     drawStar(x, y, size) {
         push();
         translate(x, y);

@@ -26,6 +26,8 @@ let penguinClaw = null;
 
 let playerHeadFish, playerHeadSnowball, playerHeadArrow, playerHeadLaser, playerHeadGatling;
 
+let playerFlyFeet, playerFlyBooster;
+
 
 // audio
 // let laserAutomaticSound = null;
@@ -211,6 +213,8 @@ function preload() {
     playerHeadArrow      = loadImage('assets/sprites/playerHead_arrow.png');
     playerHeadLaser      = loadImage('assets/sprites/playerHead_laser.png');
     playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
+    playerFlyFeet    = loadImage('assets/sprites/fly_feet.png');
+    playerFlyBooster    = loadImage('assets/sprites/fly_booster.png');
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
     playerDeath = loadImage('assets/sprites/playerDeath.png');
@@ -296,6 +300,7 @@ function setMasterVolume(masterVolume) {
     soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
     soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
     soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
+    soundBoard.cache['boosterSound'].setVolume(0.8*volume*masterVolume);
 }
 
 function loadSoundAsync(path) {

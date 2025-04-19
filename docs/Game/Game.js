@@ -42,6 +42,7 @@ class Game {
         this.terrain = new Terrain();
         this.player = new Player(150, this.terrain.generateHills(150));
         this.player.headImg = inventory.getHeadImage();
+        this.player.feetImg = inventory.getFeetImage();
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();
@@ -196,6 +197,7 @@ class Game {
         this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
         this.collectCoinSound = await soundBoard.getSound('coinSound');
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
+        this.boosterSound    = await soundBoard.getSound('boosterSound');
 
         setMasterVolume(this.masterVolume);
         this.wind = new Wind();
