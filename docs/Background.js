@@ -8,10 +8,10 @@ let spriteSheet;
 let bgFrames = [];
 
 function preloadBackgroundImages() {
-    spriteSheet = loadImage('assets/backgroundAssets/layers26Medium.webp');
+    spriteSheet = loadImage('assets/backgroundAssets/layers26Low.webp');
 
     const totalFrames = 26;
-    const cellW = 600, cellH = 360;
+    const cellW = 240, cellH = 144;
     for (let i = 0; i < totalFrames; i++) {
         const col = i % 5;
         const row = floor(i / 5);

@@ -4,9 +4,6 @@ class ObstacleHandler {
 
     constructor() {
         this.spawnRate = 1;
-        this.airplaneSpawnChance = 0.009;
-        this.birdSpawnChance = 0.009;
-
         this.nextSpawnThreshold = 100;
 
         this.aerialObstacles = [];
@@ -23,14 +20,14 @@ class ObstacleHandler {
         }
         // Add Airplanes
         if (!domains.game.pause.active && domains.game.zoom < 0.65 &&
-            Math.random() > 0.99 -0.002*this.airplaneSpawnChance) { // 0.975
+            Math.random() > 0.99 - 0.002*this.spawnRate) { // 0.975
             let highLimit = domains.game.zoom < 0.25 ? 0.3 : 0.2;
             let lowLimit = domains.game.zoom < 0.25 ? 0.6 : 0.3;
             let spawnLevel = domains.game.player.pos.y + random(highLimit, lowLimit)*(height - domains.game.player.pos.y);
             this.aerialObstacles.push(new Airplane(spawnLevel));
         }
         // Add Birds
-        if (!domains.game.pause.active && Math.random() < this.birdSpawnChance) { // 0.975
+        if (!domains.game.pause.active && Math.random() > 0.99 - 0.001*this.spawnRate) { // 0.975
             let spawnLevel = height * random(0.1, 0.15);
             this.aerialObstacles.push(new Bird(spawnLevel));
         }
@@ -60,7 +57,7 @@ class ObstacleHandler {
         if (domains.game.offset/100 > this.nextSpawnThreshold) {
             this.nextSpawnThreshold += 100;
             this.spawnRate++;
-            this.airplaneSpawnChance++;
+            //this.airplaneSpawnChance++;
         }
     }
 

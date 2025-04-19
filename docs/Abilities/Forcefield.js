@@ -12,7 +12,7 @@ class ForceField {
     activate() {
         if (this.chargeFraction === 1) {
             domains.game.invincibility = true;
-            domains.game.UFOHandler.collisionRadius = width/8;
+            domains.game.obstacleHandler.collisionRadius = width/8;
 
             if (!domains.game.forceFieldSound.isPlaying()) {
                 domains.game.forceFieldSound.play();
@@ -34,7 +34,7 @@ class ForceField {
             domains.game.forceFieldSound.stop();
             this.active = false;
             domains.game.invincibility = false;
-            domains.game.UFOHandler.collisionRadius = 50;
+            domains.game.obstacleHandler.collisionRadius = 50;
         }
     }
 
