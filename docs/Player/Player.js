@@ -19,7 +19,7 @@ class Player {
         this.gainedLife = false;
 
         this.shooting = false;
-        this.headImg   = playerHead;
+        this.headImg  = playerHead;
     }
 
     update() {
@@ -115,6 +115,7 @@ class Player {
                 && domains.game.fly != null
                 && domains.game.fly.active) {
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
+
                 if (!domains.game.wingFlapSound.isPlaying()) {
                     domains.game.wingFlapSound.play();
                 }
@@ -261,8 +262,8 @@ class Player {
                     //this.gravity = 0.02
                 }
                 else {
-                    domains.game.loseLifeSound.play();
-                    this.lives.playingAnimation = true;
+                    // domains.game.loseLifeSound.play();
+                    // this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }

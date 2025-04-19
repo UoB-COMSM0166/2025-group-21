@@ -19,6 +19,7 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
+        this.wingFlapSound = null;
 
         // Cheats
         this.invincibility = settings.enableCheats;
@@ -84,7 +85,7 @@ class Game {
             translate(this.tx, this.ty); // Change coordinate origin to player position
             scale(this.zoom); // set screen zoom
 
-            this.terrain.drawHills();
+            this.terrain.drawHills(width);
             this.player.drawPlayer()
             this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
@@ -218,6 +219,7 @@ class Game {
         this.loseLifeSound.stop();
         this.gainLifeSound.stop();
         this.collectCoinSound.stop();
+        this.wingFlapSound.stop();
 
         this.windSound = null;
         this.laserSound = null;
@@ -234,5 +236,6 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
+        this.wingFlapSound = null;
     }
 }
