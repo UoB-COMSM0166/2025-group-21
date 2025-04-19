@@ -92,7 +92,7 @@ class Terrain {
         }
 
         for (let i=0; i<6; i++) {
-            this.drawLayer(159, 216 - 10*i, 251, i, length, canvas);
+            this.drawLayer(160 - 10*i, 205 - 15*i, 230 - 5*i, i, length, canvas);
         }
         this.drawSnow(length, canvas);
     }

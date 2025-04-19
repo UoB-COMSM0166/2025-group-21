@@ -17,6 +17,7 @@ let ufoArrowImpact = null;
 let greenLaser = null;
 let purpleLaser = null;
 let coinImage = null;
+let ingameCoin = null;
 let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
@@ -228,6 +229,7 @@ function preload() {
     heartImages[1] = loadImage('assets/images/heart2.png');
     heartImages[2] = loadImage('assets/images/heart3.png');
     heartImages[3] = loadImage('assets/images/heart4.png');
+    ingameCoin = loadImage('assets/images/penguin_coin.png');
 
     damagedUfo = loadImage('assets/images/damagedUfo.png');
     snowball = loadImage('assets/images/snowball.png');
