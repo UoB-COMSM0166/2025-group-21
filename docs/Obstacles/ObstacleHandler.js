@@ -119,7 +119,7 @@ class ObstacleHandler {
     updateCooldown() {
         this.birdHitCooldown.tick();
 
-        if (this.birdHitCooldown.time > 60) {
+        if (this.birdHitCooldown.time > 120) {
             this.birdHitCooldown.reset();
         }
     }
