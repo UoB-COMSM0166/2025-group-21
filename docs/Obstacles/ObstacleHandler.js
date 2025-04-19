@@ -9,6 +9,7 @@ class ObstacleHandler {
         this.aerialObstacles = [];
         this.explosions = [];
         this.collisionRadius = 50;
+        this.birdHitCooldown = new Clock();
     }
 
     updateObstacles() {
@@ -62,6 +63,10 @@ class ObstacleHandler {
     }
 
     checkForPlayerCollision() {
+        if (this.birdHitCooldown.time > 0) {
+            this.updateCooldown();
+            return;
+        }
 
         for (let u=0; u<this.aerialObstacles.length; u++) {
 
@@ -71,6 +76,16 @@ class ObstacleHandler {
                 let dy = abs(domains.game.player.pos.y - this.aerialObstacles[u].pos.y);
 
                 if (Math.sqrt(dx**2 + dy**2) < this.collisionRadius) {
+                    this.aerialObstacles[u].hitByArrow = true;
+
+                    if (this.aerialObstacles[u] instanceof Bird) {
+                        if (domains.game.player.lives.getLives() > 1) {
+                            domains.game.player.lives.removeLife();
+                            this.birdHitCooldown.tick();
+                            return;
+                        }
+                    }
+
                     this.explosions.push(new Explosion(this.aerialObstacles[u].pos));
                     this.aerialObstacles.splice(u, 1);
 
@@ -98,6 +113,14 @@ class ObstacleHandler {
                 this.explosions.splice(i, 1);
             }
             else this.explosions[i].explode();
+        }
+    }
+
+    updateCooldown() {
+        this.birdHitCooldown.tick();
+
+        if (this.birdHitCooldown.time > 120) {
+            this.birdHitCooldown.reset();
         }
     }
 }

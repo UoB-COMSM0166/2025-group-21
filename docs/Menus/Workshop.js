@@ -188,33 +188,31 @@ class Workshop {
         this.printAbilityLevel(inventory.laserLevel);
 
         push();
-        let size = width / 4;
+        let size = width / 1250;
         imageMode(CENTER);
-        translate(0.25*width, 0.65*height)
+        translate(0.245*width, 0.64*height);
 
         switch (inventory.laserLevel) {
             case 1:
+                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
                 rotate(-0.78);
-                image(fish, 0, 0, size/1.5, size/1.5);
+                image(fishWorkshop, 0, 0, size*fishWorkshop.width, size*fishWorkshop.height);
                 break;
             case 2:
-                rotate(-0.78);
-                image(snowball, 0, 0, size/1.5, size/1.5);
+                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
+                image(snowballWorkshop, 0, 0, size*snowballWorkshop.width/3, size*snowballWorkshop.height/3);
                 break;
             case 3:
-                rotate(-0.78);
-                image(arrow, 0, 0, size/1.5, size/10, 0, 0, 60, 9);
+                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/15);
+                image(arrowWorkshop, 0, 0, size*arrowWorkshop.width/3.5, size*arrowWorkshop.height/3.5);
                 break;
             case 4:
-                rotate(2.357);
-                image(greenLaser, 0, 0, size, size/5);
+                rotate(-0.7);
+                image(greenLaser, 0, 10*size, size*greenLaser.width/4.5, size*greenLaser.height/4.5);
                 break;
             case 5:
-                rotate(2.357);
-                image(purpleLaser, size/10, size/6, size/2, size/6);
-                image(purpleLaser, size/3, size/20, size/2, size/6);
-                image(purpleLaser, -size/4, -size/30, size/2, size/6);
-                break
+                image(purpleLaser, 0, 0.03*height, size*purpleLaser.width/5, size*purpleLaser.height/5);
+                break;
         }
 
         pop();
@@ -233,6 +231,15 @@ class Workshop {
             text('MAX', width/2.15, height/2.37);
         }
         this.printAbilityLevel(inventory.flyLevel);
+
+        push();
+        let size = width / 3700;
+        imageMode(CENTER);
+        translate(0.245*width, 0.64*height);
+        image(shadow, 0, height/5, size*shadow.width/3, size*shadow.height/3);
+        image(flyingWorkshop, 0, 0, size*flyingWorkshop.width, size*flyingWorkshop.height);
+        pop();
+
     }
 
     showForceFieldDescription(){
@@ -246,6 +253,14 @@ class Workshop {
             text('MAX', width/2.15, height/2.37);
         }
         this.printAbilityLevel(inventory.forceFieldLevel);
+
+        push();
+        let size = width / 3800;
+        imageMode(CENTER);
+        translate(0.25*width, 0.66*height);
+        image(shadow, 0, height/5.5, size*shadow.width/3.5, size*shadow.height/3.5);
+        image(shieldWorkshop, 0, 0, size*shieldWorkshop.width, size*shieldWorkshop.height);
+        pop();
     }
 
     updateProjectileButton() {

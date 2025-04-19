@@ -33,7 +33,7 @@ class Coins {
         for (let singleCoin of this.coins) {
             let screenX = singleCoin.x - offset;
             let screenY = singleCoin.y;
-            image(coinImage, screenX, screenY, coinImage.width*0.07, coinImage.height*0.07);
+            image(ingameCoin, screenX, screenY, coinImage.width*0.07, coinImage.height*0.07);
         }
     }
 
@@ -115,7 +115,7 @@ class Coins {
             // Draw shrinking / rising coin
             let screenX = coin.pos.x - offset;
             let screenY = coin.pos.y - coin.height;
-            image(coinImage, screenX, screenY, coinImage.width*coin.size, coinImage.height*coin.size);
+            image(ingameCoin, screenX, screenY, coinImage.width*coin.size, coinImage.height*coin.size);
 
             // Remove when coin small enough
             if (coin.size < 0.01) {

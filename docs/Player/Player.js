@@ -299,8 +299,8 @@ class Player {
                     //this.gravity = 0.02
                 }
                 else {
-                    domains.game.loseLifeSound.play();
-                    this.lives.playingAnimation = true;
+                    // domains.game.loseLifeSound.play();
+                    // this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }
