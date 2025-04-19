@@ -224,8 +224,6 @@ class Player {
                 FEET_FRAME_H
             );
             pop();
-
-            pop();
         }
     }
 
