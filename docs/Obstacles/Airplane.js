@@ -13,7 +13,7 @@ class Airplane extends AerialObstacle {
 
         this.frameWidth = 72;
         this.frameHeight = 31;
-        this.scale = 3;
+        this.scale = 2;
         this.frameCount = 8;
     }
 
