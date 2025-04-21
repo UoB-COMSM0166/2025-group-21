@@ -149,7 +149,7 @@ progressively increase, with obstacles appearing both on the ground and in the a
 
 Given that we had previously designed an in-game store, we refined and upgraded the store’s items—such as flight-related props that provide acceleration—based on player feedback to enhance the gaming experience.
 
-External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air.the terrain itself becomes a key element of gameplay, making precise movement a challenge.Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
+External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air. The terrain itself becomes a key element of gameplay, making precise movement a challenge. Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
 
 ### Identifying Stakeholders
 
@@ -399,7 +399,8 @@ A major design challenge was creating movement mechanics that felt both realisti
 We based player movement on classical physics. The player has both position and velocity and acceleration vectors in the x and y directions.
 - In the air, gravity increases the player's downward velocity.
 - On the ground, friction slows the player's horizontal velocity.
-- Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground
+- Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground.
+
 These effects can be seen in the player’s velocity vectors in Figure 4a.
 
 #### Acceleration
