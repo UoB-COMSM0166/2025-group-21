@@ -21,6 +21,7 @@ class Player {
         this.shooting = false;
         this.headImg   = playerHead;
         this.feetImg = playerFlyFeet;
+        this.wingImg = playerPenguinWings;
     }
 
     update() {
@@ -74,6 +75,7 @@ class Player {
         const scaleFactor = 0.8;
         const headImg = this.headImg;
         const feetImg = this.feetImg;
+        const wingImg = this.wingImg;
 
         imageMode(CENTER);
 
@@ -134,9 +136,9 @@ class Player {
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
-            // draw body
+            // ----- draw body ------------
             image(
-                playerFly,
+                playerBody,
                 0, 0,
                 FRAME_WIDTH * scaleFactor,
                 FRAME_HEIGHT * scaleFactor,
@@ -173,6 +175,18 @@ class Player {
                 FEET_FRAME_W,
                 FEET_FRAME_H
             );
+
+            //--- Drawing wings ---------
+            image(
+                wingImg,
+                0, 0,
+                FRAME_WIDTH * scaleFactor,
+                FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT
+            );
             pop();
         }
         // ------- Penguin grounded -------
@@ -187,7 +201,7 @@ class Player {
 
             // draw body
             image(
-                playerFly,
+                playerBody,
                 0, 0,
                 FRAME_WIDTH * scaleFactor,
                 FRAME_HEIGHT * scaleFactor,
@@ -222,6 +236,19 @@ class Player {
                 0, feetRow * FEET_FRAME_H,
                 FEET_FRAME_W,
                 FEET_FRAME_H
+            );
+
+
+            //----Drawing Wings-------
+            image(
+                wingImg,
+                0, 0,
+                FRAME_WIDTH * scaleFactor,
+                FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT
             );
             pop();
         }

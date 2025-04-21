@@ -38,7 +38,7 @@ let playerHeadArrow = null;
 let playerHeadLaser = null;
 let playerHeadGatling = null;
 
-let playerFlyFeet, playerFlyBooster;
+let playerFlyFeet, playerFlyBooster, playerPenguinWings, playerDragonWings;
 
 
 // audio
@@ -225,10 +225,13 @@ function preload() {
     playerHeadArrow      = loadImage('assets/sprites/playerHead_arrow.png');
     playerHeadLaser      = loadImage('assets/sprites/playerHead_laser.png');
     playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
-    playerFlyFeet    = loadImage('assets/sprites/fly_feet.png');
-    playerFlyBooster    = loadImage('assets/sprites/fly_booster.png');
+    playerFlyFeet        = loadImage('assets/sprites/fly_feet.png');
+    playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
+    playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
+    playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
+
     playerImg = loadImage('assets/images/player1.png');
-    playerFly = loadImage('assets/sprites/playerFly.png');
+    playerBody = loadImage('assets/sprites/playerBody.png');
     playerDeath = loadImage('assets/sprites/playerDeath.png');
     ufo = loadImage('assets/images/ufo.png');
     explosion = loadImage('assets/sprites/explosion.png');
