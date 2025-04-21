@@ -27,7 +27,6 @@ let penguinClaw = null;
 
 let playerHeadFish, playerHeadSnowball, playerHeadArrow, playerHeadLaser, playerHeadGatling;
 
-
 // audio
 // let laserAutomaticSound = null;
 // let explosionSound = null;
@@ -100,7 +99,6 @@ let playButton = null;
 let playButtonHover = null;
 let mainMenuButton = null;
 let mainMenuButtonHover = null;
-
 
 // pause menu
 let continueButton = null;

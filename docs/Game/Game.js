@@ -19,6 +19,7 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
+        this.highscores = new Highscores();
 
         // Cheats
         this.invincibility = settings.enableCheats;
@@ -48,7 +49,6 @@ class Game {
         this.hearts = new Hearts();
         this.coins = new Coins();
 
-        this.highscores = new Highscores();
         this.obstacleHandler = new ObstacleHandler();
         this.wind = null;
         this.death = null;
