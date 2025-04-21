@@ -501,9 +501,74 @@ To solve both issues, we set up Vercel serverless functions as our backend. This
 |Help users recognise, diagnose and recover from errors - Error recognition and recovery|||||
 |Help and documentation - Help|||||
 ### Qualitative evaluation
+We believe that collecting data regarding game mechanics, level difficulty, and overall design is extremely valuable for refining our game development process. Therefore, we have employed the techniques of Think Aloud (TA) and semi-structured interviews to capture as comprehensive user feedback as possible both during gameplay and after its conclusion. We utilized voluntary sampling combined with exhaustive sampling to collect feedback from 10 participants, encompassing a diverse range of demographics—including both game enthusiasts and individuals who rarely play games—in order to obtain a holistic dataset.
+
+Our participants were required to experience two modes with differing levels of difficulty. During gameplay, we recorded their operational and emotional responses in real time, with particular attention paid to the aspects that caused confusion (often reflecting varying interpretations of the game concept) and those that generated excitement (typically indicating that our design is on the right track).
+
+After data collection, we applied thematic analysis to the textual data. By identifying, organizing, and abstracting underlying themes, we determined a series of significant themes, which we consolidated into a table to facilitate clearer visualization and comparison of feedback across different participants.
+
 ### Difficulties
+Players expressed differing opinions regarding the usability of the more challenging game mode. Some felt that, having been trained through the first level, the second level was manageable, while others found it very difficult to complete.
+
+Upon further inquiry and investigation, we found that the varied evaluations of difficulty were primarily centered around :
+- the terrain (which is significantly steeper in the second level compared to the first)
+- and the complexity of key-press combo.
+
+To address these difficulty issues, we decided to :
+- Make adjustments to the terrain in order to help players feel more confident
+- Update our instruction page
 ### Quantitative Analysis
+We have reached a consensus that the game should be challenging without causing excessive frustration, while also offering improved playability. To better achieve this goal, we employed the *NASA TLX* and *SUS* techniques to collect and analyze data, and we conducted a *Wilcoxon signed‑rank test* on the results.
+
+The NASA TLX index has been shown to exhibit high reliability across many domains of human–computer interaction (HCI), including video game difficulty assessment *(Hart & Staveland, 1988; Ramkumar et al., 2016; Seyderhelm & Blackmore, 2023)*.Also, The System Usability Scale (SUS) has been shown to demonstrate high reliability across a wide range of human–computer interaction (HCI) contexts, including video game usability evaluation *(Brooke, 1996; Bangor et al., 2008; Sauro & Lewis, 2012).*
+<br/>
+<br/>
+<p align="center">
+<em>NASA TLX Score</em>
+  <img src="docs/assets/assets_for_README/NASA TLX Score.png" alt="NASA TLX Score" style="display:block; margin:20px auto;" width="600"/>
+  <br/>
+</p>
+To better analyse our results, we calculated the median for each dimension and performed the Wilcoxon signed rank test result(N=10，α=0.05) on the raw data.
+
+<p align="center">
+<em>NASA TLX Median Comparison</em>
+  <img src="docs/assets/assets_for_README/NASA TLX Median Comparison.png" alt="NASA TLX Median" style="display:block; margin:20px auto;" width="600"/>
+  <br/>
+</p>
+
+<p align="center">
+  <img src="docs/assets/assets_for_README/Median change by dimension.png" alt="Median change by dimension" style="display:block; margin:20px auto;" width="600"/>
+  <br/>
+</p>
+<p align="center">
+<em>NASA TLX Wilcoxon Rank Result </em>
+  <img src="docs/assets/assets_for_README/NASA_TLX_Wilcoxon_Result.png" alt="NASA TLX Wilcoxon Result" style="display:block; margin:20px auto;" width="600"/>
+  <br/>
+</p>
+
+The result shows that difficulty increase most strongly affects **Frustration** and **Effort**.
+- Frustration median rose from 20 to 55, with p = 0.0195 (< 0.05),showing a significant jump in players’ feelings of frustration when they're playing a relatively harder mode of the game.
+- Effort median rose from 35 → 60, with p = 0.0097 (< 0.05), indicating players are exerting significantly more effort at higher difficulty.
+
+Result of NASA TLX indicates that during our next iteration,the priority is to introduce optional hints or in‑game aids to help players over tough spots.
+Also,we should focus on perform balance pacing,add mid‑level checkpoints or short “breather” phases so players aren’t under constant high mental or time pressure.
+
+We want to focus more on system usability, so we've also collected SUS data.
+
+<p align="center">
+<em>System Usability Scale(SUS) Result </em>
+  <img src="docs/assets/assets_for_README/SUS score.png" alt="SUS Result" style="display:block; margin:20px auto;" width="600"/>
+  <br/>
+</p>
+System availability considerations were evaluated using 68 as the average score. For our system, the average score for Difficulty 1 was 77.4 and the average score for Difficulty 2 was 70.0, both above 68. 
+
+Overall, **the SUS scores for both difficulties were above the industry average**, meaning that the system's usability was **in the passing or even excellent range regardless of difficulty.**
+
+
+
 ### Description of how code was tested
+(.....to be done)
+
 # 7. Sustainability 
 ### SusA Framework: Questions
 | |Social|
