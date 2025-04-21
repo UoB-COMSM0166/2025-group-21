@@ -21,6 +21,7 @@ class Player {
         this.shooting = false;
         this.headImg   = playerHead;
         this.feetImg = playerFlyFeet;
+        this.wingImg = playerPenguinWings;
     }
 
     update() {
@@ -74,6 +75,7 @@ class Player {
         const scaleFactor = 0.8;
         const headImg = this.headImg;
         const feetImg = this.feetImg;
+        const wingImg = this.wingImg;
 
         imageMode(CENTER);
 
@@ -134,9 +136,9 @@ class Player {
             let col = this.frameIndex % NORMAL_COLUMNS;
             let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
-            // draw body
+            // ----- draw body ------------
             image(
-                playerFly,
+                playerBody,
                 0, 0,
                 FRAME_WIDTH * scaleFactor,
                 FRAME_HEIGHT * scaleFactor,
@@ -173,6 +175,18 @@ class Player {
                 FEET_FRAME_W,
                 FEET_FRAME_H
             );
+
+            //--- Drawing wings ---------
+            image(
+                wingImg,
+                0, 0,
+                FRAME_WIDTH * scaleFactor,
+                FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT
+            );
             pop();
         }
         // ------- Penguin grounded -------
@@ -187,7 +201,7 @@ class Player {
 
             // draw body
             image(
-                playerFly,
+                playerBody,
                 0, 0,
                 FRAME_WIDTH * scaleFactor,
                 FRAME_HEIGHT * scaleFactor,
@@ -223,8 +237,48 @@ class Player {
                 FEET_FRAME_W,
                 FEET_FRAME_H
             );
+
+
+            //----Drawing Wings-------
+            image(
+                wingImg,
+                0, 0,
+                FRAME_WIDTH * scaleFactor,
+                FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT
+            );
             pop();
         }
+        // // Velocity vector
+        // let dx1 = this.vel.x * 8;
+        // let dy1 = this.vel.y * 8;
+        //
+        // // Acceleration vector
+        // let dx2 = this.acc.x * 1500;
+        // let dy2 = this.acc.y * 1500;
+        //
+        // push();
+        // strokeWeight(8);
+        //
+        // // Velocity (red)
+        // stroke('red');
+        // line(this.pos.x, this.pos.y, this.pos.x + dx1, this.pos.y); // x axis
+        // drawArrowhead(this.pos.x, this.pos.y, dx1, 0, 20, 'red');
+        //
+        // line(this.pos.x, this.pos.y, this.pos.x, this.pos.y + dy1); // y axis
+        // drawArrowhead(this.pos.x, this.pos.y, 0, dy1, 20, 'red');
+        //
+        // // Acceleration (blue)
+        // stroke('blue');
+        // line(this.pos.x, this.pos.y, this.pos.x + dx2, this.pos.y); // x axis
+        // drawArrowhead(this.pos.x, this.pos.y, dx2, 0, 20, 'blue');
+        //
+        // line(this.pos.x, this.pos.y, this.pos.x, this.pos.y + dy2); // y axis
+        // drawArrowhead(this.pos.x, this.pos.y, 0, dy2, 20, 'blue');
+        // pop();
     }
 
     updateAcceleration (slope) {
@@ -318,3 +372,18 @@ class Player {
         return 2 * slopeAngle + velocityAngle;
     }
 }
+
+// function drawArrowhead(x, y, dx, dy, size = 100, color = 'black') {
+//     push();
+//     translate(x + dx, y + dy);
+//     let angle = atan2(dy, dx);
+//     rotate(angle);
+//     fill(color);
+//     beginShape();
+//     strokeWeight(6);
+//     vertex(0, 0);
+//     vertex(-size, size / 2);
+//     vertex(-size, -size / 2);
+//     endShape(CLOSE);
+//     pop();
+// }
