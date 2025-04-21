@@ -368,8 +368,9 @@ A core requirement for our game was an infinite, randomly generated terrain. Thi
 
 We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling hills, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
 
-
-**Figure 1.** Evolution of our terrain generation over time.
+<div align="center">
+    **Figure 1.** Evolution of our terrain generation over time.
+</div>
 
 #### 2. Random and Unpredictable Terrain
 
@@ -377,9 +378,8 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 
 <div align="center">
     <img src="Videos/sine_wave_sum.gif" width="700" alt="Sine curve diagram">
+    **Figure 2.** Comparison of individual sine curves and their summed result.
 </div>
-
-**Figure 2.** Comparison of individual sine curves and their summed result.
 
 #### 3. Modifiable Difficulties
 
@@ -387,9 +387,8 @@ Difficulty levels were implemented by adjusting the sine wave parameters. More e
 
 <div align="center">
     <img src="Videos/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
+    **Figure 3.** Terrain variations across different difficulty levels.
 </div>
-
-**Figure 3.** Terrain variations across different difficulty levels.
 
 ### 2. Movement Physics
 
@@ -422,9 +421,8 @@ These forces—shown in Figure 4b—formed the foundation of the players sliding
         <td><img src="Videos/acceleration_vector_figure.mp4" width="360"/></td>
       </tr>
     </table>
+    **Figure 4.** Player a) velocity (red) and b) acceleration (blue) vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.
 </div>
-
-**Figure 4.** Player a) velocity (red) and b) acceleration (blue) vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.
 
 ### 3. Saving Progress and Global Leaderboards
 
