@@ -408,11 +408,11 @@ These effects can be seen in the player’s velocity vectors in Figure 4a.
 
 To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
 
-
 <div align="center">
-    <img align="center" src="Videos/acceleration_equation_figure.png" width="400" alt="Acceleration equation and vectors">
+    <br>
+    <img align="center" src="Videos/acceleration_equation_figure.png" width="300" alt="Acceleration equation and vectors">
+    <br>
 </div>
-
 
 These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
