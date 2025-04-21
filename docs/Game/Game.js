@@ -29,9 +29,15 @@ class Game {
         document.body.classList.remove("show-cursor");
         noStroke();
 
+        this.wind = null;
         this.masterVolume = settings.masterVolume*settings.mute;
         this.soundsLoaded = false;
-        this.loadAudio().then(() => this.soundsLoaded = true);
+
+        this.loadAudio().then(() => {
+            this.soundsLoaded = true
+            setMasterVolume(this.masterVolume);
+            this.wind = new Wind();
+        });
 
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 100; // 50
@@ -51,7 +57,6 @@ class Game {
 
         this.highscores = new Highscores();
         this.obstacleHandler = new ObstacleHandler();
-        this.wind = null;
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
@@ -197,9 +202,6 @@ class Game {
         this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
         this.collectCoinSound = await soundBoard.getSound('coinSound');
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
-
-        setMasterVolume(this.masterVolume);
-        this.wind = new Wind();
     }
 
     disconnectAudio() {

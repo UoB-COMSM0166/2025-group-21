@@ -14,16 +14,10 @@ let soundBoard = null;
 function setup() {
     let gameProgress = loadGameProgress();
 
-    // if (!gameProgress) {
-    //     gameProgress = NEW_GAME_STATE;
-    // }
-
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
-    inventory = null; // new Inventory(gameProgress);
-    settings = null; // new Settings(gameProgress);
     soundBoard = new SoundBoard();
     domains = new DomainManager(gameProgress);
 }
