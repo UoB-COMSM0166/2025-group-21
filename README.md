@@ -487,19 +487,21 @@ To solve both issues, we set up Vercel serverless functions as our backend. This
 | 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
 
 ### Heuristic Evaluation
-***Tick it if you think there have relative probelems in our game
-| The usability principle|Tester 1|Tester 2|Tester 3|Tester 4|
-|--|:--:|:--:|:--:|:--:|
-|Visibility of system status - Feedback|||||
-|Match between system and real world - Conventions|||||
-|User control and freedom - Emergency exits|||||
-|Consistency and standards - Consistency|||||
-|Error prevention|||||
-|Recognition not recall|||||
-|Flexibility and efficiency of use - Flexibility|||||
-|Aesthetic and minimalist design - Minimalist design|||||
-|Help users recognise, diagnose and recover from errors - Error recognition and recovery|||||
-|Help and documentation - Help|||||
+**Tick it if you think there are relevant problems in our game**
+
+| The Usability Principle                                              | Tester 1 | Tester 2 | Tester 3 | Tester 4 |
+|----------------------------------------------------------------------|:--------:|:--------:|:--------:|:--------:|
+| Visibility of system status (Feedback)                               |          |          |          |          |
+| Match between system and the real world (Conventions)                |          |          |          |          |
+| User control and freedom (Emergency exits)                           |          |          |          |          |
+| Consistency and standards (Consistency)                              |          |          |          |          |
+| Error prevention                                                     |          |          |          |          |
+| Recognition rather than recall                                       |          |          |          |          |
+| Flexibility and efficiency of use (Flexibility)                      |          |          |          |          |
+| Aesthetic and minimalist design (Minimalist design)                  |          |          |          |          |
+| Help users recognise, diagnose and recover from errors (Recovery)    |          |          |          |          |
+| Help and documentation (Help)                                        |          |          |          |          |
+
 ### Qualitative evaluation
 We believe that collecting data regarding game mechanics, level difficulty, and overall design is extremely valuable for refining our game development process. Therefore, we have employed the techniques of Think Aloud (TA) and semi-structured interviews to capture as comprehensive user feedback as possible both during gameplay and after its conclusion. We utilized voluntary sampling combined with exhaustive sampling to collect feedback from 10 participants, encompassing a diverse range of demographics—including both game enthusiasts and individuals who rarely play games—in order to obtain a holistic dataset.
 
