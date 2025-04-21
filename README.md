@@ -355,7 +355,85 @@ Description: The player interacts with the system through multiple phases: start
 
 
 # 5. Implementation
+
 ### Challenges
+
+While the game development was full of challenges and learning experiences, three particular instances of software development stood out to us.
+
+### 1. Infinitely Generating the Map
+
+A core requirement for our game was an infinite, randomly generated terrain. This epic involved three key requirements:
+
+1. Endless Terrain Generation
+
+We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling hills, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
+
+
+**Figure 1.** Evolution of our terrain generation over time.
+
+2. Random and Unpredictable Terrain
+
+To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using Math.random().
+
+
+**Figure 2.** Comparison of individual sine curves and their summed result.
+
+3. Modifiable Difficulties
+
+Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
+
+**Figure 3.** Terrain variations across different difficulty levels.
+
+### 2. Movement Physics
+
+A major design challenge was creating movement mechanics that felt both realistic and fun. Since players rely heavily on predicting how their character moves and interacts with the terrain, the physics needed to be intuitive and consistent.
+
+#### Velocity
+
+We based player movement on classical physics. The player has both position and velocity and acceleration vectors in the x and y directions.
+
+In the air, gravity increases the player's downward velocity
+On the ground, friction slows the player's horizontal velocity
+Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground
+
+These effects can be seen in the player’s velocity vectors in Figure 4a.
+
+#### Acceleration
+
+To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
+
+$$
+Total Acceleration = gravity \times sin(arctan(m))
+
+xAcc = Total Acceleration \times sin(arctan(slope))
+yAcc = Total Acceleration \times cos(arctan(slope))
+$$
+
+These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
+
+
+Figure 4. Player a) velocity (red) and b) acceleration (blue) vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.
+
+### 3. Saving Progress and Global Leaderboards
+
+#### Saving Progress
+
+Since our game relies on accumulating progress over time, preserving state across sessions was essential. 
+
+After evaluating options like cookies and server hosting, we chose client-side persistent storage using the Web Storage API. This approach allowed us to store and retrieve JSON data in the browser via a SAVE_KEY.
+
+On each load, the game checks for this saved data. If present, it’s parsed and used to restore the previous game state. If the user opts to start fresh, default values overwrite the existing save. We stored a variety of parameters, including coins, purchased items, key bindings, volume, and difficulty settings.
+
+#### Global Leaderboards
+
+We also wanted a global leaderboard where players could compete across devices. Unlike progress data, this required shared access beyond the client’s browser.
+
+Our first solution used GitHub Gists—an easy, lightweight way to store username–score pairs. However, this raised two major issues:
+
+Authentication – Anyone could modify the public Gist, opening the door to fake scores.
+Race Conditions – Conflicts between read/write operations often resulted in lost data.
+
+To solve both issues, we set up Vercel serverless functions as our backend. This allowed us to securely handle game logic and validate score submissions on the server side. For persistent, real-time storage of high scores, we used Redis, a fast, in-memory data store well-suited for leaderboard-style JSON data.
 
 # 6. Evaluation
 
