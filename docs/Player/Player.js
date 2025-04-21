@@ -163,7 +163,7 @@ class Player {
             //--- drawing feet -----
             const FEET_FRAME_W = 128;
             const FEET_FRAME_H = 128;
-            let feetRow = domains.game.fly.active ? 1 : 0;
+            let feetRow = (domains.game.fly && domains.game.fly.active) ? 1 : 0;
             image(
                 feetImg,
                 0, 0,
@@ -213,7 +213,7 @@ class Player {
             //--- Feet grounded ------------
             const FEET_FRAME_W = 128;
             const FEET_FRAME_H = 128;
-            let feetRow = domains.game.fly.active ? 1 : 0;
+            let feetRow = (domains.game.fly && domains.game.fly.active) ? 1 : 0;
             image(
                 feetImg,
                 0, 0,
