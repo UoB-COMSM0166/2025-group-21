@@ -20,6 +20,7 @@ class Player {
 
         this.shooting = false;
         this.headImg   = playerHead;
+        this.feetImg = playerFlyFeet;
     }
 
     update() {
@@ -72,6 +73,7 @@ class Player {
         const frameSpeed = 2;
         const scaleFactor = 0.8;
         const headImg = this.headImg;
+        const feetImg = this.feetImg;
 
         imageMode(CENTER);
 
@@ -115,8 +117,17 @@ class Player {
                 && domains.game.fly != null
                 && domains.game.fly.active) {
                 this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
-                if (!domains.game.wingFlapSound.isPlaying()) {
-                    domains.game.wingFlapSound.play();
+
+                //---- PLaying different sounds for different flying levels ------
+                if (inventory.flyLevel >= 4) {
+                    if (!domains.game.boosterSound.isPlaying()) {
+                        domains.game.boosterSound.play();
+                        domains.game.wingFlapSound.play();
+                    }
+                } else {
+                    if (!domains.game.wingFlapSound.isPlaying()) {
+                        domains.game.wingFlapSound.play();
+                    }
                 }
             }
 
@@ -135,7 +146,7 @@ class Player {
                 FRAME_HEIGHT
             );
 
-            // **HEAD OVERLAY** (flying)
+            //--- Drawing head -------
             const HEAD_FRAME_W = 128;
             const HEAD_FRAME_H = 128;
             let headRow = this.shooting ? 1 : 0;
@@ -149,6 +160,19 @@ class Player {
                 HEAD_FRAME_H
             );
 
+            //--- drawing feet -----
+            const FEET_FRAME_W = 128;
+            const FEET_FRAME_H = 128;
+            let feetRow = (domains.game.fly && domains.game.fly.active) ? 1 : 0;
+            image(
+                feetImg,
+                0, 0,
+                FEET_FRAME_W * scaleFactor,
+                FEET_FRAME_H * scaleFactor,
+                0, feetRow * FEET_FRAME_H,
+                FEET_FRAME_W,
+                FEET_FRAME_H
+            );
             pop();
         }
         // ------- Penguin grounded -------
@@ -186,7 +210,19 @@ class Player {
                 HEAD_FRAME_W,
                 HEAD_FRAME_H
             );
-
+            //--- Feet grounded ------------
+            const FEET_FRAME_W = 128;
+            const FEET_FRAME_H = 128;
+            let feetRow = (domains.game.fly && domains.game.fly.active) ? 1 : 0;
+            image(
+                feetImg,
+                0, 0,
+                FEET_FRAME_W * scaleFactor,
+                FEET_FRAME_H * scaleFactor,
+                0, feetRow * FEET_FRAME_H,
+                FEET_FRAME_W,
+                FEET_FRAME_H
+            );
             pop();
         }
         // // Velocity vector
@@ -288,8 +324,8 @@ class Player {
                     //this.gravity = 0.02
                 }
                 else {
-                    domains.game.loseLifeSound.play();
-                    this.lives.playingAnimation = true;
+                    // domains.game.loseLifeSound.play();
+                    // this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }

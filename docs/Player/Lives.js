@@ -19,6 +19,11 @@ class Lives {
     removeLife() {
         this.totalLives--;
         this.timeLifeLost = millis();
+        this.playingAnimation = true;
+
+        if (!domains.game.loseLifeSound.isPlaying() && this.totalLives > 0) {
+            domains.game.loseLifeSound.play();
+        }
     }
 
     drawChangeLife() {

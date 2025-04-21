@@ -20,6 +20,7 @@ class Game {
         this.gainLifeSound = null;
         this.collectCoinSound = null;
         this.highscores = new Highscores();
+        this.wingFlapSound = null;
 
         // Cheats
         this.invincibility = settings.enableCheats;
@@ -43,6 +44,7 @@ class Game {
         this.terrain = new Terrain();
         this.player = new Player(150, this.terrain.generateHills(150));
         this.player.headImg = inventory.getHeadImage();
+        this.player.feetImg = inventory.getFeetImage();
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();
@@ -84,7 +86,7 @@ class Game {
             translate(this.tx, this.ty); // Change coordinate origin to player position
             scale(this.zoom); // set screen zoom
 
-            this.terrain.drawHills();
+            this.terrain.drawHills(width);
             this.player.drawPlayer()
             this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
@@ -196,6 +198,7 @@ class Game {
         this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
         this.collectCoinSound = await soundBoard.getSound('coinSound');
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
+        this.boosterSound    = await soundBoard.getSound('boosterSound');
 
         setMasterVolume(this.masterVolume);
         this.wind = new Wind();
@@ -218,6 +221,7 @@ class Game {
         this.loseLifeSound.stop();
         this.gainLifeSound.stop();
         this.collectCoinSound.stop();
+        this.wingFlapSound.stop();
 
         this.windSound = null;
         this.laserSound = null;
@@ -234,5 +238,6 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
+        this.wingFlapSound = null;
     }
 }
