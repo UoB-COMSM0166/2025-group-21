@@ -2,29 +2,26 @@ class Highscores {
 
     constructor() {
         // Need to remove these from the repo and add privately somehow - not good practice currently
-        this.gistId = "3575bb56449aada9c0e5a492211e824e";
-        this.filename = "highscores";
-        this.token = "gh" + "p_N8TI" + "MbLXv" + "KqC8Z1YzIX" + "gOFeI08Qh" + "x11tmgv8"; // Add my token here
-        this.apiUrl = `https://api.github.com/gists/${this.gistId}`;
-        this.rawUrl = `https://gist.githubusercontent.com/jmay-gh/${this.gistId}/raw/${this.filename}`;
-
         this.highscores = [];
         this.maxScores = 10;
         this.usernameEntered = false; // Flag to track if username has been entered
         this.userName = '';
         // Load the highscores from the Gist when the game starts
         this.loadHighscores();
-
         this.buttonsActive = true;
         this.buttonCooldownTimer = new Clock();
         this.savingScore = false;
     }
 
-    // async load highscores from the Gist on game start only
+    // Load highscores in on startup
     async loadHighscores() {
-        const res = await fetch(this.rawUrl);
-        const text = await res.text();
-        this.highscores = this.parseHighscores(text);
+        try {
+            const response = await fetch('https://pengwings-highscores-api.vercel.app/api/highscores');
+            const data = await response.json();
+            this.highscores = data.highscores;
+        } catch (err) {
+            console.error("Failed to load highscores:", err);
+        }
     }
 
     // Check if the current score is a high score
@@ -48,11 +45,90 @@ class Highscores {
             userIsTyping = false;
             this.addHighscore(this.userName, score);
         }
-        // If username has been entered, add and save the score
-
-
     }
 
+    async addHighscore(name, score) {
+        // Add new score and update the highscores array in memory
+        this.highscores.push({ name, score });
+        // Keep only top 10 scores in memory
+        this.highscores.sort((a, b) => b.score - a.score);
+        this.highscores = this.highscores.slice(0, this.maxScores);
+        // Allow loop to pass
+        domains.game.death.highscoreAdded = true;
+        // And save the updated highscores asynchronously
+        await this.saveHighscores();
+    }
+
+    async saveHighscores() {
+        try {
+            // Get the last added highscore
+            const latest = this.highscores.find(entry => entry.name === this.userName);
+
+            if (!latest) {
+                throw new Error("Couldn't find the latest highscore to save.");
+            }
+
+            const res = await fetch('https://pengwings-highscores-api.vercel.app/api/highscores', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: latest.name,
+                    score: latest.score
+                })
+            });
+
+            const result = await res.json();
+            if (res.ok) {
+                console.log("Score saved successfully:", result.message);
+                // Currently just added a delay to try stop the race condition, but think i fixed it elsewhere
+                await new Promise(resolve => setTimeout(resolve, 2000));
+            } else {
+                console.log("Error saving score:", result.error || result);
+            }
+        } catch (err) {
+            console.error("Error saving score:", err);
+        } finally {
+            this.savingScore = false;
+        }
+    }
+
+    // Print highscores from in-memory array
+    printHighscores() {
+        push();
+        let size = width/40;
+        let d = width - height;
+        fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
+        rect(0, 0, width, height);
+        fill('rgba(0, 0, 0, 0.6)')
+        rect(height/6 + d/2, height/6, height*2/3, height*2/3);
+        fill(255);
+        textSize(size*2);
+        textAlign(CENTER, CENTER);
+        textStyle(BOLD);
+        text("HIGHSCORES", width / 2, height / 4.2);
+        textSize(size);
+        textStyle(NORMAL);
+
+
+        for (let i = 0; i < this.highscores.length; i++) {
+            let entry = this.highscores[i];
+
+            if (entry.score === domains.game.stats.score && entry.name === this.userName) {
+                fill(255, 215, 0);
+                text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
+            }
+            else {
+                fill(255);
+                text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
+            }
+        }
+        this.updateBackButton();
+        pop();
+    }
+
+    // HIGHSCORE PAGE UI
     createInputField() {
         this.updateButtonCooldown(4); // limit rate at which backspace is applied when key is held
 
@@ -103,9 +179,7 @@ class Highscores {
         }
     }
 
-
     updateUsernameFromInput() {
-
         if (inputCharacter === 'Backspace') {
             if (this.userName.length > 0) {
                 this.userName = this.userName.slice(0, -1);
@@ -146,111 +220,7 @@ class Highscores {
         pop();
     }
 
-    addHighscore(name, score) {
-        // Add new score and update the highscores array in memory
-        this.highscores.push({ name, score });
-        // Keep only top 10 scores in memory
-        this.highscores.sort((a, b) => b.score - a.score);
-        this.highscores = this.highscores.slice(0, this.maxScores);
-
-        // Allow loop to pass
-        domains.game.death.highscoreAdded = true;
-    
-        // And save the updated highscores asynchronously
-        this.saveHighscores();
-    }
-
-    // asynchronously save to the Gist
-    async saveHighscores() {
-        const contentText = this.highscores.map(entry => `${entry.score} ${entry.name}`).join("\n");
-
-        try {
-            const response = await fetch(this.apiUrl, {
-                method: "PATCH",
-                headers: {
-                    "Authorization": `token ${this.token}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    files: {
-                        [this.filename]: {
-                            content: contentText
-                        }
-                    }
-                })
-            });
-            if (!response.ok) {
-                console.log("SAVE ERROR: ", response.status, response.statusText);
-                return;
-            }
-            const freshUrl = `${this.apiUrl}?cacheBuster=${new Date().getTime()}`;
-            fetch(freshUrl).then(response => response.json())
-                .then(data => {
-                    if (data.files && data.files[this.filename] && data.files[this.filename].content === contentText) {
-                        console.log("Score saved successfully");
-                    } else {
-                        console.log("Error saving score");
-                    }
-                });
-        }
-        catch (error) {
-            console.error("Error saving score: ", error);
-        }
-        finally {
-            this.savingScore = false;
-        }
-    }
-
-    parseHighscores(text) {
-        return text
-            .trim()
-            .split("\n")
-            .map(line => {
-                const [score, ...nameParts] = line.trim().split(" ");
-                return {
-                    score: parseInt(score),
-                    name: nameParts.join(" ")
-                };
-            })
-            .filter(entry => !isNaN(entry.score));
-    }
-
-    // Print highscores from in-memory array
-    printHighscores() {
-        push();
-            let size = width/40;
-            let d = width - height;
-            fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
-            rect(0, 0, width, height);
-            fill('rgba(0, 0, 0, 0.6)')
-            rect(height/6 + d/2, height/6, height*2/3, height*2/3);
-            fill(255);
-            textSize(size*2);
-            textAlign(CENTER, CENTER);
-            textStyle(BOLD);
-            text("HIGHSCORES", width / 2, height / 4.2);
-            textSize(size);
-            textStyle(NORMAL);
-
-
-        for (let i = 0; i < this.highscores.length; i++) {
-                let entry = this.highscores[i];
-
-                if (entry.score === domains.game.stats.score && entry.name === this.userName) {
-                    fill(255, 215, 0);
-                    text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
-                }
-                else {
-                    fill(255);
-                    text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
-                }
-            }
-            this.updateBackButton();
-        pop();
-    }
-
     updateBackButton() {
-
         push();
         this.updateButtonCooldown(30); // necessary as submit button is in same location as back button
         let scale = 0.0015 * width;
@@ -272,7 +242,6 @@ class Highscores {
     }
 
     updateButtonCooldown(cooldown) {
-
         if (this.buttonCooldownTimer.time > 0) {
             this.buttonCooldownTimer.tick();
         }

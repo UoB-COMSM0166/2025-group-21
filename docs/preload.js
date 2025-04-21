@@ -38,6 +38,7 @@ let playerHeadArrow = null;
 let playerHeadLaser = null;
 let playerHeadGatling = null;
 
+let playerFlyFeet, playerFlyBooster, playerPenguinWings, playerDragonWings;
 
 // audio
 // let laserAutomaticSound = null;
@@ -111,7 +112,6 @@ let playButton = null;
 let playButtonHover = null;
 let mainMenuButton = null;
 let mainMenuButtonHover = null;
-
 
 // pause menu
 let continueButton = null;
@@ -223,8 +223,13 @@ function preload() {
     playerHeadArrow      = loadImage('assets/sprites/playerHead_arrow.png');
     playerHeadLaser      = loadImage('assets/sprites/playerHead_laser.png');
     playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
+    playerFlyFeet        = loadImage('assets/sprites/fly_feet.png');
+    playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
+    playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
+    playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
+
     playerImg = loadImage('assets/images/player1.png');
-    playerFly = loadImage('assets/sprites/playerFly.png');
+    playerBody = loadImage('assets/sprites/playerBody.png');
     playerDeath = loadImage('assets/sprites/playerDeath.png');
     ufo = loadImage('assets/images/ufo.png');
     explosion = loadImage('assets/sprites/explosion.png');
@@ -317,6 +322,7 @@ function setMasterVolume(masterVolume) {
     if ((sound = soundBoard.cache['gainLifeSound']) !== undefined) sound.setVolume(1.5*volume*masterVolume);
     if ((sound = soundBoard.cache['coinSound']) !== undefined) sound.setVolume(0.5*volume*masterVolume);
     if ((sound = soundBoard.cache['wingFlapSound']) !== undefined) sound.setVolume(1.4*volume*masterVolume);
+    if ((sound = soundBoard.cache['boosterSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
 
     // soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
     // soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);

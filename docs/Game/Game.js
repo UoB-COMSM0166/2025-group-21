@@ -19,6 +19,7 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
+        this.highscores = new Highscores();
         this.wingFlapSound = null;
 
         // Cheats
@@ -49,13 +50,14 @@ class Game {
         this.terrain = new Terrain();
         this.player = new Player(150, this.terrain.generateHills(150));
         this.player.headImg = inventory.getHeadImage();
+        this.player.feetImg = inventory.getFeetImage();
+        this.player.wingImg = inventory.getWingImage();
         this.score = new Score();
         this.pause = new Pause();
         this.stats = new Stats();
         this.hearts = new Hearts();
         this.coins = new Coins();
 
-        this.highscores = new Highscores();
         this.obstacleHandler = new ObstacleHandler();
         this.death = null;
 
@@ -202,6 +204,7 @@ class Game {
         this.gainLifeSound = await soundBoard.getSound('gainLifeSound');
         this.collectCoinSound = await soundBoard.getSound('coinSound');
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
+        this.boosterSound    = await soundBoard.getSound('boosterSound');
     }
 
     disconnectAudio() {

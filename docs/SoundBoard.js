@@ -28,6 +28,7 @@ class SoundBoard {
         this.cache['gainLifeSound'] = await loadSoundAsync('assets/sounds/gainLifeSound.mp3');
         this.cache['coinSound'] = await loadSoundAsync('assets/sounds/coinSound.mp3');
         this.cache['wingFlapSound'] = await loadSoundAsync('assets/sounds/wingFlapSound.mp3');
+        this.cache['boosterSound'] = await loadSoundAsync('assets/sounds/boosterSound.mp3');
     }
 
     async getSound(name) {
