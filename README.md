@@ -375,7 +375,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using Math.random().
 
-![Sine curve diagram](Videos/sine_wave_sum.gif)
+<img src="Videos/sine_wave_sum.gif" width="400" alt="Sine curve diagram">
 
 **Figure 2.** Comparison of individual sine curves and their summed result.
 
@@ -383,7 +383,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 
 Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
 
-![Different difficulty terrains](Videos/terrain_difficulty_figure.gif)
+<img src="Videos/terrain_difficulty_figure.gif" width="400" alt="Different difficulty terrains">
 
 **Figure 3.** Terrain variations across different difficulty levels.
 
@@ -405,7 +405,7 @@ These effects can be seen in the player’s velocity vectors in Figure 4a.
 
 To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
 
-![Acceleration equation and vectors](Videos/acceleration_equation_figure.png)
+<img src="Videos/acceleration_equation_figure.png" width="400" alt="Acceleration equation and vectors">
 
 These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
