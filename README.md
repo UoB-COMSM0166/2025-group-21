@@ -364,15 +364,15 @@ While the game development was full of challenges and learning experiences, thre
 
 A core requirement for our game was an infinite, randomly generated terrain. This epic involved three key requirements:
 
-#### 1. Endless Terrain Generation
+#### Endless Terrain Generation
 
-We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling hills, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
+We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling slopes, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
 
 <div align="center">
     <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
 </div>
 
-#### 2. Random and Unpredictable Terrain
+#### Random and Unpredictable Terrain
 
 To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using Math.random().
 
@@ -381,7 +381,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
     <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
 </div>
 
-#### 3. Modifiable Difficulties
+#### Modifiable Difficulties
 
 Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
 
