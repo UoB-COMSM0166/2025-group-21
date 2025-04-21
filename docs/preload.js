@@ -40,7 +40,6 @@ let playerHeadGatling = null;
 
 let playerFlyFeet, playerFlyBooster, playerPenguinWings, playerDragonWings;
 
-
 // audio
 // let laserAutomaticSound = null;
 // let explosionSound = null;
@@ -113,7 +112,6 @@ let playButton = null;
 let playButtonHover = null;
 let mainMenuButton = null;
 let mainMenuButtonHover = null;
-
 
 // pause menu
 let continueButton = null;
