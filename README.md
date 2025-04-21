@@ -155,7 +155,7 @@ External feedback also drew comparisons between our concept and existing physics
 
 The stakeholder diagram illustrates the character system for the project, clearly identifying who is involved and their roles. Before implementation begins, it is crucial to understand the key stakeholders, including the development team, academics, and the instructor, as well as the end-users--our primary target audience: the players.
 
-Using the hierarchy of the onion model, we can see that every feature we develop aims to meet the needs of our target audience. Additionally, successful project delivery requires close collaboration with the development team and alignment with the guidance of the instructorand academics. By maintaining effective communication and progress tracking, we can ensure that the project meets all requirements and lauches the first version of the game on schedule.
+Using the hierarchy of the onion model, we can see that every feature we develop aims to meet the needs of our target audience. Additionally, successful project delivery requires close collaboration with the development team and alignment with the guidance of the instructor and academics. By maintaining effective communication and progress tracking, we can ensure that the project meets all requirements and launches the first version of the game on schedule.
 
 <p align="center" style="margin-top: 10px;"><b>Figure 6</b></p>
 <p align="center"><i>Onion Model of Learn To Fly Game</i></p>
@@ -164,7 +164,7 @@ Using the hierarchy of the onion model, we can see that every feature we develop
 
 ### Persona
 
-For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring eveyrone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
+For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring everyone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
 <br>
 | **Figure 7**<br>_Persona 1._<br>![Product doc/Game doc - Persona 1.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%201.jpg) | **Figure 8**<br>_Persona 2._<br>![Product doc/Game doc - Persona 2.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%202.jpg) | **Figure 9**<br>_Persona 3._<br>![Product doc/Game doc - Persona 3.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%203.jpg) |
 |--|--|--|
@@ -364,23 +364,26 @@ While the game development was full of challenges and learning experiences, thre
 
 A core requirement for our game was an infinite, randomly generated terrain. This epic involved three key requirements:
 
-1. Endless Terrain Generation
+#### 1. Endless Terrain Generation
 
 We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling hills, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
 
 
 **Figure 1.** Evolution of our terrain generation over time.
 
-2. Random and Unpredictable Terrain
+#### 2. Random and Unpredictable Terrain
 
 To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using Math.random().
 
+![Sine curve diagram](Videos/sine_wave_sum.gif)
 
 **Figure 2.** Comparison of individual sine curves and their summed result.
 
-3. Modifiable Difficulties
+#### 3. Modifiable Difficulties
 
 Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
+
+![Different difficulty terrains](Videos/terrain_difficulty_figure.gif)
 
 **Figure 3.** Terrain variations across different difficulty levels.
 
@@ -402,23 +405,24 @@ These effects can be seen in the player’s velocity vectors in Figure 4a.
 
 To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
 
-$$
-Total Acceleration = gravity \times sin(arctan(m))
-
-xAcc = Total Acceleration \times sin(arctan(slope))
-yAcc = Total Acceleration \times cos(arctan(slope))
-$$
+![Acceleration equation and vectors](Videos/acceleration_equation_figure.png)
 
 These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
+<table>
+  <tr>
+    <td><img src="Videos/velocity_vector_figure.mp4" width="360"/></td>
+    <td><img src="Videos/acceleration_vector_figure.mp4" width="360"/></td>
+  </tr>
+</table>
 
-Figure 4. Player a) velocity (red) and b) acceleration (blue) vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.
+**Figure 4.** Player a) velocity (red) and b) acceleration (blue) vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.
 
 ### 3. Saving Progress and Global Leaderboards
 
 #### Saving Progress
 
-Since our game relies on accumulating progress over time, preserving state across sessions was essential. 
+Since our game relies on accumulating progress over time, preserving the game state across sessions was essential. 
 
 After evaluating options like cookies and server hosting, we chose client-side persistent storage using the Web Storage API. This approach allowed us to store and retrieve JSON data in the browser via a SAVE_KEY.
 
@@ -431,7 +435,7 @@ We also wanted a global leaderboard where players could compete across devices. 
 Our first solution used GitHub Gists—an easy, lightweight way to store username–score pairs. However, this raised two major issues:
 
 Authentication – Anyone could modify the public Gist, opening the door to fake scores.
-Race Conditions – Conflicts between read/write operations often resulted in lost data.
+Race Conditions – Conflicts between read/write operations often resulting in lost scores.
 
 To solve both issues, we set up Vercel serverless functions as our backend. This allowed us to securely handle game logic and validate score submissions on the server side. For persistent, real-time storage of high scores, we used Redis, a fast, in-memory data store well-suited for leaderboard-style JSON data.
 
