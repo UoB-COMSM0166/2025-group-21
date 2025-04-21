@@ -1,6 +1,5 @@
-
-
 // images
+let playerHead = null;
 let playerImg = null;
 let playerFly = null;
 let playerDeath = null
@@ -12,39 +11,59 @@ let laserSound = null;
 let heartImages = [];
 let freezingUfo = null;
 let frozenUfo = null;
+let snowball = null;
 let arrow = null;
 let ufoArrowImpact = null;
 let greenLaser = null;
 let purpleLaser = null;
 let coinImage = null;
+let ingameCoin = null;
 let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
 let workshopBackground = null;
+let tipsBox = null;
+let penguinClaw = null;
+
+let fishWorkshop = null;
+let snowballWorkshop = null;
+let arrowWorkshop = null;
+let flyingWorkshop = null;
+let shieldWorkshop = null;
+let shadow = null;
+
+let playerHeadFish = null;
+let playerHeadSnowball = null;
+let playerHeadArrow = null;
+let playerHeadLaser = null;
+let playerHeadGatling = null;
+
+let playerFlyFeet, playerFlyBooster;
+
 
 // audio
-let laserAutomaticSound = null;
-let explosionSound = null;
-let deathSound = null;
-let windSound = null;
-let fishThrow = null;
-let fishImpactSound = null;
-let forceFieldSound = null;
-let purchaseSound = null;
-let illegalPurchaseSound = null;
-let snowball = null;
-let snowballSound = null;
-let freezeSound = null;
-let loseLifeSound = null;
-let gainLifeSound = null;
-let arrowSound = null;
-let ufoArrowImpactSound = null;
-let workshopMusic = null;
+// let laserAutomaticSound = null;
+// let explosionSound = null;
+// let deathSound = null;
+// let windSound = null;
+// let fishThrow = null;
+// let fishImpactSound = null;
+// let forceFieldSound = null;
+// let purchaseSound = null;
+// let illegalPurchaseSound = null;
+// let snowballSound = null;
+// let freezeSound = null;
+// let loseLifeSound = null;
+// let gainLifeSound = null;
+// let arrowSound = null;
+// let ufoArrowImpactSound = null;
+// let workshopMusic = null;
+// let collectCoinSound = null
 
 // BUTTONS
 // main menu
-let homeBackground;
-let logo;
+let homeBackground = null;
+let logo = null;
 let penguinFlyGif = null;
 let penguinSpinGif = null;
 let keyboardIcon = null;
@@ -56,6 +75,12 @@ let instructionsButton = null;
 let instructionsButtonHover = null;
 let settingsButton = null;
 let settingsButtonHover = null;
+
+// load game
+let yesButton = null;
+let yesButtonHover = null;
+let noButton = null;
+let noButtonHover = null;
 
 // death menu
 let returnToWorkshopButton = null;
@@ -70,6 +95,9 @@ let backButton = null;
 let backButtonHover = null;
 let submitButton = null;
 let submitButtonHover = null;
+
+// fonts
+let instructionFont = null;
 
 // shop
 let projectileButton = null
@@ -118,6 +146,14 @@ let controlsButtonHover = null;
 let changeButton = null;
 let changeButtonHover = null;
 
+let seagull = null;
+let damagedSeagull = null;
+let frozenSeagull = null;
+let freezingSeagull = null;
+let seagullArrow = null;
+let airplane = null;
+let freezingAirplane = null;
+
 function preload() {
     // pause menu
     continueButton = loadImage('assets/buttons/pauseMenu/continueButton.png');
@@ -130,6 +166,12 @@ function preload() {
     pauseSettingsButtonHover = loadImage('assets/buttons/pauseMenu/settingsButtonHover.png');
     closeButton = loadImage('assets/buttons/pauseMenu/closeButton.png');
     closeButtonHover = loadImage('assets/buttons/pauseMenu/closeButtonHover.png');
+
+    // load game
+    yesButton = loadImage('assets/buttons/loadGame/yesButton.png');
+    yesButtonHover = loadImage('assets/buttons/loadGame/yesButtonHover.png');
+    noButton = loadImage('assets/buttons/loadGame/noButton.png');
+    noButtonHover = loadImage('assets/buttons/loadGame/noButtonHover.png');
 
     // death menu
     returnToWorkshopButton = loadImage('assets/buttons/returnToWorkshopButton.png');
@@ -160,6 +202,11 @@ function preload() {
     mainMenuButton = loadImage('assets/buttons/mainMenuButton.png');
     mainMenuButtonHover = loadImage('assets/buttons/mainMenuButtonHover.png');
 
+    // instruction
+    instructionFont = loadFont('assets/fonts/Noteworthy.ttf');
+    tipsBox = loadImage('assets/images/tipsBox.png');
+    penguinClaw = loadImage('assets/images/penguinClaw(1).png');
+
     // main menu
     startGameButton = loadImage('assets/buttons/mainMenu/startGameButton.png');
     startGameButtonHover = loadImage('assets/buttons/mainMenu/startGameButtonHover.png');
@@ -170,7 +217,16 @@ function preload() {
     settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
     settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
 
+    preloadBackgroundImages();
 
+    playerHead = loadImage('assets/sprites/playerHead.png')
+    playerHeadFish       = loadImage('assets/sprites/playerHead_fish.png');
+    playerHeadSnowball   = loadImage('assets/sprites/playerHead_snowball.png');
+    playerHeadArrow      = loadImage('assets/sprites/playerHead_arrow.png');
+    playerHeadLaser      = loadImage('assets/sprites/playerHead_laser.png');
+    playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
+    playerFlyFeet    = loadImage('assets/sprites/fly_feet.png');
+    playerFlyBooster    = loadImage('assets/sprites/fly_booster.png');
     playerImg = loadImage('assets/images/player1.png');
     playerFly = loadImage('assets/sprites/playerFly.png');
     playerDeath = loadImage('assets/sprites/playerDeath.png');
@@ -188,15 +244,32 @@ function preload() {
     heartImages[1] = loadImage('assets/images/heart2.png');
     heartImages[2] = loadImage('assets/images/heart3.png');
     heartImages[3] = loadImage('assets/images/heart4.png');
+    ingameCoin = loadImage('assets/images/penguin_coin.png');
 
     damagedUfo = loadImage('assets/images/damagedUfo.png');
     snowball = loadImage('assets/images/snowball.png');
     freezingUfo = loadImage('assets/sprites/freezingUfo.png');
     frozenUfo = loadImage('assets/images/frozenUfo.png');
     arrow = loadImage('assets/sprites/arrow.png');
-    ufoArrowImpact = loadImage('assets/sprites/ufoArrowImpact.png');
+    ufoArrowImpact = loadImage('assets/images/ufoArrowImpact.png');
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
+
+    fishWorkshop = loadImage('assets/images/fishWorkshop.png');
+    snowballWorkshop = loadImage('assets/images/snowballWorkshop.png');
+    arrowWorkshop = loadImage('assets/images/arrowWorkshop.png');
+    flyingWorkshop = loadImage('assets/images/flyingAbility.png');
+    shieldWorkshop = loadImage('assets/images/forceFieldAbility.png');
+    shadow = loadImage('assets/images/shadow.png');
+
+    seagull = loadImage('assets/sprites/seagull.png');
+    damagedSeagull = loadImage('assets/images/damagedSeagull.png');
+    freezingSeagull = loadImage('assets/sprites/freezingBird.png');
+    frozenSeagull = loadImage('assets/images/frozenBird.png');
+    seagullArrow = loadImage('assets/images/birdArrow.png');
+    airplane = loadImage('assets/images/airplane.png')
+    freezingAirplane = loadImage('assets/sprites/freezingPlane.png');
+
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');
@@ -223,46 +296,33 @@ function preload() {
     controlsButtonHover = loadImage('assets/settings/changeControlsButtonHover.png');
     changeButton = loadImage('assets/settings/changeButton.png');
     changeButtonHover = loadImage('assets/settings/changeButtonHover.png');
-
-    // load sounds
-    windSound = loadSound('assets/sounds/windSound.mp3');
-    workshopMusic = loadSound('assets/sounds/workshopMusic.mp3');
-    laserSound = loadSound('assets/sounds/laser.mp3');
-    laserAutomaticSound = loadSound('assets/sounds/laserAutomatic.mp3');
-    explosionSound = loadSound('assets/sounds/explosionSound.mp3');
-    deathSound = loadSound('assets/sounds/deathSound.mp3');
-    fishThrow = loadSound('assets/sounds/fishThrow.mp3');
-    fishImpactSound = loadSound('assets/sounds/fishImpactSound.mp3');
-    forceFieldSound = loadSound('assets/sounds/forceFieldSound.mp3');
-    purchaseSound = loadSound('assets/sounds/purchaseSound.mp3');
-    illegalPurchaseSound = loadSound('assets/sounds/illegalPurchaseSound.mp3');
-    snowballSound = loadSound('assets/sounds/snowballSound.mp3');
-    freezeSound = loadSound('assets/sounds/freezeSound.mp3');
-    arrowSound = loadSound('assets/sounds/arrowSound.mp3');
-    ufoArrowImpactSound = loadSound('assets/sounds/ufoArrowImpactSound.mp3');
-    loseLifeSound = loadSound('assets/sounds/loseLifeSound.mp3');
-    gainLifeSound = loadSound('assets/sounds/gainLifeSound.mp3');
-    collectCoinSound = loadSound('assets/sounds/coinSound.mp3');
-    setMasterVolume(1);
 }
 
+let volume = 0.2;
+
 function setMasterVolume(masterVolume) {
-    let volume = 0.2;
-    workshopMusic.setVolume(2*volume*masterVolume);
-    laserSound.setVolume(2*volume*masterVolume);
-    laserAutomaticSound.setVolume(2*volume*masterVolume);
-    explosionSound.setVolume(volume*masterVolume);
-    deathSound.setVolume(volume*masterVolume);
-    fishThrow.setVolume(volume*masterVolume);
-    fishImpactSound.setVolume(volume*masterVolume);
-    forceFieldSound.setVolume(volume*masterVolume);
-    purchaseSound.setVolume(volume*masterVolume);
-    illegalPurchaseSound.setVolume(volume*masterVolume);
-    snowballSound.setVolume(volume*masterVolume);
-    freezeSound.setVolume(0.5*volume*masterVolume);
-    arrowSound.setVolume(0.5*volume*masterVolume);
-    ufoArrowImpactSound.setVolume(volume*masterVolume);
-    loseLifeSound.setVolume(2*volume*masterVolume);
-    gainLifeSound.setVolume(1.5*volume*masterVolume);
-    collectCoinSound.setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['illegalPurchaseSound'].setVolume(volume*masterVolume);
+
+    soundBoard.cache['laserSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['laserAutomaticSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['explosionSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['deathSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['fishThrow'].setVolume(volume*masterVolume);
+    soundBoard.cache['fishImpactSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['forceFieldSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['snowballSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['freezeSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['arrowSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['ufoArrowImpactSound'].setVolume(volume*masterVolume);
+    soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
+    soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
+    soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
+    soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
+    soundBoard.cache['boosterSound'].setVolume(0.8*volume*masterVolume);
+}
+
+function loadSoundAsync(path) {
+    return new Promise((resolve, reject) => loadSound(path, resolve, reject));
 }

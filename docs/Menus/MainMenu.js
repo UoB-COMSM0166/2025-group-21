@@ -82,22 +82,22 @@ class MainMenu {
     }
 
     startButtonPressed() {
-        mainMenu = null;
+        domains.mainMenu = null;
         Domain = 'game';
     }
 
     shopButtonPressed() {
-        mainMenu = null;
+        domains.mainMenu = null;
         Domain = 'shop';
     }
 
     instructionButtonPressed() {
-        // To be implemented
-        console.log("Instruction button pressed");
+        domains.mainMenu = null;
+        Domain = 'instruction';
     }
 
     settingButtonPressed() {
-        mainMenu.showSettings = true;
+        domains.mainMenu.showSettings = true;
         settings.startCooldown();
     }
 

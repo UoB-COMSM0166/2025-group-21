@@ -11,30 +11,30 @@ class ForceField {
 
     activate() {
         if (this.chargeFraction === 1) {
-            game.invincibility = true;
-            game.UFOHandler.collisionRadius = width/8;
+            domains.game.invincibility = true;
+            domains.game.obstacleHandler.collisionRadius = width/8;
 
-            if (!forceFieldSound.isPlaying()) {
-                forceFieldSound.play();
+            if (!domains.game.forceFieldSound.isPlaying()) {
+                domains.game.forceFieldSound.play();
             }
         }
-        if (forceFieldSound.isPlaying() && game.pause.active) {
-            forceFieldSound.stop();
+        if (domains.game.forceFieldSound.isPlaying() && domains.game.pause.active) {
+            domains.game.forceFieldSound.stop();
         }
-        else if (!forceFieldSound.isPlaying() && !game.pause.active) {
-            forceFieldSound.play();
+        else if (!domains.game.forceFieldSound.isPlaying() && !domains.game.pause.active) {
+            domains.game.forceFieldSound.play();
         }
-        if (!game.pause.active) {
+        if (!domains.game.pause.active) {
             this.chargeFraction -= (0.003 - 0.0004*this.powerLevel);
         }
         this.stretchFactor = this.getStretchFactor();
         this.drawForceField();
 
         if (this.chargeFraction <= 0) {
-            forceFieldSound.stop();
+            domains.game.forceFieldSound.stop();
             this.active = false;
-            game.invincibility = false;
-            game.UFOHandler.collisionRadius = 50;
+            domains.game.invincibility = false;
+            domains.game.obstacleHandler.collisionRadius = 50;
         }
     }
 
@@ -42,10 +42,10 @@ class ForceField {
 
         let velocityAngle;
 
-        if (game.score.airtime > 3) {
-            velocityAngle = atan2(game.player.vel.x, game.player.vel.y);
+        if (domains.game.score.airtime > 3) {
+            velocityAngle = atan2(domains.game.player.vel.x, domains.game.player.vel.y);
         }
-        else velocityAngle = atan(game.terrain.slope(game.player.pos.x));
+        else velocityAngle = atan(domains.game.terrain.slope(domains.game.player.pos.x));
 
         this.drawShieldLayer(30, 136, 0, 0.51, 1, velocityAngle);
         this.drawShieldLayer(255, 136, 0, 0.21, 1.05, velocityAngle);
@@ -60,9 +60,9 @@ class ForceField {
         strokeWeight(5);
 
         push();
-        translate(150, game.player.pos.y - width/100);
+        translate(150, domains.game.player.pos.y - width/100);
 
-        if (game.score.airtime > 3) rotate(-velocityAngle + Math.PI/2);
+        if (domains.game.score.airtime > 3) rotate(-velocityAngle + Math.PI/2);
         else rotate(velocityAngle);
         beginShape();
 
@@ -79,7 +79,7 @@ class ForceField {
     }
 
     getStretchFactor() {
-        let velocity = Math.sqrt(game.player.vel.x**2 + game.player.vel.y**2);
+        let velocity = Math.sqrt(domains.game.player.vel.x**2 + domains.game.player.vel.y**2);
         return 0.075 * velocity;
     }
 
@@ -125,7 +125,7 @@ class ForceField {
 
     charge() {
 
-        if (this.chargeFraction < 1 && !this.active && !game.pause.active) {
+        if (this.chargeFraction < 1 && !this.active && !domains.game.pause.active) {
             this.chargeFraction += 0.001;
         }
         else if (this.chargeFraction > 1) this.chargeFraction = 1;

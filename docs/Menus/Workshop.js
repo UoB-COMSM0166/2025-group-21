@@ -3,35 +3,54 @@
 class Workshop {
 
     constructor() {
+        this.workshopMusic = null;
+        this.purchaseSound = null;
+        this.illegalPurchaseSound = null;
+
         document.body.classList.add("show-cursor");
         this.selectedItem = null;
         this.buttonsActive = false;
         this.buttonCooldownTimer = new Clock();
         this.buttonCooldownTimer.tick();
         this.updateItemPrices();
-        this.musicVolume = 0.4*settings.masterVolume*settings.mute;
-        workshopMusic.setVolume(this.musicVolume);
-        workshopMusic.loop();
+        this.masterVolume = settings.masterVolume*settings.mute;
+        this.soundsLoaded = false;
+        this.loadAudio().then(() => this.soundsLoaded = true);
+
         this.fadeOut = false;
         this.screenTint = 0;
         this.fadeOutTimer = new Clock()
 
     }
 
+    async loadAudio() {
+        this.workshopMusic = await soundBoard.getSound('workshopMusic');
+        this.purchaseSound = await soundBoard.getSound('purchaseSound');
+        this.illegalPurchaseSound = await soundBoard.getSound('illegalPurchaseSound');
+
+        setMasterVolume(this.masterVolume);
+        this.workshopMusic.loop();
+    }
+
+    disconnectAudio() {
+        this.workshopMusic.stop();
+        this.purchaseSound.stop();
+        this.illegalPurchaseSound.stop();
+        this.workshopMusic = null;
+        this.purchaseSound = null;
+        this.illegalPurchaseSound = null;
+    }
 
     openShop() {
+        if (!this.soundsLoaded) return;
+
         this.display();
         this.printCoins();
         this.updateButtonCooldown();
 
         if (this.fadeOut) {
-            if (this.fadeOutTimer.time > 20) {
-                workshopMusic.stop();
-                shop = null;
-                Domain = 'game';
-            }
-            this.musicVolume = lerp(this.musicVolume, 0, 0.04);
-            workshopMusic.setVolume(this.musicVolume);
+            this.masterVolume = lerp(this.masterVolume, 0, 0.04);
+            this.workshopMusic.setVolume(volume*this.masterVolume);
             fill(`rgba(0, 0, 0, ${this.screenTint})`);
             rect(0, 0, width, height);
 
@@ -45,6 +64,14 @@ class Workshop {
             }
             else {
                 this.screenTint = lerp(this.screenTint, 1, 0.04);
+            }
+
+            if (this.fadeOutTimer.time > 20) {
+                this.disconnectAudio();
+                //soundBoard.disposeAll();
+                //shop.dispose();
+                domains.shop = null;
+                Domain = 'game';
             }
         }
     }
@@ -161,33 +188,31 @@ class Workshop {
         this.printAbilityLevel(inventory.laserLevel);
 
         push();
-        let size = width / 4;
+        let size = width / 1250;
         imageMode(CENTER);
-        translate(0.25*width, 0.65*height)
+        translate(0.245*width, 0.64*height);
 
         switch (inventory.laserLevel) {
             case 1:
+                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
                 rotate(-0.78);
-                image(fish, 0, 0, size/1.5, size/1.5);
+                image(fishWorkshop, 0, 0, size*fishWorkshop.width, size*fishWorkshop.height);
                 break;
             case 2:
-                rotate(-0.78);
-                image(snowball, 0, 0, size/1.5, size/1.5);
+                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
+                image(snowballWorkshop, 0, 0, size*snowballWorkshop.width/3, size*snowballWorkshop.height/3);
                 break;
             case 3:
-                rotate(-0.78);
-                image(arrow, 0, 0, size/1.5, size/10, 0, 0, 60, 9);
+                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/15);
+                image(arrowWorkshop, 0, 0, size*arrowWorkshop.width/3.5, size*arrowWorkshop.height/3.5);
                 break;
             case 4:
-                rotate(2.357);
-                image(greenLaser, 0, 0, size, size/5);
+                rotate(-0.7);
+                image(greenLaser, 0, 10*size, size*greenLaser.width/4.5, size*greenLaser.height/4.5);
                 break;
             case 5:
-                rotate(2.357);
-                image(purpleLaser, size/10, size/6, size/2, size/6);
-                image(purpleLaser, size/3, size/20, size/2, size/6);
-                image(purpleLaser, -size/4, -size/30, size/2, size/6);
-                break
+                image(purpleLaser, 0, 0.03*height, size*purpleLaser.width/5, size*purpleLaser.height/5);
+                break;
         }
 
         pop();
@@ -206,6 +231,15 @@ class Workshop {
             text('MAX', width/2.15, height/2.37);
         }
         this.printAbilityLevel(inventory.flyLevel);
+
+        push();
+        let size = width / 3700;
+        imageMode(CENTER);
+        translate(0.245*width, 0.64*height);
+        image(shadow, 0, height/5, size*shadow.width/3, size*shadow.height/3);
+        image(flyingWorkshop, 0, 0, size*flyingWorkshop.width, size*flyingWorkshop.height);
+        pop();
+
     }
 
     showForceFieldDescription(){
@@ -219,6 +253,14 @@ class Workshop {
             text('MAX', width/2.15, height/2.37);
         }
         this.printAbilityLevel(inventory.forceFieldLevel);
+
+        push();
+        let size = width / 3800;
+        imageMode(CENTER);
+        translate(0.25*width, 0.66*height);
+        image(shadow, 0, height/5.5, size*shadow.width/3.5, size*shadow.height/3.5);
+        image(shieldWorkshop, 0, 0, size*shieldWorkshop.width, size*shieldWorkshop.height);
+        pop();
     }
 
     updateProjectileButton() {
@@ -297,6 +339,7 @@ class Workshop {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
                     this.upgradeItem();
+                    saveGameProgress();
                 }
             }
             else {
@@ -305,7 +348,7 @@ class Workshop {
                 if (mouseIsPressed && this.buttonsActive) {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
-                    illegalPurchaseSound.play();
+                    this.illegalPurchaseSound.play();
                 }
             }
         }
@@ -348,8 +391,8 @@ class Workshop {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                workshopMusic.stop();
-                shop = null;
+                this.disconnectAudio();
+                domains.shop = null;
                 Domain = 'mainMenu';
             }
         }
@@ -374,7 +417,7 @@ class Workshop {
                 inventory.coins -= this.forceFieldUpgradePrice;
                 break;
         }
-        purchaseSound.play();
+        this.purchaseSound.play();
         this.updateItemPrices();
     }
 

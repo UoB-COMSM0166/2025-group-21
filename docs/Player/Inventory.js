@@ -2,11 +2,11 @@
 
 class Inventory {
 
-    constructor() {
-        this.coins = 0;
-        this.flyLevel = 0;
-        this.laserLevel = 1;
-        this.forceFieldLevel = 0;
+    constructor(gameProgress) {
+        this.coins = gameProgress.coins;
+        this.flyLevel = gameProgress.flyLevel;
+        this.laserLevel = gameProgress.projectileLevel;
+        this.forceFieldLevel = gameProgress.forceFieldLevel;
     }
 
     getFlyingUpgradePrice() {
@@ -30,6 +30,31 @@ class Inventory {
             case 4: return 'Upgrade to laser:\n\n   - Increased projectile speed\n' +
                                                 '   - Explosion upon collision and instant clearance';
             case 5: return 'Upgrade to automatic laser:\n\n   - Shoot lasers from a Gatling gun';
+        }
+    }
+
+    getHeadImage() {
+        console.log('laserLevel =', this.laserLevel);
+        switch (this.laserLevel) {
+            case 0: return playerHeadFish;
+            case 1: return playerHeadFish;
+            case 2: return playerHeadSnowball;
+            case 3: return playerHeadArrow;
+            case 4: return playerHeadLaser;
+            case 5: return playerHeadGatling;
+            default: return playerHead;
+        }
+    }
+
+    getFeetImage() {
+        console.log('flylevel =', this.laserLevel);
+        switch (this.flyLevel) {
+            case 1: return playerFlyFeet;
+            case 2: return playerFlyFeet;
+            case 3: return playerFlyFeet;
+            case 4: return playerFlyBooster;
+            case 5: return playerFlyBooster;
+            default: return playerFlyFeet;
         }
     }
 

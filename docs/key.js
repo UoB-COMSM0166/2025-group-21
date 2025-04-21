@@ -9,9 +9,9 @@ function keyPressed() {
 
     if (Domain === 'intro') {
 
-        if (key === ' ') {
-            if (intro !== null) {
-                intro.skipAnimation();
+        if (key === ' ' || keyCode === ENTER) {
+            if (domains.intro !== null) {
+                domains.intro.skipAnimation();
             }
         }
     }
@@ -19,69 +19,88 @@ function keyPressed() {
     if (Domain === 'game') {
 
         if (key === settings.boostKey) {
-            game.spacePressed = true;
+            domains.game.spacePressed = true;
         }
 
         if (key === ' ') {
 
-            if (!game.player.alive && game.death.deathTimer.time >= 180) {
-                game.death.skipCoinCount = true;
+            if (!domains.game.player.alive && domains.game.death.deathTimer.time >= 180) {
+                domains.game.death.skipCoinCount = true;
             }
         }
 
-        if (key === settings.flyKey && game.fly != null) {
-            game.fly.active = true;
+        if (key === settings.flyKey && domains.game.fly != null) {
+            domains.game.fly.active = true;
         }
 
-        if (!game.pause.active && game.player.alive) {
+        if (!domains.game.pause.active && domains.game.player.alive) {
 
             if (key === settings.shootKey) {
+                domains.game.player.shooting = true;
 
                 if (inventory.laserLevel < 5) {
-                    game.projectile.shoot();
+                    domains.game.projectile.shoot();
                 }
                 else {
-                    game.projectile.gatlingMode = true;
+                    domains.game.projectile.gatlingMode = true;
                 }
             }
 
-            if (key === settings.shieldKey && game.shield != null && game.shield.chargeFraction === 1) {
-                game.shield.active = true;
+            if (key === settings.shieldKey && domains.game.shield != null && domains.game.shield.chargeFraction === 1) {
+                domains.game.shield.active = true;
             }
         }
     }
 
     if (Domain === 'mainMenu') {
-        if(mainMenu !== null && mainMenu.animationComplete) {
-            mainMenu.handleKeyNavigation(keyCode);
+        if(domains.mainMenu !== null && domains.mainMenu.animationComplete) {
+            domains.mainMenu.handleKeyNavigation(keyCode);
             return;
         }
     }
 
-    if (Domain === 'game' && game.pause.active) {
+    if (Domain === 'instruction') {
+        if (keyCode === DOWN_ARROW) {
+            domains.instruction.moveSelection(1);
+        } else if (keyCode === UP_ARROW) {
+            domains.instruction.moveSelection(-1);
+        } else if (keyCode === ENTER || key === ' ') {
+                domains.instruction.selectCurrentButton();
+        }
+        return;
+    }
+
+
+    if (Domain === 'loadGame') {
+        if (domains !== null) {
+            domains.gameLoader.handleKeyNavigation(keyCode);
+        }
+    }
+
+    if (Domain === 'game' && domains.game.pause.active) {
         if (keyCode === UP_ARROW) {
-            if (game.pause.selectedButtonIndex === -1) {
-                game.pause.selectedButtonIndex = 0;
+            if (domains.game.pause.selectedButtonIndex === -1) {
+                domains.game.pause.selectedButtonIndex = 0;
                 //game.pause.updateButtonStyles();
             } else {
-                game.pause.moveSelection(-1);
+                domains.game.pause.moveSelection(-1);
             }
         } else if (keyCode === DOWN_ARROW) {
-            if (game.pause.showInvPanel) {
-                game.pause.invPanel.setCloseButtonSelected(true);
-            } else if (game.pause.selectedButtonIndex === -1) {
-                game.pause.selectedButtonIndex = 0;
+            if (domains.game.pause.showInvPanel) {
+                domains.game.pause.invPanel.setCloseButtonSelected(true);
+            } else if (domains.game.pause.selectedButtonIndex === -1) {
+                domains.game.pause.selectedButtonIndex = 0;
                 //game.pause.updateButtonStyles();
             } else {
-                game.pause.moveSelection(1);
+                domains.game.pause.moveSelection(1);
             }
         } else if (keyCode === ENTER) {
-            if (game.pause.showInvPanel && game.pause.invPanel.isCloseButtonSelected) {
+            if (domains.game.pause.showInvPanel && domains.game.pause.invPanel.isCloseButtonSelected) {
                 // If inventory panel is visible and CLOSE button is selected, activate it
-                game.pause.showInvPanel = false;
-                game.pause.invPanel.isCloseButtonSelected = false;
+                domains.game.pause.showInvPanel = false;
+                domains.game.pause.invPanel.isCloseButtonSelected = false;
             } else {
-                game.pause.selectCurrentButton();
+                domains.game.pause.selectCurrentButton();
             }
         }
     }
@@ -91,23 +110,24 @@ function keyReleased() {
     if (Domain === 'game') {
 
         if (key === settings.boostKey) {
-            game.spacePressed = false;
+            domains.game.spacePressed = false;
         }
         else if (keyCode === 27) { // 27 == ESC key
-            if (game.pause.active && !game.pause.showSettings) {
-                game.pause.showInvPanel = false;
-                game.pause.continueButtonPressed();
+            if (domains.game.pause.active && !domains.game.pause.showSettings) {
+                domains.game.pause.showInvPanel = false;
+                domains.game.pause.continueButtonPressed();
             }
-            else game.pause.active = true;
+            else domains.game.pause.active = true;
             //game.pause.active = !game.pause.active;
         }
 
-        if (key === settings.flyKey && game.fly != null) {
-            game.fly.active = false;
+        if (key === settings.flyKey && domains.game.fly != null) {
+            domains.game.fly.active = false;
         }
 
         if (key === settings.shootKey) {
-            game.projectile.gatlingMode = false;
+            domains.game.player.shooting = false;
+            domains.game.projectile.gatlingMode = false;
         }
     }
 }

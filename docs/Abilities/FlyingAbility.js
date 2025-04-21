@@ -13,16 +13,16 @@ class FlyingAbility {
 
     applyUpwardForce() {
 
-         if (this.chargeLeft > 0 && !game.pause.active) {
-             game.player.vel.y -= game.fly.velocityBoost;
-             if (!game.infiniteFly) this.chargeLeft -= 10;
+         if (this.chargeLeft > 0 && !domains.game.pause.active) {
+             domains.game.player.vel.y -= domains.game.fly.velocityBoost;
+             if (!domains.game.infiniteFly) this.chargeLeft -= 10;
          }
     }
 
     charge() {
         if (this.chargeLeft < this.maxCharge) {
 
-            if (!game.pause.active) {
+            if (!domains.game.pause.active) {
                 this.chargeLeft += (this.level+1) / 2;
             }
             this.displayChargeLeft();
