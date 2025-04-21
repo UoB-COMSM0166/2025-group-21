@@ -369,7 +369,7 @@ A core requirement for our game was an infinite, randomly generated terrain. Thi
 We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling hills, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
 
 <div align="center">
-    **Figure 1.** Evolution of our terrain generation over time.
+    <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
 </div>
 
 #### 2. Random and Unpredictable Terrain
@@ -378,7 +378,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 
 <div align="center">
     <img src="Videos/sine_wave_sum.gif" width="700" alt="Sine curve diagram">
-    <p>**Figure 2.** Comparison of individual sine curves and their summed result.</p>
+    <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
 </div>
 
 #### 3. Modifiable Difficulties
@@ -387,7 +387,7 @@ Difficulty levels were implemented by adjusting the sine wave parameters. More e
 
 <div align="center">
     <img src="Videos/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
-    **Figure 3.** Terrain variations across different difficulty levels.
+    <p><b>Figure 3.</b> Terrain variations across different difficulty levels.</p>
 </div>
 
 ### 2. Movement Physics
