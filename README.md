@@ -408,7 +408,7 @@ A class diagram of all interactions in the Game class is shown below (Figure 14)
 
 <div align="center">
     <img src="Product doc/final_game_architecture.png" width="900">
-    <p><b>Figure 13.</b> Final Game class diagram</p>
+    <p><b>Figure 14.</b> Final Game class diagram</p>
 </div>
 
 Many new features were added to the game over the development process including new player abilities, a scoring system, pausing, a dynamic background, stats, collectables, lives, and a high score leader board. Some notable changes from our initial design worth discussing relate to the introduction of new in-game obstacles and projectiles.
