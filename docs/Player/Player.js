@@ -90,6 +90,7 @@ class Player {
         if (!this.alive) {
             push();
             translate(domains.game.death.pos.x, domains.game.death.pos.y - this.radius);
+            domains.game.death.pos.x += 0.5;
             rotate(domains.game.death.slope);
             const DEATH_COLUMNS     = 4;
             const DEATH_FRAME_COUNT = 27;
