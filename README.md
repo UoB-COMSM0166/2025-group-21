@@ -498,10 +498,10 @@ On each load, the game checks for this saved data. If present, it’s parsed and
 #### Global Leaderboards
 
 We also wanted a global leaderboard where players could compete across devices. Unlike progress data, this required shared access beyond the client’s browser. Our first solution used GitHub Gists—an easy, lightweight way to store username–score pairs. However, this raised two major issues:
-- Authentication – Anyone could modify the public Gist, opening the door to fake scores.
+- Authentication – Anyone with access to the front end could modify the public Gist, opening the door to fake scores.
 - Race Conditions – Conflicts between read/write operations often resulting in lost scores.
 
-To solve both issues, we set up Vercel serverless functions as our backend. This allowed us to securely handle game logic and validate score submissions on the server side. For persistent, real-time storage of high scores, we used Redis, a fast, in-memory data store well-suited for leaderboard-style JSON data.
+To solve both issues, we set up Vercel serverless functions as our back end. This allowed us to securely handle game logic and validate score submissions on the server side. For persistent, real-time storage of high scores, we used Redis, a fast, in-memory data store well-suited for leaderboard-style JSON data.
 
 # 6. Evaluation
 
