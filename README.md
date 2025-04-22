@@ -344,7 +344,7 @@ Description: The player interacts with the system through multiple phases: start
 # 4. Design
 
 <div align="center">
-    <p style="font-size: 20px;"><b>Initial Design</b></p>
+    <p style="font-size: 40px;"><b>Initial Design</b></p>
 </div>
 
 Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 11).
