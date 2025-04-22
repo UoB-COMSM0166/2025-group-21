@@ -342,16 +342,43 @@ Description: The player interacts with the system through multiple phases: start
   - If the player enables infinite mode or changes control bindings, the settings are applied instantly and saved automatically.
 
 # 4. Design
-### Class Diagram
-- Game Mechanics
-### Behavioural diagrams
-### System architecture
-- Game Engine
-- Game Logic
-- Data Management
-- Asset Management
-- Networking
-- User Interface
+
+<div align="center">
+    <p><b>Initial Design</b></p>
+</div>
+
+Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 11).
+
+<div align="center">
+    <img src="Product doc/initial_design.png" width="700">
+    <p><b>Figure 11.</b> Initial design class diagram</p>
+</div>
+
+The main class would begin by instantiating the inventory which would persist throughout runtime. This class would hold all data relating to the in-game progress of the user such as ability levels and in-game currency. The game and shop classes would then be instantiated and destroyed as the user navigates between these two domains. Additionally, they would both need to interface with the inventory class as to allow for the relevant upgrades to be shown in the shop and for these upgrades to be used in the game.
+
+The game class would be responsible for the actual gameplay. It would be formed of the following components:
+
+   1. Terrain
+
+This class would generate a unique sinusoidal curve that would form the overall shape of the hills for a given game. It would be then responsible for drawing the updated terrain to the screen as the player moves through it. Moreover, the terrain class would contain methods that, given any x-coordinate, would return a y-coordinate corresponding to the ground height or the gradient of the slope at that position, which would be used by the player class to interact with the terrain.
+
+   3. PLayer
+
+The player class would encapsulate all data and functionality relating to the player. This includes position and velocity data as well as methods handling the physics of the players motion while interacting with the terrain, e.g., calculating normal force, friction, and the transfer of vertical velocity from gravitation to horizontal velocity, preserving momentum.
+
+   5. Death
+
+The general function of this class would be handling the sequence of events occurring at the point of game-over from either an obstacle collision or exceeding the normal force limit. The death class would be responsible for generating the game-over and coin reward animations as well as managing the internal state of a GUI allowing the user to play again or return to the shop.
+
+   7. UFO / UFOHandler
+
+The UFOHandler class would be responsible for instantiating UFO objects and monitoring their positions. It would need to check if a collision between the player and a UFO has occurred as well ensure that any UFOs are destroyed if they travel off the screen. The UFO class would then encapsulate a UFO’s position/velocity data and functionality such as updating the position and drawing it on the screen.
+
+   9. Laser / LaserAbility
+
+In much the same way as the previous pair of classes, the LaserAbility class would instantiate and monitor Laser objects. It would check for collisions between lasers and UFOs and destroy any off-screen lasers. Similarly, the Laser class would update the position and draw to the screen.
+
+
 
 
 # 5. Implementation
