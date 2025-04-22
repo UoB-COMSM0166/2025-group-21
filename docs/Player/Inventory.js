@@ -61,8 +61,8 @@ class Inventory {
         console.log('flylevel =', this.laserLevel);
         switch (this.flyLevel) {
             case 1: return playerPenguinWings;
-            case 2: return playerPenguinWings;
-            case 3: return playerDragonWings;
+            case 2: return playerDragonWings;
+            case 3: return playerHelicopterRotor;
             case 4: return playerPenguinWings;
             case 5: return playerPenguinWings;
             default: return playerPenguinWings;

@@ -38,7 +38,8 @@ let playerHeadArrow = null;
 let playerHeadLaser = null;
 let playerHeadGatling = null;
 
-let playerFlyFeet, playerFlyBooster, playerPenguinWings, playerDragonWings;
+let playerFlyFeet, playerFlyBooster, playerPenguinWings,
+    playerDragonWings, playerHelicopterRotor;
 
 // audio
 // let laserAutomaticSound = null;
@@ -323,6 +324,8 @@ function setMasterVolume(masterVolume) {
     if ((sound = soundBoard.cache['coinSound']) !== undefined) sound.setVolume(0.5*volume*masterVolume);
     if ((sound = soundBoard.cache['wingFlapSound']) !== undefined) sound.setVolume(1.4*volume*masterVolume);
     if ((sound = soundBoard.cache['boosterSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
+    if ((sound = soundBoard.cache['rotorSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
+
 
     // soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
     // soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);

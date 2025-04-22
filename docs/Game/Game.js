@@ -59,6 +59,7 @@ class Game {
         this.coins = new Coins();
 
         this.obstacleHandler = new ObstacleHandler();
+        this.wind = null;
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
@@ -205,6 +206,7 @@ class Game {
         this.collectCoinSound = await soundBoard.getSound('coinSound');
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
         this.boosterSound    = await soundBoard.getSound('boosterSound');
+        this.rotorSound    = await soundBoard.getSound('rotorSound');
     }
 
     disconnectAudio() {
