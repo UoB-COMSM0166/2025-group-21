@@ -38,7 +38,8 @@ let playerHeadArrow = null;
 let playerHeadLaser = null;
 let playerHeadGatling = null;
 
-let playerFlyFeet, playerFlyBooster, playerPenguinWings, playerDragonWings;
+let playerFlyFeet, playerFlyBooster, playerPenguinWings,
+    playerDragonWings, playerHelicopterRotor;
 
 // audio
 // let laserAutomaticSound = null;
@@ -227,6 +228,7 @@ function preload() {
     playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
     playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
     playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
+    playerHelicopterRotor = loadImage('assets/sprites/helicopterRotor.png');
 
     playerImg = loadImage('assets/images/player1.png');
     playerBody = loadImage('assets/sprites/playerBody.png');
@@ -322,6 +324,7 @@ function setMasterVolume(masterVolume) {
     soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
     soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
     soundBoard.cache['boosterSound'].setVolume(0.8*volume*masterVolume);
+    soundBoard.cache['rotorSound'].setVolume(0.8*volume*masterVolume);
 }
 
 function loadSoundAsync(path) {
