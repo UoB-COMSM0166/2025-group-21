@@ -626,7 +626,7 @@ After analyzing and linking the effects outlined in the SusAD model, we identifi
 #### Synthesis: Threats, Opportunities, Actions
 ##### Threats:
 - Poorly planned technical decisions, such as inefficient data structures, can limit scalability and performance as the user base grows.
-- Focusing solely on current functionalities may lead to increased technical debt and hinder long-term adaptability.\
+- Focusing solely on current functionalities may lead to increased technical debt and hinder long-term adaptability.
 - Lack of foresight in architecture design may result in costly rework during later stages of development.
 ##### Opportunities:
 - Early investment in scalable and efficient technical architecture can ensure smoother performance with user growth.
