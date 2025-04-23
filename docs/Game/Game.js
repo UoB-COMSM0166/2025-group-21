@@ -30,9 +30,15 @@ class Game {
         document.body.classList.remove("show-cursor");
         noStroke();
 
+        this.wind = null;
         this.masterVolume = settings.masterVolume*settings.mute;
         this.soundsLoaded = false;
-        this.loadAudio().then(() => this.soundsLoaded = true);
+
+        this.loadAudio().then(() => {
+            this.soundsLoaded = true
+            setMasterVolume(this.masterVolume);
+            this.wind = new Wind();
+        });
 
         this.offset = 0;  // Horizontal movement of screen position
         this.topMargin = 100; // 50
@@ -201,9 +207,6 @@ class Game {
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
         this.boosterSound    = await soundBoard.getSound('boosterSound');
         this.rotorSound    = await soundBoard.getSound('rotorSound');
-
-        setMasterVolume(this.masterVolume);
-        this.wind = new Wind();
     }
 
     disconnectAudio() {

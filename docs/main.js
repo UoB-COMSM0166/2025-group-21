@@ -10,25 +10,25 @@ let fps = 0;
 let userIsTyping = false;
 let inputCharacter = null;
 let soundBoard = null;
+let soundsCached = false;
 
 function setup() {
-    let gameProgress = loadGameProgress();
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
 
-    // if (!gameProgress) {
-    //     gameProgress = NEW_GAME_STATE;
-    // }
+    let gameProgress = loadGameProgress();
 
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
-    inventory = null; // new Inventory(gameProgress);
-    settings = null; // new Settings(gameProgress);
     soundBoard = new SoundBoard();
     domains = new DomainManager(gameProgress);
 }
 
 function draw() {
+
+    if (!soundsCached) return;
 
     domains.run();
 

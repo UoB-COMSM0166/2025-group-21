@@ -34,7 +34,6 @@ class Inventory {
     }
 
     getHeadImage() {
-        console.log('laserLevel =', this.laserLevel);
         switch (this.laserLevel) {
             case 0: return playerHeadFish;
             case 1: return playerHeadFish;

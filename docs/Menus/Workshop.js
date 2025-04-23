@@ -44,7 +44,7 @@ class Workshop {
     openShop() {
         if (!this.soundsLoaded) return;
 
-        this.display();
+        this.updateDisplay();
         this.printCoins();
         this.updateButtonCooldown();
 
@@ -87,7 +87,7 @@ class Workshop {
         }
     }
 
-    display() {
+    updateDisplay() {
 
         push();
         // background
