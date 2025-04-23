@@ -43,6 +43,8 @@ class Terrain {
             this.frequencies.push(freqFactor + 0.3*freqFactor*Math.random());
             this.phases.push(phaseFactor * Math.PI);
         }
+
+        this.step = settings.difficulty === 2 ? 15 : 30;
     }
 
     updateHillParams() {
@@ -82,7 +84,7 @@ class Terrain {
         fill(`rgb(${r},${g},${b})`);
         canvas.vertex(-170 / domains.game.zoom, height);
 
-        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += 5 / domains.game.zoom) {
+        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += this.step * Math.sqrt(domains.game.zoom)) {
             let y = this.f(x) + 50*layer + 10;
             canvas.vertex(x, y);
         }
@@ -94,12 +96,12 @@ class Terrain {
         fill('rgb(255,238,241)');
         beginShape();
 
-        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += 5 / domains.game.zoom) {
+        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += 15 / domains.game.zoom) {
             let y = this.f(x);
             let newY = y + 2*sin((x + domains.game.offset) * 0.05) + 2*cos((x + domains.game.offset) * 0.07) - 3;
             canvas.vertex(x, newY);
         }
-        for (let x = length / domains.game.zoom + 10; x >= -170 / domains.game.zoom; x -= 5 / domains.game.zoom) {
+        for (let x = length / domains.game.zoom + 10; x >= -170 / domains.game.zoom; x -= 15 / domains.game.zoom) {
             let y = this.f(x) + 20;
             let newY = y + 2*sin((x + domains.game.offset) * 0.04) + 2*cos((x + domains.game.offset) * 0.05) - 3;
             canvas.vertex(x, newY);
