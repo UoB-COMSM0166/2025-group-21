@@ -221,48 +221,7 @@ Once the personas are established, user stories are created to represent the nee
         <td>As an avid player, I want to compare my scores with friends.</td>
         <td>The game should include a friend leaderboard feature for score comparison.</td>
     </tr>
-    <tr>
-        <td rowspan="9">Sustainable Player</td>
-        <td rowspan="2">Technically sustainable</td>
-        <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
-        <td>The high-score data storage should be persistent and maintained.</td>
-    </tr>
-    <tr>
-        <td>As a techically-minded player, I want to be able to see and learn from the code bases of the games I play.</td>
-        <td>The open-source code should be maintained and accessible.</td>
-    </tr>
-    <tr>
-        <td rowspan="2">Social Players</td>
-        <td>As a social player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
-        <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
-    </tr>
-    <tr>
-        <td>As a social player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
-        <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
-    </tr>
-    <tr>
-        <td rowspan="2">Economic Players</td>
-        <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
-        <td>The game should be free and fun with any costs only being for avid players.</td>
-    </tr>
-    <tr>
-        <td>As a casual player, I want to be able to just connect to the internet and be able to play.</td>
-        <td>The game should be accessible on a web browser without anything extra required.</td>
-    </tr>
-    <tr>
-        <td rowspan="1">Environmental Players</td>
-        <td>As an environmentally-minded player, I want a game that feels representative of my interests.</td>
-        <td>The game should feel grounded in its environment.</td>
-    </tr>
-    <tr>
-        <td rowspan="2">Individual Players</td>
-        <td>As a safety-minded player, I want a game that doesn't require my data or is a safety risk.</td>
-        <td>The game should not require any important data from the users, to make the games' data usage sustainble.</td>
-    </tr>
-    <tr>
-        <td>As a health-minded player, I don't want to feel addicted or in pain after playing for periods of time.</td>
-        <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
-    </tr>
+
 </table>
 
 ### Use-Cases Breakdown
@@ -630,6 +589,7 @@ Overall, **the SUS scores for both difficulties were above the industry average*
 
 # 7. Sustainability 
 ### SusA Framework: Questions
+By completing the SusA framework, we have developed a more comprehensive product roadmap that outlines our long-term vision for the game. This process has encouraged us to adopt a more strategic and thoughtful approach to development—considering factors such as scalable data structures, maintainable and extensible code design, and user experience planning from the outset.
 | |Social|
 |--|:--|
 |Sense of community|The product fosters a sense of community by incorporating a leaderboard that encourages user engagement through competitive comparison. Additionally, integrating a social sharing feature allows users to publicly display their achievements on social media platforms, reinforcing a sense of accomplishment and belonging within their social circles.|
@@ -661,8 +621,58 @@ Overall, **the SUS scores for both difficulties were above the industry average*
 |Security|Currently, the game does not collect or store sensitive personal data. We even encourage the use of nicknames for public-facing features like the leaderboard to enhance privacy. However, as we introduce more features, particularly those involving user accounts or transactions, data security will become a higher priority.|
 |Scalability|We have implemented a scalable data structure that supports increasing user volume. This design helps optimize system performance by reducing search and load times, which in turn improves the overall user experience.<br><br>Scalability is supported by efficient data handling and a modular codebase. However, sudden surges in traffic or poorly optimized third-party integrations could challenge performance. Proactive load testing and performance monitoring are planned to ensure the system can handle scaling effectively.|
 ### SusA Framework: Analysis
-![image](https://github.com/user-attachments/assets/b453a5d1-1ce3-4a92-bebc-090d9c1d9313)
-![image](https://github.com/user-attachments/assets/a1334887-bf03-4913-bce1-e3376a574623)
+#### Identifying SusA Needs with User Stories
+<table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+        <th>User</th>
+        <th>Epic</th>
+        <th>User Stories</th>
+        <th>Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td rowspan="9">Sustainable Player</td>
+        <td rowspan="2">Technically sustainable</td>
+        <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
+        <td>The high-score data storage should be persistent and maintained.</td>
+    </tr>
+    <tr>
+        <td>As a techically-minded player, I want to be able to see and learn from the code bases of the games I play.</td>
+        <td>The open-source code should be maintained and accessible.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Social Players</td>
+        <td>As a social player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
+        <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
+    </tr>
+    <tr>
+        <td>As a social player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
+        <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Economic Players</td>
+        <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
+        <td>The game should be free and fun with any costs only being for avid players.</td>
+    </tr>
+    <tr>
+        <td>As a casual player, I want to be able to just connect to the internet and be able to play.</td>
+        <td>The game should be accessible on a web browser without anything extra required.</td>
+    </tr>
+    <tr>
+        <td rowspan="1">Environmental Players</td>
+        <td>As an environmentally-minded player, I want a game that feels representative of my interests.</td>
+        <td>The game should feel grounded in its environment.</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Individual Players</td>
+        <td>As a safety-minded player, I want a game that doesn't require my data or is a safety risk.</td>
+        <td>The game should not require any important data from the users, to make the games' data usage sustainble.</td>
+    </tr>
+    <tr>
+        <td>As a health-minded player, I don't want to feel addicted or in pain after playing for periods of time.</td>
+        <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
+    </tr>
+</table>
+
 
 # 8. Process 
 ### Collaboration
