@@ -10,6 +10,7 @@ let fps = 0;
 let userIsTyping = false;
 let inputCharacter = null;
 let soundBoard = null;
+let soundsCached = false;
 
 function setup() {
     const loader = document.getElementById('loader');
@@ -26,6 +27,8 @@ function setup() {
 }
 
 function draw() {
+
+    if (!soundsCached) return;
 
     domains.run();
 

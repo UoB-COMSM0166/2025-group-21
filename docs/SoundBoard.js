@@ -4,7 +4,10 @@ class SoundBoard {
 
     constructor() {
         this.cache = {};
-        this.loadAudio().then(() => setMasterVolume(1));
+        this.loadAudio().then(() => {
+            soundsCached = true;
+            setMasterVolume(1)
+        });
     }
 
     async loadAudio() {
@@ -33,6 +36,8 @@ class SoundBoard {
     }
 
     async getSound(name) {
-        return this.cache[name];
+        if (this.cache[name]) {
+            return this.cache[name];
+        }
     }
 }
