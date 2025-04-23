@@ -12,6 +12,9 @@ let inputCharacter = null;
 let soundBoard = null;
 
 function setup() {
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+
     let gameProgress = loadGameProgress();
 
     // Set up canvas aspect ratio and resize to current window size
