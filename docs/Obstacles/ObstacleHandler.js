@@ -79,7 +79,17 @@ class ObstacleHandler {
                     this.aerialObstacles[u].hitByArrow = true;
 
                     if (this.aerialObstacles[u] instanceof Bird) {
-                        if (domains.game.player.lives.getLives() > 1) {
+                        if (domains.game.invincibility) {
+                            this.explosions.push(new Explosion(this.aerialObstacles[u].pos));
+                            this.aerialObstacles.splice(u, 1);
+
+                            if (domains.game.explosionSound.isPlaying()) {
+                                domains.game.explosionSound.stop();
+                            }
+                            domains.game.explosionSound.play();
+                            return;
+                        }
+                        else if (domains.game.player.lives.getLives() > 1) {
                             domains.game.player.lives.removeLife();
                             this.birdHitCooldown.tick();
                             return;
