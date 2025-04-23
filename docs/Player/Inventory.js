@@ -58,7 +58,7 @@ class Inventory {
     }
 
     getWingImage() {
-        console.log('flylevel =', this.laserLevel);
+        console.log('flylevel =', this.flyLevel);
         switch (this.flyLevel) {
             case 1: return playerPenguinWings;
             case 2: return playerDragonWings;
