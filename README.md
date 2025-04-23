@@ -621,7 +621,26 @@ By completing the SusA framework, we have developed a more comprehensive product
 |Security|Minimal data collection protects privacy. Future growth will require stronger security measures.|
 |Scalability|A modular, efficient design supports traffic growth and maintains performance.|
 ### SusA Framework: Analysis
-#### Identifying SusA Needs with User Stories
+After analyzing and linking the effects outlined in the SusAD model, we identified that many issues originate from technical decisions. For example, how we design the data structure plays a crucial role—anticipating a larger user base early on enables more efficient database access and better scalability. These considerations extend beyond immediate functionality and have significant long-term implications. Therefore, to support the sustainable growth of the game, which has the potential to evolve into a viable business, it is essential to envision and plan for future impacts before entering the development phase.
+![image](https://github.com/user-attachments/assets/b63e1e23-eb5b-49ec-8f0a-76ccb99aedcc)
+#### Synthesis: Threats, Opportunities, Actions
+##### Threats:
+- Poorly planned technical decisions, such as inefficient data structures, can limit scalability and performance as the user base grows.
+- Focusing solely on current functionalities may lead to increased technical debt and hinder long-term adaptability.\
+- Lack of foresight in architecture design may result in costly rework during later stages of development.
+##### Opportunities:
+- Early investment in scalable and efficient technical architecture can ensure smoother performance with user growth.
+- Applying a long-term perspective enables more sustainable software development, aligning with potential business growth.
+- Integrating sustainable design principles from the start can position the game as a reliable, future-proof product in the market.
+##### Actions:
+- Conduct technical foresight sessions during the planning phase to anticipate growth and evolving requirements.
+- Prioritize the design of flexible and scalable data structures and system architecture.
+- Align development practices with the principles of sustainable software architecture to reduce future maintenance costs and improve system longevity.
+- Continuously revisit and refine design decisions as part of an iterative development process, ensuring alignment with long-term goals.
+
+#### User Stories From Sustainability Effects
+We translated the *immediate sustainability effects* identified in our SusAD into user stories, which have been incorporated as core features in the initial launch of our game.
+
 <table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>User</th>
@@ -630,26 +649,26 @@ By completing the SusA framework, we have developed a more comprehensive product
         <th>Acceptance Criteria</th>
     </tr>
     <tr>
-        <td rowspan="9">Sustainable Player</td>
-        <td rowspan="2">Technically sustainable</td>
-        <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
+        <td rowspan="9">Sustainable Design</td>
+        <td rowspan="2">Technical</td>
+        <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
         <td>The high-score data storage should be persistent and maintained.</td>
     </tr>
     <tr>
-        <td>As a techically-minded player, I want to be able to see and learn from the code bases of the games I play.</td>
+        <td>As an avid player, I want to be able to see and learn from the code bases of the games I play.</td>
         <td>The open-source code should be maintained and accessible.</td>
     </tr>
     <tr>
-        <td rowspan="2">Social Players</td>
-        <td>As a social player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
+        <td rowspan="2">Social</td>
+        <td>As a casual player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
         <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
     </tr>
     <tr>
-        <td>As a social player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
+        <td>As a casual player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
         <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
     </tr>
     <tr>
-        <td rowspan="2">Economic Players</td>
+        <td rowspan="2">Economic</td>
         <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
         <td>The game should be free and fun with any costs only being for avid players.</td>
     </tr>
@@ -658,17 +677,17 @@ By completing the SusA framework, we have developed a more comprehensive product
         <td>The game should be accessible on a web browser without anything extra required.</td>
     </tr>
     <tr>
-        <td rowspan="1">Environmental Players</td>
-        <td>As an environmentally-minded player, I want a game that feels representative of my interests.</td>
+        <td rowspan="1">Environmental</td>
+        <td>As an avid player, I want a game that feels representative of my interests.</td>
         <td>The game should feel grounded in its environment.</td>
     </tr>
     <tr>
-        <td rowspan="2">Individual Players</td>
-        <td>As a safety-minded player, I want a game that doesn't require my data or is a safety risk.</td>
+        <td rowspan="2">Individual</td>
+        <td>As a casual player, I want a game that doesn't require my data or is a safety risk.</td>
         <td>The game should not require any important data from the users, to make the games' data usage sustainble.</td>
     </tr>
     <tr>
-        <td>As a health-minded player, I don't want to feel addicted or in pain after playing for periods of time.</td>
+        <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
         <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
     </tr>
 </table>
