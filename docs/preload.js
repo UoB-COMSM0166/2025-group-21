@@ -228,6 +228,7 @@ function preload() {
     playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
     playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
     playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
+    playerHelicopterRotor = loadImage('assets/sprites/helicopterRotor.png');
 
     playerImg = loadImage('assets/images/player1.png');
     playerBody = loadImage('assets/sprites/playerBody.png');
