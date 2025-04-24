@@ -34,7 +34,6 @@ class Inventory {
     }
 
     getHeadImage() {
-        console.log('laserLevel =', this.laserLevel);
         switch (this.laserLevel) {
             case 0: return playerHeadFish;
             case 1: return playerHeadFish;
@@ -59,11 +58,11 @@ class Inventory {
     }
 
     getWingImage() {
-        console.log('flylevel =', this.laserLevel);
+        console.log('flylevel =', this.flyLevel);
         switch (this.flyLevel) {
             case 1: return playerPenguinWings;
-            case 2: return playerPenguinWings;
-            case 3: return playerDragonWings;
+            case 2: return playerDragonWings;
+            case 3: return playerHelicopterRotor;
             case 4: return playerPenguinWings;
             case 5: return playerPenguinWings;
             default: return playerPenguinWings;

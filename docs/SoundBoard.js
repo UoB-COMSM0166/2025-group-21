@@ -4,7 +4,10 @@ class SoundBoard {
 
     constructor() {
         this.cache = {};
-        this.loadAudio().then(() => setMasterVolume(1));
+        this.loadAudio().then(() => {
+            soundsCached = true;
+            setMasterVolume(1)
+        });
     }
 
     async loadAudio() {
@@ -29,9 +32,12 @@ class SoundBoard {
         this.cache['coinSound'] = await loadSoundAsync('assets/sounds/coinSound.mp3');
         this.cache['wingFlapSound'] = await loadSoundAsync('assets/sounds/wingFlapSound.mp3');
         this.cache['boosterSound'] = await loadSoundAsync('assets/sounds/boosterSound.mp3');
+        this.cache['rotorSound'] = await loadSoundAsync('assets/sounds/rotorSound.mp3');
     }
 
     async getSound(name) {
-        return this.cache[name];
+        if (this.cache[name]) {
+            return this.cache[name];
+        }
     }
 }

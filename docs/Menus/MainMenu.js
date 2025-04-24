@@ -16,7 +16,7 @@ class MainMenu {
         this.animationDuration = 800;
         this.animationComplete = false;
 
-        this.buttons = [];
+        //this.buttons = [];
         this.selectedButtonIndex = -1;
         this.buttonGrid = [
             [0, 1],

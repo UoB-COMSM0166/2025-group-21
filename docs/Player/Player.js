@@ -67,64 +67,76 @@ class Player {
         this.lives.drawChangeLife();
         if (domains.game.death != null && domains.game.death.type === 'UFO') return;
 
-        const FRAME_WIDTH = 128;
-        const FRAME_HEIGHT = 128;
+        const FRAME_WIDTH        = 128;
+        const FRAME_HEIGHT       = 128;
         const NORMAL_FRAME_COUNT = 6;
-        const NORMAL_COLUMNS = 2;
-        const frameSpeed = 2;
-        const scaleFactor = 0.8;
-        const headImg = this.headImg;
-        const feetImg = this.feetImg;
-        const wingImg = this.wingImg;
+        const NORMAL_COLUMNS     = 2;
+        const baseFrameSpeed     = 2;
+        const scaleFactor        = 0.8;
+        const headImg            = this.headImg;
+        const feetImg            = this.feetImg;
+        const wingImg            = this.wingImg;
 
         imageMode(CENTER);
 
-        let velocityAngle = atan2(this.vel.y, this.vel.x);
-        let slopeAngle = atan(domains.game.terrain.slope(this.pos.x));
+        const velocityAngle = atan2(this.vel.y, this.vel.x);
+        const slopeAngle    = atan(domains.game.terrain.slope(this.pos.x));
 
+        // compute wing‐sprite frame coords
+        const wingCol = this.frameIndex % NORMAL_COLUMNS;
+        const wingRow = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+
+        // —— DEATH ANIMATION ——
         if (!this.alive) {
             push();
             translate(domains.game.death.pos.x, domains.game.death.pos.y - this.radius);
-            domains.game.death.pos.x += 0.55;
-            // Death Animation
-            const DEATH_COLUMNS = 4;
-            const DEATH_FRAME_COUNT = 27;
-
+            domains.game.death.pos.x += 0.5;
             rotate(domains.game.death.slope);
-
+            const DEATH_COLUMNS     = 4;
+            const DEATH_FRAME_COUNT = 27;
             if (frameCount % 12 === 0 && this.deathFrameIndex < DEATH_FRAME_COUNT - 1) {
                 this.deathFrameIndex++;
             }
-
-            let deathCol = this.deathFrameIndex % DEATH_COLUMNS;
-            let deathRow = Math.floor(this.deathFrameIndex / DEATH_COLUMNS);
-
+            const dc = this.deathFrameIndex % DEATH_COLUMNS;
+            const dr = Math.floor(this.deathFrameIndex / DEATH_COLUMNS);
             image(
                 playerDeath,
-                0, 0,  // Center the image at the origin
-                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,  // Destination size
-                deathCol * FRAME_WIDTH, deathRow * FRAME_HEIGHT,          // Source x, y
-                FRAME_WIDTH, FRAME_HEIGHT                                  // Source size
+                0, 0,
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                dc * FRAME_WIDTH, dr * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
             );
             pop();
+            return;
         }
-        //------- Penguin Flying -------
-        else if (domains.game.score.airtime > 3) {
+
+        // —— PENGUIN FLYING ——
+        if (domains.game.score.airtime > 3) {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(velocityAngle);
 
-            if (frameCount % frameSpeed === 0
-                && !domains.game.pause.active
-                && domains.game.fly != null
-                && domains.game.fly.active) {
-                this.frameIndex = (this.frameIndex + 1) % NORMAL_FRAME_COUNT;
+            const frameSpeed = baseFrameSpeed;
+            if (
+                frameCount % frameSpeed === 0 &&
+                !domains.game.pause.active &&
+                domains.game.fly != null &&
+                domains.game.fly.active
+            ) {
+                // if helicopter rotor, double the speed
+                const step = (inventory.flyLevel === 3) ? 2 : 1;
+                this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
 
-                //---- PLaying different sounds for different flying levels ------
+                // non‐overlapping original sound logic
                 if (inventory.flyLevel >= 4) {
                     if (!domains.game.boosterSound.isPlaying()) {
                         domains.game.boosterSound.play();
                         domains.game.wingFlapSound.play();
+                    }
+                } else if (inventory.flyLevel === 3) {
+                    if (!domains.game.rotorSound.isPlaying()) {
+                        domains.game.rotorSound.play();
+                        //domains.game.wingFlapSound.play();
                     }
                 } else {
                     if (!domains.game.wingFlapSound.isPlaying()) {
@@ -133,152 +145,97 @@ class Player {
                 }
             }
 
-            let col = this.frameIndex % NORMAL_COLUMNS;
-            let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+            const col = this.frameIndex % NORMAL_COLUMNS;
+            const row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
-            // ----- draw body ------------
+            // body
             image(
                 playerBody,
                 0, 0,
-                FRAME_WIDTH * scaleFactor,
-                FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH,
-                row * FRAME_HEIGHT,
-                FRAME_WIDTH,
-                FRAME_HEIGHT
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH, row * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
             );
 
-            //--- Drawing head -------
-            const HEAD_FRAME_W = 128;
-            const HEAD_FRAME_H = 128;
-            let headRow = this.shooting ? 1 : 0;
+            // head overlay
+            const HEAD_W = 128, HEAD_H = 128;
+            const headRow = this.shooting ? 1 : 0;
             image(
                 headImg,
                 0, 0,
-                HEAD_FRAME_W * scaleFactor,
-                HEAD_FRAME_H * scaleFactor,
-                0, headRow * HEAD_FRAME_H,
-                HEAD_FRAME_W,
-                HEAD_FRAME_H
+                HEAD_W * scaleFactor, HEAD_H * scaleFactor,
+                0, headRow * HEAD_H,
+                HEAD_W, HEAD_H
             );
 
-            //--- drawing feet -----
-            const FEET_FRAME_W = 128;
-            const FEET_FRAME_H = 128;
-            let feetRow = (domains.game.fly && domains.game.fly.active) ? 1 : 0;
+            // feet overlay
+            const FEET_W = 128, FEET_H = 128;
+            const feetRow = domains.game.fly && domains.game.fly.active ? 1 : 0;
             image(
                 feetImg,
                 0, 0,
-                FEET_FRAME_W * scaleFactor,
-                FEET_FRAME_H * scaleFactor,
-                0, feetRow * FEET_FRAME_H,
-                FEET_FRAME_W,
-                FEET_FRAME_H
+                FEET_W * scaleFactor, FEET_H * scaleFactor,
+                0, feetRow * FEET_H,
+                FEET_W, FEET_H
             );
 
-            //--- Drawing wings ---------
+            // wings overlay
             image(
                 wingImg,
                 0, 0,
-                FRAME_WIDTH * scaleFactor,
-                FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH,
-                row * FRAME_HEIGHT,
-                FRAME_WIDTH,
-                FRAME_HEIGHT
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                wingCol * FRAME_WIDTH, wingRow * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
             );
             pop();
         }
-        // ------- Penguin grounded -------
+        // —— PENGUIN GROUNDED ——
         else {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(slopeAngle);
 
-            this.frameIndex = 0;  // always 0 on ground
-            let col = this.frameIndex % NORMAL_COLUMNS;
-            let row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
-
-            // draw body
+            // body (first frame)
             image(
                 playerBody,
                 0, 0,
-                FRAME_WIDTH * scaleFactor,
-                FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH,
-                row * FRAME_HEIGHT,
-                FRAME_WIDTH,
-                FRAME_HEIGHT
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                0, 0,
+                FRAME_WIDTH, FRAME_HEIGHT
             );
 
-            // **HEAD OVERLAY** (ground)
-            const HEAD_FRAME_W = 128;
-            const HEAD_FRAME_H = 128;
-            let headRow = this.shooting ? 1 : 0;
+            // head overlay
+            const HEAD_W = 128, HEAD_H = 128;
+            const headRowG = this.shooting ? 1 : 0;
             image(
                 headImg,
                 0, 0,
-                HEAD_FRAME_W * scaleFactor,
-                HEAD_FRAME_H * scaleFactor,
-                0, headRow * HEAD_FRAME_H,
-                HEAD_FRAME_W,
-                HEAD_FRAME_H
+                HEAD_W * scaleFactor, HEAD_H * scaleFactor,
+                0, headRowG * HEAD_H,
+                HEAD_W, HEAD_H
             );
-            //--- Feet grounded ------------
-            const FEET_FRAME_W = 128;
-            const FEET_FRAME_H = 128;
-            let feetRow = (domains.game.fly && domains.game.fly.active) ? 1 : 0;
+
+            // feet overlay
+            const FEET_W = 128, FEET_H = 128;
+            const feetRowG = domains.game.fly && domains.game.fly.active ? 1 : 0;
             image(
                 feetImg,
                 0, 0,
-                FEET_FRAME_W * scaleFactor,
-                FEET_FRAME_H * scaleFactor,
-                0, feetRow * FEET_FRAME_H,
-                FEET_FRAME_W,
-                FEET_FRAME_H
+                FEET_W * scaleFactor, FEET_H * scaleFactor,
+                0, feetRowG * FEET_H,
+                FEET_W, FEET_H
             );
 
-
-            //----Drawing Wings-------
+            // wings overlay (last flying frame)
             image(
                 wingImg,
                 0, 0,
-                FRAME_WIDTH * scaleFactor,
-                FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH,
-                row * FRAME_HEIGHT,
-                FRAME_WIDTH,
-                FRAME_HEIGHT
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                wingCol * FRAME_WIDTH, wingRow * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
             );
             pop();
         }
-        // // Velocity vector
-        // let dx1 = this.vel.x * 8;
-        // let dy1 = this.vel.y * 8;
-        //
-        // // Acceleration vector
-        // let dx2 = this.acc.x * 1500;
-        // let dy2 = this.acc.y * 1500;
-        //
-        // push();
-        // strokeWeight(8);
-        //
-        // // Velocity (red)
-        // stroke('red');
-        // line(this.pos.x, this.pos.y, this.pos.x + dx1, this.pos.y); // x axis
-        // drawArrowhead(this.pos.x, this.pos.y, dx1, 0, 20, 'red');
-        //
-        // line(this.pos.x, this.pos.y, this.pos.x, this.pos.y + dy1); // y axis
-        // drawArrowhead(this.pos.x, this.pos.y, 0, dy1, 20, 'red');
-        //
-        // // Acceleration (blue)
-        // stroke('blue');
-        // line(this.pos.x, this.pos.y, this.pos.x + dx2, this.pos.y); // x axis
-        // drawArrowhead(this.pos.x, this.pos.y, dx2, 0, 20, 'blue');
-        //
-        // line(this.pos.x, this.pos.y, this.pos.x, this.pos.y + dy2); // y axis
-        // drawArrowhead(this.pos.x, this.pos.y, 0, dy2, 20, 'blue');
-        // pop();
     }
 
     updateAcceleration (slope) {
