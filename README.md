@@ -2,7 +2,7 @@
 2025 COMSM0166 group 21
 
 ## Demonstration
-[Click me! You can play our game here! 🎮⚡🚀](https://uob-comsm0166.github.io/2025-group-21/)
+[Click me! You can play our game here! 🎮🐧🚀](https://uob-comsm0166.github.io/2025-group-21/)
 
 # Table of Contents
 - [1. Development Team](#1-development-team)
