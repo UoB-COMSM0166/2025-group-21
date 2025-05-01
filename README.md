@@ -1,7 +1,7 @@
 <div align="center">
     <img src="Product doc/Banner.png" width="1000">
     <p></p>
-    <p>🐧  <a href="https://uob-comsm0166.github.io/2025-group-21/">CLICK HERE TO PLAY!</a>  🚀</p>
+    <p>🐧&nbsp;&nbsp;&nbsp;<a href="https://uob-comsm0166.github.io/2025-group-21/">CLICK HERE TO PLAY!</a>&nbsp;&nbsp;&nbsp;🚀</p>
 </div>
 
 # Table of Contents
