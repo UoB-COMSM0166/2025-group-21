@@ -1,9 +1,8 @@
 <div align="center">
     <img src="Product doc/Banner.png" width="1000">
+    <p></p>
+    <p href="https://uob-comsm0166.github.io/2025-group-21/">🐧 Click me! You can play our game here! 🚀</p>
 </div>
-
-## Demonstration
-[Click me! You can play our game here! 🎮🐧🚀](https://uob-comsm0166.github.io/2025-group-21/)
 
 # Table of Contents
 - [1. Development Team](#1-development-team)
