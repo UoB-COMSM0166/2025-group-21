@@ -1,5 +1,6 @@
-# 2025-group-21
-2025 COMSM0166 group 21
+<div align="center">
+    <img src="Product doc/Banner.png" width="1000">
+</div>
 
 ## Demonstration
 [Click me! You can play our game here! 🎮🐧🚀](https://uob-comsm0166.github.io/2025-group-21/)
