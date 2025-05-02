@@ -21,14 +21,14 @@
 
 <div align="center">
 
-| Group # | Name | Email | Role |
-| :-: | :-: | :-: | :-: |
-| 01 | Jack May | jack.robert.may@gmail.com | |
-| 02 | Tom Raynes | nc19537@bristol.ac.uk | |
-| 03 | Kuan Jung Huang | jp24328@bristol.ac.uk | |
-| 04 | Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | |
-| 05 | Jing Yao | so24769@bristol.ac.uk | |
-| 06 | Zhiling Liu | cj24646@bristol.ac.uk | |
+| Name | Email | Role |
+| :-: | :-: | :-: |
+| Jack May | jack.robert.may@gmail.com | Backend |
+| Tom Raynes | nc19537@bristol.ac.uk | Full Stack |
+| Kuan Jung Huang | jp24328@bristol.ac.uk | Project manager, frontend |
+| Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | Frontend, graphic design |
+| Jing Yao | so24769@bristol.ac.uk | Graphic design, frontend |
+| Zhiling Liu | cj24646@bristol.ac.uk | Frontend |
 
 </div>
 
