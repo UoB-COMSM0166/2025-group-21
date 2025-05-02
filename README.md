@@ -776,3 +776,17 @@ Despite having satisfied our acceptance criteria, it is important to recognise t
 To conclude, we have found the PengWings project to be a deeply rewarding and enjoyable experience. Each team member has come out the other side as a stronger team player and more rounded developer. We are all extremely proud of what we have achieved, and we hope that the game we have created will continue to be played and loved into the future.
 
 # 10. Contribution Statement
+
+<div align="center">
+
+| Name | Contribution |
+| :-: | :-: |
+| Jack May | 1.00 |
+| Tom Raynes | 1.00 |
+| Kuan Jung Huang | 1.00 |
+| Nicolas Esgeb | 1.00 |
+| Jing Yao | 1.00 |
+| Zhiling Liu | 1.00 |
+
+<p>Table showing the relative contributions to the PengWings project</p>
+</div>
