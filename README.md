@@ -480,11 +480,10 @@ To refine our game’s mechanics, difficulty, and overall enjoyment, we collecte
 #### Process
 Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
 
-<center>
-![alt text](Videos/think_aloud_map_figure.png)
-
-**Figure 11.** Thematic map of key Think Aloud evaluation feedback
-</center>
+<div align="center">
+	<img src="Videos/think_aloud_map_figure.png" width="500"/>
+	<p><b>Figure X.</b> Thematic map of key Think Aloud evaluation feedback.</p>
+</div>
 
 #### Solutions and Adjustments
 Player Control:
@@ -515,44 +514,45 @@ These evaluations involved 10 participants, each trialing two difficulty modes. 
 #### Subscale Workload Scores
 Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
-<center>
-**Table X.** Median NASA TLX subscale scores for all participants
-
-| Scale | Median (Easy) | Median (Hard) | $\Delta$ Median |
-| :- | :-: | :-: | :-: |
-| Mental Demand | 20 | 40 | +20 |
-| Physical Demand | 10 | 20 | +10 |
-| Temporal Demand | 25 | 47.5 | +22.5 |
-| Frustration | 20 | 55 | +35 |
-| Effort | 35 | 60 | +25 |
-| Performance | 55 | 75 | +20 |
-</center>
+<div align="center">
+	<p><b>Table X.</b> Median NASA TLX subscale scores for all participants.</p>
+  	<p>
+	| Scale | Median (Easy) | Median (Hard) | $\Delta$ Median |
+	| :- | :-: | :-: | :-: |
+	| Mental Demand | 20 | 40 | +20 |
+	| Physical Demand | 10 | 20 | +10 |
+	| Temporal Demand | 25 | 47.5 | +22.5 |
+	| Frustration | 20 | 55 | +35 |
+	| Effort | 35 | 60 | +25 |
+	| Performance | 55 | 75 | +20 |
+	</p>
+</div>
 
 #### Overall Perceived Workload Scores
 All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
 
-<center>
-![alt text](Videos/nasatlx_subscale_figure-1.png)
-
-**Figure X.** Mean NASA TLX scores for each participant.
-</center>
+<div align="center">
+	<img src="Videos/Videos/nasatlx_subscale_figure.png" width="500"/>
+	<p><b>Figure X.</b> Mean NASA TLX scores for each participant.</p>
+</div>
 
 #### Statistical Analysis
 A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level.
 
-<center>
-**Table X.** Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.
-
-| Scale | W Test Statistic | Critical Value | Statistical Significance |
-| :- | :-: | :-: | :-: |
-| Mental Demand | 11.5 | 8 | No |
-| Physical Demand | 3.5 | 8 | Yes |
-| Temporal Demand | 3 | 8 | Yes |
-| Frustration | 5.5 | 8 | Yes |
-| Effort | 0 | 8 | Yes |
-| Performance | 1 | 8 | Yes |
-| Overall Perceived Workload | 0 | 8 | Yes | 
-</center>
+<div align="center">
+	<p><b>Table X.</b> Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.</p>
+  	<p>
+	| Scale | W Test Statistic | Critical Value | Statistical Significance |
+	| :- | :-: | :-: | :-: |
+	| Mental Demand | 11.5 | 8 | No |
+	| Physical Demand | 3.5 | 8 | Yes |
+	| Temporal Demand | 3 | 8 | Yes |
+	| Frustration | 5.5 | 8 | Yes |
+	| Effort | 0 | 8 | Yes |
+	| Performance | 1 | 8 | Yes |
+	| Overall Perceived Workload | 0 | 8 | Yes | 
+	</p>
+</div>
 
 The result shows that increasing difficulty showed a statistically significant in all scales except mental demand, and overall previewed workload.
 
@@ -572,11 +572,10 @@ The individual SUS scores are shown in Figure X, with the industry average bench
 - Mean SUS score (Easy) — 88.25
 - Mean SUS score (Hard) — 75.0
 
-<center>
-![alt text](Videos/sus_figure-1.png)
-
-**Figure X.** Mean SUS scores for each participant.
-</center>
+<div align="center">
+	<img src="Videos/sus_figure.png" width="500"/>
+	<p><b>Figure X.</b> Mean SUS scores for each participant.</p>
+</div>
 
 While two participants rated the harder difficulty below average usability, overall scores remained well above the standard usability benchmark. This suggests that our game had excellent usability even at a higher difficulty level.
 
