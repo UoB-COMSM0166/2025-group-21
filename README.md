@@ -471,7 +471,7 @@ To solve both issues, we set up Vercel serverless functions as our back end. Thi
 
 ## Qualitative Evaluation
 
-To refine our game’s mechanics, difficulty, and overall enjoyment, we collected qualitative feedback through Think Aloud evaluations.
+To refine our game’s mechanics, difficulty, and overall level of enjoyment, we collected qualitative feedback through Think Aloud evaluations.
 
 ### Think Aloud
 
