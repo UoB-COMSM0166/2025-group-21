@@ -9,8 +9,10 @@ let bgFrames = [];
 let bgWidth = 600;
 let bgHeight = 360
 let signalBackground = 1;
+let skyImage;
 
 function preloadBackgroundImages() {
+    skyImage = loadImage('assets/backgroundAssets/sky.png');
     bgFrames = [];
     if (signalBackground === 1) {
         bgWidth = 1200;
@@ -36,9 +38,9 @@ function preloadBackgroundImages() {
     for (let i = 0; i < totalFrames; i++) {
         const col = i % 5;
         const row = floor(i / 5);
-        const sx = col * cellW + 0.5;
-        const sy = row * cellH + 0.5;
-        bgFrames.push({ sx, sy, sw: cellW - 1, sh: cellH - 1 });
+        const sx = col * cellW;
+        const sy = row * cellH;
+        bgFrames.push({ sx, sy, sw: cellW,     sh: cellH     });
     }
 }
 
@@ -53,7 +55,7 @@ class Background {
 
         //----- Constants for different layers -----------------------------------
         //--todo: ADD AND TEST A BLURRY CONSTANT ------------------
-        const speeds    = [0.8,0.75,0.45,0.24,0.22,0.2,0.18,0.12,0.11,0.09,0.086,0.054,0.053,0.05,0.032,0.03,0.008,0.008,0.007,0.0065,0.006,0.004,0.004,0.004,0.004,0.00000001];
+        const speeds    = [0.8,0.75,0.45,0.24,0.22,0.2,0.18,0.12,0.11,0.09,0.086,0.054,0.053,0.05,0.032,0.03,0.008,0.008,0.007,0.0065,0.006,0.004,0.004,0.004,0.004,0];
         const sizeFacts = [1,1,0.7,0.54,0.5,0.47,0.45,0.33,0.32,0.31,0.3,0.13,0.11,0.09,0.07,0.06,0.07,0.023,0.02,0.018,0.016,0.015,0.015,0.01,0.01,0];
         const yFacts    = [1.5,1.4,1,0.89,0.87,0.84,0.81,0.75,0.75,0.70,0.68,0.62,0.60,0.58,0.54,0.52,0.34,0.23,0.18,0.16,0.15,0.04,0.04,0.04,0.04,0];
         const anchors   = [
@@ -90,6 +92,11 @@ class Background {
             xOffset:      random(0, 1200)
         }));
 
+        const lastI  = this.layers.length - 1;
+        const scaleF = width / this.baseWidth;                  // your horizontal scale
+        const ax     = anchors[lastI].x * scaleF;               // where its anchor lands
+        this.layers[lastI].xOffset = (width / 2) - ax;          // centre the anchor
+
         //--------Offscreen cache-----------------
         this.cache         = createGraphics(width, height);
         this.cache.noSmooth();
@@ -122,7 +129,7 @@ class Background {
         const scaleF = width / this.baseWidth;
 
         // draw back‑to‑front
-        for (let i = this.layers.length - 1; i >= 0; i--) {
+        for (let i = this.layers.length - 2; i >= 0; i--) {
             const L = this.layers[i];
             const sizeScale = 1 + (zoom - 1) * L.sizeFactor;
             const overall   = scaleF * sizeScale;
@@ -159,6 +166,7 @@ class Background {
     }
 
     draw(zoom, floorSpeed) {
+        image(skyImage, 0, 0, width, height);
         //----- Pausing... keeping the zoom -----------------
         if (floorSpeed === 0 && zoom === this.lastDrawZoom) {
             image(this.cache, 0, 0, width, height);
