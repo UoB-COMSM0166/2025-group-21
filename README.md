@@ -738,25 +738,25 @@ Concluding each sprint, we completed a sprint review and retrospective. Team mem
 To support communication, planning, documentation, and our needs throughout development, we used a range of tools. These include:
 
 **Miro**  
-Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
+- Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
 
 **Microsoft Word**  
-Used collaboratively to edit documents reasons such as updating requirements, documenting evaluation data, and sustainability analyses.
+- Used collaboratively to edit documents reasons such as updating requirements, documenting evaluation data, and sustainability analyses.
 
 **Google Meet**  
-Our primary tool for online meetings during the holiday period.
+- Our primary tool for online meetings during the holiday period.
 
 **WhatsApp**  
-Used for day-to-day team communication.
+- Used for day-to-day team communication.
 
 **Kanban**  
-Used for product backlog management and visually tracking our progress.
+- Used for product backlog management and visually tracking our progress.
 
 **Photoshop**  
-Used within the graphic process to easily create graphic material for the game, demo video, and repo.
+- Used within the graphic process to easily create graphic material for the game, demo video, and repo.
 
 **Logic Pro X**  
-Used throughout the project for sound engineering purposes.
+- Used throughout the project for sound engineering purposes.
 
 ## Reflection
 
