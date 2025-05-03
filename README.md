@@ -707,6 +707,11 @@ Over the course of the project, our team adopted an agile development methodolog
 
 To keep development on track, we maintained a consistent weekly routine. During term time, we used Tuesday’s workshop sessions to collaborate on in-class tasks and held in-person meetings on Fridays to reflect on the week’s work, showcase progress/new features, and discuss our next steps as well as areas for improvement. Notes from these meetings can be found in the `/meetings` directory.
 
+<div align="center">
+    <img src="Product doc/mvb_meeting.gif" width="500">
+    <p>Footage from a team meeting</p>
+</div>
+
 Commencing the Easter holiday period, we transitioned to a remote setup. We held weekly Wednesday meetings, online, over Google Meet. Similarly, this time was used to share progress updates, identify and discuss blockers, and discuss feedback from peer testing.
 
 Throughout development, we completed three sprint cycles with each lasting two weeks. Each sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed upon strategies to satisfy them. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear and understandable to everyone.
@@ -715,7 +720,17 @@ In order to estimate task difficulty and plan effectively, we used the Planning 
 
 During sprints, we tracked progress using Kanban, dividing tasks into “To Do,” “In Progress,” and “Done.” Kanban tickets were updated regularly, allow us to easily monitor the progression of our game and spot issues early.
 
+<div align="center">
+    <img src="Product doc/kanban.png" width="500">
+    <p>Screenshot of our group's Kanban</p>
+</div>
+
 Concluding each sprint, we completed a sprint review and retrospective. Team members presented their progress, whether it may be a new game mechanic, interface updates, or documentation improvements. We discussed whether progress had fulfilled our acceptance criteria as well as the next steps for our game, referring to our product backlog. Following this, we then discussed what went well, what didn’t, and how we could work better in the next sprint. General issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing; however, we were always able to work through these issues with open dialogue and devise practical solutions.
+
+<div align="center">
+    <img src="Product doc/video_call.gif" width="500">
+    <p>Short recording from a sprint review</p>
+</div>
 
 ### Tools
 
