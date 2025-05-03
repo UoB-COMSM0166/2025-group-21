@@ -471,129 +471,127 @@ To solve both issues, we set up Vercel serverless functions as our back end. Thi
 
 # 6. Evaluation
 
-### Think Aloud Evaluation
-#### Evaluation Flow Insights
-1. For testers 1 to 7, we introduced the gameplay through **verbal instructions and key demonstrations**. However, this approach led to noticeable confusion among the testers regarding how to play.
-2. Starting from tester 8, we implemented a **brief demonstration** before their gameplay session. This adjustment significantly improved their understanding, resulting in a smoother and more intuitive experience compared to those who did not receive a demonstration.
+### Qualitative Evaluation
 
-#### Brief Sum 
-1. A **CLEAR** instruction is really important, especially the testers are asked to control the character with multiple keys, it’s hard to  let’em remember all the functions mapped to the keys. 
-2. The difficulty could increase as the process goes, our background generates itself from the very beginning, which could lead to a problem that our testers are likely to feel our game hard from the beginning , so there’s not a good chance for them to learn how to play step by step.
+To refine our game’s mechanics, difficulty, and overall enjoyment, we collected qualitative feedback through Think Aloud evaluations.
 
-<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
-<p align="center"><i>Mind Map of Penguin Game</i></p>
+#### Think Aloud
 
-![Product doc/Mind Map.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Mind%20Map.jpg)
+##### Process
+Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
 
-| Tester No | Score - Attempt 1 | Score - Attempt 2 | Score - Attempt 3 | Difficulty (N/10) | Enjoyability (N/10) | UI/UX (N/10)  | Rate Overall (N/10) | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 1 | 427 | 634 | 674 | 6 | 7 | 8 | 7 | 
-| 2 | 1816 | 4223 | 1505 | 8 | 9 | 7 | 8 |
-| 3 | 861 | 1940 | - | - | - | - | - |  
-| 4 | 487 | 1507 | - | 8 | 10 | 10 | 9 | 
-| 5 | 740 | 4209 | 576 | - | - | - | - | 
-| 6 | 453 | - | - | - | - | - | - | 
-| 7 | 425 | 873 | 5575 | 6 | 7 | 10 | 6 | 
-| 8 | 6709 | 2064 | 15921 | 6 | 8 | 7 | 9 | 
-| 9 | 842 | 1386 | 1355 | - | - | - | - | 
+![alt text](think_aloud_map_figure.jpg)
 
+**Figure 11.** Thematic map of key Think Aloud evaluation feedback
 
-| Tester No |  Behavior During Playing | Feedback |
-|:--:|--|--|
-| 1 |  1. “Oh no”<br>2. “What happened” | 1. Need instruction<br>2. Playing better after playing few times |
-| 2 | 1. Murmuring to make sure how to play | 1. A bit confused how to play<br>2. Operation ways are special (not just use arrows to go up and down) and the tools are quite cool<br>3. UFO is quite a different element with the game theme |
-| 3 | 1. Trying to understand the rules<br>2. Trying to use the tools<br>3. “Oh can shoot things”<br>4. “I am not good at playing games” | 1. Pretty fun<br>2. Its okay if going up, but have no idea how to play while on the ground  <br>3. Don’t know when to click the tools<br>4. Don’t know when to trigger the jump |
-| 4 | 1. “What am I doing right now?”<br>2. “Oh no I’m not good at this”<br>3. Seems doesn’t know how and when to use the tools  | 1. Too easy to lost the game<br>2. Hills are too high<br>3. It’s better if I have more life<br>4. Suggest can gain life after having gone for a while such as reach certain score or distance |
-| 5 | 1. Trying to figure out how to land, when to click space<br>2. Seems playing well since the attempt 2<br>3. “Oh I’m trying to do a perfect landing”  | 1. This game is really simple that’s nice |
-| 6 | 1. “What is the red bar?”<br>2. “How to play?” | 1. Need instructions to figure out what’s happening |
-| 7 | 1. “How to keep it in air?”<br>2. Trying to know how to play<br>3. “Shit the curve is too deep, I kept crashing into it”<br>4. “When should I kick the space bar? Should I press the space bar once or keep holding it?”  | 1. That’s cool but hard as well<br>2. Unsure how to stay in air |
-| 8 | 1. “What’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. The sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
-| 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
+##### Solutions and Adjustments
+Player Control:
+- Issues: difficulty understanding player movement mechanics and controls.
+- Solutions: To address this feedback, we implemented an initial instructions page.
 
-### Heuristic Evaluation
-**Tick it if you think there are relevant problems in our game**
+Instructions:
+- Issues: Poor initial misunderstanding of the gameplay, difficulty remembering the different features, and mixed feedback on the key mappings.
+- Solutions: Added a brief instruction page before each game, and implemented custom key mappings to satisfy all player's preferences.
 
-| The Usability Principle                                              | Tester 1 | Tester 2 | Tester 3 | Tester 4 |
-|----------------------------------------------------------------------|:--------:|:--------:|:--------:|:--------:|
-| Visibility of system status (Feedback)                               |          |          |          |          |
-| Match between system and the real world (Conventions)                |          |          |          |          |
-| User control and freedom (Emergency exits)                           |          |          |          |          |
-| Consistency and standards (Consistency)                              |          |          |          |          |
-| Error prevention                                                     |          |          |          |          |
-| Recognition rather than recall                                       |          |          |          |          |
-| Flexibility and efficiency of use (Flexibility)                      |          |          |          |          |
-| Aesthetic and minimalist design (Minimalist design)                  |          |          |          |          |
-| Help users recognise, diagnose and recover from errors (Recovery)    |          |          |          |          |
-| Help and documentation (Help)                                        |          |          |          |          |
+Difficulty:
+- Issues: Players were unsure why they were losing health, found the terrain too steep, and the obstacles too challenging.
 
-### Qualitative evaluation
-We believe that collecting data regarding game mechanics, level difficulty, and overall design is extremely valuable for refining our game development process. Therefore, we have employed the techniques of Think Aloud (TA) and semi-structured interviews to capture as comprehensive user feedback as possible both during gameplay and after its conclusion. We utilized voluntary sampling combined with exhaustive sampling to collect feedback from 10 participants, encompassing a diverse range of demographics—including both game enthusiasts and individuals who rarely play games—in order to obtain a holistic dataset.
+- Solutions: Added visible life indicators and audiovisual cues for taking damage, rebalanced the obstacles by incorporating tiers of enemies, and created three balanced difficulty levels.
 
-Our participants were required to experience two modes with differing levels of difficulty. During gameplay, we recorded their operational and emotional responses in real time, with particular attention paid to the aspects that caused confusion (often reflecting varying interpretations of the game concept) and those that generated excitement (typically indicating that our design is on the right track).
+### Quantitative Evaluation
 
-After data collection, we applied thematic analysis to the textual data. By identifying, organizing, and abstracting underlying themes, we determined a series of significant themes, which we consolidated into a table to facilitate clearer visualization and comparison of feedback across different participants.
+To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools (ADD CITATIONS), and statistical analysis:
+- **Raw NASA TLX** — to quantify perceived workload
+- **System Usability Survey (SUS)** — to quantify system usability
+- **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
 
-### Difficulties
-Players expressed differing opinions regarding the usability of the more challenging game mode. Some felt that, having been trained through the first level, the second level was manageable, while others found it very difficult to complete.
+##### Process
+These evaluations involved 10 participants, each trialing two difficulty modes. Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
 
-Upon further inquiry and investigation, we found that the varied evaluations of difficulty were primarily centered around :
-- the terrain (which is significantly steeper in the second level compared to the first)
-- and the complexity of key-press combo.
+#### Raw NASA TLX
 
-To address these difficulty issues, we decided to :
-- Make adjustments to the terrain in order to help players feel more confident
-- Update our instruction page
-### Quantitative Analysis
-We have reached a consensus that the game should be challenging without causing excessive frustration, while also offering improved playability. To better achieve this goal, we employed the *NASA TLX* and *SUS* techniques to collect and analyze data, and we conducted a *Wilcoxon signed‑rank test* on the results.
+##### Subscale Workload Scores
+Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
-The NASA TLX index has been shown to exhibit high reliability across many domains of human–computer interaction (HCI), including video game difficulty assessment *(Hart & Staveland, 1988; Ramkumar et al., 2016; Seyderhelm & Blackmore, 2023)*.Also, The System Usability Scale (SUS) has been shown to demonstrate high reliability across a wide range of human–computer interaction (HCI) contexts, including video game usability evaluation *(Brooke, 1996; Bangor et al., 2008; Sauro & Lewis, 2012).*
-<br/>
-<br/>
-<p align="center">
-<em>NASA TLX Score</em>
-  <img src="docs/assets/assets_for_README/NASA TLX Score.png" alt="NASA TLX Score" style="display:block; margin:20px auto;" width="600"/>
-  <br/>
-</p>
-To better analyse our results, we calculated the median for each dimension and performed the Wilcoxon signed rank test result(N=10，α=0.05) on the raw data.
+**Table X.** Median NASA TLX subscale scores for all participants
 
-<p align="center">
-<em>NASA TLX Median Comparison</em>
-  <img src="docs/assets/assets_for_README/NASA TLX Median Comparison.png" alt="NASA TLX Median" style="display:block; margin:20px auto;" width="600"/>
-  <br/>
-</p>
+| Scale | Median (Easy) | Median (Hard) | $\Delta$ Median |
+| :- | :-: | :-: | :-: |
+| Mental Demand | 20 | 40 | +20 |
+| Physical Demand | 10 | 20 | +10 |
+| Temporal Demand | 25 | 47.5 | +22.5 |
+| Frustration | 20 | 55 | +35 |
+| Effort | 35 | 60 | +25 |
+| Performance | 55 | 75 | +20 |
 
-<p align="center">
-  <img src="docs/assets/assets_for_README/Median change by dimension.png" alt="Median change by dimension" style="display:block; margin:20px auto;" width="600"/>
-  <br/>
-</p>
-<p align="center">
-<em>NASA TLX Wilcoxon Rank Result </em>
-  <img src="docs/assets/assets_for_README/NASA_TLX_Wilcoxon_Result.png" alt="NASA TLX Wilcoxon Result" style="display:block; margin:20px auto;" width="600"/>
-  <br/>
-</p>
+##### Overall Perceived Workload Scores
+All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
+ 
+![alt text](nasatlx_subscale_figure-1.png)
 
-The result shows that difficulty increase most strongly affects **Frustration** and **Effort**.
-- Frustration median rose from 20 to 55, with p = 0.0195 (< 0.05),showing a significant jump in players’ feelings of frustration when they're playing a relatively harder mode of the game.
-- Effort median rose from 35 → 60, with p = 0.0097 (< 0.05), indicating players are exerting significantly more effort at higher difficulty.
+**Figure X.** Mean NASA TLX scores for each participant.
 
-Result of NASA TLX indicates that during our next iteration,the priority is to introduce optional hints or in‑game aids to help players over tough spots.
-Also,we should focus on perform balance pacing,add mid‑level checkpoints or short “breather” phases so players aren’t under constant high mental or time pressure.
+##### Statistical Analysis
+A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level.
 
-We want to focus more on system usability, so we've also collected SUS data.
+**Table X.** Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.
 
-<p align="center">
-<em>System Usability Scale(SUS) Result </em>
-  <img src="docs/assets/assets_for_README/SUS score.png" alt="SUS Result" style="display:block; margin:20px auto;" width="600"/>
-  <br/>
-</p>
-System availability considerations were evaluated using 68 as the average score. For our system, the average score for Difficulty 1 was 77.4 and the average score for Difficulty 2 was 70.0, both above 68. 
+| Scale | W Test Statistic | Critical Value | Statistical Significance |
+| :- | :-: | :-: | :-: |
+| Mental Demand | 11.5 | 8 | No |
+| Physical Demand | 3.5 | 8 | Yes |
+| Temporal Demand | 3 | 8 | Yes |
+| Frustration | 5.5 | 8 | Yes |
+| Effort | 0 | 8 | Yes |
+| Performance | 1 | 8 | Yes |
+| Overall Perceived Workload | 0 | 8 | Yes | 
 
-Overall, **the SUS scores for both difficulties were above the industry average**, meaning that the system's usability was **in the passing or even excellent range regardless of difficulty.**
+The result shows that increasing difficulty showed a statistically significant in all scales except mental demand, and overall previewed workload.
 
+##### Solutions and Adjustments
+Since the data showed that higher difficulty led to significant increases in median frustration and effort, we made several design changes to maintain challenge without increasing frustration:
+- Balanced terrain and obstacle difficulty.
+- Improved the shop's upgradable items to help reduce player effort.
+- Ensured that difficulty increases felt rewarding, not frustrating.
 
+#### System Usability Survey (SUS)
 
-### Description of how code was tested
-(.....to be done)
+##### Process
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology (Figure X).
+
+##### Results
+The individual SUS scores are shown in Figure X, with the industry average benchmark of 68 shown for comparison.
+- Mean SUS score (Easy) — 88.25
+- Mean SUS score (Hard) — 75.0
+
+![alt text](sus_figure-1.png)
+
+**Figure X.** Mean SUS scores for each participant.
+
+While two participants rated the harder difficulty below average usability, overall scores remained well above the standard usability benchmark. This suggests that our game had excellent usability even at a higher difficulty level.
+
+##### Solutions and Adjustments
+While the SUS confirmed high usability, we found it less applicable than our qualitative and NASA TLX evaluations for informing design changes. Nonetheless, it served as a valuable confirmation of our game’s overall user experience.
+
+We noted potential questionnaire fatigue due to administering the SUS immediately after the NASA TLX, which may have affected response quality. In future iterations, we would schedule breaks or separate the two evaluations.
+
+##### Statistical Analysis
+A Wilcoxon Signed-Rank test was performed on the SUS scores for both difficulties. The critical value was 8 (N = 10, α = 0.05), and the W Test statistic was calculated to be 0, indicating that there was a statistically significant difference between usability at different difficulty.
+
+### Testing
+
+#### White Box Testing
+We used Jest unit testing to verify our game code’s logic, focussing on game states, ensuring that triggering functions produced expected changes in the game state. Due to the game’s complexity, this was quite a difficult step, so we concentrated on testing the classes and methods that controlled the players movements, control, and interactions, as these were the most likely to hinder user’s game play.
+
+##### Example — Obstacle Testing
+Our game aerial obstacles, intended to challenge the player while flying. We tested their movement and interactions with the player using a range of assertions. This was aided by using the inheritance and polymorphism in the obstacle subclasses.
+
+Example Obstacle class tests:
+
+	[ADD OBSTACLE TESTING CODE HERE]
+
+#### Black Box Testing
+We conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
 # 7. Sustainability 
 ### SusA Framework: Questions
