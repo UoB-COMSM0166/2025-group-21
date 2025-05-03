@@ -701,7 +701,8 @@ We translated the *immediate sustainability effects* identified in our SusAD int
 
 
 # 8. Process 
-### Collaboration
+
+## Collaboration
 
 Over the course of the project, our team adopted an agile development methodology to manage tasks. We participated both in online and in-person collaboration, maintaining regular communication as to maximise our efficiency. At the project’s conception, we agreed upon a flat team structure in which all members contributed equally to decision-making while delegating member-specific tasks based on the strengths of the individual. This approach enabled us to capitalise on the diverse range of skills between us, while maintaining shared accountability for the project’s overall progress.
 
@@ -732,7 +733,7 @@ Concluding each sprint, we completed a sprint review and retrospective. Team mem
     <p>Short recording from a sprint review</p>
 </div>
 
-### Tools
+## Tools
 
 To support communication, planning, documentation, and our needs throughout development, we used a range of tools. These include:
 
@@ -757,9 +758,9 @@ Used within the graphic process to easily create graphic material for the game, 
 **Logic Pro X**  
 Used throughout the project for sound engineering purposes.
 
-### Reflection
+## Reflection
 
-**Successes**
+### Successes
 
 - Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
 - Balanced task allocation with Kanban kept everyone involved and enabled clear progress tracking.
@@ -769,7 +770,7 @@ Used throughout the project for sound engineering purposes.
 - Frequent user testing outside the team helped prioritize what to improve.
 - A comprehensive documentation system enabled rapid task onboarding.
 
-**Problems**
+### Problems
 
 - A recurring challenge was code integration. As some members co-developed overlapping modules, we sometimes had disagreements on how to merge changes. This was overcome through discussion in the review process, diagnosing the source of any conflicts to find the optimal solution for integration.
 - In the very early phase of the project, the absence of a well-defined structure led to some duplicated work; however, this was soon solved as a more refined design was established.
