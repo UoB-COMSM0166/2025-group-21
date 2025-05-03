@@ -542,7 +542,7 @@ All participants reported an increased perceived workload at higher difficulty l
 </div>
 
 #### Statistical Analysis
-A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty showed a statistically significant difference in all scales except mental demand, and overall previewed workload.
+A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
 
 <div align="center">
   <p><b>Table X.</b> Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.</p>
