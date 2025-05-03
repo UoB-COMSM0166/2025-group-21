@@ -753,7 +753,7 @@ To support communication, planning, documentation, and our needs throughout deve
 - Used for product backlog management and visually tracking our progress.
 
 **Photoshop**  
-- Used within the graphic process to easily create graphic material for the game, demo video, and repo.
+- Used within the graphic design process to easily create graphic material for the game, demo video, and repo.
 
 **Logic Pro X**  
 - Used throughout the project for sound engineering purposes.
