@@ -5,16 +5,17 @@
 </div>
 
 # Table of Contents
-- [1. Development Team](#1-development-team)
-- [2. Introduction](#2-introduction)
-- [3. Requirements](#3-requirements)
-- [4. Design](#4-design)
-- [5. Implementation](#5-implementation)
-- [6. Evaluation](#6-evaluation)
-- [7. Sustainability](#7-sustainability)
-- [8. Process](#8-process)
-- [9. Conclusion](#9-conclusion)
-- [10. Contribution Statement](#10-contribution-statement)
+1. [Development Team](#1-development-team)
+2. [Introduction](#2-introduction)
+3. [Requirements](#3-requirements)
+4. [Design](#4-design)
+5. [Implementation](#5-implementation)
+6. [Evaluation](#6-evaluation)
+7. [Sustainability](#7-sustainability)
+8. [Process](#8-process)
+9. [Conclusion](#9-conclusion)
+10. [Contribution Statement](#10-contribution-statement)
+
 # 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
