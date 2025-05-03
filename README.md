@@ -444,6 +444,10 @@ To simulate the acceleration and deceleration on the slopes, we used the physics
 These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
 <div align="center">
+	<p>
+		<img src="Videos/velocity_vector_figure.gif" width="420"/>
+		<img src="Videos/acceleration_vector_figure.gif" width="420"/>
+	</p>
     <table>
       <tr>
         <td><img src="Videos/velocity_vector_figure.gif" width="420"/></td>
