@@ -703,63 +703,61 @@ We translated the *immediate sustainability effects* identified in our SusAD int
 # 8. Process 
 ### Collaboration
 
-Our six-member team adopted the Agile development methodology to manage our game project, combining both online and offline collaboration to maintain efficient communication. At the beginning of the project, we agreed on a flat team structure in which all members contributed equally to decision-making while taking ownership of specific tasks based on their individual strengths. This approach allowed us to make full use of our diverse skills while maintaining shared accountability for the project’s overall progress.
+Over the course of the project, our team adopted an agile development methodology to manage tasks. We participated both in online and in-person collaboration, maintaining regular communication as to maximise our efficiency. At the project’s conception, we agreed upon a flat team structure in which all members contributed equally to decision-making while delegating member-specific tasks based on the strengths of the individual. This approach enabled us to capitalise on the diverse range of skills between us, while maintaining shared accountability for the project’s overall progress.
 
-To keep development on track, we maintained a consistent weekly routine. During term time, we used the Tuesday workshop sessions to collaborate on in-class tasks. On Fridays from 2 to 3 PM, we held in-person team meetings (except during assessment-heavy weeks) to reflect on the week’s work, showcase progress—mostly in code—and discuss areas for improvement. Sam and Jack took meeting notes, which were saved in the `/meetings/weekXX_meeting.md` folder for reference.
+To keep development on track, we maintained a consistent weekly routine. During term time, we used Tuesday’s workshop sessions to collaborate on in-class tasks and held in-person meetings on Fridays to reflect on the week’s work, showcase progress/new features, and discuss our next steps as well as areas for improvement. Notes from these meetings can be found in the `/meetings` directory.
 
 Commencing the Easter holiday period, we transitioned to a remote setup. We held weekly Wednesday meetings, online, over Google Meet. Similarly, this time was used to share progress updates, identify and discuss blockers, and discuss feedback from peer testing.
 
-Over the course of the project, we went through three Sprint cycles (Sprint 1: 2.11–2.27, Sprint 2: 4.2–4.16, Sprint 3: [TBD]), each lasting two weeks. Each Sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed on clear goals. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear to everyone.
+Throughout development, we completed three sprint cycles with each lasting two weeks. Each sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed upon strategies to satisfy them. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear and understandable to everyone.
 
-[photo of sprint planning]
+In order to estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we considered each person’s strengths, how much time could realistically be committed, and any dependencies or technical challenges that may arise. We also considered which features would have the most impact on gameplay with the MoSCoW user story framework, focusing on what mattered most.
 
-To estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we took into account each person’s strengths, how much time they could realistically commit, and any dependencies or technical challenges that might come up. We also considered which features would have the most impact on gameplay so we could focus on what mattered most.
+During sprints, we tracked progress using Kanban, dividing tasks into “To Do,” “In Progress,” and “Done.” Kanban tickets were updated regularly, allow us to easily monitor the progression of our game and spot issues early.
 
-[photo of planningpokeronline]
+Concluding each sprint, we completed a sprint review and retrospective. Team members presented their progress, whether it may be a new game mechanic, interface updates, or documentation improvements. We discussed whether progress had fulfilled our acceptance criteria as well as the next steps for our game, referring to our product backlog. Following this, we then discussed what went well, what didn’t, and how we could work better in the next sprint. General issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing; however, we were always able to work through these issues with open dialogue and devise practical solutions.
 
-During the Sprint, we tracked progress using GitHub Projects with a Kanban board, dividing tasks into “To Do,” “In Progress,” and “Done.” Everyone updated their task status regularly so we could see how things were moving and spot any issues early.
+### Tools
 
-[photo of Kanban]
+To support communication, planning, documentation, and our needs throughout development, we used a range of tools. These include:
 
-At the end of each Sprint, we ran a Sprint Review and Retrospective. Team members presented what they’d completed—whether it was new game mechanics, interface updates, or documentation improvements—using screen sharing or quick demos. We then discussed what went well, what didn’t, and how we could work better in the next Sprint. Some of the main issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing. However, we always talked these through openly and came up with practical solutions together.
+**Miro**  
+Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
 
-### Tools and Techniques
+**Microsoft Word**  
+Used collaboratively to edit documents reasons such as updating requirements, documenting evaluation data, and sustainability analyses.
 
-To support communication, planning, and documentation throughout development, we used a range of tools:
+**Google Meet**  
+Our primary tool for online meetings during the holiday period.
 
-**Miro:** Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
+**WhatsApp**  
+Used for day-to-day team communication.
 
-**Microsoft Word:** Used collaboratively to edit documents such as requirement updates, test reports, and sustainability analyses.
+**Kanban**  
+Used for product backlog management and visually tracking our progress.
 
-**Google Meet:** Our primary tool for online meetings during the holiday period.
+**Photoshop**  
+Used within the graphic process to easily create graphic material for the game, demo video, and repo.
 
-**WhatsApp:** Used for day-to-day team communication.
-
-**GitHub Kanban board:** Enabled us to apply the Kanban method for task tracking and progress visibility.
+**Logic Pro X**  
+Used throughout the project for sound engineering purposes.
 
 ### Reflection
 
-**Successes:**
+**Successes**
 
 - Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
-- Balanced task allocation kept everyone consistently involved
+- Balanced task allocation with Kanban kept everyone involved and enabled clear progress tracking.
 - Open communication channels accelerated technical problem-solving
-- GitHub branching and pull request workflows maintained a stable codebase
+- Git branching and GitHub pull request workflows maintained a stable codebase
 - Kanban implementation enabled clear progress tracking
+- Frequent user testing outside the team helped prioritize what to improve.
+- A comprehensive documentation system enabled rapid task onboarding.
 
-**Problems:**
+**Problems**
 
-- One significant challenge was code integration. Since some members co-developed overlapping modules, we had disagreements on how to merge changes
-- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members
-- Some team members were initially hesitant to share ideas, but this improved over time with mutual support
-
-**Key Learnings:**
-
-- Early prototyping (paper + digital) significantly reduced development ambiguity
-- Frequent user testing outside the team helped prioritize what to improve
-- Comprehensive documentation system enabled rapid task onboarding
-- Visual tools proved particularly effective for distributed team collaboration
-- Transparent communication significantly improved team coordination and built mutual trust among members
+- A recurring challenge was code integration. As some members co-developed overlapping modules, we sometimes had disagreements on how to merge changes. This was overcome through discussion in the review process, diagnosing the source of any conflicts to find the optimal solution for integration.
+- In the very early phase of the project, the absence of a well-defined structure led to some duplicated work; however, this was soon solved as a more refined design was established.
 
 # 9. Conclusion
 
