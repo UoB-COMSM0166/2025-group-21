@@ -4,6 +4,7 @@ class Game {
 
     constructor() {
 
+
         this.windSound = null;
         this.laserSound = null;
         this.laserAutomaticSound = null;

@@ -26,8 +26,6 @@ function setup() {
 
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
-    noSmooth();            // stop any canvas interpolation
-    pixelDensity(1);       // ensure 1:1 pixel mapping
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
     soundBoard = new SoundBoard();

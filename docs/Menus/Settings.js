@@ -17,7 +17,8 @@ class Settings {
 
 
         this.bgQualities = ['High', 'Medium', 'Low', 'Ultra Low'];
-        this.bgQuality = gameProgress.bgQuality ?? 3;
+        this.bgQuality = gameProgress.bgQuality ?? 2;
+        this.currentBgQuality = this.bgQuality;
 
         this.enableCheats = false;
         this.cheatsButton = offButton;

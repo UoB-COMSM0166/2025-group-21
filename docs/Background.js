@@ -6,8 +6,8 @@
 // Globals: sprite sheet + frame metadata
 let spriteSheet;
 let bgFrames = [];
-let bgWidth = 600;
-let bgHeight = 360
+let bgWidth = 240;
+let bgHeight = 144
 let signalBackground = 3;
 let skyImage;
 
