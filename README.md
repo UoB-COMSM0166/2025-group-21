@@ -450,7 +450,7 @@ These forces—shown in Figure 4b—formed the foundation of the players sliding
         <td><img src="Videos/acceleration_vector_figure.gif" width="360"/></td>
       </tr>
     </table>
-    <p><b>Figure 4.</b> Player a) <span style="color:red">velocity</span> and b) <span style="color:blue">acceleration</span> vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.</p>
+    <p><b>Figure 4.</b> Player <span style="color:red">velocity (A)</span> and <span style="color:blue">acceleration (B)</span> vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
