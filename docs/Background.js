@@ -8,7 +8,7 @@ let spriteSheet;
 let bgFrames = [];
 let bgWidth = 600;
 let bgHeight = 360
-let signalBackground = 1;
+let signalBackground = 3;
 let skyImage;
 
 function preloadBackgroundImages() {
@@ -93,9 +93,9 @@ class Background {
         }));
 
         const lastI  = this.layers.length - 1;
-        const scaleF = width / this.baseWidth;                  // your horizontal scale
-        const ax     = anchors[lastI].x * scaleF;               // where its anchor lands
-        this.layers[lastI].xOffset = (width / 2) - ax;          // centre the anchor
+        const scaleF = width / this.baseWidth;
+        const ax     = anchors[lastI].x * scaleF;
+        this.layers[lastI].xOffset = (width / 2) - ax;
 
         //--------Offscreen cache-----------------
         this.cache         = createGraphics(width, height);
