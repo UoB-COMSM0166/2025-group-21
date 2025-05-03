@@ -481,7 +481,7 @@ To refine our game’s mechanics, difficulty, and overall enjoyment, we collecte
 Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
 
 <div align="center">
-	<img src="Videos/think_aloud_map_figure.png" width="500"/>
+	<img src="Videos/think_aloud_map_figure.png" width="700"/>
 	<p><b>Figure X.</b> Thematic map of key Think Aloud evaluation feedback.</p>
 </div>
 
@@ -516,7 +516,6 @@ Across all six subscales, the median scores for all participants increased with 
 
 <div align="center">
 	<p><b>Table X.</b> Median NASA TLX subscale scores for all participants.</p>
-  	<p>
 	| Scale | Median (Easy) | Median (Hard) | $\Delta$ Median |
 	| :- | :-: | :-: | :-: |
 	| Mental Demand | 20 | 40 | +20 |
@@ -525,14 +524,13 @@ Across all six subscales, the median scores for all participants increased with 
 	| Frustration | 20 | 55 | +35 |
 	| Effort | 35 | 60 | +25 |
 	| Performance | 55 | 75 | +20 |
-	</p>
 </div>
 
 #### Overall Perceived Workload Scores
 All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
 
 <div align="center">
-	<img src="Videos/Videos/nasatlx_subscale_figure.png" width="500"/>
+	<img src="Videos/nasatlx_subscale_figure.png" width="700"/>
 	<p><b>Figure X.</b> Mean NASA TLX scores for each participant.</p>
 </div>
 
@@ -541,7 +539,6 @@ A Wilcoxon Signed-Rank test was performed at both a subscale and overall level t
 
 <div align="center">
 	<p><b>Table X.</b> Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.</p>
-  	<p>
 	| Scale | W Test Statistic | Critical Value | Statistical Significance |
 	| :- | :-: | :-: | :-: |
 	| Mental Demand | 11.5 | 8 | No |
@@ -551,7 +548,6 @@ A Wilcoxon Signed-Rank test was performed at both a subscale and overall level t
 	| Effort | 0 | 8 | Yes |
 	| Performance | 1 | 8 | Yes |
 	| Overall Perceived Workload | 0 | 8 | Yes | 
-	</p>
 </div>
 
 The result shows that increasing difficulty showed a statistically significant in all scales except mental demand, and overall previewed workload.
@@ -573,7 +569,7 @@ The individual SUS scores are shown in Figure X, with the industry average bench
 - Mean SUS score (Hard) — 75.0
 
 <div align="center">
-	<img src="Videos/sus_figure.png" width="500"/>
+	<img src="Videos/sus_figure.png" width="700"/>
 	<p><b>Figure X.</b> Mean SUS scores for each participant.</p>
 </div>
 
