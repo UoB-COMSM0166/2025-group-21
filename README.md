@@ -707,7 +707,7 @@ Our six-member team adopted the Agile development methodology to manage our game
 
 To keep development on track, we maintained a consistent weekly routine. During term time, we used the Tuesday workshop sessions to collaborate on in-class tasks. On Fridays from 2 to 3 PM, we held in-person team meetings (except during assessment-heavy weeks) to reflect on the week’s work, showcase progress—mostly in code—and discuss areas for improvement. Sam and Jack took meeting notes, which were saved in the `/meetings/weekXX_meeting.md` folder for reference.
 
-During holidays, we transitioned to a remote setup. We held weekly online meetings every Wednesday from 11 AM to 12 PM via Google Meet. These meetings were used to share individual updates, identify and discuss blockers, and conduct peer testing and feedback sessions.
+Commencing the Easter holiday period, we transitioned to a remote setup. We held weekly Wednesday meetings, online, over Google Meet. Similarly, this time was used to share progress updates, identify and discuss blockers, and discuss feedback from peer testing.
 
 Over the course of the project, we went through three Sprint cycles (Sprint 1: 2.11–2.27, Sprint 2: 4.2–4.16, Sprint 3: [TBD]), each lasting two weeks. Each Sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed on clear goals. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear to everyone.
 
