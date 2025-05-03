@@ -8,10 +8,10 @@ let spriteSheet;
 let bgFrames = [];
 
 function preloadBackgroundImages() {
-    spriteSheet = loadImage('assets/backgroundAssets/layers26Low.webp');
+    spriteSheet = loadImage('assets/backgroundAssets/layers26Medium.webp');
 
     const totalFrames = 26;
-    const cellW = 240, cellH = 144;
+    const cellW = 600, cellH = 360;
     for (let i = 0; i < totalFrames; i++) {
         const col = i % 5;
         const row = floor(i / 5);
@@ -44,9 +44,12 @@ class Background {
             {x:870,y:70}
         ];
         const logicals = [
-            1200,1200,1200,2200,1200,2200,2200,2200,1200,2200,
-            1200,2200,2200,1200,2200,1200,2200,2200,2200,1200,
-            2200,2200,2200,1200,1200,1200
+            1200,1200,1200,2200,1200,
+            2200,1200,2200,1200,2200,
+            1200,2200,2200,1200,2200,
+            1200,2200,1200,2200,2200,
+            1200,2200,2200,2200,1200,
+            1200
         ];
 
         //------Layers that always tile-------------------------------------

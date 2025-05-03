@@ -37,17 +37,17 @@ function draw() {
         fps = floor(frameRate());
         frameCount = 0;
     }
-    text(fps, 50, 50);
+    //text(fps, 50, 50);
 
-    push();
-    if (domains.game !== null) {
-        textAlign(LEFT);
-        textSize(15);
-        text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
-        text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
-        text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
-    }
-    pop();
+    //push();
+    //if (domains.game !== null) {
+    //    textAlign(LEFT);
+    //    textSize(15);
+    //    text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
+    //    text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
+    //    text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
+    //}
+    //pop();
 }
 
 
