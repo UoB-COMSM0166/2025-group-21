@@ -471,20 +471,22 @@ To solve both issues, we set up Vercel serverless functions as our back end. Thi
 
 # 6. Evaluation
 
-### Qualitative Evaluation
+## Qualitative Evaluation
 
 To refine our game’s mechanics, difficulty, and overall enjoyment, we collected qualitative feedback through Think Aloud evaluations.
 
-#### Think Aloud
+### Think Aloud
 
-##### Process
+#### Process
 Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
 
-![alt text](think_aloud_map_figure.jpg)
+<center>
+![alt text](Videos/think_aloud_map_figure.png)
 
 **Figure 11.** Thematic map of key Think Aloud evaluation feedback
+</center>
 
-##### Solutions and Adjustments
+#### Solutions and Adjustments
 Player Control:
 - Issues: difficulty understanding player movement mechanics and controls.
 - Solutions: To address this feedback, we implemented an initial instructions page.
@@ -498,21 +500,22 @@ Difficulty:
 
 - Solutions: Added visible life indicators and audiovisual cues for taking damage, rebalanced the obstacles by incorporating tiers of enemies, and created three balanced difficulty levels.
 
-### Quantitative Evaluation
+## Quantitative Evaluation
 
 To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools (ADD CITATIONS), and statistical analysis:
 - **Raw NASA TLX** — to quantify perceived workload
 - **System Usability Survey (SUS)** — to quantify system usability
 - **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
 
-##### Process
+#### Process
 These evaluations involved 10 participants, each trialing two difficulty modes. Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
 
-#### Raw NASA TLX
+### Raw NASA TLX
 
-##### Subscale Workload Scores
+#### Subscale Workload Scores
 Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
+<center>
 **Table X.** Median NASA TLX subscale scores for all participants
 
 | Scale | Median (Easy) | Median (Hard) | $\Delta$ Median |
@@ -523,17 +526,21 @@ Across all six subscales, the median scores for all participants increased with 
 | Frustration | 20 | 55 | +35 |
 | Effort | 35 | 60 | +25 |
 | Performance | 55 | 75 | +20 |
+</center>
 
-##### Overall Perceived Workload Scores
+#### Overall Perceived Workload Scores
 All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
- 
-![alt text](nasatlx_subscale_figure-1.png)
+
+<center>
+![alt text](Videos/nasatlx_subscale_figure-1.png)
 
 **Figure X.** Mean NASA TLX scores for each participant.
+</center>
 
-##### Statistical Analysis
+#### Statistical Analysis
 A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level.
 
+<center>
 **Table X.** Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.
 
 | Scale | W Test Statistic | Critical Value | Statistical Significance |
@@ -545,52 +552,55 @@ A Wilcoxon Signed-Rank test was performed at both a subscale and overall level t
 | Effort | 0 | 8 | Yes |
 | Performance | 1 | 8 | Yes |
 | Overall Perceived Workload | 0 | 8 | Yes | 
+</center>
 
 The result shows that increasing difficulty showed a statistically significant in all scales except mental demand, and overall previewed workload.
 
-##### Solutions and Adjustments
+#### Solutions and Adjustments
 Since the data showed that higher difficulty led to significant increases in median frustration and effort, we made several design changes to maintain challenge without increasing frustration:
 - Balanced terrain and obstacle difficulty.
 - Improved the shop's upgradable items to help reduce player effort.
 - Ensured that difficulty increases felt rewarding, not frustrating.
 
-#### System Usability Survey (SUS)
+### System Usability Survey (SUS)
 
-##### Process
+#### Process
 After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology (Figure X).
 
-##### Results
+#### Results
 The individual SUS scores are shown in Figure X, with the industry average benchmark of 68 shown for comparison.
 - Mean SUS score (Easy) — 88.25
 - Mean SUS score (Hard) — 75.0
 
-![alt text](sus_figure-1.png)
+<center>
+![alt text](Videos/sus_figure-1.png)
 
 **Figure X.** Mean SUS scores for each participant.
+</center>
 
 While two participants rated the harder difficulty below average usability, overall scores remained well above the standard usability benchmark. This suggests that our game had excellent usability even at a higher difficulty level.
 
-##### Solutions and Adjustments
+#### Solutions and Adjustments
 While the SUS confirmed high usability, we found it less applicable than our qualitative and NASA TLX evaluations for informing design changes. Nonetheless, it served as a valuable confirmation of our game’s overall user experience.
 
 We noted potential questionnaire fatigue due to administering the SUS immediately after the NASA TLX, which may have affected response quality. In future iterations, we would schedule breaks or separate the two evaluations.
 
-##### Statistical Analysis
+#### Statistical Analysis
 A Wilcoxon Signed-Rank test was performed on the SUS scores for both difficulties. The critical value was 8 (N = 10, α = 0.05), and the W Test statistic was calculated to be 0, indicating that there was a statistically significant difference between usability at different difficulty.
 
-### Testing
+## Testing
 
-#### White Box Testing
+### White Box Testing
 We used Jest unit testing to verify our game code’s logic, focussing on game states, ensuring that triggering functions produced expected changes in the game state. Due to the game’s complexity, this was quite a difficult step, so we concentrated on testing the classes and methods that controlled the players movements, control, and interactions, as these were the most likely to hinder user’s game play.
 
-##### Example — Obstacle Testing
+**Example — Obstacle Testing**
 Our game aerial obstacles, intended to challenge the player while flying. We tested their movement and interactions with the player using a range of assertions. This was aided by using the inheritance and polymorphism in the obstacle subclasses.
 
 Example Obstacle class tests:
 
 	[ADD OBSTACLE TESTING CODE HERE]
 
-#### Black Box Testing
+### Black Box Testing
 We conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
 # 7. Sustainability 
