@@ -12,6 +12,12 @@ let inputCharacter = null;
 let soundBoard = null;
 let soundsCached = false;
 
+function onQualityChange(newLevel) {
+    signalBackground = newLevel;   // 1=High(Full),2=Medium,3=Low,4=UltraLow
+    preloadBackgroundImages();
+    bg = new Background();
+}
+
 function setup() {
     const loader = document.getElementById('loader');
     if (loader) loader.style.display = 'none';

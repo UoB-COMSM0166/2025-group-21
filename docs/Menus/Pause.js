@@ -140,6 +140,14 @@ class Pause {
             settings.currentDifficulty = settings.difficulty;
             domains.game = null;
         }
+
+        if (settings.bgQuality !== settings.currentBgQuality) {
+            settings.currentBgQuality = settings.bgQuality;
+            signalBackground = settings.bgQuality + 1;
+            preloadBackgroundImages();
+            domains.game = null;
+        }
+
         else {
             domains.game.pause.showButtons = false;
             domains.game.pause.countdown = new Countdown();

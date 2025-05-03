@@ -6,12 +6,33 @@
 // Globals: sprite sheet + frame metadata
 let spriteSheet;
 let bgFrames = [];
+let bgWidth = 600;
+let bgHeight = 360
+let signalBackground = 1;
 
 function preloadBackgroundImages() {
-    spriteSheet = loadImage('assets/backgroundAssets/layers26Medium.webp');
+    bgFrames = [];
+    if (signalBackground === 1) {
+        bgWidth = 1200;
+        bgHeight = 720;
+        spriteSheet = loadImage('assets/backgroundAssets/layers26Full.webp');
+    } else if (signalBackground === 2) {
+        bgWidth = 600;
+        bgHeight = 360;
+        spriteSheet = loadImage('assets/backgroundAssets/layers26Medium.webp');
+    } else if (signalBackground === 3) {
+        bgWidth = 240;
+        bgHeight = 144;
+        spriteSheet = loadImage('assets/backgroundAssets/layers26Low.webp');
+    } else if (signalBackground === 4) {
+        bgWidth = 60;
+        bgHeight = 36;
+        spriteSheet = loadImage('assets/backgroundAssets/layers26UltraLow.webp');
+    }
+
 
     const totalFrames = 26;
-    const cellW = 600, cellH = 360;
+    const cellW = bgWidth, cellH = bgHeight;
     for (let i = 0; i < totalFrames; i++) {
         const col = i % 5;
         const row = floor(i / 5);
