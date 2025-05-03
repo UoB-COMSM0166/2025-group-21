@@ -14,7 +14,7 @@
 - [7. Sustainability](#7-sustainability)
 - [8. Process](#8-process)
 - [9. Conclusion](#9-conclusion)
-- [10. References](#10-contribution-statement)
+- [10. Contribution Statement](#10-contribution-statement)
 # 1. Development Team
 
 ![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
