@@ -568,7 +568,7 @@ A Wilcoxon Signed-Rank test was performed at both a subscale and overall level t
 </div>
 
 #### Solutions and Adjustments
-Since the data showed that higher difficulty led to significant increases in median frustration and effort, we made several design changes to maintain challenge without increasing frustration:
+Since the data show that higher difficulty led to significant increases in median frustration and effort, we made several design changes to maintain challenge without increasing frustration:
 - Balanced terrain and obstacle difficulty.
 - Improved the shop's upgradable items to help reduce player effort.
 - Ensured that difficulty increases felt rewarding, not frustrating.
