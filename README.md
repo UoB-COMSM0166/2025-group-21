@@ -437,7 +437,7 @@ These effects can be seen in the player’s velocity vectors in Figure 4a.
 To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
 <br>
 <div align="center">
-    <img align="center" src="Videos/acceleration_equation_figure.png" width="300" alt="Acceleration equation and vectors">
+    <img align="center" src="Videos/acceleration_equation_figure.png" width="500" alt="Acceleration equation and vectors">
 </div>
 <br>
 
