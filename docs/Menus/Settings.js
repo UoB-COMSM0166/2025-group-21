@@ -17,7 +17,7 @@ class Settings {
 
 
         this.bgQualities = ['High', 'Medium', 'Low', 'Ultra Low'];
-        this.bgQuality = gameProgress.bgQuality ?? 2;
+        this.bgQuality = gameProgress.bgQuality;
         this.currentBgQuality = this.bgQuality;
 
         this.enableCheats = false;

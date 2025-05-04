@@ -6,7 +6,7 @@ class GameLoader {
         this.gameProgress = gameProgress;
         this.selectedButtonIndex = 0;
 
-        if (!this.gameProgress) {
+        if (!this.gameProgress || this.gameProgress.version !== VERSION) {
             this.initialiseGameState(NEW_GAME_STATE);
             Domain = 'intro';
         }
@@ -37,6 +37,7 @@ class GameLoader {
     initialiseGameState(gameState) {
         settings = new Settings(gameState);
         inventory = new Inventory(gameState);
+        onQualityChange(gameState.bgQuality + 1);
     }
 
     updateYesButton() {
