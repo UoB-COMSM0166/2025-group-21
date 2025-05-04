@@ -194,24 +194,25 @@ class Workshop {
 
         switch (inventory.laserLevel) {
             case 1:
-                image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
+                image(shadow, 0, height/5, 0.9*size*shadow.width/8, 0.9*size*shadow.height/8);
                 rotate(-0.78);
                 image(fishWorkshop, 0, 0, 0.3*size*fishWorkshop.width, 0.3*size*fishWorkshop.height);
                 break;
             case 2:
                 image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
-                image(snowballWorkshop, 0, 0, size*snowballWorkshop.width/3, size*snowballWorkshop.height/3);
+                image(snowballWorkshop, 0, 0, 0.8*size*snowballWorkshop.width/3, 0.8*size*snowballWorkshop.height/3);
                 break;
             case 3:
                 image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/15);
                 image(arrowWorkshop, 0, 0, size*arrowWorkshop.width/3.5, size*arrowWorkshop.height/3.5);
                 break;
             case 4:
-                rotate(-0.7);
+                image(shadow, 0, height/5, 0.7*size*shadow.width/8, 0.7*size*shadow.height/15);
                 image(greenLaser, 0, 10*size, size*greenLaser.width/4.5, size*greenLaser.height/4.5);
                 break;
             case 5:
-                image(purpleLaser, 0, 0.03*height, size*purpleLaser.width/5, size*purpleLaser.height/5);
+                image(shadow, 0, height/5, 1.3*size*shadow.width/8, size*shadow.height/8);
+                image(purpleLaser, 0, 0.03*height, 2*size*purpleLaser.width/5, 2*size*purpleLaser.height/5);
                 break;
         }
 
