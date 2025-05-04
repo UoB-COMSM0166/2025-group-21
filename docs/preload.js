@@ -29,6 +29,11 @@ let fishWorkshop = null;
 let snowballWorkshop = null;
 let arrowWorkshop = null;
 let flyingWorkshop = null;
+let dragonWingsWs = null;
+let rotorsWs = null;
+let boosterWs = null;
+let noFlyWs = null;
+let flyWs = null;
 let shieldWorkshop = null;
 let shadow = null;
 
@@ -262,6 +267,11 @@ function preload() {
     snowballWorkshop = loadImage('assets/images/snowballWorkshop.png');
     arrowWorkshop = loadImage('assets/images/arrowWorkshop.png');
     flyingWorkshop = loadImage('assets/images/flyingAbility.png');
+    dragonWingsWs = loadImage('assets/images/dragonWings_Workshop.png');
+    boosterWs = loadImage('assets/images/booster_Workshop.png');
+    rotorsWs = loadImage('assets/images/rotors_Workshop.png');
+    noFlyWs = loadImage('assets/images/noFly_Workshop.png');
+    flyWs = loadImage('assets/images/fly_Workshop.png');
     shieldWorkshop = loadImage('assets/images/forceFieldAbility.png');
     shadow = loadImage('assets/images/shadow.png');
 

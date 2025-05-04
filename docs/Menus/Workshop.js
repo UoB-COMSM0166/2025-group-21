@@ -107,7 +107,7 @@ class Workshop {
 
         // Print colour blocks
         noStroke();
-        fill('rgb(199, 209, 255)');
+        fill('rgba(199, 209, 255, 0.4)');
         //rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
         image(displayBox, width*0.09, height*0.38, width/3.2, width/3.2);
         rect(width*0.45, height*0.4, width/2.2, width/6.5, 10);
@@ -196,7 +196,7 @@ class Workshop {
             case 1:
                 image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
                 rotate(-0.78);
-                image(fishWorkshop, 0, 0, size*fishWorkshop.width, size*fishWorkshop.height);
+                image(fishWorkshop, 0, 0, 0.3*size*fishWorkshop.width, 0.3*size*fishWorkshop.height);
                 break;
             case 2:
                 image(shadow, 0, height/5, size*shadow.width/8, size*shadow.height/8);
@@ -237,7 +237,20 @@ class Workshop {
         imageMode(CENTER);
         translate(0.245*width, 0.64*height);
         image(shadow, 0, height/5, size*shadow.width/3, size*shadow.height/3);
-        image(flyingWorkshop, 0, 0, size*flyingWorkshop.width, size*flyingWorkshop.height);
+
+        if (inventory.flyLevel === 0){
+            image(noFlyWs, 0, 0, size*noFlyWs.width, size*noFlyWs.height);
+        }else if (inventory.flyLevel === 1){
+            image(flyWs, 0, 0, size*flyWs.width, size*flyWs.height);
+        }else if (inventory.flyLevel === 2){
+        image(dragonWingsWs, 0, 0, size*dragonWingsWs.width, size*dragonWingsWs.height);
+        }else if (inventory.flyLevel === 3){
+            image(rotorsWs, 0, 0, size*rotorsWs.width, size*rotorsWs.height);
+        }else if (inventory.flyLevel === 4){
+            image(boosterWs, 0, 0, size*boosterWs.width, size*boosterWs.height);
+        }else if (inventory.flyLevel === 5){
+            image(boosterWs, 0, 0, size*boosterWs.width, size*boosterWs.height);
+        }
         pop();
 
     }
