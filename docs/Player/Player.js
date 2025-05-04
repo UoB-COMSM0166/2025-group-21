@@ -3,7 +3,7 @@ class Player {
     constructor(x, y) {
         this.radius = width*0.01
         this.pos = createVector(x, y);
-        this.vel = createVector(0, 0);
+        this.vel = createVector(0.1, 0);
         this.acc = createVector(0, 0);
         this.accDownSlope = 0;
         this.gravity = 0.2;

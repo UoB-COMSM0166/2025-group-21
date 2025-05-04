@@ -104,7 +104,7 @@ class Settings {
                 }
                 else {
                     domains.game.pause.showSettings = false;
-                    onQualityChange(settings.bgQuality + 1);
+                    //onQualityChange(settings.bgQuality + 1);
                 }
             }
         }

@@ -135,24 +135,26 @@ class Pause {
 
     continueButtonPressed() {
         document.body.classList.remove("show-cursor");
+        let startCountdown = true;
 
         if (settings.difficulty !== settings.currentDifficulty) {
             settings.currentDifficulty = settings.difficulty;
-            domains.game = null;
+            startCountdown = false;
         }
 
         if (settings.bgQuality !== settings.currentBgQuality) {
             settings.currentBgQuality = settings.bgQuality;
             signalBackground = settings.bgQuality + 1;
             preloadBackgroundImages();
-            domains.game = null;
+            startCountdown = false;
         }
 
-        else {
+        if (startCountdown) {
             domains.game.pause.showButtons = false;
             domains.game.pause.countdown = new Countdown();
             domains.game.pause.isCountingDown = true;
         }
+        else domains.game = null;
     }
 
     settingButtonPressed() {
