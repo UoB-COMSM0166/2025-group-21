@@ -236,77 +236,18 @@ Once the personas are established, user stories are created to represent the nee
 
 Before designing the use-case diagram, we analyzed the stakeholders and user stories to ensure that all relevant interactions within the game system were captured. By breaking down the different needs and expectations of stakeholders, we structured the use-case diagram to accurately reflect player interactions and system functionalities.
 <p align="center" style="margin-top: 10px;"><b>Figure 10</b></p>
-<p align="center"><i>use-case diagram</i></p>
+<p align="center"><i>Use-case Diagram</i></p>
 <div align="center">
     <img src="Product%20doc/use-case%20diagram.png" width="600">
 </div>
 <br>
 
 As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
-
-**Actor:** Player
-
-Description: The player interacts with the system through multiple phases: starting with a guided tutorial, exploring menu functions, playing the game, and utilizing post-game features like score tracking, ability upgrades, and leaderboard comparison. These interactions support gameplay progression, reward accumulation, and customization.
-
-**Flow of Events**:
-
-- The player selects "Enter Game" to begin.
-
-- If this is the first session, the system automatically launches a Tutorial, introducing core mechanics and basic controls.
-- After the tutorial, the player accesses the Main Menu, which includes options to:
-  - Adjust Settings (e.g., volume, difficulty, key bindings);
-  - View Tutorial again;
-  - Log in with a username;
-  - Access the Shop.
-- Within the Shop, the player can:
-  - Upgrade Abilities, such as flying, shielding, or projectile attacks;
-  - View Inventory to browse current equipment or owned items.
-- The player enters the Gameplay Phase, where they can:
-  - Pick Up Life to extend their survival;
-  - Earn Coins through in-game performance;
-  - Use Abilities to enhance gameplay;
-  - Pause/Resume the Game at any time.
-- When the game is paused, a semi-transparent menu is displayed with the following options:
-  - Return to Game, with a 3-second Countdown before resuming;
-  - Access Shop during pause;
-  - Adjust Settings;
-  - View Inventory.
-- Upon losing all lives, the system transitions to the Game Over screen, where the player can:
-  - Retry the Game;
-  - View Statistics to review performance;
-  - Store the Score under their Username for record-keeping;
-  - View Leaderboard to compare with others;
-  - Access the Shop to upgrade or manage rewards.
-
-**Preconditions**:
-
-  - The game is properly installed and running;
-  - The player has access to all necessary input controls and menu interfaces;
-  - Internet connection is available for login and leaderboard functionality.
-
-**Postconditions**:
-
-- The player completes a full game loop, from tutorial to gameplay and post-game actions;
-
-- Game state, including score, coins, upgrades, and settings, is saved correctly;
-
-- The player’s progress and customizations persist across future sessions.
-
-**Key Scenarios**:
-
-  - A new player launches the game for the first time, completes the tutorial, and explores menu options;
-  - A returning player logs in, recovers their previous coin balance, and upgrades abilities;
-  - During gameplay, the player picks up life and earns coins to enhance performance;
-  - After a session ends, the player stores their score and checks the leaderboard;
-  - The player pauses mid-game and resumes later using the countdown feature;
-  - The player can access the shop from the menu, during pause, or after a game ends to upgrade abilities;
-  - In-game events allow the player to dynamically collect life and coins.
-
-**Subflows**
-
-  - If the player lacks sufficient coins to upgrade in the shop, the system prompts them to earn more through gameplay;
-  - If the login attempt fails, the system offers options to retry or proceed as a guest;
-  - If the player enables infinite mode or changes control bindings, the settings are applied instantly and saved automatically.
+<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
+<p align="center"><i>Use-case Specification</i></p>
+<div align="center">
+    <img src="Product%20doc/use-case_specification.png" width="900">
+</div>
 
 # 4. Design
 
