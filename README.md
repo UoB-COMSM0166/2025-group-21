@@ -431,7 +431,7 @@ Participants were asked to verbalise their thoughts and reactions during gamepla
 
 #### Solutions and Adjustments
 Player Control:
-- Issues: difficulty understanding player movement mechanics and controls.
+- Issues: Difficulty understanding player movement mechanics and controls.
 - Solutions: To address this feedback, we implemented an initial instructions page.
 
 Instructions:
