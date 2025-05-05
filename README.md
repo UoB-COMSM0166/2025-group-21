@@ -20,6 +20,7 @@
 
 <div align="center">
     <img src="Product doc/Process/group_photo.jpg" width="1000">
+    <p></p>
 </div>
 
 <div align="center">
