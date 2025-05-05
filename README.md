@@ -18,7 +18,9 @@
 
 # 1. Development Team
 
-![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
+<div align="center">
+    <img src="Product doc/Process/group_photo.jpg" width="1000">
+</div>
 
 <div align="center">
 
