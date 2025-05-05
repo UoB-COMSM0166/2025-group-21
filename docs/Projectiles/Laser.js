@@ -5,7 +5,10 @@ class Laser extends Projectile {
         super(position, velocity);
 
         if (inventory.laserLevel < 5) {
-            laserSound.play();
+            if (domains.game.laserSound.isPlaying()) {
+                domains.game.laserSound.stop();
+            }
+            domains.game.laserSound.play();
         }
     }
 
@@ -16,7 +19,7 @@ class Laser extends Projectile {
 
     drawProjectile() {
 
-        switch (game.projectile.level) {
+        switch (domains.game.projectile.level) {
             case 4: stroke('rgba(50,255,0,0.03)'); break;
             case 5: stroke('rgba(138,50,255,0.04)'); break;
             default: noStroke(); break;

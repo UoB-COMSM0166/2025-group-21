@@ -7,8 +7,6 @@ html, body {
     margin: 18px auto; /*Made this slightly smaller than the actual gap to prevent scroll bar*/
     display: block;
     border: 2px solid #444;
-    /*image-rendering: pixelated;*/
-    /*image-rendering: crisp-edges;*/
 }
 
 * {
@@ -18,4 +16,3 @@ html, body {
 body.show-cursor, body.show-cursor * {
     cursor: default !important;
 }
-

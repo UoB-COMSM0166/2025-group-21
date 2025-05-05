@@ -1,60 +1,62 @@
 
 
-let Domain = 'home'; // Determines which part of the game code is executed
+let Domain = 'loadGame'; // Determines which part of the game code is executed
 
-let homescreen = null;
-let game = null;
-let shop = null;
+let domains = null;
 let inventory = null;
-
-let frameCounter = 0;
+let settings = null;
+let frameCount = 0;
 let fps = 0;
+let userIsTyping = false;
+let inputCharacter = null;
+let soundBoard = null;
+let soundsCached = false;
+
+function onQualityChange(newLevel) {
+    signalBackground = newLevel;   // 1=High(Full),2=Medium,3=Low,4=UltraLow
+    preloadBackgroundImages();
+    bg = new Background();
+}
 
 function setup() {
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+
+    let gameProgress = loadGameProgress();
+
     // Set up canvas aspect ratio and resize to current window size
     createCanvas(1280, 720).id("myCanvas");
-
-    // let ctx = canvas.getContext('2d');
-    // ctx.imageSmoothingEnabled = false;
-    // pixelDensity(1);
-
     resizeCanvasCSS();
     window.addEventListener("resize", resizeCanvasCSS);
-    inventory = new Inventory();
+    soundBoard = new SoundBoard();
+    domains = new DomainManager(gameProgress);
 }
 
 function draw() {
 
-    if (Domain === 'home') {
-        if (homescreen === null) {
-            homescreen = new Homescreen();
-            homescreen.resetAnimation();
-        }
-        homescreen.showHomescreen();
-    }
+    if (!soundsCached) return;
 
-    if (Domain === 'shop') {
-        if (shop === null) {
-            //loadSounds();
-            shop = new Workshop();
-        }
-        shop.openShop();
-    }
+    domains.run();
 
-    if (Domain === 'game') {
-        if (game === null) {
-            game = new Game();
-        }
-        game.runSimulation();
-    }
-
-    frameCounter++;
-    if (frameCounter % 60 === 0) {
+    frameCount++
+    if (frameCount%30 === 0) {
         fps = floor(frameRate());
-        frameCounter = 0;
+        frameCount = 0;
     }
-    text(fps, 50, 50);
+    //text(fps, 50, 50);
+
+    //push();
+    //if (domains.game !== null) {
+    //    textAlign(LEFT);
+    //    textSize(15);
+    //    text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
+    //    text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
+    //    text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
+    //}
+    //pop();
 }
+
+
 
 function resizeCanvasCSS() {
     let canvas = document.getElementById("myCanvas");
@@ -70,7 +72,6 @@ function resizeCanvasCSS() {
 
     canvas.style.width = `${newWidth}px`;
     canvas.style.height = `${newHeight}px`;
-    // canvas.style.imageRendering = "crisp-edges"; // Ensures crisp pixels
 }
 
 function hoveringOverButton(pos, size) {

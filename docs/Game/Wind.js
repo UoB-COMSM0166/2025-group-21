@@ -2,23 +2,25 @@
 
 class Wind {
     constructor() {
-        windSound.setVolume(0);
-        windSound.loop();
+        domains.game.windSound.setVolume(0);
+        domains.game.windSound.loop();
+        this.volume = 0;
     }
 
     adjustVolume() {
+        if (domains.game.pause.active) return;
 
-        if (!game.player.alive) {
-            windSound.setVolume(0.0, 0.5);
+        let volume = settings.masterVolume*settings.mute;
+
+        if (domains.game.stats.numJumps === 0) {
+            domains.game.windSound.setVolume(0.0);
         }
-        else if (game.initialDrop) {
-            windSound.setVolume(0.0, 0.0);
+        else if (!domains.game.player.alive) {
+            domains.game.windSound.setVolume(0.0, 0.5);
         }
-        else if (game.player.pos.y < height/4 && !game.pause.active) {
-            windSound.setVolume(0.13, 3);
+        else if (domains.game.player.vel.x > 15) {
+            domains.game.windSound.setVolume(0.00015*volume*domains.game.player.vel.x**2, 1);
         }
-        else {
-            windSound.setVolume(0.0, 1.0);
-        }
+        else domains.game.windSound.setVolume(0, 1);
     }
 }
