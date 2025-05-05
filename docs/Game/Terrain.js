@@ -84,7 +84,7 @@ class Terrain {
         fill(`rgb(${r},${g},${b})`);
         canvas.vertex(-170 / domains.game.zoom, height);
 
-        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += this.step * Math.sqrt(domains.game.zoom)) {
+        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 20; x += this.step * Math.sqrt(domains.game.zoom)) {
             let y = this.f(x) + 50*layer + 10;
             canvas.vertex(x, y);
         }
