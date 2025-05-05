@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="Product doc/Banner.png" width="1000">
+    <img src="Product doc/Banner.png" width="1000" href="https://uob-comsm0166.github.io/2025-group-21/">
     <p></p>
     <p>🐧&nbsp;&nbsp;&nbsp;<a href="https://uob-comsm0166.github.io/2025-group-21/"><strong>CLICK HERE TO PLAY!</strong></a>&nbsp;&nbsp;&nbsp;🚀</p>
 </div>
