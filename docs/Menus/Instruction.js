@@ -39,7 +39,7 @@ class Instruction {
         let textH = boxHeight - textMargin * 2;
 
         let instructionsText =
-            "As a penguin majoring in computer science, you don't need a pair of wings\n" +
+            "As a penguin studying computer science, you don't need a pair of wings\n" +
             "to learn how to fly.\n" +
             "Instead, you'll need to follow commands below: \n\n" +
             "1. When on the ground, press [space] to build up speed\n" +

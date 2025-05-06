@@ -1,41 +1,54 @@
-# 2025-group-21
-2025 COMSM0166 group 21
-
-## Demonstration
-[Click me! You can play our game here! 🎮⚡🚀](https://uob-comsm0166.github.io/2025-group-21/)
+<div align="center">
+    <a href="https://uob-comsm0166.github.io/2025-group-21/">
+        <img src="Product doc/Banner.png" width="1000">
+    </a>
+    <p></p>
+    <p>🐧&nbsp;&nbsp;&nbsp;<a href="https://uob-comsm0166.github.io/2025-group-21/"><strong>CLICK HERE TO PLAY!</strong></a>&nbsp;&nbsp;&nbsp;🚀</p>
+</div>
 
 # Table of Contents
-- [1. Development Team](#1-development-team)
-- [2. Introduction](#2-introduction)
-- [3. Requirements](#3-requirements)
-- [4. Design](#4-design)
-- [5. Implementation](#5-implementation)
-- [6. Evaluation](#6-evaluation)
-- [7. Sustainability](#7-sustainability)
-- [8. Process](#8-process)
-- [9. Conclusion](#9-conclusion)
-- [10. References](#10-contribution-statement)
+1. [Development Team](#1-development-team)
+2. [Introduction](#2-introduction)
+3. [Requirements](#3-requirements)
+4. [Design](#4-design)
+5. [Implementation](#5-implementation)
+6. [Evaluation](#6-evaluation)
+7. [Sustainability](#7-sustainability)
+8. [Process](#8-process)
+9. [Conclusion](#9-conclusion)
+10. [Contribution Statement](#10-contribution-statement)
+
 # 1. Development Team
 
-![d9d0119c-dfcc-44bb-b571-69e74711f3fb](https://github.com/user-attachments/assets/efe6d287-bc54-4d26-ab55-b5401b9439fe)
+<div align="center">
+    <img src="Product doc/Process/group_photo.jpg" width="1000">
+    <p></p>
+</div>
 
 <div align="center">
 
-| Group # | Name | Email | Role |
-| :-: | :-: | :-: | :-: |
-| 01 | Jack May | jack.robert.may@gmail.com | |
-| 02 | Tom Raynes | nc19537@bristol.ac.uk | |
-| 03 | Kuan Jung Huang | jp24328@bristol.ac.uk | |
-| 04 | Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | |
-| 05 | Jing Yao | so24769@bristol.ac.uk | |
-| 06 | Zhiling Liu | cj24646@bristol.ac.uk | |
+| Name | Email | Role |
+| :-: | :-: | :-: |
+| Jack May | jack.robert.may@gmail.com | Backend |
+| Tom Raynes | nc19537@bristol.ac.uk | Full Stack |
+| Kuan Jung Huang | jp24328@bristol.ac.uk | Project manager, frontend |
+| Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | Frontend, graphic design |
+| Jing Yao | so24769@bristol.ac.uk | Graphic design, frontend |
+| Zhiling Liu | cj24646@bristol.ac.uk | Frontend |
 
 </div>
 
 # 2. Introduction
-### Game Setup Intro
-### Video Demonstration
-### Game Objects Table
+
+PengWings is a browser-based, single-player arcade game. It’s source code is predominantly written in JavaScript, utilising the p5.js library. The game’s premise is that the player controls a penguin character with the objective of smoothly sliding down and over icy hills of varying size to gain airtime. The player must dodge and shoot down obstacles in order to increase their score and earn in-game currency. With these earned coins, the player can progress by upgrading various abilities allowing them to improve their performance and achieve a higher score. If the player achieves an all-time top ten score, their username is shown on the global leader board.
+
+Partially inspired by the late-2000s flash game ‘Learn To Fly’, it is from here that PengWings draws many of it’s themes, namely ability upgrades and the objective of maximising the penguin’s airtime; however, our game introduces various twists that, we believe, advance the game’s replayability and overall user experience.
+
+First and foremost, while the Learn To Fly gameplay is formed of a single predetermined jump from which the score is calculated, our game is composed of unique and infinitely generating terrain. This has the effect of creating a more engaging experience since each PengWings game will be different from the last.
+
+PengWings also introduces obstacles (seagulls, planes and UFOs) which the player must either dodge or shoot down with their upgradable projectile ability. Making for a significantly more interactive experience, this becomes especially impactful as the player progresses through upgrades and observes new captivating and satisfying animations, encouraging user retention.
+
+Along with many more of our own features such as saving progress, customising game preferences and a global leader board, we believe that PengWings offers an exhilarating and user-friendly experience to players of all ability levels. We hope that our game can be enjoyed by all.
 
 # 3. Requirements 
 ### Ideation Processing
@@ -149,13 +162,13 @@ progressively increase, with obstacles appearing both on the ground and in the a
 
 Given that we had previously designed an in-game store, we refined and upgraded the store’s items—such as flight-related props that provide acceleration—based on player feedback to enhance the gaming experience.
 
-External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air.the terrain itself becomes a key element of gameplay, making precise movement a challenge.Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
+External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air. The terrain itself becomes a key element of gameplay, making precise movement a challenge. Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
 
 ### Identifying Stakeholders
 
 The stakeholder diagram illustrates the character system for the project, clearly identifying who is involved and their roles. Before implementation begins, it is crucial to understand the key stakeholders, including the development team, academics, and the instructor, as well as the end-users--our primary target audience: the players.
 
-Using the hierarchy of the onion model, we can see that every feature we develop aims to meet the needs of our target audience. Additionally, successful project delivery requires close collaboration with the development team and alignment with the guidance of the instructorand academics. By maintaining effective communication and progress tracking, we can ensure that the project meets all requirements and lauches the first version of the game on schedule.
+Using the hierarchy of the onion model, we can see that every feature we develop aims to meet the needs of our target audience. Additionally, successful project delivery requires close collaboration with the development team and alignment with the guidance of the instructor and academics. By maintaining effective communication and progress tracking, we can ensure that the project meets all requirements and launches the first version of the game on schedule.
 
 <p align="center" style="margin-top: 10px;"><b>Figure 6</b></p>
 <p align="center"><i>Onion Model of Learn To Fly Game</i></p>
@@ -164,7 +177,7 @@ Using the hierarchy of the onion model, we can see that every feature we develop
 
 ### Persona
 
-For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring eveyrone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
+For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring everyone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
 <br>
 | **Figure 7**<br>_Persona 1._<br>![Product doc/Game doc - Persona 1.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%201.jpg) | **Figure 8**<br>_Persona 2._<br>![Product doc/Game doc - Persona 2.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%202.jpg) | **Figure 9**<br>_Persona 3._<br>![Product doc/Game doc - Persona 3.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%203.jpg) |
 |--|--|--|
@@ -221,27 +234,409 @@ Once the personas are established, user stories are created to represent the nee
         <td>As an avid player, I want to compare my scores with friends.</td>
         <td>The game should include a friend leaderboard feature for score comparison.</td>
     </tr>
+
+</table>
+
+### Use-Cases Breakdown
+
+Before designing the use-case diagram, we analyzed the stakeholders and user stories to ensure that all relevant interactions within the game system were captured. By breaking down the different needs and expectations of stakeholders, we structured the use-case diagram to accurately reflect player interactions and system functionalities.
+<p align="center" style="margin-top: 10px;"><b>Figure 10</b></p>
+<p align="center"><i>Use-case Diagram</i></p>
+<div align="center">
+    <img src="Product%20doc/use-case%20diagram.png" width="600">
+</div>
+<br>
+
+As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
+<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
+<p align="center"><i>Use-case Specification</i></p>
+<div align="center">
+    <img src="Product%20doc/use-case_specification.png" width="900">
+</div>
+
+# 4. Design
+
+## Initial Design
+
+Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 11).
+
+<div align="center">
+    <img src="Product doc/initial_design.png" width="700">
+    <p><b>Figure 11.</b> Initial design class diagram</p>
+</div>
+
+The main class would begin by instantiating the inventory which would persist throughout runtime. This class would hold all data relating to the in-game progress of the user such as ability levels and in-game currency. The game and shop classes would then be instantiated and destroyed as the user navigates between these two domains. Additionally, they would both need to interface with the inventory class as to allow for the relevant upgrades to be shown in the shop and for these upgrades to be used in the game.
+
+The game class would be responsible for the actual gameplay. It would be formed of the following components:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>1. Terrain</b>
+
+This class would generate a unique sinusoidal curve that would form the overall shape of the hills for a given game. It would be then responsible for drawing the updated terrain to the screen as the player moves through it. Moreover, the terrain class would contain methods that, given any x-coordinate, would return a y-coordinate corresponding to the ground height or the gradient of the slope at that position, which would be used by the player class to interact with the terrain.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>2. Player</b>
+
+The player class would encapsulate all data and functionality relating to the player. This includes position and velocity data as well as methods handling the physics of the players motion while interacting with the terrain, e.g., calculating normal force, friction, and the transfer of vertical velocity from gravitation to horizontal velocity, preserving momentum.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>3. Death</b>
+
+The general function of this class would be handling the sequence of events occurring at the point of game-over from either an obstacle collision or exceeding the normal force limit. The death class would be responsible for generating the game-over and coin reward animations as well as managing the internal state of a GUI allowing the user to play again or return to the shop.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>4. UFO / UFOHandler</b>
+
+The UFOHandler class would be responsible for instantiating UFO objects and monitoring their positions. It would need to check if a collision between the player and a UFO has occurred as well ensure that any UFOs are destroyed if they travel off the screen. The UFO class would then encapsulate a UFO’s position/velocity data and functionality such as updating the position and drawing it on the screen.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>5. Laser / LaserAbility</b>
+
+In much the same way as the previous pair of classes, the LaserAbility class would instantiate and monitor Laser objects. It would check for collisions between lasers and UFOs and destroy any off-screen lasers. Similarly, the Laser class would update the position and draw to the screen.
+
+
+## Final Design
+
+As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 12) and sequence diagram (Figure 13) below.
+
+<div align="center">
+    <img src="Product doc/final_architecture.png" width="700">
+    <p><b>Figure 12.</b> Final design class diagram</p>
+</div>
+
+
+
+<div align="center">
+    <img src="Product doc/main_sequence_diagram.png" width="700">
+    <p><b>Figure 13.</b> Main sequence diagram</p>
+</div>
+
+
+### Key Differences
+
+Although this architecture is certainly object oriented in design, JavaScript itself is not a truly an object-oriented language at it’s core. Due to the nature of the p5 library’s setup() and draw() functions, it was found to be more desirable to substitute a Main class for a DomainManager class, instantiated once in the setup() function. This class is responsible for managing the execution of the main loops for all domains of the program which are navigable to the user.
+
+Following the implementation of the load game feature, the instantiations of the inventory and settings classes were moved to inside the GameLoader class which initialises the states of these globally referenced classes to either the default state or the saved state depending on user input.
+
+All sound assets are now loaded and cached during the instantiation of the SoundBoard class in the preload() function. During the instantiations of Game and Shop, the relevant sounds are retrieved from the SoundBoard cache by the constructors and assigned to temporary references inside these classes. The intent behind this design choice was for improved memory performance. By assigning cached sounds to temporary references, the garbage collector can more easily dispose of audio nodes since the disconnect() method can be called on the temporary references before switching domains. This change led to noticeably improved memory performance.
+
+### Interactions within the Game class
+
+A class diagram of all interactions in the Game class is shown below (Figure 14).
+
+<div align="center">
+    <img src="Product doc/final_game_architecture.png" width="900">
+    <p><b>Figure 14.</b> Final Game class diagram</p>
+</div>
+
+Many new features were added to the game over the development process including new player abilities, a scoring system, pausing, a dynamic background, stats, collectables, lives, and a high score leader board. Some notable changes from our initial design worth discussing relate to the introduction of new in-game obstacles and projectiles.
+
+The Laser and UFO classes from our initial design still exist; however, they are now concrete sub-classes of the abstract Projectile and AerialObstacle classes. The renamed ProjectileAbility and ObstacleHandler classes (formerly LaserAbility and UFOHandler), work in a similar way as before; however, they now store and update all projectiles and obstacles using polymorphic arrays, allowing for all Projectile and AerialObstacle sub-classes to be stored in the same data structure corresponding to their respective super-class, resulting in simplified code.
+
+
+# 5. Implementation
+
+### Challenges
+
+While the game development was full of challenges and learning experiences, three particular instances of software development stood out to us.
+
+### 1. Infinitely Generating the Map
+
+A core requirement for our game was an infinite, randomly generated terrain. This epic involved three key requirements:
+
+#### Endless Terrain Generation
+
+We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling slopes, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
+
+<div align="center">
+    <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
+</div>
+
+#### Random and Unpredictable Terrain
+
+To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
+
+<div align="center">
+    <img src="Videos/sine_wave_sum.gif" width="700" alt="Sine curve diagram" style="border: 5px solid black; border-radius: 8px;">
+    <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
+</div>
+
+#### Modifiable Difficulties
+
+Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
+
+<div align="center">
+    <img src="Videos/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
+    <p><b>Figure 3.</b> Terrain variations across different difficulty levels.</p>
+</div>
+
+### 2. Movement Physics
+
+A major design challenge was creating movement mechanics that felt both realistic and fun. Since players rely heavily on predicting how their character moves and interacts with the terrain, the physics needed to be intuitive and consistent.
+
+#### Velocity
+
+We based player movement on classical physics. The player has both position and velocity and acceleration vectors in the x and y directions.
+- In the air, gravity increases the player's downward velocity.
+- On the ground, friction slows the player's horizontal velocity.
+- Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground.
+
+These effects can be seen in the player’s velocity vectors in Figure 4a.
+
+#### Acceleration
+
+To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
+<br>
+<div align="center">
+    <img align="center" src="Videos/acceleration_equation_figure.png" width="400" alt="Acceleration equation and vectors">
+</div>
+<br>
+
+These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
+
+<div align="center">
+	<p>
+		<img src="Videos/velocity_vector_figure.gif" width="420"/>
+		<img src="Videos/acceleration_vector_figure.gif" width="420"/>
+	</p>
+    	<p><b>Figure 4.</b> Player <span style="color:red">velocity (A)</span> and <span style="color:blue">acceleration (B)</span> vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.</p>
+</div>
+
+### 3. Saving Progress and Global Leaderboards
+
+#### Saving Progress
+
+Since our game relies on accumulating progress over time, preserving the game state across sessions was essential. After evaluating options like cookies and server hosting, we chose client-side persistent storage using the Web Storage API. This approach allowed us to store and retrieve JSON data in the browser via a SAVE_KEY.
+
+On each load, the game checks for this saved data. If present, it’s parsed and used to restore the previous game state. If the user opts to start fresh, default values overwrite the existing save. We stored a variety of parameters, including coins, purchased items, key bindings, volume, and difficulty settings.
+
+#### Global Leaderboards
+
+We also wanted a global leaderboard where players could compete across devices. Unlike progress data, this required shared access beyond the client’s browser. Our first solution used GitHub Gists—an easy, lightweight way to store username–score pairs. However, this raised two major issues:
+- Authentication – Anyone with access to the front end could modify the public Gist, opening the door to fake scores.
+- Race Conditions – Conflicts between read/write operations often resulting in lost scores.
+
+To solve both issues, we set up Vercel serverless functions as our back end. This allowed us to securely handle game logic and validate score submissions on the server side. For persistent, real-time storage of high scores, we used Redis, a fast, in-memory data store well-suited for leaderboard-style JSON data.
+
+# 6. Evaluation
+
+## Qualitative Evaluation
+
+To refine our game’s mechanics, difficulty, and overall level of enjoyment, we collected qualitative feedback through Think Aloud evaluations.
+
+### Think Aloud
+
+#### Process
+Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
+
+<div align="center">
+	<img src="Videos/think_aloud_map_figure.png" width="850"/>
+	<p><b>Figure X.</b> Thematic map of key Think Aloud evaluation feedback.</p>
+</div>
+
+#### Solutions and Adjustments
+Player Control:
+- Issues: Difficulty understanding player movement mechanics and controls.
+- Solutions: To address this feedback, we implemented an initial instructions page.
+
+Instructions:
+- Issues: Poor initial understanding of the gameplay, difficulty remembering the different features, and mixed feedback on the key mappings.
+- Solutions: Added a brief instruction page before each game, and implemented custom key mappings to satisfy all player's preferences.
+
+Difficulty:
+- Issues: Players were unsure why they were losing health, found the terrain too steep, and the obstacles too challenging.
+- Solutions: Added visible life indicators and audiovisual cues for taking damage, rebalanced the obstacles by incorporating tiers of enemies, and created three balanced difficulty levels.
+
+## Quantitative Evaluation
+
+To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools (ADD CITATIONS), and statistical analysis:
+- **Raw NASA TLX** — to quantify perceived workload
+- **System Usability Survey (SUS)** — to quantify system usability
+- **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
+
+#### Process
+These evaluations involved 10 participants, each trialing two difficulty modes. Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
+
+### Raw NASA TLX
+
+#### Subscale Workload Scores
+Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
+
+<div align="center">
+  <p><b>Table X.</b> Median NASA TLX subscale scores for all participants.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Scale</th>
+        <th>Median (Easy)</th>
+        <th>Median (Hard)</th>
+        <th>Δ Median</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Mental Demand</td><td>20</td><td>40</td><td>+20</td></tr>
+      <tr><td>Physical Demand</td><td>10</td><td>20</td><td>+10</td></tr>
+      <tr><td>Temporal Demand</td><td>25</td><td>47.5</td><td>+22.5</td></tr>
+      <tr><td>Frustration</td><td>20</td><td>55</td><td>+35</td></tr>
+      <tr><td>Effort</td><td>35</td><td>60</td><td>+25</td></tr>
+      <tr><td>Performance</td><td>55</td><td>75</td><td>+20</td></tr>
+    </tbody>
+  </table>
+</div>
+
+#### Overall Perceived Workload Scores
+All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
+
+<div align="center">
+	<img src="Videos/nasatlx_subscale_figure.png" width="700"/>
+	<p><b>Figure X.</b> Mean NASA TLX scores for each participant.</p>
+</div>
+
+#### Statistical Analysis
+A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
+
+<div align="center">
+  <p><b>Table X.</b> Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Scale</th>
+        <th>W Test Statistic</th>
+        <th>Critical Value</th>
+        <th>Statistical Significance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Mental Demand</td><td>11.5</td><td>8</td><td>No</td></tr>
+      <tr><td>Physical Demand</td><td>3.5</td><td>8</td><td>Yes</td></tr>
+      <tr><td>Temporal Demand</td><td>3</td><td>8</td><td>Yes</td></tr>
+      <tr><td>Frustration</td><td>5.5</td><td>8</td><td>Yes</td></tr>
+      <tr><td>Effort</td><td>0</td><td>8</td><td>Yes</td></tr>
+      <tr><td>Performance</td><td>1</td><td>8</td><td>Yes</td></tr>
+      <tr><td>Overall Perceived Workload</td><td>0</td><td>8</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+#### Solutions and Adjustments
+Since the data show that higher difficulty led to significant increases in median frustration and effort, we made several design changes to maintain challenge without increasing frustration:
+- Balanced terrain and obstacle difficulty.
+- Improved the shop's upgradable items to help reduce player effort.
+- Ensured that difficulty increases felt rewarding, not frustrating.
+
+### System Usability Survey (SUS)
+
+#### Process
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology (Figure X).
+
+#### Results
+The individual SUS scores are shown in Figure X, with the industry average benchmark of 68 shown for comparison.
+- Mean SUS score (Easy) — 88.25
+- Mean SUS score (Hard) — 75.0
+
+<div align="center">
+	<img src="Videos/sus_figure.png" width="700"/>
+	<p><b>Figure X.</b> Mean SUS scores for each participant.</p>
+</div>
+
+While two participants rated the harder difficulty below average usability, overall scores remained well above the standard usability benchmark. This suggests that our game had excellent usability even at a higher difficulty level.
+
+#### Statistical Analysis
+A Wilcoxon Signed-Rank test was performed on the SUS scores for both difficulties. The critical value was 8 (N = 10, α = 0.05), and the W Test statistic was calculated to be 0, indicating that there was a statistically significant difference between usability at different difficulty.
+
+#### Solutions and Adjustments
+While the SUS confirmed high usability, we found it less applicable than our qualitative and NASA TLX evaluations for informing design changes. Nonetheless, it served as a valuable confirmation of our game’s overall user experience. We noted potential questionnaire fatigue due to administering the SUS immediately after the NASA TLX, which may have affected response quality. In future iterations, we would schedule breaks or separate the two evaluations.
+
+## Testing
+
+### White Box Testing
+We used Jest unit testing to verify our game code’s logic, focusing on game states, ensuring that triggering functions produced expected changes in the game state. Due to the game’s complexity, this was quite a difficult step, so we concentrated on testing the classes and methods that controlled the players movements, control, and interactions, as these were the most likely to hinder user’s game play.
+
+**Example — Obstacle Testing**<br>
+Our game aerial obstacles, intended to challenge the player while flying. We tested their movement and interactions with the player using a range of assertions. This was aided by using the inheritance and polymorphism in the obstacle subclasses. An excerpt is shown below.
+
+	[ADD OBSTACLE TESTING CODE HERE]
+
+### Black Box Testing
+We conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
+
+# 7. Sustainability 
+### SusA Framework: Questions
+By completing the SusA framework, we have developed a more comprehensive product roadmap that outlines our long-term vision for the game. This process has encouraged us to adopt a more strategic and thoughtful approach to development—considering factors such as scalable data structures, maintainable and extensible code design, and user experience planning from the outset.
+| |Social|
+|--|:--|
+|Sense of community|The product builds community by using a leaderboard to encourage competition and engagement. A social sharing feature also lets users showcase achievements, reinforcing accomplishment and belonging.|
+|Trust|Regular updates and feature improvements show a commitment to quality, boosting user trust through reliability and responsiveness.|
+|Inclusiveness and diversity|The ranking system introduces diverse characters, fostering empathy and awareness. Social features like customizable profiles encourage cross-demographic interaction, breaking stereotypes and promoting inclusivity.|
+|Equity|Progression is merit-based, giving all users equal opportunities to earn rewards through skill, regardless of background.|
+|Participation and communication|Shared game challenges create social connections. Cooperative play and communication features encourage interaction and healthy usage. A feedback system empowers users and guides development.|
+| |**Individual**|
+|Health|The game is accessible and low-stress, promoting mental well-being and satisfaction with minimal effort.|
+|Lifelong learning|Daily challenges with educational content foster curiosity and informal learning.|
+|Privacy|Usernames or pseudonyms protect identities, supporting safe social recognition.|
+|Safety|Strong data protection and user prompts ensure security and privacy. A clear response policy builds trust.|
+|Agency|Users can control participation features (e.g., opting out of leaderboards) and provide feedback, supporting autonomy and inclusion.|
+| |**Environmental**|
+|Material and resources|Development consumes energy and time. By optimizing for efficiency, we reduce the digital carbon footprint.|
+|Waste & pollution|Avoiding unnecessary features cuts waste and energy use.|
+|Biodiversity|Energy production impacts ecosystems; minimizing use protects biodiversity.|
+|Energy|Performance optimization reduces energy demands and environmental impact.|
+| |**Economic**|
+|Value|Revenue can come from paid content, partnerships, or ads. Organic growth features like invites expand the user base. |
+|Customer Relationship Management|Fair reward systems and feedback loops build trust and co-creation. Monetization is planned to be balanced and user-friendly.|
+|Supply Chain|The game is scalable with minimal external reliance. Infrastructure stability is key to maintaining revenue and satisfaction.|
+|Governance|As the team grows, structured roles and communication systems will support scaling and decision-making.|
+|Innovation|Future features may include payments or AI. R&D investment will be guided by cost-benefit analysis and scalability.|
+| |**Technical**| 
+|Maintainability|Ongoing updates ensure compatibility with platforms and third-party services.|
+|Usability|The game is accessible and intuitive for all user types.|
+|Adaptability|The flexible system supports new applications and scalability.|
+|Security|Minimal data collection protects privacy. Future growth will require stronger security measures.|
+|Scalability|A modular, efficient design supports traffic growth and maintains performance.|
+### SusA Framework: Analysis
+After analyzing and linking the effects outlined in the SusAD model, we identified that many issues originate from technical decisions. For example, how we design the data structure plays a crucial role—anticipating a larger user base early on enables more efficient database access and better scalability. These considerations extend beyond immediate functionality and have significant long-term implications. Therefore, to support the sustainable growth of the game, which has the potential to evolve into a viable business, it is essential to envision and plan for future impacts before entering the development phase.
+![image](https://github.com/user-attachments/assets/b63e1e23-eb5b-49ec-8f0a-76ccb99aedcc)
+#### Synthesis: Threats, Opportunities, Actions
+##### Threats:
+- Poorly planned technical decisions, such as inefficient data structures, can limit scalability and performance as the user base grows.
+- Focusing solely on current functionalities may lead to increased technical debt and hinder long-term adaptability.
+- Lack of foresight in architecture design may result in costly rework during later stages of development.
+##### Opportunities:
+- Early investment in scalable and efficient technical architecture can ensure smoother performance with user growth.
+- Applying a long-term perspective enables more sustainable software development, aligning with potential business growth.
+- Integrating sustainable design principles from the start can position the game as a reliable, future-proof product in the market.
+##### Actions:
+- Conduct technical foresight sessions during the planning phase to anticipate growth and evolving requirements.
+- Prioritize the design of flexible and scalable data structures and system architecture.
+- Align development practices with the principles of sustainable software architecture to reduce future maintenance costs and improve system longevity.
+- Continuously revisit and refine design decisions as part of an iterative development process, ensuring alignment with long-term goals.
+
+#### User Stories From Sustainability Effects
+We translated the *immediate sustainability effects* identified in our SusAD into user stories, which have been incorporated as core features in the initial launch of our game.
+
+<table border="1" cellspacing="0" cellpadding="8">
     <tr>
-        <td rowspan="9">Sustainable Player</td>
-        <td rowspan="2">Technically sustainable</td>
-        <td>As a sustainably-minded player, I want to play this game for a long time and maintain my progress and high scores.</td>
+        <th>User</th>
+        <th>Epic</th>
+        <th>User Stories</th>
+        <th>Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td rowspan="9">Sustainable Design</td>
+        <td rowspan="2">Technical</td>
+        <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
         <td>The high-score data storage should be persistent and maintained.</td>
     </tr>
     <tr>
-        <td>As a techically-minded player, I want to be able to see and learn from the code bases of the games I play.</td>
+        <td>As an avid player, I want to be able to see and learn from the code bases of the games I play.</td>
         <td>The open-source code should be maintained and accessible.</td>
     </tr>
     <tr>
-        <td rowspan="2">Social Players</td>
-        <td>As a social player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
+        <td rowspan="2">Social</td>
+        <td>As a casual player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
         <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
     </tr>
     <tr>
-        <td>As a social player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
+        <td>As a casual player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
         <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
     </tr>
     <tr>
-        <td rowspan="2">Economic Players</td>
+        <td rowspan="2">Economic</td>
         <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
         <td>The game should be free and fun with any costs only being for avid players.</td>
     </tr>
@@ -250,270 +645,133 @@ Once the personas are established, user stories are created to represent the nee
         <td>The game should be accessible on a web browser without anything extra required.</td>
     </tr>
     <tr>
-        <td rowspan="1">Environmental Players</td>
-        <td>As an environmentally-minded player, I want a game that feels representative of my interests.</td>
+        <td rowspan="1">Environmental</td>
+        <td>As an avid player, I want a game that feels representative of my interests.</td>
         <td>The game should feel grounded in its environment.</td>
     </tr>
     <tr>
-        <td rowspan="2">Individual Players</td>
-        <td>As a safety-minded player, I want a game that doesn't require my data or is a safety risk.</td>
+        <td rowspan="2">Individual</td>
+        <td>As a casual player, I want a game that doesn't require my data or is a safety risk.</td>
         <td>The game should not require any important data from the users, to make the games' data usage sustainble.</td>
     </tr>
     <tr>
-        <td>As a health-minded player, I don't want to feel addicted or in pain after playing for periods of time.</td>
+        <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
         <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
     </tr>
 </table>
 
-### Use-Cases Breakdown
-
-Before designing the use-case diagram, we analyzed the stakeholders and user stories to ensure that all relevant interactions within the game system were captured. By breaking down the different needs and expectations of stakeholders, we structured the use-case diagram to accurately reflect player interactions and system functionalities.
-<p align="center" style="margin-top: 10px;"><b>Figure 10</b></p>
-<p align="center"><i>use-case diagram</i></p>
-<div align="center">
-    <img src="Product%20doc/use-case%20diagram.png" width="600">
-</div>
-<br>
-
-As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
-
-**Actor:** Player
-
-Description: The player interacts with the system through multiple phases: starting with a guided tutorial, exploring menu functions, playing the game, and utilizing post-game features like score tracking, ability upgrades, and leaderboard comparison. These interactions support gameplay progression, reward accumulation, and customization.
-
-**Flow of Events**:
-
-- The player selects "Enter Game" to begin.
-
-- If this is the first session, the system automatically launches a Tutorial, introducing core mechanics and basic controls.
-- After the tutorial, the player accesses the Main Menu, which includes options to:
-  - Adjust Settings (e.g., volume, difficulty, key bindings);
-  - View Tutorial again;
-  - Log in with a username;
-  - Access the Shop.
-- Within the Shop, the player can:
-  - Upgrade Abilities, such as flying, shielding, or projectile attacks;
-  - View Inventory to browse current equipment or owned items.
-- The player enters the Gameplay Phase, where they can:
-  - Pick Up Life to extend their survival;
-  - Earn Coins through in-game performance;
-  - Use Abilities to enhance gameplay;
-  - Pause/Resume the Game at any time.
-- When the game is paused, a semi-transparent menu is displayed with the following options:
-  - Return to Game, with a 3-second Countdown before resuming;
-  - Access Shop during pause;
-  - Adjust Settings;
-  - View Inventory.
-- Upon losing all lives, the system transitions to the Game Over screen, where the player can:
-  - Retry the Game;
-  - View Statistics to review performance;
-  - Store the Score under their Username for record-keeping;
-  - View Leaderboard to compare with others;
-  - Access the Shop to upgrade or manage rewards.
-
-**Preconditions**:
-
-  - The game is properly installed and running;
-  - The player has access to all necessary input controls and menu interfaces;
-  - Internet connection is available for login and leaderboard functionality.
-
-**Postconditions**:
-
-- The player completes a full game loop, from tutorial to gameplay and post-game actions;
-
-- Game state, including score, coins, upgrades, and settings, is saved correctly;
-
-- The player’s progress and customizations persist across future sessions.
-
-**Key Scenarios**:
-
-  - A new player launches the game for the first time, completes the tutorial, and explores menu options;
-  - A returning player logs in, recovers their previous coin balance, and upgrades abilities;
-  - During gameplay, the player picks up life and earns coins to enhance performance;
-  - After a session ends, the player stores their score and checks the leaderboard;
-  - The player pauses mid-game and resumes later using the countdown feature;
-  - The player can access the shop from the menu, during pause, or after a game ends to upgrade abilities;
-  - In-game events allow the player to dynamically collect life and coins.
-
-**Subflows**
-
-  - If the player lacks sufficient coins to upgrade in the shop, the system prompts them to earn more through gameplay;
-  - If the login attempt fails, the system offers options to retry or proceed as a guest;
-  - If the player enables infinite mode or changes control bindings, the settings are applied instantly and saved automatically.
-
-# 4. Design
-### Class Diagram
-- Game Mechanics
-### Behavioural diagrams
-### System architecture
-- Game Engine
-- Game Logic
-- Data Management
-- Asset Management
-- Networking
-- User Interface
-
-
-# 5. Implementation
-### Challenges
-
-# 6. Evaluation
-
-### Think Aloud Evaluation
-#### Evaluation Flow Insights
-1. For testers 1 to 7, we introduced the gameplay through **verbal instructions and key demonstrations**. However, this approach led to noticeable confusion among the testers regarding how to play.
-2. Starting from tester 8, we implemented a **brief demonstration** before their gameplay session. This adjustment significantly improved their understanding, resulting in a smoother and more intuitive experience compared to those who did not receive a demonstration.
-
-#### Brief Sum 
-1. A **CLEAR** instruction is really important, especially the testers are asked to control the character with multiple keys, it’s hard to  let’em remember all the functions mapped to the keys. 
-2. The difficulty could increase as the process goes, our background generates itself from the very beginning, which could lead to a problem that our testers are likely to feel our game hard from the beginning , so there’s not a good chance for them to learn how to play step by step.
-
-<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
-<p align="center"><i>Mind Map of Penguin Game</i></p>
-
-![Product doc/Mind Map.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Mind%20Map.jpg)
-
-| Tester No | Score - Attempt 1 | Score - Attempt 2 | Score - Attempt 3 | Difficulty (N/10) | Enjoyability (N/10) | UI/UX (N/10)  | Rate Overall (N/10) | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 1 | 427 | 634 | 674 | 6 | 7 | 8 | 7 | 
-| 2 | 1816 | 4223 | 1505 | 8 | 9 | 7 | 8 |
-| 3 | 861 | 1940 | - | - | - | - | - |  
-| 4 | 487 | 1507 | - | 8 | 10 | 10 | 9 | 
-| 5 | 740 | 4209 | 576 | - | - | - | - | 
-| 6 | 453 | - | - | - | - | - | - | 
-| 7 | 425 | 873 | 5575 | 6 | 7 | 10 | 6 | 
-| 8 | 6709 | 2064 | 15921 | 6 | 8 | 7 | 9 | 
-| 9 | 842 | 1386 | 1355 | - | - | - | - | 
-
-
-| Tester No |  Behavior During Playing | Feedback |
-|:--:|--|--|
-| 1 |  1. “Oh no”<br>2. “What happened” | 1. Need instruction<br>2. Playing better after playing few times |
-| 2 | 1. Murmuring to make sure how to play | 1. A bit confused how to play<br>2. Operation ways are special (not just use arrows to go up and down) and the tools are quite cool<br>3. UFO is quite a different element with the game theme |
-| 3 | 1. Trying to understand the rules<br>2. Trying to use the tools<br>3. “Oh can shoot things”<br>4. “I am not good at playing games” | 1. Pretty fun<br>2. Its okay if going up, but have no idea how to play while on the ground  <br>3. Don’t know when to click the tools<br>4. Don’t know when to trigger the jump |
-| 4 | 1. “What am I doing right now?”<br>2. “Oh no I’m not good at this”<br>3. Seems doesn’t know how and when to use the tools  | 1. Too easy to lost the game<br>2. Hills are too high<br>3. It’s better if I have more life<br>4. Suggest can gain life after having gone for a while such as reach certain score or distance |
-| 5 | 1. Trying to figure out how to land, when to click space<br>2. Seems playing well since the attempt 2<br>3. “Oh I’m trying to do a perfect landing”  | 1. This game is really simple that’s nice |
-| 6 | 1. “What is the red bar?”<br>2. “How to play?” | 1. Need instructions to figure out what’s happening |
-| 7 | 1. “How to keep it in air?”<br>2. Trying to know how to play<br>3. “Shit the curve is too deep, I kept crashing into it”<br>4. “When should I kick the space bar? Should I press the space bar once or keep holding it?”  | 1. That’s cool but hard as well<br>2. Unsure how to stay in air |
-| 8 | 1. “What’s the shoot button”<br>2. “I tried to press M but failed to take off from the ground” | 1. The sound effect is very nice<br>2. Maybe should go faster while going down<br>3. It’s hard to do a key-press combo |
-| 9 | 1. “What is that(pointing the fish)”<br>2. “Too easy to die” | 1. Don’t know why there is a function to drop down from the air while its in the air |
-
-### Heuristic Evaluation
-***Tick it if you think there have relative probelems in our game
-| The usability principle|Tester 1|Tester 2|Tester 3|Tester 4|
-|--|:--:|:--:|:--:|:--:|
-|Visibility of system status - Feedback|||||
-|Match between system and real world - Conventions|||||
-|User control and freedom - Emergency exits|||||
-|Consistency and standards - Consistency|||||
-|Error prevention|||||
-|Recognition not recall|||||
-|Flexibility and efficiency of use - Flexibility|||||
-|Aesthetic and minimalist design - Minimalist design|||||
-|Help users recognise, diagnose and recover from errors - Error recognition and recovery|||||
-|Help and documentation - Help|||||
-### Qualitative evaluation
-### Difficulties
-### Quantitative Analysis
-### Description of how code was tested
-# 7. Sustainability 
-### SusA Framework: Questions
-| |Social|
-|--|:--|
-|Sense of community|How can the product or service affect a person’s sense of belonging to these groups?|
-|Trust|How can the product or service change the trust between the users and the business that owns the system?|
-|Inclusiveness and diversity|● How can the product or service impact on how people perceive others?<br>● What effects can it have on users with different backgrounds, age groups,education levels, or other differences?|
-|Equity|How can the system make people to be treated differently from each other? (think data analytics or decision support)|
-|Participation and communication|How can the product or service change the way people:<br>○ create networks?<br>○ participate in group work?<br>○ support, criticize or argue with others?|
-| |**Individual**|
-|Health|How can the product or service improve or worsen a person’s physical, mental, and/or emotional health?|
-|Lifelong learning|How can the product or service affect people’s competencies?|
-|Privacy|How can the product or service expose (or help to hide) a person’s identity, whereabouts or relations?|
-|Safety|● How can the product or service expose (or protect) a person from physical harm?<br>● How can it make a person feel more (or less) exposed to harm?<br>● What if used in an unintended way?|
-|Agency| ●How can the product or service empower (or prevent) a person from taking an action/ decision when necessary?<br>● Can those affected by the product or service understand its implications, expressconcerns or be represented by someone?|
-| |**Environmental**|
-|Material and resources|● How are materials consumed to produce the product or service?<br>● What about to operate the product or service? E.g., requires hardware.<br>● How can it change the way people consume material? E.g., encourage to buy more?|
-|Waste & pollution|● How can producing parts or supplies generate waste or emissions?<br>● How can the use itself produce waste or emissions?<br>● How can it influence how much waste or emissions are generated?<br>● How can it promote (or impair) recycling?|
-|Biodiversity|● How can it impact the plants or animals around it? Or elsewhere?<br>● How can it change composition of the soil around it? E.g., occupying / cropland?<br>○ What about elsewhere?|
-|Energy|● How can the product of service affect the need for production of energy?<br>● What about the use of energy? E.g. encourages less energy.<br>● Does the hardware run on renewable energy? Is there a way to incentivise that?|
-|Logistics|● How can it affect the<br>○ need (and distance) for moving people or goods?<br>○ means by which people or goods move? |
-| |**Economic**|
-|Value|● How can the product or service create or destroy monetary value? For whom?<br>● Are there any other related types of business value? For whom? |
-|Customer Relationship Management|● How can the product or service affect the relationship between the business and its customers?<br>● How can it enable co-creation or co-destruction of value?<br>● How can it impact the financial situation of their customers & others?|
-|Supply Chain|● How can the product or service affect the supply chain of the business who owns it?<br>● How can these changes in supply chain impact the financial situation?<br>● How can it impact the financial situation of their customers & others?|
-|Governance|● How can the product or service affect○ how and by whom such decisions are made?<br>○ the communication channels by which the relationships takes place?<br>● How can these changes impact the financial situation of the business and partners?|
-|Innovation|● Do (parts of) the product or service affect the investment on research &development?<br>● How can changes in innovation and R&D impact the financial situation?<br>● Can it also impact the financial situation of their customers & others?|
-| |**Technical**| 
-|Maintainability|● (a)(b) How are the operating system and runtime environment expected to changewhat does that required from maintainers of this system?● (a)(b) How can the correctness of the system be affected by other systems oraffect the correctness of others?|
-|Usability|(a)(b) What kind of knowledge or physical properties are required to use the system and how can this affect different types of users? For example, is good eyesight and small, sensitive hands required to operate a system on a small handheld device?|
-|Adaptability|● (a)(b) How could someone want to use the system in another context?○ (a)(b) What can make that easier/more difficult?● (a)(b) What can make that easier/more difficult for the system to adapt itself to fit new usage scenarios?|
-|Security|● (a)(b) Which assets controlled by this system would be desirable to an attacker?E.g. financial information, people’s whereabouts or preferences, etc.<br>○ (a)(b) What are the risks associated with these assets?<br>● (a)(b) What are other likely vulnerabilities of the system?|
-|Scalability|● (a)(b) How can the system support changes in workload?● (a)(b) What can make that easier/more difficult?|
-### SusA Framework: Analysis
-![image](https://github.com/user-attachments/assets/b453a5d1-1ce3-4a92-bebc-090d9c1d9313)
-![image](https://github.com/user-attachments/assets/a1334887-bf03-4913-bce1-e3376a574623)
 
 # 8. Process 
-### Collaboration
 
-Our six-member team adopted the Agile development methodology to manage our game project, combining both online and offline collaboration to maintain efficient communication. At the beginning of the project, we agreed on a flat team structure in which all members contributed equally to decision-making while taking ownership of specific tasks based on their individual strengths. This approach allowed us to make full use of our diverse skills while maintaining shared accountability for the project’s overall progress.
+## Collaboration
 
-To keep development on track, we maintained a consistent weekly routine. During term time, we used the Tuesday workshop sessions to collaborate on in-class tasks. On Fridays from 2 to 3 PM, we held in-person team meetings (except during assessment-heavy weeks) to reflect on the week’s work, showcase progress—mostly in code—and discuss areas for improvement. Sam and Jack took meeting notes, which were saved in the `/meetings/weekXX_meeting.md` folder for reference.
+Over the course of the project, our team adopted an agile development methodology to manage tasks. We participated both in online and in-person collaboration, maintaining regular communication as to maximise our efficiency. At the project’s conception, we agreed upon a flat team structure in which all members contributed equally to decision-making while delegating member-specific tasks based on the strengths of the individual. This approach enabled us to capitalise on the diverse range of skills between us, while maintaining shared accountability for the project’s overall progress.
 
-During holidays, we transitioned to a remote setup. We held weekly online meetings every Wednesday from 11 AM to 12 PM via Google Meet. These meetings were used to share individual updates, identify and discuss blockers, and conduct peer testing and feedback sessions.
+To keep development on track, we maintained a consistent weekly routine. During term time, we used Tuesday’s workshop sessions to collaborate on in-class tasks and held in-person meetings on Fridays to reflect on the week’s work, showcase progress/new features, and discuss our next steps as well as areas for improvement. Notes from these meetings can be found in the `/meetings` directory.
 
-Over the course of the project, we went through three Sprint cycles (Sprint 1: 2.11–2.27, Sprint 2: 4.2–4.16, Sprint 3: [TBD]), each lasting two weeks. Each Sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed on clear goals. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear to everyone.
+<div align="center" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div>
+        <img src="Product doc/Process/paperprototype_team_work2.gif" width="500">
+        <p>Team work in workshops</p>
+    </div>
+    <div>
+        <img src="Product doc/Process/mvb_meeting.gif" width="500">
+        <p>Footage from a team meeting</p>
+    </div>
+</div>
+Commencing the Easter holiday period, we transitioned to a remote setup. We held weekly Wednesday meetings, online, over Google Meet. Similarly, this time was used to share progress updates, identify and discuss blockers, and discuss feedback from peer testing.
 
-[photo of sprint planning]
+Throughout development, we completed two sprint cycles with each lasting two weeks. Each sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed upon strategies to satisfy them. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear and understandable to everyone.
 
-To estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we took into account each person’s strengths, how much time they could realistically commit, and any dependencies or technical challenges that might come up. We also considered which features would have the most impact on gameplay so we could focus on what mattered most.
+<div align="center">
+    <img src="Product doc/Process/sprint_planning.jpg" width="500">
+    <p>Sprint planning</p>
+</div>
 
-[photo of planningpokeronline]
+In order to estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we considered each person’s strengths, how much time could realistically be committed, and any dependencies or technical challenges that may arise. We also considered which features would have the most impact on gameplay with the MoSCoW user story framework, focusing on what mattered most.
 
-During the Sprint, we tracked progress using GitHub Projects with a Kanban board, dividing tasks into “To Do,” “In Progress,” and “Done.” Everyone updated their task status regularly so we could see how things were moving and spot any issues early.
+During sprints, we tracked progress using Kanban, dividing tasks into “To Do,” “In Progress,” and “Done.” Kanban tickets were updated regularly, allow us to easily monitor the progression of our game and spot issues early.
 
-[photo of Kanban]
+<div align="center">
+    <img src="Product doc/Process/kanban.png" width="500">
+    <p>Screenshot of our group's Kanban</p>
+</div>
 
-At the end of each Sprint, we ran a Sprint Review and Retrospective. Team members presented what they’d completed—whether it was new game mechanics, interface updates, or documentation improvements—using screen sharing or quick demos. We then discussed what went well, what didn’t, and how we could work better in the next Sprint. Some of the main issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing. However, we always talked these through openly and came up with practical solutions together.
+Concluding each sprint, we completed a sprint review and retrospective. Team members presented their progress, whether it may be a new game mechanic, interface updates, or documentation improvements. We discussed whether progress had fulfilled our acceptance criteria as well as the next steps for our game, referring to our product backlog. Following this, we then discussed what went well, what didn’t, and how we could work better in the next sprint. General issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing; however, we were always able to work through these issues with open dialogue and devise practical solutions.
 
-### Tools and Techniques
+<div align="center">
+    <img src="Product doc/Process/video_call.gif" width="500">
+    <p>Short recording from a sprint review</p>
+</div>
 
-To support communication, planning, and documentation throughout development, we used a range of tools:
+## Tools
 
-**Miro:** Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
+To support communication, planning, documentation, and our needs throughout development, we used a range of tools. These include:
 
-**Microsoft Word:** Used collaboratively to edit documents such as requirement updates, test reports, and sustainability analyses.
+**Miro**  
+- Used in the early brainstorming phase and throughout the project for sprint planning and visual task mapping. Its Planning Poker feature also supported our task estimation process.
 
-**Google Meet:** Our primary tool for online meetings during the holiday period.
+**Microsoft Word**  
+- Used collaboratively to edit documents reasons such as updating requirements, documenting evaluation data, and sustainability analyses.
 
-**WhatsApp:** Used for day-to-day team communication.
+**Google Meet**  
+- Our primary tool for online meetings during the holiday period.
 
-**GitHub Kanban board:** Enabled us to apply the Kanban method for task tracking and progress visibility.
+**WhatsApp**  
+- Used for day-to-day team communication.
 
-### Reflection
+**Kanban**  
+- Used for product backlog management and visually tracking our progress.
 
-**Successes:**
+**Photoshop**  
+- Used within the graphic design process to easily create graphic material for the game, demo video, and repo.
+
+**Logic Pro X**  
+- Used throughout the project for sound engineering purposes.
+
+## Reflection
+
+### Successes
 
 - Visual tools (Miro/prototypes) effectively aligned team understanding in early stages
-- Balanced task allocation kept everyone consistently involved
+- Balanced task allocation with Kanban kept everyone involved and enabled clear progress tracking.
 - Open communication channels accelerated technical problem-solving
-- GitHub branching and pull request workflows maintained a stable codebase
+- Git branching and GitHub pull request workflows maintained a stable codebase
 - Kanban implementation enabled clear progress tracking
+- Frequent user testing outside the team helped prioritize what to improve.
+- A comprehensive documentation system enabled rapid task onboarding.
 
-**Problems:**
+### Problems
 
-- One significant challenge was code integration. Since some members co-developed overlapping modules, we had disagreements on how to merge changes
-- In the early phase of the project, the absence of a well-defined structure led to duplicated or redundant work across different team members
-- Some team members were initially hesitant to share ideas, but this improved over time with mutual support
-
-**Key Learnings:**
-
-- Early prototyping (paper + digital) significantly reduced development ambiguity
-- Frequent user testing outside the team helped prioritize what to improve
-- Comprehensive documentation system enabled rapid task onboarding
-- Visual tools proved particularly effective for distributed team collaboration
-- Transparent communication significantly improved team coordination and built mutual trust among members
+- A recurring challenge was code integration. As some members co-developed overlapping modules, we sometimes had disagreements on how to merge changes. This was overcome through discussion in the review process, diagnosing the source of any conflicts to find the optimal solution for integration.
+- In the very early phase of the project, the absence of a well-defined structure led to some duplicated work; however, this was soon solved as a more refined design was established.
 
 # 9. Conclusion
 
+The PengWings project has been a massive undertaking. From the beginning, our goals were ambitious, and we put our hearts and souls into making these ambitions a reality. Capitalising on the unique skillsets of each member, we, the PengWings team, have demonstrated that together we are greater than the sum of our parts, creating a game that, we believe, speaks for itself.
+
+Throughout the project, we engaged in frequent sprint reviews/retrospectives, stand-ups, and planning meetings, conforming to an agile development paradigm to satisfy our requirements. The feedback we received from our initial user evaluations was invaluable, offering clear metrics by which we were able to improve upon our design/implementation and synthesise a significantly more user-friendly experience. With each team member working primarily from their respective development branch, we were able to specialise in the areas in which we each excelled and then combine our individual contributions into our main development branch. These methods proved to be very successful.
+
+Despite the successes of our process, in hindsight, we could have benefitted from code reviews. With team members focusing on different aspects of the game, an issue we sometimes ran into was not initially being familiarised with the code of other members. Adopting code reviews would streamline the integration process, allowing for us write code that would fit together ‘out of the box’, rather than having to retroactively change things when merging.
+
+Many challenges were overcome during the implementation process. From generating unique yet reliable terrain, to simulating the physics of player motion that is not only accurate but entertaining, to efficiently and safely storing high scores along with progress data, the knowledge and skills that we have acquired overcoming these challenges and throughout the project are invaluable and will be carried with us as we progress into our professional careers. Group projects can be hard, especially when team members come from a variety of academic backgrounds; however, by taking advantage of these differences, we were able to quickly find our team’s rhythm and bring our initial vision to fruition.
+
+Despite having satisfied our acceptance criteria, it is important to recognise that PengWings is not perfect — All software can be improved! We have discussed countless ideas regarding our vision for the future of our game that, given time, could be implemented. Today more than ever, the preferred platform for arcade games like ours is mobile. Implementing support for mobile applications will be essential for increasing the reach of PengWings. Additionally, introducing new levels with alternate themes (e.g., desert, jungle) as well as new game modes (e.g., highest jump, obstacles downed in set time) will expand the diversity of gameplay, leading to greater user retention. Finally, adding support for multiplayer will be a gamechanger. Allowing for users to play with friends over a server will further increase appeal and encourage the growth of the PengWings community.
+
+To conclude, we have found the PengWings project to be a deeply rewarding and enjoyable experience. Each team member has come out the other side as a stronger team player and more rounded developer. We are all extremely proud of what we have achieved, and we hope that the game we have created will continue to be played and loved into the future.
+
 # 10. Contribution Statement
+
+<div align="center">
+
+| Name | Contribution |
+| :-: | :-: |
+| Jack May | 1.00 |
+| Tom Raynes | 1.00 |
+| Kuan Jung Huang | 1.00 |
+| Nicolas Esgeb | 1.00 |
+| Jing Yao | 1.00 |
+| Zhiling Liu | 1.00 |
+
+<p>Table showing the relative contributions to the PengWings project</p>
+</div>

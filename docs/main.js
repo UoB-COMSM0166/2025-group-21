@@ -12,6 +12,12 @@ let inputCharacter = null;
 let soundBoard = null;
 let soundsCached = false;
 
+function onQualityChange(newLevel) {
+    signalBackground = newLevel;   // 1=High(Full),2=Medium,3=Low,4=UltraLow
+    preloadBackgroundImages();
+    bg = new Background();
+}
+
 function setup() {
     const loader = document.getElementById('loader');
     if (loader) loader.style.display = 'none';
@@ -37,17 +43,17 @@ function draw() {
         fps = floor(frameRate());
         frameCount = 0;
     }
-    text(fps, 50, 50);
+    //text(fps, 50, 50);
 
-    push();
-    if (domains.game !== null) {
-        textAlign(LEFT);
-        textSize(15);
-        text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
-        text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
-        text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
-    }
-    pop();
+    //push();
+    //if (domains.game !== null) {
+    //    textAlign(LEFT);
+    //    textSize(15);
+    //    text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
+    //    text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
+    //    text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
+    //}
+    //pop();
 }
 
 

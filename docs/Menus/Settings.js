@@ -15,6 +15,11 @@ class Settings {
         this.difficulty = gameProgress.difficulty;
         this.currentDifficulty = this.difficulty;
 
+
+        this.bgQualities = ['High', 'Medium', 'Low', 'Ultra Low'];
+        this.bgQuality = gameProgress.bgQuality;
+        this.currentBgQuality = this.bgQuality;
+
         this.enableCheats = false;
         this.cheatsButton = offButton;
         this.cheatsButtonHover = offButtonHover;
@@ -51,6 +56,7 @@ class Settings {
             this.updateCheatsButton();
             this.updateControlsButton();
             this.updateBackButton();
+            this.updateBackgroundQualityControl();
 
             if (this.buttonCooldownTimer.time > 0) {
                 this.updateButtonCooldown();
@@ -96,7 +102,10 @@ class Settings {
                     settings.currentDifficulty = settings.difficulty;
                     domains.mainMenu.showSettings = false;
                 }
-                else domains.game.pause.showSettings = false;
+                else {
+                    domains.game.pause.showSettings = false;
+                    //onQualityChange(settings.bgQuality + 1);
+                }
             }
         }
         else image(backButton, pos.x, pos.y, size.x, size.y);
@@ -106,7 +115,7 @@ class Settings {
     updateCheatsButton() {
         let scale = 0.006 * width;
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.5565*height);
+        let pos = createVector(0.59*width, 0.5865*height);
 
         if (hoveringOverButton(pos, size)) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -135,8 +144,8 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.635*width, 0.4*height);
-        let downPos = createVector(0.635*width, 0.44*height);
+        let upPos = createVector(0.635*width, 0.37*height);
+        let downPos = createVector(0.635*width, 0.41*height);
 
         // up arrow
         if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
@@ -213,6 +222,37 @@ class Settings {
         else image(volumeDial, this.dialPos.x, this.dialPos.y, size.x, size.y);
     }
 
+    updateBackgroundQualityControl() {
+        let scale   = 0.006 * width;
+        let size    = createVector(incrementArrow.width/scale, incrementArrow.height/scale);
+        let upPos   = createVector(0.635*width, 0.46*height);
+        let downPos = createVector(0.635*width, 0.50*height);
+
+        // Up arrow: go to HIGHER quality (lower index)
+        if (hoveringOverButton(upPos, size) && this.bgQuality > 0) {
+            image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
+            if (mouseIsPressed && this.buttonsActive) {
+                this.bgQuality--;
+                this.startCooldown();
+                onQualityChange(this.bgQuality + 1);
+            }
+        } else {
+            image(incrementArrow, upPos.x, upPos.y, size.x, size.y);
+        }
+
+        // Down arrow: go to LOWER quality (higher index)
+        if (hoveringOverButton(downPos, size) && this.bgQuality < this.bgQualities.length - 1) {
+            image(decrementArrowHover, downPos.x, downPos.y, size.x, size.y);
+            if (mouseIsPressed && this.buttonsActive) {
+                this.bgQuality++;
+                this.startCooldown();
+                onQualityChange(this.bgQuality + 1);
+            }
+        } else {
+            image(decrementArrow, downPos.x, downPos.y, size.x, size.y);
+        }
+    }
+
     adjustDialPos() {
         this.dialPos.x = mouseX + this.offset;
 
@@ -252,10 +292,15 @@ class Settings {
         text('Master Volume', width/2, height/3.9); // volume
 
         textAlign(LEFT);
-        text('Difficulty:', width/2.8, 0.42*height); // difficulty
+        text('Difficulty:', width/2.8, 0.40*height); // difficulty
         textAlign(CENTER);
-        text(`${this.difficulties[this.difficulty]}`, 0.534*width, 0.42*height)
+        text(`${this.difficulties[this.difficulty]}`, 0.534*width, 0.40*height)
 
-        text('Enable Cheats:', width/2.17, 0.56*height); // cheats
+        textAlign(LEFT);
+        text('Background Quality:', width/3.8, 0.50*height);
+        textAlign(CENTER);
+        text(`${this.bgQualities[this.bgQuality]}`, 0.534*width, 0.50*height);
+
+        text('Enable Cheats:', width/2.17, 0.59*height); // cheats
     }
 }
