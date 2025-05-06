@@ -29,12 +29,12 @@
 
 | Name | Email | Role |
 | :-: | :-: | :-: |
-| Jack May | jack.robert.may@gmail.com | Backend |
-| Tom Raynes | nc19537@bristol.ac.uk | Full Stack |
-| Kuan Jung Huang | jp24328@bristol.ac.uk | Project manager, frontend |
-| Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | Frontend, graphic design |
-| Jing Yao | so24769@bristol.ac.uk | Graphic design, frontend |
-| Zhiling Liu | cj24646@bristol.ac.uk | Frontend |
+| Jack May | jack.robert.may@gmail.com | Backend, mechanics, API integration |
+| Tom Raynes | nc19537@bristol.ac.uk | Full Stack, mechanics, sound design |
+| Kuan Jung Huang | jp24328@bristol.ac.uk | Frontend, project management |
+| Nicolas Esgeb | nico.esgeb.2024@bristol.ac.uk | Frontend, game art |
+| Jing Yao | so24769@bristol.ac.uk | Frontend, graphic design |
+| Zhiling Liu | cj24646@bristol.ac.uk | Frontend, UI design |
 
 </div>
 
