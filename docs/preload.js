@@ -21,6 +21,7 @@ let ingameCoin = null;
 let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
+let yourPenguin = null
 let workshopBackground = null;
 let tipsBox = null;
 let penguinClaw = null;
@@ -246,6 +247,7 @@ function preload() {
     usernameInputBar = loadImage('assets/images/usernameInputBar.png');
     displayBox = loadImage('assets/images/displayBox.png');
     shopTitle = loadImage('assets/images/shopTitle.png');
+    yourPenguin = loadImage('assets/images/yourP.png');
 
     // Load variety of hearts
     heartImages[0] = loadImage('assets/images/heart1.png');

@@ -95,6 +95,8 @@ class Workshop {
         // title
         imageMode(CENTER);
         image(shopTitle, width/2, height/10, shopTitle.width/2.5, shopTitle.height/2.5);
+        // Your Penguin
+        image(yourPenguin, 1.55*width/2, 2.5*height/10, 0.3*yourPenguin.width/2.5, 0.3*yourPenguin.height/2.5);
         pop();
 
         // Update button positions
@@ -109,10 +111,12 @@ class Workshop {
         noStroke();
         fill('rgba(199, 209, 255, 0.4)');
         //rect(width*0.1, height*0.4, width/3.5, width/3.5, 10);
-        image(displayBox, width*0.09, height*0.38, width/3.2, width/3.2);
-        rect(width*0.45, height*0.4, width/2.2, width/6.5, 10);
+        image(displayBox, width*0.02, height*0.28, width/3.2, width/3.2);
+        rect(width*0.33, height*0.32, 0.5*width/2.2, 1.65*width/6.5, 10); //---> Description Square
+        rect(width*0.66, height*0.32, 0.5*width/2.2, 1.65*width/6.5, 10); //---> Character
 
         this.showUpgradeDescription();
+
     }
 
     playerHasEnoughCoins() {
@@ -280,8 +284,8 @@ class Workshop {
     updateProjectileButton() {
         push();
         let scale = 0.002 * width;
-        let size = createVector(projectileButton.width / scale, projectileButton.height / scale);
-        let pos = createVector(0.2*width, 0.27*height);
+        let size = createVector(0.5*projectileButton.width / scale, 0.5*projectileButton.height / scale);
+        let pos = createVector(0.15*width, 0.25*height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size) || this.selectedItem === 'laser') {
@@ -300,8 +304,8 @@ class Workshop {
     updateFlyingButton() {
         push();
         let scale = 0.00178 * width;
-        let size = createVector(flyingButton.width / scale, flyingButton.height / scale);
-        let pos = createVector(0.5*width, 0.27*height);
+        let size = createVector(0.5*flyingButton.width / scale, 0.5*flyingButton.height / scale);
+        let pos = createVector(0.3*width, 0.25*height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size) || this.selectedItem === 'flying') {
@@ -320,8 +324,8 @@ class Workshop {
     updateForceFieldButton() {
         push();
         let scale = 0.0018 * width;
-        let size = createVector(forceFieldButton.width / scale, forceFieldButton.height / scale);
-        let pos = createVector(0.8*width, 0.27*height);
+        let size = createVector(0.5*forceFieldButton.width / scale, 0.5*forceFieldButton.height / scale);
+        let pos = createVector(0.45*width, 0.25*height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size) || this.selectedItem === 'force field') {
@@ -341,8 +345,8 @@ class Workshop {
     updatePurchaseButton(){
         push();
         let scale = 0.002 * width;
-        let size = createVector(buyButtonYellow.width / scale, buyButtonYellow.height / scale);
-        let pos = createVector(0.513*width, 0.8*height);
+        let size = createVector(0.8*buyButtonYellow.width / scale, 0.8*buyButtonYellow.height / scale);
+        let pos = createVector(0.445*width, 0.83*height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size)) {
@@ -436,7 +440,6 @@ class Workshop {
     }
 
     printCoins() {
-
         push()
         let size = width/8;
         fill(228, 221, 0);
@@ -453,5 +456,105 @@ class Workshop {
         textStyle(BOLD);
         text(`×${inventory.coins}`, width*0.075, height*0.073);
         pop();
+    }
+
+    drawPlayer() {
+        this.lives.drawChangeLife();
+        if (domains.game.death != null && domains.game.death.type === 'UFO') return;
+
+        const FRAME_WIDTH        = 128;
+        const FRAME_HEIGHT       = 128;
+        const NORMAL_FRAME_COUNT = 6;
+        const NORMAL_COLUMNS     = 2;
+        const baseFrameSpeed     = 2;
+        const scaleFactor        = 0.8;
+        const headImg            = this.headImg;
+        const feetImg            = this.feetImg;
+        const wingImg            = this.wingImg;
+
+        imageMode(CENTER);
+
+        // compute wing‐sprite frame coords
+        const wingCol = this.frameIndex % NORMAL_COLUMNS;
+        const wingRow = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+
+        // —— PENGUIN FLYING ——
+        if (domains.game.score.airtime > 3) {
+            push();
+            translate(150, this.pos.y - this.radius);
+
+            const frameSpeed = baseFrameSpeed;
+            if (
+                frameCount % frameSpeed === 0 &&
+                !domains.game.pause.active &&
+                domains.game.fly != null &&
+                domains.game.fly.active
+            ) {
+                // if helicopter rotor, double the speed
+                const step = (inventory.flyLevel === 3) ? 2 : 1;
+                this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
+
+                // non‐overlapping original sound logic
+                if (inventory.flyLevel >= 4) {
+                    if (!domains.game.boosterSound.isPlaying()) {
+                        domains.game.boosterSound.play();
+                        domains.game.wingFlapSound.play();
+                    }
+                } else if (inventory.flyLevel === 3) {
+                    if (!domains.game.rotorSound.isPlaying()) {
+                        domains.game.rotorSound.play();
+                        //domains.game.wingFlapSound.play();
+                    }
+                } else {
+                    if (!domains.game.wingFlapSound.isPlaying()) {
+                        domains.game.wingFlapSound.play();
+                    }
+                }
+            }
+
+            const col = this.frameIndex % NORMAL_COLUMNS;
+            const row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+
+            // body
+            image(
+                playerBody,
+                0, 0,
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                col * FRAME_WIDTH, row * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
+            );
+
+            // head overlay
+            const HEAD_W = 128, HEAD_H = 128;
+            const headRow = this.shooting ? 1 : 0;
+            image(
+                headImg,
+                0, 0,
+                HEAD_W * scaleFactor, HEAD_H * scaleFactor,
+                0, headRow * HEAD_H,
+                HEAD_W, HEAD_H
+            );
+
+            // feet overlay
+            const FEET_W = 128, FEET_H = 128;
+            const feetRow = domains.game.fly && domains.game.fly.active ? 1 : 0;
+            image(
+                feetImg,
+                0, 0,
+                FEET_W * scaleFactor, FEET_H * scaleFactor,
+                0, feetRow * FEET_H,
+                FEET_W, FEET_H
+            );
+
+            // wings overlay
+            image(
+                wingImg,
+                0, 0,
+                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+                wingCol * FRAME_WIDTH, wingRow * FRAME_HEIGHT,
+                FRAME_WIDTH, FRAME_HEIGHT
+            );
+            pop();
+        }
     }
 }
