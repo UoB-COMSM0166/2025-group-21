@@ -24,6 +24,7 @@ let shopTitle = null
 let workshopBackground = null;
 let tipsBox = null;
 let penguinClaw = null;
+let penguinBodyFly = null;
 
 let fishWorkshop = null;
 let snowballWorkshop = null;
@@ -276,10 +277,11 @@ function preload() {
 
     homeBackground = loadImage('assets/gifs/background.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');
-    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
-    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
+    // penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
+    // penguinIntro = loadImage('assets/sprites/intro_penguin.png');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
+    penguinBodyFly = loadImage('assets/sprites/playerFly_with_head.png');
 
     // settings menu
     volumeDial = loadImage('assets/settings/volumeDial.png');

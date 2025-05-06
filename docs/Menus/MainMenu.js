@@ -15,8 +15,6 @@ class MainMenu {
         this.animationStartTime = millis();
         this.animationDuration = 800;
         this.animationComplete = false;
-
-        //this.buttons = [];
         this.selectedButtonIndex = -1;
         this.buttonGrid = [
             [0, 1],
@@ -25,11 +23,13 @@ class MainMenu {
         this.currentRow = 0;
         this.currentCol = 0;
         this.anyKeyPressed = false;
-
         this.showButtons = false;
-        // this.setupPenguinAnimation();
-
         this.showSettings = false;
+
+        // 创建预渲染的模糊背景
+        this.blurredBackground = createGraphics(width, height);
+        this.blurredBackground.image(homeBackground, 0, 0, width, height);
+        this.blurredBackground.filter(BLUR, 1.5);
     }
 
     updateButtons() {
@@ -105,15 +105,14 @@ class MainMenu {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, width, height);
+        image(this.blurredBackground, 0, 0, width, height);
 
-        push();
-        filter(BLUR, 1.5);
-        pop();
+//        push();
+//        filter(BLUR, 1.5);
+//        pop();
 
         this.updateAnimation();
         this.updateButtons();
-        // this.updatePenguinAnimation();
 
         push();
         // Draw logo
@@ -185,46 +184,5 @@ class MainMenu {
             }
         }
     }
-
-//    setupPenguinAnimation() {
-//        this.penguinSize = width * 0.2;
-//        this.waypoints = [
-//            {x: -this.penguinSize/2, y: height * 0.5},
-//            {x: width * 0.5, y: -this.penguinSize/3},
-//            {x: width + this.penguinSize/2, y: height * 0.5},
-//            {x: width * 0.5, y: height + this.penguinSize/2}
-//        ];
-//
-//        this.currentWaypoint = 0;
-//        this.nextWaypoint = 1;
-//
-//        this.penguinX = this.waypoints[0].x;
-//        this.penguinY = this.waypoints[0].y;
-//
-//        this.penguinSpeed = width * 0.002;
-//    }
-//
-//    updatePenguinAnimation() {
-//        let targetX = this.waypoints[this.nextWaypoint].x;
-//        let targetY = this.waypoints[this.nextWaypoint].y;
-//
-//         // Calculate direction vector
-//        let dx = targetX - this.penguinX;
-//        let dy = targetY - this.penguinY;
-//
-//        let distance = Math.sqrt(dx*dx + dy*dy);
-//        if(distance > this.penguinSpeed) {
-//            this.penguinX += (dx / distance) * this.penguinSpeed;
-//            this.penguinY += (dy / distance) * this.penguinSpeed;
-//        } else {
-//             this.currentWaypoint = this.nextWaypoint;
-//             this.nextWaypoint = (this.nextWaypoint + 1) % this.waypoints.length;
-//        }
-//
-//        push();
-//        imageMode(CENTER);
-//        image(penguinSpinGif, this.penguinX, this.penguinY, this.penguinSize, this.penguinSize);
-//        pop();
-//    }
 
 }
