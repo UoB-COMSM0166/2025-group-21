@@ -46,7 +46,7 @@ let playerHeadLaser = null;
 let playerHeadGatling = null;
 
 let playerFlyFeet, playerFlyBooster, playerPenguinWings,
-    playerDragonWings, playerHelicopterRotor;
+    playerDragonWings, playerHelicopterRotor, introHelicopterPenguin;
 
 // audio
 // let laserAutomaticSound = null;
@@ -237,6 +237,7 @@ function preload() {
     playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
     playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
     playerHelicopterRotor = loadImage('assets/sprites/helicopterRotor.png');
+    introHelicopterPenguin = loadImage('assets/sprites/helicopterPenguin_Full.png');
 
     playerImg = loadImage('assets/images/player1.png');
     playerBody = loadImage('assets/sprites/playerBody.png');

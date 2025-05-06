@@ -10,7 +10,8 @@ class Intro {
     setupSpriteSheet() {
         this.frameCount = 16;
         this.currentFrame = 0;
-        this.frameDelay = 3;
+        this.frameDelay = 1;
+        this.frameStep  = 2;
         this.frameCounter = 0;
 
         this.penguinColumns = 4;
@@ -55,7 +56,7 @@ class Intro {
 
         this.frameCounter++;
         if (this.frameCounter >= this.frameDelay) {
-            this.currentFrame = (this.currentFrame + 1) % this.frameCount;
+            this.currentFrame = (this.currentFrame + this.frameStep) % this.frameCount;
             this.frameCounter = 0;
         }
 
@@ -74,22 +75,11 @@ class Intro {
         let penguinSx = col * this.penguinFrameWidth;
         let penguinSy = row * this.penguinFrameHeight;
 
-        image(penguinBodyFly,
+        image(introHelicopterPenguin,
               this.xPos, this.yPos,
               this.penguinSize, this.penguinSize,
               penguinSx, penguinSy,
               this.penguinFrameWidth, this.penguinFrameHeight);
-
-        let rotorSx = col * this.rotorFrameWidth;
-        let rotorSy = row * this.rotorFrameHeight;
-
-        image(playerHelicopterRotor,
-              this.xPos,
-              this.yPos,
-              this.penguinSize ,
-              this.penguinSize ,
-              rotorSx, rotorSy,
-              this.rotorFrameWidth, this.rotorFrameHeight);
         pop();
     }
 

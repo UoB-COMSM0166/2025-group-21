@@ -458,103 +458,103 @@ class Workshop {
         pop();
     }
 
-    drawPlayer() {
-        this.lives.drawChangeLife();
-        if (domains.game.death != null && domains.game.death.type === 'UFO') return;
-
-        const FRAME_WIDTH        = 128;
-        const FRAME_HEIGHT       = 128;
-        const NORMAL_FRAME_COUNT = 6;
-        const NORMAL_COLUMNS     = 2;
-        const baseFrameSpeed     = 2;
-        const scaleFactor        = 0.8;
-        const headImg            = this.headImg;
-        const feetImg            = this.feetImg;
-        const wingImg            = this.wingImg;
-
-        imageMode(CENTER);
-
-        // compute wing‐sprite frame coords
-        const wingCol = this.frameIndex % NORMAL_COLUMNS;
-        const wingRow = Math.floor(this.frameIndex / NORMAL_COLUMNS);
-
-        // —— PENGUIN FLYING ——
-        if (domains.game.score.airtime > 3) {
-            push();
-            translate(150, this.pos.y - this.radius);
-
-            const frameSpeed = baseFrameSpeed;
-            if (
-                frameCount % frameSpeed === 0 &&
-                !domains.game.pause.active &&
-                domains.game.fly != null &&
-                domains.game.fly.active
-            ) {
-                // if helicopter rotor, double the speed
-                const step = (inventory.flyLevel === 3) ? 2 : 1;
-                this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
-
-                // non‐overlapping original sound logic
-                if (inventory.flyLevel >= 4) {
-                    if (!domains.game.boosterSound.isPlaying()) {
-                        domains.game.boosterSound.play();
-                        domains.game.wingFlapSound.play();
-                    }
-                } else if (inventory.flyLevel === 3) {
-                    if (!domains.game.rotorSound.isPlaying()) {
-                        domains.game.rotorSound.play();
-                        //domains.game.wingFlapSound.play();
-                    }
-                } else {
-                    if (!domains.game.wingFlapSound.isPlaying()) {
-                        domains.game.wingFlapSound.play();
-                    }
-                }
-            }
-
-            const col = this.frameIndex % NORMAL_COLUMNS;
-            const row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
-
-            // body
-            image(
-                playerBody,
-                0, 0,
-                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
-                col * FRAME_WIDTH, row * FRAME_HEIGHT,
-                FRAME_WIDTH, FRAME_HEIGHT
-            );
-
-            // head overlay
-            const HEAD_W = 128, HEAD_H = 128;
-            const headRow = this.shooting ? 1 : 0;
-            image(
-                headImg,
-                0, 0,
-                HEAD_W * scaleFactor, HEAD_H * scaleFactor,
-                0, headRow * HEAD_H,
-                HEAD_W, HEAD_H
-            );
-
-            // feet overlay
-            const FEET_W = 128, FEET_H = 128;
-            const feetRow = domains.game.fly && domains.game.fly.active ? 1 : 0;
-            image(
-                feetImg,
-                0, 0,
-                FEET_W * scaleFactor, FEET_H * scaleFactor,
-                0, feetRow * FEET_H,
-                FEET_W, FEET_H
-            );
-
-            // wings overlay
-            image(
-                wingImg,
-                0, 0,
-                FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
-                wingCol * FRAME_WIDTH, wingRow * FRAME_HEIGHT,
-                FRAME_WIDTH, FRAME_HEIGHT
-            );
-            pop();
-        }
-    }
+    //drawPlayer() {
+    //    this.lives.drawChangeLife();
+    //    if (domains.game.death != null && domains.game.death.type === 'UFO') return;
+//
+    //    const FRAME_WIDTH        = 128;
+    //    const FRAME_HEIGHT       = 128;
+    //    const NORMAL_FRAME_COUNT = 6;
+    //    const NORMAL_COLUMNS     = 2;
+    //    const baseFrameSpeed     = 2;
+    //    const scaleFactor        = 0.8;
+    //    const headImg            = this.headImg;
+    //    const feetImg            = this.feetImg;
+    //    const wingImg            = this.wingImg;
+//
+    //    imageMode(CENTER);
+//
+    //    // compute wing‐sprite frame coords
+    //    const wingCol = this.frameIndex % NORMAL_COLUMNS;
+    //    const wingRow = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+//
+    //    // —— PENGUIN FLYING ——
+    //    if (domains.game.score.airtime > 3) {
+    //        push();
+    //        translate(150, this.pos.y - this.radius);
+//
+    //        const frameSpeed = baseFrameSpeed;
+    //        if (
+    //            frameCount % frameSpeed === 0 &&
+    //            !domains.game.pause.active &&
+    //            domains.game.fly != null &&
+    //            domains.game.fly.active
+    //        ) {
+    //            // if helicopter rotor, double the speed
+    //            const step = (inventory.flyLevel === 3) ? 2 : 1;
+    //            this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
+//
+    //            // non‐overlapping original sound logic
+    //            if (inventory.flyLevel >= 4) {
+    //                if (!domains.game.boosterSound.isPlaying()) {
+    //                    domains.game.boosterSound.play();
+    //                    domains.game.wingFlapSound.play();
+    //                }
+    //            } else if (inventory.flyLevel === 3) {
+    //                if (!domains.game.rotorSound.isPlaying()) {
+    //                    domains.game.rotorSound.play();
+    //                    //domains.game.wingFlapSound.play();
+    //                }
+    //            } else {
+    //                if (!domains.game.wingFlapSound.isPlaying()) {
+    //                    domains.game.wingFlapSound.play();
+    //                }
+    //            }
+    //        }
+//
+    //        const col = this.frameIndex % NORMAL_COLUMNS;
+    //        const row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
+//
+    //        // body
+    //        image(
+    //            playerBody,
+    //            0, 0,
+    //            FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+    //            col * FRAME_WIDTH, row * FRAME_HEIGHT,
+    //            FRAME_WIDTH, FRAME_HEIGHT
+    //        );
+//
+    //        // head overlay
+    //        const HEAD_W = 128, HEAD_H = 128;
+    //        const headRow = this.shooting ? 1 : 0;
+    //        image(
+    //            headImg,
+    //            0, 0,
+    //            HEAD_W * scaleFactor, HEAD_H * scaleFactor,
+    //            0, headRow * HEAD_H,
+    //            HEAD_W, HEAD_H
+    //        );
+//
+    //        // feet overlay
+    //        const FEET_W = 128, FEET_H = 128;
+    //        const feetRow = domains.game.fly && domains.game.fly.active ? 1 : 0;
+    //        image(
+    //            feetImg,
+    //            0, 0,
+    //            FEET_W * scaleFactor, FEET_H * scaleFactor,
+    //            0, feetRow * FEET_H,
+    //            FEET_W, FEET_H
+    //        );
+//
+    //        // wings overlay
+    //        image(
+    //            wingImg,
+    //            0, 0,
+    //            FRAME_WIDTH * scaleFactor, FRAME_HEIGHT * scaleFactor,
+    //            wingCol * FRAME_WIDTH, wingRow * FRAME_HEIGHT,
+    //            FRAME_WIDTH, FRAME_HEIGHT
+    //        );
+    //        pop();
+    //    }
+    //}
 }
