@@ -27,7 +27,7 @@
 
 <div align="center">
 
-| Name | Email | Role |
+| Name | Email | Primary Roles |
 | :-: | :-: | :-: |
 | Jack May | jack.robert.may@gmail.com | Backend, mechanics, API integration |
 | Tom Raynes | nc19537@bristol.ac.uk | Full Stack, mechanics, sound design |
