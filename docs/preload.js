@@ -69,6 +69,7 @@ let playerFlyFeet, playerFlyBooster, playerPenguinWings,
 // BUTTONS
 // main menu
 let homeBackground = null;
+let blurredHomeBackground = null;
 let logo = null;
 let penguinFlyGif = null;
 let penguinSpinGif = null;
@@ -286,9 +287,8 @@ function preload() {
 
 
     homeBackground = loadImage('assets/gifs/background.gif');
+    blurredHomeBackground = loadImage('assets/gifs/blurredBackground.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');
-    // penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
-    // penguinIntro = loadImage('assets/sprites/intro_penguin.png');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
     penguinBodyFly = loadImage('assets/sprites/playerFly_with_head.png');

@@ -25,11 +25,6 @@ class MainMenu {
         this.anyKeyPressed = false;
         this.showButtons = false;
         this.showSettings = false;
-
-        // 创建预渲染的模糊背景
-        this.blurredBackground = createGraphics(width, height);
-        this.blurredBackground.image(homeBackground, 0, 0, width, height);
-        this.blurredBackground.filter(BLUR, 1.5);
     }
 
     updateButtons() {
@@ -105,11 +100,7 @@ class MainMenu {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
-        image(this.blurredBackground, 0, 0, width, height);
-
-//        push();
-//        filter(BLUR, 1.5);
-//        pop();
+        image(blurredHomeBackground, 0, 0, width, height);
 
         this.updateAnimation();
         this.updateButtons();
@@ -184,5 +175,4 @@ class MainMenu {
             }
         }
     }
-
 }
