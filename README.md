@@ -556,60 +556,72 @@ Our game aerial obstacles, intended to challenge the player while flying. We tes
 We conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
 # 7. Sustainability 
-### SusA Framework: Questions
-By completing the SusA framework, we have developed a more comprehensive product roadmap that outlines our long-term vision for the game. This process has encouraged us to adopt a more strategic and thoughtful approach to development—considering factors such as scalable data structures, maintainable and extensible code design, and user experience planning from the outset.
-| |Social|
-|--|:--|
-|Sense of community|The product builds community by using a leaderboard to encourage competition and engagement. A social sharing feature also lets users showcase achievements, reinforcing accomplishment and belonging.|
-|Trust|Regular updates and feature improvements show a commitment to quality, boosting user trust through reliability and responsiveness.|
-|Inclusiveness and diversity|The ranking system introduces diverse characters, fostering empathy and awareness. Social features like customizable profiles encourage cross-demographic interaction, breaking stereotypes and promoting inclusivity.|
-|Equity|Progression is merit-based, giving all users equal opportunities to earn rewards through skill, regardless of background.|
-|Participation and communication|Shared game challenges create social connections. Cooperative play and communication features encourage interaction and healthy usage. A feedback system empowers users and guides development.|
-| |**Individual**|
-|Health|The game is accessible and low-stress, promoting mental well-being and satisfaction with minimal effort.|
-|Lifelong learning|Daily challenges with educational content foster curiosity and informal learning.|
-|Privacy|Usernames or pseudonyms protect identities, supporting safe social recognition.|
-|Safety|Strong data protection and user prompts ensure security and privacy. A clear response policy builds trust.|
-|Agency|Users can control participation features (e.g., opting out of leaderboards) and provide feedback, supporting autonomy and inclusion.|
-| |**Environmental**|
-|Material and resources|Development consumes energy and time. By optimizing for efficiency, we reduce the digital carbon footprint.|
-|Waste & pollution|Avoiding unnecessary features cuts waste and energy use.|
-|Biodiversity|Energy production impacts ecosystems; minimizing use protects biodiversity.|
-|Energy|Performance optimization reduces energy demands and environmental impact.|
-| |**Economic**|
-|Value|Revenue can come from paid content, partnerships, or ads. Organic growth features like invites expand the user base. |
-|Customer Relationship Management|Fair reward systems and feedback loops build trust and co-creation. Monetization is planned to be balanced and user-friendly.|
-|Supply Chain|The game is scalable with minimal external reliance. Infrastructure stability is key to maintaining revenue and satisfaction.|
-|Governance|As the team grows, structured roles and communication systems will support scaling and decision-making.|
-|Innovation|Future features may include payments or AI. R&D investment will be guided by cost-benefit analysis and scalability.|
-| |**Technical**| 
-|Maintainability|Ongoing updates ensure compatibility with platforms and third-party services.|
-|Usability|The game is accessible and intuitive for all user types.|
-|Adaptability|The flexible system supports new applications and scalability.|
-|Security|Minimal data collection protects privacy. Future growth will require stronger security measures.|
-|Scalability|A modular, efficient design supports traffic growth and maintains performance.|
-### SusA Framework: Analysis
-After analyzing and linking the effects outlined in the SusAD model, we identified that many issues originate from technical decisions. For example, how we design the data structure plays a crucial role—anticipating a larger user base early on enables more efficient database access and better scalability. These considerations extend beyond immediate functionality and have significant long-term implications. Therefore, to support the sustainable growth of the game, which has the potential to evolve into a viable business, it is essential to envision and plan for future impacts before entering the development phase.
+
+To incorporate sustainability into our development process, we utilised two protocols:
+- Sustainability Awareness Framework (SusAF)
+- And, the Green Software Foundation Design Patterns
+
+### Sustainability Awareness Framework
+
+#### Questions and Discussion
+
+As a team, we each contributed sustainability-focused questions to prompt group discussion. This process challenged us to reflect on our sustainability assumptions, and to think critically about how we addressed similar questions from others. These questions and discussions centred around the five dimensions of sustainability.
+
+#### Analysis
+
+From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table X).
+
+<div align=“center”>
+  <p><b>Table X.</b> Discussion notes divided into sustainability dimensions from SusAF protocol.</p>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Aspect</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="4">Social</td><td>Sense of community</td><td>The leaderboard feature encourages friendly competition, building the games community.</td></tr>
+      <tr><td>Trust</td><td>Regular updates and improvements show a commitment to quality, building user trust.</td></tr>
+      <tr><td>Equity</td><td>Progression is merit-based, not monetarily, giving all users equal opportunities to progress.</td></tr>
+      <tr><td>Participation and communication</td><td>Proposed cooperative play will aid this.</td></tr>
+      <tr><td rowspan="4">Individual</td><td>Health</td><td>Complete keyboard accessibility allows users with impaired mobility to access the game.</td></tr>
+      <tr><td>Privacy</td><td>Usernames protect users identities, reducing privacy concerns.</td></tr>
+      <tr><td>Safety</td><td>Prompting users to not provide any identifiable details to the game to ensure privacy.</td></tr>
+      <tr><td>Agency</td><td>Users can control participation and provide feedback.</td></tr>
+      <tr><td rowspan="4">Environmental</td><td>Material and resources</td><td>Development process unfortunately consumes resources and time.</td></tr>
+      <tr><td>Waste & pollution</td><td>Streamlining development and avoiding unnecessary work cuts down on our energy usage.</td></tr>
+      <tr><td>Biodiversity</td><td>Energy and memory usage negatively impact the environment, and should be minimised.</td></tr>
+      <tr><td>Energy</td><td>Code optimisation reduces energy and memory demands.</td></tr>
+      <tr><td rowspan="3">Economic</td><td>Value</td><td>Organic growth through user sharing. Paid upgrades proposed for keen fans.</td></tr>
+      <tr><td>Customer Relationship Management</td><td>Fair reward systems helps build trust. Monetization will be balanced and user-friendly.</td></tr>
+      <tr><td>Supply Chain</td><td>Reliance on GitHub hosting and cloud based backend.</td></tr>
+      <tr><td rowspan="5">Technical</td><td>Maintainability</td><td>Ongoing updates help maintain and keep the game operational.</td></tr>
+      <tr><td>Usability</td><td>Accessible and usable for a range of users, evaluated qualitatively and quantitatively.</td></tr>
+      <tr><td>Adaptability</td><td>A modular OO design supports expansion of the code.</td></tr>
+      <tr><td>Security</td><td>Minimal data collection and storage in a secure backend database protect privacy.</td></tr>
+      <tr><td>Scalability</td><td>Serverless backend model allows for green and easy user base scaling.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+We attempted to arrange these into short, medium and long-term effects, and visualised them using a SusA diagram. This process was invaluable in helping us adopt a more sustainability thoughtful approach, and consider a broader range of longer term impacts.
+
+	[ ADD SUS DIAGRAM HERE}
+
 ![image](https://github.com/user-attachments/assets/b63e1e23-eb5b-49ec-8f0a-76ccb99aedcc)
-#### Synthesis: Threats, Opportunities, Actions
-##### Threats:
-- Poorly planned technical decisions, such as inefficient data structures, can limit scalability and performance as the user base grows.
-- Focusing solely on current functionalities may lead to increased technical debt and hinder long-term adaptability.
-- Lack of foresight in architecture design may result in costly rework during later stages of development.
-##### Opportunities:
-- Early investment in scalable and efficient technical architecture can ensure smoother performance with user growth.
-- Applying a long-term perspective enables more sustainable software development, aligning with potential business growth.
-- Integrating sustainable design principles from the start can position the game as a reliable, future-proof product in the market.
-##### Actions:
-- Conduct technical foresight sessions during the planning phase to anticipate growth and evolving requirements.
-- Prioritize the design of flexible and scalable data structures and system architecture.
-- Align development practices with the principles of sustainable software architecture to reduce future maintenance costs and improve system longevity.
-- Continuously revisit and refine design decisions as part of an iterative development process, ensuring alignment with long-term goals.
 
-#### User Stories From Sustainability Effects
-We translated the *immediate sustainability effects* identified in our SusAD into user stories, which have been incorporated as core features in the initial launch of our game.
+Figure X. …..
 
-<table border="1" cellspacing="0" cellpadding="8">
+#### Sustainability in Design
+
+By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table X), which we translated into actionable requirements in our product backlog.
+
+<div align=“center”>
+  <p><b>Table X.</b> Sustainability user stories and their acceptance criteria, arising from the SusAF.</p>
+
+  <table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>User</th>
         <th>Epic</th>
@@ -652,14 +664,14 @@ We translated the *immediate sustainability effects* identified in our SusAD int
     <tr>
         <td rowspan="2">Individual</td>
         <td>As a casual player, I want a game that doesn't require my data or is a safety risk.</td>
-        <td>The game should not require any important data from the users, to make the games' data usage sustainble.</td>
+        <td>The game should not require any important data from the users, to make the games' data usage sustainable.</td>
     </tr>
     <tr>
         <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
         <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
     </tr>
-</table>
-
+  </table>
+</div>
 
 ### Green Software Foundation Patterns
 
