@@ -123,28 +123,28 @@ Along with many more of our own features such as saving progress, customising ga
     </tr>
     <tr>
       <td rowspan="3">Obstacles</td>
-            <td>birds</td>
+            <td>Seagull</td>
       <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/birdArrow.png?raw=true" width="80"></td>
       <td>...War between BIRDS!</td>
     </tr>
     <tr>
-      <td>planes</td>
+      <td>Plane</td>
       <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/airplane.png?raw=true" width="80"></td>
       <td>To be a penguinator... or a bombguin!</td>
     </tr>
     <tr>
-      <td>UFOs</td>
+      <td>UFO</td>
       <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/ufo.png?raw=true" width="80"></td>
       <td>Aliens... trembling! It's a Penguinvasion...</td>
     </tr>
     <tr>
       <td rowspan="2">Collectibles</td>
-      <td>hearts</td>
+      <td>Heart</td>
       <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/hearts.png?raw=true" width="80"></td>
       <td>Collect hearts to restore life</td>
     </tr>
     <tr>
-      <td>coins</td>
+      <td>Coin</td>
       <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/coin.png?raw=true" width="60"></td>
       <td>Collect coins to upgrade your equipment in Workshop</td>
     </tr>
