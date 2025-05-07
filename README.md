@@ -344,6 +344,7 @@ A core requirement for our game was an infinite, randomly generated terrain. Thi
 We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling slopes, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
 
 <div align="center">
+    <img src="Videos/map_evolution_figure.gif" width="700" alt="Terrain evolution over times">
     <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
 </div>
 
@@ -352,7 +353,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
 
 <div align="center">
-    <img src="Videos/sine_wave_sum.gif" width="700" alt="Sine curve diagram" style="border: 5px solid black; border-radius: 8px;">
+    <img src="Videos/sine_wave_sum.gif" width="700" alt="Sine curve diagram">
     <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
 </div>
 
