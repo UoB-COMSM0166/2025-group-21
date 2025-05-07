@@ -661,6 +661,30 @@ We translated the *immediate sustainability effects* identified in our SusAD int
 </table>
 
 
+### Green Software Foundation Patterns
+
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns we felt were relevant and impact to our development. (citation X) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation:
+
+`SCI = (E * I) + M per R`
+
+#### 1. Defer Offscreen Images
+
+While this pattern is traditionally related to lazy loading of web assets, we found it highly applicable to our games design. Given that our game works by continuously generating visual elements, including terrain, obstacles and collectibles, it was necessary to instantiate only what’s necessary on screen. Otherwise, we risked excessive CPU and memory use. Our game is programmed to only load visual elements they become visible, and quickly removes them once off screen. 
+
+For instance, aerial obstacles are not preloaded fro a large array. Instead, their spawn chance is repeatedly evaluated, and they are instantiated only while on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering client-side energy usage (E) in the SCI equation.
+
+#### 2. Use Serverless Cloud Services
+
+Our game required a backend system to manage and store high scores, shared between users. We saw an opportunity to apply an impactful Green Software Pattern, to maximise our sustainability. We chose to use Vercel for it’s API functions, and Redis Cloud for data storage, both of which use serverless models.
+
+Vercel allowed us to deploy APIs that submit and retrieve high scores via on-demand serverless functions. This approach ensures no resources are consumed when the game isn’t being played, helping reduce our carbon intensity (I) as a factor of the SCI equation. Similarly, Redis Cloud’s serverless infrastructure allows it to dynamically scale and share its hardware based on demand, efficiently allocating memory and reducing the embodied carbon (M) as a factor in the SCI equation.
+
+#### 3. Cache Static Data
+
+A third Green Software Pattern we incorporated was to cache static data into memory, specifically sound assets. PengWings uses a range of sound affects and music. We found repeatedly loading them created significant and unsustainable memory use, which we observed in the sound buffer in the browser. 
+
+We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required— by prompting the JavaScript garbage collection to remove them from memory storage. By reducing the repeated data loading and memory use, this helped to reduce our total electricity (E) factor of the SCI equation.
+
 # 8. Process 
 
 ## Collaboration
