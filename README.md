@@ -731,7 +731,6 @@ By using these two protocols, we were able to make informed and accurate decisio
         <th>Acceptance Criteria</th>
     </tr>
     <tr>
-        <td rowspan="9">Sustainable Design</td>
         <td rowspan="2">Technical</td>
         <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
         <td>The high-score data storage should be persistent and maintained.</td>
