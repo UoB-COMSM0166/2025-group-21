@@ -65,87 +65,87 @@ Along with many more of our own features such as saving progress, customising ga
     <tr>
       <td rowspan="5">Projectile</td>
       <td>Level 1:<br>Fish</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/fishWorkshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/fishWorkshop.png?raw=true" width="80"></td>
       <td>Launches a flopping fish that deals small splash damage.</td>
     </tr>
     <tr>
       <td>Level 2:<br>Snowball Cannon</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/snowballWorkshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/snowballWorkshop.png?raw=true" width="80"></td>
       <td>Better collision knock back.</td>
     </tr>
     <tr>
       <td>Level 3:<br>Arrow</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/arrowWorkshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/arrowWorkshop.png?raw=true" width="80"></td>
       <td>Improved path clearance,shoot in a straight line.</td>
     </tr>
     <tr>
       <td>Level 4:<br>Laser</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/greenLaser.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/greenLaser.png?raw=true" width="80"></td>
       <td>Increased projectile speed.Explosion upon collision.</td>
     </tr>
     <tr>
       <td>Level 5:<br>Automatic Laser</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/purpleLaser.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/purpleLaser.png?raw=true" width="80"></td>
       <td>Wow!Shoot Laser from a Gatling gun!</td>
     </tr>
     <!-- Flying-->
     <tr>
       <td rowspan="5">Flying Ability</td>
       <td>Level 1:<br>Normal mode</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/noFly_Workshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/noFly_Workshop.png?raw=true" width="80"></td>
       <td>Basic mode.</td>
     </tr>
     <tr>
       <td>Level 2:<br>Wing Enhancement</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/fly_Workshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/fly_Workshop.png?raw=true" width="80"></td>
       <td>Smooth gliding.</td>
     </tr>
     <tr>
       <td>Level 3:<br>Dragon Wings</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/dragonWings_Workshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/dragonWings_Workshop.png?raw=true" width="80"></td>
       <td>Improved glide disctance and control.</td>
     </tr>
     <tr>
       <td>Level 4:<br>Rotors</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/rotors_Workshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/rotors_Workshop.png?raw=true" width="80"></td>
       <td>Allows hovering and precise movement.</td>
     </tr>
     <tr>
       <td>Level 5:<br>Booster</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/booster_Workshop.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/booster_Workshop.png?raw=true" width="80"></td>
       <td>High-speed propulsion for fast flight.</td>
     </tr>
     <tr>
       <td rowspan="1">Force field</td>
       <td>Force Field</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/forceFieldAbility.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/forceFieldAbility.png?raw=true" width="80"></td>
       <td>force field protects players from collisions.</td>
     </tr>
     <tr>
       <td rowspan="3">Obstacles</td>
             <td>birds</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/birdArrow.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/birdArrow.png?raw=true" width="80"></td>
       <td>...War between BIRDS!</td>
     </tr>
     <tr>
       <td>planes</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/airplane.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/airplane.png?raw=true" width="80"></td>
       <td>To be a penguinator...or a bombguin!</td>
     </tr>
     <tr>
       <td>UFOs</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/ufo.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/ufo.png?raw=true" width="80"></td>
       <td>Aliens...trembling!It's a Guinvasion...</td>
     </tr>
     <tr>
       <td rowspan="2">Collectibles</td>
       <td>hearts</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/hearts.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/hearts.png?raw=true" width="80"></td>
       <td>Collect hearts to restore life.</td>
     </tr>
     <tr>
       <td>coins</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/coin.png?raw=true" width="40"></td>
+      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/coin.png?raw=true" width="60"></td>
       <td>Collect coins to upgrade your equipment in Workshop.</td>
     </tr>
 </tbody>
