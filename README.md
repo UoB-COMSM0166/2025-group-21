@@ -676,9 +676,7 @@ By using these two protocols, we were able to make informed and accurate decisio
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns we felt were relevant and impact to our development. (citation X) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation:
-
-`SCI = (E * I) + M per R`
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns we felt were relevant and impact to our development. (citation X) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
 #### 1. Defer Offscreen Images
 
