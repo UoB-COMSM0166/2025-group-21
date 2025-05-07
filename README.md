@@ -1,9 +1,9 @@
 <div align="center">
     <a href="https://uob-comsm0166.github.io/2025-group-21/">
         <img src="Product doc/Banner.png" width="1000">
+        <br>
+        <p>🐧 <strong>CLICK HERE TO PLAY!</strong> 🚀</p>
     </a>
-    <p></p>
-    <p>🐧&nbsp;&nbsp;&nbsp;<a href="https://uob-comsm0166.github.io/2025-group-21/"><strong>CLICK HERE TO PLAY!</strong></a>&nbsp;&nbsp;&nbsp;🚀</p>
 </div>
 
 # Table of Contents
@@ -21,7 +21,7 @@
 # 1. Development Team
 
 <div align="center">
-    <img src="Product doc/Process/group_photo.jpg" width="1000">
+    <img src="report/process_figures/group_photo.jpg" width="1000">
     <p></p>
 </div>
 
@@ -65,87 +65,87 @@ Along with many more of our own features such as saving progress, customising ga
     <tr>
       <td rowspan="5">Projectile</td>
       <td>Level 1:<br>Fish</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/fishWorkshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
       <td>Launches a flopping fish that deals limited splash damage</td>
     </tr>
     <tr>
       <td>Level 2:<br>Snowball Cannon</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/snowballWorkshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
       <td>Better collision knock back</td>
     </tr>
     <tr>
       <td>Level 3:<br>Arrow</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/arrowWorkshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
       <td>Improved path clearance, shoot in a straight line</td>
     </tr>
     <tr>
       <td>Level 4:<br>Laser</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/greenLaser.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
       <td>Increased projectile speed, explosion upon collision</td>
     </tr>
     <tr>
       <td>Level 5:<br>Automatic Laser</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/purpleLaser.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
       <td>Wow! Shoot Laser from a Gatling gun!</td>
     </tr>
     <!-- Flying-->
     <tr>
       <td rowspan="5">Flying Ability</td>
       <td>Level 1:<br>Normal mode</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/noFly_Workshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
       <td>Basic mode</td>
     </tr>
     <tr>
       <td>Level 2:<br>Wing Enhancement</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/fly_Workshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
       <td>Smooth gliding</td>
     </tr>
     <tr>
       <td>Level 3:<br>Dragon Wings</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/dragonWings_Workshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
       <td>Improved glide disctance and control</td>
     </tr>
     <tr>
       <td>Level 4:<br>Rotors</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/rotors_Workshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
       <td>Allows hovering and precise movement</td>
     </tr>
     <tr>
       <td>Level 5:<br>Booster</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/booster_Workshop.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
       <td>High-speed propulsion for fast flight</td>
     </tr>
     <tr>
       <td rowspan="1">Force field</td>
       <td>Force Field</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/forceFieldAbility.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
       <td>Force field protects players from collisions</td>
     </tr>
     <tr>
       <td rowspan="3">Obstacles</td>
             <td>Seagull</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/birdArrow.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
       <td>...War between BIRDS!</td>
     </tr>
     <tr>
       <td>Plane</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/airplane.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/airplane.png" width="80"></td>
       <td>To be a penguinator... or a bombguin!</td>
     </tr>
     <tr>
       <td>UFO</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/ufo.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/ufo.png" width="80"></td>
       <td>Aliens... trembling! It's a Penguinvasion...</td>
     </tr>
     <tr>
       <td rowspan="2">Collectibles</td>
       <td>Heart</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/hearts.png?raw=true" width="80"></td>
+      <td><img src="docs/assets/images/heart1.png" width="80"></td>
       <td>Collect hearts to restore life</td>
     </tr>
     <tr>
       <td>Coin</td>
-      <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/coin.png?raw=true" width="60"></td>
+      <td><img src="docs/assets/images/coin.png" width="60"></td>
       <td>Collect coins to upgrade your equipment in Workshop</td>
     </tr>
 </tbody>
@@ -363,7 +363,7 @@ As this is a game design project, our primary stakeholder is the **Player**. The
 Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 11).
 
 <div align="center">
-    <img src="Product doc/initial_design.png" width="700">
+    <img src="report/design_figures/initial_design.png" width="700">
     <p><b>Figure 11.</b> Initial design class diagram</p>
 </div>
 
@@ -397,14 +397,14 @@ In much the same way as the previous pair of classes, the LaserAbility class wou
 As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 12) and sequence diagram (Figure 13) below.
 
 <div align="center">
-    <img src="Product doc/final_architecture.png" width="700">
+    <img src="report/design_figures/final_architecture.png" width="700">
     <p><b>Figure 12.</b> Final design class diagram</p>
 </div>
 
 
 
 <div align="center">
-    <img src="Product doc/main_sequence_diagram.png" width="700">
+    <img src="report/design_figures/main_sequence_diagram.png" width="700">
     <p><b>Figure 13.</b> Main sequence diagram</p>
 </div>
 
@@ -422,7 +422,7 @@ All sound assets are now loaded and cached during the instantiation of the Sound
 A class diagram of all interactions in the Game class is shown below (Figure 14).
 
 <div align="center">
-    <img src="Product doc/final_game_architecture.png" width="900">
+    <img src="report/design_figures/final_game_architecture.png" width="900">
     <p><b>Figure 14.</b> Final Game class diagram</p>
 </div>
 
@@ -446,7 +446,7 @@ A core requirement for our game was an infinite, randomly generated terrain. Thi
 We wanted the terrain to generate continuously as long as players stayed alive. While both Perlin noise and sine waves are common in procedural terrain generation, we chose sine waves for their smooth, rolling slopes, which better suited our visual style. By generating sine curves within the screen’s bounds and incrementally increasing the x-offset, we achieved endless terrain generation.
 
 <div align="center">
-    <img src="Videos/map_evolution_figure.gif" width="700" alt="Terrain evolution over times">
+    <img src="report/implementation_figures/map_evolution_figure.gif" width="700" alt="Terrain evolution over times">
     <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
 </div>
 
@@ -455,7 +455,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
 
 <div align="center">
-    <img src="Videos/sine_wave_sum.gif" width="700" alt="Sine curve diagram">
+    <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
     <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
 </div>
 
@@ -464,7 +464,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
 
 <div align="center">
-    <img src="Videos/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
+    <img src="report/implementation_figures/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
     <p><b>Figure 3.</b> Terrain variations across different difficulty levels.</p>
 </div>
 
@@ -486,7 +486,7 @@ These effects can be seen in the player’s velocity vectors in Figure 4a.
 To simulate the acceleration and deceleration on the slopes, we used the physics of motion on an inclined plane:
 <br>
 <div align="center">
-    <img align="center" src="Videos/acceleration_equation_figure.png" width="400" alt="Acceleration equation and vectors">
+    <img align="center" src="Videos/acceleration_equation_figure.png" width="300" alt="Acceleration equation and vectors">
 </div>
 <br>
 
@@ -494,8 +494,8 @@ These forces—shown in Figure 4b—formed the foundation of the players sliding
 
 <div align="center">
 	<p>
-		<img src="Videos/velocity_vector_figure.gif" width="450"/>
-		<img src="Videos/acceleration_vector_figure.gif" width="450"/>
+		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
+		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
     	<p><b>Figure 4.</b> Player <span style="color:red">velocity (A)</span> and <span style="color:blue">acceleration (B)</span> vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.</p>
 </div>
@@ -528,7 +528,7 @@ To refine our game’s mechanics, difficulty, and overall level of enjoyment, we
 Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
 
 <div align="center">
-	<img src="Videos/think_aloud_map_figure.png" width="850"/>
+	<img src="report/evaluation_figures/think_aloud_map_figure.png" width="850"/>
 	<p><b>Figure X.</b> Thematic map of key Think Aloud evaluation feedback.</p>
 </div>
 
@@ -586,7 +586,7 @@ Across all six subscales, the median scores for all participants increased with 
 All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
 
 <div align="center">
-	<img src="Videos/nasatlx_subscale_figure.png" width="700"/>
+	<img src="report/evaluation_figures/nasatlx_figure.png" width="700"/>
 	<p><b>Figure X.</b> Mean NASA TLX scores for each participant.</p>
 </div>
 
@@ -633,7 +633,7 @@ The individual SUS scores are shown in Figure X, with the industry average bench
 - Mean SUS score (Hard) — 75.0
 
 <div align="center">
-	<img src="Videos/sus_figure.png" width="700"/>
+	<img src="report/evaluation_figures/sus_figure.png" width="700"/>
 	<p><b>Figure X.</b> Mean SUS scores for each participant.</p>
 </div>
 
@@ -711,11 +711,10 @@ From this open discussion, we created a framework of notes, that divides the sus
 
 We attempted to arrange these into short, medium and long-term effects, and visualised them using a SusA diagram. This process was invaluable in helping us adopt a more sustainability thoughtful approach, and consider a broader range of longer term impacts.
 
-	[ ADD SUS DIAGRAM HERE}
-
-![image](https://github.com/user-attachments/assets/b63e1e23-eb5b-49ec-8f0a-76ccb99aedcc)
-
-Figure X. …..
+<div align="center">
+	<img src="report/sustainability_figures/susaf_diagram_figure.png" width="700"/>
+	<p><b>Figure X.</b> Sustainability awareness framework diagram for PengWings.</p>
+</div>
 
 #### Sustainability in Design
 
@@ -808,11 +807,11 @@ To keep development on track, we maintained a consistent weekly routine. During 
 
 <div align="center" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div>
-        <img src="Product doc/Process/paperprototype_team_work2.gif" width="500">
+        <img src="report/process_figures/paperprototype_team_work2.gif" width="500">
         <p>Team work in workshops</p>
     </div>
     <div>
-        <img src="Product doc/Process/mvb_meeting.gif" width="500">
+        <img src="report/process_figures/mvb_meeting.gif" width="500">
         <p>Footage from a team meeting</p>
     </div>
 </div>
@@ -821,7 +820,7 @@ Commencing the Easter holiday period, we transitioned to a remote setup. We held
 Throughout development, we completed two sprint cycles with each lasting two weeks. Each sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed upon strategies to satisfy them. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear and understandable to everyone.
 
 <div align="center">
-    <img src="Product doc/Process/sprint_planning.jpg" width="500">
+    <img src="report/process_figures/sprint_planning.jpg" width="500">
     <p>Sprint planning</p>
 </div>
 
@@ -830,14 +829,14 @@ In order to estimate task difficulty and plan effectively, we used the Planning 
 During sprints, we tracked progress using Kanban, dividing tasks into “To Do,” “In Progress,” and “Done.” Kanban tickets were updated regularly, allow us to easily monitor the progression of our game and spot issues early.
 
 <div align="center">
-    <img src="Product doc/Process/kanban.png" width="500">
+    <img src="report/process_figures/kanban.png" width="500">
     <p>Screenshot of our group's Kanban</p>
 </div>
 
 Concluding each sprint, we completed a sprint review and retrospective. Team members presented their progress, whether it may be a new game mechanic, interface updates, or documentation improvements. We discussed whether progress had fulfilled our acceptance criteria as well as the next steps for our game, referring to our product backlog. Following this, we then discussed what went well, what didn’t, and how we could work better in the next sprint. General issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing; however, we were always able to work through these issues with open dialogue and devise practical solutions.
 
 <div align="center">
-    <img src="Product doc/Process/video_call.gif" width="500">
+    <img src="report/process_figures/video_call.gif" width="500">
     <p>Short recording from a sprint review</p>
 </div>
 
