@@ -586,7 +586,7 @@ From this open discussion, we created a framework of notes, that divides the sus
       <tr><td rowspan="4">Social</td><td>Sense of community</td><td>The leaderboard feature encourages friendly competition, building the games community.</td></tr>
       <tr><td>Trust</td><td>Regular updates and improvements show a commitment to quality, building user trust.</td></tr>
       <tr><td>Equity</td><td>Progression is merit-based, not monetarily, giving all users equal opportunities to progress.</td></tr>
-      <tr><td>Participation and communication</td><td>Proposed cooperative play will aid this.</td></tr>
+      <tr><td>Participation</td><td>Proposed cooperative play will aid this.</td></tr>
       <tr><td rowspan="4">Individual</td><td>Health</td><td>Complete keyboard accessibility allows users with impaired mobility to access the game.</td></tr>
       <tr><td>Privacy</td><td>Usernames protect users identities, reducing privacy concerns.</td></tr>
       <tr><td>Safety</td><td>Prompting users to not provide any identifiable details to the game to ensure privacy.</td></tr>
