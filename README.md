@@ -331,7 +331,7 @@ The Laser and UFO classes from our initial design still exist; however, they are
 
 # 5. Implementation
 
-### Challenges
+## Challenges
 
 While the game development was full of challenges and learning experiences, three particular instances of software development stood out to us.
 
