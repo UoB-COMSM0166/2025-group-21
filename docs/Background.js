@@ -59,8 +59,8 @@ class Background {
         const sizeFacts = [1,1,0.7,0.54,0.5,0.47,0.45,0.33,0.32,0.31,0.3,0.13,0.11,0.09,0.07,0.06,0.07,0.023,0.02,0.018,0.016,0.015,0.015,0.01,0.01,0];
         const yFacts    = [1.5,1.4,1,0.89,0.87,0.84,0.81,0.75,0.75,0.70,0.68,0.62,0.60,0.58,0.54,0.52,0.34,0.23,0.18,0.16,0.15,0.04,0.04,0.04,0.04,0];
         const anchors   = [
-            {x:600,y:520},{x:600,y:525},{x:650,y:500},{x:600,y:435},{x:600,y:460},
-            {x:534,y:459},{x:600,y:458},{x:600,y:386},{x:170,y:450},{x:723,y:370},
+            {x:600,y:520},{x:600,y:505},{x:650,y:500},{x:600,y:435},{x:600,y:460},
+            {x:534,y:415},{x:600,y:458},{x:600,y:386},{x:170,y:450},{x:723,y:370},
             {x:600,y:430},{x:615,y:320},{x:870,y:350},{x:296,y:380},{x:600,y:320},
             {x:170,y:380},{x:296,y:312},{x:600,y:370},{x:615,y:290},{x:870,y:285},
             {x:296,y:340},{x:600,y:230},{x:200,y:220},{x:870,y:150},{x:870,y:320},
@@ -114,11 +114,11 @@ class Background {
             const sizeScale = 1 + (zoom - 1) * L.sizeFactor;
             let x = L.xOffset - floorSpeed * L.speed * sizeScale;
 
-            // ---- Thw wrappingg --------------------------------------
-            const finalW = L.logicalWidth * scaleF * sizeScale;
-            const half   = finalW / 2;
-            if (x < -half)      x += finalW;
-            else if (x >  half) x -= finalW;
+            // ---- Wrapping using unscaled width --------------------
+            const wrapW = L.logicalWidth * scaleF;
+            const half  = wrapW / 2;
+            if (x < -half)      x += wrapW;
+            else if (x > half)  x -= wrapW;
 
             L.xOffset = x;
         }

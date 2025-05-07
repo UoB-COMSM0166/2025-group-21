@@ -64,6 +64,7 @@ class Game {
         this.death = null;
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
+
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
         this.projectile = new ProjectileAbility(inventory.laserLevel);
 
@@ -94,8 +95,8 @@ class Game {
             translate(this.tx, this.ty); // Change coordinate origin to player position
             scale(this.zoom); // set screen zoom
 
-            this.terrain.drawHills(width);
-            this.player.drawPlayer()
+            //this.terrain.drawHills(width);
+            //this.player.drawPlayer()
             this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
             this.obstacleHandler.updateExplosions();
@@ -109,28 +110,28 @@ class Game {
             }
 
             // Generate lifeup+ hearts
-            this.hearts.update(this.offset);
-            this.hearts.checkCollision();
+            //this.hearts.update(this.offset);
+            //this.hearts.checkCollision();
 
             // Generate coins on the floor
-            this.coins.update(this.offset);
-            this.coins.checkCollision();
-            this.coins.playCoinCollection(this.offset);
+            //this.coins.update(this.offset);
+            //this.coins.checkCollision();
+            //this.coins.playCoinCollection(this.offset);
 
         pop();
 
         if (this.player.lives.playingAnimation) {
             this.player.lives.playLoseLifeAnimation();
         }
-        this.player.lives.drawLives();
-        this.stats.gameUpdate();
+        //this.player.lives.drawLives();
+        //this.stats.gameUpdate();
 
         if (this.spacePressed && this.player.alive && !this.pause.active) {
             this.applyBoostToPlayer();
         }
 
         if (this.death === null) {
-            this.score.update();
+            //this.score.update();
 
             if (this.fly != null) {
                 this.fly.charge();
@@ -141,8 +142,8 @@ class Game {
                 }
             }
             if (this.shield != null) {
-                this.shield.charge();
-                this.shield.drawChargeBar();
+                //this.shield.charge();
+                //this.shield.drawChargeBar();
             }
         }
         else {

@@ -83,26 +83,26 @@ class ForceField {
         return 0.075 * velocity;
     }
 
-    drawChargeBar() {
-
-        push();
-        translate(width*0.775, height*0.061);
-        rotate(-Math.PI/2);
-        stroke('rgb(0,0,0)');
-        strokeWeight(width/80);
-
-        if (this.active)                    fill('rgba(200,255,0,0.38)');
-        else if (this.chargeFraction === 1) fill('rgba(255,221,0,0.65)');
-        else                                fill('rgba(255,0,0,0.47)');
-
-        ellipse(0, 0, width/32);
-
-
-        this.drawChargeBarLayer(253, 200, 1, 0.85, 253, 200, 1, 0.85, width/65);
-        this.drawChargeBarLayer(253, 200, 1, 0.85, 253, 200, 1, 0.85, width/63);
-        this.drawChargeBarLayer(139, 67, 244, 0.71, 184, 44, 110, 1, width/64);
-        pop();
-    }
+    //drawChargeBar() {
+//
+    //    push();
+    //    translate(width*0.775, height*0.061);
+    //    rotate(-Math.PI/2);
+    //    stroke('rgb(0,0,0)');
+    //    strokeWeight(width/80);
+//
+    //    if (this.active)                    fill('rgba(200,255,0,0.38)');
+    //    else if (this.chargeFraction === 1) fill('rgba(255,221,0,0.65)');
+    //    else                                fill('rgba(255,0,0,0.47)');
+//
+    //    ellipse(0, 0, width/32);
+//
+//
+    //    this.drawChargeBarLayer(253, 200, 1, 0.85, 253, 200, 1, 0.85, width/65);
+    //    this.drawChargeBarLayer(253, 200, 1, 0.85, 253, 200, 1, 0.85, width/63);
+    //    this.drawChargeBarLayer(139, 67, 244, 0.71, 184, 44, 110, 1, width/64);
+    //    pop();
+    //}
 
     drawChargeBarLayer(r1, g1, b1, a1, r2, g2, b2, a2, radius) {
         stroke(`rgba(${r1},${g1},${b1},${a1})`);
