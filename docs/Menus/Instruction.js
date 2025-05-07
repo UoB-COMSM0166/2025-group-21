@@ -40,14 +40,14 @@ class Instruction {
 
         let instructionsText =
             "As a penguin studying computer science, you don't need a pair of wings\n" +
-            "to learn how to fly.\n" +
-            "Instead, you'll need to follow commands below: \n\n" +
+            "to learn how to fly.Instead, you'll need to follow commands below: \n\n" +
             "1. When on the ground, press [space] to build up speed\n" +
             "2. When in the air, press [space] to speed up your descent\n" +
             "3. Press [W] to take off (when you feel the time is right) \n" +
             "4. Press [F] to go invincible \n" +
-            "5. Press [Esc] to invoke the pause menu  \n\n" +
-            "....Well, good luck! Press Penguin Pawprint below to start the game!";
+            "5. Press [D] to launch laser\n" +
+            "6. Press [Esc] to invoke the pause menu  \n\n" +
+            "....Well, good luck! Press penguin paw print below to start the game!";
 
         text(instructionsText, textX, textY, textW, textH);
         pop();
