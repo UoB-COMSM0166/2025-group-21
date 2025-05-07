@@ -135,7 +135,7 @@ Along with many more of our own features such as saving progress, customising ga
     <tr>
       <td>UFOs</td>
       <td><img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/docs/assets/images/ufo.png?raw=true" width="80"></td>
-      <td>Aliens...trembling!It's a Guinvasion...</td>
+      <td>Aliens...trembling! It's a Penguinvasion...</td>
     </tr>
     <tr>
       <td rowspan="2">Collectibles</td>
