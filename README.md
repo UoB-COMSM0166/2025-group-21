@@ -796,7 +796,7 @@ Vercel allowed us to deploy APIs that submit and retrieve high scores via on-dem
 
 A third Green Software Pattern we incorporated was to cache static data into memory, specifically sound assets. PengWings uses a range of sound affects and music. We found repeatedly loading them created significant and unsustainable memory use, which we observed in the sound buffer in the browser. 
 
-We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required— by prompting the JavaScript garbage collection, freeing memory. By reducing the repeated data loading and memory use, this helped to reduce our total electricity (E) factor of the SCI equation.
+We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required— by prompting JavaScript garbage collection, freeing memory. By reducing the repeated data loading and memory use, this helped to reduce our total electricity (E) factor of the SCI equation.
 
 # 8. Process 
 
