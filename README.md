@@ -167,8 +167,8 @@ As these initial ideas flowed between us, a consensus of the basic characteristi
 
 <div align="center">
 	<p>
-		<img src="report/requirements_figures/into_space.gif" height="400">
-		<img src="report/requirements_figures/learn_to_fly.gif" height="400">
+		<img src="report/requirements_figures/into_space.gif" height="300">
+		<img src="report/requirements_figures/learn_to_fly.gif" height="300">
 	</p>
 	<p><strong>Figure 2</strong><br>Into Space and Learn To Fly gameplay</p>
 </div>
