@@ -170,7 +170,7 @@ Over much discussion and democratic debate in response to our peer feedback from
 
 [Digital prototype]
 
-## Stakeholder and User Stories
+## Stakeholders and User Stories
 
 A range of PengWings stakeholders were identified (Figure 5) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
 
