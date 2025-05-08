@@ -156,25 +156,36 @@ Along with many more of our own features such as saving progress, customising ga
 
 ## Ideation
 
-Our first steps along the road of the PengWings project involved carving out the vision for our game. Throughout week one, we engrossed ourselves in the ideation process, brainstorming a variety of concepts and showcasing examples of existing games to one another (Figure 1). Presenting our ideas, we focussed on examples that showed potential to be built upon and could be extended in ways that would allow us to build a product that is not only entertaining, but also unique in it’s own way.
+Our first steps along the road of the PengWings project involved carving out the vision for our game. Throughout week one, we engrossed ourselves in the ideation process, brainstorming a variety of concepts with Miro (Figure 1) and showcasing examples of existing games to one another. Presenting our ideas, we focussed on examples that showed potential to be built upon and could be extended in ways that would allow us to build a product that is not only entertaining, but also unique in it’s own way.
 
-[Miro brainstorm]
+<div align="center">
+	<img src="report/requirements_figures/game_inspirations.jpg" width="500">
+	<p><strong>Figure 1</strong><br>Miro brainstorm of our initial game ideas</p>
+</div>
 
-As these initial ideas flowed between us, a consensus of the basic characteristics regarding the nature of our game began to take shape. It became clear that team members valued fast-paced, easy to learn games with an emphasis on high scores and replayability. With this in mind, we narrowed down our initial ideas to two contenders — Into Space (Figure 2) and Learn To Fly (Figure 3).  
+As these initial ideas flowed between us, a consensus of the basic characteristics regarding the nature of our game began to take shape. It became clear that team members valued fast-paced, easy to learn games with an emphasis on high scores and replayability. With this in mind, we narrowed down our initial ideas to two contenders — Into Space and Learn To Fly (Figure 2).  
 
-During week three’s workshop session, we created paper prototypes (Figures 4 and 5) to showcase these two ideas. This was the first instance during the project in which we created something completely of our own making. The session required us to communicate efficiently and operate as a unit to deliver a result in a set timeframe. All team members would agree that, not only in aiding us with the conceptualisation of our ideas, this exercise proved to be a meaningful team building experience, deepening the sense of comradery between us.
+<div align="center">
+	<p>
+		<img src="report/requirements_figures/into_space.gif" height="400">
+		<img src="report/requirements_figures/learn_to_fly.gif" height="400">
+	</p>
+	<p><strong>Figure 2</strong><br>Into Space and Learn To Fly gameplay</p>
+</div>
+
+During week three’s workshop session, we created paper prototypes (Figures 3 and 4) to showcase these two ideas. This was the first instance during the project in which we created something completely of our own making. The session required us to communicate efficiently and operate as a unit to deliver a result in a set timeframe. All team members would agree that, not only in aiding us with the conceptualisation of our ideas, this exercise proved to be a meaningful team building experience, deepening the sense of comradery between us.
 
 [Paper Prototypes]
 
 ## Vision
 
-Over much discussion and democratic debate in response to our peer feedback from the prototypes, we eventually arrived upon a shared vision for our game. It would encompass the core principles of Learn To Fly, namely controlling a penguin’s motion down an initial ramp and through the air; however, we would extend this principle to apply to an infinitely generating map (Figure 6). Moreover, we would incorporate aspects drawn from the Into Space gameplay, such as in-air obstacles, which lend themselves to this new twist on the game. It was from here that PengWings was born!
+Over much discussion and democratic debate in response to our peer feedback from the prototypes, we eventually arrived upon a shared vision for our game. It would encompass the core principles of Learn To Fly, namely controlling a penguin’s motion down an initial ramp and through the air; however, we would extend this principle to apply to an infinitely generating map (Figure 5). Moreover, we would incorporate aspects drawn from the Into Space gameplay, such as in-air obstacles, which lend themselves to this new twist on the game. It was from here that PengWings was born!
 
 [Digital prototype]
 
 ## Stakeholders and User Stories
 
-A range of PengWings stakeholders were identified (Figure 7) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
+A range of PengWings stakeholders were identified (Figure 6) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
 
 [Onion Model]
 
@@ -245,7 +256,7 @@ As development progressed and the scope of our game increased, our requirements 
 
 ## Use-Case
 
-PengWings has only a single use-case by which the actor (player) interacts. In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features our game in meetings. The final use-case is illustrated in the diagram below (Figure 8), while a detailed use-case specification can be found in the appendix.
+PengWings has only a single use-case by which the actor (player) interacts. In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features our game in meetings. The final use-case is illustrated in the diagram below (Figure 7), while a detailed use-case specification can be found in the appendix.
 
 [use-case diagram]
 
