@@ -187,7 +187,7 @@ Now, with a set of requirements in mind, it came time to begin designing our gam
 
 <div align="center">
     <img src="report/design_figures/initial_design.png" width="700">
-    <p><b>Figure 11.</b> Initial design class diagram</p>
+    <p><strong>Figure 7</strong><br>Initial design class diagram</p>
 </div>
 
 The main class would begin by instantiating the inventory which would persist throughout runtime. This class would hold all data relating to the in-game progress of the user such as ability levels and in-game currency. The game and shop classes would then be instantiated and destroyed as the user navigates between these two domains. Additionally, they would both need to interface with the inventory class as to allow for the relevant upgrades to be shown in the shop and for these upgrades to be used in the game.
@@ -221,14 +221,14 @@ As new features were added throughout the development process, the system archit
 
 <div align="center">
     <img src="report/design_figures/final_architecture.png" width="700">
-    <p><b>Figure 12.</b> Final design class diagram</p>
+    <p><strong>Figure 8</strong><br>Final design class diagram<br><br><br></p>
 </div>
 
 
 
 <div align="center">
     <img src="report/design_figures/main_sequence_diagram.png" width="700">
-    <p><b>Figure 13.</b> Main sequence diagram</p>
+    <p><strong>Figure 9</strong><br>Main sequence diagram</p>
 </div>
 
 
@@ -246,7 +246,7 @@ A class diagram of all interactions in the Game class is shown below (Figure 14)
 
 <div align="center">
     <img src="report/design_figures/final_game_architecture.png" width="900">
-    <p><b>Figure 14.</b> Final Game class diagram</p>
+    <p><strong>Figure 10</strong><br>Final Game class diagram</p>
 </div>
 
 Many new features were added to the game over the development process including new player abilities, a scoring system, pausing, a dynamic background, stats, collectables, lives, and a high score leader board. Some notable changes from our initial design worth discussing relate to the introduction of new in-game obstacles and projectiles.
@@ -270,7 +270,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 <div align="center">
     <img src="report/implementation_figures/map_evolution_figure.gif" width="700" alt="Terrain evolution over times">
-    <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
+    <p><strong>Figure 11</strong><br>Evolution of our terrain generation over time</p>
 </div>
 
 #### Random and Unpredictable Terrain
@@ -279,7 +279,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 
 <div align="center">
     <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
-    <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
+    <p><strong>Figure 12</strong><br>Comparison of individual sine curves and their summed result</p>
 </div>
 
 #### Modifiable Difficulties
@@ -288,7 +288,7 @@ Difficulty levels were implemented by adjusting the sine wave parameters. More e
 
 <div align="center">
     <img src="report/implementation_figures/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
-    <p><b>Figure 3.</b> Terrain variations across different difficulty levels.</p>
+    <p><strong>Figure 13</strong><br>Terrain variations across different difficulty levels</p>
 </div>
 
 ### 2. Movement Physics
@@ -320,7 +320,7 @@ These forces—shown in Figure 4b—formed the foundation of the players sliding
 		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
 		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
-    	<p><b>Figure 4.</b> Player <span style="color:red">velocity (A)</span> and <span style="color:blue">acceleration (B)</span> vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.</p>
+	<p><strong>Figure 14</strong><br>Player velocity (red) and acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
@@ -352,7 +352,7 @@ Participants were asked to verbalise their thoughts and reactions during gamepla
 
 <div align="center">
 	<img src="report/evaluation_figures/think_aloud_map_figure.png" width="850"/>
-	<p><b>Figure X.</b> Thematic map of key Think Aloud evaluation feedback.</p>
+	<p><strong>Figure 15</strong><br>Thematic map of key Think Aloud evaluation feedback</p>
 </div>
 
 #### Solutions and Adjustments
@@ -384,7 +384,6 @@ These evaluations involved 10 participants, each trialing two difficulty modes. 
 Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
 <div align="center">
-  <p><b>Table X.</b> Median NASA TLX subscale scores for all participants.</p>
   <table>
     <thead>
       <tr>
@@ -403,6 +402,8 @@ Across all six subscales, the median scores for all participants increased with 
       <tr><td>Performance</td><td>55</td><td>75</td><td>+20</td></tr>
     </tbody>
   </table>
+  <p><strong>Table 2</strong><br>Median NASA TLX subscale scores for all participants</p>
+
 </div>
 
 #### Overall Perceived Workload Scores
@@ -410,14 +411,13 @@ All participants reported an increased perceived workload at higher difficulty l
 
 <div align="center">
 	<img src="report/evaluation_figures/nasatlx_figure.png" width="700"/>
-	<p><b>Figure X.</b> Mean NASA TLX scores for each participant.</p>
+	<p><strong>Figure 16</strong><br>Mean NASA TLX scores for each participant</p>
 </div>
 
 #### Statistical Analysis
 A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
 
 <div align="center">
-  <p><b>Table X.</b> Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.</p>
   <table>
     <thead>
       <tr>
@@ -437,6 +437,8 @@ A Wilcoxon Signed-Rank test was performed at both a subscale and overall level t
       <tr><td>Overall Perceived Workload</td><td>0</td><td>8</td><td>Yes</td></tr>
     </tbody>
   </table>
+  <p><strong>Table 3</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
+
 </div>
 
 #### Solutions and Adjustments
@@ -457,7 +459,7 @@ The individual SUS scores are shown in Figure X, with the industry average bench
 
 <div align="center">
 	<img src="report/evaluation_figures/sus_figure.png" width="700"/>
-	<p><b>Figure X.</b> Mean SUS scores for each participant.</p>
+	<p><strong>Figure 17</strong><br>Mean SUS scores for each participant</p>
 </div>
 
 While two participants rated the harder difficulty below average usability, overall scores remained well above the standard usability benchmark. This suggests that our game had excellent usability even at a higher difficulty level.
@@ -495,10 +497,9 @@ As a team, we each contributed sustainability-focused questions to prompt group 
 
 #### Analysis
 
-From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table X).
+From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 4).
 
 <div align=“center”>
-  <p><b>Table X.</b> Discussion notes divided into sustainability dimensions from SusAF protocol.</p>
   <table border="1">
     <thead>
       <tr>
@@ -530,28 +531,27 @@ From this open discussion, we created a framework of notes, that divides the sus
       <tr><td>Scalability</td><td>Serverless backend model allows for green and easy user base scaling.</td></tr>
     </tbody>
   </table>
+  <p align="center"><strong>Table 4</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
 </div>
 
 We attempted to arrange these into short, medium and long-term effects, and visualised them using a SusA diagram. This process was invaluable in helping us adopt a more sustainability thoughtful approach, and consider a broader range of longer term impacts.
 
 <div align="center">
 	<img src="report/sustainability_figures/susaf_diagram_figure.png" width="700"/>
-	<p><b>Figure X.</b> Sustainability awareness framework diagram for PengWings.</p>
+	<p><strong>Figure 18</strong><br>Sustainability awareness framework diagram for PengWings</p>
 </div>
 
 #### Sustainability in Design
 
-By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table X), which we translated into actionable requirements in our product backlog.
+By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 5), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
-  <p><b>Table X.</b> Sustainability user stories and their acceptance criteria, arising from the SusAF.</p>
 
   <table border="1" cellspacing="0" cellpadding="8">
     <tr>
-        <th>User</th>
-        <th>Epic</th>
-        <th>User Stories</th>
-        <th>Acceptance Criteria</th>
+        <th>Dimension</th>
+        <th>User Story</th>
+        <th>Acceptance Criterion</th>
     </tr>
     <tr>
         <td rowspan="2">Technical</td>
@@ -595,6 +595,8 @@ By using these two protocols, we were able to make informed and accurate decisio
         <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
     </tr>
   </table>
+  <p align="center"><strong>Table 5</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
+
 </div>
 
 ### Green Software Foundation Patterns
@@ -630,11 +632,11 @@ To keep development on track, we maintained a consistent weekly routine. During 
 <div align="center" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div>
         <img src="report/process_figures/paperprototype_team_work2.gif" width="500">
-        <p>Team work in workshops</p>
+	<p><strong>Figure 19</strong><br>Paper prototype assembly<br><br><br></p>
     </div>
     <div>
         <img src="report/process_figures/mvb_meeting.gif" width="500">
-        <p>Footage from a team meeting</p>
+	<p><strong>Figure 20</strong><br>MVB team meeting</p>
     </div>
 </div>
 Commencing the Easter holiday period, we transitioned to a remote setup. We held weekly Wednesday meetings, online, over Google Meet. Similarly, this time was used to share progress updates, identify and discuss blockers, and discuss feedback from peer testing.
@@ -643,7 +645,7 @@ Throughout development, we completed two sprint cycles with each lasting two wee
 
 <div align="center">
     <img src="report/process_figures/sprint_planning.jpg" width="500">
-    <p>Sprint planning</p>
+    <p><strong>Figure 21</strong><br>Sprint planning</p>
 </div>
 
 In order to estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we considered each person’s strengths, how much time could realistically be committed, and any dependencies or technical challenges that may arise. We also considered which features would have the most impact on gameplay with the MoSCoW user story framework, focusing on what mattered most.
@@ -652,14 +654,14 @@ During sprints, we tracked progress using Kanban, dividing tasks into “To Do,�
 
 <div align="center">
     <img src="report/process_figures/kanban.png" width="500">
-    <p>Screenshot of our group's Kanban</p>
+    <p><strong>Figure 22</strong><br>Screenshot of our group's Kanban</p>
 </div>
 
 Concluding each sprint, we completed a sprint review and retrospective. Team members presented their progress, whether it may be a new game mechanic, interface updates, or documentation improvements. We discussed whether progress had fulfilled our acceptance criteria as well as the next steps for our game, referring to our product backlog. Following this, we then discussed what went well, what didn’t, and how we could work better in the next sprint. General issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing; however, we were always able to work through these issues with open dialogue and devise practical solutions.
 
 <div align="center">
     <img src="report/process_figures/video_call.gif" width="500">
-    <p>Short recording from a sprint review</p>
+    <p><strong>Figure 23</strong><br>Online sprint review</p>
 </div>
 
 ## Tools
@@ -731,7 +733,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 | Jing Yao | 1.00 |
 | Zhiling Liu | 1.00 |
 
-<p>Table showing the relative contributions to the PengWings project</p>
+<p><strong>Table 6</strong><br>Relative team contributions to the PengWings project</p>
 </div>
 
 # 11. Appendix
