@@ -125,7 +125,7 @@ Along with many more of our own features such as saving progress, customising ga
       <td rowspan="3">Obstacles</td>
             <td>Seagull</td>
       <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
-      <td>...War between BIRDS!</td>
+      <td>War between birds!</td>
     </tr>
     <tr>
       <td>Plane</td>
