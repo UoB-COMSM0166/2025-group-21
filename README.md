@@ -170,7 +170,7 @@ As these initial ideas flowed between us, a consensus of the basic characteristi
 		<img src="report/requirements_figures/into_space.gif" height="300">
 		<img src="report/requirements_figures/learn_to_fly.gif" height="300">
 	</p>
-	<p><strong>Figure 2</strong><br>Into Space and Learn To Fly gameplay</p>
+	<p><strong>Figure 2</strong><br>Into Space (left) and Learn To Fly (right) gameplay</p>
 </div>
 
 During week three’s workshop session, we created paper prototypes (Figures 3 and 4) to showcase these two ideas. This was the first instance during the project in which we created something completely of our own making. The session required us to communicate efficiently and operate as a unit to deliver a result in a set timeframe. All team members would agree that, not only in aiding us with the conceptualisation of our ideas, this exercise proved to be a meaningful team building experience, deepening the sense of comradery between us.
