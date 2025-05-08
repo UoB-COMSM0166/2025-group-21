@@ -201,7 +201,10 @@ Over much discussion and democratic debate in response to our peer feedback from
 
 A range of PengWings stakeholders were identified (Figure 5) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
 
-[Onion Model]
+<div align="center">
+	<img src="report/requirements_figures/onion_model_diagram.png" width="500">
+	<p><strong>Figure 5</strong><br>Onion model diagram of PengWings stakeholders<br><br><br></p>
+</div>
 
 <div align="center">
     <table border="1" cellspacing="0" cellpadding="8">
@@ -255,7 +258,7 @@ A range of PengWings stakeholders were identified (Figure 5) and, from these, us
 	    <td>Given the player has achieved a high score, when they enter a name, then they are prompted to use a username different from their legal name.</td>
         </tr>
     </table>
-    <p><strong>Table 1</strong><br>PengWings epics, user stories and acceptance criteria</p>
+    <p><strong>Table 1</strong><br>Epics, user stories and acceptance criteria used in PengWings development</p>
 </div>
 
 ### Reflection
@@ -270,9 +273,12 @@ As development progressed and the scope of our game increased, our requirements 
 
 ## Use-Case
 
-PengWings has only a single use-case by which the actor (player) interacts. In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features our game in meetings. The final use-case is illustrated in the diagram below (Figure 6), while a detailed use-case specification can be found in the appendix.
+PengWings has only a single use-case by which the actor (player) interacts. In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case is illustrated in the diagram below (Figure 6), while a detailed use-case specification can be found in the appendix.
 
-[use-case diagram]
+<div align="center">
+	<img src="report/requirements_figures/use_case_diagram.png" width="800">
+	<p><strong>Figure 6</strong><br>PengWings use-case diagram</p>
+</div>
 
 # 4. Design
 
