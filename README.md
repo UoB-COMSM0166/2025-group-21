@@ -175,17 +175,31 @@ As these initial ideas flowed between us, a consensus of the basic characteristi
 
 During week three’s workshop session, we created paper prototypes (Figures 3 and 4) to showcase these two ideas. This was the first instance during the project in which we created something completely of our own making. The session required us to communicate efficiently and operate as a unit to deliver a result in a set timeframe. All team members would agree that, not only in aiding us with the conceptualisation of our ideas, this exercise proved to be a meaningful team building experience, deepening the sense of comradery between us.
 
-[Paper Prototypes]
+<div align="center">
+	<table>
+		<tr>
+			<td><img src="report/requirements_figures/Rocket_game_paper_prototype.gif" height="400"></td>
+			<td><img src="report/requirements_figures/Penguin_game_paper_prototype.gif" height="200"></td>
+		</tr>
+	</table>
+	<p><strong>Figure 3</strong><br>Rocket game paper prototype (left) and penguin game paper prototype (right)</p>
+</div>
 
 ## Vision
 
-Over much discussion and democratic debate in response to our peer feedback from the prototypes, we eventually arrived upon a shared vision for our game. It would encompass the core principles of Learn To Fly, namely controlling a penguin’s motion down an initial ramp and through the air; however, we would extend this principle to apply to an infinitely generating map (Figure 5). Moreover, we would incorporate aspects drawn from the Into Space gameplay, such as in-air obstacles, which lend themselves to this new twist on the game. It was from here that PengWings was born!
+Over much discussion and democratic debate in response to our peer feedback from the prototypes, we eventually arrived upon a shared vision for our game. It would encompass the core principles of Learn To Fly, namely controlling a penguin’s motion down an initial ramp and through the air; however, we would extend this principle to apply to an infinitely generating map (Figure 4). Moreover, we would incorporate aspects drawn from the Into Space gameplay, such as in-air obstacles, which lend themselves to this new twist on the game. It was from here that PengWings was born!
 
-[Digital prototype]
+<div align="center">
+	<p>
+		<img src="report/requirements_figures/prototype.gif" height="300">
+		<img src="report/requirements_figures/GameOver.gif" height="300">
+	</p>
+	<p><strong>Figure 4</strong><br>PengWings hypothetical gameplay</p>
+</div>
 
 ## Stakeholders and User Stories
 
-A range of PengWings stakeholders were identified (Figure 6) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
+A range of PengWings stakeholders were identified (Figure 5) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
 
 [Onion Model]
 
@@ -256,7 +270,7 @@ As development progressed and the scope of our game increased, our requirements 
 
 ## Use-Case
 
-PengWings has only a single use-case by which the actor (player) interacts. In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features our game in meetings. The final use-case is illustrated in the diagram below (Figure 7), while a detailed use-case specification can be found in the appendix.
+PengWings has only a single use-case by which the actor (player) interacts. In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features our game in meetings. The final use-case is illustrated in the diagram below (Figure 6), while a detailed use-case specification can be found in the appendix.
 
 [use-case diagram]
 
