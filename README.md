@@ -109,8 +109,8 @@ A range of PengWings stakeholders were identified (Figure 5) and, from these, us
     <table border="1" cellspacing="0" cellpadding="8">
         <tr>
             <th>Epic</th>
-            <th>User Stories</th>
-            <th>Acceptance Criteria</th>
+            <th>User Story</th>
+            <th>Acceptance Criterion</th>
         </tr>
         <tr>
             <td rowspan="3">Replayability</td>
