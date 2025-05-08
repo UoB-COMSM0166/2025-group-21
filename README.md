@@ -191,8 +191,8 @@ Over much discussion and democratic debate in response to our peer feedback from
 
 <div align="center">
 	<p>
-		<img src="report/requirements_figures/prototype.gif" height="300">
-		<img src="report/requirements_figures/GameOver.gif" height="300">
+		<img src="report/requirements_figures/prototype.gif" height="250">
+		<img src="report/requirements_figures/GameOver.gif" height="250">
 	</p>
 	<p><strong>Figure 4</strong><br>PengWings hypothetical gameplay</p>
 </div>
