@@ -130,12 +130,12 @@ Along with many more of our own features such as saving progress, customising ga
     <tr>
       <td>Plane</td>
       <td><img src="docs/assets/images/airplane.png" width="80"></td>
-      <td>To be a penguinator... or a bombguin!</td>
+      <td>Is it a bird? Is it a plane? Yes.</td>
     </tr>
     <tr>
       <td>UFO</td>
       <td><img src="docs/assets/images/ufo.png" width="80"></td>
-      <td>Aliens... trembling! It's a Penguinvasion...</td>
+      <td>Aliens... It's a Penguinvasion!</td>
     </tr>
     <tr>
       <td rowspan="2">Collectibles</td>
