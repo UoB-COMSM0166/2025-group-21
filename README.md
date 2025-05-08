@@ -17,6 +17,7 @@
 8. [Process](#8-process)
 9. [Conclusion](#9-conclusion)
 10. [Contribution Statement](#10-contribution-statement)
+11. [Appendix](#11-appendix)
 
 # 1. Development Team
 
@@ -835,10 +836,10 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
     </tr>
 </tbody>
 </table>
-<p>Table showing all PengWings game items, obstacles and collectables</p>
+<p>Table showing all PengWings game items, obstacles and collectables<br><br><br></p>
 </div>
 
 <div align="center">
 	<img src="report/requirements_figures/use_case_specification.png" width="800">
-	<p>PengWings use-case specification</p>
+	<p>PengWings use-case specification<br><br><br></p>
 </div>
