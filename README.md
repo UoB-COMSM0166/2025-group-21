@@ -46,111 +46,9 @@ Partially inspired by the late-2000s flash game ‘Learn To Fly’, it is from h
 
 First and foremost, while the Learn To Fly gameplay is formed of a single predetermined jump from which the score is calculated, our game is composed of unique and infinitely generating terrain. This has the effect of creating a more engaging experience since each PengWings game will be different from the last.
 
-PengWings also introduces obstacles (seagulls, planes and UFOs) which the player must either dodge or shoot down with their upgradable projectile ability. Making for a significantly more interactive experience, this becomes especially impactful as the player progresses through upgrades and observes new captivating and satisfying animations, encouraging user retention.
+PengWings also introduces obstacles (seagulls, planes and UFOs) which the player must either dodge or shoot down with their upgradable projectile ability (see appendix). Making for a significantly more interactive experience, this becomes especially impactful as the player progresses through upgrades and observes new captivating and satisfying animations, encouraging user retention.
 
 Along with many more of our own features such as saving progress, customising game preferences and a global leader board, we believe that PengWings offers an exhilarating and user-friendly experience to players of all ability levels. We hope that our game can be enjoyed by all.
-
-### Item Table
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Projectile-->
-    <tr>
-      <td rowspan="5">Projectile</td>
-      <td>Level 1:<br>Fish</td>
-      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
-      <td>Launches a flopping fish that deals limited splash damage</td>
-    </tr>
-    <tr>
-      <td>Level 2:<br>Snowball Cannon</td>
-      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
-      <td>Better collision knock back</td>
-    </tr>
-    <tr>
-      <td>Level 3:<br>Arrow</td>
-      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
-      <td>Improved path clearance, shoot in a straight line</td>
-    </tr>
-    <tr>
-      <td>Level 4:<br>Laser</td>
-      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
-      <td>Increased projectile speed, explosion upon collision</td>
-    </tr>
-    <tr>
-      <td>Level 5:<br>Automatic Laser</td>
-      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
-      <td>Wow! Shoot Laser from a Gatling gun!</td>
-    </tr>
-    <!-- Flying-->
-    <tr>
-      <td rowspan="5">Flying Ability</td>
-      <td>Level 1:<br>Normal mode</td>
-      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
-      <td>Basic mode</td>
-    </tr>
-    <tr>
-      <td>Level 2:<br>Wing Enhancement</td>
-      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
-      <td>Smooth gliding</td>
-    </tr>
-    <tr>
-      <td>Level 3:<br>Dragon Wings</td>
-      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
-      <td>Improved glide disctance and control</td>
-    </tr>
-    <tr>
-      <td>Level 4:<br>Rotors</td>
-      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
-      <td>Allows hovering and precise movement</td>
-    </tr>
-    <tr>
-      <td>Level 5:<br>Booster</td>
-      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
-      <td>High-speed propulsion for fast flight</td>
-    </tr>
-    <tr>
-      <td rowspan="1">Force field</td>
-      <td>Force Field</td>
-      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
-      <td>Force field protects players from collisions</td>
-    </tr>
-    <tr>
-      <td rowspan="3">Obstacles</td>
-            <td>Seagull</td>
-      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
-      <td>War between birds!</td>
-    </tr>
-    <tr>
-      <td>Plane</td>
-      <td><img src="docs/assets/images/airplane.png" width="80"></td>
-      <td>Is it a bird? Is it a plane? Yes.</td>
-    </tr>
-    <tr>
-      <td>UFO</td>
-      <td><img src="docs/assets/images/ufo.png" width="80"></td>
-      <td>Aliens... It's a Penguinvasion!</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Collectibles</td>
-      <td>Heart</td>
-      <td><img src="docs/assets/images/heart1.png" width="80"></td>
-      <td>Collect hearts to restore life</td>
-    </tr>
-    <tr>
-      <td>Coin</td>
-      <td><img src="docs/assets/images/coin.png" width="60"></td>
-      <td>Collect coins to upgrade your equipment in Workshop</td>
-    </tr>
-</tbody>
-</table>
-
 
 # 3. Requirements 
 
@@ -833,4 +731,114 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 | Zhiling Liu | 1.00 |
 
 <p>Table showing the relative contributions to the PengWings project</p>
+</div>
+
+# 11. Appendix
+
+<div align="center">
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Projectile-->
+    <tr>
+      <td rowspan="5">Projectile</td>
+      <td>Level 1:<br>Fish</td>
+      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
+      <td>Launches a flopping fish that deals limited splash damage</td>
+    </tr>
+    <tr>
+      <td>Level 2:<br>Snowball Cannon</td>
+      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
+      <td>Better collision knock back</td>
+    </tr>
+    <tr>
+      <td>Level 3:<br>Arrow</td>
+      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
+      <td>Improved path clearance, shoot in a straight line</td>
+    </tr>
+    <tr>
+      <td>Level 4:<br>Laser</td>
+      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
+      <td>Increased projectile speed, explosion upon collision</td>
+    </tr>
+    <tr>
+      <td>Level 5:<br>Automatic Laser</td>
+      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
+      <td>Wow! Shoot Laser from a Gatling gun!</td>
+    </tr>
+    <!-- Flying-->
+    <tr>
+      <td rowspan="5">Flying Ability</td>
+      <td>Level 1:<br>Normal mode</td>
+      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
+      <td>Basic mode</td>
+    </tr>
+    <tr>
+      <td>Level 2:<br>Wing Enhancement</td>
+      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
+      <td>Smooth gliding</td>
+    </tr>
+    <tr>
+      <td>Level 3:<br>Dragon Wings</td>
+      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
+      <td>Improved glide disctance and control</td>
+    </tr>
+    <tr>
+      <td>Level 4:<br>Rotors</td>
+      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
+      <td>Allows hovering and precise movement</td>
+    </tr>
+    <tr>
+      <td>Level 5:<br>Booster</td>
+      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
+      <td>High-speed propulsion for fast flight</td>
+    </tr>
+    <tr>
+      <td rowspan="1">Force field</td>
+      <td>Force Field</td>
+      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
+      <td>Force field protects players from collisions</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Obstacles</td>
+            <td>Seagull</td>
+      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
+      <td>War between birds!</td>
+    </tr>
+    <tr>
+      <td>Plane</td>
+      <td><img src="docs/assets/images/airplane.png" width="80"></td>
+      <td>Is it a bird? Is it a plane? Yes.</td>
+    </tr>
+    <tr>
+      <td>UFO</td>
+      <td><img src="docs/assets/images/ufo.png" width="80"></td>
+      <td>Aliens... It's a Penguinvasion!</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Collectibles</td>
+      <td>Heart</td>
+      <td><img src="docs/assets/images/heart1.png" width="80"></td>
+      <td>Collect hearts to restore life</td>
+    </tr>
+    <tr>
+      <td>Coin</td>
+      <td><img src="docs/assets/images/coin.png" width="60"></td>
+      <td>Collect coins to upgrade your equipment in Workshop</td>
+    </tr>
+</tbody>
+</table>
+<p>Table showing all PengWings game items, obstacles and collectables</p>
+</div>
+
+<div align="center">
+	<img src="report/requirements_figures/use_case_specification.png" width="800">
+	<p>PengWings use-case specification</p>
 </div>
