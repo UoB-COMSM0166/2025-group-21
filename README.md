@@ -103,6 +103,7 @@ A range of PengWings stakeholders were identified (Figure 5) and, from these, us
 </div>
 
 <div align="center">
+    <p><strong>Table 1</strong><br>Epics, user stories and acceptance criteria used in PengWings development</p>
     <table border="1" cellspacing="0" cellpadding="8">
         <tr>
             <th>Epic</th>
@@ -154,7 +155,6 @@ A range of PengWings stakeholders were identified (Figure 5) and, from these, us
 	    <td>Given the player has achieved a high score, when they enter a name, then they are prompted to use a username different from their legal name.</td>
         </tr>
     </table>
-    <p><strong>Table 1</strong><br>Epics, user stories and acceptance criteria used in PengWings development</p>
 </div>
 
 ### Reflection
@@ -381,6 +381,7 @@ These evaluations involved 10 participants, each trialing two difficulty modes. 
 Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
 <div align="center">
+  <p><strong>Table 2</strong><br>Median NASA TLX subscale scores for all participants</p>
   <table>
     <thead>
       <tr>
@@ -399,8 +400,6 @@ Across all six subscales, the median scores for all participants increased with 
       <tr><td>Performance</td><td>55</td><td>75</td><td>+20</td></tr>
     </tbody>
   </table>
-  <p><strong>Table 2</strong><br>Median NASA TLX subscale scores for all participants</p>
-
 </div>
 
 #### Overall Perceived Workload Scores
@@ -415,6 +414,7 @@ All participants reported an increased perceived workload at higher difficulty l
 A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
 
 <div align="center">
+  <p><strong>Table 3</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
   <table>
     <thead>
       <tr>
@@ -434,8 +434,6 @@ A Wilcoxon Signed-Rank test was performed at both a subscale and overall level t
       <tr><td>Overall Perceived Workload</td><td>0</td><td>8</td><td>Yes</td></tr>
     </tbody>
   </table>
-  <p><strong>Table 3</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
-
 </div>
 
 #### Solutions and Adjustments
@@ -497,6 +495,7 @@ As a team, we each contributed sustainability-focused questions to prompt group 
 From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 4).
 
 <div align=“center”>
+  <p align="center"><strong>Table 4</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
   <table border="1">
     <thead>
       <tr>
@@ -528,7 +527,6 @@ From this open discussion, we created a framework of notes, that divides the sus
       <tr><td>Scalability</td><td>Serverless backend model allows for green and easy user base scaling.</td></tr>
     </tbody>
   </table>
-  <p align="center"><strong>Table 4</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
 </div>
 
 We attempted to arrange these into short, medium and long-term effects, and visualised them using a SusA diagram. This process was invaluable in helping us adopt a more sustainability thoughtful approach, and consider a broader range of longer term impacts.
@@ -543,7 +541,7 @@ We attempted to arrange these into short, medium and long-term effects, and visu
 By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 5), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
-
+  <p align="center"><strong>Table 5</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
   <table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>Dimension</th>
@@ -592,8 +590,6 @@ By using these two protocols, we were able to make informed and accurate decisio
         <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
     </tr>
   </table>
-  <p align="center"><strong>Table 5</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
-
 </div>
 
 ### Green Software Foundation Patterns
@@ -720,6 +716,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 # 10. Contribution Statement
 
 <div align="center">
+	<p><strong>Table 6</strong><br>Relative team contributions to the PengWings project</p>
 
 | Name | Contribution |
 | :-: | :-: |
@@ -730,112 +727,111 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 | Jing Yao | 1.00 |
 | Zhiling Liu | 1.00 |
 
-<p><strong>Table 6</strong><br>Relative team contributions to the PengWings project</p>
 </div>
 
 # 11. Appendix
 
 <div align="center">
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Projectile-->
-    <tr>
-      <td rowspan="5">Projectile</td>
-      <td>Level 1:<br>Fish</td>
-      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
-      <td>Launches a flopping fish that deals limited splash damage</td>
-    </tr>
-    <tr>
-      <td>Level 2:<br>Snowball Cannon</td>
-      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
-      <td>Better collision knock back</td>
-    </tr>
-    <tr>
-      <td>Level 3:<br>Arrow</td>
-      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
-      <td>Improved path clearance, shoot in a straight line</td>
-    </tr>
-    <tr>
-      <td>Level 4:<br>Laser</td>
-      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
-      <td>Increased projectile speed, explosion upon collision</td>
-    </tr>
-    <tr>
-      <td>Level 5:<br>Automatic Laser</td>
-      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
-      <td>Wow! Shoot Laser from a Gatling gun!</td>
-    </tr>
-    <!-- Flying-->
-    <tr>
-      <td rowspan="5">Flying Ability</td>
-      <td>Level 1:<br>Normal mode</td>
-      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
-      <td>Basic mode</td>
-    </tr>
-    <tr>
-      <td>Level 2:<br>Wing Enhancement</td>
-      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
-      <td>Smooth gliding</td>
-    </tr>
-    <tr>
-      <td>Level 3:<br>Dragon Wings</td>
-      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
-      <td>Improved glide disctance and control</td>
-    </tr>
-    <tr>
-      <td>Level 4:<br>Rotors</td>
-      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
-      <td>Allows hovering and precise movement</td>
-    </tr>
-    <tr>
-      <td>Level 5:<br>Booster</td>
-      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
-      <td>High-speed propulsion for fast flight</td>
-    </tr>
-    <tr>
-      <td rowspan="1">Force field</td>
-      <td>Force Field</td>
-      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
-      <td>Force field protects players from collisions</td>
-    </tr>
-    <tr>
-      <td rowspan="3">Obstacles</td>
-            <td>Seagull</td>
-      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
-      <td>War between birds!</td>
-    </tr>
-    <tr>
-      <td>Plane</td>
-      <td><img src="docs/assets/images/airplane.png" width="80"></td>
-      <td>Is it a bird? Is it a plane? Yes.</td>
-    </tr>
-    <tr>
-      <td>UFO</td>
-      <td><img src="docs/assets/images/ufo.png" width="80"></td>
-      <td>Aliens... It's a Penguinvasion!</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Collectibles</td>
-      <td>Heart</td>
-      <td><img src="docs/assets/images/heart1.png" width="80"></td>
-      <td>Collect hearts to restore life</td>
-    </tr>
-    <tr>
-      <td>Coin</td>
-      <td><img src="docs/assets/images/coin.png" width="60"></td>
-      <td>Collect coins to upgrade your equipment in Workshop</td>
-    </tr>
-</tbody>
-</table>
-<p>Table showing all PengWings game items, obstacles and collectables<br><br><br></p>
+	<p>Table showing all PengWings game items, obstacles and collectables<br><br><br></p>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Category</th>
+	      <th>Name</th>
+	      <th>Image</th>
+	      <th>Description</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <!-- Projectile-->
+	    <tr>
+	      <td rowspan="5">Projectile</td>
+	      <td>Level 1:<br>Fish</td>
+	      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
+	      <td>Launches a flopping fish that deals limited splash damage</td>
+	    </tr>
+	    <tr>
+	      <td>Level 2:<br>Snowball Cannon</td>
+	      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
+	      <td>Better collision knock back</td>
+	    </tr>
+	    <tr>
+	      <td>Level 3:<br>Arrow</td>
+	      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
+	      <td>Improved path clearance, shoot in a straight line</td>
+	    </tr>
+	    <tr>
+	      <td>Level 4:<br>Laser</td>
+	      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
+	      <td>Increased projectile speed, explosion upon collision</td>
+	    </tr>
+	    <tr>
+	      <td>Level 5:<br>Automatic Laser</td>
+	      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
+	      <td>Wow! Shoot Laser from a Gatling gun!</td>
+	    </tr>
+	    <!-- Flying-->
+	    <tr>
+	      <td rowspan="5">Flying Ability</td>
+	      <td>Level 1:<br>Normal mode</td>
+	      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
+	      <td>Basic mode</td>
+	    </tr>
+	    <tr>
+	      <td>Level 2:<br>Wing Enhancement</td>
+	      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
+	      <td>Smooth gliding</td>
+	    </tr>
+	    <tr>
+	      <td>Level 3:<br>Dragon Wings</td>
+	      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
+	      <td>Improved glide disctance and control</td>
+	    </tr>
+	    <tr>
+	      <td>Level 4:<br>Rotors</td>
+	      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
+	      <td>Allows hovering and precise movement</td>
+	    </tr>
+	    <tr>
+	      <td>Level 5:<br>Booster</td>
+	      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
+	      <td>High-speed propulsion for fast flight</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="1">Force field</td>
+	      <td>Force Field</td>
+	      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
+	      <td>Force field protects players from collisions</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="3">Obstacles</td>
+	            <td>Seagull</td>
+	      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
+	      <td>War between birds!</td>
+	    </tr>
+	    <tr>
+	      <td>Plane</td>
+	      <td><img src="docs/assets/images/airplane.png" width="80"></td>
+	      <td>Is it a bird? Is it a plane? Yes.</td>
+	    </tr>
+	    <tr>
+	      <td>UFO</td>
+	      <td><img src="docs/assets/images/ufo.png" width="80"></td>
+	      <td>Aliens... It's a Penguinvasion!</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="2">Collectibles</td>
+	      <td>Heart</td>
+	      <td><img src="docs/assets/images/heart1.png" width="80"></td>
+	      <td>Collect hearts to restore life</td>
+	    </tr>
+	    <tr>
+	      <td>Coin</td>
+	      <td><img src="docs/assets/images/coin.png" width="60"></td>
+	      <td>Collect coins to upgrade your equipment in Workshop</td>
+	    </tr>
+	</tbody>
+	</table>
 </div>
 
 <div align="center">
