@@ -29,6 +29,7 @@ class Death {
         this.progressSaved = false;
     }
 
+    // Sequence of events occurring at point of game over
     runPlayerDeathSequence() {
 
         // Death animation
@@ -105,6 +106,7 @@ class Death {
         }
     }
 
+    // animate the players final score
     showFinalScore() {
 
         push();
@@ -195,7 +197,6 @@ class Death {
 
             if (mouseIsPressed) {
                 domains.game.disconnectAudio();
-                //game.dispose();
                 domains.game = null;
                 Domain = 'shop';
             }
@@ -218,8 +219,6 @@ class Death {
 
             if (mouseIsPressed) {
                 domains.game.disconnectAudio();
-                //soundBoard.disposeAll();
-                //game.dispose();
                 domains.game = null;
             }
         }

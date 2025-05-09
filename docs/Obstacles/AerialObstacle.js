@@ -1,5 +1,7 @@
 
 
+
+// abstract
 class AerialObstacle {
 
     constructor(height) {

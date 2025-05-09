@@ -2,7 +2,6 @@
 
 class DomainManager {
     constructor(gameProgress) {
-        //this.domain = Domain;
         this.gameProgress = gameProgress;
         this.gameLoader = null;
         this.intro = null;
@@ -10,9 +9,10 @@ class DomainManager {
         this.game = null;
         this.shop = null;
         this.instruction = null;
-        //this.progressLoaded = false;
     }
 
+    // This is the master game loop
+    // Value of 'Domain' dictates which part of the program is executed
     run() {
         if (Domain === 'loadGame') {
             if (this.gameLoader === null) {

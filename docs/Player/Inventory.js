@@ -3,7 +3,7 @@
 class Inventory {
 
     constructor(gameProgress) {
-        this.coins = 9999;//gameProgress.coins;
+        this.coins = gameProgress.coins;
         this.flyLevel = gameProgress.flyLevel;
         this.laserLevel = gameProgress.projectileLevel;
         this.forceFieldLevel = gameProgress.forceFieldLevel;
@@ -21,7 +21,7 @@ class Inventory {
         };
 
         this.fligthRequirementLevel = {
-            0: 0,  //noFligth
+            0: 0,  //noFlight
             1: 0,  //penguinWings
             2: 1,  //dragonWings
             3: 2,  //helicopterRotors

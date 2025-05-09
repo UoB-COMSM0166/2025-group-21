@@ -18,11 +18,6 @@ class Intro {
         this.penguinRows = 4;
         this.penguinFrameWidth = penguinBodyFly.width / this.penguinColumns;
         this.penguinFrameHeight = penguinBodyFly.height / this.penguinRows;
-
-        this.rotorColumns = 4;
-        this.rotorRows = 4;
-        this.rotorFrameWidth = playerHelicopterRotor.width / this.rotorColumns;
-        this.rotorFrameHeight = playerHelicopterRotor.height / this.rotorRows;
     }
 
     resetAnimation() {
@@ -42,8 +37,9 @@ class Intro {
 
         this.penguinOpacity = 1
         this.logoOpacity = 1;
-        }
+    }
 
+    // update position and frame
     updatePenguinState() {
         this.xPos += this.xSpeed;
 
@@ -83,6 +79,7 @@ class Intro {
         pop();
     }
 
+    // main intro loop
     showIntro() {
 
         background(240, 248, 255);

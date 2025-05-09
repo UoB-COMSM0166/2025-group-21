@@ -34,6 +34,7 @@ class GameLoader {
         }
     }
 
+    // Set game state to either loaded save data or the default state
     initialiseGameState(gameState) {
         settings = new Settings(gameState);
         inventory = new Inventory(gameState);

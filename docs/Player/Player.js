@@ -63,7 +63,7 @@ class Player {
 
     update() {
 
-        // keep ball at same x position on the screen
+        // keep penguin at same x position on the screen
         this.pos.x = 150;
         if (!this.alive && domains.game.death.type === 'UFO') this.pos.y = domains.game.death.currentY;
 
@@ -287,11 +287,6 @@ class Player {
 
         this.acc.y = this.accDownSlope * sin(atan(slope)) + 0.005 * this.vel.y;
         this.acc.x = this.accDownSlope * cos(atan(slope)) + 0.005 * this.vel.x;
-
-        // if (game.stats.numJumps < 1) {
-        //     this.acc.y += 0.02 * this.vel.y;
-        //     this.acc.x += 0.02 * this.vel.x;
-        // }
     }
 
     updateVelocity () {
@@ -344,11 +339,8 @@ class Player {
                     domains.game.death = new Death('ground');
                     this.vel.x = -0.5;
                     this.vel.y = -2;
-                    //this.gravity = 0.02
                 }
                 else {
-                    // domains.game.loseLifeSound.play();
-                    // this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }
@@ -368,18 +360,3 @@ class Player {
         return 2 * slopeAngle + velocityAngle;
     }
 }
-
-// function drawArrowhead(x, y, dx, dy, size = 100, color = 'black') {
-//     push();
-//     translate(x + dx, y + dy);
-//     let angle = atan2(dy, dx);
-//     rotate(angle);
-//     fill(color);
-//     beginShape();
-//     strokeWeight(6);
-//     vertex(0, 0);
-//     vertex(-size, size / 2);
-//     vertex(-size, -size / 2);
-//     endShape(CLOSE);
-//     pop();
-// }

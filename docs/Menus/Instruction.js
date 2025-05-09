@@ -21,7 +21,6 @@ class Instruction {
 
         this.drawInstructions(boxWidth, boxHeight);
 
-        // this.updateButton(boxWidth, boxHeight);
         this.drawClawButton(boxWidth, boxHeight);
         this.updateMainMenuButton();
     }

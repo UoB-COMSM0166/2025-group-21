@@ -433,27 +433,6 @@ function setMasterVolume(masterVolume) {
     if ((sound = soundBoard.cache['wingFlapSound']) !== undefined) sound.setVolume(1.4*volume*masterVolume);
     if ((sound = soundBoard.cache['boosterSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
     if ((sound = soundBoard.cache['rotorSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
-
-
-    // soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['illegalPurchaseSound'].setVolume(volume*masterVolume);
-    //
-    // soundBoard.cache['laserSound'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['laserAutomaticSound'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['explosionSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['deathSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['fishThrow'].setVolume(volume*masterVolume);
-    // soundBoard.cache['fishImpactSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['forceFieldSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['snowballSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['freezeSound'].setVolume(0.5*volume*masterVolume);
-    // soundBoard.cache['arrowSound'].setVolume(0.5*volume*masterVolume);
-    // soundBoard.cache['ufoArrowImpactSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
-    // soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
-    // soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
 }
 
 function loadSoundAsync(path) {

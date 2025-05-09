@@ -33,10 +33,12 @@ class Settings {
         this.shieldKey = gameProgress.shieldKey;
     }
 
+    // is selected key being used by another ability?
     keyIsAvailable(key) {
         return !(this.flyKey === key || this.boostKey === key || this.shootKey === key || this.shieldKey === key);
     }
 
+    // main loop
     showSettingsScreen() {
         push();
         image(blurredHomeBackground, 0, 0, width, height);
@@ -253,6 +255,7 @@ class Settings {
         }
     }
 
+    // volume dial is currently being controlled by user
     adjustDialPos() {
         this.dialPos.x = mouseX + this.offset;
 
@@ -276,6 +279,7 @@ class Settings {
         image(volumeBar, width/2, 0.3*height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
+    // Draw the labels associated with all button and controls
     drawLabels() {
         let size = width/10
         fill('rgb(21,37,58)');

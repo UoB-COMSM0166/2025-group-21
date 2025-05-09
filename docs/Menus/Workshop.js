@@ -320,13 +320,13 @@ class Workshop {
                     this.buttonCooldownTimer.tick();
                     this.illegalPurchaseSound.play();
                     this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("What are you trying to buy? There are no items being shown!");
+                    this.fadeInFadeOut("Select an ability item");
                 } else {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
                     this.illegalPurchaseSound.play();
                     this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("You don't meet the requirements to buy this item!");
+                    this.fadeInFadeOut("You don't meet the requirements for this purchase!");
                 }
 
             }
@@ -1043,7 +1043,6 @@ class Workshop {
                     } else {
                         this.illegalPurchaseSound.play();
                         this.arrowLeftRedTimer = 30;
-                        this.fadeInFadeOut("C'mon! This is the first item, try the other arrow");
                     }
                 } else if (this.selectedItem === 'flying') {
                     if (this.showFligth > 0) {
@@ -1052,7 +1051,6 @@ class Workshop {
                     } else {
                         this.illegalPurchaseSound.play();
                         this.arrowLeftRedTimer = 30;
-                        this.fadeInFadeOut("C'mon! This is the first item, try the other arrow");
                     }
                 } else if (this.selectedItem === 'force field') {
                     if (this.showForceField > 1) {
@@ -1061,12 +1059,11 @@ class Workshop {
                     } else {
                         this.illegalPurchaseSound.play();
                         this.arrowLeftRedTimer = 30;
-                        this.fadeInFadeOut("C'mon! This is the first item, try the other arrow");
                     }
                 } else if (this.selectedItem === null) {
                     this.illegalPurchaseSound.play();
                     this.arrowLeftRedTimer = 30;
-                    this.fadeInFadeOut("Please select an item section if you want to use the arrows!");
+                    this.fadeInFadeOut("Select an ability item");
                 }
             }
         } else {
@@ -1090,7 +1087,6 @@ class Workshop {
                     } else {
                         this.illegalPurchaseSound.play();
                         this.arrowRightRedTimer = 30;
-                        this.fadeInFadeOut("There are no more items to this side, try the other arrow!");
                     }
                 } else if (this.selectedItem === 'flying') {
                     if (this.showFligth < 5) {
@@ -1099,7 +1095,6 @@ class Workshop {
                     } else {
                         this.illegalPurchaseSound.play();
                         this.arrowRightRedTimer = 30;
-                        this.fadeInFadeOut("There are no more items to this side, try the other arrow!");
                     }
                 } else if (this.selectedItem === 'force field') {
                     if (this.showForceField < 5) {
@@ -1108,12 +1103,11 @@ class Workshop {
                     } else {
                         this.illegalPurchaseSound.play();
                         this.arrowRightRedTimer = 30;
-                        this.fadeInFadeOut("There are no more items to this side, try the other arrow!");
                     }
                 } else if (this.selectedItem === null) {
                     this.illegalPurchaseSound.play();
                     this.arrowRightRedTimer = 30;
-                    this.fadeInFadeOut("Please select an item section if you want to use the arrows!");
+                    this.fadeInFadeOut("Select an ability item");
                 }
             }
         } else {

@@ -3,10 +3,11 @@
 const SAVE_KEY = 'pengwingsSaveData';
 const VERSION = 2;
 
+// default game state
 const NEW_GAME_STATE = {
     version: VERSION,
 
-    coins: 0,
+    coins: 99999,
     flyLevel: 0,
     projectileLevel: 0,
     forceFieldLevel: 0,

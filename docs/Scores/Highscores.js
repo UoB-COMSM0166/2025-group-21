@@ -200,7 +200,6 @@ class Highscores {
             this.buttonCooldownTimer.tick();
         }
         inputCharacter = null;
-        //console.log(this.userName + ', ' + this.userName.length);
     }
 
     drawText() {

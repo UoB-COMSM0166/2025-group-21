@@ -20,6 +20,7 @@ class Terrain {
         let freqFactor;
         let phaseFactor;
 
+        // set base curve parameters based on difficulty
         switch (settings.difficulty) {
             case 0:
                 ampFactor = 10;
@@ -38,6 +39,7 @@ class Terrain {
                 break;
         }
 
+        // generate random variation in these parameters
         for (let i = 0; i < 4; i++) {
             this.amplitudes.push(ampFactor + 0.25*ampFactor*Math.random() - 0.125*ampFactor);
             this.frequencies.push(freqFactor + 0.3*freqFactor*Math.random());
@@ -45,26 +47,6 @@ class Terrain {
         }
 
         this.step = settings.difficulty === 2 ? 15 : 30;
-    }
-
-    updateHillParams() {
-        // Calc a randomness factor based on offset
-        this.randomnessFactor = Math.min(50000 / 10000, 1);
-
-        // Remove first element (oldest / least random)
-        this.amplitudes.shift();
-        this.frequencies.shift();
-        this.phases.shift();
-
-        // Calc variation to apply relative to each param
-        let ampVariation = this.randomnessFactor * 10 + 2;
-        let freqVariation = this.randomnessFactor * 0.01 + 0.01;
-        let phaseVariation = Math.PI * (1 + this.randomnessFactor * 0.5);
-
-        // Add new (more random) elements to end
-        this.amplitudes.push(Math.random() * ampVariation);
-        this.frequencies.push(Math.random() * freqVariation);
-        this.phases.push(Math.random() * phaseVariation);
     }
 
     drawHills(length, canvas) {

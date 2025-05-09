@@ -5,20 +5,20 @@ let Domain = 'loadGame'; // Determines which part of the game code is executed
 let domains = null;
 let inventory = null;
 let settings = null;
-let frameCount = 0;
-let fps = 0;
 let userIsTyping = false;
 let inputCharacter = null;
 let soundBoard = null;
 let soundsCached = false;
+let bg = null;
 
 function onQualityChange(newLevel) {
-    signalBackground = newLevel;   // 1=High(Full),2=Medium,3=Low,4=UltraLow
+    signalBackground = newLevel;   // 1=High, 2=Medium, 3=Low, 4=UltraLow
     preloadBackgroundImages();
     bg = new Background();
 }
 
 function setup() {
+    // remove loading screen gif
     const loader = document.getElementById('loader');
     if (loader) loader.style.display = 'none';
 
@@ -34,26 +34,10 @@ function setup() {
 
 function draw() {
 
-    if (!soundsCached) return;
-
-    domains.run();
-
-    frameCount++
-    if (frameCount%30 === 0) {
-        fps = floor(frameRate());
-        frameCount = 0;
+    if (!soundsCached) {
+        return;
     }
-    //text(fps, 50, 50);
-
-    //push();
-    //if (domains.game !== null) {
-    //    textAlign(LEFT);
-    //    textSize(15);
-    //    text('Projectiles = ' + domains.game.projectile.projectiles.length, 10, 80);
-    //    text('UFOs = ' + domains.game.obstacleHandler.aerialObstacles.length, 10, 105);
-    //    text('Explosions = ' + domains.game.obstacleHandler.explosions.length, 10, 130);
-    //}
-    //pop();
+    domains.run();
 }
 
 

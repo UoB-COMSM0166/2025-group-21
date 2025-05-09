@@ -43,7 +43,7 @@ class MainMenu {
         let highscores = createVector(0.38*width, 0.8*height);
         let credits = createVector(0.62*width, 0.8*height);
 
-
+        // update buttons
         this.updateButton(0, startGame, startGameButton, startGameButtonHover, this.startButtonPressed)
         this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
         this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
@@ -108,19 +108,23 @@ class MainMenu {
 
     highscoresButtonPressed() {
         domains.mainMenu.highscores = new Highscores();
-        domains.mainMenu.highscores.loadHighscores().then(domains.mainMenu.scoresLoaded = true);
+        domains.mainMenu.highscores.loadHighscores().then(() => domains.mainMenu.scoresLoaded = true);
     }
 
+    // main loop
     showMainMenu() {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
         image(blurredHomeBackground, 0, 0, width, height);
 
+        // executed if high scores button is pressed
         if (this.highscores && this.scoresLoaded) {
             this.highscores.printHighscores();
             return;
         }
+        // executed if credits button is pressed
+
         if (this.showCredits) {
             this.showCreditsScreen();
             return;
@@ -148,8 +152,10 @@ class MainMenu {
         push();
 
         imageMode(CENTER);
+        // draw paper box
         image(tipsBox, width / 2, height / 2, boxWidth, boxHeight);
 
+        // print text
         textFont(instructionFont);
         fill(0);
         textAlign(CENTER);
