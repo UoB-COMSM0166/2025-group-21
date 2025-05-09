@@ -33,6 +33,9 @@ function setup() {
 }
 
 function draw() {
+    if (Domain === 'game') {
+        console.log('level = ' + inventory.currentProjectileItem)
+    }
 
     if (!soundsCached) {
         return;

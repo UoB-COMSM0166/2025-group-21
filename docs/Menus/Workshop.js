@@ -974,6 +974,7 @@ class Workshop {
                 this.wasMousePressed = true;
                 document.body.classList.remove("show-cursor");
                 this.fadeOut = true;
+                saveGameProgress();
             }
         } else {
             image(playButton, pos.x, pos.y, size.x, size.y);
@@ -1002,6 +1003,7 @@ class Workshop {
                 this.disconnectAudio();
                 domains.shop = null;
                 Domain = 'mainMenu';
+                saveGameProgress();
             }
         } else {
             image(mainMenuButton, pos.x, pos.y, size.x, size.y);
@@ -1021,6 +1023,7 @@ class Workshop {
             case 'flying':
                 inventory.flyLevel++;
                 this.playerFligthLevel = inventory.flyLevel;
+                inventory.currentFlyItem = inventory.flyLevel;
                 inventory.coins -= this.flyingUpgradePrice;
                 break;
             case 'force field':

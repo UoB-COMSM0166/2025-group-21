@@ -8,9 +8,9 @@ class Inventory {
         this.laserLevel = gameProgress.projectileLevel;
         this.forceFieldLevel = gameProgress.forceFieldLevel;
         /* --- current load‑out (what the player is wearing right now) --- */
-        this.currentFlyItem        = this.flyLevel;        // 0‑5
+        this.currentFlyItem        = gameProgress.currentFly;        // 0‑5
         // –1 means “nothing equipped yet”; otherwise 0‑based index of equipped projectile
-        this.currentProjectileItem = this.laserLevel > 0 ? this.laserLevel - 1 : -1;
+        this.currentProjectileItem = gameProgress.currentProjectile;
 
         this.projectileRequirementLevel = {
             0: 0,  //fish
@@ -59,18 +59,18 @@ class Inventory {
             case 1: return 'Regurgitated Fish:\n  - Launched straight from the \n    penguin’s mouth\n' +
                 '  - Slippery, wobbly, and\n    surprisingly accurate\n' +
                 '  - Collision knock back';
-            case 2: return 'Snowball Cannon:\n - A full-on cannon strapped to \n      the penguin’s back\n' +
-                ' - Cold, round, and slightly \n      passive-aggressive\n' +
-                ' - Freezes enemies on impact';
-            case 3: return 'Back-Mounted Crossbow:\n - Medieval tech meets penguin \n     ingenuity\n' +
+            case 2: return 'Snowball Cannon:\n  - A full-on cannon strapped to \n      the penguin’s back\n' +
+                '  - Cold, round, and slightly \n      passive-aggressive\n' +
+                '  - Freezes enemies on impact';
+            case 3: return 'Back-Mounted Crossbow:\n  - Medieval tech meets penguin \n     ingenuity\n' +
                 ' - Aim straight, shoot sharp, \n     regret nothing\n' +
                 ' - Enemies fall faster, clearing \n     your path with style';
-            case 4: return 'Beak-Mounted Laser:\n - Tiny laser attached right to\n     the penguin’s beak\n' +
-                ' - Because pecking is so last\n     season\n' +
-                ' - Vaporizes obstacles instantly';
-            case 5: return 'Beak Railgun:\n - Massive laser railgun hooked\n    to your beak (battery pack\n     included!)\n' +
-                ' - A weapon of freedom\n' +
-                ' - Continuous laser barrage,\n    obliterating everything\n    ahead';
+            case 4: return 'Beak-Mounted Laser:\n  - Tiny laser attached right to\n     the penguin’s beak\n' +
+                '  - Because pecking is so last\n     season\n' +
+                '  - Vaporizes obstacles instantly';
+            case 5: return 'Beak Railgun:\n  - Massive laser railgun hooked\n    to your beak (battery pack\n     included!)\n' +
+                '  - A weapon of freedom\n' +
+                '  - Continuous laser barrage,\n    obliterating everything\n    ahead';
         }
     }
 
