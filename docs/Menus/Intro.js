@@ -30,7 +30,7 @@ class Intro {
         this.penguinSize = width * 0.15;
         this.xPos = -this.penguinSize;
         this.yPos = height * 0.4;
-        this.xSpeed = width * 0.0028;
+        this.xSpeed = width * 0.02;
 
         // logo attributes
         this.logoDrawWidth = width * 0.5;

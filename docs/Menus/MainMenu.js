@@ -18,7 +18,8 @@ class MainMenu {
         this.selectedButtonIndex = -1;
         this.buttonGrid = [
             [0, 1],
-            [2, 3]
+            [2, 3],
+            [4, 5]
         ];
         this.currentRow = 0;
         this.currentCol = 0;
@@ -35,11 +36,17 @@ class MainMenu {
         let shop = createVector(0.62*width, 0.6*height);
         let instructions = createVector(0.38*width, 0.7*height);
         let settings = createVector(0.62*width, 0.7*height);
+        let highscores = createVector(0.38*width, 0.8*height);
+        let credits = createVector(0.62*width, 0.8*height);
+
 
         this.updateButton(0, startGame, startGameButton, startGameButtonHover, this.startButtonPressed)
         this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
         this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
         this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
+        this.updateButton(4, highscores, highscoresButton, highscoresButtonHover);
+        this.updateButton(5, credits, creditsButton, creditsButtonHover);
+
     }
 
     updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
@@ -137,7 +144,7 @@ class MainMenu {
                 }
                 break;
             case DOWN_ARROW:
-                if (this.currentRow < 1) {
+                if (this.currentRow < 2) {
                     this.currentRow ++;
                 }
                 break;

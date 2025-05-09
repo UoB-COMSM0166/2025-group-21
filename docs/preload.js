@@ -48,25 +48,6 @@ let playerHeadGatling = null;
 let playerFlyFeet, playerFlyBooster, playerPenguinWings,
     playerDragonWings, playerHelicopterRotor, introHelicopterPenguin;
 
-// audio
-// let laserAutomaticSound = null;
-// let explosionSound = null;
-// let deathSound = null;
-// let windSound = null;
-// let fishThrow = null;
-// let fishImpactSound = null;
-// let forceFieldSound = null;
-// let purchaseSound = null;
-// let illegalPurchaseSound = null;
-// let snowballSound = null;
-// let freezeSound = null;
-// let loseLifeSound = null;
-// let gainLifeSound = null;
-// let arrowSound = null;
-// let ufoArrowImpactSound = null;
-// let workshopMusic = null;
-// let collectCoinSound = null
-
 // BUTTONS
 // main menu
 let homeBackground = null;
@@ -83,6 +64,11 @@ let instructionsButton = null;
 let instructionsButtonHover = null;
 let settingsButton = null;
 let settingsButtonHover = null;
+let highscoresButton = null;
+let highscoresButtonHover = null;
+let creditsButton = null;
+let creditsButtonHover = null;
+
 
 // load game
 let yesButton = null;
@@ -223,6 +209,10 @@ function preload() {
     instructionsButtonHover = loadImage('assets/buttons/mainMenu/instructionsButtonHover.png');
     settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
     settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
+    highscoresButton = loadImage('assets/buttons/mainMenu/highscoresButton.png');
+    highscoresButtonHover = loadImage('assets/buttons/mainMenu/highscoresButtonHover.png');
+    creditsButton = loadImage('assets/buttons/mainMenu/creditsButton.png');
+    creditsButtonHover = loadImage('assets/buttons/mainMenu/creditsButtonHover.png');
 
     preloadBackgroundImages();
 
