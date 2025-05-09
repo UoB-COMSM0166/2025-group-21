@@ -9,7 +9,8 @@ class Inventory {
         this.forceFieldLevel = gameProgress.forceFieldLevel;
         /* --- current load‑out (what the player is wearing right now) --- */
         this.currentFlyItem        = this.flyLevel;        // 0‑5
-        this.currentProjectileItem = this.laserLevel;      // 1‑5
+        // –1 means “nothing equipped yet”; otherwise 0‑based index of equipped projectile
+        this.currentProjectileItem = this.laserLevel > 0 ? this.laserLevel - 1 : -1;
 
         this.projectileRequirementLevel = {
             0: 0,  //fish

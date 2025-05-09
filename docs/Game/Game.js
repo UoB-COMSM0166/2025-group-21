@@ -65,7 +65,13 @@ class Game {
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
-        this.projectile = new ProjectileAbility(inventory.currentProjectileItem + 1);
+        // Equip shooter only when a projectile is unlocked (index ≥ 0)
+        if (inventory.currentProjectileItem >= 0) {
+            // index 0‑4  → type 1‑5 for ProjectileAbility
+            this.projectile = new ProjectileAbility(inventory.currentProjectileItem + 1);
+        } else {
+            this.projectile = null;   // no projectile until the player buys Fish
+        }
 
         //---------------------------------------
         this.background = new Background();
@@ -96,7 +102,7 @@ class Game {
 
             this.terrain.drawHills(width);
             this.player.drawPlayer()
-            this.projectile.updateProjectiles();
+            if (this.projectile) this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
             this.obstacleHandler.updateExplosions();
 
