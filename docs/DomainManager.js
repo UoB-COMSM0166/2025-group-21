@@ -46,13 +46,6 @@ class DomainManager {
             this.shop.openShop();
         }
 
-        if (Domain === 'instruction') {
-            if (this.instruction === null) {
-                this.instruction = new Instruction();
-            }
-            this.instruction.draw();
-        }
-
         if (Domain === 'game') {
             if (this.game === null) {
                 this.game = new Game();

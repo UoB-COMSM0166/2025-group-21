@@ -26,9 +26,9 @@ class MainMenu {
         this.anyKeyPressed = false;
         this.showButtons = false;
 
+        this.instructions = null;
         this.showSettings = false;
         this.highscores = null;
-        this.scoresLoaded = false;
         this.showCredits = false;
     }
 
@@ -46,7 +46,7 @@ class MainMenu {
         // update buttons
         this.updateButton(0, startGame, startGameButton, startGameButtonHover, this.startButtonPressed)
         this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
-        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
+        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, () => domains.mainMenu.instructions = new Instruction());
         this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
         this.updateButton(4, highscores, highscoresButton, highscoresButtonHover, this.highscoresButtonPressed);
         this.updateButton(5, credits, creditsButton, creditsButtonHover, () => domains.mainMenu.showCredits = true);
@@ -96,11 +96,6 @@ class MainMenu {
         Domain = 'shop';
     }
 
-    instructionButtonPressed() {
-        domains.mainMenu = null;
-        Domain = 'instruction';
-    }
-
     settingButtonPressed() {
         domains.mainMenu.showSettings = true;
         settings.startCooldown();
@@ -108,7 +103,7 @@ class MainMenu {
 
     highscoresButtonPressed() {
         domains.mainMenu.highscores = new Highscores();
-        domains.mainMenu.highscores.loadHighscores().then(() => domains.mainMenu.scoresLoaded = true);
+        domains.mainMenu.highscores.loadHighscores();
     }
 
     // main loop
@@ -119,14 +114,18 @@ class MainMenu {
         image(blurredHomeBackground, 0, 0, width, height);
 
         // executed if high scores button is pressed
-        if (this.highscores && this.scoresLoaded) {
+        if (this.highscores) {
             this.highscores.printHighscores();
             return;
         }
         // executed if credits button is pressed
-
         if (this.showCredits) {
             this.showCreditsScreen();
+            return;
+        }
+        // executed if instructions button is pressed
+        if (this.instructions) {
+            this.instructions.draw();
             return;
         }
 
@@ -245,7 +244,7 @@ class MainMenu {
             } else if (this.selectedButtonIndex === 1) {
                 this.shopButtonPressed();
             } else if (this.selectedButtonIndex === 2) {
-                this.instructionButtonPressed();
+                this.instructions = new Instruction();
             } else if (this.selectedButtonIndex === 3) {
                 this.settingButtonPressed();
             } else if (this.selectedButtonIndex === 4) {

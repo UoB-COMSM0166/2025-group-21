@@ -77,8 +77,8 @@ class Instruction {
         image(penguinClaw, x, y, buttonWidth, buttonHeight);
 
         if (isHover && mouseIsPressed) {
-                       this.continueButtonPressed();
-                   }
+            this.continueButtonPressed();
+        }
 
     }
 
@@ -93,7 +93,7 @@ class Instruction {
     }
 
     continueButtonPressed() {
-        domains.instruction = null;
+        domains.mainMenu = null;
         Domain = 'game';
     }
 
@@ -108,8 +108,7 @@ class Instruction {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
-                domains.instruction = null;
-                Domain = 'mainMenu';
+                domains.mainMenu.instructions = null;
             }
         }
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
