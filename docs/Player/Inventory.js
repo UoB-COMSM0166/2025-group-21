@@ -70,7 +70,7 @@ class Inventory {
                 ' - Vaporizes obstacles instantly';
             case 5: return 'Beak Railgun:\n - Massive laser railgun hooked\n    to your beak (battery pack\n     included!)\n' +
                 ' - A weapon of freedom\n' +
-                ' - Continuous laser barrage,\n    obliterating everything ahead';
+                ' - Continuous laser barrage,\n    obliterating everything\n    ahead';
         }
     }
 

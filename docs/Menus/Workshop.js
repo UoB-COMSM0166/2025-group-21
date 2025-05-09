@@ -409,8 +409,9 @@ class Workshop {
     showLaserDescription() {
         // compute price for the displayed projectile level
         let laserPrice = this.showProjectile > 1 ? (this.showProjectile - 1) * 350 : 10;
+        textFont(instructionFont);
         text(
-            `Projectile level ${this.showProjectile}: ${laserPrice} coins\n\n` +
+            `Projectile level ${this.showProjectile}:  ${laserPrice} coins\n\n` +
             inventory.getProjectileBuyRequirement(this.showProjectile) +
             inventory.getProjectileDescription(this.showProjectile),
             0.345 * width,
@@ -456,8 +457,10 @@ class Workshop {
     showFlyingDescription() {
         // compute price for the displayed flying level
         let flyingPrice = this.showFligth * 500;
+        push();
+        textFont(instructionFont);
         text(
-            `Flying level ${this.showFligth}: ${flyingPrice} coins\n\n` +
+            `Flying level ${this.showFligth}:  ${flyingPrice} coins\n\n` +
             inventory.getFlyingBuyRequirement(this.showFligth) +
             inventory.getFlyingDescription(this.showFligth),
             0.345 * width,
@@ -466,7 +469,6 @@ class Workshop {
 
         this.printSelectedAbilityLevel(this.showFligth);
 
-        push();
         let size = width / 3700;
         let shadowOffset = 0.06 * width;
 
@@ -506,8 +508,11 @@ class Workshop {
     showForceFieldDescription() {
         // compute price for the displayed force field level
         let forceFieldPrice = (this.showForceField) * 750;
+
+        push();
+        textFont(instructionFont);
         text(
-            `Force Field level ${this.showForceField}: ${forceFieldPrice} coins\n\n` +
+            `Force Field level ${this.showForceField}:  ${forceFieldPrice} coins\n\n` +
             //--todo add requirement and descreiption for force field
             //inventory.getForceFieldBuyRequirement(this.showForceField)
             'requirements' + 'description',
@@ -518,7 +523,6 @@ class Workshop {
 
         this.printSelectedAbilityLevel(this.showForceField);
 
-        push();
         let size = width / 3800;
         imageMode(CENTER);
         translate(0.175 * width, 0.55 * height);
