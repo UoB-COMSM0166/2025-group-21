@@ -4,7 +4,7 @@ class Laser extends Projectile {
     constructor(position, velocity) {
         super(position, velocity);
 
-        if (inventory.laserLevel < 5) {
+        if (inventory.currentProjectileItem < 4) {
             if (domains.game.laserSound.isPlaying()) {
                 domains.game.laserSound.stop();
             }

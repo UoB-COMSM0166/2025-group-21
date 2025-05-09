@@ -81,24 +81,6 @@ let framedFish, framedSnowCanyon, framedCrossbow,
 let pickOne;
 //--------------------------------------------------------
 
-// audio
-// let laserAutomaticSound = null;
-// let explosionSound = null;
-// let deathSound = null;
-// let windSound = null;
-// let fishThrow = null;
-// let fishImpactSound = null;
-// let forceFieldSound = null;
-// let purchaseSound = null;
-// let illegalPurchaseSound = null;
-// let snowballSound = null;
-// let freezeSound = null;
-// let loseLifeSound = null;
-// let gainLifeSound = null;
-// let arrowSound = null;
-// let ufoArrowImpactSound = null;
-// let workshopMusic = null;
-// let collectCoinSound = null
 
 // BUTTONS
 // main menu

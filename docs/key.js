@@ -38,7 +38,7 @@ function keyPressed() {
             if (key === settings.shootKey) {
                 domains.game.player.shooting = true;
 
-                if (inventory.laserLevel < 5) {
+                if (inventory.currentProjectileItem < 4) {
                     domains.game.projectile.shoot();
                 }
                 else {
