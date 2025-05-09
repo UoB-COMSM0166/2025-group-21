@@ -1,9 +1,6 @@
 <div align="center">
-    <a href="https://uob-comsm0166.github.io/2025-group-21/">
-        <img src="Product doc/Banner.png" width="1000">
-        <br>
-        <p>🐧 <strong>CLICK HERE TO PLAY!</strong> 🚀</p>
-    </a>
+    <a href="https://uob-comsm0166.github.io/2025-group-21/"><img src="Product doc/Banner.png" width="1000"></a>
+    <p><br>🐧&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://uob-comsm0166.github.io/2025-group-21/">CLICK HERE TO PLAY!</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;🚀</p>
 </div>
 
 # Table of Contents
