@@ -52,9 +52,9 @@ class Workshop {
 
 
         //--- What's being shown in the shop ----
-        this.showProjectile = 1;
-        this.showFligth = 1;
-        this.showForceField = 1;
+        this.showProjectile = inventory.laserLevel;
+        this.showFligth = inventory.flyLevel;
+        this.showForceField = inventory.forceFieldLevel;
 
         //--- Player status levels ------
         this.playerFligthLevel = 0;
@@ -130,7 +130,6 @@ class Workshop {
                 this.screenTint = lerp(this.screenTint, 1, 0.5);
 
                 if (this.screenTint >= 0.9999) {
-                    ///this.screenTint = 1;
                     this.fadeOutTimer.tick();
                 }
             } else {
@@ -305,7 +304,6 @@ class Workshop {
                     if (this.playerHasEnoughCoins()) {
                         this.buttonsActive = false;
                         this.buttonCooldownTimer.tick();
-                        this.buttonPressedSound.play();
                         this.upgradeItem();
                         saveGameProgress();
                     } else {
@@ -320,13 +318,19 @@ class Workshop {
                     this.buttonCooldownTimer.tick();
                     this.illegalPurchaseSound.play();
                     this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("Select an ability item");
+                    this.fadeInFadeOut("No Item Selected");
+                } else if (this.itemAlreadyOwned()) {
+                    this.buttonsActive = false;
+                    this.buttonCooldownTimer.tick();
+                    this.illegalPurchaseSound.play();
+                    this.buyButtonRedTimer = 30;
+                    this.fadeInFadeOut("You already own this item");
                 } else {
                     this.buttonsActive = false;
                     this.buttonCooldownTimer.tick();
                     this.illegalPurchaseSound.play();
                     this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("You don't meet the requirements for this purchase!");
+                    this.fadeInFadeOut("Items must be purchased in order of ability level");
                 }
 
             }
@@ -336,6 +340,22 @@ class Workshop {
 
         pop();
     }
+
+    itemAlreadyOwned() {
+        switch (this.selectedItem) {
+            case 'laser':  return this.showProjectile <= inventory.laserLevel;
+            case 'flying': return this.showFligth <= inventory.flyLevel;
+            case 'force field': return this.showForceField <= inventory.forceFieldLevel;
+        }
+    }
+
+    // itemLevelSkipped() {
+    //     switch (this.selectedItem) {
+    //         case 'laser':  return this.showProjectile > inventory.laserLevel + 1;
+    //         case 'flying': return this.showFligth > inventory.flyLevel + 1;
+    //         case 'force field': return this.showForceField > inventory.forceFieldLevel + 1;
+    //     }
+    // }
 
 
     //--Note: Buying information -----------------------------------------------------------
@@ -363,7 +383,7 @@ class Workshop {
         }
     }
 
-    printAbilityLevel(abilityLevel) {
+    printSelectedAbilityLevel(abilityLevel) {
         push();
         stroke(0);
         strokeWeight(width / 1000);
@@ -373,6 +393,22 @@ class Workshop {
         translate(0.065 * width, 0.37 * height); // same as the flying object base
         for (let i = 0; i < abilityLevel; i++) {
             inventory.drawStar(30 * i, 0, width / 60); // 30px between stars, adjust as needed
+        }
+        pop();
+        pop();
+    }
+
+    printCurrentAbilityLevel(abilityLevel, xAlignment) {
+        push();
+        stroke(0);
+        strokeWeight(width / 1000);
+        fill('rgb(246,208,55)');
+
+        push();
+        translate(xAlignment, 0);
+
+        for (let i = 0; i < abilityLevel; i++) {
+            inventory.drawStar(30 * i, 0.2*height, width / 60); // 30px between stars, adjust as needed
         }
         pop();
         pop();
@@ -390,7 +426,7 @@ class Workshop {
         );
 
         // TODO: add description
-        this.printAbilityLevel(this.showProjectile);
+        this.printSelectedAbilityLevel(this.showProjectile);
 
         push();
         let size = width / 1250;
@@ -436,7 +472,7 @@ class Workshop {
             0.35 * height
         );
 
-        this.printAbilityLevel(this.showFligth);
+        this.printSelectedAbilityLevel(this.showFligth);
 
         push();
         let size = width / 3700;
@@ -488,7 +524,7 @@ class Workshop {
             height / 2.37
         );
 
-        this.printAbilityLevel(this.showForceField);
+        this.printSelectedAbilityLevel(this.showForceField);
 
         push();
         let size = width / 3800;
@@ -524,6 +560,8 @@ class Workshop {
         } else {
             image(projectileButton, pos.x, pos.y, size.x, size.y);
         }
+
+        this.printCurrentAbilityLevel(inventory.laserLevel, 0.103*width);
         pop();
     }
 
@@ -551,6 +589,7 @@ class Workshop {
         } else {
             image(flyingButton, pos.x, pos.y, size.x, size.y);
         }
+        this.printCurrentAbilityLevel(inventory.flyLevel, 0.253*width);
         pop();
     }
 
@@ -578,6 +617,7 @@ class Workshop {
         } else {
             image(forceFieldButton, pos.x, pos.y, size.x, size.y);
         }
+        this.printCurrentAbilityLevel(inventory.forceFieldLevel, 0.402*width);
         pop();
     }
 
@@ -1063,7 +1103,7 @@ class Workshop {
                 } else if (this.selectedItem === null) {
                     this.illegalPurchaseSound.play();
                     this.arrowLeftRedTimer = 30;
-                    this.fadeInFadeOut("Select an ability item");
+                    this.fadeInFadeOut("No Ability Selected");
                 }
             }
         } else {
@@ -1107,7 +1147,7 @@ class Workshop {
                 } else if (this.selectedItem === null) {
                     this.illegalPurchaseSound.play();
                     this.arrowRightRedTimer = 30;
-                    this.fadeInFadeOut("Select an ability item");
+                    this.fadeInFadeOut("No Ability Selected");
                 }
             }
         } else {
