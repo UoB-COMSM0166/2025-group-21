@@ -551,7 +551,7 @@ By using these two protocols, we were able to make informed and accurate decisio
     <tr>
         <td rowspan="2">Technical</td>
         <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
-        <td>Giiven a user is playing PengWings, when they close the game, then their highscores and progress should be maintained.</td>
+        <td>Given a user is playing PengWings, when they close the game, then their highscores and progress should be maintained.</td>
     </tr>
     <tr>
         <td>As an avid player, I want to be able to see and learn from the code bases of the games I play, so I can become a better informed player.</td>
