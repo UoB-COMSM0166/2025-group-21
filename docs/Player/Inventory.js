@@ -56,9 +56,9 @@ class Inventory {
 
     getProjectileDescription(item) {
         switch(item) {
-            case 1: return 'Regurgitated Fish:\n - Launched straight from the \n      penguin’s mouth\n' +
-                ' - Slippery, wobbly, and surpri-\n      singly accurate\n' +
-                ' - Collision knock back';
+            case 1: return 'Regurgitated Fish:\n  - Launched straight from the \n    penguin’s mouth\n' +
+                '  - Slippery, wobbly, and\n    surprisingly accurate\n' +
+                '  - Collision knock back';
             case 2: return 'Snowball Cannon:\n - A full-on cannon strapped to \n      the penguin’s back\n' +
                 ' - Cold, round, and slightly \n      passive-aggressive\n' +
                 ' - Freezes enemies on impact';
@@ -76,47 +76,42 @@ class Inventory {
 
     getFlyingDescription(item) {
         switch(item) {
-            case 0: return 'No Wings:\n - No shame in being a simple\n - penguin\n' +
-                ' - Falls with dignity (and speed)\n' +
-                ' - Flying not included';
-            case 1: return 'Flapping Penguin Wings:\n - Actual penguin wings, now\n    with 20% more hope\n' +
-                ' - Flap like your life depends\n    on it (it does)\n' +
-                ' - Still not great, but hey, progress!';
-            case 2: return 'Dragon Wings:\n - Because strapping lizard wings\n    on a penguin *always* works\n' +
-                ' - Flap harder. Believe harder.\n' +
-                ' - Still can’t breathe fire. Lame.';
-            case 3: return 'Helicopter Rotors:\n - When flapping just isn’t\n    cutting it\n' +
-                ' - Hover like a confused drone\n' +
-                ' - Try not to decapitate friends';
-            case 4: return 'Propane Booster:\n - Backyard BBQ turned jetpack\n' +
-                ' - Smells like victory and\n    slightly burnt feathers\n' +
-                ' - May void your warranty';
-            case 5: return 'Hydrogen Booster:\n - Like the Hindenburg, but with\n    more optimism\n' +
-                ' - Serious lift. Serious risk.\n' +
-                ' - Do not taunt the penguin';
+            case 1: return 'Flapping Penguin Wings:\n  - Actual penguin wings, now\n    with 20% more hope\n' +
+                '  - Flap like your life depends\n    on it (it does)\n' +
+                '  - Still not great, but hey,\n    progress!';
+            case 2: return 'Dragon Wings:\n  - Because strapping lizard\n    wings on a penguin *always*\n    works\n' +
+                '  - Flap harder. Believe harder.\n' +
+                '  - Still can’t breathe fire.\n    Lame.';
+            case 3: return 'Helicopter Rotors:\n  - When flapping just isn’t\n    cutting it\n' +
+                '  - Hover like a confused drone\n' +
+                '  - Try not to decapitate friends';
+            case 4: return 'Propane Booster:\n  - Backyard BBQ turned jetpack\n' +
+                '  - Smells like victory and\n    slightly burnt feathers\n' +
+                '  - May void your warranty';
+            case 5: return 'Hydrogen Booster:\n  - Like the Hindenburg, but\n    with more optimism\n' +
+                '  - Serious lift. Serious risk.\n' +
+                '  - May result in whiplash';
         }
     }
 
     getProjectileBuyRequirement(item) {
         switch(item) {
-            case 1: return 'Requirements:\n' + ' - Being a Penguin\n\n';
-            case 2: return 'Requirements:\n' + ' - Nothing. Just the money!\n\n';
-            case 3: return 'Requirements:\n' + ' - Having bought the Snow Canyon\n\n';
-            case 4: return 'Requirements:\n' + ' - Having bought the Crossbow\n\n';
-            case 5: return 'Requirements:\n' + ' - Having bought the laser\n\n';
+            case 1: return 'Requirements:\n' + '  - Being a Penguin\n\n';
+            case 2: return 'Requirements:\n' + '  - Nothing. Just the money!\n\n';
+            case 3: return 'Requirements:\n' + '  - Owning the Snow Cannon\n\n';
+            case 4: return 'Requirements:\n' + '  - Owning the Crossbow\n\n';
+            case 5: return 'Requirements:\n' + '  - Owning the laser\n\n';
         }
     }
 
     getFlyingBuyRequirement(item) {
         switch(item) {
-            case 0: return 'Requirements:\n' + ' - Requirement for what?... \n ' +
-                '- You can\'t fly...\n - You are a simple penguin.\n\n';
-            case 1: return 'Requirements:\n' + ' - Being a Penguin\n\n';
-            case 2: return 'Requirements:\n' + ' - Having learned how to flap\n\n';
-            case 3: return 'Requirements:\n' + ' - Having bought the Dragon Wings\n\n';
-            case 4: return 'Requirements:\n' + ' - Having bought the helicopter\n    ' +
+            case 1: return 'Requirements:\n' + '  - Being a Penguin\n\n';
+            case 2: return 'Requirements:\n' + '  - Having learned how to flap\n\n';
+            case 3: return 'Requirements:\n' + '  - Owning the Dragon Wings\n\n';
+            case 4: return 'Requirements:\n' + '  - Owning the helicopter\n    ' +
                 'rotors\n\n';
-            case 5: return 'Requirements:\n' + ' - Having bought the Propane\n    Booster\n\n';
+            case 5: return 'Requirements:\n' + '  - Owning the Propane\n    Booster\n\n';
         }
     }
 

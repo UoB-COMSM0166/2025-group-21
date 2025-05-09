@@ -52,9 +52,9 @@ class Workshop {
 
 
         //--- What's being shown in the shop ----
-        this.showProjectile = inventory.laserLevel;
-        this.showFligth = inventory.flyLevel;
-        this.showForceField = inventory.forceFieldLevel;
+        this.showProjectile = inventory.laserLevel === 0 ? 1 : inventory.laserLevel;
+        this.showFligth = inventory.flyLevel === 0 ? 1 : inventory.flyLevel;
+        this.showForceField = inventory.forceFieldLevel === 0 ? 1 : inventory.forceFieldLevel;
 
         //--- Player status levels ------
         this.playerFligthLevel = 0;
@@ -349,14 +349,6 @@ class Workshop {
         }
     }
 
-    // itemLevelSkipped() {
-    //     switch (this.selectedItem) {
-    //         case 'laser':  return this.showProjectile > inventory.laserLevel + 1;
-    //         case 'flying': return this.showFligth > inventory.flyLevel + 1;
-    //         case 'force field': return this.showForceField > inventory.forceFieldLevel + 1;
-    //     }
-    // }
-
 
     //--Note: Buying information -----------------------------------------------------------
     showUpgradeDescription() {
@@ -482,10 +474,10 @@ class Workshop {
         translate(0.175 * width, 0.55 * height);
 
         switch (this.showFligth) {
-            case 0:
-                image(noFlyWs, 0, 0, 0.6 * size * noFlyWs.width, 0.6 * size * noFlyWs.height);
-                image(shadow, 0, 0.6 * height / 5, size * shadow.width / 3, size * shadow.height / 3);
-                break;
+            // case 0:
+            //     image(noFlyWs, 0, 0, 0.6 * size * noFlyWs.width, 0.6 * size * noFlyWs.height);
+            //     image(shadow, 0, 0.6 * height / 5, size * shadow.width / 3, size * shadow.height / 3);
+            //     break;
             case 1:
                 image(flyWs, 0, 0, 0.6 * size * flyWs.width, 0.6 * size * flyWs.height);
                 image(shadow, 0, 0.6 * height / 5, size * shadow.width / 3, size * shadow.height / 3);
@@ -1085,7 +1077,7 @@ class Workshop {
                         this.arrowLeftRedTimer = 30;
                     }
                 } else if (this.selectedItem === 'flying') {
-                    if (this.showFligth > 0) {
+                    if (this.showFligth > 1) {
                         this.buttonPressedSound.play();
                         this.showFligth--;
                     } else {
