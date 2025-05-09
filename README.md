@@ -551,29 +551,29 @@ By using these two protocols, we were able to make informed and accurate decisio
     <tr>
         <td rowspan="2">Technical</td>
         <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
-        <td>The high-score data storage should be persistent and maintained.</td>
+        <td>Giiven a user is playing PengWings, when they close the game, then their highscores and progress should be maintained.</td>
     </tr>
     <tr>
-        <td>As an avid player, I want to be able to see and learn from the code bases of the games I play.</td>
-        <td>The open-source code should be maintained and accessible.</td>
+        <td>As an avid player, I want to be able to see and learn from the code bases of the games I play, so I can become a better informed player.</td>
+        <td>Given a user is playing PengWings, when they look at the open-source code base, then it should be accessible and maintained.</td>
     </tr>
     <tr>
         <td rowspan="2">Social</td>
-        <td>As a casual player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
+        <td>As a casual player, I want a game that doesn't become too addictive over time, so that it doesn't take up too much of my life.</td>
         <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
     </tr>
     <tr>
-        <td>As a casual player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
-        <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
+        <td>As a casual player, I want a good balance of competitiveness, so that I don't have to spend too much time to stay on top.</td>
+        <td>Given a user is playing PengWings, when they are at a lower skill level, then they should still be rewareded.</td>
     </tr>
     <tr>
         <td rowspan="2">Economic</td>
-        <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
-        <td>The game should be free and fun with any costs only being for avid players.</td>
+        <td>As a casual player, I want to play free games, so that I don't feel I have to pay to be good at the game.</td>
+        <td>Given a user wants to play PengWings, when they open the game, it should be free and fun without necessary costs.</td>
     </tr>
     <tr>
-        <td>As a casual player, I want to be able to just connect to the internet and be able to play.</td>
-        <td>The game should be accessible on a web browser without anything extra required.</td>
+        <td>As a casual player, I want to be able to just connect to the internet and be able to play, so that I don't require any specialised software or hardware.</td>
+        <td>Given a user wants to play the game, when they connect through a web browser, then it should not require anything extra.</td>
     </tr>
     <tr>
         <td rowspan="1">Environmental</td>
@@ -582,12 +582,12 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="2">Individual</td>
-        <td>As a casual player, I want a game that doesn't require my data or is a safety risk.</td>
-        <td>The game should not require any important data from the users, to make the games' data usage sustainable.</td>
+        <td>As a casual player, I want a game that doesn't require my data, so that there is no safety risk.</td>
+        <td>Given a user is playing the game, when they set a highscore, then they should not be required to provide personal data.</td>
     </tr>
     <tr>
         <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
-        <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
+        <td>Given a user is playing the game, when they set custom controls, then they should not be uncomfortable.</td>
     </tr>
   </table>
 </div>
