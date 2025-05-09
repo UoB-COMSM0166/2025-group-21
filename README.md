@@ -732,7 +732,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 # 11. Appendix
 
 <div align="center">
-	<p>Table showing all PengWings game items, obstacles and collectables<br><br><br></p>
+	<p>Table showing all PengWings game items, obstacles and collectables</p>
 	<table>
 	  <thead>
 	    <tr>
