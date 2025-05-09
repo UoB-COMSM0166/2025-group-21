@@ -87,7 +87,7 @@ class Intro {
 
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
 
         push();
         imageMode(CENTER);

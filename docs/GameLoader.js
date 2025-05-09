@@ -14,7 +14,7 @@ class GameLoader {
 
     showLoadScreen() {
         push();
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
         this.printText();
         this.updateYesButton();
         this.updateNoButton();

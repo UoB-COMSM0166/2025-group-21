@@ -25,7 +25,11 @@ class MainMenu {
         this.currentCol = 0;
         this.anyKeyPressed = false;
         this.showButtons = false;
+
         this.showSettings = false;
+        this.highscores = null;
+        this.scoresLoaded = false;
+        this.showCredits = false;
     }
 
     updateButtons() {
@@ -44,9 +48,8 @@ class MainMenu {
         this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
         this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
         this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
-        this.updateButton(4, highscores, highscoresButton, highscoresButtonHover);
-        this.updateButton(5, credits, creditsButton, creditsButtonHover);
-
+        this.updateButton(4, highscores, highscoresButton, highscoresButtonHover, this.highscoresButtonPressed);
+        this.updateButton(5, credits, creditsButton, creditsButtonHover, () => domains.mainMenu.showCredits = true);
     }
 
     updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
@@ -103,11 +106,25 @@ class MainMenu {
         settings.startCooldown();
     }
 
+    highscoresButtonPressed() {
+        domains.mainMenu.highscores = new Highscores();
+        domains.mainMenu.highscores.loadHighscores().then(domains.mainMenu.scoresLoaded = true);
+    }
+
     showMainMenu() {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
         image(blurredHomeBackground, 0, 0, width, height);
+
+        if (this.highscores && this.scoresLoaded) {
+            this.highscores.printHighscores();
+            return;
+        }
+        if (this.showCredits) {
+            this.showCreditsScreen();
+            return;
+        }
 
         this.updateAnimation();
         this.updateButtons();
@@ -121,6 +138,52 @@ class MainMenu {
         }
         pop();
         imageMode(CORNER);
+    }
+
+    showCreditsScreen() {
+        let boxWidth = width * 0.9;
+        let boxHeight = height * 0.9;
+
+
+        push();
+
+        imageMode(CENTER);
+        image(tipsBox, width / 2, height / 2, boxWidth, boxHeight);
+
+        textFont(instructionFont);
+        fill(0);
+        textAlign(CENTER);
+        textSize(width * 0.025);
+        text('PengWings Development Team', width/2, 0.35*height);
+
+        let devTeam = 'Tom Raynes\nJack May\nNico Esgeb\nKuan Jung Huang\nJing Yao\nZhiling Liu';
+        textSize(width * 0.02);
+        text(devTeam, width/2, 0.45*height);
+
+        pop();
+
+        this.updateCreditsBackButton();
+    }
+
+    updateCreditsBackButton() {
+        push();
+        //this.updateButtonCooldown(30); // necessary as submit button is in same location as back button
+        let scale = 0.0015 * width;
+        let size = createVector(backButton.width / scale, backButton.height / scale);
+        let pos = createVector(0.5*width, 0.9*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                this.showCredits = false;
+            }
+        }
+        else {
+            image(backButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     handleKeyNavigation(keyCode) {
@@ -179,6 +242,10 @@ class MainMenu {
                 this.instructionButtonPressed();
             } else if (this.selectedButtonIndex === 3) {
                 this.settingButtonPressed();
+            } else if (this.selectedButtonIndex === 4) {
+                this.highscoresButtonPressed();
+            } else if (this.selectedButtonIndex === 5) {
+                this.showCredits = true;
             }
         }
     }

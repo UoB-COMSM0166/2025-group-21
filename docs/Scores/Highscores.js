@@ -115,7 +115,7 @@ class Highscores {
         for (let i = 0; i < this.highscores.length; i++) {
             let entry = this.highscores[i];
 
-            if (entry.score === domains.game.stats.score && entry.name === this.userName) {
+            if (Domain === 'game' && entry.score === domains.game.stats.score && entry.name === this.userName) {
                 fill(255, 215, 0);
                 text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
             }
@@ -232,7 +232,12 @@ class Highscores {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
-                domains.game.death.highscoreSeen = true;
+                if (Domain === 'game') {
+                    domains.game.death.highscoreSeen = true;
+                }
+                else {
+                    domains.mainMenu.highscores = null;
+                }
             }
         }
         else {

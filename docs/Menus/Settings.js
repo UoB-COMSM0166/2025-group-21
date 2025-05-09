@@ -39,7 +39,7 @@ class Settings {
 
     showSettingsScreen() {
         push();
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
 
         if (this.changeControls) {
             if (this.controlsPanel === null) {
