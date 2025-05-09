@@ -768,7 +768,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	    <tr>
 	      <td>Level 5:<br>Automatic Laser</td>
 	      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
-	      <td>Wow! Shoot Laser from a Gatling gun!</td>
+	      <td>Shoot Lasers from a Gatling gun!</td>
 	    </tr>
 	    <!-- Flying-->
 	    <tr>
@@ -790,7 +790,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	    <tr>
 	      <td>Level 4:<br>Rotors</td>
 	      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
-	      <td>Allows hovering and precise movement</td>
+	      <td>When wings just dont cut it</td>
 	    </tr>
 	    <tr>
 	      <td>Level 5:<br>Booster</td>
