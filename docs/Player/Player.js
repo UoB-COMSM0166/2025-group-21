@@ -24,6 +24,43 @@ class Player {
         this.wingImg = playerPenguinWings;
     }
 
+    /* ---------- keep Player sprites in sync with equipped items ---------- */
+    refreshSpritesFromInventory() {
+        /* Projectile → head sprite */
+        switch (inventory.currentProjectileItem) {
+            case 0: this.headImg = playerHeadFish;      break;
+            case 1: this.headImg = playerHeadSnowball;  break;
+            case 2: this.headImg = playerHeadArrow;     break;
+            case 3: this.headImg = playerHeadLaser;     break;
+            case 4: this.headImg = playerHeadGatling;   break;
+        }
+
+        /* Flight item → feet + wings */
+        switch (inventory.currentFlyItem) {
+            case 0:
+            case 1:
+                this.feetImg = playerFlyFeet;
+                this.wingImg = playerPenguinWings;
+                break;
+            case 2:
+                this.feetImg = playerFlyFeet;
+                this.wingImg = playerDragonWings;
+                break;
+            case 3:
+                this.feetImg = playerFlyFeet;
+                this.wingImg = playerHelicopterRotor;
+                break;
+            case 4:
+                this.feetImg = playerFlyBooster;
+                this.wingImg = playerPenguinWings;
+                break;
+            case 5:
+                this.feetImg = playerFlyBooster;
+                this.wingImg = playerPenguinWings;
+                break;
+        }
+    }
+
     update() {
 
         // keep ball at same x position on the screen
@@ -64,6 +101,8 @@ class Player {
 
 
     drawPlayer() {
+        // update sprites from current equipped items
+        this.refreshSpritesFromInventory();
         this.lives.drawChangeLife();
         if (domains.game.death != null && domains.game.death.type === 'UFO') return;
 
@@ -124,16 +163,16 @@ class Player {
                 domains.game.fly.active
             ) {
                 // if helicopter rotor, double the speed
-                const step = (inventory.flyLevel === 3) ? 2 : 1;
+                const step = (inventory.currentFlyItem === 3) ? 2 : 1;
                 this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
 
                 // non‐overlapping original sound logic
-                if (inventory.flyLevel >= 4) {
+                if (inventory.currentFlyItem >= 4) {
                     if (!domains.game.boosterSound.isPlaying()) {
                         domains.game.boosterSound.play();
                         domains.game.wingFlapSound.play();
                     }
-                } else if (inventory.flyLevel === 3) {
+                } else if (inventory.currentFlyItem === 3) {
                     if (!domains.game.rotorSound.isPlaying()) {
                         domains.game.rotorSound.play();
                         //domains.game.wingFlapSound.play();
