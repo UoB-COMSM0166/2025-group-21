@@ -65,7 +65,7 @@ class Game {
 
         this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
-        this.projectile = new ProjectileAbility(inventory.laserLevel);
+        this.projectile = new ProjectileAbility(inventory.currentProjectileItem + 1);
 
         //---------------------------------------
         this.background = new Background();
