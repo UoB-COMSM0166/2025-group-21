@@ -114,8 +114,16 @@ function keyReleased() {
         }
         else if (keyCode === 27) { // 27 == ESC key
             if (domains.game.pause.active && !domains.game.pause.showSettings) {
-                domains.game.pause.showInvPanel = false;
-                domains.game.pause.continueButtonPressed();
+                if (domains.game.pause.isCountingDown) {
+                    domains.game.pause.isCountingDown = false;
+                    domains.game.pause.active = true;
+                    domains.game.pause.reset();
+                    domains.game.pause.countdown = null;
+                }
+                else {
+                    domains.game.pause.showInvPanel = false;
+                    domains.game.pause.continueButtonPressed();
+                }
             }
             else domains.game.pause.active = true;
             //game.pause.active = !game.pause.active;
