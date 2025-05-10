@@ -3,6 +3,9 @@
     <p><br>🐧&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://uob-comsm0166.github.io/2025-group-21/">CLICK HERE TO PLAY!</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;🚀</p>
 </div>
 
+[![Watch Our VIDEO!🐧](https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png)](https://www.youtube.com/watch?v=iAYXBbDeZTE)
+
+
 # Table of Contents
 1. [Development Team](#1-development-team)
 2. [Introduction](#2-introduction)
