@@ -3,8 +3,12 @@
     <p><br>🐧&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://uob-comsm0166.github.io/2025-group-21/">CLICK HERE TO PLAY!</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;🚀</p>
 </div>
 
-[![Watch Our VIDEO!🐧](https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png)](https://www.youtube.com/watch?v=iAYXBbDeZTE)
-
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=iAYXBbDeZTE">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png" width="300" alt="Watch Our Video!">
+  </a>
+  <p><strong>🎥&nbsp;&nbsp;&nbsp;&nbsp;Watch our video!&nbsp;&nbsp;&nbsp;&nbsp;🐧</strong></p>
+</div>
 
 # Table of Contents
 1. [Development Team](#1-development-team)
