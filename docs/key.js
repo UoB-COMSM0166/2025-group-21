@@ -99,6 +99,7 @@ function keyPressed() {
                 // If inventory panel is visible and CLOSE button is selected, activate it
                 domains.game.pause.showInvPanel = false;
                 domains.game.pause.invPanel.isCloseButtonSelected = false;
+                domains.game.pause.selectedButtonIndex = -1;
             } else {
                 domains.game.pause.selectCurrentButton();
             }
