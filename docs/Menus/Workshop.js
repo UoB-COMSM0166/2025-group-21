@@ -90,6 +90,7 @@ class Workshop {
         this.itemColumnScale = 0.05;
         //-----------------------------------
 
+        this.keyNav = new ShopKeyNav();
     }
 
     async loadAudio() {
@@ -114,6 +115,7 @@ class Workshop {
 
     openShop() {
         this.refreshLevelsFromInventory();   // keep UI in sync with Inventory
+        this.listenForCursorMove();
         if (!this.soundsLoaded) return;
 
         this.updateDisplay();
@@ -138,8 +140,6 @@ class Workshop {
 
             if (this.fadeOutTimer.time > 20) {
                 this.disconnectAudio();
-                //soundBoard.disposeAll();
-                //shop.dispose();
                 domains.shop = null;
                 Domain = 'game';
             }
@@ -294,51 +294,46 @@ class Workshop {
             this.hoverPopSound.play();
         }
         this.wasHoveringPurchase = isHovering;
-        if (isHovering) {
+        if (isHovering || this.keyNav.selected === 'buy') {
             image(buyButtonGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && this.buttonsActive && !this.wasMousePressed) {
+            if (mouseIsPressed && this.buttonsActive && !this.wasMousePressed && this.keyNav.selected === null) {
                 this.wasMousePressed = true;
-                if (this.playerRequirementCheck()) {
-                    //--todo: Check if
-                    if (this.playerHasEnoughCoins()) {
-                        this.buttonsActive = false;
-                        this.buttonCooldownTimer.tick();
-                        this.upgradeItem();
-                        saveGameProgress();
-                    } else {
-                        this.buttonsActive = false;
-                        this.buttonCooldownTimer.tick();
-                        this.illegalPurchaseSound.play();
-                        this.buyButtonRedTimer = 30;
-                        this.fadeInFadeOut("You don't have enough coins");
-                    }
-                } else if (this.selectedItem === null) {
-                    this.buttonsActive = false;
-                    this.buttonCooldownTimer.tick();
-                    this.illegalPurchaseSound.play();
-                    this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("No Item Selected");
-                } else if (this.itemAlreadyOwned()) {
-                    this.buttonsActive = false;
-                    this.buttonCooldownTimer.tick();
-                    this.illegalPurchaseSound.play();
-                    this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("You already own this item");
-                } else {
-                    this.buttonsActive = false;
-                    this.buttonCooldownTimer.tick();
-                    this.illegalPurchaseSound.play();
-                    this.buyButtonRedTimer = 30;
-                    this.fadeInFadeOut("Items must be purchased in order of ability level");
-                }
-
+                this.buttonsActive = false;
+                this.buttonCooldownTimer.tick();
+                this.purchaseButtonPressed();
             }
         } else {
             image(buyButton, pos.x, pos.y, size.x, size.y);
         }
 
         pop();
+    }
+
+    purchaseButtonPressed() {
+        if (this.playerRequirementCheck()) {
+            //--todo: Check if
+            if (this.playerHasEnoughCoins()) {
+                this.upgradeItem();
+                saveGameProgress();
+            } else {
+                this.illegalPurchaseSound.play();
+                this.buyButtonRedTimer = 30;
+                this.fadeInFadeOut("You don't have enough coins");
+            }
+        } else if (this.selectedItem === null) {
+            this.illegalPurchaseSound.play();
+            this.buyButtonRedTimer = 30;
+            this.fadeInFadeOut("No Item Selected");
+        } else if (this.itemAlreadyOwned()) {
+            this.illegalPurchaseSound.play();
+            this.buyButtonRedTimer = 30;
+            this.fadeInFadeOut("You already own this item");
+        } else {
+            this.illegalPurchaseSound.play();
+            this.buyButtonRedTimer = 30;
+            this.fadeInFadeOut("Items must be purchased in order of ability level");
+        }
     }
 
     itemAlreadyOwned() {
@@ -545,13 +540,11 @@ class Workshop {
             if (this.hoverPopSound) this.hoverPopSound.play();
         }
         this.wasHoveringProjectile = isActualHover;
-        if (isHovering) {
+        if (isHovering || this.keyNav.selected === 'projectile') {
             image(projectileButtonHover, pos.x, pos.y, size.x, size.y);
 
-            if (isActualHover && mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound.play();
-                this.selectedItem = 'laser';
-                this.wasMousePressed = true;
+            if (isActualHover && mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.projectileButtonPressed();
             }
         } else {
             image(projectileButton, pos.x, pos.y, size.x, size.y);
@@ -559,6 +552,12 @@ class Workshop {
 
         this.printCurrentAbilityLevel(inventory.laserLevel, 0.103*width);
         pop();
+    }
+
+    projectileButtonPressed() {
+        this.buttonPressedSound.play();
+        this.selectedItem = 'laser';
+        this.wasMousePressed = true;
     }
 
     updateFlyingButton() {
@@ -574,19 +573,23 @@ class Workshop {
             if (this.hoverPopSound) this.hoverPopSound.play();
         }
         this.wasHoveringFlying = isActualHover;
-        if (isHovering) {
+        if (isHovering || this.keyNav.selected === 'flying') {
             image(flyingButtonHover, pos.x, pos.y, size.x, size.y);
 
-            if (isActualHover && mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound.play();
-                this.selectedItem = 'flying';
-                this.wasMousePressed = true;
+            if (isActualHover && mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.flyingButtonPressed();
             }
         } else {
             image(flyingButton, pos.x, pos.y, size.x, size.y);
         }
         this.printCurrentAbilityLevel(inventory.flyLevel, 0.253*width);
         pop();
+    }
+
+    flyingButtonPressed() {
+        this.buttonPressedSound.play();
+        this.selectedItem = 'flying';
+        this.wasMousePressed = true;
     }
 
     updateForceFieldButton() {
@@ -602,19 +605,23 @@ class Workshop {
             if (this.hoverPopSound) this.hoverPopSound.play();
         }
         this.wasHoveringForceField = isActualHover;
-        if (isHovering) {
+        if (isHovering || this.keyNav.selected === 'shield') {
             image(forceFieldButtonHover, pos.x, pos.y, size.x, size.y);
 
-            if (isActualHover && mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound.play();
-                this.selectedItem = 'force field';
-                this.wasMousePressed = true;
+            if (isActualHover && mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.forceFieldButtonPressed();
             }
         } else {
             image(forceFieldButton, pos.x, pos.y, size.x, size.y);
         }
         this.printCurrentAbilityLevel(inventory.forceFieldLevel, 0.402*width);
         pop();
+    }
+
+    forceFieldButtonPressed() {
+        this.buttonPressedSound.play();
+        this.selectedItem = 'force field';
+        this.wasMousePressed = true;
     }
 
 
@@ -638,19 +645,24 @@ class Workshop {
         }
         this.wasHoveringPenguinFly = isActualHover;
 
-        if (isActualHover) {
+        if (isActualHover || this.keyNav.selected === 'basicFly') {
             image(flyWsGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentFlyItem = 1;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.basicFlyButtonPressed();
             }
         } else {
             image(equipped ? flyWsGlowing : flyWs, pos.x, pos.y, size.x, size.y);
         }
         pop();
     }
+
+    basicFlyButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentFlyItem = 1;
+    }
+
     // FLY 2 ------------ Dragon‑Wing Item Button --------------
     updateDragonWingButton() {
         if (this.playerFligthLevel < 2) return;
@@ -668,18 +680,22 @@ class Workshop {
         }
         this.wasHoveringDragonWing = isActualHover;
 
-        if (isActualHover) {
+        if (isActualHover || this.keyNav.selected === 'wings') {
             image(dragonWingsGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentFlyItem = 2;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.wingsButtonPressed();
             }
         } else {
             image(equipped ? dragonWingsGlowing : dragonWingsWs, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    wingsButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentFlyItem = 2;
     }
 
     // FLY 3 ------------ Rotor Item Button --------------------
@@ -700,18 +716,22 @@ class Workshop {
         }
         this.wasHoveringRotor = isActualHover;
 
-        if (isActualHover) {
+        if (isActualHover || this.keyNav.selected === 'rotors') {
             image(rotorsWsGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentFlyItem = 3;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.rotorsButtonPressed();
             }
         } else {
             image(equipped ? rotorsWsGlowing : rotorsWs, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    rotorsButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentFlyItem = 3;
     }
 
     // FLY 4 ------------ Booster Item Button ------------------
@@ -732,18 +752,22 @@ class Workshop {
         }
         this.wasHoveringBooster = isActualHover;
 
-        if (isActualHover) {
+        if (isActualHover || this.keyNav.selected === 'redJet') {
             image(boosterWsGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentFlyItem = 4;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.redJetButtonPressed();
             }
         } else {
             image(equipped ? boosterWsGlowing : boosterWs, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    redJetButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentFlyItem = 4;
     }
 
     // FLY 5 ------------ Hydrogen‑Booster Item Button ---------
@@ -766,18 +790,22 @@ class Workshop {
         }
         this.wasHoveringHydrogenBooster = isHover;
 
-        if (isHover) {
+        if (isHover || this.keyNav.selected === 'blueJet') {
             image(boosterHydrogenGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentFlyItem = 5;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.blueJetButtonPressed();
             }
         } else {
             image(equipped ? boosterHydrogenGlowing : boosterHydrogen, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    blueJetButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentFlyItem = 5;
     }
 
     // PROJECTILE 1 ------------ Fish Item Button ---------------------
@@ -799,18 +827,22 @@ class Workshop {
         }
         this.wasHoveringFish = isHover;
 
-        if (isHover) {
+        if (isHover || this.keyNav.selected === 'fish') {
             image(fishWorkshopGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentProjectileItem = 0;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.fishButtonPressed();
             }
         } else {
             image(equipped ? fishWorkshopGlowing : fishWorkshop, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    fishButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentProjectileItem = 0;
     }
 
     // PROJECTILE 2------------ Snow‑Canyon Item Button --------------
@@ -833,18 +865,22 @@ class Workshop {
         }
         this.wasHoveringSnowCanyon = isHover;
 
-        if (isHover) {
+        if (isHover || this.keyNav.selected === 'snowball') {
             image(snowballWorkshopGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentProjectileItem = 1;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.snowballButtonPressed();
             }
         } else {
             image(equipped ? snowballWorkshopGlowing : snowballWorkshop, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    snowballButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentProjectileItem = 1;
     }
 
     // PROJECTILE 3------------ Crossbow Item Button -----------------
@@ -867,18 +903,22 @@ class Workshop {
         }
         this.wasHoveringCrossbow = isHover;
 
-        if (isHover) {
+        if (isHover || this.keyNav.selected === 'arrow') {
             image(arrowWorkshopGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentProjectileItem = 2;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.crossbowButtonPressed();
             }
         } else {
             image(equipped ? arrowWorkshopGlowing : arrowWorkshop, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    crossbowButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentProjectileItem = 2;
     }
 
     // PROJECTILE 4------------ Green‑Laser Item Button --------------
@@ -901,18 +941,22 @@ class Workshop {
         }
         this.wasHoveringGreenLaser = isHover;
 
-        if (isHover) {
+        if (isHover || this.keyNav.selected === 'gLaser') {
             image(greenLaserGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentProjectileItem = 3;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.greenLaserButtonPressed();
             }
         } else {
             image(equipped ? greenLaserGlowing : greenLaser, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    greenLaserButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentProjectileItem = 3;
     }
 
     // PROJECTILE 5------------ Purple‑Laser Item Button --------------
@@ -935,13 +979,11 @@ class Workshop {
         }
         this.wasHoveringPurpleLaser = isHover;
 
-        if (isHover) {
+        if (isHover || this.keyNav.selected === 'pLaser') {
             image(purpleLaserGlowing, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound?.play();
-                this.wasMousePressed = true;
-                inventory.currentProjectileItem = 4;
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.purpleLaserButtonPressed();
             }
         } else {
             image(equipped ? purpleLaserGlowing : purpleLaser, pos.x, pos.y, size.x, size.y);
@@ -949,6 +991,11 @@ class Workshop {
         pop();
     }
 
+    purpleLaserButtonPressed() {
+        this.buttonPressedSound?.play();
+        this.wasMousePressed = true;
+        inventory.currentProjectileItem = 4;
+    }
 
 
 
@@ -966,20 +1013,24 @@ class Workshop {
             this.hoverPopSound.play();
         }
         this.wasHoveringPlay = isHovering;
-        if (isHovering) {
+        if (isHovering || this.keyNav.selected === 'play') {
             image(playButtonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound.play();
-                this.wasMousePressed = true;
-                document.body.classList.remove("show-cursor");
-                this.fadeOut = true;
-                saveGameProgress();
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.playButtonPressed();
             }
         } else {
             image(playButton, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    playButtonPressed() {
+        this.buttonPressedSound.play();
+        this.wasMousePressed = true;
+        document.body.classList.remove("show-cursor");
+        this.fadeOut = true;
+        saveGameProgress();
     }
 
     updateMainMenuButton() {
@@ -994,21 +1045,25 @@ class Workshop {
             this.hoverPopSound.play();
         }
         this.wasHoveringMainMenu = isHovering;
-        if (isHovering) {
+        if (isHovering || this.keyNav.selected === 'menu') {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.buttonPressedSound.play();
-                this.wasMousePressed = true;
-                this.disconnectAudio();
-                domains.shop = null;
-                Domain = 'mainMenu';
-                saveGameProgress();
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.mainMenuButtonPressed();
             }
         } else {
             image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    mainMenuButtonPressed() {
+        this.buttonPressedSound.play();
+        this.wasMousePressed = true;
+        this.disconnectAudio();
+        domains.shop = null;
+        Domain = 'mainMenu';
+        saveGameProgress();
     }
 
     upgradeItem() {
@@ -1067,43 +1122,17 @@ class Workshop {
 
         // Left Arrow
         let isHoveringLeft = hoveringOverButton(leftPos, size);
+
         if (isHoveringLeft && !this.wasHoveringArrowLeft) {
             this.hoverPopSound.play();
         }
         this.wasHoveringArrowLeft = isHoveringLeft;
-        if (isHoveringLeft) {
+
+        if (isHoveringLeft || this.keyNav.selected === 'left') {
             image(arrowLeftGlowing, leftPos.x, leftPos.y, size.x, size.y);
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.wasMousePressed = true;
-                if (this.selectedItem === 'laser') {
-                    if (this.showProjectile > 1) {
-                        this.buttonPressedSound.play();
-                        this.showProjectile--;
-                    } else {
-                        this.illegalPurchaseSound.play();
-                        this.arrowLeftRedTimer = 30;
-                    }
-                } else if (this.selectedItem === 'flying') {
-                    if (this.showFligth > 1) {
-                        this.buttonPressedSound.play();
-                        this.showFligth--;
-                    } else {
-                        this.illegalPurchaseSound.play();
-                        this.arrowLeftRedTimer = 30;
-                    }
-                } else if (this.selectedItem === 'force field') {
-                    if (this.showForceField > 1) {
-                        this.buttonPressedSound.play();
-                        this.showForceField--;
-                    } else {
-                        this.illegalPurchaseSound.play();
-                        this.arrowLeftRedTimer = 30;
-                    }
-                } else if (this.selectedItem === null) {
-                    this.illegalPurchaseSound.play();
-                    this.arrowLeftRedTimer = 30;
-                    this.fadeInFadeOut("No Ability Selected");
-                }
+
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.leftArrowButtonPressed();
             }
         } else {
             image(arrowLeft, leftPos.x, leftPos.y, size.x, size.y);
@@ -1111,43 +1140,17 @@ class Workshop {
 
         // Right Arrow
         let isHoveringRight = hoveringOverButton(rightPos, size);
+
         if (isHoveringRight && !this.wasHoveringArrowRight) {
             this.hoverPopSound.play();
         }
         this.wasHoveringArrowRight = isHoveringRight;
-        if (isHoveringRight) {
+
+        if (isHoveringRight || this.keyNav.selected === 'right') {
             image(arrowRightGlowing, rightPos.x, rightPos.y, size.x, size.y);
-            if (mouseIsPressed && !this.wasMousePressed) {
-                this.wasMousePressed = true;
-                if (this.selectedItem === 'laser') {
-                    if (this.showProjectile < 5) {
-                        this.buttonPressedSound.play();
-                        this.showProjectile++;
-                    } else {
-                        this.illegalPurchaseSound.play();
-                        this.arrowRightRedTimer = 30;
-                    }
-                } else if (this.selectedItem === 'flying') {
-                    if (this.showFligth < 5) {
-                        this.buttonPressedSound.play();
-                        this.showFligth++;
-                    } else {
-                        this.illegalPurchaseSound.play();
-                        this.arrowRightRedTimer = 30;
-                    }
-                } else if (this.selectedItem === 'force field') {
-                    if (this.showForceField < 5) {
-                        this.buttonPressedSound.play();
-                        this.showForceField++;
-                    } else {
-                        this.illegalPurchaseSound.play();
-                        this.arrowRightRedTimer = 30;
-                    }
-                } else if (this.selectedItem === null) {
-                    this.illegalPurchaseSound.play();
-                    this.arrowRightRedTimer = 30;
-                    this.fadeInFadeOut("No Ability Selected");
-                }
+
+            if (mouseIsPressed && !this.wasMousePressed && this.keyNav.selected === null) {
+                this.rightArrowButtonPressed();
             }
         } else {
             image(arrowRight, rightPos.x, rightPos.y, size.x, size.y);
@@ -1178,6 +1181,72 @@ class Workshop {
             this.buyButtonRedTimer--;
         }
         pop();
+    }
+
+    leftArrowButtonPressed() {
+        this.wasMousePressed = true;
+        if (this.selectedItem === 'laser') {
+            if (this.showProjectile > 1) {
+                this.buttonPressedSound.play();
+                this.showProjectile--;
+            } else {
+                this.illegalPurchaseSound.play();
+                this.arrowLeftRedTimer = 30;
+            }
+        } else if (this.selectedItem === 'flying') {
+            if (this.showFligth > 1) {
+                this.buttonPressedSound.play();
+                this.showFligth--;
+            } else {
+                this.illegalPurchaseSound.play();
+                this.arrowLeftRedTimer = 30;
+            }
+        } else if (this.selectedItem === 'force field') {
+            if (this.showForceField > 1) {
+                this.buttonPressedSound.play();
+                this.showForceField--;
+            } else {
+                this.illegalPurchaseSound.play();
+                this.arrowLeftRedTimer = 30;
+            }
+        } else if (this.selectedItem === null) {
+            this.illegalPurchaseSound.play();
+            this.arrowLeftRedTimer = 30;
+            this.fadeInFadeOut("No Ability Selected");
+        }
+    }
+
+    rightArrowButtonPressed() {
+        this.wasMousePressed = true;
+        if (this.selectedItem === 'laser') {
+            if (this.showProjectile < 5) {
+                this.buttonPressedSound.play();
+                this.showProjectile++;
+            } else {
+                this.illegalPurchaseSound.play();
+                this.arrowRightRedTimer = 30;
+            }
+        } else if (this.selectedItem === 'flying') {
+            if (this.showFligth < 5) {
+                this.buttonPressedSound.play();
+                this.showFligth++;
+            } else {
+                this.illegalPurchaseSound.play();
+                this.arrowRightRedTimer = 30;
+            }
+        } else if (this.selectedItem === 'force field') {
+            if (this.showForceField < 5) {
+                this.buttonPressedSound.play();
+                this.showForceField++;
+            } else {
+                this.illegalPurchaseSound.play();
+                this.arrowRightRedTimer = 30;
+            }
+        } else if (this.selectedItem === null) {
+            this.illegalPurchaseSound.play();
+            this.arrowRightRedTimer = 30;
+            this.fadeInFadeOut("No Ability Selected");
+        }
     }
 
     /* ---------- small fading banner at bottom ---------- */
@@ -1332,7 +1401,10 @@ class Workshop {
         const startY = this.itemColumnY - (FRAMES * size) / 2 + size / 2;
 
         for (let i = 0; i < FRAMES; i++) {
-            image(itemFrame, x, startY + i * size, size, size);
+            if (this.keyNav.groupIndex === 4 && this.keyNav.groups[4].index === i && this.keyNav.selected != null) {
+                image(itemFrameWhite, x, startY + i * size, size, size);
+            }
+            else image(itemFrame, x, startY + i * size, size, size);
         }
 
         pop();
@@ -1351,7 +1423,10 @@ class Workshop {
         const startY = this.projectileColumnY - (FRAMES * size) / 2 + size / 2;
 
         for (let i = 0; i < FRAMES; i++) {
-            image(itemFrame, x, startY + i * size, size, size);
+            if (this.keyNav.groupIndex === 5 && this.keyNav.groups[5].index === i && this.keyNav.selected != null) {
+                image(itemFrameWhite, x, startY + i * size, size, size);
+            }
+            else image(itemFrame, x, startY + i * size, size, size);
         }
 
         pop();
@@ -1363,5 +1438,14 @@ class Workshop {
         this.playerFligthLevel     = inventory.flyLevel;
         this.playerProjectileLevel = inventory.laserLevel;
         this.playerForceFieldLevel = inventory.forceFieldLevel;
+    }
+
+    listenForCursorMove() {
+        window.addEventListener("mousemove", (event) => {
+            if (this.keyNav.selected != null) {
+                this.keyNav.selected = null;
+                document.body.classList.add("show-cursor");
+            }
+        });
     }
 }
