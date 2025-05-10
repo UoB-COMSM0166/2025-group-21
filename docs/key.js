@@ -59,6 +59,10 @@ function keyPressed() {
         }
     }
 
+    if (Domain === 'shop') {
+        domains.shop.keyNav.handleInput(keyCode);
+    }
+
     if (Domain === 'instruction') {
         if (keyCode === DOWN_ARROW) {
             domains.instruction.moveSelection(1);

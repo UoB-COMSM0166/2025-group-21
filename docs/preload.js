@@ -58,6 +58,7 @@ let forceFieldButton2, forceFieldButton2Glowing;
 
 //--Inventory Images--------
 let itemFrame;
+let itemFrameWhite;
 let dragonWingsGlowing;
 let rotorsWsGlowing;
 let boosterHydrogenGlowing;
@@ -314,6 +315,8 @@ function preload() {
 
     //--- Inventory Small Glowing Frames -------------------------------------------------------------
     itemFrame = loadImage('assets/images/itemFrame.png');
+    itemFrameWhite = loadImage('assets/images/itemFrameWhite.png');
+
     dragonWingsGlowing = loadImage('assets/images/dragonWings_WorkshopGlowing.png');
     rotorsWsGlowing = loadImage('assets/images/rotors_WorkshopGlowing.png');
     boosterWsGlowing = loadImage('assets/images/booster_WorkshopGlowing.png');

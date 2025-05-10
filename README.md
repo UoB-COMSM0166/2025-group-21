@@ -4,6 +4,8 @@
 ## Demonstration
 [Click me! You can play our game here! 🎮⚡🚀](https://uob-comsm0166.github.io/2025-group-21/)
 
+[![Watch Our VIDEO!🐧](https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png)](https://www.youtube.com/watch?v=iAYXBbDeZTE)
+
 # Table of Contents
 - [1. Development Team](#1-development-team)
 - [2. Introduction](#2-introduction)
