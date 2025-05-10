@@ -189,7 +189,7 @@ Now, with a set of requirements in mind, it came time to begin designing our gam
 
 The main class would begin by instantiating the inventory which would persist throughout runtime. This class would hold all data relating to the in-game progress of the user such as ability levels and in-game currency. The game and shop classes would then be instantiated and destroyed as the user navigates between these two domains. Additionally, they would both need to interface with the inventory class as to allow for the relevant upgrades to be shown in the shop and for these upgrades to be used in the game.
 
-The game class would be responsible for the actual gameplay. It would be formed of the following components:
+The game class would be responsible for the gameplay itself. It would be formed of the following components:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>1. Terrain</b>
 
