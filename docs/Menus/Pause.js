@@ -158,10 +158,6 @@ class Pause {
     }
 
     settingButtonPressed() {
-        // console.log(game.pause.buttonsActive);
-        // if (!game.pause.buttonsActive) {
-        //     return;
-        // }
         domains.game.pause.showSettings = true;
         settings.startCooldown();
     }
