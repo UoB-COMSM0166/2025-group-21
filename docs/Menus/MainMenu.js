@@ -18,13 +18,18 @@ class MainMenu {
         this.selectedButtonIndex = -1;
         this.buttonGrid = [
             [0, 1],
-            [2, 3]
+            [2, 3],
+            [4, 5]
         ];
         this.currentRow = 0;
         this.currentCol = 0;
         this.anyKeyPressed = false;
         this.showButtons = false;
+
+        this.instructions = null;
         this.showSettings = false;
+        this.highscores = null;
+        this.showCredits = false;
     }
 
     updateButtons() {
@@ -35,11 +40,16 @@ class MainMenu {
         let shop = createVector(0.62*width, 0.6*height);
         let instructions = createVector(0.38*width, 0.7*height);
         let settings = createVector(0.62*width, 0.7*height);
+        let highscores = createVector(0.38*width, 0.8*height);
+        let credits = createVector(0.62*width, 0.8*height);
 
+        // update buttons
         this.updateButton(0, startGame, startGameButton, startGameButtonHover, this.startButtonPressed)
         this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
-        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionButtonPressed);
+        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, () => domains.mainMenu.instructions = new Instruction());
         this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
+        this.updateButton(4, highscores, highscoresButton, highscoresButtonHover, this.highscoresButtonPressed);
+        this.updateButton(5, credits, creditsButton, creditsButtonHover, () => domains.mainMenu.showCredits = true);
     }
 
     updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
@@ -86,21 +96,38 @@ class MainMenu {
         Domain = 'shop';
     }
 
-    instructionButtonPressed() {
-        domains.mainMenu = null;
-        Domain = 'instruction';
-    }
-
     settingButtonPressed() {
         domains.mainMenu.showSettings = true;
         settings.startCooldown();
     }
 
+    highscoresButtonPressed() {
+        domains.mainMenu.highscores = new Highscores();
+        domains.mainMenu.highscores.loadHighscores();
+    }
+
+    // main loop
     showMainMenu() {
         // Draw background
         background(240, 248, 255);
         imageMode(CORNER);
         image(blurredHomeBackground, 0, 0, width, height);
+
+        // executed if high scores button is pressed
+        if (this.highscores) {
+            this.highscores.printHighscores();
+            return;
+        }
+        // executed if credits button is pressed
+        if (this.showCredits) {
+            this.showCreditsScreen();
+            return;
+        }
+        // executed if instructions button is pressed
+        if (this.instructions) {
+            this.instructions.draw();
+            return;
+        }
 
         this.updateAnimation();
         this.updateButtons();
@@ -114,6 +141,54 @@ class MainMenu {
         }
         pop();
         imageMode(CORNER);
+    }
+
+    showCreditsScreen() {
+        let boxWidth = width * 0.9;
+        let boxHeight = height * 0.9;
+
+
+        push();
+
+        imageMode(CENTER);
+        // draw paper box
+        image(tipsBox, width / 2, height / 2, boxWidth, boxHeight);
+
+        // print text
+        textFont(instructionFont);
+        fill(0);
+        textAlign(CENTER);
+        textSize(width * 0.025);
+        text('PengWings Development Team', width/2, 0.35*height);
+
+        let devTeam = 'Tom Raynes\nJack May\nNico Esgeb\nKuan Jung Huang\nJing Yao\nZhiling Liu';
+        textSize(width * 0.02);
+        text(devTeam, width/2, 0.45*height);
+
+        pop();
+
+        this.updateCreditsBackButton();
+    }
+
+    updateCreditsBackButton() {
+        push();
+        //this.updateButtonCooldown(30); // necessary as submit button is in same location as back button
+        let scale = 0.0015 * width;
+        let size = createVector(backButton.width / scale, backButton.height / scale);
+        let pos = createVector(0.5*width, 0.9*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                this.showCredits = false;
+            }
+        }
+        else {
+            image(backButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 
     handleKeyNavigation(keyCode) {
@@ -137,7 +212,7 @@ class MainMenu {
                 }
                 break;
             case DOWN_ARROW:
-                if (this.currentRow < 1) {
+                if (this.currentRow < 2) {
                     this.currentRow ++;
                 }
                 break;
@@ -169,9 +244,13 @@ class MainMenu {
             } else if (this.selectedButtonIndex === 1) {
                 this.shopButtonPressed();
             } else if (this.selectedButtonIndex === 2) {
-                this.instructionButtonPressed();
+                this.instructions = new Instruction();
             } else if (this.selectedButtonIndex === 3) {
                 this.settingButtonPressed();
+            } else if (this.selectedButtonIndex === 4) {
+                this.highscoresButtonPressed();
+            } else if (this.selectedButtonIndex === 5) {
+                this.showCredits = true;
             }
         }
     }

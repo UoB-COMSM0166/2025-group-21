@@ -8,7 +8,7 @@ class Instruction {
     draw() {
         background(240, 248, 255);
         imageMode(CORNER);
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
 
         let boxWidth = width * 0.9;
         let boxHeight = height * 0.9;
@@ -21,8 +21,8 @@ class Instruction {
 
         this.drawInstructions(boxWidth, boxHeight);
 
-        // this.updateButton(boxWidth, boxHeight);
         this.drawClawButton(boxWidth, boxHeight);
+        this.updateMainMenuButton();
     }
 
     drawInstructions(boxWidth, boxHeight) {
@@ -77,8 +77,8 @@ class Instruction {
         image(penguinClaw, x, y, buttonWidth, buttonHeight);
 
         if (isHover && mouseIsPressed) {
-                       this.continueButtonPressed();
-                   }
+            this.continueButtonPressed();
+        }
 
     }
 
@@ -93,8 +93,26 @@ class Instruction {
     }
 
     continueButtonPressed() {
-        domains.instruction = null;
+        domains.mainMenu = null;
         Domain = 'game';
+    }
+
+    updateMainMenuButton() {
+        push();
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                domains.mainMenu.instructions = null;
+            }
+        }
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
+        pop();
     }
 
 }

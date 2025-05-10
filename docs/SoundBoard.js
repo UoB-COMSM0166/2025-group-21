@@ -14,6 +14,8 @@ class SoundBoard {
         this.cache['workshopMusic'] = await loadSoundAsync('assets/sounds/workshopMusic.mp3');
         this.cache['purchaseSound'] = await loadSoundAsync('assets/sounds/purchaseSound.mp3');
         this.cache['illegalPurchaseSound'] = await loadSoundAsync('assets/sounds/illegalPurchaseSound.mp3');
+        this.cache['hoverPopSound'] = await loadSoundAsync('assets/sounds/hoverPopSound.mp3');
+        this.cache['buttonPressedSound'] = await loadSoundAsync('assets/sounds/buttonPressedSound.mp3');
 
         this.cache['windSound'] = await loadSoundAsync('assets/sounds/windSound.mp3');
         this.cache['laserSound'] = await loadSoundAsync('assets/sounds/laser.mp3');

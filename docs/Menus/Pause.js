@@ -118,7 +118,7 @@ class Pause {
             this.invPanel.isCloseButtonSelected = true;
             return;
         }
-        if (this.selectedButtonIndex !== -1) { // && this.selectedButtonIndex < this.buttons.length
+        if (this.selectedButtonIndex !== -1) {
             // Execute the appropriate action based on the selected button
             if (this.selectedButtonIndex === 0) {
                 this.continueButtonPressed();
@@ -178,11 +178,8 @@ class Pause {
                 this.active = false;
                 this.reset();
                 this.countdown = null;
-                //return false;
             }
-            //return true;
         }
-        //return false;
     }
 
     reset() {

@@ -33,13 +33,15 @@ class Settings {
         this.shieldKey = gameProgress.shieldKey;
     }
 
+    // is selected key being used by another ability?
     keyIsAvailable(key) {
         return !(this.flyKey === key || this.boostKey === key || this.shootKey === key || this.shieldKey === key);
     }
 
+    // main loop
     showSettingsScreen() {
         push();
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
 
         if (this.changeControls) {
             if (this.controlsPanel === null) {
@@ -73,7 +75,7 @@ class Settings {
     updateControlsButton() {
         let scale = 0.006 * width;
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
-        let pos = createVector(0.5*width, 0.7*height);
+        let pos = createVector(0.5*width, 0.75*height);
 
         if (hoveringOverButton(pos, size)) {
             image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -89,7 +91,7 @@ class Settings {
     updateBackButton() {
         let scale = 0.002 * width;
         let size = createVector(backButton.width / scale, backButton.height / scale);
-        let pos = createVector(0.5*width, 0.84*height);
+        let pos = createVector(0.5*width, 0.93*height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size)) {
@@ -115,7 +117,7 @@ class Settings {
     updateCheatsButton() {
         let scale = 0.006 * width;
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.5865*height);
+        let pos = createVector(0.59*width, 0.628*height);
 
         if (hoveringOverButton(pos, size)) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -144,8 +146,8 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.635*width, 0.37*height);
-        let downPos = createVector(0.635*width, 0.41*height);
+        let upPos = createVector(0.7*width, 0.395*height);
+        let downPos = createVector(0.7*width, 0.435*height);
 
         // up arrow
         if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
@@ -225,8 +227,8 @@ class Settings {
     updateBackgroundQualityControl() {
         let scale   = 0.006 * width;
         let size    = createVector(incrementArrow.width/scale, incrementArrow.height/scale);
-        let upPos   = createVector(0.635*width, 0.46*height);
-        let downPos = createVector(0.635*width, 0.50*height);
+        let upPos   = createVector(0.7*width, 0.5*height);
+        let downPos = createVector(0.7*width, 0.54*height);
 
         // Up arrow: go to HIGHER quality (lower index)
         if (hoveringOverButton(upPos, size) && this.bgQuality > 0) {
@@ -253,6 +255,7 @@ class Settings {
         }
     }
 
+    // volume dial is currently being controlled by user
     adjustDialPos() {
         this.dialPos.x = mouseX + this.offset;
 
@@ -276,6 +279,7 @@ class Settings {
         image(volumeBar, width/2, 0.3*height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
+    // Draw the labels associated with all button and controls
     drawLabels() {
         let size = width/10
         fill('rgb(21,37,58)');
@@ -292,15 +296,15 @@ class Settings {
         text('Master Volume', width/2, height/3.9); // volume
 
         textAlign(LEFT);
-        text('Difficulty:', width/2.8, 0.40*height); // difficulty
+        text('Difficulty:', width/3.45, 0.415*height); // difficulty
         textAlign(CENTER);
-        text(`${this.difficulties[this.difficulty]}`, 0.534*width, 0.40*height)
+        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.415*height)
 
         textAlign(LEFT);
-        text('Background Quality:', width/3.8, 0.50*height);
+        text('Background Quality:', width/3.45, 0.52*height);
         textAlign(CENTER);
-        text(`${this.bgQualities[this.bgQuality]}`, 0.534*width, 0.50*height);
+        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.52*height);
 
-        text('Enable Cheats:', width/2.17, 0.59*height); // cheats
+        text('Enable Cheats:', width/2.17, 0.63*height); // cheats
     }
 }

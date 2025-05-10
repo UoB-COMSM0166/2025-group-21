@@ -34,6 +34,7 @@ class Death {
         this.buttonCooldownTimer = new Clock();
     }
 
+    // Sequence of events occurring at point of game over
     runPlayerDeathSequence() {
 
         // Death animation
@@ -110,6 +111,7 @@ class Death {
         }
     }
 
+    // animate the players final score
     showFinalScore() {
 
         push();

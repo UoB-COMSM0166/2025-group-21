@@ -63,9 +63,15 @@ class Game {
         this.wind = null;
         this.death = null;
 
-        this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
+        this.fly = inventory.currentFlyItem > 0 ? new FlyingAbility(inventory.currentFlyItem) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
-        this.projectile = new ProjectileAbility(inventory.laserLevel);
+        // Equip shooter only when a projectile is unlocked (index ≥ 0)
+        if (inventory.currentProjectileItem >= 0) {
+            // index 0‑4  → type 1‑5 for ProjectileAbility
+            this.projectile = new ProjectileAbility(inventory.currentProjectileItem + 1);
+        } else {
+            this.projectile = null;   // no projectile until the player buys Fish
+        }
 
         //---------------------------------------
         this.background = new Background();
@@ -75,16 +81,11 @@ class Game {
     runSimulation() { // Main loop for game
         if (!this.soundsLoaded) return;
 
-        //--------------------
         clear();
-        //--------------------
 
         this.adjustZoom();
         this.wind.adjustVolume();
 
-        //image(homeBackground, 0, 0, width, height);
-        //---------------------------------------
-        //image(homeBackground, 0, 0, width, height);
         const floorSpeed = this.pause.active ? 0 : this.player.vel.x;
         this.background.update(floorSpeed, this.zoom);
         this.background.draw( this.zoom, floorSpeed );
@@ -96,7 +97,7 @@ class Game {
 
             this.terrain.drawHills(width);
             this.player.drawPlayer()
-            this.projectile.updateProjectiles();
+            if (this.projectile) this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
             this.obstacleHandler.updateExplosions();
 
@@ -136,8 +137,7 @@ class Game {
                 this.fly.charge();
 
                 if (this.fly.active) {
-                    //this.fly.glide(); // apply upward force equal to gravity
-                    this.fly.applyUpwardForce(); // greater then gravity
+                    this.fly.applyUpwardForce(); // greater than gravity
                 }
             }
             if (this.shield != null) {
@@ -160,9 +160,9 @@ class Game {
     adjustZoom() {
 
         if (this.player.pos.y < this.topMargin) {
-            this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
+            this.zoom = 0.86 / (-this.player.pos.y/height + 1);
             this.ty = this.topMargin - this.zoom * (this.player.pos.y);
-            this.tx = 175 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
+            this.tx = 175 - this.zoom * (this.player.pos.x); // 175 seems to work better than 150
         }
         else {
             this.zoom = 1;

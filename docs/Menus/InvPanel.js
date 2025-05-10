@@ -30,6 +30,7 @@ class InvPanel {
         pop();
     }
 
+    // main loop
     draw() {
 
         push();

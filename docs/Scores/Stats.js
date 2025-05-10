@@ -12,6 +12,7 @@ class Stats {
         this.backButtonSelected = false;
     }
 
+    // called continuously in game loop
     gameUpdate() {
 
         if (domains.game.score.currentAirtime > this.maxAirTime) {
@@ -27,6 +28,8 @@ class Stats {
             }
         }
     }
+
+    // called once at game over
     deathUpdate() {
         this.score = domains.game.score.total;
         this.distanceTraveled = domains.game.offset;

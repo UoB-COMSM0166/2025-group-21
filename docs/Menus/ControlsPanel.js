@@ -27,6 +27,7 @@ class ControlsPanel {
         pop();
     }
 
+    // Update the controls from the keys selected via user input
     getNewKeyFromUser() {
         push();
         fill('rgba(0,0,0,0.8)');
@@ -107,6 +108,7 @@ class ControlsPanel {
         else image(backButton, pos.x, pos.y, size.x, size.y);
     }
 
+    // print the current controls to the screen
     drawLabels() {
         let size = width/10
         fill('rgb(21,37,58)');

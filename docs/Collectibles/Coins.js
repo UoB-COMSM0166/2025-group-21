@@ -56,12 +56,10 @@ class Coins {
             currentGap = Math.hypot(dx, dy);
         }
 
-        let finalPoint = {
+        return {
             x: currentX,
             y: currentY
-        }
-
-        return finalPoint;
+        };
     }
 
     calculateOffset(coinX, coinY) {

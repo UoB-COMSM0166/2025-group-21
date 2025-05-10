@@ -14,7 +14,7 @@ class GameLoader {
 
     showLoadScreen() {
         push();
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
         this.printText();
         this.updateYesButton();
         this.updateNoButton();
@@ -34,6 +34,7 @@ class GameLoader {
         }
     }
 
+    // Set game state to either loaded save data or the default state
     initialiseGameState(gameState) {
         settings = new Settings(gameState);
         inventory = new Inventory(gameState);
