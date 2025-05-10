@@ -9,6 +9,7 @@ class Stats {
         this.distanceTraveled = 0;
         this.highestJump = 0;
         this.ufoHits = 0;
+        this.backButtonSelected = false;
     }
 
     // called continuously in game loop
@@ -35,6 +36,7 @@ class Stats {
     }
 
     showsStatsScreen() {
+        // this.backButtonSelected = false;
         push()
         let size = width/40;
         let d = width - height;
@@ -66,11 +68,12 @@ class Stats {
         let pos = createVector(0.5*width, 0.9*height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) || this.backButtonSelected) {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
                 domains.game.death.showStats = false;
+                domains.game.death.selectedButtonIndex = -1;
             }
         }
         else {

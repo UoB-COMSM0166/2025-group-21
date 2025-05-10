@@ -27,6 +27,11 @@ class Death {
         this.numScore = createVector(width/7.5, height/2.8); // position of number at death
 
         this.progressSaved = false;
+        this.selectedButtonIndex = -1;
+        this.buttonCount = 3;
+        this.anyKeyPressed = false;
+        this.buttonActive = true;
+        this.buttonCooldownTimer = new Clock();
     }
 
     // Sequence of events occurring at point of game over
@@ -175,76 +180,98 @@ class Death {
             saveGameProgress();
             this.progressSaved = true;
         }
+
+        if (this.buttonCooldownTimer.time > 0) {
+            this.updateButtonCooldown();
+        }
+
+        if (!mouseIsPressed) {
+            this.buttonActive = true;
+        }
+
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
 
         document.body.classList.add("show-cursor");
-        this.updateShopButton();
-        this.updatePlayButton();
-        this.updateStatsButton();
+        this.updateButtons();
     }
 
-    updateShopButton() {
+    updateButtonCooldown() {
+        this.buttonCooldownTimer.tick();
+        if (this.buttonCooldownTimer.time > 30) {
+            this.buttonCooldownTimer.reset();
+            this.buttonActive = true;
+        }
+    }
 
+    startCooldown() {
+        this.buttonActive = false;
+        this.buttonCooldownTimer.tick();
+    }
+
+    updateButtons() {
+        let playAgain = createVector(0.5*width, 0.3*height);
+        let shop = createVector(0.5*width, 0.5*height);
+        let stats = createVector(0.5*width, 0.7*height);
+
+        this.updateButton(0, playAgain, playAgainButton, playAgainButtonHover, this.playAgainButtonPressed);
+        this.updateButton(1, shop, returnToWorkshopButton, returnToWorkshopButtonHover, this.shopButtonPressed);
+        this.updateButton(2, stats, statsButton, statsButtonHover, this.statsButtonPressed);
+    }
+
+    updateButton(buttonID, pos, buttonDefault, buttonHover, buttonAction) {
         push();
         let scale = 0.0015 * width;
-        let size = createVector(returnToWorkshopButton.width / scale, returnToWorkshopButton.height / scale);
-        let pos = createVector(0.5*width, 0.5*height);
+        let size = createVector(buttonDefault.width / scale, buttonDefault.height / scale);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
-            image(returnToWorkshopButtonHover, pos.x, pos.y, size.x, size.y);
+        let isHovering = hoveringOverButton(pos, size);
+        let isSelected = this.selectedButtonIndex === buttonID;
 
-            if (mouseIsPressed) {
-                domains.game.disconnectAudio();
-                domains.game = null;
-                Domain = 'shop';
+        if (isHovering || isSelected) {
+            image(buttonHover, pos.x, pos.y, size.x, size.y);
+            if (mouseIsPressed && this.buttonActive && isHovering) {
+                if (buttonID === 0) {
+                    this.playAgainButtonPressed();
+                } else if (buttonID === 1) {
+                    this.shopButtonPressed();
+                } else if (buttonID === 2) {
+                    this.statsButtonPressed();
+                }
+                this.startCooldown();
             }
-        }
-        else {
-            image(returnToWorkshopButton, pos.x, pos.y, size.x, size.y);
+        } else {
+            image(buttonDefault, pos.x, pos.y, size.x, size.y);
         }
         pop();
     }
-    updatePlayButton() {
 
-        push();
-        let scale = 0.0015 * width;
-        let size = createVector(playAgainButton.width / scale, playAgainButton.height / scale);
-        let pos = createVector(0.5*width, 0.3*height);
-        imageMode(CENTER);
-
-        if (hoveringOverButton(pos, size)) {
-            image(playAgainButtonHover, pos.x, pos.y, size.x, size.y);
-
-            if (mouseIsPressed) {
-                domains.game.disconnectAudio();
-                domains.game = null;
+    selectCurrentButton() {
+        if (this.selectedButtonIndex !== -1) {
+            if (this.selectedButtonIndex === 0) {
+                this.playAgainButtonPressed();
+            } else if (this.selectedButtonIndex === 1) {
+                this.shopButtonPressed();
+            } else if (this.selectedButtonIndex === 2) {
+                this.statsButtonPressed();
             }
         }
-        else {
-            image(playAgainButton, pos.x, pos.y, size.x, size.y);
-        }
-        pop();
     }
-    updateStatsButton() {
 
-        push();
-        let scale = 0.0015 * width;
-        let size = createVector(statsButton.width / scale, statsButton.height / scale);
-        let pos = createVector(0.5*width, 0.7*height);
-        imageMode(CENTER);
+    playAgainButtonPressed() {
+        domains.game.disconnectAudio();
+        domains.game = null;
+    }
 
-        if (hoveringOverButton(pos, size)) {
-            image(statsButtonHover, pos.x, pos.y, size.x, size.y);
+    shopButtonPressed() {
+        domains.game.disconnectAudio();
+        domains.game = null;
+        Domain = 'shop';
+    }
 
-            if (mouseIsPressed) {
-                this.showStats = true;
-            }
-        }
-        else {
-            image(statsButton, pos.x, pos.y, size.x, size.y);
-        }
-        pop();
+    statsButtonPressed() {
+        this.showStats = true;
+        this.selectedButtonIndex = -1;
+        this.anyKeyPressed = false;
     }
 }
