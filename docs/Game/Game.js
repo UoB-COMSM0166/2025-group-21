@@ -63,7 +63,7 @@ class Game {
         this.wind = null;
         this.death = null;
 
-        this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
+        this.fly = inventory.currentFlyItem > 0 ? new FlyingAbility(inventory.currentFlyItem) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
         // Equip shooter only when a projectile is unlocked (index ≥ 0)
         if (inventory.currentProjectileItem >= 0) {

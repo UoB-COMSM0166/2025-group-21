@@ -426,6 +426,13 @@ class Workshop {
         imageMode(CENTER);
         translate(0.175 * width, 0.55 * height);
 
+        if (this.showProjectile > inventory.laserLevel) {
+            //--Paint colours again---
+            tint(100);
+        } else {
+            noTint();
+        }
+
         //--todo: IMG shown has to be in base of "showProjectile"
         switch (this.showProjectile) {
             case 1:
@@ -474,6 +481,14 @@ class Workshop {
 
         imageMode(CENTER);
         translate(0.175 * width, 0.55 * height);
+
+        //---Flight items dark when not bought---
+        if (this.showFligth > inventory.flyLevel) {
+            //--Back to colour---
+            tint(100);
+        } else {
+            noTint();
+        }
 
         switch (this.showFligth) {
             // case 0:
@@ -526,6 +541,13 @@ class Workshop {
         let size = width / 3800;
         imageMode(CENTER);
         translate(0.175 * width, 0.55 * height);
+        //---Forcefield Dark when no bought---
+        if (this.showForceField > inventory.forceFieldLevel) {
+            //--Colour again--
+            tint(100);
+        } else {
+            noTint();
+        }
         image(shadow, 0, height / 5.5, size * shadow.width / 3.5, size * shadow.height / 3.5);
         image(shieldWorkshop, 0, 0, size * shieldWorkshop.width, size * shieldWorkshop.height);
         pop();
