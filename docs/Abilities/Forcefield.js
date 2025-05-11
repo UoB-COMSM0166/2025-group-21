@@ -47,11 +47,12 @@ class ForceField {
         }
         else velocityAngle = atan(domains.game.terrain.slope(domains.game.player.pos.x));
 
-        this.drawShieldLayer(30, 136, 0, 0.51, 1, velocityAngle);
+        let level = inventory.forceFieldLevel;
+        if (level > 1) this.drawShieldLayer(30, 136, 0, 0.51, 1, velocityAngle);
         this.drawShieldLayer(255, 136, 0, 0.21, 1.05, velocityAngle);
-        this.drawShieldLayer(0, 178, 255, 0.28, 0.95, velocityAngle);
-        this.drawShieldLayer(182, 84, 255, 0.29, 0.975, velocityAngle);
-        this.drawShieldLayer(255, 0, 0, 0.1, 1.025, velocityAngle);
+        if (level > 2) this.drawShieldLayer(0, 178, 255, 0.28, 0.95, velocityAngle);
+        if (level > 3) this.drawShieldLayer(182, 84, 255, 0.29, 0.975, velocityAngle);
+        if (level > 4) this.drawShieldLayer(255, 0, 0, 0.1, 1.025, velocityAngle);
     }
 
     drawShieldLayer(r, g, b, a, scale, velocityAngle) {

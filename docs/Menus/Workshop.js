@@ -409,8 +409,8 @@ class Workshop {
             `Projectile level ${this.showProjectile}:  ${laserPrice} coins\n\n` +
             inventory.getProjectileBuyRequirement(this.showProjectile) +
             inventory.getProjectileDescription(this.showProjectile),
-            0.345 * width,
-            0.35 * height
+            0.34 * width,
+            0.33 * height
         );
 
         // TODO: add description
@@ -465,8 +465,8 @@ class Workshop {
             `Flying level ${this.showFligth}:  ${flyingPrice} coins\n\n` +
             inventory.getFlyingBuyRequirement(this.showFligth) +
             inventory.getFlyingDescription(this.showFligth),
-            0.345 * width,
-            0.35 * height
+            0.34 * width,
+            0.33 * height
         );
 
         this.printSelectedAbilityLevel(this.showFligth);
@@ -528,7 +528,7 @@ class Workshop {
             'requirements' + 'description',
             //inventory.getForceFieldDescription(this.showForceField),
             0.34 * width,
-            height / 2.37
+            0.33 * height
         );
 
         this.printSelectedAbilityLevel(this.showForceField);
