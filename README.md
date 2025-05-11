@@ -697,8 +697,7 @@ To support communication, planning, documentation, and our needs throughout deve
 - Balanced task allocation with Kanban kept everyone involved and enabled clear progress tracking.
 - Open communication channels accelerated technical problem-solving
 - Git branching and GitHub pull request workflows maintained a stable codebase
-- Kanban implementation enabled clear progress tracking
-- Frequent user testing outside the team helped prioritize what to improve.
+- Frequent user testing outside the team helped prioritise features/improvements.
 - A comprehensive documentation system enabled rapid task onboarding.
 
 ### Problems
