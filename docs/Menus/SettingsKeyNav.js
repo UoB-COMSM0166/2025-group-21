@@ -13,6 +13,8 @@ class SettingsKeyNav {
     }
 
     handleInput(keyCode) {
+        settings.hideCursor();
+
         if (this.volumeAdjustMode) {
             this.handleVolumeAdjustment(keyCode);
             return;

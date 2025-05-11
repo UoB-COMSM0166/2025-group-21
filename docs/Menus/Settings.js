@@ -35,6 +35,9 @@ class Settings {
         this.boostKey = gameProgress.boostKey;
         this.shootKey = gameProgress.shootKey;
         this.shieldKey = gameProgress.shieldKey;
+
+        this.cursorVisible = false;
+        this.hideCursor();
     }
 
     // is selected key being used by another ability?
@@ -51,6 +54,8 @@ class Settings {
 
     // main loop
     showSettingsScreen() {
+        this.listenForMouseMove();
+
         push();
         image(blurredHomeBackground, 0, 0, width, height);
 
@@ -96,7 +101,7 @@ class Settings {
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
         let pos = createVector(0.5*width, 0.85*height);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -118,7 +123,7 @@ class Settings {
         let pos = createVector(0.935 * width, 0.04 * height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
@@ -137,7 +142,7 @@ class Settings {
         let pos = createVector(0.95 * width, 0.04 * height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
@@ -153,7 +158,9 @@ class Settings {
                 }
             }
         }
-        else image(backButton, pos.x, pos.y, size.x, size.y);
+        else if (this.keyNav.selectedControl !== 8) { // key nav button highlight doesnt cover entire button
+            image(backButton, pos.x, pos.y, size.x, size.y);
+        }
     }
 
 
@@ -162,7 +169,7 @@ class Settings {
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
         let pos = createVector(0.59*width, 0.7375*height);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -193,7 +200,7 @@ class Settings {
         let downPos = createVector(0.7*width, 0.54*height);
 
         // up arrow
-        if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
+        if (hoveringOverButton(upPos, size) && this.difficulty < 2 && this.cursorVisible) {
             image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -204,7 +211,7 @@ class Settings {
         else image(incrementArrow, upPos.x, upPos.y, size.x, size.y);
 
         // down arrow
-        if (hoveringOverButton(downPos, size) && this.difficulty > 0) {
+        if (hoveringOverButton(downPos, size) && this.difficulty > 0 && this.cursorVisible) {
             image(decrementArrowHover, downPos.x, downPos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -276,7 +283,7 @@ class Settings {
         }
 
         imageMode(CENTER);
-        if (this.offset !== null || hoveringOverButton(this.dialPos, size)) {
+        if (this.offset !== null || (hoveringOverButton(this.dialPos, size) && this.cursorVisible)) {
             image(volumeDialHover, this.dialPos.x, this.dialPos.y, size.x, size.y);
         }
         else image(volumeDial, this.dialPos.x, this.dialPos.y, size.x, size.y);
@@ -289,7 +296,7 @@ class Settings {
         let downPos = createVector(0.7*width, 0.65*height);
 
         // Up arrow: go to HIGHER quality (lower index)
-        if (hoveringOverButton(upPos, size) && this.bgQuality > 0) {
+        if (hoveringOverButton(upPos, size) && this.bgQuality > 0 && this.cursorVisible) {
             image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
             if (mouseIsPressed && this.buttonsActive) {
                 this.bgQuality--;
@@ -301,7 +308,7 @@ class Settings {
         }
 
         // Down arrow: go to LOWER quality (higher index)
-        if (hoveringOverButton(downPos, size) && this.bgQuality < this.bgQualities.length - 1) {
+        if (hoveringOverButton(downPos, size) && this.bgQuality < this.bgQualities.length - 1 && this.cursorVisible) {
             image(decrementArrowHover, downPos.x, downPos.y, size.x, size.y);
             if (mouseIsPressed && this.buttonsActive) {
                 this.bgQuality++;
@@ -344,7 +351,7 @@ class Settings {
         let scale = 0.0035 * width;
         let size  = createVector(volumeDial.width / scale, volumeDial.height / scale);
 
-        if (hoveringOverButton(this.musicDialPos, size)) {
+        if (hoveringOverButton(this.musicDialPos, size) && this.cursorVisible) {
             if (mouseIsPressed) {
                 if (this.offsetMusic == null) {
                     this.offsetMusic   = this.musicDialPos.x - mouseX;
@@ -358,7 +365,7 @@ class Settings {
         }
 
         imageMode(CENTER);
-        if (this.offsetMusic !== null || hoveringOverButton(this.musicDialPos, size)) {
+        if (this.offsetMusic !== null || (hoveringOverButton(this.musicDialPos, size) && this.cursorVisible)) {
             image(volumeDialHover, this.musicDialPos.x, this.musicDialPos.y, size.x, size.y);
         } else {
             image(volumeDial, this.musicDialPos.x, this.musicDialPos.y, size.x, size.y);
@@ -413,5 +420,24 @@ class Settings {
         text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.63*height);
 
         text('Enable Cheats:', width/2.17, 0.74*height); // cheats
+    }
+
+    listenForMouseMove() {
+        window.addEventListener("mousemove", (event) => {
+            if (this.keyNav.selectedControl > -1) {
+                this.keyNav.selectedControl = -1
+            }
+            this.showCursor();
+        });
+    }
+
+    showCursor() {
+        document.body.classList.add("show-cursor");
+        this.cursorVisible = true;
+    }
+
+    hideCursor() {
+        document.body.classList.remove("show-cursor");
+        this.cursorVisible = false;
     }
 }
