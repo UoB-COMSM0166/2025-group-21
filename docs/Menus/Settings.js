@@ -94,7 +94,7 @@ class Settings {
     updateControlsButton() {
         let scale = 0.006 * width;
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
-        let pos = createVector(0.5*width, 0.78*height);
+        let pos = createVector(0.5*width, 0.85*height);
 
         if (hoveringOverButton(pos, size)) {
             image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -160,7 +160,7 @@ class Settings {
     updateCheatsButton() {
         let scale = 0.006 * width;
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.68*height);
+        let pos = createVector(0.59*width, 0.7375*height);
 
         if (hoveringOverButton(pos, size)) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -189,8 +189,8 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.7*width, 0.45*height);
-        let downPos = createVector(0.7*width, 0.49*height);
+        let upPos = createVector(0.7*width, 0.5*height);
+        let downPos = createVector(0.7*width, 0.54*height);
 
         // up arrow
         if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
@@ -285,8 +285,8 @@ class Settings {
     updateBackgroundQualityControl() {
         let scale   = 0.006 * width;
         let size    = createVector(incrementArrow.width/scale, incrementArrow.height/scale);
-        let upPos   = createVector(0.7*width, 0.54*height);
-        let downPos = createVector(0.7*width, 0.58*height);
+        let upPos   = createVector(0.7*width, 0.61*height);
+        let downPos = createVector(0.7*width, 0.65*height);
 
         // Up arrow: go to HIGHER quality (lower index)
         if (hoveringOverButton(upPos, size) && this.bgQuality > 0) {
@@ -403,15 +403,15 @@ class Settings {
         text('Music Volume',  width/2, height/2.8);
 
         textAlign(LEFT);
-        text('Difficulty:', width/3.45, 0.47*height); // difficulty
+        text('Difficulty:', width/3.45, 0.52*height); // difficulty
         textAlign(CENTER);
-        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.47*height)
+        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.52*height)
 
         textAlign(LEFT);
-        text('Background Quality:', width/3.45, 0.56*height);
+        text('Background Quality:', width/3.45, 0.63*height);
         textAlign(CENTER);
-        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.56*height);
+        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.63*height);
 
-        text('Enable Cheats:', width/2.17, 0.68*height); // cheats
+        text('Enable Cheats:', width/2.17, 0.74*height); // cheats
     }
 }

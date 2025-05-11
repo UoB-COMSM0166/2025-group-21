@@ -22,12 +22,59 @@ class SettingsKeyNav {
             this.handleMusicVolumeAdjustment(keyCode);
             return;
         }
-
-        if (keyCode === UP_ARROW) {
-            this.moveSelection(-1);
-        } else if (keyCode === DOWN_ARROW) {
-            this.moveSelection(1);
-        } else if (keyCode === ENTER) {
+        if (this.selectedControl === 0) { // volume bar
+            if (keyCode === UP_ARROW) {
+                this.moveSelection(-1); // menu
+            }
+            else if (keyCode === DOWN_ARROW) {
+                this.moveSelection(2); // music bar
+            }
+            else if (keyCode === RIGHT_ARROW) {
+                this.moveSelection(1); // volume mute
+            }
+        }
+        else if (this.selectedControl === 1) { // volume mute
+            if (keyCode === UP_ARROW) {
+                this.moveSelection(-2); // menu
+            }
+            else if (keyCode === DOWN_ARROW) {
+                this.moveSelection(2); // music mute
+            }
+            else if (keyCode === LEFT_ARROW) {
+                this.moveSelection(-1); // volume bar
+            }
+        }
+        else if (this.selectedControl === 2) { // music bar
+            if (keyCode === UP_ARROW) {
+                this.moveSelection(-2); // volume bar
+            }
+            else if (keyCode === DOWN_ARROW) {
+                this.moveSelection(2); // difficulty
+            }
+            else if (keyCode === RIGHT_ARROW) {
+                this.moveSelection(1); // music mute
+            }
+        }
+        else if (this.selectedControl === 3) { // music mute
+            if (keyCode === UP_ARROW) {
+                this.moveSelection(-2); // volume mute
+            }
+            else if (keyCode === DOWN_ARROW) {
+                this.moveSelection(1); // difficulty
+            }
+            else if (keyCode === LEFT_ARROW) {
+                this.moveSelection(-1); // music bar
+            }
+        }
+        // remaining controls
+        else {
+            if (keyCode === UP_ARROW) {
+                this.moveSelection(-1);
+            } else if (keyCode === DOWN_ARROW) {
+                this.moveSelection(1);
+            }
+        }
+        if (keyCode === ENTER) {
             this.activateSelectedControl();
         }
     }
@@ -322,8 +369,8 @@ class SettingsKeyNav {
     drawDifficultyHighlight() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.7*width, 0.45*height);
-        let downPos = createVector(0.7*width, 0.49*height);
+        let upPos = createVector(0.7*width, 0.5*height);
+        let downPos = createVector(0.7*width, 0.54*height);
 
         if (this.selectedSubControl === "up" && this.settings.difficulty < 2) {
             image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
@@ -335,15 +382,16 @@ class SettingsKeyNav {
         fill(195, 195, 255);
         textAlign(CENTER);
         textSize(width/30/1.5);
-        text(`${this.settings.difficulties[this.settings.difficulty]}`, 0.58*width, 0.47*height);
+        strokeWeight(width/400);
+        text(`${this.settings.difficulties[this.settings.difficulty]}`, 0.58*width, 0.52*height);
         pop();
     }
 
     drawQualityHighlight() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.7*width, 0.54*height);
-        let downPos = createVector(0.7*width, 0.58*height);
+        let upPos = createVector(0.7*width, 0.61*height);
+        let downPos = createVector(0.7*width, 0.65*height);
 
         if (this.selectedSubControl === "up" && this.settings.bgQuality > 0) {
             image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
@@ -355,14 +403,15 @@ class SettingsKeyNav {
         fill(195, 195, 255);
         textAlign(CENTER);
         textSize(width/30/1.5);
-        text(`${this.settings.bgQualities[this.settings.bgQuality]}`, 0.58*width, 0.56*height);
+        strokeWeight(width/400);
+        text(`${this.settings.bgQualities[this.settings.bgQuality]}`, 0.58*width, 0.63*height);
         pop();
     }
 
     drawCheatsHighlight() {
         let scale = 0.006 * width;
         let size = createVector(this.settings.cheatsButton.width / scale, this.settings.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.68*height);
+        let pos = createVector(0.59*width, 0.7375*height);
 
         image(this.settings.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
     }
@@ -370,7 +419,7 @@ class SettingsKeyNav {
     drawControlsHighlight() {
         let scale = 0.006 * width;
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
-        let pos = createVector(0.5*width, 0.78*height);
+        let pos = createVector(0.5*width, 0.85*height);
 
         image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
     }
@@ -405,6 +454,8 @@ class SettingsKeyNav {
             textAlign(CENTER);
             fill(209, 232, 255);
             textSize(width/60);
+            strokeWeight(width/500);
+            textFont(instructionFont);
             text("Use left/right keys to adjust, press Enter to confirm", width/2, 0.31*height);
             pop();
         }
