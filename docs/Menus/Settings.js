@@ -1,5 +1,3 @@
-
-
 class Settings {
 
     constructor(gameProgress) {
@@ -10,6 +8,12 @@ class Settings {
         this.buttonsActive = true;
         this.dialPos = this.initialiseDialPos(this.masterVolume);
         this.offset = null;
+
+        this.musicVolume   = (gameProgress.musicVolume !== undefined) ? gameProgress.musicVolume : 0.2;
+        this.musicMute       = (gameProgress.musicMute !== undefined) ? gameProgress.musicMute : 1; // 1=on
+        this.musicMuteButton = this.musicMute ? soundOn : soundOff;
+        this.musicDialPos  = this.initialiseDialPosMusic(this.musicVolume);
+        this.offsetMusic   = null;
 
         this.difficulties = ['Beginner', 'Intermediate', 'Advanced'];
         this.difficulty = gameProgress.difficulty;
@@ -52,8 +56,11 @@ class Settings {
         else {
             this.drawLabels();
             this.drawVolumeBar();
+            this.drawMusicBar();
+            this.updateMusicDial();
             this.updateVolumeDial();
             this.updateMuteButton();
+            this.updateMusicMuteButton();
             this.updateDifficultyControl();
             this.updateCheatsButton();
             this.updateControlsButton();
@@ -64,9 +71,9 @@ class Settings {
                 this.updateButtonCooldown();
             }
 
-            if (this.offset != null) {
-                this.adjustDialPos();
-            }
+            /* allow either dial to be dragged independently */
+            this.adjustDialPos();
+            this.adjustMusicDialPos();
             setMasterVolume(this.masterVolume * this.mute);
         }
         pop();
@@ -98,6 +105,8 @@ class Settings {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
+                settings.musicVolume = this.musicVolume;
+                settings.musicMute   = this.musicMute;
                 saveGameProgress();
 
                 if (Domain === 'mainMenu') {
@@ -145,8 +154,8 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.7*width, 0.395*height);
-        let downPos = createVector(0.7*width, 0.435*height);
+        let upPos = createVector(0.7*width, 0.435*height);
+        let downPos = createVector(0.7*width, 0.475*height);
 
         // up arrow
         if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
@@ -183,6 +192,21 @@ class Settings {
             this.startCooldown();
         }
         this.muteButton = this.mute === 1 ? soundOn : soundOff;
+    }
+
+    updateMusicMuteButton() {
+        let scale = 0.006 * width;
+        let size  = createVector(this.musicMuteButton.width / scale,
+                                 this.musicMuteButton.height / scale);
+        let pos   = createVector(0.78 * width, 0.37 * height);
+
+        image(this.musicMuteButton, pos.x, pos.y, size.x, size.y);
+
+        if (hoveringOverButton(pos, size) && mouseIsPressed && this.buttonsActive) {
+            this.musicMute = (this.musicMute + 1) % 2;          // toggle 1↔0
+            this.musicMuteButton = this.musicMute ? soundOn : soundOff;
+            this.startCooldown();
+        }
     }
 
     updateButtonCooldown() {
@@ -226,8 +250,8 @@ class Settings {
     updateBackgroundQualityControl() {
         let scale   = 0.006 * width;
         let size    = createVector(incrementArrow.width/scale, incrementArrow.height/scale);
-        let upPos   = createVector(0.7*width, 0.5*height);
-        let downPos = createVector(0.7*width, 0.54*height);
+        let upPos   = createVector(0.7*width, 0.54*height);
+        let downPos = createVector(0.7*width, 0.58*height);
 
         // Up arrow: go to HIGHER quality (lower index)
         if (hoveringOverButton(upPos, size) && this.bgQuality > 0) {
@@ -256,6 +280,8 @@ class Settings {
 
     // volume dial is currently being controlled by user
     adjustDialPos() {
+        if (this.offset == null) return;   // only drag while grabbed
+
         this.dialPos.x = mouseX + this.offset;
 
         if (this.dialPos.x < 0.27*width) {
@@ -270,6 +296,52 @@ class Settings {
     initialiseDialPos(masterVolume) {
         let xPos = (0.27 + 0.46*masterVolume) * width;
         return createVector(xPos, 0.3*height);
+    }
+
+    /* ---------- Music‑volume helpers ---------- */
+
+    initialiseDialPosMusic(vol) {
+        let xPos = (0.27 + 0.46 * vol) * width;
+        return createVector(xPos, 0.37 * height);   // slightly lower than master
+    }
+
+    updateMusicDial() {
+        let scale = 0.0035 * width;
+        let size  = createVector(volumeDial.width / scale, volumeDial.height / scale);
+
+        if (hoveringOverButton(this.musicDialPos, size)) {
+            if (mouseIsPressed) {
+                if (this.offsetMusic == null) {
+                    this.offsetMusic   = this.musicDialPos.x - mouseX;
+                    this.buttonsActive = false;
+                }
+            }
+        }
+        if (!mouseIsPressed && this.offsetMusic != null) {
+            this.offsetMusic = null;
+            this.buttonsActive = true;
+        }
+
+        imageMode(CENTER);
+        if (this.offsetMusic !== null || hoveringOverButton(this.musicDialPos, size)) {
+            image(volumeDialHover, this.musicDialPos.x, this.musicDialPos.y, size.x, size.y);
+        } else {
+            image(volumeDial, this.musicDialPos.x, this.musicDialPos.y, size.x, size.y);
+        }
+    }
+
+    adjustMusicDialPos() {
+        if (this.offsetMusic == null) return;
+
+        this.musicDialPos.x = mouseX + this.offsetMusic;
+        this.musicDialPos.x = constrain(this.musicDialPos.x, 0.27 * width, 0.73 * width);
+        this.musicVolume = (this.musicDialPos.x / width - 0.27) / 0.46;
+    }
+
+    drawMusicBar() {
+        let scale = 0.0035 * width;
+        imageMode(CENTER);
+        image(volumeBar, width / 2, 0.37 * height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
     drawVolumeBar() {
@@ -292,18 +364,19 @@ class Settings {
         size = width/30
         strokeWeight(size/30);
         textSize(size/1.5);
-        text('Master Volume', width/2, height/3.9); // volume
+        text('Master Volume', width/2, height/3.7);
+        text('Music Volume',  width/2, height/2.9);
 
         textAlign(LEFT);
-        text('Difficulty:', width/3.45, 0.415*height); // difficulty
+        text('Difficulty:', width/3.45, 0.435*height); // difficulty
         textAlign(CENTER);
-        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.415*height)
+        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.435*height)
 
         textAlign(LEFT);
-        text('Background Quality:', width/3.45, 0.52*height);
+        text('Background Quality:', width/3.45, 0.54*height);
         textAlign(CENTER);
-        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.52*height);
+        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.54*height);
 
-        text('Enable Cheats:', width/2.17, 0.63*height); // cheats
+        text('Enable Cheats:', width/2.17, 0.65*height); // cheats
     }
 }
