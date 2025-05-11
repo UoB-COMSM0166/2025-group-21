@@ -66,7 +66,7 @@ class Settings {
             this.drawMusicBar();
             this.updateMusicDial();
             this.updateVolumeDial();
-            this.updateMuteButton();
+            this.updateMasterMuteButton();
             this.updateMusicMuteButton();
             this.updateDifficultyControl();
             this.updateCheatsButton();
@@ -137,7 +137,7 @@ class Settings {
     updateCheatsButton() {
         let scale = 0.006 * width;
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.628*height);
+        let pos = createVector(0.59*width, 0.65*height);
 
         if (hoveringOverButton(pos, size)) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -166,8 +166,8 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.7*width, 0.435*height);
-        let downPos = createVector(0.7*width, 0.475*height);
+        let upPos = createVector(0.7*width, 0.45*height);
+        let downPos = createVector(0.7*width, 0.49*height);
 
         // up arrow
         if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
@@ -193,10 +193,10 @@ class Settings {
 
     }
 
-    updateMuteButton() {
+    updateMasterMuteButton() {
         let scale = 0.006 * width;
         let size = createVector(this.muteButton.width / scale, this.muteButton.height / scale);
-        let pos = createVector(0.78*width, 0.3*height);
+        let pos = createVector(0.78*width, 0.26*height);
         image(this.muteButton, pos.x, pos.y, size.x, size.y);
 
         if (hoveringOverButton(pos, size) && mouseIsPressed && this.buttonsActive) {
@@ -210,7 +210,7 @@ class Settings {
         let scale = 0.006 * width;
         let size  = createVector(this.musicMuteButton.width / scale,
                                  this.musicMuteButton.height / scale);
-        let pos   = createVector(0.78 * width, 0.37 * height);
+        let pos   = createVector(0.78 * width, 0.38 * height);
 
         image(this.musicMuteButton, pos.x, pos.y, size.x, size.y);
 
@@ -307,14 +307,14 @@ class Settings {
 
     initialiseDialPos(masterVolume) {
         let xPos = (0.27 + 0.46*masterVolume) * width;
-        return createVector(xPos, 0.3*height);
+        return createVector(xPos, 0.26*height);
     }
 
     /* ---------- Music‑volume helpers ---------- */
 
     initialiseDialPosMusic(vol) {
         let xPos = (0.27 + 0.46 * vol) * width;
-        return createVector(xPos, 0.37 * height);   // slightly lower than master
+        return createVector(xPos, 0.38 * height);   // slightly lower than master
     }
 
     updateMusicDial() {
@@ -353,13 +353,13 @@ class Settings {
     drawMusicBar() {
         let scale = 0.0035 * width;
         imageMode(CENTER);
-        image(volumeBar, width / 2, 0.37 * height, volumeBar.width / scale, volumeBar.height / scale);
+        image(volumeBar, width / 2, 0.38 * height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
     drawVolumeBar() {
         let scale = 0.0035 * width;
         imageMode(CENTER);
-        image(volumeBar, width/2, 0.3*height, volumeBar.width / scale, volumeBar.height / scale);
+        image(volumeBar, width/2, 0.26*height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
     // Draw the labels associated with all button and controls
@@ -376,18 +376,18 @@ class Settings {
         size = width/30
         strokeWeight(size/30);
         textSize(size/1.5);
-        text('Master Volume', width/2, height/3.7);
-        text('Music Volume',  width/2, height/2.9);
+        text('Master Volume', width/2, height/4.2);
+        text('Music Volume',  width/2, height/2.8);
 
         textAlign(LEFT);
-        text('Difficulty:', width/3.45, 0.435*height); // difficulty
+        text('Difficulty:', width/3.45, 0.47*height); // difficulty
         textAlign(CENTER);
-        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.435*height)
+        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.47*height)
 
         textAlign(LEFT);
-        text('Background Quality:', width/3.45, 0.54*height);
+        text('Background Quality:', width/3.45, 0.56*height);
         textAlign(CENTER);
-        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.54*height);
+        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.56*height);
 
         text('Enable Cheats:', width/2.17, 0.65*height); // cheats
     }
