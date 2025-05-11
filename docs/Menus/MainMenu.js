@@ -98,6 +98,7 @@ class MainMenu {
 
     settingButtonPressed() {
         domains.mainMenu.showSettings = true;
+        settings.keyNav.resetSelection();
         settings.startCooldown();
     }
 

@@ -16,6 +16,17 @@ function keyPressed() {
         }
     }
 
+    if ((Domain === 'mainMenu' && domains.mainMenu.showSettings) ||
+        (Domain === 'game' && domains.game.pause.showSettings)) {
+        if (settings.changeControls && settings.controlsPanel) {
+            settings.controlsPanel.handleKeyNavigation(keyCode);
+        }
+        else {
+            settings.keyNav.handleInput(keyCode);
+        }
+        return;
+    }
+
     if (Domain === 'game') {
 
         if (key === settings.boostKey) {

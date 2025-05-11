@@ -4,7 +4,59 @@ class ControlsPanel {
 
     constructor() {
         this.key = null;
+        this.keyboardActive = false;
+        this.selectedButtonIndex = -1;
+        this.buttonCount = 5; // boost, shoot, fly, shield, back
     }
+
+    resetNavigation() {
+        this.keyboardActive = false;
+        this.selectedButtonIndex = -1;
+    }
+
+    handleKeyNavigation(keyCode) {
+        // If waiting for a new key input, don't process navigation
+        if (this.key !== null) return;
+
+        if (keyCode === UP_ARROW) {
+            this.moveSelection(-1);
+        } else if (keyCode === DOWN_ARROW) {
+            this.moveSelection(1);
+        } else if (keyCode === ENTER) {
+            this.activateSelectedButton();
+        }
+    }
+
+    moveSelection(direction) {
+        if (!this.keyboardActive) {
+            this.keyboardActive = true;
+            // Set initial control on first activation
+            if (direction > 0) {
+                this.selectedButtonIndex = 0;
+            } else {
+                this.selectedButtonIndex = this.buttonCount - 1;
+            }
+            return;
+        }
+
+        this.selectedButtonIndex = (this.selectedButtonIndex + direction + this.buttonCount) % this.buttonCount;
+    }
+
+    activateSelectedButton() {
+        if (this.selectedButtonIndex === -1) {
+            return;
+        }
+        if (this.selectedButtonIndex === 4) {
+            settings.changeControls = false;
+            settings.startCooldown();
+            this.resetNavigation();
+        } else {
+            const controlNames = ['boost', 'shoot', 'fly', 'shield'];
+            userIsTyping = true;
+            this.key = controlNames[this.selectedButtonIndex];
+        }
+    }
+
 
     showPanel() {
         push();
@@ -69,6 +121,7 @@ class ControlsPanel {
             settings.buttonsActive = true;
             inputCharacter = null;
             userIsTyping = false;
+            this.resetNavigation();
         }
     }
 
@@ -88,6 +141,8 @@ class ControlsPanel {
         else if (this.key === name) {
             image(changeButtonHover, pos.x, pos.y, size.x, size.y);
         }
+            image(changeButtonHover, pos.x, pos.y, size.x, size.y);
+        }
         else image(changeButton, pos.x, pos.y, size.x, size.y);
     }
 
@@ -103,7 +158,11 @@ class ControlsPanel {
             if (mouseIsPressed && settings.buttonsActive) {
                 settings.changeControls = false;
                 settings.startCooldown();
+                this.resetNavigation();
             }
+        }
+        else if (this.keyboardActive && this.selectedButtonIndex === 4) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else image(backButton, pos.x, pos.y, size.x, size.y);
     }

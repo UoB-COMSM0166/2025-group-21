@@ -38,6 +38,13 @@ class Settings {
         return !(this.flyKey === key || this.boostKey === key || this.shootKey === key || this.shieldKey === key);
     }
 
+    get keyNav() {
+        if (!this._keyNav) {
+            this._keyNav = new SettingsKeyNav(this);
+        }
+        return this._keyNav;
+    }
+
     // main loop
     showSettingsScreen() {
         push();
@@ -69,6 +76,7 @@ class Settings {
             }
             setMasterVolume(this.masterVolume * this.mute);
         }
+        this.keyNav.drawKeyboardNavHighlights();
         pop();
     }
 
@@ -83,6 +91,10 @@ class Settings {
             if (mouseIsPressed && this.buttonsActive) {
                 this.changeControls = true;
                 this.startCooldown();
+                this.keyNav.resetSelection();
+                if (this.controlsPanel) {
+                    this.controlsPanel.resetNavigation();
+                }
             }
         }
         else image(controlsButton, pos.x, pos.y, size.x, size.y);
@@ -106,7 +118,6 @@ class Settings {
                 }
                 else {
                     domains.game.pause.showSettings = false;
-                    //onQualityChange(settings.bgQuality + 1);
                 }
             }
         }
