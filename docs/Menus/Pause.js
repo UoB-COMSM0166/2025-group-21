@@ -184,6 +184,7 @@ class Pause {
 
     settingButtonPressed() {
         domains.game.pause.showSettings = true;
+        settings.keyNav.resetSelection();
         settings.startCooldown();
     }
 

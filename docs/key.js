@@ -16,6 +16,17 @@ function keyPressed() {
         }
     }
 
+    if ((Domain === 'mainMenu' && domains.mainMenu.showSettings) ||
+        (Domain === 'game' && domains.game.pause.showSettings)) {
+        if (settings.changeControls && settings.controlsPanel) {
+            settings.controlsPanel.handleKeyNavigation(keyCode);
+        }
+        else {
+            settings.keyNav.handleInput(keyCode);
+        }
+        return;
+    }
+
     if (Domain === 'game') {
 
         if (key === settings.boostKey) {
@@ -103,6 +114,7 @@ function keyPressed() {
                 // If inventory panel is visible and CLOSE button is selected, activate it
                 domains.game.pause.showInvPanel = false;
                 domains.game.pause.invPanel.isCloseButtonSelected = false;
+                domains.game.pause.selectedButtonIndex = -1;
             } else {
                 domains.game.pause.selectCurrentButton();
             }

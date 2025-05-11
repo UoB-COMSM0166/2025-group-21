@@ -126,6 +126,7 @@ class MainMenu {
 
     settingButtonPressed() {
         domains.mainMenu.showSettings = true;
+        settings.keyNav.resetSelection();
         settings.startCooldown();
         domains.mainMenu.selectedButtonIndex = -1;
     }
