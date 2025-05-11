@@ -64,8 +64,12 @@ class Settings {
             this.updateDifficultyControl();
             this.updateCheatsButton();
             this.updateControlsButton();
-            this.updateMainMenuButton();
             this.updateBackgroundQualityControl();
+
+            if (Domain === 'mainMenu') {
+                this.updateMainMenuButton();
+            }
+            else this.updateBackButton();
 
             if (this.buttonCooldownTimer.time > 0) {
                 this.updateButtonCooldown();
@@ -105,20 +109,29 @@ class Settings {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
-                // settings.musicVolume = this.musicVolume;
-                // settings.musicMute   = this.musicMute;
                 saveGameProgress();
-
-                if (Domain === 'mainMenu') {
-                    settings.currentDifficulty = settings.difficulty;
-                    domains.mainMenu.showSettings = false;
-                }
-                else {
-                    domains.game.pause.showSettings = false;
-                }
+                settings.currentDifficulty = settings.difficulty;
+                domains.mainMenu.showSettings = false;
             }
         }
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
+    }
+
+    updateBackButton() {
+        let scale = 0.0035 * width;
+        let size = createVector(backButton.width / scale, backButton.height / scale);
+        let pos = createVector(0.95 * width, 0.04 * height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed && settings.buttonsActive) {
+                saveGameProgress();
+                domains.game.pause.showSettings = false;
+            }
+        }
+        else image(backButton, pos.x, pos.y, size.x, size.y);
     }
 
 
