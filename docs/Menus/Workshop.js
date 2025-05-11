@@ -44,7 +44,11 @@ class Workshop {
         this.wasHoveringPurpleLaser = false;
 
         this.buttonPressedSound = null;
-        this.loadAudio().then(() => this.soundsLoaded = true);
+        this.loadAudio().then(() => {
+            this.soundsLoaded = true
+            setMasterVolume(this.masterVolume);
+            this.workshopMusic.loop();
+        });
 
         this.fadeOut = false;
         this.screenTint = 0;
@@ -99,15 +103,15 @@ class Workshop {
         this.illegalPurchaseSound = await soundBoard.getSound('illegalPurchaseSound');
         this.hoverPopSound = await soundBoard.getSound('hoverPopSound');
         this.buttonPressedSound = await soundBoard.getSound('buttonPressedSound');
-
-        setMasterVolume(this.masterVolume);
-        this.workshopMusic.loop();
     }
 
     disconnectAudio() {
         this.workshopMusic.stop();
         this.purchaseSound.stop();
         this.illegalPurchaseSound.stop();
+        this.workshopMusic.disconnect();
+        this.purchaseSound.disconnect();
+        this.illegalPurchaseSound.disconnect();
         this.workshopMusic = null;
         this.purchaseSound = null;
         this.illegalPurchaseSound = null;

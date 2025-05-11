@@ -105,8 +105,8 @@ class Settings {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
-                settings.musicVolume = this.musicVolume;
-                settings.musicMute   = this.musicMute;
+                // settings.musicVolume = this.musicVolume;
+                // settings.musicMute   = this.musicMute;
                 saveGameProgress();
 
                 if (Domain === 'mainMenu') {
