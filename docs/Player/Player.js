@@ -51,7 +51,7 @@ class Player {
                 this.wingImg = playerHelicopterRotor;
                 break;
             case 4:
-                this.feetImg = playerFlyBooster;
+                this.feetImg = playerFlyPropaneBooster;
                 this.wingImg = playerPenguinWings;
                 break;
             case 5:
