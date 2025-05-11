@@ -389,14 +389,6 @@ class SettingsKeyNav {
             pos = createVector(0.95 * width, 0.04 * height);
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
         }
-
-//        push();
-//        noFill();
-//        stroke(100, 80, 200);
-//        strokeWeight(2);
-//        rectMode(CENTER);
-//        rect(pos.x, pos.y, size.x + 10, size.y + 10, 5);
-//        pop();
     }
 
     drawVolumeAdjustmentInstructions() {
