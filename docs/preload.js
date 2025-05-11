@@ -103,6 +103,8 @@ let highscoresButton = null;
 let highscoresButtonHover = null;
 let creditsButton = null;
 let creditsButtonHover = null;
+let donateButton = null;
+let donateButtonHover = null;
 
 
 // load game
@@ -254,6 +256,8 @@ function preload() {
     highscoresButtonHover = loadImage('assets/buttons/mainMenu/highscoresButtonHover.png');
     creditsButton = loadImage('assets/buttons/mainMenu/creditsButton.png');
     creditsButtonHover = loadImage('assets/buttons/mainMenu/creditsButtonHover.png');
+    donateButton = loadImage('assets/buttons/mainMenu/donateButton.png');
+    donateButtonHover = loadImage('assets/buttons/mainMenu/donateButtonHover.png');
 
     preloadBackgroundImages();
 

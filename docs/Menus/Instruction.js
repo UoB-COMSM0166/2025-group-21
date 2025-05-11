@@ -114,7 +114,4 @@ class Instruction {
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         pop();
     }
-
 }
-
-

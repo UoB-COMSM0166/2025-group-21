@@ -57,7 +57,7 @@ class Settings {
             this.updateDifficultyControl();
             this.updateCheatsButton();
             this.updateControlsButton();
-            this.updateBackButton();
+            this.updateMainMenuButton();
             this.updateBackgroundQualityControl();
 
             if (this.buttonCooldownTimer.time > 0) {
@@ -88,14 +88,14 @@ class Settings {
         else image(controlsButton, pos.x, pos.y, size.x, size.y);
     }
 
-    updateBackButton() {
-        let scale = 0.002 * width;
-        let size = createVector(backButton.width / scale, backButton.height / scale);
-        let pos = createVector(0.5*width, 0.93*height);
+    updateMainMenuButton() {
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size)) {
-            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
                 saveGameProgress();
@@ -106,11 +106,10 @@ class Settings {
                 }
                 else {
                     domains.game.pause.showSettings = false;
-                    //onQualityChange(settings.bgQuality + 1);
                 }
             }
         }
-        else image(backButton, pos.x, pos.y, size.x, size.y);
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
     }
 
 

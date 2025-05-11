@@ -124,7 +124,11 @@ class Highscores {
                 text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
             }
         }
-        this.updateBackButton();
+        if (Domain === 'game') {
+            this.updateBackButton();
+
+        }
+        else this.updateMainMenuButton();
         pop();
     }
 
@@ -231,17 +235,30 @@ class Highscores {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
-                if (Domain === 'game') {
-                    domains.game.death.highscoreSeen = true;
-                }
-                else {
-                    domains.mainMenu.highscores = null;
-                }
+                domains.game.death.highscoreSeen = true;
             }
         }
         else {
             image(backButton, pos.x, pos.y, size.x, size.y);
         }
+        pop();
+    }
+
+    updateMainMenuButton() {
+        push();
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                domains.mainMenu.highscores = null;
+            }
+        }
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         pop();
     }
 
