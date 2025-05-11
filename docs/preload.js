@@ -104,6 +104,8 @@ let highscoresButton = null;
 let highscoresButtonHover = null;
 let creditsButton = null;
 let creditsButtonHover = null;
+let donateButton = null;
+let donateButtonHover = null;
 
 
 // load game
@@ -255,6 +257,8 @@ function preload() {
     highscoresButtonHover = loadImage('assets/buttons/mainMenu/highscoresButtonHover.png');
     creditsButton = loadImage('assets/buttons/mainMenu/creditsButton.png');
     creditsButtonHover = loadImage('assets/buttons/mainMenu/creditsButtonHover.png');
+    donateButton = loadImage('assets/buttons/mainMenu/donateButton.png');
+    donateButtonHover = loadImage('assets/buttons/mainMenu/donateButtonHover.png');
 
     preloadBackgroundImages();
 
@@ -397,8 +401,8 @@ let volume = 0.2;
 
 function setMasterVolume(masterVolume) {
     let sound;
-    if ((sound = soundBoard.cache['mainSoundtrack1']) !== undefined) sound.setVolume(2*volume*masterVolume);
-    if ((sound = soundBoard.cache['workshopMusic']) !== undefined) sound.setVolume(2*volume*masterVolume);
+    //if ((sound = soundBoard.cache['mainSoundtrack1']) !== undefined) sound.setVolume(2*volume*masterVolume);
+    if ((sound = soundBoard.cache['workshopMusic']) !== undefined) sound.setVolume(1.5*volume*masterVolume);
     if ((sound = soundBoard.cache['purchaseSound']) !== undefined) sound.setVolume(volume*masterVolume);
     if ((sound = soundBoard.cache['illegalPurchaseSound']) !== undefined) sound.setVolume(4*volume*masterVolume);
     if ((sound = soundBoard.cache['hoverPopSound']) !== undefined) sound.setVolume(0.5*volume*masterVolume);

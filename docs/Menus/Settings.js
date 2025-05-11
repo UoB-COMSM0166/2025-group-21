@@ -9,8 +9,8 @@ class Settings {
         this.dialPos = this.initialiseDialPos(this.masterVolume);
         this.offset = null;
 
-        this.musicVolume   = (gameProgress.musicVolume !== undefined) ? gameProgress.musicVolume : 0.2;
-        this.musicMute       = (gameProgress.musicMute !== undefined) ? gameProgress.musicMute : 1; // 1=on
+        this.musicVolume     = gameProgress.musicVolume;
+        this.musicMute       = gameProgress.musicMute; // 1=on
         this.musicMuteButton = this.musicMute ? soundOn : soundOff;
         this.musicDialPos  = this.initialiseDialPosMusic(this.musicVolume);
         this.offsetMusic   = null;
@@ -71,8 +71,12 @@ class Settings {
             this.updateDifficultyControl();
             this.updateCheatsButton();
             this.updateControlsButton();
-            this.updateBackButton();
             this.updateBackgroundQualityControl();
+
+            if (Domain === 'mainMenu') {
+                this.updateMainMenuButton();
+            }
+            else this.updateBackButton();
 
             if (this.buttonCooldownTimer.time > 0) {
                 this.updateButtonCooldown();
@@ -107,19 +111,38 @@ class Settings {
         else image(controlsButton, pos.x, pos.y, size.x, size.y);
     }
 
+    // only appears when accessing settings from main menu
+    updateMainMenuButton() {
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed && settings.buttonsActive) {
+                saveGameProgress();
+                settings.currentDifficulty = settings.difficulty;
+                domains.mainMenu.showSettings = false;
+            }
+        }
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
+    }
+
+    // only appears when accessing settings from game
     updateBackButton() {
-        let scale = 0.002 * width;
+        let scale = 0.0035 * width;
         let size = createVector(backButton.width / scale, backButton.height / scale);
-        let pos = createVector(0.5*width, 0.93*height);
+        let pos = createVector(0.95 * width, 0.04 * height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size)) {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
-                settings.musicVolume = this.musicVolume;
-                settings.musicMute   = this.musicMute;
                 saveGameProgress();
+                domains.game.pause.showSettings = false;
 
                 if (Domain === 'mainMenu') {
                     settings.currentDifficulty = settings.difficulty;

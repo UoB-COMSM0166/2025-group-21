@@ -50,7 +50,7 @@ class Stats {
         textSize(size);
         textAlign(CENTER, CENTER);
         text(`SCORE: ${this.score}`, width/2, height*0.25);
-        text(`UFO HITS: ${this.ufoHits}`, width/2, height*0.35);
+        text(`OBSTACLES HIT: ${this.ufoHits}`, width/2, height*0.35);
         text(`MAX AIRTIME: ${round(this.maxAirTime, 3)} s`, width/2, height*0.45);
         text(`TOTAL JUMPS: ${this.numJumps}`, width/2, height*0.55);
         text(`HIGHEST JUMP: ${round(this.highestJump/100)} m`, width/2, height*0.65);

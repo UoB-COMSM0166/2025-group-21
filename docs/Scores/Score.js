@@ -43,7 +43,7 @@ class Score {
         else {
             speedBonus = 0;
         }
-        this.total += Math.round(airtimeBonus + speedBonus);
+        this.total += Math.round((airtimeBonus + speedBonus) * (settings.difficulty + 1));
     }
 
     trackAirtime() {

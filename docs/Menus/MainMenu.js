@@ -19,7 +19,8 @@ class MainMenu {
         this.buttonGrid = [
             [0, 1],
             [2, 3],
-            [4, 5]
+            [4, 5],
+            [6, 6]
         ];
         this.currentRow = 0;
         this.currentCol = 0;
@@ -52,20 +53,20 @@ class MainMenu {
         if (!this.showButtons) return;
 
         // button positions
-        let startGame = createVector(0.38*width, 0.6*height);
-        let shop = createVector(0.62*width, 0.6*height);
-        let instructions = createVector(0.38*width, 0.7*height);
-        let settings = createVector(0.62*width, 0.7*height);
-        let highscores = createVector(0.38*width, 0.8*height);
-        let credits = createVector(0.62*width, 0.8*height);
+        let startGame = createVector(0.38*width, 0.58*height);
+        let shop = createVector(0.62*width, 0.58*height);
+        let instructions = createVector(0.38*width, 0.68*height);
+        let settings = createVector(0.62*width, 0.68*height);
+        let highscores = createVector(0.38*width, 0.78*height);
+        let credits = createVector(0.62*width, 0.78*height);
 
         // update buttons
         this.updateButton(0, startGame, startGameButton, startGameButtonHover, this.startButtonPressed)
         this.updateButton(1, shop, shopButton, shopButtonHover, this.shopButtonPressed);
-        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, () => domains.mainMenu.instructions = new Instruction());
+        this.updateButton(2, instructions, instructionsButton, instructionsButtonHover, this.instructionsButtonPressed);
         this.updateButton(3, settings, settingsButton, settingsButtonHover, this.settingButtonPressed);
         this.updateButton(4, highscores, highscoresButton, highscoresButtonHover, this.highscoresButtonPressed);
-        this.updateButton(5, credits, creditsButton, creditsButtonHover, () => domains.mainMenu.showCredits = true);
+        this.updateButton(5, credits, creditsButton, creditsButtonHover, this.creditsButtonPressed);
     }
 
     updateButton(buttonID, pos, buttonDefault, buttonHover, buttonPressed) {
@@ -126,11 +127,23 @@ class MainMenu {
         domains.mainMenu.showSettings = true;
         settings.keyNav.resetSelection();
         settings.startCooldown();
+        domains.mainMenu.selectedButtonIndex = -1;
     }
 
     highscoresButtonPressed() {
         domains.mainMenu.highscores = new Highscores();
         domains.mainMenu.highscores.loadHighscores();
+        domains.mainMenu.selectedButtonIndex = -1;
+    }
+
+    instructionsButtonPressed() {
+        domains.mainMenu.instructions = new Instruction();
+        domains.mainMenu.selectedButtonIndex = -1;
+    }
+
+    creditsButtonPressed() {
+        domains.mainMenu.showCredits = true
+        domains.mainMenu.selectedButtonIndex = -1;
     }
 
     // main loop
@@ -158,6 +171,7 @@ class MainMenu {
 
         this.updateAnimation();
         this.updateButtons();
+        this.updateDonateButton();
 
         push();
         // Draw logo
@@ -194,27 +208,24 @@ class MainMenu {
 
         pop();
 
-        this.updateCreditsBackButton();
+        this.updateCreditsMainMenuButton();
     }
 
-    updateCreditsBackButton() {
+    updateCreditsMainMenuButton() {
         push();
-        //this.updateButtonCooldown(30); // necessary as submit button is in same location as back button
-        let scale = 0.0015 * width;
-        let size = createVector(backButton.width / scale, backButton.height / scale);
-        let pos = createVector(0.5*width, 0.9*height);
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
         imageMode(CENTER);
 
         if (hoveringOverButton(pos, size)) {
-            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
                 this.showCredits = false;
             }
         }
-        else {
-            image(backButton, pos.x, pos.y, size.x, size.y);
-        }
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         pop();
     }
 
@@ -239,17 +250,17 @@ class MainMenu {
                 }
                 break;
             case DOWN_ARROW:
-                if (this.currentRow < 2) {
+                if (this.currentRow < 3) {
                     this.currentRow ++;
                 }
                 break;
             case LEFT_ARROW:
-                if (this.currentCol > 0) {
+                if (this.currentCol > 0 && this.currentRow < 3) {
                     this.currentCol --;
                 }
                 break;
             case RIGHT_ARROW:
-                if (this.currentCol < 1) {
+                if (this.currentCol < 1 && this.currentRow < 3) {
                     this.currentCol ++;
                 }
                 break;
@@ -278,7 +289,34 @@ class MainMenu {
                 this.highscoresButtonPressed();
             } else if (this.selectedButtonIndex === 5) {
                 this.showCredits = true;
+            } else if (this.selectedButtonIndex === 6) {
+                window.open("https://www.globalpenguinsociety.org/", "_blank");
             }
         }
+    }
+
+    updateDonateButton() {
+        if (!this.showButtons) return;
+
+        push();
+        let scale = 0.005 * width;
+        let size = createVector(donateButton.width / scale, donateButton.height / scale);
+        let pos = createVector(0.5*width, 0.88*height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size)) {
+            image(donateButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                window.open("https://www.globalpenguinsociety.org/", "_blank");
+            }
+        }
+        else if (this.selectedButtonIndex === 6) {
+            image(donateButtonHover, pos.x, pos.y, size.x, size.y);
+        }
+        else {
+            image(donateButton, pos.x, pos.y, size.x, size.y);
+        }
+        pop();
     }
 }

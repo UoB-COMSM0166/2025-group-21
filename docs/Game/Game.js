@@ -2,7 +2,7 @@ class Game {
 
     constructor() {
 
-
+        this.bgMusic = null;
         this.windSound = null;
         this.laserSound = null;
         this.laserAutomaticSound = null;
@@ -18,8 +18,6 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
-        this.bgMusic       = null;   // main gameplay soundtrack
-        this.bgMusicPaused = false;  // helper flag
         this.highscores = new Highscores();
         this.wingFlapSound = null;
 
@@ -32,6 +30,7 @@ class Game {
         noStroke();
 
         this.wind = null;
+        this.music = null;
         this.masterVolume = settings.masterVolume*settings.mute;
         this.soundsLoaded = false;
 
@@ -39,6 +38,7 @@ class Game {
             this.soundsLoaded = true
             setMasterVolume(this.masterVolume);
             this.wind = new Wind();
+            this.music = new BackgroundMusic();
         });
 
         this.offset = 0;  // Horizontal movement of screen position
@@ -81,38 +81,11 @@ class Game {
     runSimulation() { // Main loop for game
         if (!this.soundsLoaded) return;
 
-        /* pause / resume background music together with the pause menu */
-        if (this.bgMusic) {
-            if (this.pause.active && !this.bgMusicPaused) {
-                this.bgMusic.pause();
-                this.bgMusicPaused = true;
-            } else if (!this.pause.active && this.bgMusicPaused) {
-                this.bgMusic.play();
-                this.bgMusicPaused = false;
-            }
-        }
-
-        /* continuously apply current volume settings */
-        if (this.bgMusic) {
-            this.bgMusic.setVolume(
-                settings.musicVolume *
-                settings.musicMute *
-                settings.masterVolume *
-                settings.mute
-            );
-        }
-
-        /* cut music as soon as the player dies */
-        if (this.death && this.bgMusic) {
-            this.bgMusic.stop();
-            this.bgMusic = null;          // prevent further resume attempts
-            this.bgMusicPaused = true;
-        }
-
         clear();
 
         this.adjustZoom();
         this.wind.adjustVolume();
+        this.music.adjustVolume();
 
         const floorSpeed = this.pause.active ? 0 : this.player.vel.x;
         this.background.update(floorSpeed, this.zoom);
@@ -237,17 +210,14 @@ class Game {
         this.boosterSound    = await soundBoard.getSound('boosterSound');
         this.rotorSound    = await soundBoard.getSound('rotorSound');
         this.bgMusic = await soundBoard.getSound('mainSoundtrack1');
-        this.bgMusic.loop();                   // replay automatically
-        this.bgMusic.setVolume(
-            settings.musicVolume *
-            settings.musicMute   *  // respect Music‑mute toggle
-            settings.masterVolume *
-            settings.mute
-        );
     }
 
     disconnectAudio() {
-        const stopSound = (s) => { if (s && s.stop) s.stop(); };
+        const stopSound = (sound) => {
+            if (sound) {
+                sound.stop();
+            }
+        };
 
         stopSound(this.bgMusic);            this.bgMusic = null;
 

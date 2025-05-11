@@ -6,7 +6,7 @@ class GameLoader {
         this.gameProgress = gameProgress;
         this.selectedButtonIndex = 0;
 
-        if (!this.gameProgress || this.gameProgress.version !== VERSION) {
+        if (!this.gameProgress || this.gameProgress.version !== CURRENT_VERSION) {
             this.initialiseGameState(NEW_GAME_STATE);
             Domain = 'intro';
         }

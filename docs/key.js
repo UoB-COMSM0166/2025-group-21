@@ -143,8 +143,12 @@ function keyPressed() {
                     domains.game.death.selectedButtonIndex = 0;
                 }
             }
-            else if (keyCode === ENTER) {
-                domains.game.death.selectCurrentButton();
+            else if (keyCode === ENTER || key === ' ') {
+                if (!domains.game.death.anyKeyPressed) {
+                    domains.game.death.selectedButtonIndex = 0;
+                    domains.game.death.anyKeyPressed = true;
+                }
+                else domains.game.death.selectCurrentButton();
             }
         }
         // Key navigation in stats page
