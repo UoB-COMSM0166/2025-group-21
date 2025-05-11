@@ -1,5 +1,3 @@
-
-
 class Pause {
 
     constructor() {
@@ -17,7 +15,23 @@ class Pause {
 
         this.showSettings = false;
         this.buttonCooldownTimer = new Clock();
+
+        this.hoverPopSound       = null;
+        this.buttonPressedSound  = null;
+        this.masterVolume        = settings.masterVolume * settings.mute;
+        this.soundsLoaded        = false;
+        this.wasHoveringButtons  = [false, false, false, false];  // one entry per button
+        this.wasMousePressed     = false;
+
+        this.loadAudio().then(() => this.soundsLoaded = true);
+
         this.buttonsActive = true;
+    }
+
+    async loadAudio() {
+        this.hoverPopSound      = await soundBoard.getSound('hoverPopSound');
+        this.buttonPressedSound = await soundBoard.getSound('buttonPressedSound');
+        setMasterVolume(this.masterVolume);
     }
 
     showPauseScreen() {
@@ -83,10 +97,19 @@ class Pause {
         let size = createVector(buttonDefault.width / scale, buttonDefault.height / scale);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        const isHover = hoveringOverButton(pos, size);
+
+        if (isHover && !this.wasHoveringButtons[buttonID]) {
+            this.hoverPopSound?.play();
+        }
+        this.wasHoveringButtons[buttonID] = isHover;
+
+        if (isHover) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && this.buttonsActive) {
+            if (mouseIsPressed && this.buttonsActive && !this.wasMousePressed) {
+                this.buttonPressedSound?.play();
+                this.wasMousePressed = true;
                 buttonPressed();
             }
         }
@@ -96,6 +119,8 @@ class Pause {
         else {
             image(buttonDefault, pos.x, pos.y, size.x, size.y);
         }
+
+        if (!mouseIsPressed) this.wasMousePressed = false;
         pop();
     }
 

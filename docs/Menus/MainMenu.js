@@ -30,6 +30,22 @@ class MainMenu {
         this.showSettings = false;
         this.highscores = null;
         this.showCredits = false;
+
+        this.hoverPopSound     = null;
+        this.buttonPressedSound = null;
+        this.masterVolume      = settings.masterVolume * settings.mute;
+        this.soundsLoaded      = false;
+
+        this.wasHoveringButtons = [false, false, false, false, false, false];
+        this.wasMousePressed    = false;
+
+        this.loadAudio().then(() => this.soundsLoaded = true);
+    }
+
+    async loadAudio() {
+        this.hoverPopSound      = await soundBoard.getSound('hoverPopSound');
+        this.buttonPressedSound = await soundBoard.getSound('buttonPressedSound');
+        setMasterVolume(this.masterVolume);
     }
 
     updateButtons() {
@@ -58,10 +74,19 @@ class MainMenu {
         let size = createVector(buttonDefault.width / scale, buttonDefault.height / scale);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        const isHover = hoveringOverButton(pos, size);
+
+        if (isHover && !this.wasHoveringButtons[buttonID]) {
+            this.hoverPopSound?.play();
+        }
+        this.wasHoveringButtons[buttonID] = isHover;
+
+        if (isHover) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed) {
+            if (mouseIsPressed && !this.wasMousePressed) {
+                this.buttonPressedSound?.play();
+                this.wasMousePressed = true;
                 buttonPressed();
             }
         }
@@ -71,6 +96,7 @@ class MainMenu {
         else {
             image(buttonDefault, pos.x, pos.y, size.x, size.y);
         }
+        if (!mouseIsPressed) this.wasMousePressed = false;
         pop();
     }
 
