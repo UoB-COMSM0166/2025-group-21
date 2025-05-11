@@ -395,6 +395,7 @@ let volume = 0.2;
 
 function setMasterVolume(masterVolume) {
     let sound;
+    if ((sound = soundBoard.cache['mainSoundtrack1']) !== undefined) sound.setVolume(2*volume*masterVolume);
     if ((sound = soundBoard.cache['workshopMusic']) !== undefined) sound.setVolume(2*volume*masterVolume);
     if ((sound = soundBoard.cache['purchaseSound']) !== undefined) sound.setVolume(volume*masterVolume);
     if ((sound = soundBoard.cache['illegalPurchaseSound']) !== undefined) sound.setVolume(4*volume*masterVolume);
