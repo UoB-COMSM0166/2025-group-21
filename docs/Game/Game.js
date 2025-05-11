@@ -1,5 +1,3 @@
-
-
 class Game {
 
     constructor() {
@@ -20,6 +18,8 @@ class Game {
         this.loseLifeSound = null;
         this.gainLifeSound = null;
         this.collectCoinSound = null;
+        this.bgMusic       = null;   // main gameplay soundtrack
+        this.bgMusicPaused = false;  // helper flag
         this.highscores = new Highscores();
         this.wingFlapSound = null;
 
@@ -80,6 +80,34 @@ class Game {
 
     runSimulation() { // Main loop for game
         if (!this.soundsLoaded) return;
+
+        /* pause / resume background music together with the pause menu */
+        if (this.bgMusic) {
+            if (this.pause.active && !this.bgMusicPaused) {
+                this.bgMusic.pause();
+                this.bgMusicPaused = true;
+            } else if (!this.pause.active && this.bgMusicPaused) {
+                this.bgMusic.play();
+                this.bgMusicPaused = false;
+            }
+        }
+
+        /* continuously apply current volume settings */
+        if (this.bgMusic) {
+            this.bgMusic.setVolume(
+                settings.musicVolume *
+                settings.musicMute *
+                settings.masterVolume *
+                settings.mute
+            );
+        }
+
+        /* cut music as soon as the player dies */
+        if (this.death && this.bgMusic) {
+            this.bgMusic.stop();
+            this.bgMusic = null;          // prevent further resume attempts
+            this.bgMusicPaused = true;
+        }
 
         clear();
 
@@ -208,42 +236,38 @@ class Game {
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
         this.boosterSound    = await soundBoard.getSound('boosterSound');
         this.rotorSound    = await soundBoard.getSound('rotorSound');
+        this.bgMusic = await soundBoard.getSound('mainSoundtrack1');
+        this.bgMusic.loop();                   // replay automatically
+        this.bgMusic.setVolume(
+            settings.musicVolume *
+            settings.musicMute   *  // respect Music‑mute toggle
+            settings.masterVolume *
+            settings.mute
+        );
     }
 
     disconnectAudio() {
+        const stopSound = (s) => { if (s && s.stop) s.stop(); };
 
-        this.windSound.stop();
-        this.laserSound.stop();
-        this.laserAutomaticSound.stop();
-        this.explosionSound.stop();
-        this.deathSound.stop();
-        this.fishThrow.stop();
-        this.fishImpactSound.stop();
-        this.forceFieldSound.stop();
-        this.snowballSound.stop();
-        this.freezeSound.stop();
-        this.arrowSound.stop();
-        this.ufoArrowImpactSound.stop();
-        this.loseLifeSound.stop();
-        this.gainLifeSound.stop();
-        this.collectCoinSound.stop();
-        this.wingFlapSound.stop();
+        stopSound(this.bgMusic);            this.bgMusic = null;
 
-        this.windSound = null;
-        this.laserSound = null;
-        this.laserAutomaticSound = null;
-        this.explosionSound = null;
-        this.deathSound = null;
-        this.fishThrow = null;
-        this.fishImpactSound = null;
-        this.forceFieldSound = null;
-        this.snowballSound = null;
-        this.freezeSound = null;
-        this.arrowSound = null;
-        this.ufoArrowImpactSound = null;
-        this.loseLifeSound = null;
-        this.gainLifeSound = null;
-        this.collectCoinSound = null;
-        this.wingFlapSound = null;
+        stopSound(this.windSound);          this.windSound = null;
+        stopSound(this.laserSound);         this.laserSound = null;
+        stopSound(this.laserAutomaticSound); this.laserAutomaticSound = null;
+        stopSound(this.explosionSound);     this.explosionSound = null;
+        stopSound(this.deathSound);         this.deathSound = null;
+        stopSound(this.fishThrow);          this.fishThrow = null;
+        stopSound(this.fishImpactSound);    this.fishImpactSound = null;
+        stopSound(this.forceFieldSound);    this.forceFieldSound = null;
+        stopSound(this.snowballSound);      this.snowballSound = null;
+        stopSound(this.freezeSound);        this.freezeSound = null;
+        stopSound(this.arrowSound);         this.arrowSound = null;
+        stopSound(this.ufoArrowImpactSound); this.ufoArrowImpactSound = null;
+        stopSound(this.loseLifeSound);      this.loseLifeSound = null;
+        stopSound(this.gainLifeSound);      this.gainLifeSound = null;
+        stopSound(this.collectCoinSound);   this.collectCoinSound = null;
+        stopSound(this.wingFlapSound);      this.wingFlapSound = null;
+        stopSound(this.boosterSound);       this.boosterSound = null;
+        stopSound(this.rotorSound);         this.rotorSound = null;
     }
 }

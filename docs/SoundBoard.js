@@ -11,6 +11,7 @@ class SoundBoard {
     }
 
     async loadAudio() {
+        this.cache['mainSoundtrack1'] = await loadSoundAsync('assets/sounds/mainSoundtrack1.mp3');
         this.cache['workshopMusic'] = await loadSoundAsync('assets/sounds/workshopMusic.mp3');
         this.cache['purchaseSound'] = await loadSoundAsync('assets/sounds/purchaseSound.mp3');
         this.cache['illegalPurchaseSound'] = await loadSoundAsync('assets/sounds/illegalPurchaseSound.mp3');

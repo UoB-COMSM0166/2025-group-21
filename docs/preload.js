@@ -47,7 +47,8 @@ let playerHeadLaser = null;
 let playerHeadGatling = null;
 
 let playerFlyFeet, playerFlyBooster, playerPenguinWings,
-    playerDragonWings, playerHelicopterRotor, introHelicopterPenguin;
+    playerDragonWings, playerHelicopterRotor, introHelicopterPenguin,
+    playerFlyPropaneBooster;
 
 let arrowRight, arrowRightGlowing, arrowRightRed;
 let arrowLeft, arrowLeftGlowing, arrowLeftRed;
@@ -265,6 +266,7 @@ function preload() {
     playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
     playerFlyFeet        = loadImage('assets/sprites/fly_feet.png');
     playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
+    playerFlyPropaneBooster     = loadImage('assets/sprites/fly_PropaneBooster.png');
     playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
     playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
     playerHelicopterRotor = loadImage('assets/sprites/helicopterRotor.png');
@@ -395,6 +397,7 @@ let volume = 0.2;
 
 function setMasterVolume(masterVolume) {
     let sound;
+    if ((sound = soundBoard.cache['mainSoundtrack1']) !== undefined) sound.setVolume(2*volume*masterVolume);
     if ((sound = soundBoard.cache['workshopMusic']) !== undefined) sound.setVolume(2*volume*masterVolume);
     if ((sound = soundBoard.cache['purchaseSound']) !== undefined) sound.setVolume(volume*masterVolume);
     if ((sound = soundBoard.cache['illegalPurchaseSound']) !== undefined) sound.setVolume(4*volume*masterVolume);
