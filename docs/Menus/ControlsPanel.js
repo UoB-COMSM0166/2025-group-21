@@ -141,6 +141,7 @@ class ControlsPanel {
         else if (this.key === name) {
             image(changeButtonHover, pos.x, pos.y, size.x, size.y);
         }
+        else if (this.keyboardActive && this.selectedButtonIndex === id) {
             image(changeButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else image(changeButton, pos.x, pos.y, size.x, size.y);
