@@ -99,6 +99,7 @@ class Settings {
         else image(controlsButton, pos.x, pos.y, size.x, size.y);
     }
 
+    // only appears when accessing settings from main menu
     updateMainMenuButton() {
         let scale = 0.008 * width;
         let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
@@ -117,6 +118,7 @@ class Settings {
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
     }
 
+    // only appears when accessing settings from game
     updateBackButton() {
         let scale = 0.0035 * width;
         let size = createVector(backButton.width / scale, backButton.height / scale);
