@@ -7,7 +7,7 @@
   <a href="https://www.youtube.com/watch?v=j_a1GSaSCpk">
     <img src="https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png" width="300" alt="Watch Our Video!">
   </a>
-  <p><strong>🎥&nbsp;&nbsp;&nbsp;&nbsp;Watch our video!&nbsp;&nbsp;&nbsp;&nbsp;🐧</strong></p>
+  <p><strong>🎥&nbsp;&nbsp;&nbsp;&nbsp;Demo Video&nbsp;&nbsp;&nbsp;&nbsp;🎥</strong></p>
 </div>
 
 # Table of Contents
