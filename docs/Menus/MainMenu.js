@@ -32,6 +32,7 @@ class MainMenu {
         this.showSettings = false;
         this.highscores = null;
         this.showCredits = false;
+        this.creditsMenuButtonSelected = false;
 
         this.hoverPopSound     = null;
         this.buttonPressedSound = null;
@@ -221,19 +222,58 @@ class MainMenu {
         let pos = createVector(0.935 * width, 0.04 * height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
                 this.showCredits = false;
+                this.resetButtons();
             }
+        }
+        else if (this.creditsMenuButtonSelected) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         pop();
     }
 
+    handleCreditsKeyNav(key) {
+        if (key === UP_ARROW || key === DOWN_ARROW) {
+            this.creditsMenuButtonSelected = true;
+            this.hideCursor();
+        }
+        else if (key === ENTER) {
+            this.hideCursor();
+
+            if (this.creditsMenuButtonSelected) {
+                this.showCredits = false;
+                this.resetButtons();
+                this.creditsMenuButtonSelected = false;
+            }
+            else this.creditsMenuButtonSelected = true;
+        }
+    }
+
+    resetButtons() {
+        this.selectedButtonIndex = -1
+        this.currentRow = 0;
+        this.currentCol = 0;
+        this.anyKeyPressed = false;
+    }
+
     handleKeyNavigation(keyCode) {
         if (!this.animationComplete) return;
+
+        if (this.showCredits) {
+            this.handleCreditsKeyNav(keyCode);
+            return;
+        }
+        else if (this.instructions !== null) {
+
+        }
+        else if (this.highscores != null) {
+
+        }
 
         if (!this.anyKeyPressed) {
             this.hideCursor();

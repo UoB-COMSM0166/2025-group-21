@@ -83,6 +83,12 @@ function respondToMouseMovement() {
                 }
                 settings.showCursor();
             }
+            else if (domains.mainMenu.showCredits) {
+                if (domains.mainMenu.creditsMenuButtonSelected) {
+                    domains.mainMenu.creditsMenuButtonSelected = false;
+                }
+                domains.mainMenu.showCursor();
+            }
             else {
                 if (domains.mainMenu.selectedButtonIndex > -1) {
                     domains.mainMenu.selectedButtonIndex = -1;
