@@ -2,7 +2,7 @@
 
 class GameLoader {
     constructor(gameProgress) {
-        document.body.classList.add("show-cursor");
+        document.body.classList.remove("show-cursor");
         this.gameProgress = gameProgress;
         this.selectedButtonIndex = 0;
 
@@ -13,6 +13,8 @@ class GameLoader {
     }
 
     showLoadScreen() {
+        this.listenForMouseMove();
+
         push();
         image(blurredHomeBackground, 0, 0, width, height);
         this.printText();
@@ -22,8 +24,8 @@ class GameLoader {
     }
 
     handleKeyNavigation(keyCode) {
-
         if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+            document.body.classList.remove("show-cursor");
             this.selectedButtonIndex = (this.selectedButtonIndex + 1) % 2;
         }
         else if (keyCode === ENTER || keyCode === 32) { // 32 == space
@@ -65,6 +67,7 @@ class GameLoader {
     yesButtonPressed() {
         this.initialiseGameState(this.gameProgress);
         Domain = 'intro';
+        document.body.classList.remove("show-cursor");
     }
 
     updateNoButton() {
@@ -92,6 +95,7 @@ class GameLoader {
         this.initialiseGameState(NEW_GAME_STATE);
         localStorage.removeItem(SAVE_KEY);
         Domain = 'intro';
+        document.body.classList.remove("show-cursor");
     }
 
     printText() {
@@ -103,5 +107,12 @@ class GameLoader {
         strokeWeight(size/30);
         textSize(size/1.5);
         text('Continue game?', width/2, 0.45*height);
+    }
+
+    listenForMouseMove() {
+        window.addEventListener("mousemove", (event) => {
+            this.selectedButtonIndex = -1
+            document.body.classList.add("show-cursor");
+        });
     }
 }

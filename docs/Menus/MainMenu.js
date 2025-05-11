@@ -1,6 +1,7 @@
 class MainMenu {
     constructor() {
-        document.body.classList.add("show-cursor");
+        this.cursorVisible = false;
+        this.hideCursor();
 
         this.logoDrawWidth = width * 0.5;
         this.logoDrawHeight = this.logoDrawWidth * (logo.height / logo.width) * 1.2;
@@ -77,12 +78,12 @@ class MainMenu {
 
         const isHover = hoveringOverButton(pos, size);
 
-        if (isHover && !this.wasHoveringButtons[buttonID]) {
+        if (isHover && !this.wasHoveringButtons[buttonID] && this.cursorVisible) {
             this.hoverPopSound?.play();
         }
         this.wasHoveringButtons[buttonID] = isHover;
 
-        if (isHover) {
+        if (isHover && this.cursorVisible) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && !this.wasMousePressed) {
@@ -147,8 +148,9 @@ class MainMenu {
 
     // main loop
     showMainMenu() {
+        this.listenForMouseMove();
         // Draw background
-        background(240, 248, 255);
+        //background(240, 248, 255);
         imageMode(CORNER);
         image(blurredHomeBackground, 0, 0, width, height);
 
@@ -232,6 +234,7 @@ class MainMenu {
         if (!this.animationComplete) return;
 
         if (!this.anyKeyPressed) {
+            this.hideCursor();
             this.selectedButtonIndex = 0;
             this.currentRow = 0;
             this.currentCol = 0;
@@ -303,7 +306,7 @@ class MainMenu {
         let pos = createVector(0.5*width, 0.88*height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(donateButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
@@ -317,5 +320,25 @@ class MainMenu {
             image(donateButton, pos.x, pos.y, size.x, size.y);
         }
         pop();
+    }
+
+    listenForMouseMove() {
+        window.addEventListener("mousemove", (event) => {
+            if (this.selectedButtonIndex > -1) {
+                this.selectedButtonIndex = -1
+            }
+            this.showCursor();
+            this.anyKeyPressed = false;
+        });
+    }
+
+    showCursor() {
+        document.body.classList.add("show-cursor");
+        this.cursorVisible = true;
+    }
+
+    hideCursor() {
+        document.body.classList.remove("show-cursor");
+        this.cursorVisible = false;
     }
 }
