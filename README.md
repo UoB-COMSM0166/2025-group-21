@@ -372,6 +372,86 @@ Difficulty:
 - Issues: Players were unsure why they were losing health, found the terrain too steep, and the obstacles too challenging.
 - Solutions: Added visible life indicators and audiovisual cues for taking damage, rebalanced the obstacles by incorporating tiers of enemies, and created three balanced difficulty levels.
 
+### Heuristic Evaluation
+
+#### Process
+Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table X). All heuristics violations were addressed and the solution is documented below.
+
+<div align="center">
+
+ 	<p><b><Table X.<b> Heuristic violations identified in our game, their severity ratings, and solutions.</p>
+	<table border="1">
+	  <thead>
+	    <tr>
+	      <th scope="col">Heuristic Violated</th>
+	      <th scope="col">Issue Description</th>
+	      <th scope="col">Impact (0–4)</th>
+	      <th scope="col">Frequency (0–4)</th>
+	      <th scope="col">Persistence (0–4)</th>
+	      <th scope="col">Overall Severity</th>
+	      <th scope="col">Solution</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td>Visibility of system status</td>
+	      <td>Initial loading screen is a static blank loading screen</td>
+	      <td>2</td>
+	      <td>1</td>
+	      <td>2</td>
+	      <td>1.67</td>
+	      <td>We created an initial non-static loading screen when the game is first launched</td>
+	    </tr>
+	    <tr>
+	      <td>Visibility of system status</td>
+	      <td>Highscores loading screen was a static screen</td>
+	      <td>2</td>
+	      <td>1</td>
+	      <td>2</td>
+	      <td>1.67</td>
+	      <td>We created a dynamic loading screen that’s displayed while the backend functions run</td>
+	    </tr>
+	    <tr>
+	      <td>Recognition rather than recall</td>
+	      <td>Players were unable to check their inventory for their current items once out of the shop</td>
+	      <td>3</td>
+	      <td>2</td>
+	      <td>2</td>
+	      <td>2.33</td>
+	      <td>We created a checkable inventory and added visual cues in the form of player skins/outfits</td>
+	    </tr>
+	    <tr>
+	      <td>Flexibility and efficiency of use</td>
+	      <td>The controls were rigid and unchangeable</td>
+	      <td>3</td>
+	      <td>3</td>
+	      <td>3</td>
+	      <td>3.00</td>
+	      <td>We created custom keyboard control bindings</td>
+	    </tr>
+	    <tr>
+	      <td>Flexibility and efficiency of use</td>
+	      <td>The sound couldn't be controlled</td>
+	      <td>2</td>
+	      <td>3</td>
+	      <td>3</td>
+	      <td>2.67</td>
+	      <td>We created sound controls in the pause menu</td>
+	    </tr>
+	    <tr>
+	      <td>Help and documentation</td>
+	      <td>The instructions and controls were not clear or accessible</td>
+	      <td>4</td>
+	      <td>3</td>
+	      <td>3</td>
+	      <td>3.33</td>
+	      <td>We created an instructions and controls page, accessed from the main menu</td>
+	    </tr>
+	  </tbody>
+	</table>
+
+</div>
+
 ## Quantitative Evaluation
 
 To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools (ADD CITATIONS), and statistical analysis:
