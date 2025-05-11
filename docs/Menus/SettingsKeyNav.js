@@ -287,7 +287,7 @@ class SettingsKeyNav {
         if (!this.settings || !this.settings.muteButton) return;
 
         let scale = 0.006 * width;
-        let pos = createVector(0.78*width, 0.26*height);
+        let pos = createVector(0.78*width, 0.28*height);
         let size = createVector(this.settings.muteButton.width / scale, this.settings.muteButton.height / scale);
 
         image(this.settings.muteButton, pos.x, pos.y, size.x, size.y);
@@ -305,7 +305,7 @@ class SettingsKeyNav {
         if (!this.settings || !this.settings.musicMuteButton) return;
 
         let scale = 0.006 * width;
-        let pos = createVector(0.78*width, 0.38*height);
+        let pos = createVector(0.78*width, 0.4*height);
         let size = createVector(this.settings.musicMuteButton.width / scale, this.settings.musicMuteButton.height / scale);
 
         image(this.settings.musicMuteButton, pos.x, pos.y, size.x, size.y);
@@ -362,7 +362,7 @@ class SettingsKeyNav {
     drawCheatsHighlight() {
         let scale = 0.006 * width;
         let size = createVector(this.settings.cheatsButton.width / scale, this.settings.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.65*height);
+        let pos = createVector(0.59*width, 0.68*height);
 
         image(this.settings.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
     }
@@ -370,17 +370,33 @@ class SettingsKeyNav {
     drawControlsHighlight() {
         let scale = 0.006 * width;
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
-        let pos = createVector(0.5*width, 0.75*height);
+        let pos = createVector(0.5*width, 0.78*height);
 
         image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
     }
 
     drawBackHighlight() {
-        let scale = 0.002 * width;
+        let scale = 0.0035 * width;
         let size = createVector(backButton.width / scale, backButton.height / scale);
-        let pos = createVector(0.5*width, 0.93*height);
+        let pos;
 
-        image(backButtonHover, pos.x, pos.y, size.x, size.y);
+        if (Domain === 'mainMenu') {
+            scale = 0.008 * width;
+            size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+            pos = createVector(0.935 * width, 0.04 * height);
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+        } else {
+            pos = createVector(0.95 * width, 0.04 * height);
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+        }
+
+        push();
+        noFill();
+        stroke(100, 80, 200);
+        strokeWeight(2);
+        rectMode(CENTER);
+        rect(pos.x, pos.y, size.x + 10, size.y + 10, 5);
+        pop();
     }
 
     drawVolumeAdjustmentInstructions() {
@@ -389,7 +405,7 @@ class SettingsKeyNav {
             textAlign(CENTER);
             fill(209, 232, 255);
             textSize(width/60);
-            text("Use left/right keys to adjust, press Enter to confirm", width/2, 0.3*height);
+            text("Use left/right keys to adjust, press Enter to confirm", width/2, 0.31*height);
             pop();
         }
     }

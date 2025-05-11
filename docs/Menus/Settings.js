@@ -94,7 +94,7 @@ class Settings {
     updateControlsButton() {
         let scale = 0.006 * width;
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
-        let pos = createVector(0.5*width, 0.75*height);
+        let pos = createVector(0.5*width, 0.78*height);
 
         if (hoveringOverButton(pos, size)) {
             image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -160,7 +160,7 @@ class Settings {
     updateCheatsButton() {
         let scale = 0.006 * width;
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.65*height);
+        let pos = createVector(0.59*width, 0.68*height);
 
         if (hoveringOverButton(pos, size)) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
@@ -219,7 +219,7 @@ class Settings {
     updateMasterMuteButton() {
         let scale = 0.006 * width;
         let size = createVector(this.muteButton.width / scale, this.muteButton.height / scale);
-        let pos = createVector(0.78*width, 0.26*height);
+        let pos = createVector(0.78*width, 0.28*height);
         image(this.muteButton, pos.x, pos.y, size.x, size.y);
 
         if (hoveringOverButton(pos, size) && mouseIsPressed && this.buttonsActive) {
@@ -233,7 +233,7 @@ class Settings {
         let scale = 0.006 * width;
         let size  = createVector(this.musicMuteButton.width / scale,
                                  this.musicMuteButton.height / scale);
-        let pos   = createVector(0.78 * width, 0.38 * height);
+        let pos   = createVector(0.78 * width, 0.4 * height);
 
         image(this.musicMuteButton, pos.x, pos.y, size.x, size.y);
 
@@ -330,14 +330,14 @@ class Settings {
 
     initialiseDialPos(masterVolume) {
         let xPos = (0.27 + 0.46*masterVolume) * width;
-        return createVector(xPos, 0.26*height);
+        return createVector(xPos, 0.28*height);
     }
 
     /* ---------- Music‑volume helpers ---------- */
 
     initialiseDialPosMusic(vol) {
         let xPos = (0.27 + 0.46 * vol) * width;
-        return createVector(xPos, 0.38 * height);   // slightly lower than master
+        return createVector(xPos, 0.4 * height);   // slightly lower than master
     }
 
     updateMusicDial() {
@@ -376,13 +376,13 @@ class Settings {
     drawMusicBar() {
         let scale = 0.0035 * width;
         imageMode(CENTER);
-        image(volumeBar, width / 2, 0.38 * height, volumeBar.width / scale, volumeBar.height / scale);
+        image(volumeBar, width / 2, 0.4 * height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
     drawVolumeBar() {
         let scale = 0.0035 * width;
         imageMode(CENTER);
-        image(volumeBar, width/2, 0.26*height, volumeBar.width / scale, volumeBar.height / scale);
+        image(volumeBar, width/2, 0.28*height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
     // Draw the labels associated with all button and controls
@@ -412,6 +412,6 @@ class Settings {
         textAlign(CENTER);
         text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.56*height);
 
-        text('Enable Cheats:', width/2.17, 0.65*height); // cheats
+        text('Enable Cheats:', width/2.17, 0.68*height); // cheats
     }
 }
