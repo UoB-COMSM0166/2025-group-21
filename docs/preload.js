@@ -47,7 +47,8 @@ let playerHeadLaser = null;
 let playerHeadGatling = null;
 
 let playerFlyFeet, playerFlyBooster, playerPenguinWings,
-    playerDragonWings, playerHelicopterRotor, introHelicopterPenguin;
+    playerDragonWings, playerHelicopterRotor, introHelicopterPenguin,
+    playerFlyPropaneBooster;
 
 let arrowRight, arrowRightGlowing, arrowRightRed;
 let arrowLeft, arrowLeftGlowing, arrowLeftRed;
@@ -269,6 +270,7 @@ function preload() {
     playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
     playerFlyFeet        = loadImage('assets/sprites/fly_feet.png');
     playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
+    playerFlyPropaneBooster     = loadImage('assets/sprites/fly_PropaneBooster.png');
     playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
     playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
     playerHelicopterRotor = loadImage('assets/sprites/helicopterRotor.png');
