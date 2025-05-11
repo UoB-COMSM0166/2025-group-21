@@ -539,7 +539,7 @@ From this open discussion, we created a framework of notes, that divides the sus
 We attempted to arrange these into short, medium and long-term effects, and visualised them using a SusA diagram. This process was invaluable in helping us adopt a more sustainability thoughtful approach, and consider a broader range of longer term impacts.
 
 <div align="center">
-	<img src="report/sustainability_figures/susaf_diagram_figure.png" width="700"/>
+	<img src="report/sustainability_figures/susaf_diagram_figure.png" width="800"/>
 	<p><strong>Figure 18</strong><br>Sustainability awareness framework diagram for PengWings</p>
 </div>
 
