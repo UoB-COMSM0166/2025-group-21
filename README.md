@@ -1,9 +1,13 @@
 <div align="center">
-    <a href="https://uob-comsm0166.github.io/2025-group-21/">
-        <img src="Product doc/Banner.png" width="1000">
-        <br>
-        <p>🐧 <strong>CLICK HERE TO PLAY!</strong> 🚀</p>
-    </a>
+    <a href="https://uob-comsm0166.github.io/2025-group-21/"><img src="Product doc/Banner.png" width="1000"></a>
+    <p><br>🐧&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://uob-comsm0166.github.io/2025-group-21/">CLICK HERE TO PLAY!</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;🚀</p>
+</div>
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=j_a1GSaSCpk">
+    <img src="https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png" width="300" alt="Watch Our Video!">
+  </a>
+  <p><strong>🎥&nbsp;&nbsp;&nbsp;&nbsp;Demo Video&nbsp;&nbsp;&nbsp;&nbsp;🎥</strong></p>
 </div>
 
 # Table of Contents
@@ -17,6 +21,7 @@
 8. [Process](#8-process)
 9. [Conclusion](#9-conclusion)
 10. [Contribution Statement](#10-contribution-statement)
+11. [Appendix](#11-appendix)
 
 # 1. Development Team
 
@@ -46,314 +51,136 @@ Partially inspired by the late-2000s flash game ‘Learn To Fly’, it is from h
 
 First and foremost, while the Learn To Fly gameplay is formed of a single predetermined jump from which the score is calculated, our game is composed of unique and infinitely generating terrain. This has the effect of creating a more engaging experience since each PengWings game will be different from the last.
 
-PengWings also introduces obstacles (seagulls, planes and UFOs) which the player must either dodge or shoot down with their upgradable projectile ability. Making for a significantly more interactive experience, this becomes especially impactful as the player progresses through upgrades and observes new captivating and satisfying animations, encouraging user retention.
+PengWings also introduces obstacles (seagulls, planes and UFOs) which the player must either dodge or shoot down with their upgradable projectile ability (see appendix). Making for a significantly more interactive experience, this becomes especially impactful as the player progresses through upgrades and observes new captivating and satisfying animations, encouraging user retention.
 
 Along with many more of our own features such as saving progress, customising game preferences and a global leader board, we believe that PengWings offers an exhilarating and user-friendly experience to players of all ability levels. We hope that our game can be enjoyed by all.
 
-### Item Table
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Projectile-->
-    <tr>
-      <td rowspan="5">Projectile</td>
-      <td>Level 1:<br>Fish</td>
-      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
-      <td>Launches a flopping fish that deals limited splash damage</td>
-    </tr>
-    <tr>
-      <td>Level 2:<br>Snowball Cannon</td>
-      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
-      <td>Better collision knock back</td>
-    </tr>
-    <tr>
-      <td>Level 3:<br>Arrow</td>
-      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
-      <td>Improved path clearance, shoot in a straight line</td>
-    </tr>
-    <tr>
-      <td>Level 4:<br>Laser</td>
-      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
-      <td>Increased projectile speed, explosion upon collision</td>
-    </tr>
-    <tr>
-      <td>Level 5:<br>Automatic Laser</td>
-      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
-      <td>Wow! Shoot Laser from a Gatling gun!</td>
-    </tr>
-    <!-- Flying-->
-    <tr>
-      <td rowspan="5">Flying Ability</td>
-      <td>Level 1:<br>Normal mode</td>
-      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
-      <td>Basic mode</td>
-    </tr>
-    <tr>
-      <td>Level 2:<br>Wing Enhancement</td>
-      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
-      <td>Smooth gliding</td>
-    </tr>
-    <tr>
-      <td>Level 3:<br>Dragon Wings</td>
-      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
-      <td>Improved glide disctance and control</td>
-    </tr>
-    <tr>
-      <td>Level 4:<br>Rotors</td>
-      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
-      <td>Allows hovering and precise movement</td>
-    </tr>
-    <tr>
-      <td>Level 5:<br>Booster</td>
-      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
-      <td>High-speed propulsion for fast flight</td>
-    </tr>
-    <tr>
-      <td rowspan="1">Force field</td>
-      <td>Force Field</td>
-      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
-      <td>Force field protects players from collisions</td>
-    </tr>
-    <tr>
-      <td rowspan="3">Obstacles</td>
-            <td>Seagull</td>
-      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
-      <td>...War between BIRDS!</td>
-    </tr>
-    <tr>
-      <td>Plane</td>
-      <td><img src="docs/assets/images/airplane.png" width="80"></td>
-      <td>To be a penguinator... or a bombguin!</td>
-    </tr>
-    <tr>
-      <td>UFO</td>
-      <td><img src="docs/assets/images/ufo.png" width="80"></td>
-      <td>Aliens... trembling! It's a Penguinvasion...</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Collectibles</td>
-      <td>Heart</td>
-      <td><img src="docs/assets/images/heart1.png" width="80"></td>
-      <td>Collect hearts to restore life</td>
-    </tr>
-    <tr>
-      <td>Coin</td>
-      <td><img src="docs/assets/images/coin.png" width="60"></td>
-      <td>Collect coins to upgrade your equipment in Workshop</td>
-    </tr>
-</tbody>
-</table>
-
-
 # 3. Requirements 
-### Ideation Processing
 
-During the first week of our game development project, our team of six engaged in an ideation session to generate and refine potential game ideas. Prior to our group discussion, each member independently brainstormed one to two initial concepts based on their personal interests, gaming experiences, and feasibility considerations. After preparing their concepts, team members presented them in our session, where we collectively discussed each idea in detail.
+## Ideation
 
-In our meeting, each member shared their concepts. These proposed ideas spanned different genres, with a focus on game inspirations, fundamentals, and possible twists to ensure a diverse set of possibilities. We encouraged open discussion, asking questions, providing constructive feedback, and considering the difficulty level of each idea and how each idea aligned with our team's skills.
-
-Through voting and discussions, we shortlisted a few promising concepts that best fit our team’s capabilities and goals. We used Miro to organize the results of our brainstorming.
-<p align="center" style="margin-top: 10px;"><b>Table 1</b></p>
-<p align="center"><i>Team Game Idea Overview</i></p>
-
-| **Game Type**      | **Game Inspiration**        | **Game Description**                                         | **Possible Game Twists**                                     |
-| ------------------ | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Role-Playing Game  | Inscryption<br>Pokemon      | A strategic maze-based game where players navigate procedurally generated levels, interact with NPCs, and utilize a card-based system to solve puzzles or overcome obstacles. | Multiplayer mode<br>High score system                        |
-| Shooting Game      | Diep.io                     | A top-down shooter where players control a tank, engaging in battles while upgrading their arsenal and maneuvering through dynamic battlefields. | Multiple game modes<br>Multiplayer mode<br>High score system |
-| Act Adventure Game | Super Mario                 | A side-scrolling platformer featuring generated maps, gravity-based physics, and interactive characters navigating through various levels. | High score system                                            |
-| Action Game        | Skywire                     | A physics-based rollercoaster simulation where players design or navigate tracks, accounting for friction and gravity while avoiding obstacles. | Increasing difficulty<br>Numerous levels<br>High score system |
-| Action Game        | Doodle Jump                 | A vertically scrolling game where players jump higher by bouncing on platforms, avoiding traps, and collecting power-ups. | Increasing difficulty<br>Adding enemies, traps and interactive elements |
-| Racing Game        | Happy wheels<br>Motocross 3 | A physics-based motorbike game focusing on dynamic movement and precise rotation across multiple challenging levels. | Item upgrade system<br>Interactive elements<br>High score system |
-| Simulation Game    | Into Space                  | A spaceflight game where players launch and control a rocket, adjusting for gravity, air resistance, and weather conditions while upgrading their craft. | Infinite map generation<br>High score system                 |
-
-
-<p align="center" style="margin-top: 10px;"><b>Figure 1</b></p>
-<p align="center"><i>Brainstormed Game Ideas on Miro</i></p>
+Our first steps along the road of the PengWings project involved carving out the vision for our game. Throughout week one, we engrossed ourselves in the ideation process, brainstorming a variety of concepts with Miro (Figure 1) and showcasing examples of existing games to one another. Presenting our ideas, we focussed on examples that showed potential to be built upon and could be extended in ways that would allow us to build a product that is not only entertaining, but also unique in it’s own way.
 
 <div align="center">
-    <img src="Product%20doc/Game%20Ideas.png" alt="Game Ideas" width="600">
-</div>
-<br>
-
-
-
-
-After brainstorming various game concepts, our team became particularly interested in physics-based mechanics, especially gravity. We decided to merge action and simulation elements, leading us to focus on the *Rocket Game*. Further research into space and flight-based games led Jack to discover a game called *Learn to Fly*, a game integrating gravity, air resistance, and propulsion. Inspired by its mechanics—and the idea that penguins are the only birds that cannot fly, making it our mission to help them take flight—we unanimously embraced this concept and included it as one of our final choices.
-<p align="center" style="margin-top: 10px;"><b>Figure 2</b></p>
-<p align="center"><i>Learn to Fly game animation</i></p>
-<div align="center">
-    <img src="Videos/learn_to_fly.gif" alt="Learn to Fly GIF" width="400">
+	<img src="report/requirements_figures/game_inspirations.jpg" width="500">
+	<p><strong>Figure 1</strong><br>Miro brainstorm of our initial game ideas</p>
 </div>
 
+As these initial ideas flowed between us, a consensus of the basic characteristics regarding the nature of our game began to take shape. It became clear that team members valued fast-paced, easy to learn games with an emphasis on high scores and replayability. With this in mind, we narrowed down our initial ideas to two contenders — Into Space and Learn To Fly (Figure 2).  
 
-
-
-### Prototype
-In Shop Three, we created paper prototypes for *Rocket Game* and *Penguin Game*, which helped us visualize and test early game mechanics, including gravity, propulsion, and player interaction. Based on initial discussions, we made changes and added new elements to the game flow and format to enhance the fun of the gameplay. We also received feedback from our instructor and other teams, which gave us further insights into development challenges and market preferences. To facilitate clearer communication, we created simple animations simulating the paper prototype style, vividly showcasing the game flow and promoting better understanding and discussion within the team. These tools proved crucial for the development process moving forward.
-<p align="center" style="margin-top: 10px;"><b>Figure 3</b></p>
-<p align="center"><i>Paper Prototype of Rocket Game and Penguin Game</i></p>
-<p align="center">
-    <img src="Videos/Rocket_game_paper_prototype.gif" alt="Rocket Game GIF" height="500">
-</p>
-
-
-<p align="center" style="margin: 20px 0;"> </p>
-
-<p align="center">
-    <img src="Videos/Penguin_game_paper_prototype.gif" alt="Penguin Game GIF" width="400">
-</p>
-
-
-
-### Digital Paper Prototype tool
-
-To help people better understand the concept of the game, we also created a digital prototype. Jing attempted to generate the digital prototype using her iPad, which is closer to the actual game visuals compared to the paper prototype. 
-
-**Additionally, it introduced a visual representation of the relationship between the space key operation and the penguin's movement.**
-
-<p align="center"><b>Figure 4</b></p>
-<p align="center"><i>Digital Paper Prototype Tool.</i></p>
-
-<p align="center">
-    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/prototype.gif?raw=true" alt="prototype tool" height="320">
-</p>
-
-<p align="center" style="margin: 20px 0;"> </p>
-
-
-
-<p align="center"><b>Figure 5</b></p>
-<p align="center"><i>GameOver.</i></p>
-
-<p align="center">
-    <img src="https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Videos/GameOver.gif?raw=true" alt="GameOver" height="350">
-</p>
-
-<p align="center" style="margin: 20px 0;"> </p>
-
-
-
-### Feasibility Studies
-Before starting the development process, we studied various representative game 
-types and their core elements, reaching a consensus: we wanted to incorporate 
-**physics-based elements**, such as gravity. Our research helped verify that these 
-ideas were feasible. For example, players could alter the in-game gravity value 
-by holding the space bar, allowing them to accelerate and take off from an upward slope.
-
-To better illustrate our concept, we created a [paper prototype](#prototype) and encouraged 
-players to try out our game demo. This allowed us to gather valuable feedback. However,
-after testing our prototype, some users found it unclear how to effectively control acceleration. 
-They also questioned the conditions under which the game would end, highlighting the need 
-for clearer rules and better feedback mechanisms.
-
-To address these concerns, we explored different ways to improve player understanding. 
-One suggestion was to add cracks between the glaciers where the penguin could fall, 
-introducing an additional challenge. Another improvement was to adjust the zoom levels, 
-as users found the zoom-out effect too wide, making it harder to track the penguin's movement.
-
-For game balancing, we considered setting a maximum gravity cap to prevent 
-unintended gameplay issues. Additionally, we decided that difficulty should 
-progressively increase, with obstacles appearing both on the ground and in the air.
-
-Given that we had previously designed an in-game store, we refined and upgraded the store’s items—such as flight-related props that provide acceleration—based on player feedback to enhance the gaming experience.
-
-External feedback also drew comparisons between our concept and existing physics-based movement games. Additionally, in our game, players must carefully maneuver along icy slopes, using acceleration and timing to launch into the air. The terrain itself becomes a key element of gameplay, making precise movement a challenge. Many players pointed out that our game mechanics were highly unique, strengthening our belief that it has the potential to provide an engaging and distinctive gameplay experience.
-
-### Identifying Stakeholders
-
-The stakeholder diagram illustrates the character system for the project, clearly identifying who is involved and their roles. Before implementation begins, it is crucial to understand the key stakeholders, including the development team, academics, and the instructor, as well as the end-users--our primary target audience: the players.
-
-Using the hierarchy of the onion model, we can see that every feature we develop aims to meet the needs of our target audience. Additionally, successful project delivery requires close collaboration with the development team and alignment with the guidance of the instructor and academics. By maintaining effective communication and progress tracking, we can ensure that the project meets all requirements and launches the first version of the game on schedule.
-
-<p align="center" style="margin-top: 10px;"><b>Figure 6</b></p>
-<p align="center"><i>Onion Model of Learn To Fly Game</i></p>
-
-  ![Product doc/Game Stakeholders_new.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20Stakeholders_new.jpg)
-
-### Persona
-
-For a brandnew product, it is essential to prioritize target audiences, allowing us to focus on the highest-priority users when developing features for the initial game version. Personas are fictional yet research-based archetypes of our target users. They help the team better understand who our users are, their needs, and their behaviors. This shared understanding is vital for the development team, ensuring everyone is aligned and working towards the same goal. By clearly defining personas, we can make informed design and development decisions that resonate with our users.
-<br>
-| **Figure 7**<br>_Persona 1._<br>![Product doc/Game doc - Persona 1.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%201.jpg) | **Figure 8**<br>_Persona 2._<br>![Product doc/Game doc - Persona 2.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%202.jpg) | **Figure 9**<br>_Persona 3._<br>![Product doc/Game doc - Persona 3.jpg](https://github.com/UoB-COMSM0166/2025-group-21/blob/main/Product%20doc/Game%20doc%20-%20Persona%203.jpg) |
-|--|--|--|
-<br>
-
-### Identifying Top-Level Needs with User Stories
-
-Once the personas are established, user stories are created to represent the needs, and challenges of each user type. By grounding user stories in the personas, we ensure that the product's functionality aligns with user expectations, resulting in a more user-centered design and a better overall experience.
-
-<p align="center" style="margin-top: 10px;"><b>Table 2</b></p>
-<p align="center"><i>User Story</i></p>
-<table border="1" cellspacing="0" cellpadding="8">
-    <tr>
-        <th>User</th>
-        <th>Epic</th>
-        <th>User Stories</th>
-        <th>Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td rowspan="3">Casual Player</td>
-        <td rowspan="3">Beginner-Friendly User Experience</td>
-        <td>As a casual player, I want a simple and intuitive game so that I can have fun without spending a lot of time learning how to play.</td>
-        <td>The game should have minimal controls and simple rules to ensure ease of play.</td>
-    </tr>
-    <tr>
-        <td>As a casual player, I want a clear and simple tutorial on my first attempt so that I can quickly learn how to play the game.</td>
-        <td>When entering the game for the first time, I should see an introductory tutorial explaining the basic controls and gameplay mechanics.</td>
-    </tr>
-    <tr>
-        <td>As a casual player, I want to pause the game and resume later so that I can play at my own pace.</td>
-        <td>I can click a “Pause” button to stop the game and a “Resume” button to continue from where I left off.</td>
-    </tr>
-    <tr>
-        <td rowspan="5">Avid Player</td>
-        <td>Replayability</td>
-        <td>As an avid player, I want to replay the game so that I can improve my skills and achieve a sense of accomplishment.</td>
-        <td>The game should allow multiple playthroughs without significant restrictions.</td>
-    </tr>
-    <tr>
-        <td rowspan="2">Character Upgrades</td>
-        <td>As an avid player, I want to upgrade my character’s gear so that I have a better chance of progressing to the next level.</td>
-        <td>Players can access a shop before, during, and after the game to purchase tools and outfits using in-game currency.</td>
-    </tr>
-    <tr>
-        <td>As an avid player, I want to earn rewards for upgrading my gear to stay competitive.</td>
-        <td>Successfully upgraded gear should provide gameplay advantages and be visually distinct.</td>
-    </tr>
-    <tr>
-        <td rowspan="2">Ranking System</td>
-        <td>As an avid player, I want to see the highest scores recorded so that I can compete for the top spot.</td>
-        <td>The main game page should display a real-time leaderboard showing the top 10 players.</td>
-    </tr>
-    <tr>
-        <td>As an avid player, I want to compare my scores with friends.</td>
-        <td>The game should include a friend leaderboard feature for score comparison.</td>
-    </tr>
-
-</table>
-
-### Use-Cases Breakdown
-
-Before designing the use-case diagram, we analyzed the stakeholders and user stories to ensure that all relevant interactions within the game system were captured. By breaking down the different needs and expectations of stakeholders, we structured the use-case diagram to accurately reflect player interactions and system functionalities.
-<p align="center" style="margin-top: 10px;"><b>Figure 10</b></p>
-<p align="center"><i>Use-case Diagram</i></p>
 <div align="center">
-    <img src="Product%20doc/use-case%20diagram.png" width="600">
+	<p>
+		<img src="report/requirements_figures/into_space.gif" height="300">
+		<img src="report/requirements_figures/learn_to_fly.gif" height="300">
+	</p>
+	<p><strong>Figure 2</strong><br>Into Space (left) and Learn To Fly (right) gameplay</p>
 </div>
-<br>
 
-As this is a game design project, our primary stakeholder is the **Player**. The core interactions focus on how the player progresses from entering the game, navigating menus, engaging in gameplay, and upgrading abilities in the shop. The system ensures an immersive and rewarding experience across these stages.
-<p align="center" style="margin-top: 10px;"><b>Figure 11</b></p>
-<p align="center"><i>Use-case Specification</i></p>
+During week three’s workshop session, we created paper prototypes (Figure 3) to showcase these two ideas. This was the first instance during the project in which we created something completely of our own making. The session required us to communicate efficiently and operate as a unit to deliver a result in a set timeframe. All team members would agree that, not only in aiding us with the conceptualisation of our ideas, this exercise proved to be a meaningful team building experience, deepening the sense of comradery between us.
+
 <div align="center">
-    <img src="Product%20doc/use-case_specification.png" width="900">
+	<table>
+		<tr>
+			<td><img src="report/requirements_figures/Rocket_game_paper_prototype.gif" height="400"></td>
+			<td><img src="report/requirements_figures/Penguin_game_paper_prototype.gif" height="200"></td>
+		</tr>
+	</table>
+	<p><strong>Figure 3</strong><br>Rocket game paper prototype (left) and penguin game paper prototype (right)</p>
+</div>
+
+## Vision
+
+Over much discussion and democratic debate in response to our peer feedback from the prototypes, we eventually arrived upon a shared vision for our game. It would encompass the core principles of Learn To Fly, namely controlling a penguin’s motion down an initial ramp and through the air; however, we would extend this principle to apply to an infinitely generating map (Figure 4). Moreover, we would incorporate aspects drawn from the Into Space gameplay, such as in-air obstacles, which lend themselves to this new twist on the game. It was from here that PengWings was born!
+
+<div align="center">
+	<p>
+		<img src="report/requirements_figures/prototype.gif" height="250">
+		<img src="report/requirements_figures/GameOver.gif" height="250">
+	</p>
+	<p><strong>Figure 4</strong><br>PengWings hypothetical gameplay</p>
+</div>
+
+## Stakeholders and User Stories
+
+A range of PengWings stakeholders were identified (Figure 5) and, from these, user stories were created and assigned to epics. Here, we aimed to accommodate for a large and diverse pool of user personas as to maximise the appeal of our game and cater to the broadest possible audience. These epics and user stories are shown below along with their corresponding acceptance criteria (Table 1).
+
+<div align="center">
+	<img src="report/requirements_figures/onion_model_diagram.png" width="500">
+	<p><strong>Figure 5</strong><br>Onion model diagram of PengWings stakeholders<br><br><br></p>
+</div>
+
+<div align="center">
+    <p><strong>Table 1</strong><br>Epics, user stories and acceptance criteria used in PengWings development</p>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <tr>
+            <th>Epic</th>
+            <th>User Story</th>
+            <th>Acceptance Criterion</th>
+        </tr>
+        <tr>
+            <td rowspan="3">Replayability</td>
+            <td>As a casual gamer, I want clear instructions so that I can easily learn how to play.</td>
+            <td>Given the player is on the main menu, when they click the instructions button, then the instructions are clearly and unambiguously displayed.</td>
+        </tr>
+        <tr>
+            <td>As an avid gamer, I want to upgrade items so that I am motivated to keep playing.</td>
+            <td>Given the player has earned enough coins, when they enter the shop, then they are shown a list of items they can upgrade.</td>
+        </tr>
+        <tr>
+            <td>As a competitive player, I want to earn a spot on the leader board so that I am recognised for my skill level.</td>
+            <td>Given the player has earned a top 10 score, when they enter their username, then it will be displayed on the leader board.</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Accessibility</td>
+            <td>As a player hypersensitive to sounds, I want to easily control the volume so that I can play at a comfortable level.</td>
+            <td>Given the player is in the settings menu, when they adjust the volume control, then the output volume is changed accordingly.</td>
+        </tr>
+        <tr>
+            <td>As a player who is unable to use a mouse, I want a game that is navigable with a keyboard so that I, too, can participate.</td>
+            <td>Given the player is on any menu, when they use the arrow keys, then they can navigate around the menu.</td>
+        </tr>
+        <tr>
+            <td>As a player with restricted hand motion, I want to customise the controls so that they are comfortable for me to use.</td>
+            <td>Given the player is in the change controls section of the settings menu, when they change a key-bind, then this new key can be used for the respective in-game ability control.</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Graphics / Sound Design</td>
+            <td>As a young player, I want a bright eye-catching colour scheme so that I remain engaged.</td>
+            <td>Given the player is on the main menu, in the shop or in game, when they look at the screen, then they will see a visually appealing colour scheme.</td>
+        </tr>
+        <tr>
+            <td>As an aesthetically minded player I want a minimalist design so that I am visually satisfied.</td>
+            <td>Given the player is interacting with a UI menu, when they look at the screen, then they see a minimal button layout with a consistent colour scheme.</td>
+        </tr>
+        <tr>
+            <td>As player who values rich sound design, I want a diverse range of sound effects so that the soundtrack does not become monotonous.</td>
+            <td>Given the player is in game, when any unique event occurs, then a corresponding unique sound effect is played.</td>
+        </tr>
+        <tr>
+            <td>Privacy</td>
+	    <td>As a player with privacy in mind, I want no requirement to create an account nor share any personal information so that my data is protected.</td>
+	    <td>Given the player has achieved a high score, when they enter a name, then they are prompted to use a username different from their legal name.</td>
+        </tr>
+    </table>
+</div>
+
+### Reflection
+
+In the absence of an explicit, well-defined requirements criteria, it is not uncommon for misalignments in understanding between a development team and clients/stakeholders (as well as within the team itself) to arise. Possible differences in terminology semantics between parties can be a source of confusion and result in unforeseen delays in the production timeline. User stories attempt the alleviate this while also offering a framework by which to balance conflicting requirements that may arise from the differing needs of stakeholders.
+
+At the start of the project, there were moments of scepticism within the team regarding the necessity of user stories for the implementation of functionality in our game. This was a new concept to us, yet to be put into practice, and at the time, appeared as though it would offer minimal value to our game since each member was under the impression that the rest of the team were on the same page as they were in regards to requirement specifics.
+
+Through the open discussion of our user stories and ‘hammering out’ of the acceptance criteria, it became evident that our previous assumptions were naive. The user stories allowed us to assess, more accurately, how impactful our proposed features were and which to prioritise (e.g., keyboard navigation, volume control), putting ourselves in the positions of a diverse demographic of users, all of whom deserved to be able to engage and find entertainment in PengWings. Moreover, our concrete acceptance criteria ensured that the team was collectively on-board with implementation specifics.
+
+As development progressed and the scope of our game increased, our requirements evolved as we proposed and debated new features. Additional user stories were adopted while those of negligible significance were dropped. Through this agile methodology, we refined our requirements, prioritising the most impactful features.
+
+## Use-Case
+
+In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case model is illustrated in the diagram below (Figure 6). A detailed use-case specification can be found in the appendix.
+
+<div align="center">
+	<img src="report/requirements_figures/use_case_diagram.png" width="800">
+	<p><strong>Figure 6</strong><br>PengWings use-case diagram</p>
 </div>
 
 # 4. Design
@@ -364,12 +191,12 @@ Now, with a set of requirements in mind, it came time to begin designing our gam
 
 <div align="center">
     <img src="report/design_figures/initial_design.png" width="700">
-    <p><b>Figure 11.</b> Initial design class diagram</p>
+    <p><strong>Figure 7</strong><br>Initial design class diagram</p>
 </div>
 
 The main class would begin by instantiating the inventory which would persist throughout runtime. This class would hold all data relating to the in-game progress of the user such as ability levels and in-game currency. The game and shop classes would then be instantiated and destroyed as the user navigates between these two domains. Additionally, they would both need to interface with the inventory class as to allow for the relevant upgrades to be shown in the shop and for these upgrades to be used in the game.
 
-The game class would be responsible for the actual gameplay. It would be formed of the following components:
+The game class would be responsible for the gameplay itself. It would be formed of the following components:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>1. Terrain</b>
 
@@ -385,7 +212,7 @@ The general function of this class would be handling the sequence of events occu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>4. UFO / UFOHandler</b>
 
-The UFOHandler class would be responsible for instantiating UFO objects and monitoring their positions. It would need to check if a collision between the player and a UFO has occurred as well ensure that any UFOs are destroyed if they travel off the screen. The UFO class would then encapsulate a UFO’s position/velocity data and functionality such as updating the position and drawing it on the screen.
+The UFOHandler class would be responsible for instantiating UFO objects and monitoring their positions. It would need to check if a collision between the player and a UFO has occurred as well as ensure that any UFOs are destroyed if they travel off the screen. The UFO class would then encapsulate a UFO’s position/velocity data and functionality such as updating the position and drawing it to the screen.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>5. Laser / LaserAbility</b>
 
@@ -398,14 +225,14 @@ As new features were added throughout the development process, the system archit
 
 <div align="center">
     <img src="report/design_figures/final_architecture.png" width="700">
-    <p><b>Figure 12.</b> Final design class diagram</p>
+    <p><strong>Figure 8</strong><br>Final design class diagram<br><br><br></p>
 </div>
 
 
 
 <div align="center">
     <img src="report/design_figures/main_sequence_diagram.png" width="700">
-    <p><b>Figure 13.</b> Main sequence diagram</p>
+    <p><strong>Figure 9</strong><br>Main sequence diagram</p>
 </div>
 
 
@@ -423,12 +250,12 @@ A class diagram of all interactions in the Game class is shown below (Figure 14)
 
 <div align="center">
     <img src="report/design_figures/final_game_architecture.png" width="900">
-    <p><b>Figure 14.</b> Final Game class diagram</p>
+    <p><strong>Figure 10</strong><br>Final Game class diagram</p>
 </div>
 
 Many new features were added to the game over the development process including new player abilities, a scoring system, pausing, a dynamic background, stats, collectables, lives, and a high score leader board. Some notable changes from our initial design worth discussing relate to the introduction of new in-game obstacles and projectiles.
 
-The Laser and UFO classes from our initial design still exist; however, they are now concrete sub-classes of the abstract Projectile and AerialObstacle classes. The renamed ProjectileAbility and ObstacleHandler classes (formerly LaserAbility and UFOHandler), work in a similar way as before; however, they now store and update all projectiles and obstacles using polymorphic arrays, allowing for all Projectile and AerialObstacle sub-classes to be stored in the same data structure corresponding to their respective super-class, resulting in simplified code.
+The Laser and UFO classes from our initial design still exist; however, they are now concrete sub-classes of the abstract Projectile and AerialObstacle classes respectively. The renamed ProjectileAbility and ObstacleHandler classes (formerly LaserAbility and UFOHandler), work in a similar way as before; however, they now store and update all projectiles and obstacles using polymorphic arrays, allowing for all Projectile and AerialObstacle sub-classes to be stored in the same data structure corresponding to their respective super-class, resulting in simplified code.
 
 
 # 5. Implementation
@@ -447,7 +274,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 <div align="center">
     <img src="report/implementation_figures/map_evolution_figure.gif" width="700" alt="Terrain evolution over times">
-    <p><b>Figure 1.</b> Evolution of our terrain generation over time.</p>
+    <p><strong>Figure 11</strong><br>Evolution of our terrain generation over time</p>
 </div>
 
 #### Random and Unpredictable Terrain
@@ -456,7 +283,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 
 <div align="center">
     <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
-    <p><b>Figure 2.</b> Comparison of individual sine curves and their summed result.</p>
+    <p><strong>Figure 12</strong><br>Comparison of individual sine curves and their summed result</p>
 </div>
 
 #### Modifiable Difficulties
@@ -465,7 +292,7 @@ Difficulty levels were implemented by adjusting the sine wave parameters. More e
 
 <div align="center">
     <img src="report/implementation_figures/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
-    <p><b>Figure 3.</b> Terrain variations across different difficulty levels.</p>
+    <p><strong>Figure 13</strong><br>Terrain variations across different difficulty levels</p>
 </div>
 
 ### 2. Movement Physics
@@ -497,7 +324,7 @@ These forces—shown in Figure 4b—formed the foundation of the players sliding
 		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
 		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
-    	<p><b>Figure 4.</b> Player <span style="color:red">velocity (A)</span> and <span style="color:blue">acceleration (B)</span> vectors. Vector magnitudes scaled (velocity = 8, acceleration = 1500) for clarity.</p>
+	<p><strong>Figure 14</strong><br>Player velocity (red) and acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
@@ -529,7 +356,7 @@ Participants were asked to verbalise their thoughts and reactions during gamepla
 
 <div align="center">
 	<img src="report/evaluation_figures/think_aloud_map_figure.png" width="850"/>
-	<p><b>Figure X.</b> Thematic map of key Think Aloud evaluation feedback.</p>
+	<p><strong>Figure 15</strong><br>Thematic map of key Think Aloud evaluation feedback</p>
 </div>
 
 #### Solutions and Adjustments
@@ -561,7 +388,7 @@ These evaluations involved 10 participants, each trialing two difficulty modes. 
 Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
 <div align="center">
-  <p><b>Table X.</b> Median NASA TLX subscale scores for all participants.</p>
+  <p><strong>Table 2</strong><br>Median NASA TLX subscale scores for all participants</p>
   <table>
     <thead>
       <tr>
@@ -587,14 +414,14 @@ All participants reported an increased perceived workload at higher difficulty l
 
 <div align="center">
 	<img src="report/evaluation_figures/nasatlx_figure.png" width="700"/>
-	<p><b>Figure X.</b> Mean NASA TLX scores for each participant.</p>
+	<p><strong>Figure 16</strong><br>Mean NASA TLX scores for each participant</p>
 </div>
 
 #### Statistical Analysis
 A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
 
 <div align="center">
-  <p><b>Table X.</b> Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8.</p>
+  <p><strong>Table 3</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
   <table>
     <thead>
       <tr>
@@ -634,7 +461,7 @@ The individual SUS scores are shown in Figure X, with the industry average bench
 
 <div align="center">
 	<img src="report/evaluation_figures/sus_figure.png" width="700"/>
-	<p><b>Figure X.</b> Mean SUS scores for each participant.</p>
+	<p><strong>Figure 17</strong><br>Mean SUS scores for each participant</p>
 </div>
 
 While two participants rated the harder difficulty below average usability, overall scores remained well above the standard usability benchmark. This suggests that our game had excellent usability even at a higher difficulty level.
@@ -672,10 +499,10 @@ As a team, we each contributed sustainability-focused questions to prompt group 
 
 #### Analysis
 
-From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table X).
+From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 4).
 
 <div align=“center”>
-  <p><b>Table X.</b> Discussion notes divided into sustainability dimensions from SusAF protocol.</p>
+  <p align="center"><strong>Table 4</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
   <table border="1">
     <thead>
       <tr>
@@ -713,50 +540,47 @@ We attempted to arrange these into short, medium and long-term effects, and visu
 
 <div align="center">
 	<img src="report/sustainability_figures/susaf_diagram_figure.png" width="700"/>
-	<p><b>Figure X.</b> Sustainability awareness framework diagram for PengWings.</p>
+	<p><strong>Figure 18</strong><br>Sustainability awareness framework diagram for PengWings</p>
 </div>
 
 #### Sustainability in Design
 
-By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table X), which we translated into actionable requirements in our product backlog.
+By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 5), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
-  <p><b>Table X.</b> Sustainability user stories and their acceptance criteria, arising from the SusAF.</p>
-
+  <p align="center"><strong>Table 5</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
   <table border="1" cellspacing="0" cellpadding="8">
     <tr>
-        <th>User</th>
-        <th>Epic</th>
-        <th>User Stories</th>
-        <th>Acceptance Criteria</th>
+        <th>Dimension</th>
+        <th>User Story</th>
+        <th>Acceptance Criterion</th>
     </tr>
     <tr>
-        <td rowspan="9">Sustainable Design</td>
         <td rowspan="2">Technical</td>
         <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
-        <td>The high-score data storage should be persistent and maintained.</td>
+        <td>Given a user is playing PengWings, when they close the game, then their highscores and progress should be maintained.</td>
     </tr>
     <tr>
-        <td>As an avid player, I want to be able to see and learn from the code bases of the games I play.</td>
-        <td>The open-source code should be maintained and accessible.</td>
+        <td>As an avid player, I want to be able to see and learn from the code bases of the games I play, so I can become a better informed player.</td>
+        <td>Given a user is playing PengWings, when they look at the open-source code base, then it should be accessible and maintained.</td>
     </tr>
     <tr>
         <td rowspan="2">Social</td>
-        <td>As a casual player, I want a game that doesn't become too addictive over time and doesn't take up too much of my life.</td>
+        <td>As a casual player, I want a game that doesn't become too addictive over time, so that it doesn't take up too much of my life.</td>
         <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
     </tr>
     <tr>
-        <td>As a casual player, I want a good balance of competitiveness, without having to spend too much time to stay on top.</td>
-        <td>The game should reward players of all skill levels, and not skew too heavily towards better players.</td>
+        <td>As a casual player, I want a good balance of competitiveness, so that I don't have to spend too much time to stay on top.</td>
+        <td>Given a user is playing PengWings, when they are at a lower skill level, then they should still be rewareded.</td>
     </tr>
     <tr>
         <td rowspan="2">Economic</td>
-        <td>As a casual player, I want to play free games, so I don't feel I have to pay to be good at the game.</td>
-        <td>The game should be free and fun with any costs only being for avid players.</td>
+        <td>As a casual player, I want to play free games, so that I don't feel I have to pay to be good at the game.</td>
+        <td>Given a user wants to play PengWings, when they open the game, it should be free and fun without necessary costs.</td>
     </tr>
     <tr>
-        <td>As a casual player, I want to be able to just connect to the internet and be able to play.</td>
-        <td>The game should be accessible on a web browser without anything extra required.</td>
+        <td>As a casual player, I want to be able to just connect to the internet and be able to play, so that I don't require any specialised software or hardware.</td>
+        <td>Given a user wants to play the game, when they connect through a web browser, then it should not require anything extra.</td>
     </tr>
     <tr>
         <td rowspan="1">Environmental</td>
@@ -765,12 +589,12 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="2">Individual</td>
-        <td>As a casual player, I want a game that doesn't require my data or is a safety risk.</td>
-        <td>The game should not require any important data from the users, to make the games' data usage sustainable.</td>
+        <td>As a casual player, I want a game that doesn't require my data, so that there is no safety risk.</td>
+        <td>Given a user is playing the game, when they set a highscore, then they should not be required to provide personal data.</td>
     </tr>
     <tr>
         <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
-        <td>The game should have comfortable controls and mechanics, and not heavily reward prolonged playtime.</td>
+        <td>Given a user is playing the game, when they set custom controls, then they should not be uncomfortable.</td>
     </tr>
   </table>
 </div>
@@ -808,11 +632,11 @@ To keep development on track, we maintained a consistent weekly routine. During 
 <div align="center" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div>
         <img src="report/process_figures/paperprototype_team_work2.gif" width="500">
-        <p>Team work in workshops</p>
+	<p><strong>Figure 19</strong><br>Paper prototype assembly<br><br><br></p>
     </div>
     <div>
         <img src="report/process_figures/mvb_meeting.gif" width="500">
-        <p>Footage from a team meeting</p>
+	<p><strong>Figure 20</strong><br>MVB team meeting</p>
     </div>
 </div>
 Commencing the Easter holiday period, we transitioned to a remote setup. We held weekly Wednesday meetings, online, over Google Meet. Similarly, this time was used to share progress updates, identify and discuss blockers, and discuss feedback from peer testing.
@@ -821,7 +645,7 @@ Throughout development, we completed two sprint cycles with each lasting two wee
 
 <div align="center">
     <img src="report/process_figures/sprint_planning.jpg" width="500">
-    <p>Sprint planning</p>
+    <p><strong>Figure 21</strong><br>Sprint planning</p>
 </div>
 
 In order to estimate task difficulty and plan effectively, we used the Planning Poker method, which gave us a good balance between accuracy and team discussion. When assigning tasks, we considered each person’s strengths, how much time could realistically be committed, and any dependencies or technical challenges that may arise. We also considered which features would have the most impact on gameplay with the MoSCoW user story framework, focusing on what mattered most.
@@ -830,14 +654,14 @@ During sprints, we tracked progress using Kanban, dividing tasks into “To Do,�
 
 <div align="center">
     <img src="report/process_figures/kanban.png" width="500">
-    <p>Screenshot of our group's Kanban</p>
+    <p><strong>Figure 22</strong><br>Screenshot of our group's Kanban</p>
 </div>
 
 Concluding each sprint, we completed a sprint review and retrospective. Team members presented their progress, whether it may be a new game mechanic, interface updates, or documentation improvements. We discussed whether progress had fulfilled our acceptance criteria as well as the next steps for our game, referring to our product backlog. Following this, we then discussed what went well, what didn’t, and how we could work better in the next sprint. General issues we encountered included code merge conflicts, overlapping work on the same feature, and delays in testing; however, we were always able to work through these issues with open dialogue and devise practical solutions.
 
 <div align="center">
     <img src="report/process_figures/video_call.gif" width="500">
-    <p>Short recording from a sprint review</p>
+    <p><strong>Figure 23</strong><br>Online sprint review</p>
 </div>
 
 ## Tools
@@ -873,8 +697,7 @@ To support communication, planning, documentation, and our needs throughout deve
 - Balanced task allocation with Kanban kept everyone involved and enabled clear progress tracking.
 - Open communication channels accelerated technical problem-solving
 - Git branching and GitHub pull request workflows maintained a stable codebase
-- Kanban implementation enabled clear progress tracking
-- Frequent user testing outside the team helped prioritize what to improve.
+- Frequent user testing outside the team helped prioritise features/improvements.
 - A comprehensive documentation system enabled rapid task onboarding.
 
 ### Problems
@@ -899,6 +722,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 # 10. Contribution Statement
 
 <div align="center">
+	<p><strong>Table 6</strong><br>Relative team contributions to the PengWings project</p>
 
 | Name | Contribution |
 | :-: | :-: |
@@ -909,5 +733,114 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 | Jing Yao | 1.00 |
 | Zhiling Liu | 1.00 |
 
-<p>Table showing the relative contributions to the PengWings project</p>
+</div>
+
+# 11. Appendix
+
+<div align="center">
+	<p>Table showing all PengWings game items, obstacles and collectables</p>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Category</th>
+	      <th>Name</th>
+	      <th>Image</th>
+	      <th>Description</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <!-- Projectile-->
+	    <tr>
+	      <td rowspan="5">Projectile</td>
+	      <td>Level 1:<br>Fish</td>
+	      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
+	      <td>Launches a flopping fish that deals limited splash damage</td>
+	    </tr>
+	    <tr>
+	      <td>Level 2:<br>Snowball Cannon</td>
+	      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
+	      <td>Better collision knock back</td>
+	    </tr>
+	    <tr>
+	      <td>Level 3:<br>Arrow</td>
+	      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
+	      <td>Improved path clearance, shoot in a straight line</td>
+	    </tr>
+	    <tr>
+	      <td>Level 4:<br>Laser</td>
+	      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
+	      <td>Increased projectile speed, explosion upon collision</td>
+	    </tr>
+	    <tr>
+	      <td>Level 5:<br>Automatic Laser</td>
+	      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
+	      <td>Shoot Lasers from a Gatling gun!</td>
+	    </tr>
+	    <!-- Flying-->
+	    <tr>
+	      <td rowspan="5">Flying Ability</td>
+	      <td>Level 1:<br>Normal mode</td>
+	      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
+	      <td>Basic mode</td>
+	    </tr>
+	    <tr>
+	      <td>Level 2:<br>Wing Enhancement</td>
+	      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
+	      <td>Smooth gliding</td>
+	    </tr>
+	    <tr>
+	      <td>Level 3:<br>Dragon Wings</td>
+	      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
+	      <td>Improved glide disctance and control</td>
+	    </tr>
+	    <tr>
+	      <td>Level 4:<br>Rotors</td>
+	      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
+	      <td>When wings just dont cut it</td>
+	    </tr>
+	    <tr>
+	      <td>Level 5:<br>Booster</td>
+	      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
+	      <td>High-speed propulsion for fast flight</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="1">Force field</td>
+	      <td>Force Field</td>
+	      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
+	      <td>Force field protects players from collisions</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="3">Obstacles</td>
+	            <td>Seagull</td>
+	      <td><img src="docs/assets/images/birdArrow.png" width="80"></td>
+	      <td>War between birds!</td>
+	    </tr>
+	    <tr>
+	      <td>Plane</td>
+	      <td><img src="docs/assets/images/airplane.png" width="80"></td>
+	      <td>Is it a bird? Is it a plane? Yes.</td>
+	    </tr>
+	    <tr>
+	      <td>UFO</td>
+	      <td><img src="docs/assets/images/ufo.png" width="80"></td>
+	      <td>Aliens... It's a Penguinvasion!</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="2">Collectibles</td>
+	      <td>Heart</td>
+	      <td><img src="docs/assets/images/heart1.png" width="80"></td>
+	      <td>Collect hearts to restore life</td>
+	    </tr>
+	    <tr>
+	      <td>Coin</td>
+	      <td><img src="docs/assets/images/coin.png" width="60"></td>
+	      <td>Collect coins to upgrade your equipment in Workshop</td>
+	    </tr>
+	</tbody>
+	</table>
+</div>
+
+<div align="center">
+	<img src="report/requirements_figures/use_case_specification.png" width="800">
+	<p>PengWings use-case specification<br><br><br></p>
 </div>
