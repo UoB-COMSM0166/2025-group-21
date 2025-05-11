@@ -15,7 +15,7 @@ const NEW_GAME_STATE = {
     masterVolume: 1,
     mute: 1,
     musicVolume: 0.5,
-    musicMute: 1,
+    musicMute: 0,
     difficulty: 0,
     bgQuality: 2,
     flyKey: 'w',
