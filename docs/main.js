@@ -89,6 +89,18 @@ function respondToMouseMovement() {
                 }
                 domains.mainMenu.showCursor();
             }
+            else if (domains.mainMenu.instructions !== null) {
+                if (domains.mainMenu.instructions.selectedButtonIndex > -1) {
+                    domains.mainMenu.instructions.selectedButtonIndex = -1;
+                }
+                domains.mainMenu.showCursor();
+            }
+            else if (domains.mainMenu.highscores !== null) {
+                if (domains.mainMenu.highscores.mainMenuButtonSelected) {
+                    domains.mainMenu.highscores.mainMenuButtonSelected = false;
+                }
+                domains.mainMenu.showCursor();
+            }
             else {
                 if (domains.mainMenu.selectedButtonIndex > -1) {
                     domains.mainMenu.selectedButtonIndex = -1;

@@ -269,10 +269,12 @@ class MainMenu {
             return;
         }
         else if (this.instructions !== null) {
-
+            this.instructions.handleKeyNav(keyCode);
+            return;
         }
         else if (this.highscores != null) {
-
+            this.highscores.handleKeyNav(keyCode);
+            return;
         }
 
         if (!this.anyKeyPressed) {
@@ -363,16 +365,6 @@ class MainMenu {
         }
         pop();
     }
-
-    // listenForMouseMove() {
-    //     window.addEventListener("mousemove", (event) => {
-    //         if (this.selectedButtonIndex > -1) {
-    //             this.selectedButtonIndex = -1
-    //         }
-    //         this.showCursor();
-    //         this.anyKeyPressed = false;
-    //     });
-    // }
 
     showCursor() {
         document.body.classList.add("show-cursor");

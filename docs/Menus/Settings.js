@@ -129,6 +129,7 @@ class Settings {
                 saveGameProgress();
                 settings.currentDifficulty = settings.difficulty;
                 domains.mainMenu.showSettings = false;
+                domains.mainMenu.resetButtons();
             }
         }
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);

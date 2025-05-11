@@ -267,6 +267,7 @@ class SettingsKeyNav {
         if (Domain === 'mainMenu') {
             this.settings.currentDifficulty = this.settings.difficulty;
             domains.mainMenu.showSettings = false;
+            domains.mainMenu.resetButtons();
         } else {
             domains.game.pause.showSettings = false;
         }

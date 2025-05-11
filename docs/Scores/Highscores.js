@@ -13,6 +13,7 @@ class Highscores {
         this.savingScore = false;
         this.submitSelected = false;
         this.backSelected = false;
+        this.mainMenuButtonSelected = false;
     }
 
     // Load highscores in on startup
@@ -264,12 +265,15 @@ class Highscores {
         let pos = createVector(0.935 * width, 0.04 * height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && domains.mainMenu.cursorVisible) {
             image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
                 domains.mainMenu.highscores = null;
             }
+        }
+        else if (this.mainMenuButtonSelected) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         pop();
@@ -282,6 +286,24 @@ class Highscores {
         if (this.buttonCooldownTimer.time > cooldown) {
             this.buttonCooldownTimer.reset();
             this.buttonsActive = true
+        }
+    }
+
+    // key navigation when accessed from main menu
+    handleKeyNav(key) {
+        if (key === UP_ARROW || key === DOWN_ARROW) {
+            this.mainMenuButtonSelected = true;
+            domains.mainMenu.hideCursor();
+        }
+        else if (key === ENTER) {
+            domains.mainMenu.hideCursor();
+
+            if (this.mainMenuButtonSelected) {
+                domains.mainMenu.highscores = null;
+                domains.mainMenu.resetButtons();
+                this.mainMenuButtonSelected = false;
+            }
+            else this.mainMenuButtonSelected = true;
         }
     }
 }
