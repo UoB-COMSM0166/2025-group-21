@@ -19,7 +19,8 @@ class MainMenu {
         this.buttonGrid = [
             [0, 1],
             [2, 3],
-            [4, 5]
+            [4, 5],
+            [6, 6]
         ];
         this.currentRow = 0;
         this.currentCol = 0;
@@ -248,17 +249,17 @@ class MainMenu {
                 }
                 break;
             case DOWN_ARROW:
-                if (this.currentRow < 2) {
+                if (this.currentRow < 3) {
                     this.currentRow ++;
                 }
                 break;
             case LEFT_ARROW:
-                if (this.currentCol > 0) {
+                if (this.currentCol > 0 && this.currentRow < 3) {
                     this.currentCol --;
                 }
                 break;
             case RIGHT_ARROW:
-                if (this.currentCol < 1) {
+                if (this.currentCol < 1 && this.currentRow < 3) {
                     this.currentCol ++;
                 }
                 break;
@@ -287,6 +288,8 @@ class MainMenu {
                 this.highscoresButtonPressed();
             } else if (this.selectedButtonIndex === 5) {
                 this.showCredits = true;
+            } else if (this.selectedButtonIndex === 6) {
+                window.open("https://www.globalpenguinsociety.org/", "_blank");
             }
         }
     }
@@ -306,6 +309,9 @@ class MainMenu {
             if (mouseIsPressed) {
                 window.open("https://www.globalpenguinsociety.org/", "_blank");
             }
+        }
+        else if (this.selectedButtonIndex === 6) {
+            image(donateButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else {
             image(donateButton, pos.x, pos.y, size.x, size.y);
