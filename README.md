@@ -378,8 +378,7 @@ Difficulty:
 Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table X). All heuristics violations were addressed and the solution is documented below.
 
 <div align="center">
-
- 	<p><b><Table X.<b> Heuristic violations identified in our game, their severity ratings, and solutions.</p>
+ 	<p><b><Table X.</b> Heuristic violations identified in our game, their severity ratings, and solutions.</p>
 	<table border="1">
 	  <thead>
 	    <tr>
