@@ -390,13 +390,13 @@ class SettingsKeyNav {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
         }
 
-        push();
-        noFill();
-        stroke(100, 80, 200);
-        strokeWeight(2);
-        rectMode(CENTER);
-        rect(pos.x, pos.y, size.x + 10, size.y + 10, 5);
-        pop();
+//        push();
+//        noFill();
+//        stroke(100, 80, 200);
+//        strokeWeight(2);
+//        rectMode(CENTER);
+//        rect(pos.x, pos.y, size.x + 10, size.y + 10, 5);
+//        pop();
     }
 
     drawVolumeAdjustmentInstructions() {
