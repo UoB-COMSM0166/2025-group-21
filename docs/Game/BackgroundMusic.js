@@ -35,7 +35,7 @@ class BackgroundMusic {
 
      setVolume() {
          domains.game.bgMusic.setVolume(
-             0.2 *
+             0.3 *
              settings.musicVolume *
              settings.musicMute *
              settings.masterVolume

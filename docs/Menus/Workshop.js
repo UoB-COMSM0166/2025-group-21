@@ -109,9 +109,6 @@ class Workshop {
         this.workshopMusic.stop();
         this.purchaseSound.stop();
         this.illegalPurchaseSound.stop();
-        this.workshopMusic.disconnect();
-        this.purchaseSound.disconnect();
-        this.illegalPurchaseSound.disconnect();
         this.workshopMusic = null;
         this.purchaseSound = null;
         this.illegalPurchaseSound = null;

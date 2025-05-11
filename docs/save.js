@@ -1,9 +1,9 @@
 const SAVE_KEY = 'pengwingsSaveData';
-const VERSION = 4;
+const CURRENT_VERSION = 5;
 
 // default game state
 const NEW_GAME_STATE = {
-    version: VERSION,
+    version: CURRENT_VERSION,
 
     coins: 99999,
     flyLevel: 0,
@@ -14,7 +14,7 @@ const NEW_GAME_STATE = {
 
     masterVolume: 1,
     mute: 1,
-    musicVolume: 0.2,
+    musicVolume: 0.5,
     musicMute: 1,
     difficulty: 0,
     bgQuality: 2,
@@ -45,7 +45,7 @@ function loadGameProgress() {
 
 function saveGameProgress() {
     const progress = {
-        version: VERSION,
+        version: CURRENT_VERSION,
 
         coins: inventory.coins,
         flyLevel: inventory.flyLevel,

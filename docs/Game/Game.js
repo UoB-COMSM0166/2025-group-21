@@ -216,7 +216,6 @@ class Game {
         const stopSound = (sound) => {
             if (sound) {
                 sound.stop();
-                sound.disconnect();
             }
         };
 

@@ -9,8 +9,8 @@ class Settings {
         this.dialPos = this.initialiseDialPos(this.masterVolume);
         this.offset = null;
 
-        this.musicVolume   = (gameProgress.musicVolume !== undefined) ? gameProgress.musicVolume : 0.2;
-        this.musicMute       = (gameProgress.musicMute !== undefined) ? gameProgress.musicMute : 1; // 1=on
+        this.musicVolume     = gameProgress.musicVolume;
+        this.musicMute       = gameProgress.musicMute; // 1=on
         this.musicMuteButton = this.musicMute ? soundOn : soundOff;
         this.musicDialPos  = this.initialiseDialPosMusic(this.musicVolume);
         this.offsetMusic   = null;
