@@ -1,6 +1,7 @@
 
 
 class ForceField {
+
     constructor(level) {
         this.powerLevel = level;
         this.active = false;
@@ -9,6 +10,7 @@ class ForceField {
         this.chargeFraction = 1;
     }
 
+    // Switches on the forcefield, its sound, visuals and charge
     activate() {
         if (this.chargeFraction === 1) {
             domains.game.invincibility = true;
@@ -29,7 +31,7 @@ class ForceField {
         }
         this.stretchFactor = this.getStretchFactor();
         this.drawForceField();
-
+        // Start forcefield recharge
         if (this.chargeFraction <= 0) {
             domains.game.forceFieldSound.stop();
             this.active = false;
@@ -38,10 +40,9 @@ class ForceField {
         }
     }
 
+    // Draw the forcefield around the player from stacked layers
     drawForceField() {
-
         let velocityAngle;
-
         if (domains.game.score.airtime > 3) {
             velocityAngle = atan2(domains.game.player.vel.x, domains.game.player.vel.y);
         }
@@ -54,6 +55,7 @@ class ForceField {
         this.drawShieldLayer(255, 0, 0, 0.1, 1.025, velocityAngle);
     }
 
+    // Draw the individual shield layers
     drawShieldLayer(r, g, b, a, scale, velocityAngle) {
         fill('rgba(253,200,1,0.05)');
         stroke(`rgba(${r},${g},${b},${a})`);
@@ -65,26 +67,25 @@ class ForceField {
         if (domains.game.score.airtime > 3) rotate(-velocityAngle + Math.PI/2);
         else rotate(velocityAngle);
         beginShape();
-
+        // Forcefield position
         for (let angle = 0; angle < Math.PI * 2; angle += 0.1) {
-
             let x = scale * this.radius * Math.cos(angle) + 10*noise(0.02*frameCount);
             if (x < 0) x += x * this.stretchFactor * (Math.random() + 0.5);
             let y = scale * this.radius * Math.sin(angle) + 10*noise(0.02*frameCount);
-
             vertex(x, y);
         }
         endShape(CLOSE);
         pop();
     }
 
+    // Calculate the vector magnitude and stretch factor for forcefield
     getStretchFactor() {
         let velocity = Math.sqrt(domains.game.player.vel.x**2 + domains.game.player.vel.y**2);
         return 0.075 * velocity;
     }
 
+    // Draw the charge bar for the forcefield in top corner
     drawChargeBar() {
-
         push();
         translate(width*0.775, height*0.061);
         rotate(-Math.PI/2);
@@ -97,20 +98,19 @@ class ForceField {
 
         ellipse(0, 0, width/32);
 
-
         this.drawChargeBarLayer(253, 200, 1, 0.85, 253, 200, 1, 0.85, width/65);
         this.drawChargeBarLayer(253, 200, 1, 0.85, 253, 200, 1, 0.85, width/63);
         this.drawChargeBarLayer(139, 67, 244, 0.71, 184, 44, 110, 1, width/64);
         pop();
     }
 
+    // Draw individual layer of charge bar
     drawChargeBarLayer(r1, g1, b1, a1, r2, g2, b2, a2, radius) {
         stroke(`rgba(${r1},${g1},${b1},${a1})`);
         strokeWeight(width/136);
         let oldX = null, oldY = null;
 
         for (let angle = 0; angle <= Math.PI*2 + 0.1; angle += 0.1) {
-
             if (angle > this.chargeFraction * (2*Math.PI + 0.1)) {
                 stroke(`rgba(${r2},${g2},${b2},${a2})`);
             }
@@ -123,11 +123,13 @@ class ForceField {
         }
     }
 
+    // Charges back up the forcefield after use
     charge() {
-
         if (this.chargeFraction < 1 && !this.active && !domains.game.pause.active) {
             this.chargeFraction += 0.001;
         }
         else if (this.chargeFraction > 1) this.chargeFraction = 1;
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = ForceField; }

@@ -3,8 +3,6 @@
 class Game {
 
     constructor() {
-
-
         this.windSound = null;
         this.laserSound = null;
         this.laserAutomaticSound = null;
@@ -72,13 +70,12 @@ class Game {
         //---------------------------------------
     }
 
-    runSimulation() { // Main loop for game
+    // Main loop to run the game
+    runSimulation() {
         if (!this.soundsLoaded) return;
-
         //--------------------
         clear();
         //--------------------
-
         this.adjustZoom();
         this.wind.adjustVolume();
 
@@ -94,14 +91,16 @@ class Game {
             translate(this.tx, this.ty); // Change coordinate origin to player position
             scale(this.zoom); // set screen zoom
 
+            // Update the main things on the screen each frame
             this.terrain.drawHills(width);
             this.player.drawPlayer()
             this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
             this.obstacleHandler.updateExplosions();
 
+            // Move terrain to the left and update player positions
             if (!this.pause.active) {
-                this.offset += this.player.vel.x;  // Move terrain to the left
+                this.offset += this.player.vel.x;
                 this.player.update();
             }
             if (this.shield != null && this.shield.active) {
@@ -119,22 +118,22 @@ class Game {
 
         pop();
 
+        // Lose life animation
         if (this.player.lives.playingAnimation) {
             this.player.lives.playLoseLifeAnimation();
         }
+        // Draw hearts on the screen
         this.player.lives.drawLives();
         this.stats.gameUpdate();
-
+        // Trigger player boost
         if (this.spacePressed && this.player.alive && !this.pause.active) {
             this.applyBoostToPlayer();
         }
-
+        // Update the score each frame
         if (this.death === null) {
             this.score.update();
-
             if (this.fly != null) {
                 this.fly.charge();
-
                 if (this.fly.active) {
                     //this.fly.glide(); // apply upward force equal to gravity
                     this.fly.applyUpwardForce(); // greater then gravity
@@ -148,17 +147,17 @@ class Game {
         else {
             this.death.runPlayerDeathSequence();
         }
-
+        // Pause the game
         if (this.pause.active && this.player.alive) this.pause.showPauseScreen();
         else this.pause.reset();
-
+        // Countdown after pausing
         if (this.pause.isCountingDown) {
             this.pause.showCountdown();
         }
     }
 
+    // Calculate the zoom when the player goes above the zoom threshold
     adjustZoom() {
-
         if (this.player.pos.y < this.topMargin) {
             this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
             this.ty = this.topMargin - this.zoom * (this.player.pos.y);
@@ -170,8 +169,8 @@ class Game {
         }
     }
 
+    // Trigger player boost
     applyBoostToPlayer() {
-
         if (this.player.pos.y < this.terrain.f(this.player.pos.x)) {
             this.player.vel.y += 0.6;
         }
@@ -180,6 +179,7 @@ class Game {
         }
     }
 
+    // Cheats for invincibility and flight
     updateCheats() {
         this.invincibility = settings.enableCheats;
         this.infiniteFly = settings.enableCheats
@@ -189,6 +189,7 @@ class Game {
         }
     }
 
+    // Audio loading for caching
     async loadAudio() {
         this.windSound = await soundBoard.getSound('windSound');
         this.laserSound = await soundBoard.getSound('laserSound');
@@ -210,8 +211,8 @@ class Game {
         this.rotorSound    = await soundBoard.getSound('rotorSound');
     }
 
+    // Clearing the audio cache
     disconnectAudio() {
-
         this.windSound.stop();
         this.laserSound.stop();
         this.laserAutomaticSound.stop();
@@ -228,7 +229,7 @@ class Game {
         this.gainLifeSound.stop();
         this.collectCoinSound.stop();
         this.wingFlapSound.stop();
-
+        // Dereference the variables for garbage collection
         this.windSound = null;
         this.laserSound = null;
         this.laserAutomaticSound = null;

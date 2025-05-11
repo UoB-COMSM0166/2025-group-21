@@ -3,23 +3,22 @@ class Bird extends AerialObstacle {
 
     constructor(height) {
         super(height);
-
         this.moveFactor = 1.5;
         this.frameIndex = 0;
-
         // Images for Bird
         this.baseImage = seagull;
         this.damagedImage = damagedSeagull;
         this.frozenImage = frozenSeagull;
         this.freezingImage = freezingSeagull;
         this.arrowDamageImage = seagullArrow;
-
+        // Bird image params
         this.frameWidth = 80;
         this.frameHeight = 64;
         this.scale = 1.3;
         this.frameCount = 8;
     }
 
+    // Process sprite sheet for bird movement on canvas
     getBaseImage() {
         const FRAME_WIDTH = 800;
         const FRAME_HEIGHT = 800;
@@ -27,7 +26,7 @@ class Bird extends AerialObstacle {
         const scaleFactor = 0.1;
         const FRAME_COUNT = 6;
         imageMode(CENTER);
-
+        // Iterate through the sprite sheet
         if (!domains.game.pause.active) {
             if (frameCount % frameSpeed === 0) {
                 this.frameIndex++;

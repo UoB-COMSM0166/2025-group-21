@@ -8,6 +8,7 @@ class Explosion {
         this.explosionComplete = false;
     }
 
+    // Call the explosion sprite sheet
     explode() {
         const FRAME_WIDTH = 96;
         const FRAME_HEIGHT = 96;
@@ -15,15 +16,14 @@ class Explosion {
         const scaleFactor = 2;
         const FRAME_COUNT = 12;
         imageMode(CENTER);
-
+        // Iterate through the sprite sheet frames
         if (!domains.game.pause.active) {
-
             if (frameCount % frameSpeed === 0) {
                 this.frameIndex++;
             }
             this.updatePosition();
         }
-
+        // Draw image
         image(
             explosion,
             this.pos.x, this.pos.y,
@@ -31,12 +31,12 @@ class Explosion {
             this.frameIndex * FRAME_WIDTH, 0,                       // Source x, y
             FRAME_WIDTH, FRAME_HEIGHT                               // Source size
         );
-
         if (this.frameIndex === FRAME_COUNT) {
             this.explosionComplete = true;
         }
     }
 
+    // Update the position of the explosion relative to the player
     updatePosition() {
         this.pos.x -= domains.game.player.vel.x;
     }

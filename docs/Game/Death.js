@@ -29,8 +29,8 @@ class Death {
         this.progressSaved = false;
     }
 
+    // Triggered when player dies
     runPlayerDeathSequence() {
-
         // Death animation
         if (this.deathTimer.time < 180) {
             this.showFinalScore();
@@ -50,6 +50,7 @@ class Death {
                 this.highscoreSeen = true;
             }
         }
+        // Loading screen
         else if (domains.game.highscores.savingScore) {
             push();
             textAlign(CENTER, CENTER);
@@ -64,8 +65,8 @@ class Death {
             // If they did get a highscore, show where they are on the list
             domains.game.highscores.printHighscores();
         }
+        // Show their game stats if requested
         else if (!this.showStats) {
-
             if (!this.coinsAddedToInventory) {
                 this.coinsAddedToInventory = true;
                 inventory.coins += Math.round(this.coinsEarned);
@@ -75,17 +76,18 @@ class Death {
         else domains.game.stats.showsStatsScreen();
     }
 
+    // Display the coins earned from the last game after death
     displayCoinReward() {
-
         push();
             fill('rgba(0, 0, 0, 0.6)');
             rect(0, 0, width, height);
             fill(0);
-
+            // Skippable
             if (this.skipCoinCount) {
                 this.skipCoinCount = false;
                 this.coinsEarned = domains.game.score.total/11 + domains.game.coins.totalCoinsCollected;
             }
+            // Count up the coins
             else this.coinsEarned = lerp(this.coinsEarned,
                             domains.game.score.total/11 + domains.game.coins.totalCoinsCollected, 0.02);
 
@@ -99,27 +101,24 @@ class Death {
             text(`+ ${round(this.coinsEarned)} coins`, width/2, height/2);
             noStroke();
         pop();
-
         if (this.coinsEarned * 11 >= domains.game.score.total-0.5) {
             this.deathTimer.tick();
         }
     }
 
+    // Display final score on the screen
     showFinalScore() {
-
         push();
         domains.game.zoom = lerp(domains.game.zoom, 1.25, 0.01);
         domains.game.ty = domains.game.player.pos.y - domains.game.zoom * (domains.game.player.pos.y);
         domains.game.tx = 160 - domains.game.zoom * (domains.game.player.pos.x);
 
             this.deathTimer.tick();
-
             if (this.deathTimer.time > 110) {
                 this.redTint = lerp(this.redTint, 0, 0.05);
             }
             fill(`rgba(255, 40, 0, ${this.redTint})`); // overlay red screen tint
             rect(0, 0, width, height);
-
             if (this.blackTintHeight === null) {
                 this.blackTintHeight = height*3/5;
                 this.blackTintY = height/5;
@@ -130,11 +129,11 @@ class Death {
             }
             fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
             rect(0, this.blackTintY, width, this.blackTintHeight);
-
             this.printScore();
         pop();
     }
 
+    // Write out their game score on the screen
     printScore() {
         let size = width/4;
 
@@ -155,6 +154,7 @@ class Death {
         textStyle(NORMAL);
     }
 
+    // Slowly scroll the score across the screen
     updateEndScorePrintLocation() {
         let size = width;
 
@@ -168,6 +168,7 @@ class Death {
         }
     }
 
+    // Display death screen text and save game progress
     showDeathScreen() {
         if (!this.progressSaved) {
             saveGameProgress();
@@ -175,24 +176,24 @@ class Death {
         }
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
-
+        // Allow cursor again, and load death screen menu
         document.body.classList.add("show-cursor");
         this.updateShopButton();
         this.updatePlayButton();
         this.updateStatsButton();
     }
 
+    // Display the shop button in the death screen menu
     updateShopButton() {
-
         push();
         let scale = 0.0015 * width;
         let size = createVector(returnToWorkshopButton.width / scale, returnToWorkshopButton.height / scale);
         let pos = createVector(0.5*width, 0.5*height);
         imageMode(CENTER);
 
+        // Update button when hovered over
         if (hoveringOverButton(pos, size)) {
             image(returnToWorkshopButtonHover, pos.x, pos.y, size.x, size.y);
-
             if (mouseIsPressed) {
                 domains.game.disconnectAudio();
                 //game.dispose();
@@ -205,14 +206,15 @@ class Death {
         }
         pop();
     }
-    updatePlayButton() {
 
+    // Show the button to play again
+    updatePlayButton() {
         push();
         let scale = 0.0015 * width;
         let size = createVector(playAgainButton.width / scale, playAgainButton.height / scale);
         let pos = createVector(0.5*width, 0.3*height);
         imageMode(CENTER);
-
+        // Update button when hovered over
         if (hoveringOverButton(pos, size)) {
             image(playAgainButtonHover, pos.x, pos.y, size.x, size.y);
 
@@ -228,14 +230,15 @@ class Death {
         }
         pop();
     }
-    updateStatsButton() {
 
+    // Show the button to access the statistics from the last game
+    updateStatsButton() {
         push();
         let scale = 0.0015 * width;
         let size = createVector(statsButton.width / scale, statsButton.height / scale);
         let pos = createVector(0.5*width, 0.7*height);
         imageMode(CENTER);
-
+        // Update the button when hovered over
         if (hoveringOverButton(pos, size)) {
             image(statsButtonHover, pos.x, pos.y, size.x, size.y);
 

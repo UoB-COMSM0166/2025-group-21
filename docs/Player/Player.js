@@ -1,4 +1,5 @@
-// const Lives = require('./Lives');
+// Uncomment for testing
+// if (typeof module !== 'undefined') { var Lives = require('./Lives'); }
 
 class Player {
 
@@ -14,24 +15,23 @@ class Player {
         this.deathAngle = null;
         this.frameIndex = 0;
         this.deathFrameIndex = 0; // Initialize death frame index only once
-
         // Player lives
         this.lives = new Lives(this);
         this.lostLife = false;
         this.gainedLife = false;
-
+        // Player images
         this.shooting = false;
         this.headImg = playerHead;
         this.feetImg = playerFlyFeet;
         this.wingImg = playerPenguinWings;
     }
 
+    // Update the player behaviour each frame
     update() {
-
-        // keep ball at same x position on the screen
+        // Keep Player at same x position on the screen
         this.pos.x = 150;
         if (!this.alive && domains.game.death.type === 'UFO') this.pos.y = domains.game.death.currentY;
-
+        // Control player parameters while in the air
         if (this.inAir) {
             this.vel.y += this.gravity;
             this.updatePosition();
@@ -44,31 +44,28 @@ class Player {
                 this.calculateNormalForce();
             }
         }
+        // Control player parameters while on ground
         else {
             let slope = domains.game.terrain.slope(this.pos.x);  // Terrain gradient
-
-            // slow speed if in contact with the ground
+            // Slow speed if in contact with the ground
             if (!domains.game.spacePressed && !mouseIsPressed) { //TODO: remove mouse pressed
                 this.vel.x /= 1.05;
             }
             this.updateAcceleration(slope);
             this.updateVelocity();
             this.updatePosition();
-
-            // transfer momentum from x to y direction as curve steepens uphill
+            // Transfer momentum from x to y direction as curve steepens uphill
             this.updateVerticalVelocityFromSlope();
-
             if (this.playerIsInAir(slope)) {
                 this.inAir = true;
             }
         }
     }
 
-
+    // Draw the player on the canvas
     drawPlayer() {
         this.lives.drawChangeLife();
         if (domains.game.death != null && domains.game.death.type === 'UFO') return;
-
         const FRAME_WIDTH        = 128;
         const FRAME_HEIGHT       = 128;
         const NORMAL_FRAME_COUNT = 6;
@@ -84,7 +81,7 @@ class Player {
         const velocityAngle = atan2(this.vel.y, this.vel.x);
         const slopeAngle    = atan(domains.game.terrain.slope(this.pos.x));
 
-        // compute wing‐sprite frame coords
+        // Compute wing‐sprite frame coords
         const wingCol = this.frameIndex % NORMAL_COLUMNS;
         const wingRow = Math.floor(this.frameIndex / NORMAL_COLUMNS);
 
@@ -125,11 +122,11 @@ class Player {
                 domains.game.fly != null &&
                 domains.game.fly.active
             ) {
-                // if helicopter rotor, double the speed
+                // If helicopter rotor, double the speed
                 const step = (inventory.flyLevel === 3) ? 2 : 1;
                 this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
 
-                // non‐overlapping original sound logic
+                // Non‐overlapping original sound logic
                 if (inventory.flyLevel >= 4) {
                     if (!domains.game.boosterSound.isPlaying()) {
                         domains.game.boosterSound.play();
@@ -149,8 +146,7 @@ class Player {
 
             const col = this.frameIndex % NORMAL_COLUMNS;
             const row = Math.floor(this.frameIndex / NORMAL_COLUMNS);
-
-            // body
+            // Draw the penguin body
             image(
                 playerBody,
                 0, 0,
@@ -158,8 +154,7 @@ class Player {
                 col * FRAME_WIDTH, row * FRAME_HEIGHT,
                 FRAME_WIDTH, FRAME_HEIGHT
             );
-
-            // head overlay
+            // Draw the penguin head
             const HEAD_W = 128, HEAD_H = 128;
             const headRow = this.shooting ? 1 : 0;
             image(
@@ -169,8 +164,7 @@ class Player {
                 0, headRow * HEAD_H,
                 HEAD_W, HEAD_H
             );
-
-            // feet overlay
+            // Draw the penguin feet
             const FEET_W = 128, FEET_H = 128;
             const feetRow = domains.game.fly && domains.game.fly.active ? 1 : 0;
             image(
@@ -180,8 +174,7 @@ class Player {
                 0, feetRow * FEET_H,
                 FEET_W, FEET_H
             );
-
-            // wings overlay
+            // Draw the penguins wings
             image(
                 wingImg,
                 0, 0,
@@ -196,8 +189,7 @@ class Player {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(slopeAngle);
-
-            // body (first frame)
+            // Draw the penguin boody
             image(
                 playerBody,
                 0, 0,
@@ -206,7 +198,7 @@ class Player {
                 FRAME_WIDTH, FRAME_HEIGHT
             );
 
-            // head overlay
+            // Draw the penguin head
             const HEAD_W = 128, HEAD_H = 128;
             const headRowG = this.shooting ? 1 : 0;
             image(
@@ -216,8 +208,7 @@ class Player {
                 0, headRowG * HEAD_H,
                 HEAD_W, HEAD_H
             );
-
-            // feet overlay
+            // Draw the penguin feet
             const FEET_W = 128, FEET_H = 128;
             const feetRowG = domains.game.fly && domains.game.fly.active ? 1 : 0;
             image(
@@ -227,8 +218,7 @@ class Player {
                 0, feetRowG * FEET_H,
                 FEET_W, FEET_H
             );
-
-            // wings overlay (last flying frame)
+            // Draw the penguin wings (last flying frame)
             image(
                 wingImg,
                 0, 0,
@@ -240,39 +230,35 @@ class Player {
         }
     }
 
+    // Update the players acceleration
     updateAcceleration (slope) {
         // Handle effect of angle of slope on the gravity
         this.accDownSlope = (this.gravity) * sin(atan(slope));
-
         if (slope <= 0) { // uphill
             this.accDownSlope *= 0.7;
         }
-
+        // Update and apply some momentum conservation
         this.acc.y = this.accDownSlope * sin(atan(slope)) + 0.005 * this.vel.y;
         this.acc.x = this.accDownSlope * cos(atan(slope)) + 0.005 * this.vel.x;
-
-        // if (game.stats.numJumps < 1) {
-        //     this.acc.y += 0.02 * this.vel.y;
-        //     this.acc.x += 0.02 * this.vel.x;
-        // }
     }
 
+    // Update player velocity based on acceleration
     updateVelocity () {
-
         this.vel.y += this.acc.y;
         this.vel.x += this.acc.x;
     }
 
+    // Update player position based on velocity
     updatePosition () {
-
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
     }
 
+    // Update vertical velocity component based on slope
     updateVerticalVelocityFromSlope () {
         let ground = domains.game.terrain.f(this.pos.x);
         let oldY = this.pos.y;
-
+        // Keep player above ground level
         if (this.pos.y > ground) {
             this.pos.y = ground;
         }
@@ -281,28 +267,23 @@ class Player {
     }
 
     playerIsInAir(slope) {
-
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(slope);
         return velocityAngle < slopeAngle;
     }
 
+    // Calculate normal force of a player collision
     calculateNormalForce () {
-
         let normalForce = this.vel.y
             - (domains.game.terrain.f(this.pos.x + this.vel.x) - domains.game.terrain.f(this.pos.x));
-
-        // player hits uphill slope at speed
+        // Player hits uphill slope at speed
         if (normalForce > 10 && domains.game.terrain.slope(this.pos.x) < -0.5) {
-
             if (this.vel.x < 1) {
                 return;
             }
-
+            // Remove life if collision too large
             if (normalForce > 20 && !domains.game.invincibility) {
-
                 this.lives.removeLife();
-
                 if (this.lives.getLives() === 0) {
                     domains.game.death = new Death('ground');
                     this.vel.x = -0.5;
@@ -310,8 +291,6 @@ class Player {
                     //this.gravity = 0.02
                 }
                 else {
-                    // domains.game.loseLifeSound.play();
-                    // this.lives.playingAnimation = true;
                     this.vel.x = this.vel.y = 0;
                     this.acc.x = this.acc.y = 0;
                 }
@@ -324,8 +303,8 @@ class Player {
         }
     }
 
+    // Calculate player bounce angle
     getBounceAngle() {
-
         let velocityAngle = atan2(this.vel.y, this.vel.x);
         let slopeAngle = atan(domains.game.terrain.slope(this.pos.x));
         return 2 * slopeAngle + velocityAngle;

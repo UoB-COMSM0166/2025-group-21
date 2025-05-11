@@ -2,6 +2,7 @@ class Hearts {
 
     constructor() {
         this.hearts = [];
+        // Heart frequency set by difficulty level
         switch (settings.difficulty) {
             case 0:
                 this.spacing = 11000;
@@ -22,7 +23,7 @@ class Hearts {
     update(offset) {
         if (!this.heartsOn) return;
         // Remove hearts that leave the screen to stop build up
-        // this.hearts = this.hearts.filter(heart => heart.x > offset - 200);
+        this.hearts = this.hearts.filter(heart => heart.pos.x > offset - 600);
         // Generate a new heart ahead of player once they get past the last
         while (this.lastX < offset + width + 500) {
             let x = this.lastX + this.spacing + random(-500, 500);
@@ -33,7 +34,6 @@ class Hearts {
             });
             this.lastX = x;
         }
-
         // Draw hearts at correct screen position (rather than total position)
         for (let heart of this.hearts) {
             let screenX = heart.pos.x - offset;
@@ -43,6 +43,7 @@ class Hearts {
         }
     }
 
+    // Check for player collision with hearts and run gain life sequence
     checkCollision() {
         for (let i = this.hearts.length - 1; i >= 0; i--) {
             let heart = this.hearts[i];

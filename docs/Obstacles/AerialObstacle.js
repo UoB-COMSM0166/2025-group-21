@@ -3,7 +3,6 @@ class AerialObstacle {
     constructor(height) {
         this.height = height;
         this.pos = createVector(width/domains.game.zoom, height);
-
         // Obstacle states
         this.hitByFish = false;
         this.hitByArrow = false;
@@ -12,7 +11,6 @@ class AerialObstacle {
         this.frameIndex = 0;
         this.downVelocity = 0.2;
         this.angle = 0;
-
         // Speed overridden in child classes
         this.moveFactor = null;
         // Images overridden in child classes
@@ -28,12 +26,12 @@ class AerialObstacle {
         this.scale = null;
     }
 
+    // Draw the obstacle on the canvas
     drawObstacle() {
-
         push();
         imageMode(CENTER);
         translate(this.pos.x, this.pos.y);
-
+        // Set the different conditionals depending on what projectile has hit it
         if (this.hitByFish) {
             rotate(-0.5);
             image(this.damagedImage, 0, 0, this.frameWidth * this.scale, this.frameHeight * this.scale);
@@ -43,12 +41,10 @@ class AerialObstacle {
             imageMode(CENTER);
 
             if (!domains.game.pause.active) {
-
                 if (frameCount % frameSpeed === 0 && this.frameIndex < this.frameCount-1) {
                     this.frameIndex++;
                 }
             }
-
             rotate(this.angle);
             image(
                 this.freezingImage,
@@ -68,8 +64,9 @@ class AerialObstacle {
         pop();
     }
 
+    // Move the obstacle across the screen
     updatePosition() {
-
+        // Different conditionals depending on the obstacles state
         if (this.freezing) {
             this.pos.x += 6 - domains.game.player.vel.x;
             this.downVelocity+= 0.5
@@ -81,10 +78,9 @@ class AerialObstacle {
             this.pos.y += 15;
             this.angle += 0.3;
         }
-
+        // Default if not hit by projectile
         else {
             this.pos.x -= (domains.game.player.vel.x + 2*this.moveFactor);
-
             if (this.hitByFish) {
                 this.pos.y += 7;
                 this.pos.x += 1.5*this.moveFactor;

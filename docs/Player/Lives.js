@@ -7,15 +7,18 @@ class Lives {
         this.tintIntensityHasPeaked = false;
     }
 
+    // Return current lives
     getLives() {
         return this.totalLives;
     }
 
+    // Increment current lives and store time
     addLife() {
         this.totalLives++;
         this.timeLifeGained = millis();
     }
 
+    // Decrement current lives and store time
     removeLife() {
         this.totalLives--;
         this.timeLifeLost = millis();
@@ -26,19 +29,19 @@ class Lives {
         }
     }
 
+    // Display the life change animation and sounds
     drawChangeLife() {
         let timeLostDif = millis()-this.timeLifeLost;
         let timeGainedDif = millis()-this.timeLifeGained;
-
         // Flash on and off for 3 seconds
         if (timeLostDif < 3000 && this.totalLives > 0) domains.game.player.lostLife = (timeLostDif % 1000) < 500;
         else domains.game.player.lostLife = false;
-
         // Flash on and off for 3 seconds
         if (timeGainedDif < 3000 && this.totalLives > 0) domains.game.player.gainedLife = (timeGainedDif % 1000) < 500;
         else domains.game.player.gainedLife = false;
     }
 
+    // Draw the players lives (hearts) in the bottom left corner
     drawLives() {
         // Display total lives
         if (domains.game.player.alive) {
@@ -48,6 +51,7 @@ class Lives {
         }
     }
 
+    // Play the lose life animation
     playLoseLifeAnimation() {
         push();
         if (this.tintIntensityHasPeaked) {
@@ -69,7 +73,6 @@ class Lives {
         fill('rgb(122,33,0)')
         fill(`rgba(180, 15, 0, ${this.tintIntensity})`);
         rect(0, 0, width, height);
-
         pop();
     }
 }

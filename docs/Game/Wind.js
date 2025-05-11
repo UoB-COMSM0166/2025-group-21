@@ -1,12 +1,14 @@
 
 
 class Wind {
+
     constructor() {
         domains.game.windSound.setVolume(0);
         domains.game.windSound.loop();
         this.volume = 0;
     }
 
+    // Set the volume for the background wind
     adjustVolume() {
         if (domains.game.pause.active) return;
 

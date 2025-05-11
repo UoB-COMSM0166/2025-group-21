@@ -1,4 +1,4 @@
-const AerialObstacle = require('../Obstacles/AerialObstacle');
+const AerialObstacleTest = require('../Obstacles/AerialObstacle');
 const Airplane = require('../Obstacles/Airplane');
 
 describe('Airplane class', () => {
@@ -36,7 +36,7 @@ describe('Airplane class', () => {
     });
 
     test(' check it inherits from AerialObstacle', () => {
-        expect(airplane instanceof AerialObstacle).toBe(true);
+        expect(airplane instanceof AerialObstacleTest).toBe(true);
     });
 
     test(' initialises with correct properties', () => {
