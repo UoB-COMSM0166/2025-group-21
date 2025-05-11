@@ -124,3 +124,5 @@ class Coins {
         }
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = Coins; }

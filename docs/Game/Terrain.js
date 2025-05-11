@@ -1,5 +1,3 @@
-
-
 class Terrain {
 
     amplitudes = [];
@@ -148,3 +146,6 @@ class Terrain {
         return (y2 - y1) / dx;
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = Terrain; }
+

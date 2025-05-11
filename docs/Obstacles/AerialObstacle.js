@@ -1,5 +1,3 @@
-
-
 class AerialObstacle {
 
     constructor(height) {
@@ -93,5 +91,6 @@ class AerialObstacle {
             }
         }
     }
-
 }
+
+if (typeof module !== 'undefined') { module.exports = AerialObstacle; }

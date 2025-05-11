@@ -56,3 +56,5 @@ class Hearts {
         }
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = Hearts; }

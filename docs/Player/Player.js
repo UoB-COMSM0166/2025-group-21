@@ -1,6 +1,8 @@
+// const Lives = require('./Lives');
+
 class Player {
 
-    constructor(x, y) {
+    constructor(x, y, width) {
         this.radius = width*0.01
         this.pos = createVector(x, y);
         this.vel = createVector(0.1, 0);
@@ -19,7 +21,7 @@ class Player {
         this.gainedLife = false;
 
         this.shooting = false;
-        this.headImg   = playerHead;
+        this.headImg = playerHead;
         this.feetImg = playerFlyFeet;
         this.wingImg = playerPenguinWings;
     }
@@ -329,6 +331,8 @@ class Player {
         return 2 * slopeAngle + velocityAngle;
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = Player; }
 
 // function drawArrowhead(x, y, dx, dy, size = 100, color = 'black') {
 //     push();

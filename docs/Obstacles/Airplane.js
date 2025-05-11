@@ -1,3 +1,5 @@
+// const AerialObstacle = require('./AerialObstacle');
+
 class Airplane extends AerialObstacle {
 
     constructor(height) {
@@ -22,3 +24,5 @@ class Airplane extends AerialObstacle {
     }
 
 }
+
+if (typeof module !== 'undefined') { module.exports = Airplane; }

@@ -73,3 +73,5 @@ class Lives {
         pop();
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = Lives; }

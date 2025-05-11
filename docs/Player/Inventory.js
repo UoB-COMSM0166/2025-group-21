@@ -1,5 +1,3 @@
-
-
 class Inventory {
 
     constructor(gameProgress) {
@@ -91,3 +89,5 @@ class Inventory {
         pop();
     }
 }
+
+if (typeof module !== 'undefined') { module.exports = Inventory; }
