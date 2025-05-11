@@ -13,8 +13,6 @@ class GameLoader {
     }
 
     showLoadScreen() {
-        this.listenForMouseMove();
-
         push();
         image(blurredHomeBackground, 0, 0, width, height);
         this.printText();
@@ -107,12 +105,5 @@ class GameLoader {
         strokeWeight(size/30);
         textSize(size/1.5);
         text('Continue game?', width/2, 0.45*height);
-    }
-
-    listenForMouseMove() {
-        window.addEventListener("mousemove", (event) => {
-            this.selectedButtonIndex = -1
-            document.body.classList.add("show-cursor");
-        });
     }
 }

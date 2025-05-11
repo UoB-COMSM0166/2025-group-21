@@ -149,7 +149,8 @@ class MainMenu {
 
     // main loop
     showMainMenu() {
-        this.listenForMouseMove();
+        //this.listenForMouseMove();
+
         // Draw background
         //background(240, 248, 255);
         imageMode(CORNER);
@@ -323,15 +324,15 @@ class MainMenu {
         pop();
     }
 
-    listenForMouseMove() {
-        window.addEventListener("mousemove", (event) => {
-            if (this.selectedButtonIndex > -1) {
-                this.selectedButtonIndex = -1
-            }
-            this.showCursor();
-            this.anyKeyPressed = false;
-        });
-    }
+    // listenForMouseMove() {
+    //     window.addEventListener("mousemove", (event) => {
+    //         if (this.selectedButtonIndex > -1) {
+    //             this.selectedButtonIndex = -1
+    //         }
+    //         this.showCursor();
+    //         this.anyKeyPressed = false;
+    //     });
+    // }
 
     showCursor() {
         document.body.classList.add("show-cursor");

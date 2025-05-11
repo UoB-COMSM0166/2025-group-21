@@ -7,7 +7,7 @@ class Workshop {
         this.purchaseSound = null;
         this.illegalPurchaseSound = null;
 
-        document.body.classList.add("show-cursor");
+        document.body.classList.remove("show-cursor");
         this.selectedItem = null;
         this.buttonsActive = false;
         this.buttonCooldownTimer = new Clock();
@@ -116,7 +116,6 @@ class Workshop {
 
     openShop() {
         this.refreshLevelsFromInventory();   // keep UI in sync with Inventory
-        this.listenForCursorMove();
         if (!this.soundsLoaded) return;
 
         this.updateDisplay();
@@ -1461,14 +1460,5 @@ class Workshop {
         this.playerFligthLevel     = inventory.flyLevel;
         this.playerProjectileLevel = inventory.laserLevel;
         this.playerForceFieldLevel = inventory.forceFieldLevel;
-    }
-
-    listenForCursorMove() {
-        window.addEventListener("mousemove", (event) => {
-            if (this.keyNav.selected != null) {
-                this.keyNav.selected = null;
-                document.body.classList.add("show-cursor");
-            }
-        });
     }
 }

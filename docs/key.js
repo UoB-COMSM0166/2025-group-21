@@ -94,12 +94,16 @@ function keyPressed() {
 
     if (Domain === 'game' && domains.game.pause.active) {
         if (keyCode === UP_ARROW) {
+            if (domains.game.pause.showInvPanel) {
+                domains.game.pause.invPanel.setCloseButtonSelected(true);
+            }
             if (domains.game.pause.selectedButtonIndex === -1) {
                 domains.game.pause.selectedButtonIndex = 0;
                 //game.pause.updateButtonStyles();
             } else {
                 domains.game.pause.moveSelection(-1);
             }
+            domains.game.pause.hideCursor();
         } else if (keyCode === DOWN_ARROW) {
             if (domains.game.pause.showInvPanel) {
                 domains.game.pause.invPanel.setCloseButtonSelected(true);
@@ -109,6 +113,7 @@ function keyPressed() {
             } else {
                 domains.game.pause.moveSelection(1);
             }
+            domains.game.pause.hideCursor();
         } else if (keyCode === ENTER) {
             if (domains.game.pause.showInvPanel && domains.game.pause.invPanel.isCloseButtonSelected) {
                 // If inventory panel is visible and CLOSE button is selected, activate it
@@ -118,12 +123,32 @@ function keyPressed() {
             } else {
                 domains.game.pause.selectCurrentButton();
             }
+            domains.game.pause.hideCursor();
         }
     }
 
     if (Domain === 'game' && !domains.game.player.alive && domains.game.death.deathTimer.time >= 230) {
-        if (!domains.game.death.showStats) {
+        if (!domains.game.death.highscoreSeen) { // game high score back button
+            if (keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+                document.body.classList.remove("show-cursor");
+                domains.game.highscores.backSelected = true;
+            }
+            else if (keyCode === ENTER) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
+                if (domains.game.highscores.backSelected) {
+                    domains.game.death.highscoreSeen = true;
+                }
+                else domains.game.highscores.backSelected = true;
+            }
+        }
+
+        else if (!domains.game.death.showStats) {
             if (keyCode === UP_ARROW) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
                 if (!domains.game.death.anyKeyPressed) {
                     domains.game.death.selectedButtonIndex = 0;
                     domains.game.death.anyKeyPressed = true;
@@ -134,6 +159,9 @@ function keyPressed() {
                 }
             }
             else if (keyCode === DOWN_ARROW) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
                 if (!domains.game.death.anyKeyPressed) {
                     domains.game.death.selectedButtonIndex = 0;
                     domains.game.death.anyKeyPressed = true;
@@ -144,6 +172,9 @@ function keyPressed() {
                 }
             }
             else if (keyCode === ENTER || key === ' ') {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
                 if (!domains.game.death.anyKeyPressed) {
                     domains.game.death.selectedButtonIndex = 0;
                     domains.game.death.anyKeyPressed = true;
@@ -153,13 +184,19 @@ function keyPressed() {
         }
         // Key navigation in stats page
         else {
-            if (keyCode === DOWN_ARROW) {
+            if (keyCode === DOWN_ARROW || keyCode === UP_ARROW) {
                 domains.game.stats.backButtonSelected = true;
+                document.body.classList.remove("show-cursor");
             }
-            else if (keyCode === ENTER && domains.game.stats.backButtonSelected) {
-                domains.game.death.showStats = false;
-                domains.game.death.selectedButtonIndex = -1;
-                domains.game.stats.backButtonSelected = false;
+            else if (keyCode === ENTER) {
+                if (domains.game.stats.backButtonSelected) {
+                    document.body.classList.remove("show-cursor");
+                    domains.game.death.showStats = false;
+                    domains.game.death.selectedButtonIndex = -1;
+                    domains.game.stats.backButtonSelected = false;
+                    domains.game.death.cursorVisible = false;
+                }
+                else domains.game.stats.backButtonSelected = true;
             }
         }
     }
@@ -185,7 +222,10 @@ function keyReleased() {
                         domains.game.pause.continueButtonPressed();
                     }
                 }
-                else domains.game.pause.active = true;
+                else {
+                    domains.game.pause.active = true;
+                    //domains.game.pause.hideCursor();
+                }
                 //game.pause.active = !game.pause.active;
             }
         }
@@ -202,6 +242,21 @@ function keyReleased() {
 }
 
 function getInputCharacter() {
+
+    if (Domain === 'game' && domains.game.death !== null) {
+        if (keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+            document.body.classList.remove("show-cursor");
+            domains.game.highscores.submitSelected = true;
+        }
+        else if (keyCode === ENTER) {
+            document.body.classList.remove("show-cursor");
+
+            if (domains.game.highscores.submitSelected) {
+                domains.game.highscores.submitButtonPressed();
+            }
+            else domains.game.highscores.submitSelected = true;
+        }
+    }
 
     switch (key) {
         case 'A': inputCharacter = 'A'; break;

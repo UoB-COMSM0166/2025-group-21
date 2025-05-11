@@ -54,7 +54,6 @@ class Settings {
 
     // main loop
     showSettingsScreen() {
-        this.listenForMouseMove();
 
         push();
         image(blurredHomeBackground, 0, 0, width, height);
@@ -420,15 +419,6 @@ class Settings {
         text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.63*height);
 
         text('Enable Cheats:', width/2.17, 0.74*height); // cheats
-    }
-
-    listenForMouseMove() {
-        window.addEventListener("mousemove", (event) => {
-            if (this.keyNav.selectedControl > -1) {
-                this.keyNav.selectedControl = -1
-            }
-            this.showCursor();
-        });
     }
 
     showCursor() {

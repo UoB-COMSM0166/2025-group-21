@@ -19,6 +19,7 @@ class InvPanel {
                 domains.game.pause.showInvPanel = false;
                 this.isCloseButtonSelected = false;
                 domains.game.pause.startCooldown();
+                this.isCloseButtonSelected = false;
             }
         }
         else if (this.isCloseButtonSelected) {
@@ -106,5 +107,6 @@ class InvPanel {
 
     setCloseButtonSelected(selected) {
         this.isCloseButtonSelected = selected;
+        domains.game.pause.hideCursor();
     }
 }

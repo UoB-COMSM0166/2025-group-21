@@ -11,6 +11,8 @@ class Highscores {
         this.buttonsActive = true;
         this.buttonCooldownTimer = new Clock();
         this.savingScore = false;
+        this.submitSelected = false;
+        this.backSelected = false;
     }
 
     // Load highscores in on startup
@@ -136,7 +138,7 @@ class Highscores {
     createInputField() {
         this.updateButtonCooldown(4); // limit rate at which backspace is applied when key is held
 
-        document.body.classList.add("show-cursor");
+        //document.body.classList.add("show-cursor");
         push();
         imageMode(CENTER);
         let scale = 0.0018 * width;
@@ -165,6 +167,7 @@ class Highscores {
     }
 
     updateSubmitButton(scale) {
+        //console.log('typing = ' + userIsTyping);
         let size = createVector(submitButton.width / scale, submitButton.height / scale);
         let pos = createVector(0.5*width, 0.8*height);
 
@@ -172,15 +175,22 @@ class Highscores {
             image(submitButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.userName.length > 0) {
-                this.usernameEntered = true;
-                userIsTyping = false;
-                this.buttonsActive = false;
-                this.buttonCooldownTimer.tick();
+                this.submitButtonPressed();
             }
+        }
+        else if (this.submitSelected) {
+            image(submitButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else {
             image(submitButton, pos.x, pos.y, size.x, size.y);
         }
+    }
+
+    submitButtonPressed() {
+        this.usernameEntered = true;
+        userIsTyping = false;
+        this.buttonsActive = false;
+        this.buttonCooldownTimer.tick();
     }
 
     updateUsernameFromInput() {
@@ -237,6 +247,9 @@ class Highscores {
             if (mouseIsPressed && this.buttonsActive) {
                 domains.game.death.highscoreSeen = true;
             }
+        }
+        else if (this.backSelected) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else {
             image(backButton, pos.x, pos.y, size.x, size.y);

@@ -32,6 +32,8 @@ class Death {
         this.anyKeyPressed = false;
         this.buttonActive = true;
         this.buttonCooldownTimer = new Clock();
+
+        this.cursorVisible = false;
     }
 
     // Sequence of events occurring at point of game over
@@ -192,7 +194,7 @@ class Death {
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
 
-        document.body.classList.add("show-cursor");
+        //document.body.classList.add("show-cursor");
         this.updateButtons();
     }
 
@@ -228,9 +230,9 @@ class Death {
         let isHovering = hoveringOverButton(pos, size);
         let isSelected = this.selectedButtonIndex === buttonID;
 
-        if (isHovering || isSelected) {
+        if (isHovering && this.cursorVisible) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
-            if (mouseIsPressed && this.buttonActive && isHovering) {
+            if (mouseIsPressed && this.buttonActive) {
                 if (buttonID === 0) {
                     this.playAgainButtonPressed();
                 } else if (buttonID === 1) {
@@ -240,6 +242,8 @@ class Death {
                 }
                 this.startCooldown();
             }
+        } else if (isSelected) {
+            image(buttonHover, pos.x, pos.y, size.x, size.y);
         } else {
             image(buttonDefault, pos.x, pos.y, size.x, size.y);
         }

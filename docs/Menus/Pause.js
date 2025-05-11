@@ -26,6 +26,7 @@ class Pause {
         this.loadAudio().then(() => this.soundsLoaded = true);
 
         this.buttonsActive = true;
+        this.cursorVisible = false;
     }
 
     async loadAudio() {
@@ -35,9 +36,8 @@ class Pause {
     }
 
     showPauseScreen() {
-
         if (this.fieldsReset) {
-            document.body.classList.add("show-cursor");
+            //document.body.classList.add("show-cursor");
             this.showButtons = true;
             this.fieldsReset = false;
             domains.game.windSound.setVolume(0);
@@ -104,7 +104,7 @@ class Pause {
         }
         this.wasHoveringButtons[buttonID] = isHover;
 
-        if (isHover) {
+        if (isHover && this.cursorVisible) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive && !this.wasMousePressed) {
@@ -215,5 +215,15 @@ class Pause {
             this.selectedButtonIndex = -1;
             this.fieldsReset = true;
         }
+    }
+
+    showCursor() {
+        document.body.classList.add("show-cursor");
+        this.cursorVisible = true;
+    }
+
+    hideCursor() {
+        document.body.classList.remove("show-cursor");
+        this.cursorVisible = false;
     }
 }
