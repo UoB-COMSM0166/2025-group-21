@@ -702,7 +702,7 @@ To support the sustainability of our game, we researched a range of Green Softwa
 
 While this pattern is traditionally related to lazy loading of web assets, we found it highly applicable to our game's design. Given that our game works by continuously generating visual elements, including terrain, obstacles and collectibles, it was important to instantiate only what’s necessary on screen. Otherwise, we risked excessive CPU and memory use. Our game is programmed to only load visual elements as they become visible, and quickly removes them once off screen. 
 
-For instance, aerial obstacles are not preloaded from a large array. Instead, their spawn chance is repeatedly evaluated, and their object is only instantiated while on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering the client-side energy usage (E) in the SCI equation.
+For instance, aerial obstacles are not preloaded from a large array. Instead, their spawn chance is repeatedly evaluated, and the object is only instantiated when on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering the client-side energy usage (E) in the SCI equation.
 
 #### 2. Use Serverless Cloud Services - Environmental and Economic Sustainability
 
