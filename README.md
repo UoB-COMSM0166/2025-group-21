@@ -812,7 +812,7 @@ Many challenges were overcome during the implementation process. From generating
 
 Despite having satisfied our acceptance criteria, it is important to recognise that PengWings is not perfect — All software can be improved! We have discussed countless ideas regarding our vision for the future of our game that, given time, could be implemented. Today more than ever, the preferred platform for arcade games like ours is mobile. Implementing support for mobile applications will be essential for increasing the reach of PengWings. Additionally, introducing new levels with alternate themes (e.g., desert, jungle) as well as new game modes (e.g., highest jump, obstacles downed in set time) will expand the diversity of gameplay, leading to greater user retention. Finally, adding support for multiplayer will be a gamechanger. Allowing for users to play with friends over a server will further increase appeal and encourage the growth of the PengWings community.
 
-To conclude, we have found the PengWings project to be a deeply rewarding and enjoyable experience. Each team member has come out the other side as a stronger team player and more rounded developer. We are all extremely proud of what we have achieved, and we hope that the game we have created will continue to be played and loved into the future.
+To conclude, we have found the PengWings project to be a deeply rewarding and enjoyable experience. Each team member has come out the other side as a stronger team player and more rounded developer. We are all extremely proud of what we have achieved and we hope that the game we have created will continue to be played and loved into the future.
 
 # 10. Contribution Statement
 
