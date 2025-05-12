@@ -578,11 +578,12 @@ test('position and angle change when freezing from snowball hit', () => {
 ### Black Box Testing
 We also conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
-# 7. Sustainability, Ethics and Accessibility
+# 7. Sustainability
 
 Sustainability was an important ethos to our development team, and our game's natural environment and themes reflected this. We attempted to incorporate into our development process utilising two protocols:
 - Sustainability Awareness Framework (SusAF)
 - And, the Green Software Foundation Design Patterns
+
 You can donate to support Penguin conservation directly from the link in PengWings' main menu!
 
 ### Sustainability Awareness Framework
