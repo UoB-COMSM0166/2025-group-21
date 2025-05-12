@@ -175,7 +175,7 @@ Through the open discussion of our user stories and ‘hammering out’ of the a
 
 As development progressed and the scope of our game increased, our requirements evolved as we proposed and debated new features. Additional user stories were adopted while those of negligible significance were dropped. Through this agile methodology, we refined our requirements, prioritising the most impactful features.
 
-## Use-Case
+## Use-Cases
 
 In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case model is illustrated in the diagram below (Figure 6). A detailed use-case specification can be found in the appendix.
 
