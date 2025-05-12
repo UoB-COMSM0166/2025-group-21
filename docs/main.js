@@ -140,6 +140,9 @@ function respondToMouseMovement() {
             }
             break;
         case 'shop':
+            if (domains.shop.fadeOut) {
+                return;
+            }
             if (domains.shop.keyNav.selected != null) {
                 domains.shop.keyNav.selected = null;
             }
