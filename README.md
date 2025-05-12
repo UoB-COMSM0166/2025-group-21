@@ -376,7 +376,7 @@ Difficulty:
 ### Heuristic Evaluation
 
 #### Process
-Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table 2). All heuristic violations were addressed and the solution is documented below.
+Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. (Nielsen, 1994) The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table 2). All heuristic violations were addressed and the solution is documented below.
 
 <div align="center">
   	<p align="center"><strong>Table 2</strong><br>Heuristic violations identified in our game, their severity ratings, and solutions</p>
@@ -947,6 +947,8 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 </div>
 
 # 12. References
+
+Nielsen, J. (1994a) ‘Enhancing the explanatory power of usability heuristics’, _Proceedings of the SIGCHI Conference on Human Factors in Computing Systems_, pp. 152–158. doi:10.1145/191666.191729. 
 
 Kosch, T. _et al._ (2023) ‘A survey on measuring cognitive workload in human-computer interaction’, _ACM Computing Surveys_, 55(13s), pp. 1–39. doi:10.1145/3582272. 
 
