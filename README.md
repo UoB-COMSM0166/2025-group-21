@@ -177,7 +177,7 @@ As development progressed and the scope of our game increased, our requirements 
 
 ## Use-Cases
 
-In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case model is illustrated in the diagram below (Figure 6). A detailed use-case specification can be found in the appendix.
+In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one of the most powerful techniques we employed, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case model is illustrated in the diagram below (Figure 6). A detailed use-case specification can be found in the appendix.
 
 <div align="center">
 	<img src="report/requirements_figures/use_case_diagram.png" width="800">
