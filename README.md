@@ -720,7 +720,7 @@ We chose to use a caching system to address this, which allowed the sounds to be
 
 ## Collaboration
 
-Over the course of the project, our team adopted an agile development methodology to manage tasks. We participated both in online and in-person collaboration, maintaining regular communication as to maximise our efficiency. At the project’s conception, we agreed upon a flat team structure in which all members contributed equally to decision-making while delegating member-specific tasks based on the strengths of the individual. This approach enabled us to capitalise on the diverse range of skills between us, while maintaining shared accountability for the project’s overall progress.
+Over the course of the project, our team adopted an agile development methodology to manage tasks. We participated both in online and in-person collaboration, maintaining regular communication to maximise our efficiency. At the project’s conception, we agreed upon a flat team structure in which all members contributed equally to decision-making while delegating member-specific tasks based on the strengths of the individual. This approach enabled us to capitalise on the diverse range of skills between us, while maintaining shared accountability for the project’s overall progress.
 
 To keep development on track, we maintained a consistent weekly routine. During term time, we used Tuesday’s workshop sessions to collaborate on in-class tasks and held in-person meetings on Fridays to reflect on the week’s work, showcase progress/new features, and discuss our next steps as well as areas for improvement. Notes from these meetings can be found in the `/meetings` directory.
 
