@@ -459,7 +459,7 @@ To ensure our game was both appropriately challenging and also user-friendly, we
 - **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
 
 #### Process
-These evaluations involved 10 participants, each trialing two difficulty modes. Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
+These evaluations involved 10 participants, each trialing two difficulty modes. (Kosch et al., 2023) Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
 
 ### Raw NASA TLX
 
@@ -944,6 +944,8 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 </div>
 
 # References
+
+Kosch, T. _et al._ (2023) ‘A survey on measuring cognitive workload in human-computer interaction’, _ACM Computing Surveys_, 55(13s), pp. 1–39. doi:10.1145/3582272. 
 
 Lewis, J.R. (2018) ‘The system usability scale: Past, present, and future’, _International Journal of Human–Computer Interaction_, 34(7), pp. 577–590. doi:10.1080/10447318.2018.1455307. 
 
