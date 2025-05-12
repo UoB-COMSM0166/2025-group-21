@@ -952,6 +952,6 @@ Kosch, T. _et al._ (2023) ‘A survey on measuring cognitive workload in human-c
 
 Lewis, J.R. (2018) ‘The system usability scale: Past, present, and future’, _International Journal of Human–Computer Interaction_, 34(7), pp. 577–590. doi:10.1080/10447318.2018.1455307. 
 
-_Catalog_ (no date) _Green Software Patterns_. Available at: https://patterns.greensoftware.foundation/catalog/ (Accessed: 10 May 2025). 
+_Catalog_ (2025) _Green Software Patterns_. Available at: https://patterns.greensoftware.foundation/catalog/ (Accessed: 10 May 2025). 
 
 
