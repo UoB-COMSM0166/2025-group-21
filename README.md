@@ -554,22 +554,12 @@ While the SUS confirmed high usability, we found it less applicable than our qua
 ## Testing
 
 ### White Box Testing
-We used Jest unit testing to verify our game code’s logic, focusing on game states, ensuring that triggering functions produced expected changes in the game state. Due to the game’s complexity, this was quite a difficult step, so we concentrated on testing the classes and methods that controlled the players movements, control, and interactions, as these were the most likely to hinder user’s game play. We used a range of the Mocking as part of the Jest testing unit to help construct testable game states.
+We used Jest unit testing to verify our game code’s logic, focusing on game states, ensuring that triggering functions produced expected changes in the game state. Due to the game’s complexity, this was quite a difficult step, so we concentrated on testing the classes and methods that controlled the players movements, control, and interactions, as these were the most likely to hinder user’s game play. We used a range of Jest mocking to help construct testable game states.
 
 **Example — Obstacle Testing**<br>
 Our game aerial obstacles, intended to challenge the player while flying. We tested their movement and interactions using a range of assertions. This was aided by using the inheritance and polymorphism in the obstacle subclasses. An excerpt is shown below.
 
-```// Creating mocked variables for the game state
-global.image = jest.fn();
-global.domains = {
-    game: {
-	zoom: 2,
-	player: {
-	    vel: {x: 5}
-	}
-    }
-};
-
+<pre>```
 test('position and angle change when freezing from snowball hit', () => {
         // Get initial params before registering hit
         obstacle.freezing = true;
@@ -581,10 +571,11 @@ test('position and angle change when freezing from snowball hit', () => {
         expect(obstacle.pos.x).toBeGreaterThan(initialX);
         expect(obstacle.pos.y).toBeGreaterThan(initialY);
         expect(obstacle.angle).toBeGreaterThan(initialAngle);
-    });```
+    });
+```</pre>
 
 ### Black Box Testing
-We conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
+We also conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
 # 7. Sustainability 
 
