@@ -61,6 +61,7 @@ class Intro {
         }
     }
 
+    // Penguin flying across the screen with logo
     drawFlyingPenguin() {
         push();
         imageMode(CENTER);

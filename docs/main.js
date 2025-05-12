@@ -34,6 +34,7 @@ function setup() {
     window.addEventListener("mousemove", () => respondToMouseMovement());
 }
 
+// Repeated calls via p5 to draw()
 function draw() {
     if (Domain === 'game') {
         console.log('level = ' + inventory.currentProjectileItem)
@@ -45,8 +46,7 @@ function draw() {
     domains.run();
 }
 
-
-
+// Allows the screen to be resized while retaining internal scale
 function resizeCanvasCSS() {
     let canvas = document.getElementById("myCanvas");
 
@@ -63,11 +63,13 @@ function resizeCanvasCSS() {
     canvas.style.height = `${newHeight}px`;
 }
 
+// Display button hover from mouse movement
 function hoveringOverButton(pos, size) {
     return mouseX > pos.x - size.x/2 && mouseX < pos.x + size.x/2 &&
         mouseY > pos.y - size.y/2 && mouseY < pos.y + size.y/2;
 }
 
+// Display move movement on main menus
 function respondToMouseMovement() {
     switch(Domain) {
         case 'loadGame':

@@ -13,11 +13,13 @@ class Arrow extends Projectile {
         this.frameIndex = 0;
     }
 
+    // Update arrow position
     updatePosition() {
         this.pos.x += 0.75*this.vel.x;
         this.pos.y += 0.75*this.vel.y;
     }
 
+    // Display projectile on screen each frame
     drawProjectile() {
         push();
         const FRAME_WIDTH = 60;

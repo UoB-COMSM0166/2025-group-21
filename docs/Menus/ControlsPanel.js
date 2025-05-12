@@ -27,6 +27,7 @@ class ControlsPanel {
         }
     }
 
+    // Run keyboard navigation movement
     moveSelection(direction) {
         if (!this.keyboardActive) {
             this.keyboardActive = true;
@@ -42,6 +43,7 @@ class ControlsPanel {
         this.selectedButtonIndex = (this.selectedButtonIndex + direction + this.buttonCount) % this.buttonCount;
     }
 
+    // Run keyboard navigation button selection
     activateSelectedButton() {
         if (this.selectedButtonIndex === -1) {
             return;
@@ -57,7 +59,7 @@ class ControlsPanel {
         }
     }
 
-
+    // Show button controls
     showPanel() {
         push();
         this.drawLabels();
@@ -125,6 +127,7 @@ class ControlsPanel {
         }
     }
 
+    // Update display for change button
     updateChangeButton(name, id, size) {
         imageMode(CENTER);
         let pos = createVector(0.63*width, (0.35 + 0.1*id)*height);
@@ -147,6 +150,7 @@ class ControlsPanel {
         else image(changeButton, pos.x, pos.y, size.x, size.y);
     }
 
+    // Update display for back button
     updateBackButton() {
         let scale = 0.002 * width;
         let size = createVector(backButton.width / scale, backButton.height / scale);

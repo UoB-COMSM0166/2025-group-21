@@ -22,6 +22,7 @@
 9. [Conclusion](#9-conclusion)
 10. [Contribution Statement](#10-contribution-statement)
 11. [Appendix](#11-appendix)
+12. [References](#12-references)
 
 # 1. Development Team
 
@@ -174,9 +175,9 @@ Through the open discussion of our user stories and ‘hammering out’ of the a
 
 As development progressed and the scope of our game increased, our requirements evolved as we proposed and debated new features. Additional user stories were adopted while those of negligible significance were dropped. Through this agile methodology, we refined our requirements, prioritising the most impactful features.
 
-## Use-Case
+## Use-Cases
 
-In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed during development, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case model is illustrated in the diagram below (Figure 6). A detailed use-case specification can be found in the appendix.
+In accordance with our user stories, our use-case model evolved throughout development as to accommodate for new requirements. We found that illustrating this model visually through diagrams was one the most powerful techniques we employed, enabling members to effectively convey their ideas as well as present the newest features of the game in meetings. The final use-case model is illustrated in the diagram below (Figure 6). A detailed use-case specification can be found in the appendix.
 
 <div align="center">
 	<img src="report/requirements_figures/use_case_diagram.png" width="800">
@@ -279,7 +280,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 #### Random and Unpredictable Terrain
 
-To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 12). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
+To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (Figure 12). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
 
 <div align="center">
     <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
@@ -306,7 +307,7 @@ We based player movement on classical physics. The player has both position and 
 - On the ground, friction slows the player's horizontal velocity.
 - Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground.
 
-These effects can be seen in the player’s velocity vectors in Figure 14a.
+These effects can be seen in the player’s velocity vectors, shown in red in Figure 14.
 
 #### Acceleration
 
@@ -317,14 +318,14 @@ To simulate the acceleration and deceleration on the slopes, we used the physics
 </div>
 <br>
 
-These forces—shown in Figure 14b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
+These forces—shown in blue in Figure 14—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
 <div align="center">
 	<p>
 		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
 		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
-	<p><strong>Figure 14</strong><br>Player a) velocity (red) and b) acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
+	<p><strong>Figure 14</strong><br>Player velocity (red) and acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
@@ -459,7 +460,7 @@ To ensure our game was both appropriately challenging and also user-friendly, we
 - **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
 
 #### Process
-These evaluations involved 10 participants, each trialing two difficulty modes. Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
+These evaluations involved 10 participants, each trialing two difficulty modes. (Kosch et al., 2023) Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
 
 ### Raw NASA TLX
 
@@ -531,7 +532,7 @@ Since the data show that higher difficulty led to significant increases in media
 ### System Usability Survey (SUS)
 
 #### Process
-After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology.
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability.(Lewis, 2018) Scores were calculated using standard SUS methodology.
 
 #### Results
 The individual SUS scores are shown in Figure 17, with the industry average benchmark of 68 shown for comparison.
@@ -577,17 +578,19 @@ test('position and angle change when freezing from snowball hit', () => {
 ### Black Box Testing
 We also conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
-# 7. Sustainability 
+# 7. Sustainability
 
-To incorporate sustainability into our development process, we utilised two protocols:
-- Sustainability Awareness Framework (SusAF)
-- And, the Green Software Foundation Design Patterns
+Sustainability was an important ethos to our development team, and our game's natural environment and themes reflected this. We attempted to incorporate sustainability into our development process using two protocols:
+- **Sustainability Awareness Framework (SusAF)**
+- And, the **Green Software Foundation Design Patterns**
+
+You can donate to support penguin conservation directly from the link on the PengWings home screen!
 
 ### Sustainability Awareness Framework
 
 #### Questions and Discussion
 
-As a team, we each contributed sustainability-focused questions to prompt group discussion. This process challenged us to reflect on our sustainability assumptions, and to think critically about how we addressed similar questions from others. These questions and discussions centred around the five dimensions of sustainability.
+As a team, we each contributed sustainability-focused questions to prompt a group discussion. This process challenged us to reflect on our understanding of sustainability, and to think critically about how we addressed similar questions from others. These questions and discussions centred around the five dimensions of sustainability.
 
 #### Analysis
 
@@ -614,7 +617,7 @@ From this open discussion, we created a framework of notes, that divides the sus
       <tr><td>Agency</td><td>Users can control participation and provide feedback.</td></tr>
       <tr><td rowspan="4">Environmental</td><td>Material and resources</td><td>Development process unfortunately consumes resources and time.</td></tr>
       <tr><td>Waste & pollution</td><td>Streamlining development and avoiding unnecessary work.</td></tr>
-      <tr><td>Biodiversity</td><td>Energy and memory usage negatively impact the environment, and should be minimised.</td></tr>
+      <tr><td>Biodiversity</td><td>Providing users with a donations link to support the conservation of penguin biodiversity.</td></tr>
       <tr><td>Energy</td><td>Code optimisation reduces energy and memory demands.</td></tr>
       <tr><td rowspan="3">Economic</td><td>Value</td><td>Organic growth through user sharing. Paid upgrades proposed for keen fans.</td></tr>
       <tr><td>Customer Relationship Management</td><td>Fair reward systems helps build trust. Monetization will be balanced and user-friendly.</td></tr>
@@ -637,7 +640,7 @@ We attempted to arrange these into short, medium and long-term effects, and visu
 
 #### Sustainability in Design
 
-By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 6), which we translated into actionable requirements in our product backlog.
+By using this framework, we were able to make informed and accurate decisions about sustainability during development. The insights gathered during this process were used to develop a series of user stories (Table 6), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
   <p align="center"><strong>Table 6</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
@@ -676,8 +679,8 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="1">Environmental</td>
-        <td>As an environmentally conscious player, I want a game that reflects its environmental state, so that it can promote sustainability.</td>
-        <td>Given the game is set in the Antarctic, when a player interacts with the game, then they should have the opportunity to learn or contribute to the Antarctic sustainability.</td>
+        <td>As an environmentally conscious player, I want a game that reflects its environment, so that it can promote sustainability.</td>
+        <td>Given the game is set in the Antarctic, when a player interacts with the game, then they should have the opportunity to learn about or contribute to the Antarctic sustainability.</td>
     </tr>
     <tr>
         <td rowspan="2">Individual</td>
@@ -693,25 +696,25 @@ By using these two protocols, we were able to make informed and accurate decisio
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design.(Franziska Warncke, Liya Mathew, Catalog) These patterns focussed on environmental, technical, and economic sustainability. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
-#### 1. Defer Offscreen Images
+#### 1. Defer Offscreen Images - Environmental and Technical Sustainability
 
-While this pattern is traditionally related to lazy loading of web assets, we found it highly applicable to our games design. Given that our game works by continuously generating visual elements, including terrain, obstacles and collectibles, it was necessary to instantiate only what’s necessary on screen. Otherwise, we risked excessive CPU and memory use. Our game is programmed to only load visual elements as they become visible, and quickly removes them once off screen. 
+While this pattern is traditionally related to lazy loading of web assets, we found it highly applicable to our game's design. Given that our game works by continuously generating visual elements, including terrain, obstacles and collectibles, it was important to instantiate only what’s necessary on screen. Otherwise, we risked excessive CPU and memory use. Our game is programmed to only load visual elements as they become visible, and quickly removes them once off screen. 
 
-For instance, aerial obstacles are not preloaded from a large array. Instead, their spawn chance is repeatedly evaluated, and they are instantiated only while on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering client-side energy usage (E) in the SCI equation.
+For instance, aerial obstacles are not preloaded from a large array. Instead, their spawn chance is repeatedly evaluated, and their object is only instantiated while on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering the client-side energy usage (E) in the SCI equation.
 
-#### 2. Use Serverless Cloud Services
+#### 2. Use Serverless Cloud Services - Environmental and Economic Sustainability
 
-Our game required a backend system to manage and store high scores, shared between users. We saw an opportunity to apply an impactful Green Software Pattern, to maximise our sustainability. We chose to use Vercel for it’s API functions, and Redis Cloud for data storage, both of which use serverless models.
+Our game required a backend system to manage and store high scores, shared between users. We saw an opportunity to apply an impactful Green Software Pattern, to maximise our environmental and economic sustainability. We chose to use Vercel for its API functions, and Redis Cloud for data storage, both of which use serverless models.
 
 Vercel allowed us to deploy APIs that submit and retrieve high scores via on-demand serverless functions. This approach ensures no resources are consumed when the game isn’t being played, helping reduce our carbon intensity (I) as a factor of the SCI equation. Similarly, Redis Cloud’s serverless infrastructure allows it to dynamically scale and share its hardware based on demand, efficiently allocating memory and reducing the embodied carbon (M) as a factor in the SCI equation.
 
-#### 3. Cache Static Data
+#### 3. Cache Static Data - Environmental and Technical Sustainability
 
-A third Green Software Pattern we incorporated was to cache static data into memory, specifically sound assets. PengWings uses a range of sound affects and music. We found repeatedly loading them created significant and unsustainable memory use, which we observed in the sound buffer in the browser. 
+A third Green Software Pattern we incorporated was to cache static data into memory, specifically sound assets. PengWings uses a range of sound effects and music. We found repeatedly loading them created significant and unsustainable memory use, which we observed in the sound buffer in the browser. 
 
-We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required— by prompting JavaScript garbage collection, freeing memory. By reducing the repeated data loading and memory use, this helped to reduce our total electricity (E) factor of the SCI equation.
+We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required, by prompting JavaScript garbage collection, freeing memory. Reducing the repeated data loading and memory use helped to reduce our total electricity (E) factor of the SCI equation.
 
 # 8. Process 
 
@@ -841,65 +844,71 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	    </tr>
 	  </thead>
 	  <tbody>
+	    <tr>
+              <td>Penguin</td>
+	      <td>"Wings"</td>
+	      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
+	      <td>The pengtagonist</td>
+	    </tr>
 	    <!-- Projectile-->
 	    <tr>
 	      <td rowspan="5">Projectile</td>
 	      <td>Level 1:<br>Fish</td>
 	      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
-	      <td>Launches a flopping fish that deals limited splash damage</td>
+	      <td>...but no chips</td>
 	    </tr>
 	    <tr>
 	      <td>Level 2:<br>Snowball Cannon</td>
 	      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
-	      <td>Better collision knock back</td>
+	      <td>Snowball fight!</td>
 	    </tr>
 	    <tr>
 	      <td>Level 3:<br>Arrow</td>
 	      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
-	      <td>Improved path clearance, shoot in a straight line</td>
+	      <td>And you can have my bow...</td>
 	    </tr>
 	    <tr>
 	      <td>Level 4:<br>Laser</td>
 	      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
-	      <td>Increased projectile speed, explosion upon collision</td>
+	      <td>Bucket-list item</td>
 	    </tr>
 	    <tr>
 	      <td>Level 5:<br>Automatic Laser</td>
 	      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
-	      <td>Shoot Lasers from a Gatling gun!</td>
+	      <td>Hasta la vista, baby</td>
 	    </tr>
 	    <!-- Flying-->
 	    <tr>
 	      <td rowspan="5">Flying Ability</td>
-	      <td>Level 1:<br>Normal mode</td>
-	      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
-	      <td>Basic mode</td>
-	    </tr>
-	    <tr>
-	      <td>Level 2:<br>Wing Enhancement</td>
+	      <td>Level 1:<br>A flying penguin</td>
 	      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
-	      <td>Smooth gliding</td>
+	      <td>Flightless no more</td>
 	    </tr>
 	    <tr>
-	      <td>Level 3:<br>Dragon Wings</td>
+	      <td>Level 2:<br>Dragon Wings</td>
 	      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
-	      <td>Improved glide disctance and control</td>
+	      <td>A science experiment gone wrong</td>
 	    </tr>
 	    <tr>
-	      <td>Level 4:<br>Rotors</td>
+	      <td>Level 3:<br>Rotors</td>
 	      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
 	      <td>When wings just dont cut it</td>
 	    </tr>
 	    <tr>
-	      <td>Level 5:<br>Booster</td>
+	      <td>Level 4:<br>Red Booster</td>
 	      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
-	      <td>High-speed propulsion for fast flight</td>
+	      <td>Fly higher. Fly better. Fly Smart</td>
 	    </tr>
 	    <tr>
-	      <td rowspan="1">Force field</td>
+	      <td>Level 5:<br>Blue Booster</td>
+	      <td><img src="docs/assets/images/boosterHydrogen_Workshop.png" width="80"></td>
+	      <td>...and she's flying a penguin to heaven</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="1">Shield Ability</td>
 	      <td>Force Field</td>
 	      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
-	      <td>Force field protects players from collisions</td>
+	      <td>May the force be with you</td>
 	    </tr>
 	    <tr>
 	      <td rowspan="3">Obstacles</td>
@@ -921,12 +930,12 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	      <td rowspan="2">Collectibles</td>
 	      <td>Heart</td>
 	      <td><img src="docs/assets/images/heart1.png" width="80"></td>
-	      <td>Collect hearts to restore life</td>
+	      <td>Don't let life pass you by</td>
 	    </tr>
 	    <tr>
 	      <td>Coin</td>
 	      <td><img src="docs/assets/images/coin.png" width="60"></td>
-	      <td>Collect coins to upgrade your equipment in Workshop</td>
+	      <td>Money, it's a gas</td>
 	    </tr>
 	</tbody>
 	</table>
@@ -936,3 +945,13 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	<img src="report/requirements_figures/use_case_specification.png" width="800">
 	<p>PengWings use-case specification<br><br><br></p>
 </div>
+
+# 12 References
+
+Kosch, T. _et al._ (2023) ‘A survey on measuring cognitive workload in human-computer interaction’, _ACM Computing Surveys_, 55(13s), pp. 1–39. doi:10.1145/3582272. 
+
+Lewis, J.R. (2018) ‘The system usability scale: Past, present, and future’, _International Journal of Human–Computer Interaction_, 34(7), pp. 577–590. doi:10.1080/10447318.2018.1455307. 
+
+_Catalog_ (2025) _Green Software Patterns_. Available at: https://patterns.greensoftware.foundation/catalog/ (Accessed: 10 May 2025). 
+
+

@@ -60,14 +60,14 @@ class Stats {
         pop();
     }
 
+    // Display stats screen back button
     updateBackButton() {
-
         push();
         let scale = 0.0015 * width;
         let size = createVector(backButton.width / scale, backButton.height / scale);
         let pos = createVector(0.5*width, 0.9*height);
         imageMode(CENTER);
-
+        // Display hovering and selecting effects
         if (hoveringOverButton(pos, size) || this.backButtonSelected) {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 

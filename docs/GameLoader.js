@@ -1,6 +1,7 @@
 
 
 class GameLoader {
+
     constructor(gameProgress) {
         document.body.classList.remove("show-cursor");
         this.gameProgress = gameProgress;
@@ -12,6 +13,7 @@ class GameLoader {
         }
     }
 
+    // Display load screen while game loads
     showLoadScreen() {
         push();
         image(blurredHomeBackground, 0, 0, width, height);
@@ -21,6 +23,7 @@ class GameLoader {
         pop();
     }
 
+    // Take keyboard navigation for menus
     handleKeyNavigation(keyCode) {
         if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
             document.body.classList.remove("show-cursor");
@@ -41,6 +44,7 @@ class GameLoader {
         onQualityChange(gameState.bgQuality + 1);
     }
 
+    // Loads the button types for hovering over game load menu
     updateYesButton() {
         let scale = 0.008 * width;
         let size = createVector(yesButton.width / scale, yesButton.height / scale);
@@ -62,12 +66,14 @@ class GameLoader {
         }
     }
 
+    // Trigger the game load
     yesButtonPressed() {
         this.initialiseGameState(this.gameProgress);
         Domain = 'intro';
         document.body.classList.remove("show-cursor");
     }
 
+    // Loads the button types for hovering over game load menu
     updateNoButton() {
         let scale = 0.008 * width;
         let size = createVector(noButton.width / scale, noButton.height / scale);
@@ -89,6 +95,7 @@ class GameLoader {
         }
     }
 
+    // Trigger a new game state
     noButtonPressed() {
         this.initialiseGameState(NEW_GAME_STATE);
         localStorage.removeItem(SAVE_KEY);
@@ -96,6 +103,7 @@ class GameLoader {
         document.body.classList.remove("show-cursor");
     }
 
+    // Display the text on screen
     printText() {
         let size = width/20
         fill('rgb(21,37,58)');
