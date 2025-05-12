@@ -649,7 +649,7 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="2">Technical</td>
-        <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
+        <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores, so that my time doesn't feel wasted.</td>
         <td>Given a user is playing PengWings, when they close the game, then their highscores and progress should be maintained.</td>
     </tr>
     <tr>
@@ -659,16 +659,16 @@ By using these two protocols, we were able to make informed and accurate decisio
     <tr>
         <td rowspan="2">Social</td>
         <td>As a casual player, I want a game that doesn't become too addictive over time, so that it doesn't take up too much of my life.</td>
-        <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
+        <td>Given a user is playing PengWings, when they progress, then they should reach clear milestones that aren't too demanding.</td>
     </tr>
     <tr>
         <td>As a casual player, I want a good balance of competitiveness, so that I don't have to spend too much time to stay on top.</td>
-        <td>Given a user is playing PengWings, when they are at a lower skill level, then they should still be rewareded.</td>
+        <td>Given a user is playing PengWings, when they are at a lower skill level, then they should still be rewarded.</td>
     </tr>
     <tr>
         <td rowspan="2">Economic</td>
         <td>As a casual player, I want to play free games, so that I don't feel I have to pay to be good at the game.</td>
-        <td>Given a user wants to play PengWings, when they open the game, it should be free and fun without necessary costs.</td>
+        <td>Given a user wants to play PengWings, when they open the game, then it should be free and fun without any necessary costs.</td>
     </tr>
     <tr>
         <td>As a casual player, I want to be able to just connect to the internet and be able to play, so that I don't require any specialised software or hardware.</td>
@@ -676,8 +676,8 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="1">Environmental</td>
-        <td>As an avid player, I want a game that feels representative of my interests.</td>
-        <td>The game should feel grounded in its environment.</td>
+        <td>As an environmentally conscious player, I want a game that reflects its environmental state, so that it can promote sustainability.</td>
+        <td>Given the game is set in the Antarctic, when a player interacts with the game, then they should have the opportunity to learn or contribute to the Antarctic sustainability.</td>
     </tr>
     <tr>
         <td rowspan="2">Individual</td>
@@ -685,7 +685,7 @@ By using these two protocols, we were able to make informed and accurate decisio
         <td>Given a user is playing the game, when they set a highscore, then they should not be required to provide personal data.</td>
     </tr>
     <tr>
-        <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
+        <td>As a casual player, I don't want to feel in pain after playing for long periods of time, so I can protect my health.</td>
         <td>Given a user is playing the game, when they set custom controls, then they should not be uncomfortable.</td>
     </tr>
   </table>
