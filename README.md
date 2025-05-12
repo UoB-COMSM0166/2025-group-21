@@ -946,7 +946,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	<p>PengWings use-case specification<br><br><br></p>
 </div>
 
-# 12 References
+# 12. References
 
 Kosch, T. _et al._ (2023) ‘A survey on measuring cognitive workload in human-computer interaction’, _ACM Computing Surveys_, 55(13s), pp. 1–39. doi:10.1145/3582272. 
 
