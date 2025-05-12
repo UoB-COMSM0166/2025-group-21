@@ -457,7 +457,7 @@ Three participants were asked to play the game and evaluate it against the 10 Ni
 To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools, and statistical analysis:
 - **Raw NASA TLX** — to quantify perceived workload
 - **System Usability Survey (SUS)** — to quantify system usability
-- **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
+- **Wilcoxon Signed-Rank Test** — to calculate the statistical significance of the evaluations
 
 #### Process
 These evaluations involved 10 participants, each trialing two difficulty modes. (Kosch et al., 2023) Initially, participants struggled to grasp the gameplay, prompting us to add a short live demonstration. Participants then filled out the two questionnaires.
