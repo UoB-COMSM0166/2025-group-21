@@ -324,7 +324,7 @@ These forces—shown in Figure 14b—formed the foundation of the players slidin
 		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
 		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
-	<p><strong>Figure 14</strong><br>Player a) velocity (red) and b) acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
+	<p><strong>Figure 14</strong><br>Player velocity (red) and acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
