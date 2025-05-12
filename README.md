@@ -841,65 +841,71 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	    </tr>
 	  </thead>
 	  <tbody>
+	    <tr>
+              <td>Penguin</td>
+	      <td>"Wings"</td>
+	      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
+	      <td>The pengtagonist</td>
+	    </tr>
 	    <!-- Projectile-->
 	    <tr>
 	      <td rowspan="5">Projectile</td>
 	      <td>Level 1:<br>Fish</td>
 	      <td><img src="docs/assets/images/fishWorkshop.png" width="80"></td>
-	      <td>Launches a flopping fish that deals limited splash damage</td>
+	      <td>...but no chips</td>
 	    </tr>
 	    <tr>
 	      <td>Level 2:<br>Snowball Cannon</td>
 	      <td><img src="docs/assets/images/snowballWorkshop.png" width="80"></td>
-	      <td>Better collision knock back</td>
+	      <td>Snowball fight!</td>
 	    </tr>
 	    <tr>
 	      <td>Level 3:<br>Arrow</td>
 	      <td><img src="docs/assets/images/arrowWorkshop.png" width="80"></td>
-	      <td>Improved path clearance, shoot in a straight line</td>
+	      <td>And you can have my bow...</td>
 	    </tr>
 	    <tr>
 	      <td>Level 4:<br>Laser</td>
 	      <td><img src="docs/assets/images/greenLaser.png" width="80"></td>
-	      <td>Increased projectile speed, explosion upon collision</td>
+	      <td>Bucket-list item</td>
 	    </tr>
 	    <tr>
 	      <td>Level 5:<br>Automatic Laser</td>
 	      <td><img src="docs/assets/images/purpleLaser.png" width="80"></td>
-	      <td>Shoot Lasers from a Gatling gun!</td>
+	      <td>Hasta la vista, baby</td>
 	    </tr>
 	    <!-- Flying-->
 	    <tr>
 	      <td rowspan="5">Flying Ability</td>
-	      <td>Level 1:<br>Normal mode</td>
-	      <td><img src="docs/assets/images/noFly_Workshop.png" width="80"></td>
-	      <td>Basic mode</td>
-	    </tr>
-	    <tr>
-	      <td>Level 2:<br>Wing Enhancement</td>
+	      <td>Level 1:<br>A flying penguin</td>
 	      <td><img src="docs/assets/images/fly_Workshop.png" width="80"></td>
-	      <td>Smooth gliding</td>
+	      <td>Flightless no more</td>
 	    </tr>
 	    <tr>
-	      <td>Level 3:<br>Dragon Wings</td>
+	      <td>Level 2:<br>Dragon Wings</td>
 	      <td><img src="docs/assets/images/dragonWings_Workshop.png" width="80"></td>
-	      <td>Improved glide disctance and control</td>
+	      <td>A science experiment gone wrong</td>
 	    </tr>
 	    <tr>
-	      <td>Level 4:<br>Rotors</td>
+	      <td>Level 3:<br>Rotors</td>
 	      <td><img src="docs/assets/images/rotors_Workshop.png" width="80"></td>
 	      <td>When wings just dont cut it</td>
 	    </tr>
 	    <tr>
-	      <td>Level 5:<br>Booster</td>
+	      <td>Level 4:<br>Red Booster</td>
 	      <td><img src="docs/assets/images/booster_Workshop.png" width="80"></td>
-	      <td>High-speed propulsion for fast flight</td>
+	      <td>Fly higher. Fly better. Fly Smart</td>
 	    </tr>
 	    <tr>
-	      <td rowspan="1">Force field</td>
+	      <td>Level 5:<br>Blue Booster</td>
+	      <td><img src="docs/assets/images/boosterHydrogen_Workshop.png" width="80"></td>
+	      <td>...and she's flying a penguin to heaven</td>
+	    </tr>
+	    <tr>
+	      <td rowspan="1">Shield Ability</td>
 	      <td>Force Field</td>
 	      <td><img src="docs/assets/images/forceFieldAbility.png" width="80"></td>
-	      <td>Force field protects players from collisions</td>
+	      <td>May the force be with you</td>
 	    </tr>
 	    <tr>
 	      <td rowspan="3">Obstacles</td>
@@ -921,12 +927,12 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	      <td rowspan="2">Collectibles</td>
 	      <td>Heart</td>
 	      <td><img src="docs/assets/images/heart1.png" width="80"></td>
-	      <td>Collect hearts to restore life</td>
+	      <td>Don't let life pass you by</td>
 	    </tr>
 	    <tr>
 	      <td>Coin</td>
 	      <td><img src="docs/assets/images/coin.png" width="60"></td>
-	      <td>Collect coins to upgrade your equipment in Workshop</td>
+	      <td>Money, get away</td>
 	    </tr>
 	</tbody>
 	</table>
