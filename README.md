@@ -187,7 +187,7 @@ In accordance with our user stories, our use-case model evolved throughout devel
 
 ## Initial Design
 
-Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 11).
+Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 7).
 
 <div align="center">
     <img src="report/design_figures/initial_design.png" width="700">
@@ -221,7 +221,7 @@ In much the same way as the previous pair of classes, the LaserAbility class wou
 
 ## Final Design
 
-As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 12) and sequence diagram (Figure 13) below.
+As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 8) and sequence diagram (Figure 9) below.
 
 <div align="center">
     <img src="report/design_figures/final_architecture.png" width="700">
@@ -246,7 +246,7 @@ All sound assets are now loaded and cached during the instantiation of the Sound
 
 ### Interactions within the Game class
 
-A class diagram of all interactions in the Game class is shown below (Figure 14).
+A class diagram of all interactions in the Game class is shown below (Figure 10).
 
 <div align="center">
     <img src="report/design_figures/final_game_architecture.png" width="900">
@@ -279,7 +279,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 #### Random and Unpredictable Terrain
 
-To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
+To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 12). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
 
 <div align="center">
     <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
@@ -306,7 +306,7 @@ We based player movement on classical physics. The player has both position and 
 - On the ground, friction slows the player's horizontal velocity.
 - Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground.
 
-These effects can be seen in the player’s velocity vectors in Figure 4a.
+These effects can be seen in the player’s velocity vectors in Figure 14a.
 
 #### Acceleration
 
@@ -317,14 +317,16 @@ To simulate the acceleration and deceleration on the slopes, we used the physics
 </div>
 <br>
 
-These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
+These forces—shown in Figure 14b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
 <div align="center">
 	<p>
+		<span>a)</span>
 		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
+		<span>b)</span>
 		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
-	<p><strong>Figure 14</strong><br>Player velocity (red) and acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
+	<p><strong>Figure 14</strong><br>Player a) velocity (red) and b) acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
@@ -352,7 +354,7 @@ To refine our game’s mechanics, difficulty, and overall level of enjoyment, we
 ### Think Aloud
 
 #### Process
-Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
+Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 15).
 
 <div align="center">
 	<img src="report/evaluation_figures/think_aloud_map_figure.png" width="850"/>
@@ -531,10 +533,10 @@ Since the data show that higher difficulty led to significant increases in media
 ### System Usability Survey (SUS)
 
 #### Process
-After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology (Figure X).
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology.
 
 #### Results
-The individual SUS scores are shown in Figure X, with the industry average benchmark of 68 shown for comparison.
+The individual SUS scores are shown in Figure 17, with the industry average benchmark of 68 shown for comparison.
 - Mean SUS score (Easy) — 88.25
 - Mean SUS score (Hard) — 75.0
 
