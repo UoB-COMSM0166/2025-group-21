@@ -616,7 +616,7 @@ From this open discussion, we created a framework of notes, that divides the sus
       <tr><td>Safety</td><td>Prompting users to not provide any identifiable details to the game to ensure privacy.</td></tr>
       <tr><td>Agency</td><td>Users can control participation and provide feedback.</td></tr>
       <tr><td rowspan="4">Environmental</td><td>Material and resources</td><td>Development process unfortunately consumes resources and time.</td></tr>
-      <tr><td>Waste & pollution</td><td>Streamlining development and avoiding unnecessary work, reducing energy and memory use.</td></tr>
+      <tr><td>Waste & pollution</td><td>Streamlining development and avoiding unnecessary work.</td></tr>
       <tr><td>Biodiversity</td><td>Providing users with a donations link to support the conservation of penguin biodiversity.</td></tr>
       <tr><td>Energy</td><td>Code optimisation reduces energy and memory demands.</td></tr>
       <tr><td rowspan="3">Economic</td><td>Value</td><td>Organic growth through user sharing. Paid upgrades proposed for keen fans.</td></tr>
