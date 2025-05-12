@@ -2,11 +2,11 @@
 
 class GameLoader {
     constructor(gameProgress) {
-        document.body.classList.add("show-cursor");
+        document.body.classList.remove("show-cursor");
         this.gameProgress = gameProgress;
         this.selectedButtonIndex = 0;
 
-        if (!this.gameProgress || this.gameProgress.version !== VERSION) {
+        if (!this.gameProgress || this.gameProgress.version !== CURRENT_VERSION) {
             this.initialiseGameState(NEW_GAME_STATE);
             Domain = 'intro';
         }
@@ -14,7 +14,7 @@ class GameLoader {
 
     showLoadScreen() {
         push();
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
         this.printText();
         this.updateYesButton();
         this.updateNoButton();
@@ -22,8 +22,8 @@ class GameLoader {
     }
 
     handleKeyNavigation(keyCode) {
-
         if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+            document.body.classList.remove("show-cursor");
             this.selectedButtonIndex = (this.selectedButtonIndex + 1) % 2;
         }
         else if (keyCode === ENTER || keyCode === 32) { // 32 == space
@@ -34,6 +34,7 @@ class GameLoader {
         }
     }
 
+    // Set game state to either loaded save data or the default state
     initialiseGameState(gameState) {
         settings = new Settings(gameState);
         inventory = new Inventory(gameState);
@@ -64,6 +65,7 @@ class GameLoader {
     yesButtonPressed() {
         this.initialiseGameState(this.gameProgress);
         Domain = 'intro';
+        document.body.classList.remove("show-cursor");
     }
 
     updateNoButton() {
@@ -91,6 +93,7 @@ class GameLoader {
         this.initialiseGameState(NEW_GAME_STATE);
         localStorage.removeItem(SAVE_KEY);
         Domain = 'intro';
+        document.body.classList.remove("show-cursor");
     }
 
     printText() {

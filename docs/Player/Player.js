@@ -27,6 +27,43 @@ class Player {
     }
 
     // Update the player behaviour each frame
+    /* ---------- keep Player sprites in sync with equipped items ---------- */
+    refreshSpritesFromInventory() {
+        /* Projectile → head sprite */
+        switch (inventory.currentProjectileItem) {
+            case 0: this.headImg = playerHeadFish;      break;
+            case 1: this.headImg = playerHeadSnowball;  break;
+            case 2: this.headImg = playerHeadArrow;     break;
+            case 3: this.headImg = playerHeadLaser;     break;
+            case 4: this.headImg = playerHeadGatling;   break;
+        }
+
+        /* Flight item → feet + wings */
+        switch (inventory.currentFlyItem) {
+            case 0:
+            case 1:
+                this.feetImg = playerFlyFeet;
+                this.wingImg = playerPenguinWings;
+                break;
+            case 2:
+                this.feetImg = playerFlyFeet;
+                this.wingImg = playerDragonWings;
+                break;
+            case 3:
+                this.feetImg = playerFlyFeet;
+                this.wingImg = playerHelicopterRotor;
+                break;
+            case 4:
+                this.feetImg = playerFlyPropaneBooster;
+                this.wingImg = playerPenguinWings;
+                break;
+            case 5:
+                this.feetImg = playerFlyBooster;
+                this.wingImg = playerPenguinWings;
+                break;
+        }
+    }
+
     update() {
         // Keep Player at same x position on the screen
         this.pos.x = 150;
@@ -56,6 +93,7 @@ class Player {
             this.updatePosition();
             // Transfer momentum from x to y direction as curve steepens uphill
             this.updateVerticalVelocityFromSlope();
+
             if (this.playerIsInAir(slope)) {
                 this.inAir = true;
             }
@@ -64,7 +102,10 @@ class Player {
 
     // Draw the player on the canvas
     drawPlayer() {
+        // update sprites from current equipped items
+        this.refreshSpritesFromInventory();
         this.lives.drawChangeLife();
+
         if (domains.game.death != null && domains.game.death.type === 'UFO') return;
         const FRAME_WIDTH        = 128;
         const FRAME_HEIGHT       = 128;
@@ -123,16 +164,16 @@ class Player {
                 domains.game.fly.active
             ) {
                 // If helicopter rotor, double the speed
-                const step = (inventory.flyLevel === 3) ? 2 : 1;
+                const step = (inventory.currentFlyItem === 3) ? 2 : 1;
                 this.frameIndex = (this.frameIndex + step) % NORMAL_FRAME_COUNT;
 
                 // Non‐overlapping original sound logic
-                if (inventory.flyLevel >= 4) {
+                if (inventory.currentFlyItem >= 4) {
                     if (!domains.game.boosterSound.isPlaying()) {
                         domains.game.boosterSound.play();
                         domains.game.wingFlapSound.play();
                     }
-                } else if (inventory.flyLevel === 3) {
+                } else if (inventory.currentFlyItem === 3) {
                     if (!domains.game.rotorSound.isPlaying()) {
                         domains.game.rotorSound.play();
                         //domains.game.wingFlapSound.play();
@@ -189,7 +230,7 @@ class Player {
             push();
             translate(150, this.pos.y - this.radius);
             rotate(slopeAngle);
-            // Draw the penguin boody
+            // Draw the penguin body
             image(
                 playerBody,
                 0, 0,
@@ -234,6 +275,7 @@ class Player {
     updateAcceleration (slope) {
         // Handle effect of angle of slope on the gravity
         this.accDownSlope = (this.gravity) * sin(atan(slope));
+
         if (slope <= 0) { // uphill
             this.accDownSlope *= 0.7;
         }
@@ -284,11 +326,11 @@ class Player {
             // Remove life if collision too large
             if (normalForce > 20 && !domains.game.invincibility) {
                 this.lives.removeLife();
+
                 if (this.lives.getLives() === 0) {
                     domains.game.death = new Death('ground');
                     this.vel.x = -0.5;
                     this.vel.y = -2;
-                    //this.gravity = 0.02
                 }
                 else {
                     this.vel.x = this.vel.y = 0;
@@ -313,17 +355,3 @@ class Player {
 
 if (typeof module !== 'undefined') { module.exports = Player; }
 
-// function drawArrowhead(x, y, dx, dy, size = 100, color = 'black') {
-//     push();
-//     translate(x + dx, y + dy);
-//     let angle = atan2(dy, dx);
-//     rotate(angle);
-//     fill(color);
-//     beginShape();
-//     strokeWeight(6);
-//     vertex(0, 0);
-//     vertex(-size, size / 2);
-//     vertex(-size, -size / 2);
-//     endShape(CLOSE);
-//     pop();
-// }

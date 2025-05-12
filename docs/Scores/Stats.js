@@ -9,8 +9,10 @@ class Stats {
         this.distanceTraveled = 0;
         this.highestJump = 0;
         this.ufoHits = 0;
+        this.backButtonSelected = false;
     }
 
+    // called continuously in game loop
     gameUpdate() {
 
         if (domains.game.score.currentAirtime > this.maxAirTime) {
@@ -26,12 +28,15 @@ class Stats {
             }
         }
     }
+
+    // called once at game over
     deathUpdate() {
         this.score = domains.game.score.total;
         this.distanceTraveled = domains.game.offset;
     }
 
     showsStatsScreen() {
+        // this.backButtonSelected = false;
         push()
         let size = width/40;
         let d = width - height;
@@ -45,7 +50,7 @@ class Stats {
         textSize(size);
         textAlign(CENTER, CENTER);
         text(`SCORE: ${this.score}`, width/2, height*0.25);
-        text(`UFO HITS: ${this.ufoHits}`, width/2, height*0.35);
+        text(`OBSTACLES HIT: ${this.ufoHits}`, width/2, height*0.35);
         text(`MAX AIRTIME: ${round(this.maxAirTime, 3)} s`, width/2, height*0.45);
         text(`TOTAL JUMPS: ${this.numJumps}`, width/2, height*0.55);
         text(`HIGHEST JUMP: ${round(this.highestJump/100)} m`, width/2, height*0.65);
@@ -63,11 +68,12 @@ class Stats {
         let pos = createVector(0.5*width, 0.9*height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) || this.backButtonSelected) {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed) {
                 domains.game.death.showStats = false;
+                domains.game.death.selectedButtonIndex = -1;
             }
         }
         else {

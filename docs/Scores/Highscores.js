@@ -11,6 +11,9 @@ class Highscores {
         this.buttonsActive = true;
         this.buttonCooldownTimer = new Clock();
         this.savingScore = false;
+        this.submitSelected = false;
+        this.backSelected = false;
+        this.mainMenuButtonSelected = false;
     }
 
     // Load highscores in on startup
@@ -115,7 +118,7 @@ class Highscores {
         for (let i = 0; i < this.highscores.length; i++) {
             let entry = this.highscores[i];
 
-            if (entry.score === domains.game.stats.score && entry.name === this.userName) {
+            if (Domain === 'game' && entry.score === domains.game.stats.score && entry.name === this.userName) {
                 fill(255, 215, 0);
                 text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
             }
@@ -124,7 +127,11 @@ class Highscores {
                 text(`${entry.name}\t:\t${entry.score}`, width / 2, height / 2 - 130 + i * 37.5);
             }
         }
-        this.updateBackButton();
+        if (Domain === 'game') {
+            this.updateBackButton();
+
+        }
+        else this.updateMainMenuButton();
         pop();
     }
 
@@ -132,7 +139,7 @@ class Highscores {
     createInputField() {
         this.updateButtonCooldown(4); // limit rate at which backspace is applied when key is held
 
-        document.body.classList.add("show-cursor");
+        //document.body.classList.add("show-cursor");
         push();
         imageMode(CENTER);
         let scale = 0.0018 * width;
@@ -161,6 +168,7 @@ class Highscores {
     }
 
     updateSubmitButton(scale) {
+        //console.log('typing = ' + userIsTyping);
         let size = createVector(submitButton.width / scale, submitButton.height / scale);
         let pos = createVector(0.5*width, 0.8*height);
 
@@ -168,15 +176,22 @@ class Highscores {
             image(submitButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.userName.length > 0) {
-                this.usernameEntered = true;
-                userIsTyping = false;
-                this.buttonsActive = false;
-                this.buttonCooldownTimer.tick();
+                this.submitButtonPressed();
             }
+        }
+        else if (this.submitSelected) {
+            image(submitButtonHover, pos.x, pos.y, size.x, size.y);
         }
         else {
             image(submitButton, pos.x, pos.y, size.x, size.y);
         }
+    }
+
+    submitButtonPressed() {
+        this.usernameEntered = true;
+        userIsTyping = false;
+        this.buttonsActive = false;
+        this.buttonCooldownTimer.tick();
     }
 
     updateUsernameFromInput() {
@@ -200,7 +215,6 @@ class Highscores {
             this.buttonCooldownTimer.tick();
         }
         inputCharacter = null;
-        //console.log(this.userName + ', ' + this.userName.length);
     }
 
     drawText() {
@@ -235,9 +249,33 @@ class Highscores {
                 domains.game.death.highscoreSeen = true;
             }
         }
+        else if (this.backSelected) {
+            image(backButtonHover, pos.x, pos.y, size.x, size.y);
+        }
         else {
             image(backButton, pos.x, pos.y, size.x, size.y);
         }
+        pop();
+    }
+
+    updateMainMenuButton() {
+        push();
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size) && domains.mainMenu.cursorVisible) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed) {
+                domains.mainMenu.highscores = null;
+            }
+        }
+        else if (this.mainMenuButtonSelected) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+        }
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
         pop();
     }
 
@@ -248,6 +286,24 @@ class Highscores {
         if (this.buttonCooldownTimer.time > cooldown) {
             this.buttonCooldownTimer.reset();
             this.buttonsActive = true
+        }
+    }
+
+    // key navigation when accessed from main menu
+    handleKeyNav(key) {
+        if (key === UP_ARROW || key === DOWN_ARROW) {
+            this.mainMenuButtonSelected = true;
+            domains.mainMenu.hideCursor();
+        }
+        else if (key === ENTER) {
+            domains.mainMenu.hideCursor();
+
+            if (this.mainMenuButtonSelected) {
+                domains.mainMenu.highscores = null;
+                domains.mainMenu.resetButtons();
+                this.mainMenuButtonSelected = false;
+            }
+            else this.mainMenuButtonSelected = true;
         }
     }
 }

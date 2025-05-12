@@ -1,3 +1,4 @@
+// abstract
 class AerialObstacle {
 
     constructor(height) {
@@ -81,6 +82,7 @@ class AerialObstacle {
         // Default if not hit by projectile
         else {
             this.pos.x -= (domains.game.player.vel.x + 2*this.moveFactor);
+
             if (this.hitByFish) {
                 this.pos.y += 7;
                 this.pos.x += 1.5*this.moveFactor;

@@ -1,5 +1,3 @@
-
-
 class Pause {
 
     constructor() {
@@ -17,13 +15,29 @@ class Pause {
 
         this.showSettings = false;
         this.buttonCooldownTimer = new Clock();
+
+        this.hoverPopSound       = null;
+        this.buttonPressedSound  = null;
+        this.masterVolume        = settings.masterVolume * settings.mute;
+        this.soundsLoaded        = false;
+        this.wasHoveringButtons  = [false, false, false, false];  // one entry per button
+        this.wasMousePressed     = false;
+
+        this.loadAudio().then(() => this.soundsLoaded = true);
+
         this.buttonsActive = true;
+        this.cursorVisible = false;
+    }
+
+    async loadAudio() {
+        this.hoverPopSound      = await soundBoard.getSound('hoverPopSound');
+        this.buttonPressedSound = await soundBoard.getSound('buttonPressedSound');
+        setMasterVolume(this.masterVolume);
     }
 
     showPauseScreen() {
-
         if (this.fieldsReset) {
-            document.body.classList.add("show-cursor");
+            //document.body.classList.add("show-cursor");
             this.showButtons = true;
             this.fieldsReset = false;
             domains.game.windSound.setVolume(0);
@@ -83,10 +97,19 @@ class Pause {
         let size = createVector(buttonDefault.width / scale, buttonDefault.height / scale);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        const isHover = hoveringOverButton(pos, size);
+
+        if (isHover && !this.wasHoveringButtons[buttonID]) {
+            this.hoverPopSound?.play();
+        }
+        this.wasHoveringButtons[buttonID] = isHover;
+
+        if (isHover && this.cursorVisible) {
             image(buttonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && this.buttonsActive) {
+            if (mouseIsPressed && this.buttonsActive && !this.wasMousePressed) {
+                this.buttonPressedSound?.play();
+                this.wasMousePressed = true;
                 buttonPressed();
             }
         }
@@ -96,6 +119,8 @@ class Pause {
         else {
             image(buttonDefault, pos.x, pos.y, size.x, size.y);
         }
+
+        if (!mouseIsPressed) this.wasMousePressed = false;
         pop();
     }
 
@@ -118,7 +143,7 @@ class Pause {
             this.invPanel.isCloseButtonSelected = true;
             return;
         }
-        if (this.selectedButtonIndex !== -1) { // && this.selectedButtonIndex < this.buttons.length
+        if (this.selectedButtonIndex !== -1) {
             // Execute the appropriate action based on the selected button
             if (this.selectedButtonIndex === 0) {
                 this.continueButtonPressed();
@@ -158,11 +183,8 @@ class Pause {
     }
 
     settingButtonPressed() {
-        // console.log(game.pause.buttonsActive);
-        // if (!game.pause.buttonsActive) {
-        //     return;
-        // }
         domains.game.pause.showSettings = true;
+        settings.keyNav.resetSelection();
         settings.startCooldown();
     }
 
@@ -182,11 +204,8 @@ class Pause {
                 this.active = false;
                 this.reset();
                 this.countdown = null;
-                //return false;
             }
-            //return true;
         }
-        //return false;
     }
 
     reset() {
@@ -196,5 +215,15 @@ class Pause {
             this.selectedButtonIndex = -1;
             this.fieldsReset = true;
         }
+    }
+
+    showCursor() {
+        document.body.classList.add("show-cursor");
+        this.cursorVisible = true;
+    }
+
+    hideCursor() {
+        document.body.classList.remove("show-cursor");
+        this.cursorVisible = false;
     }
 }

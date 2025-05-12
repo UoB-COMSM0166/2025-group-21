@@ -55,12 +55,10 @@ class Coins {
             currentGap = Math.hypot(dx, dy);
         }
 
-        let finalPoint = {
+        return {
             x: currentX,
             y: currentY
-        }
-
-        return finalPoint;
+        };
     }
 
     // Calculate a vector normal offset to float coin above the terrain

@@ -17,20 +17,20 @@ class ObstacleHandler {
     updateObstacles() {
         // Add UFO's
         if (!domains.game.pause.active && domains.game.zoom < 0.25 &&
-            Math.random() > 0.99 - 0.005*this.spawnRate) { // 0.975
+            Math.random() > 0.99 - 0.005*this.spawnRate) {
             let spawnLevel = domains.game.player.pos.y + 0.3*(height - domains.game.player.pos.y)*Math.random() + 50;
             this.aerialObstacles.push(new UFO(spawnLevel));
         }
         // Add Airplanes
         if (!domains.game.pause.active && domains.game.zoom < 0.65 &&
-            Math.random() > 0.99 - 0.002*this.spawnRate) { // 0.975
+            Math.random() > 0.99 - 0.002*this.spawnRate) {
             let highLimit = domains.game.zoom < 0.25 ? 0.3 : 0.2;
             let lowLimit = domains.game.zoom < 0.25 ? 0.6 : 0.3;
             let spawnLevel = domains.game.player.pos.y + random(highLimit, lowLimit)*(height - domains.game.player.pos.y);
             this.aerialObstacles.push(new Airplane(spawnLevel));
         }
         // Add Birds
-        if (!domains.game.pause.active && Math.random() > 0.99 - 0.001*this.spawnRate) { // 0.975
+        if (!domains.game.pause.active && Math.random() > 0.99 - 0.001*this.spawnRate) {
             let spawnLevel = height * random(0.1, 0.15);
             this.aerialObstacles.push(new Bird(spawnLevel));
         }
@@ -60,7 +60,6 @@ class ObstacleHandler {
         if (domains.game.offset/100 > this.nextSpawnThreshold) {
             this.nextSpawnThreshold += 100;
             this.spawnRate++;
-            //this.airplaneSpawnChance++;
         }
     }
 

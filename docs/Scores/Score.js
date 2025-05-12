@@ -13,6 +13,7 @@ class Score {
         this.airStartTime = null;
     }
 
+    // called continuously in game loop
     update() {
 
         if (domains.game.player.alive && !domains.game.pause.active) {
@@ -26,6 +27,7 @@ class Score {
         }
     }
 
+    // increase score from player speed and airtime
     increment() {
 
         let airtimeBonus = 0;
@@ -41,7 +43,7 @@ class Score {
         else {
             speedBonus = 0;
         }
-        this.total += Math.round(airtimeBonus + speedBonus);
+        this.total += Math.round((airtimeBonus + speedBonus) * (settings.difficulty + 1));
     }
 
     trackAirtime() {

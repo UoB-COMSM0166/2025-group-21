@@ -21,9 +21,11 @@ let ingameCoin = null;
 let usernameInputBar = null;
 let displayBox = null;
 let shopTitle = null
+let yourPenguin = null
 let workshopBackground = null;
 let tipsBox = null;
 let penguinClaw = null;
+let penguinBodyFly = null;
 
 let fishWorkshop = null;
 let snowballWorkshop = null;
@@ -32,6 +34,7 @@ let flyingWorkshop = null;
 let dragonWingsWs = null;
 let rotorsWs = null;
 let boosterWs = null;
+let boosterHydrogen = null;
 let noFlyWs = null;
 let flyWs = null;
 let shieldWorkshop = null;
@@ -44,30 +47,47 @@ let playerHeadLaser = null;
 let playerHeadGatling = null;
 
 let playerFlyFeet, playerFlyBooster, playerPenguinWings,
-    playerDragonWings, playerHelicopterRotor;
+    playerDragonWings, playerHelicopterRotor, introHelicopterPenguin,
+    playerFlyPropaneBooster;
 
-// audio
-// let laserAutomaticSound = null;
-// let explosionSound = null;
-// let deathSound = null;
-// let windSound = null;
-// let fishThrow = null;
-// let fishImpactSound = null;
-// let forceFieldSound = null;
-// let purchaseSound = null;
-// let illegalPurchaseSound = null;
-// let snowballSound = null;
-// let freezeSound = null;
-// let loseLifeSound = null;
-// let gainLifeSound = null;
-// let arrowSound = null;
-// let ufoArrowImpactSound = null;
-// let workshopMusic = null;
-// let collectCoinSound = null
+let arrowRight, arrowRightGlowing, arrowRightRed;
+let arrowLeft, arrowLeftGlowing, arrowLeftRed;
+let buyButton, buyButtonGlowing, buyButtonRed;
+let flightButton, flightButtonGlowing;
+let projectilesButton, projectilesButtonGlowing;
+let forceFieldButton2, forceFieldButton2Glowing;
+
+//--Inventory Images--------
+let itemFrame;
+let itemFrameWhite;
+let dragonWingsGlowing;
+let rotorsWsGlowing;
+let boosterHydrogenGlowing;
+let boosterWsGlowing;
+let flyWsGlowing;
+
+let fishWorkshopGlowing;
+let snowballWorkshopGlowing;
+let arrowWorkshopGlowing;
+let greenLaserGlowing;
+let purpleLaserGlowing;
+//--------------------------
+
+//------------------WorkShop------------------------------
+let framedDragonWings, framedRotor, framedPropaneBooster,
+    framedHydrogenBooster, framedFlappingPenguin
+
+let framedFish, framedSnowCanyon, framedCrossbow,
+    framedSingleLaser, framedLaserGatling
+
+let pickOne;
+//--------------------------------------------------------
+
 
 // BUTTONS
 // main menu
 let homeBackground = null;
+let blurredHomeBackground = null;
 let logo = null;
 let penguinFlyGif = null;
 let penguinSpinGif = null;
@@ -80,6 +100,13 @@ let instructionsButton = null;
 let instructionsButtonHover = null;
 let settingsButton = null;
 let settingsButtonHover = null;
+let highscoresButton = null;
+let highscoresButtonHover = null;
+let creditsButton = null;
+let creditsButtonHover = null;
+let donateButton = null;
+let donateButtonHover = null;
+
 
 // load game
 let yesButton = null;
@@ -112,7 +139,6 @@ let flyingButtonHover = null;
 let forceFieldButton = null;
 let forceFieldButtonHover = null;
 let buyButtonYellow = null;
-let buyButtonRed = null;
 let buyButtonGreen = null;
 let playButton = null;
 let playButtonHover = null;
@@ -199,12 +225,19 @@ function preload() {
     forceFieldButton = loadImage('assets/buttons/forceFieldButton.png');
     forceFieldButtonHover = loadImage('assets/buttons/forceFieldButtonHover.png');
     buyButtonYellow = loadImage('assets/buttons/buyButtonYellow.png');
-    buyButtonRed = loadImage('assets/buttons/buyButtonRed.png');
     buyButtonGreen = loadImage('assets/buttons/buyButtonGreen.png');
     playButton = loadImage('assets/buttons/shopPlayButton.png');
     playButtonHover = loadImage('assets/buttons/shopPlayButtonHover.png');
     mainMenuButton = loadImage('assets/buttons/mainMenuButton.png');
     mainMenuButtonHover = loadImage('assets/buttons/mainMenuButtonHover.png');
+
+    // Shop, innventory access
+    flightButton = loadImage('assets/images/flightButton.png');
+    flightButtonGlowing = loadImage('assets/images/flightButtonGlowing.png');
+    projectilesButton = loadImage('assets/images/projectilesButton.png');
+    projectilesButtonGlowing = loadImage('assets/images/projectilesButtonGlowing.png');
+    forceFieldButton2 = loadImage('assets/images/forceFieldButton2.png');
+    forceFieldButton2Glowing = loadImage('assets/images/forceFieldButton2Glowing.png');
 
     // instruction
     instructionFont = loadFont('assets/fonts/Noteworthy.ttf');
@@ -220,6 +253,12 @@ function preload() {
     instructionsButtonHover = loadImage('assets/buttons/mainMenu/instructionsButtonHover.png');
     settingsButton = loadImage('assets/buttons/mainMenu/settingsButton.png');
     settingsButtonHover = loadImage('assets/buttons/mainMenu/settingsButtonHover.png');
+    highscoresButton = loadImage('assets/buttons/mainMenu/highscoresButton.png');
+    highscoresButtonHover = loadImage('assets/buttons/mainMenu/highscoresButtonHover.png');
+    creditsButton = loadImage('assets/buttons/mainMenu/creditsButton.png');
+    creditsButtonHover = loadImage('assets/buttons/mainMenu/creditsButtonHover.png');
+    donateButton = loadImage('assets/buttons/mainMenu/donateButton.png');
+    donateButtonHover = loadImage('assets/buttons/mainMenu/donateButtonHover.png');
 
     preloadBackgroundImages();
 
@@ -231,9 +270,11 @@ function preload() {
     playerHeadGatling    = loadImage('assets/sprites/playerHead_gatling.png');
     playerFlyFeet        = loadImage('assets/sprites/fly_feet.png');
     playerFlyBooster     = loadImage('assets/sprites/fly_booster.png');
+    playerFlyPropaneBooster     = loadImage('assets/sprites/fly_PropaneBooster.png');
     playerPenguinWings     = loadImage('assets/sprites/penguinWings.png');
     playerDragonWings    = loadImage('assets/sprites/dragonWings.png');
     playerHelicopterRotor = loadImage('assets/sprites/helicopterRotor.png');
+    introHelicopterPenguin = loadImage('assets/sprites/helicopterPenguin_Full.png');
 
     playerImg = loadImage('assets/images/player1.png');
     playerBody = loadImage('assets/sprites/playerBody.png');
@@ -246,6 +287,7 @@ function preload() {
     usernameInputBar = loadImage('assets/images/usernameInputBar.png');
     displayBox = loadImage('assets/images/displayBox.png');
     shopTitle = loadImage('assets/images/shopTitle.png');
+    yourPenguin = loadImage('assets/images/yourP.png');
 
     // Load variety of hearts
     heartImages[0] = loadImage('assets/images/heart1.png');
@@ -263,12 +305,56 @@ function preload() {
     greenLaser = loadImage('assets/images/greenLaser.png');
     purpleLaser = loadImage('assets/images/purpleLaser.png');
 
+    //--- Ice Buttons ---------------------------------------------------------
+    arrowRight = loadImage('assets/images/arrowRight.png');
+    arrowRightGlowing = loadImage('assets/images/arrowRightGlowing.png');
+    arrowRightRed = loadImage('assets/images/arrowRightRed.png');
+    arrowLeft = loadImage('assets/images/arrowLeft.png');
+    arrowLeftGlowing = loadImage('assets/images/arrowLeftGlowing.png');
+    arrowLeftRed = loadImage('assets/images/arrowLeftRed.png');
+    buyButton = loadImage('assets/images/buyButton.png');
+    buyButtonGlowing = loadImage('assets/images/buyButtonGlowing.png');
+    buyButtonRed = loadImage('assets/images/buyButtonRed.png');
+    greenLaserGlowing = loadImage('assets/images/greenLaserGlowing.png');
+    purpleLaserGlowing = loadImage('assets/images/purpleLaserGlowing.png');
+
+
+    //--- Inventory Small Glowing Frames -------------------------------------------------------------
+    itemFrame = loadImage('assets/images/itemFrame.png');
+    itemFrameWhite = loadImage('assets/images/itemFrameWhite.png');
+
+    dragonWingsGlowing = loadImage('assets/images/dragonWings_WorkshopGlowing.png');
+    rotorsWsGlowing = loadImage('assets/images/rotors_WorkshopGlowing.png');
+    boosterWsGlowing = loadImage('assets/images/booster_WorkshopGlowing.png');
+    boosterHydrogenGlowing = loadImage('assets/images/boosterHydrogen_WorkshopGlowing.png');
+    flyWsGlowing = loadImage('assets/images/fly_WorkshopGlowing.png');
+    fishWorkshopGlowing = loadImage('assets/images/fishWorkshopGlowing.png');
+    snowballWorkshopGlowing = loadImage('assets/images/snowballWorkshopGlowing.png');
+    arrowWorkshopGlowing = loadImage('assets/images/arrowWorkshopGlowing.png');
+    pickOne = loadImage('assets/images/pickOne.png');
+
+
+    framedFlappingPenguin = loadImage('assets/images/framed_FlappingPenguin.png');
+    framedRotor = loadImage('assets/images/framed_Rotor.png');
+    framedDragonWings = loadImage('assets/images/framed_DragonWings.png');
+    framedPropaneBooster = loadImage('assets/images/framed_PropaneBooster.png');
+    framedHydrogenBooster = loadImage('assets/images/framed_HydrogenBooster.png');
+
+    framedFish = loadImage('assets/images/framed_Fish.png');
+    framedSnowCanyon = loadImage('assets/images/framed_SnowCanyon.png');
+    framedCrossbow = loadImage('assets/images/framed_Crossbow.png');
+    framedSingleLaser = loadImage('assets/images/framed_Laser1.png');
+    framedLaserGatling = loadImage('assets/images/framed_Laser2.png');
+
+
+
     fishWorkshop = loadImage('assets/images/fishWorkshop.png');
     snowballWorkshop = loadImage('assets/images/snowballWorkshop.png');
     arrowWorkshop = loadImage('assets/images/arrowWorkshop.png');
     flyingWorkshop = loadImage('assets/images/flyingAbility.png');
     dragonWingsWs = loadImage('assets/images/dragonWings_Workshop.png');
     boosterWs = loadImage('assets/images/booster_Workshop.png');
+    boosterHydrogen = loadImage('assets/images/boosterHydrogen_Workshop.png');
     rotorsWs = loadImage('assets/images/rotors_Workshop.png');
     noFlyWs = loadImage('assets/images/noFly_Workshop.png');
     flyWs = loadImage('assets/images/fly_Workshop.png');
@@ -285,11 +371,11 @@ function preload() {
 
 
     homeBackground = loadImage('assets/gifs/background.gif');
+    blurredHomeBackground = loadImage('assets/gifs/blurredBackground.gif');
     logo = loadImage('assets/images/pengwingsTitle.png');
-    penguinFlyGif = loadImage('assets/gifs/penguinFly.gif');
-    penguinSpinGif = loadImage('assets/gifs/penguinSpin.gif');
     keyboardIcon = loadImage('assets/images/keyboardIcon.png');
     workshopBackground = loadImage('assets/images/workshop_background.png');
+    penguinBodyFly = loadImage('assets/sprites/playerFly_with_head.png');
 
     // settings menu
     volumeDial = loadImage('assets/settings/volumeDial.png');
@@ -315,9 +401,12 @@ let volume = 0.2;
 
 function setMasterVolume(masterVolume) {
     let sound;
-    if ((sound = soundBoard.cache['workshopMusic']) !== undefined) sound.setVolume(2*volume*masterVolume);
+    //if ((sound = soundBoard.cache['mainSoundtrack1']) !== undefined) sound.setVolume(2*volume*masterVolume);
+    if ((sound = soundBoard.cache['workshopMusic']) !== undefined) sound.setVolume(1.5*volume*masterVolume);
     if ((sound = soundBoard.cache['purchaseSound']) !== undefined) sound.setVolume(volume*masterVolume);
-    if ((sound = soundBoard.cache['illegalPurchaseSound']) !== undefined) sound.setVolume(volume*masterVolume);
+    if ((sound = soundBoard.cache['illegalPurchaseSound']) !== undefined) sound.setVolume(4*volume*masterVolume);
+    if ((sound = soundBoard.cache['hoverPopSound']) !== undefined) sound.setVolume(0.5*volume*masterVolume);
+    if ((sound = soundBoard.cache['buttonPressedSound']) !== undefined) sound.setVolume(volume*masterVolume);
 
     if ((sound = soundBoard.cache['laserSound']) !== undefined) sound.setVolume(2*volume*masterVolume);
     if ((sound = soundBoard.cache['laserAutomaticSound']) !== undefined) sound.setVolume(2*volume*masterVolume);
@@ -336,27 +425,6 @@ function setMasterVolume(masterVolume) {
     if ((sound = soundBoard.cache['wingFlapSound']) !== undefined) sound.setVolume(1.4*volume*masterVolume);
     if ((sound = soundBoard.cache['boosterSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
     if ((sound = soundBoard.cache['rotorSound']) !== undefined) sound.setVolume(0.8*volume*masterVolume);
-
-
-    // soundBoard.cache['workshopMusic'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['purchaseSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['illegalPurchaseSound'].setVolume(volume*masterVolume);
-    //
-    // soundBoard.cache['laserSound'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['laserAutomaticSound'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['explosionSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['deathSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['fishThrow'].setVolume(volume*masterVolume);
-    // soundBoard.cache['fishImpactSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['forceFieldSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['snowballSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['freezeSound'].setVolume(0.5*volume*masterVolume);
-    // soundBoard.cache['arrowSound'].setVolume(0.5*volume*masterVolume);
-    // soundBoard.cache['ufoArrowImpactSound'].setVolume(volume*masterVolume);
-    // soundBoard.cache['loseLifeSound'].setVolume(2*volume*masterVolume);
-    // soundBoard.cache['gainLifeSound'].setVolume(1.5*volume*masterVolume);
-    // soundBoard.cache['coinSound'].setVolume(0.5*volume*masterVolume);
-    // soundBoard.cache['wingFlapSound'].setVolume(1.4*volume*masterVolume);
 }
 
 function loadSoundAsync(path) {

@@ -16,7 +16,8 @@ class Terrain {
         let ampFactor;
         let freqFactor;
         let phaseFactor;
-        // Set the degree of terrain difficulty
+
+        // set base curve parameters based on difficulty
         switch (settings.difficulty) {
             case 0:
                 ampFactor = 10;
@@ -34,7 +35,8 @@ class Terrain {
                 phaseFactor = 9;
                 break;
         }
-        // Create the arrays of sine curve parameters
+
+        // generate random variation in these parameters and add to arrays
         for (let i = 0; i < 4; i++) {
             this.amplitudes.push(ampFactor + 0.25*ampFactor*Math.random() - 0.125*ampFactor);
             this.frequencies.push(freqFactor + 0.3*freqFactor*Math.random());
@@ -44,25 +46,6 @@ class Terrain {
         this.step = settings.difficulty === 2 ? 15 : 30;
     }
 
-    // Set initial sine curve parameters
-    updateHillParams() {
-        // Calc a randomness factor based on offset
-        this.randomnessFactor = Math.min(50000 / 10000, 1);
-        // Remove first element (oldest / least random)
-        this.amplitudes.shift();
-        this.frequencies.shift();
-        this.phases.shift();
-        // Calc variation to apply relative to each param
-        let ampVariation = this.randomnessFactor * 10 + 2;
-        let freqVariation = this.randomnessFactor * 0.01 + 0.01;
-        let phaseVariation = Math.PI * (1 + this.randomnessFactor * 0.5);
-        // Add new (more random) elements to end
-        this.amplitudes.push(Math.random() * ampVariation);
-        this.frequencies.push(Math.random() * freqVariation);
-        this.phases.push(Math.random() * phaseVariation);
-    }
-
-    // Draw the sine curves of the terrain
     drawHills(length, canvas) {
         if (canvas === undefined) {
             canvas = window._renderer._pInst;
@@ -80,7 +63,7 @@ class Terrain {
         fill(`rgb(${r},${g},${b})`);
         canvas.vertex(-170 / domains.game.zoom, height);
 
-        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 20; x += this.step * Math.sqrt(domains.game.zoom)) {
+        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 20; x += this.step) {
             let y = this.f(x) + 50*layer + 10;
             canvas.vertex(x, y);
         }
@@ -92,12 +75,13 @@ class Terrain {
     drawSnow(length, canvas) {
         fill('rgb(255,238,241)');
         beginShape();
-        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += 15 / domains.game.zoom) {
+
+        for (let x = -170 / domains.game.zoom; x <= length / domains.game.zoom + 10; x += 15) {
             let y = this.f(x);
             let newY = y + 2*sin((x + domains.game.offset) * 0.05) + 2*cos((x + domains.game.offset) * 0.07) - 3;
             canvas.vertex(x, newY);
         }
-        for (let x = length / domains.game.zoom + 10; x >= -170 / domains.game.zoom; x -= 15 / domains.game.zoom) {
+        for (let x = length / domains.game.zoom + 10; x >= -170 / domains.game.zoom; x -= 15) {
             let y = this.f(x) + 20;
             let newY = y + 2*sin((x + domains.game.offset) * 0.04) + 2*cos((x + domains.game.offset) * 0.05) - 3;
             canvas.vertex(x, newY);

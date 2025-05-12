@@ -1,5 +1,3 @@
-
-
 class Settings {
 
     constructor(gameProgress) {
@@ -10,6 +8,12 @@ class Settings {
         this.buttonsActive = true;
         this.dialPos = this.initialiseDialPos(this.masterVolume);
         this.offset = null;
+
+        this.musicVolume     = gameProgress.musicVolume;
+        this.musicMute       = gameProgress.musicMute; // 1=on
+        this.musicMuteButton = this.musicMute ? soundOn : soundOff;
+        this.musicDialPos  = this.initialiseDialPosMusic(this.musicVolume);
+        this.offsetMusic   = null;
 
         this.difficulties = ['Beginner', 'Intermediate', 'Advanced'];
         this.difficulty = gameProgress.difficulty;
@@ -31,15 +35,28 @@ class Settings {
         this.boostKey = gameProgress.boostKey;
         this.shootKey = gameProgress.shootKey;
         this.shieldKey = gameProgress.shieldKey;
+
+        this.cursorVisible = false;
+        this.hideCursor();
     }
 
+    // is selected key being used by another ability?
     keyIsAvailable(key) {
         return !(this.flyKey === key || this.boostKey === key || this.shootKey === key || this.shieldKey === key);
     }
 
+    get keyNav() {
+        if (!this._keyNav) {
+            this._keyNav = new SettingsKeyNav(this);
+        }
+        return this._keyNav;
+    }
+
+    // main loop
     showSettingsScreen() {
+
         push();
-        image(homeBackground, 0, 0, width, height);
+        image(blurredHomeBackground, 0, 0, width, height);
 
         if (this.changeControls) {
             if (this.controlsPanel === null) {
@@ -50,53 +67,87 @@ class Settings {
         else {
             this.drawLabels();
             this.drawVolumeBar();
+            this.drawMusicBar();
+            this.updateMusicDial();
             this.updateVolumeDial();
-            this.updateMuteButton();
+            this.updateMasterMuteButton();
+            this.updateMusicMuteButton();
             this.updateDifficultyControl();
             this.updateCheatsButton();
             this.updateControlsButton();
-            this.updateBackButton();
             this.updateBackgroundQualityControl();
+
+            if (Domain === 'mainMenu') {
+                this.updateMainMenuButton();
+            }
+            else this.updateBackButton();
 
             if (this.buttonCooldownTimer.time > 0) {
                 this.updateButtonCooldown();
             }
 
-            if (this.offset != null) {
-                this.adjustDialPos();
-            }
+            /* allow either dial to be dragged independently */
+            this.adjustDialPos();
+            this.adjustMusicDialPos();
             setMasterVolume(this.masterVolume * this.mute);
         }
+        this.keyNav.drawKeyboardNavHighlights();
         pop();
     }
 
     updateControlsButton() {
         let scale = 0.006 * width;
         let size = createVector(controlsButton.width / scale, controlsButton.height / scale);
-        let pos = createVector(0.5*width, 0.7*height);
+        let pos = createVector(0.5*width, 0.85*height);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(controlsButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
                 this.changeControls = true;
                 this.startCooldown();
+                this.keyNav.resetSelection();
+                if (this.controlsPanel) {
+                    this.controlsPanel.resetNavigation();
+                }
             }
         }
         else image(controlsButton, pos.x, pos.y, size.x, size.y);
     }
 
-    updateBackButton() {
-        let scale = 0.002 * width;
-        let size = createVector(backButton.width / scale, backButton.height / scale);
-        let pos = createVector(0.5*width, 0.84*height);
+    // only appears when accessing settings from main menu
+    updateMainMenuButton() {
+        let scale = 0.008 * width;
+        let size = createVector(mainMenuButton.width / scale, mainMenuButton.height / scale);
+        let pos = createVector(0.935 * width, 0.04 * height);
         imageMode(CENTER);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
+            image(mainMenuButtonHover, pos.x, pos.y, size.x, size.y);
+
+            if (mouseIsPressed && settings.buttonsActive) {
+                saveGameProgress();
+                settings.currentDifficulty = settings.difficulty;
+                domains.mainMenu.showSettings = false;
+                domains.mainMenu.resetButtons();
+            }
+        }
+        else image(mainMenuButton, pos.x, pos.y, size.x, size.y);
+    }
+
+    // only appears when accessing settings from game
+    updateBackButton() {
+        let scale = 0.0035 * width;
+        let size = createVector(backButton.width / scale, backButton.height / scale);
+        let pos = createVector(0.95 * width, 0.04 * height);
+        imageMode(CENTER);
+
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(backButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && settings.buttonsActive) {
                 saveGameProgress();
+                domains.game.pause.showSettings = false;
 
                 if (Domain === 'mainMenu') {
                     settings.currentDifficulty = settings.difficulty;
@@ -104,20 +155,21 @@ class Settings {
                 }
                 else {
                     domains.game.pause.showSettings = false;
-                    //onQualityChange(settings.bgQuality + 1);
                 }
             }
         }
-        else image(backButton, pos.x, pos.y, size.x, size.y);
+        else if (this.keyNav.selectedControl !== 8) { // key nav button highlight doesnt cover entire button
+            image(backButton, pos.x, pos.y, size.x, size.y);
+        }
     }
 
 
     updateCheatsButton() {
         let scale = 0.006 * width;
         let size = createVector(this.cheatsButton.width / scale, this.cheatsButton.height / scale);
-        let pos = createVector(0.59*width, 0.5865*height);
+        let pos = createVector(0.59*width, 0.7375*height);
 
-        if (hoveringOverButton(pos, size)) {
+        if (hoveringOverButton(pos, size) && this.cursorVisible) {
             image(this.cheatsButtonHover, pos.x, pos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -144,11 +196,11 @@ class Settings {
     updateDifficultyControl() {
         let scale = 0.006 * width;
         let size = createVector(incrementArrow.width / scale, incrementArrow.height / scale);
-        let upPos = createVector(0.635*width, 0.37*height);
-        let downPos = createVector(0.635*width, 0.41*height);
+        let upPos = createVector(0.7*width, 0.5*height);
+        let downPos = createVector(0.7*width, 0.54*height);
 
         // up arrow
-        if (hoveringOverButton(upPos, size) && this.difficulty < 2) {
+        if (hoveringOverButton(upPos, size) && this.difficulty < 2 && this.cursorVisible) {
             image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -159,7 +211,7 @@ class Settings {
         else image(incrementArrow, upPos.x, upPos.y, size.x, size.y);
 
         // down arrow
-        if (hoveringOverButton(downPos, size) && this.difficulty > 0) {
+        if (hoveringOverButton(downPos, size) && this.difficulty > 0 && this.cursorVisible) {
             image(decrementArrowHover, downPos.x, downPos.y, size.x, size.y);
 
             if (mouseIsPressed && this.buttonsActive) {
@@ -171,10 +223,10 @@ class Settings {
 
     }
 
-    updateMuteButton() {
+    updateMasterMuteButton() {
         let scale = 0.006 * width;
         let size = createVector(this.muteButton.width / scale, this.muteButton.height / scale);
-        let pos = createVector(0.78*width, 0.3*height);
+        let pos = createVector(0.78*width, 0.28*height);
         image(this.muteButton, pos.x, pos.y, size.x, size.y);
 
         if (hoveringOverButton(pos, size) && mouseIsPressed && this.buttonsActive) {
@@ -182,6 +234,21 @@ class Settings {
             this.startCooldown();
         }
         this.muteButton = this.mute === 1 ? soundOn : soundOff;
+    }
+
+    updateMusicMuteButton() {
+        let scale = 0.006 * width;
+        let size  = createVector(this.musicMuteButton.width / scale,
+                                 this.musicMuteButton.height / scale);
+        let pos   = createVector(0.78 * width, 0.4 * height);
+
+        image(this.musicMuteButton, pos.x, pos.y, size.x, size.y);
+
+        if (hoveringOverButton(pos, size) && mouseIsPressed && this.buttonsActive) {
+            this.musicMute = (this.musicMute + 1) % 2;          // toggle 1↔0
+            this.musicMuteButton = this.musicMute ? soundOn : soundOff;
+            this.startCooldown();
+        }
     }
 
     updateButtonCooldown() {
@@ -216,7 +283,7 @@ class Settings {
         }
 
         imageMode(CENTER);
-        if (this.offset !== null || hoveringOverButton(this.dialPos, size)) {
+        if (this.offset !== null || (hoveringOverButton(this.dialPos, size) && this.cursorVisible)) {
             image(volumeDialHover, this.dialPos.x, this.dialPos.y, size.x, size.y);
         }
         else image(volumeDial, this.dialPos.x, this.dialPos.y, size.x, size.y);
@@ -225,11 +292,11 @@ class Settings {
     updateBackgroundQualityControl() {
         let scale   = 0.006 * width;
         let size    = createVector(incrementArrow.width/scale, incrementArrow.height/scale);
-        let upPos   = createVector(0.635*width, 0.46*height);
-        let downPos = createVector(0.635*width, 0.50*height);
+        let upPos   = createVector(0.7*width, 0.61*height);
+        let downPos = createVector(0.7*width, 0.65*height);
 
         // Up arrow: go to HIGHER quality (lower index)
-        if (hoveringOverButton(upPos, size) && this.bgQuality > 0) {
+        if (hoveringOverButton(upPos, size) && this.bgQuality > 0 && this.cursorVisible) {
             image(incrementArrowHover, upPos.x, upPos.y, size.x, size.y);
             if (mouseIsPressed && this.buttonsActive) {
                 this.bgQuality--;
@@ -241,7 +308,7 @@ class Settings {
         }
 
         // Down arrow: go to LOWER quality (higher index)
-        if (hoveringOverButton(downPos, size) && this.bgQuality < this.bgQualities.length - 1) {
+        if (hoveringOverButton(downPos, size) && this.bgQuality < this.bgQualities.length - 1 && this.cursorVisible) {
             image(decrementArrowHover, downPos.x, downPos.y, size.x, size.y);
             if (mouseIsPressed && this.buttonsActive) {
                 this.bgQuality++;
@@ -253,7 +320,10 @@ class Settings {
         }
     }
 
+    // volume dial is currently being controlled by user
     adjustDialPos() {
+        if (this.offset == null) return;   // only drag while grabbed
+
         this.dialPos.x = mouseX + this.offset;
 
         if (this.dialPos.x < 0.27*width) {
@@ -267,15 +337,62 @@ class Settings {
 
     initialiseDialPos(masterVolume) {
         let xPos = (0.27 + 0.46*masterVolume) * width;
-        return createVector(xPos, 0.3*height);
+        return createVector(xPos, 0.28*height);
+    }
+
+    /* ---------- Music‑volume helpers ---------- */
+
+    initialiseDialPosMusic(vol) {
+        let xPos = (0.27 + 0.46 * vol) * width;
+        return createVector(xPos, 0.4 * height);   // slightly lower than master
+    }
+
+    updateMusicDial() {
+        let scale = 0.0035 * width;
+        let size  = createVector(volumeDial.width / scale, volumeDial.height / scale);
+
+        if (hoveringOverButton(this.musicDialPos, size) && this.cursorVisible) {
+            if (mouseIsPressed) {
+                if (this.offsetMusic == null) {
+                    this.offsetMusic   = this.musicDialPos.x - mouseX;
+                    this.buttonsActive = false;
+                }
+            }
+        }
+        if (!mouseIsPressed && this.offsetMusic != null) {
+            this.offsetMusic = null;
+            this.buttonsActive = true;
+        }
+
+        imageMode(CENTER);
+        if (this.offsetMusic !== null || (hoveringOverButton(this.musicDialPos, size) && this.cursorVisible)) {
+            image(volumeDialHover, this.musicDialPos.x, this.musicDialPos.y, size.x, size.y);
+        } else {
+            image(volumeDial, this.musicDialPos.x, this.musicDialPos.y, size.x, size.y);
+        }
+    }
+
+    adjustMusicDialPos() {
+        if (this.offsetMusic == null) return;
+
+        this.musicDialPos.x = mouseX + this.offsetMusic;
+        this.musicDialPos.x = constrain(this.musicDialPos.x, 0.27 * width, 0.73 * width);
+        this.musicVolume = (this.musicDialPos.x / width - 0.27) / 0.46;
+    }
+
+    drawMusicBar() {
+        let scale = 0.0035 * width;
+        imageMode(CENTER);
+        image(volumeBar, width / 2, 0.4 * height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
     drawVolumeBar() {
         let scale = 0.0035 * width;
         imageMode(CENTER);
-        image(volumeBar, width/2, 0.3*height, volumeBar.width / scale, volumeBar.height / scale);
+        image(volumeBar, width/2, 0.28*height, volumeBar.width / scale, volumeBar.height / scale);
     }
 
+    // Draw the labels associated with all button and controls
     drawLabels() {
         let size = width/10
         fill('rgb(21,37,58)');
@@ -289,18 +406,29 @@ class Settings {
         size = width/30
         strokeWeight(size/30);
         textSize(size/1.5);
-        text('Master Volume', width/2, height/3.9); // volume
+        text('Master Volume', width/2, height/4.2);
+        text('Music Volume',  width/2, height/2.8);
 
         textAlign(LEFT);
-        text('Difficulty:', width/2.8, 0.40*height); // difficulty
+        text('Difficulty:', width/3.45, 0.52*height); // difficulty
         textAlign(CENTER);
-        text(`${this.difficulties[this.difficulty]}`, 0.534*width, 0.40*height)
+        text(`${this.difficulties[this.difficulty]}`, 0.58*width, 0.52*height)
 
         textAlign(LEFT);
-        text('Background Quality:', width/3.8, 0.50*height);
+        text('Background Quality:', width/3.45, 0.63*height);
         textAlign(CENTER);
-        text(`${this.bgQualities[this.bgQuality]}`, 0.534*width, 0.50*height);
+        text(`${this.bgQualities[this.bgQuality]}`, 0.58*width, 0.63*height);
 
-        text('Enable Cheats:', width/2.17, 0.59*height); // cheats
+        text('Enable Cheats:', width/2.17, 0.74*height); // cheats
+    }
+
+    showCursor() {
+        document.body.classList.add("show-cursor");
+        this.cursorVisible = true;
+    }
+
+    hideCursor() {
+        document.body.classList.remove("show-cursor");
+        this.cursorVisible = false;
     }
 }

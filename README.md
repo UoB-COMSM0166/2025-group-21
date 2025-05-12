@@ -10,6 +10,8 @@
   <p><strong>🎥&nbsp;&nbsp;&nbsp;&nbsp;Demo Video&nbsp;&nbsp;&nbsp;&nbsp;🎥</strong></p>
 </div>
 
+[![Watch Our VIDEO!🐧](https://github.com/UoB-COMSM0166/2025-group-21/raw/main/docs/assets/images/playMeButton.png)](https://www.youtube.com/watch?v=iAYXBbDeZTE)
+
 # Table of Contents
 1. [Development Team](#1-development-team)
 2. [Introduction](#2-introduction)

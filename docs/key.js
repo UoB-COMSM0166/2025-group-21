@@ -16,6 +16,17 @@ function keyPressed() {
         }
     }
 
+    if ((Domain === 'mainMenu' && domains.mainMenu.showSettings) ||
+        (Domain === 'game' && domains.game.pause.showSettings)) {
+        if (settings.changeControls && settings.controlsPanel) {
+            settings.controlsPanel.handleKeyNavigation(keyCode);
+        }
+        else {
+            settings.keyNav.handleInput(keyCode);
+        }
+        return;
+    }
+
     if (Domain === 'game') {
 
         if (key === settings.boostKey) {
@@ -38,7 +49,7 @@ function keyPressed() {
             if (key === settings.shootKey) {
                 domains.game.player.shooting = true;
 
-                if (inventory.laserLevel < 5) {
+                if (inventory.currentProjectileItem < 4) {
                     domains.game.projectile.shoot();
                 }
                 else {
@@ -57,6 +68,10 @@ function keyPressed() {
             domains.mainMenu.handleKeyNavigation(keyCode);
             return;
         }
+    }
+
+    if (Domain === 'shop') {
+        domains.shop.keyNav.handleInput(keyCode);
     }
 
     if (Domain === 'instruction') {
@@ -79,12 +94,16 @@ function keyPressed() {
 
     if (Domain === 'game' && domains.game.pause.active) {
         if (keyCode === UP_ARROW) {
+            if (domains.game.pause.showInvPanel) {
+                domains.game.pause.invPanel.setCloseButtonSelected(true);
+            }
             if (domains.game.pause.selectedButtonIndex === -1) {
                 domains.game.pause.selectedButtonIndex = 0;
                 //game.pause.updateButtonStyles();
             } else {
                 domains.game.pause.moveSelection(-1);
             }
+            domains.game.pause.hideCursor();
         } else if (keyCode === DOWN_ARROW) {
             if (domains.game.pause.showInvPanel) {
                 domains.game.pause.invPanel.setCloseButtonSelected(true);
@@ -94,13 +113,90 @@ function keyPressed() {
             } else {
                 domains.game.pause.moveSelection(1);
             }
+            domains.game.pause.hideCursor();
         } else if (keyCode === ENTER) {
             if (domains.game.pause.showInvPanel && domains.game.pause.invPanel.isCloseButtonSelected) {
                 // If inventory panel is visible and CLOSE button is selected, activate it
                 domains.game.pause.showInvPanel = false;
                 domains.game.pause.invPanel.isCloseButtonSelected = false;
+                domains.game.pause.selectedButtonIndex = -1;
             } else {
                 domains.game.pause.selectCurrentButton();
+            }
+            domains.game.pause.hideCursor();
+        }
+    }
+
+    if (Domain === 'game' && !domains.game.player.alive && domains.game.death.deathTimer.time >= 230) {
+        if (!domains.game.death.highscoreSeen) { // game high score back button
+            if (keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+                document.body.classList.remove("show-cursor");
+                domains.game.highscores.backSelected = true;
+            }
+            else if (keyCode === ENTER) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
+                if (domains.game.highscores.backSelected) {
+                    domains.game.death.highscoreSeen = true;
+                }
+                else domains.game.highscores.backSelected = true;
+            }
+        }
+
+        else if (!domains.game.death.showStats) {
+            if (keyCode === UP_ARROW) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
+                if (!domains.game.death.anyKeyPressed) {
+                    domains.game.death.selectedButtonIndex = 0;
+                    domains.game.death.anyKeyPressed = true;
+                } else if (domains.game.death.selectedButtonIndex > 0) {
+                    domains.game.death.selectedButtonIndex--;
+                } else {
+                    domains.game.death.selectedButtonIndex = domains.game.death.buttonCount - 1;
+                }
+            }
+            else if (keyCode === DOWN_ARROW) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
+                if (!domains.game.death.anyKeyPressed) {
+                    domains.game.death.selectedButtonIndex = 0;
+                    domains.game.death.anyKeyPressed = true;
+                } else if (domains.game.death.selectedButtonIndex < domains.game.death.buttonCount - 1) {
+                    domains.game.death.selectedButtonIndex++;
+                } else {
+                    domains.game.death.selectedButtonIndex = 0;
+                }
+            }
+            else if (keyCode === ENTER || key === ' ') {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
+                if (!domains.game.death.anyKeyPressed) {
+                    domains.game.death.selectedButtonIndex = 0;
+                    domains.game.death.anyKeyPressed = true;
+                }
+                else domains.game.death.selectCurrentButton();
+            }
+        }
+        // Key navigation in stats page
+        else {
+            if (keyCode === DOWN_ARROW || keyCode === UP_ARROW) {
+                domains.game.stats.backButtonSelected = true;
+                document.body.classList.remove("show-cursor");
+            }
+            else if (keyCode === ENTER) {
+                if (domains.game.stats.backButtonSelected) {
+                    document.body.classList.remove("show-cursor");
+                    domains.game.death.showStats = false;
+                    domains.game.death.selectedButtonIndex = -1;
+                    domains.game.stats.backButtonSelected = false;
+                    domains.game.death.cursorVisible = false;
+                }
+                else domains.game.stats.backButtonSelected = true;
             }
         }
     }
@@ -113,12 +209,25 @@ function keyReleased() {
             domains.game.spacePressed = false;
         }
         else if (keyCode === 27) { // 27 == ESC key
-            if (domains.game.pause.active && !domains.game.pause.showSettings) {
-                domains.game.pause.showInvPanel = false;
-                domains.game.pause.continueButtonPressed();
+            if (domains.game.player.alive) {
+                if (domains.game.pause.active && !domains.game.pause.showSettings) {
+                    if (domains.game.pause.isCountingDown) {
+                        domains.game.pause.isCountingDown = false;
+                        domains.game.pause.active = true;
+                        domains.game.pause.reset();
+                        domains.game.pause.countdown = null;
+                    }
+                    else {
+                        domains.game.pause.showInvPanel = false;
+                        domains.game.pause.continueButtonPressed();
+                    }
+                }
+                else {
+                    domains.game.pause.active = true;
+                    //domains.game.pause.hideCursor();
+                }
+                //game.pause.active = !game.pause.active;
             }
-            else domains.game.pause.active = true;
-            //game.pause.active = !game.pause.active;
         }
 
         if (key === settings.flyKey && domains.game.fly != null) {
@@ -133,6 +242,21 @@ function keyReleased() {
 }
 
 function getInputCharacter() {
+
+    if (Domain === 'game' && domains.game.death !== null) {
+        if (keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+            document.body.classList.remove("show-cursor");
+            domains.game.highscores.submitSelected = true;
+        }
+        else if (keyCode === ENTER) {
+            document.body.classList.remove("show-cursor");
+
+            if (domains.game.highscores.submitSelected) {
+                domains.game.highscores.submitButtonPressed();
+            }
+            else domains.game.highscores.submitSelected = true;
+        }
+    }
 
     switch (key) {
         case 'A': inputCharacter = 'A'; break;

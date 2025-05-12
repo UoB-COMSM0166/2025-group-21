@@ -1,5 +1,6 @@
 
 
+// Would be abstract but unfortunately this is JavaScript :(
 class Projectile {
 
     constructor(position, velocity) {

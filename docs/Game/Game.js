@@ -1,8 +1,7 @@
-
-
 class Game {
 
     constructor() {
+        this.bgMusic = null;
         this.windSound = null;
         this.laserSound = null;
         this.laserAutomaticSound = null;
@@ -30,6 +29,7 @@ class Game {
         noStroke();
 
         this.wind = null;
+        this.music = null;
         this.masterVolume = settings.masterVolume*settings.mute;
         this.soundsLoaded = false;
 
@@ -37,6 +37,7 @@ class Game {
             this.soundsLoaded = true
             setMasterVolume(this.masterVolume);
             this.wind = new Wind();
+            this.music = new BackgroundMusic();
         });
 
         this.offset = 0;  // Horizontal movement of screen position
@@ -61,9 +62,15 @@ class Game {
         this.wind = null;
         this.death = null;
 
-        this.fly = inventory.flyLevel > 0 ? new FlyingAbility(inventory.flyLevel) : null;
+        this.fly = inventory.currentFlyItem > 0 ? new FlyingAbility(inventory.currentFlyItem) : null;
         this.shield = inventory.forceFieldLevel > 0 ? new ForceField(inventory.forceFieldLevel) : null;
-        this.projectile = new ProjectileAbility(inventory.laserLevel);
+        // Equip shooter only when a projectile is unlocked (index ≥ 0)
+        if (inventory.currentProjectileItem >= 0) {
+            // index 0‑4  → type 1‑5 for ProjectileAbility
+            this.projectile = new ProjectileAbility(inventory.currentProjectileItem + 1);
+        } else {
+            this.projectile = null;   // no projectile until the player buys Fish
+        }
 
         //---------------------------------------
         this.background = new Background();
@@ -73,15 +80,13 @@ class Game {
     // Main loop to run the game
     runSimulation() {
         if (!this.soundsLoaded) return;
-        //--------------------
+
         clear();
-        //--------------------
+
         this.adjustZoom();
         this.wind.adjustVolume();
+        this.music.adjustVolume();
 
-        //image(homeBackground, 0, 0, width, height);
-        //---------------------------------------
-        //image(homeBackground, 0, 0, width, height);
         const floorSpeed = this.pause.active ? 0 : this.player.vel.x;
         this.background.update(floorSpeed, this.zoom);
         this.background.draw( this.zoom, floorSpeed );
@@ -94,7 +99,7 @@ class Game {
             // Update the main things on the screen each frame
             this.terrain.drawHills(width);
             this.player.drawPlayer()
-            this.projectile.updateProjectiles();
+            if (this.projectile) this.projectile.updateProjectiles();
             this.obstacleHandler.updateObstacles();
             this.obstacleHandler.updateExplosions();
 
@@ -132,11 +137,12 @@ class Game {
         // Update the score each frame
         if (this.death === null) {
             this.score.update();
+
             if (this.fly != null) {
                 this.fly.charge();
+
                 if (this.fly.active) {
-                    //this.fly.glide(); // apply upward force equal to gravity
-                    this.fly.applyUpwardForce(); // greater then gravity
+                    this.fly.applyUpwardForce(); // greater than gravity
                 }
             }
             if (this.shield != null) {
@@ -159,9 +165,9 @@ class Game {
     // Calculate the zoom when the player goes above the zoom threshold
     adjustZoom() {
         if (this.player.pos.y < this.topMargin) {
-            this.zoom = 0.86 / (-this.player.pos.y/height + 1); // 0.94
+            this.zoom = 0.86 / (-this.player.pos.y/height + 1);
             this.ty = this.topMargin - this.zoom * (this.player.pos.y);
-            this.tx = 175 - this.zoom * (this.player.pos.x); // 160 seems to work better than 150
+            this.tx = 175 - this.zoom * (this.player.pos.x); // 175 seems to work better than 150
         }
         else {
             this.zoom = 1;
@@ -209,42 +215,37 @@ class Game {
         this.wingFlapSound = await soundBoard.getSound('wingFlapSound');
         this.boosterSound    = await soundBoard.getSound('boosterSound');
         this.rotorSound    = await soundBoard.getSound('rotorSound');
+        this.bgMusic = await soundBoard.getSound('mainSoundtrack1');
     }
 
     // Clearing the audio cache
     disconnectAudio() {
-        this.windSound.stop();
-        this.laserSound.stop();
-        this.laserAutomaticSound.stop();
-        this.explosionSound.stop();
-        this.deathSound.stop();
-        this.fishThrow.stop();
-        this.fishImpactSound.stop();
-        this.forceFieldSound.stop();
-        this.snowballSound.stop();
-        this.freezeSound.stop();
-        this.arrowSound.stop();
-        this.ufoArrowImpactSound.stop();
-        this.loseLifeSound.stop();
-        this.gainLifeSound.stop();
-        this.collectCoinSound.stop();
-        this.wingFlapSound.stop();
-        // Dereference the variables for garbage collection
-        this.windSound = null;
-        this.laserSound = null;
-        this.laserAutomaticSound = null;
-        this.explosionSound = null;
-        this.deathSound = null;
-        this.fishThrow = null;
-        this.fishImpactSound = null;
-        this.forceFieldSound = null;
-        this.snowballSound = null;
-        this.freezeSound = null;
-        this.arrowSound = null;
-        this.ufoArrowImpactSound = null;
-        this.loseLifeSound = null;
-        this.gainLifeSound = null;
-        this.collectCoinSound = null;
-        this.wingFlapSound = null;
+        const stopSound = (sound) => {
+            if (sound) {
+                sound.stop();
+            }
+        };
+                                           // Dereference the variables for garbage collection
+
+        stopSound(this.bgMusic);            this.bgMusic = null;
+
+        stopSound(this.windSound);          this.windSound = null;
+        stopSound(this.laserSound);         this.laserSound = null;
+        stopSound(this.laserAutomaticSound); this.laserAutomaticSound = null;
+        stopSound(this.explosionSound);     this.explosionSound = null;
+        stopSound(this.deathSound);         this.deathSound = null;
+        stopSound(this.fishThrow);          this.fishThrow = null;
+        stopSound(this.fishImpactSound);    this.fishImpactSound = null;
+        stopSound(this.forceFieldSound);    this.forceFieldSound = null;
+        stopSound(this.snowballSound);      this.snowballSound = null;
+        stopSound(this.freezeSound);        this.freezeSound = null;
+        stopSound(this.arrowSound);         this.arrowSound = null;
+        stopSound(this.ufoArrowImpactSound); this.ufoArrowImpactSound = null;
+        stopSound(this.loseLifeSound);      this.loseLifeSound = null;
+        stopSound(this.gainLifeSound);      this.gainLifeSound = null;
+        stopSound(this.collectCoinSound);   this.collectCoinSound = null;
+        stopSound(this.wingFlapSound);      this.wingFlapSound = null;
+        stopSound(this.boosterSound);       this.boosterSound = null;
+        stopSound(this.rotorSound);         this.rotorSound = null;
     }
 }
