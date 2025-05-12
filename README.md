@@ -739,7 +739,7 @@ Commencing the Easter holiday period, we transitioned to a remote setup. We held
 Throughout development, we completed two sprint cycles with each lasting two weeks. Each sprint began with a planning session where the team reviewed the Product Backlog, identified high-priority user stories, and agreed upon strategies to satisfy them. Miro was central to our planning process; we used it to create visual boards that made responsibilities and task breakdowns clear and understandable to everyone.
 
 <div align="center">
-    <img src="report/process_figures/sprint_planning.jpg" width="500">
+    <img src="report/process_figures/sprint_planning.jpg" width="650">
     <p><strong>Figure 21</strong><br>Sprint planning</p>
 </div>
 
