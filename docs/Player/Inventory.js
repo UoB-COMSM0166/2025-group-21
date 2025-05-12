@@ -97,7 +97,7 @@ class Inventory {
     getProjectileBuyRequirement(item) {
         switch(item) {
             case 1: return 'Requirements:\n' + '  - Being a Penguin\n\n';
-            case 2: return 'Requirements:\n' + '  - Nothing. Just the money!\n\n';
+            case 2: return 'Requirements:\n' + '  - Having learned how to regurgita- \n    te a fish\n\n';
             case 3: return 'Requirements:\n' + '  - Owning the Snow Cannon\n\n';
             case 4: return 'Requirements:\n' + '  - Owning the Crossbow\n\n';
             case 5: return 'Requirements:\n' + '  - Owning the laser\n\n';
@@ -112,6 +112,35 @@ class Inventory {
             case 4: return 'Requirements:\n' + '  - Owning the helicopter\n    ' +
                 'rotors\n\n';
             case 5: return 'Requirements:\n' + '  - Owning the Propane\n    Booster\n\n';
+        }
+    }
+
+    getForceFieldDescription(item) {
+        switch(item) {
+            case 1: return 'Force Field I:\n' +
+                '  - Duration: 6 seconds\n' +
+                '  - A few seconds of shield power\n' +
+                '  - Do you want more? Buy more.';
+            case 2: return 'Force Field II:\n' +
+                '  - Duration: 8 seconds\n' +
+                '  - A stubborn shield that\n' +
+                '    refuses to let anything through\n' +
+                '  - 8 seconds? That\'s a lot';
+            case 3: return 'Force Field III:\n' +
+                '  - Duration: 9 seconds\n' +
+                '  - If you still feel insecure\n' +
+                '    this is the shield for you';
+            case 4: return 'Force Field IV:\n' +
+                '  - Duration: 12 seconds\n' +
+                '  - If feelling invincible makes\n' +
+                '    you feel better, buy it';
+            case 5: return 'Force Field V:\n' +
+                '  - Duration: 17 seconds\n' +
+                '  - Ultimate bubble of invincibility\n' +
+                '  - (Maybe this is too much)';
+            default: return 'No Force Field:\n' +
+                '  - You’re a simple penguin,\n' +
+                '    toughing it out old-school';
         }
     }
 
