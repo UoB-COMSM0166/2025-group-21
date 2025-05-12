@@ -31,9 +31,7 @@ function setup() {
     soundBoard = new SoundBoard();
     domains = new DomainManager(gameProgress);
 
-    window.addEventListener("mousemove", (event) => {
-        respondToMouseMovement();
-    });
+    window.addEventListener("mousemove", () => respondToMouseMovement());
 }
 
 function draw() {
