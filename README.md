@@ -578,17 +578,18 @@ test('position and angle change when freezing from snowball hit', () => {
 ### Black Box Testing
 We also conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
 
-# 7. Sustainability 
+# 7. Sustainability, Ethics and Accessibility
 
-To incorporate sustainability into our development process, we utilised two protocols:
+Sustainability was an important ethos to our development team, and our game's natural environment and themes reflected this. We attempted to incorporate into our development process utilising two protocols:
 - Sustainability Awareness Framework (SusAF)
 - And, the Green Software Foundation Design Patterns
+You can donate to support Penguin conservation directly from the link in PengWings' main menu!
 
 ### Sustainability Awareness Framework
 
 #### Questions and Discussion
 
-As a team, we each contributed sustainability-focused questions to prompt group discussion. This process challenged us to reflect on our sustainability assumptions, and to think critically about how we addressed similar questions from others. These questions and discussions centred around the five dimensions of sustainability.
+As a team, we each contributed sustainability-focused questions to prompt a group discussion. This process challenged us to reflect on our understanding of sustainability, and to think critically about how we addressed similar questions from others. These questions and discussions centred around the five dimensions of sustainability.
 
 #### Analysis
 
@@ -694,25 +695,25 @@ By using this framework, we were able to make informed and accurate decisions ab
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design.(Franziska Warncke, Liya Mathew, Catalog) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design.(Franziska Warncke, Liya Mathew, Catalog) These patterns focussed on environmental, technical, and economic sustainability. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
-#### 1. Defer Offscreen Images
+#### 1. Defer Offscreen Images - Environmental and Technical Sustainability
 
-While this pattern is traditionally related to lazy loading of web assets, we found it highly applicable to our games design. Given that our game works by continuously generating visual elements, including terrain, obstacles and collectibles, it was necessary to instantiate only what’s necessary on screen. Otherwise, we risked excessive CPU and memory use. Our game is programmed to only load visual elements as they become visible, and quickly removes them once off screen. 
+While this pattern is traditionally related to lazy loading of web assets, we found it highly applicable to our game's design. Given that our game works by continuously generating visual elements, including terrain, obstacles and collectibles, it was important to instantiate only what’s necessary on screen. Otherwise, we risked excessive CPU and memory use. Our game is programmed to only load visual elements as they become visible, and quickly removes them once off screen. 
 
-For instance, aerial obstacles are not preloaded from a large array. Instead, their spawn chance is repeatedly evaluated, and they are instantiated only while on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering client-side energy usage (E) in the SCI equation.
+For instance, aerial obstacles are not preloaded from a large array. Instead, their spawn chance is repeatedly evaluated, and their object is only instantiated while on screen. This on-demand asset loading helps to reduce rendering and memory use, lowering the client-side energy usage (E) in the SCI equation.
 
-#### 2. Use Serverless Cloud Services
+#### 2. Use Serverless Cloud Services - Environmental and Economic Sustainability
 
-Our game required a backend system to manage and store high scores, shared between users. We saw an opportunity to apply an impactful Green Software Pattern, to maximise our sustainability. We chose to use Vercel for it’s API functions, and Redis Cloud for data storage, both of which use serverless models.
+Our game required a backend system to manage and store high scores, shared between users. We saw an opportunity to apply an impactful Green Software Pattern, to maximise our environmental and economic sustainability. We chose to use Vercel for its API functions, and Redis Cloud for data storage, both of which use serverless models.
 
 Vercel allowed us to deploy APIs that submit and retrieve high scores via on-demand serverless functions. This approach ensures no resources are consumed when the game isn’t being played, helping reduce our carbon intensity (I) as a factor of the SCI equation. Similarly, Redis Cloud’s serverless infrastructure allows it to dynamically scale and share its hardware based on demand, efficiently allocating memory and reducing the embodied carbon (M) as a factor in the SCI equation.
 
-#### 3. Cache Static Data
+#### 3. Cache Static Data - Environmental and Technical Sustainability
 
-A third Green Software Pattern we incorporated was to cache static data into memory, specifically sound assets. PengWings uses a range of sound affects and music. We found repeatedly loading them created significant and unsustainable memory use, which we observed in the sound buffer in the browser. 
+A third Green Software Pattern we incorporated was to cache static data into memory, specifically sound assets. PengWings uses a range of sound effects and music. We found repeatedly loading them created significant and unsustainable memory use, which we observed in the sound buffer in the browser. 
 
-We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required— by prompting JavaScript garbage collection, freeing memory. By reducing the repeated data loading and memory use, this helped to reduce our total electricity (E) factor of the SCI equation.
+We chose to use a caching system to address this, which allowed the sounds to be cached in a SoundBoard class. This made them easily accessible, minimised redundant loading, and allowed for easy dereferencing when the assets were no longer required, by prompting JavaScript garbage collection, freeing memory. Reducing the repeated data loading and memory use helped to reduce our total electricity (E) factor of the SCI equation.
 
 # 8. Process 
 
