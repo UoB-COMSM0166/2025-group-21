@@ -581,10 +581,10 @@ We also conducted extensive black box testing throughout development. A develop 
 # 7. Sustainability
 
 Sustainability was an important ethos to our development team, and our game's natural environment and themes reflected this. We attempted to incorporate into our development process utilising two protocols:
-- Sustainability Awareness Framework (SusAF)
-- And, the Green Software Foundation Design Patterns
+- **Sustainability Awareness Framework (SusAF)**
+- And, the **Green Software Foundation Design Patterns**
 
-You can donate to support penguin conservation directly from the link on the PengWings homescreen!
+You can donate to support penguin conservation directly from the link on the PengWings home screen!
 
 ### Sustainability Awareness Framework
 
