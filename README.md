@@ -307,7 +307,7 @@ We based player movement on classical physics. The player has both position and 
 - On the ground, friction slows the player's horizontal velocity.
 - Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground.
 
-These effects can be seen in the player’s velocity vectors in Figure 14a.
+These effects can be seen in the player’s velocity vectors, shown in red in Figure 14.
 
 #### Acceleration
 
@@ -318,7 +318,7 @@ To simulate the acceleration and deceleration on the slopes, we used the physics
 </div>
 <br>
 
-These forces—shown in Figure 14b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
+These forces—shown in blue in Figure 14—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
 <div align="center">
 	<p>
