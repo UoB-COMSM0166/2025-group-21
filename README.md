@@ -932,7 +932,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	    <tr>
 	      <td>Coin</td>
 	      <td><img src="docs/assets/images/coin.png" width="60"></td>
-	      <td>Money, get away</td>
+	      <td>Money, it's a gas</td>
 	    </tr>
 	</tbody>
 	</table>
