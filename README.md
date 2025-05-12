@@ -696,7 +696,7 @@ By using this framework, we were able to make informed and accurate decisions ab
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design.(Franziska Warncke, Liya Mathew, Catalog) These patterns focussed on environmental, technical, and economic sustainability. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design. (Franziska Warncke, Liya Mathew, Catalog) These patterns focussed on environmental, technical, and economic sustainability. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
 #### 1. Defer Offscreen Images - Environmental and Technical Sustainability
 
