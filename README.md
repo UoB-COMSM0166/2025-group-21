@@ -189,7 +189,7 @@ In accordance with our user stories, our use-case model evolved throughout devel
 
 ## Initial Design
 
-Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 11).
+Now, with a set of requirements in mind, it came time to begin designing our game architecture. We initially came up with a rough plan of the core modules that would be required, allowing us to work on individual components separately. This initial design is illustrated in the class diagram below (Figure 7).
 
 <div align="center">
     <img src="report/design_figures/initial_design.png" width="700">
@@ -223,7 +223,7 @@ In much the same way as the previous pair of classes, the LaserAbility class wou
 
 ## Final Design
 
-As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 12) and sequence diagram (Figure 13) below.
+As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 8) and sequence diagram (Figure 9) below.
 
 <div align="center">
     <img src="report/design_figures/final_architecture.png" width="700">
@@ -248,7 +248,7 @@ All sound assets are now loaded and cached during the instantiation of the Sound
 
 ### Interactions within the Game class
 
-A class diagram of all interactions in the Game class is shown below (Figure 14).
+A class diagram of all interactions in the Game class is shown below (Figure 10).
 
 <div align="center">
     <img src="report/design_figures/final_game_architecture.png" width="900">
@@ -281,7 +281,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 #### Random and Unpredictable Terrain
 
-To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 2). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
+To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 12). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
 
 <div align="center">
     <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
@@ -308,7 +308,7 @@ We based player movement on classical physics. The player has both position and 
 - On the ground, friction slows the player's horizontal velocity.
 - Our boost mechanic increases downward velocity mid-air and horizontal velocity on the ground.
 
-These effects can be seen in the player’s velocity vectors in Figure 4a.
+These effects can be seen in the player’s velocity vectors in Figure 14a.
 
 #### Acceleration
 
@@ -319,14 +319,14 @@ To simulate the acceleration and deceleration on the slopes, we used the physics
 </div>
 <br>
 
-These forces—shown in Figure 4b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
+These forces—shown in Figure 14b—formed the foundation of the players sliding mechanic. Using them, we fine-tuned bounce angles and collision responses. As with the terrain generation, we tweaked some of the real-world physics parameters to prioritise enjoyment over realism.
 
 <div align="center">
 	<p>
 		<img src="report/implementation_figures/velocity_vector_figure.gif" width="450"/>
 		<img src="report/implementation_figures/acceleration_vector_figure.gif" width="450"/>
 	</p>
-	<p><strong>Figure 14</strong><br>Player velocity (red) and acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
+	<p><strong>Figure 14</strong><br>Player a) velocity (red) and b) acceleration (blue) vectors. Magnitudes are scaled for clarity<br>(Velocity: 8, Acceleration: 1500)</p>
 </div>
 
 ### 3. Saving Progress and Global Leaderboards
@@ -354,7 +354,7 @@ To refine our game’s mechanics, difficulty, and overall level of enjoyment, we
 ### Think Aloud
 
 #### Process
-Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 11).
+Participants were asked to verbalise their thoughts and reactions during gameplay, which we recorded, focusing on moments of confusion and engagement with the game. From these records, we identified key themes, which we summarised and categorised in a thematic map (Figure 15).
 
 <div align="center">
 	<img src="report/evaluation_figures/think_aloud_map_figure.png" width="850"/>
@@ -377,10 +377,10 @@ Difficulty:
 ### Heuristic Evaluation
 
 #### Process
-Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table X). All heuristic violations were addressed and the solution is documented below.
+Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table 2). All heuristic violations were addressed and the solution is documented below.
 
 <div align="center">
- 	<p><b>Table X.</b> Heuristic violations identified in our game, their severity ratings, and solutions.</p>
+  	<p align="center"><strong>Table 2</strong><br>Heuristic violations identified in our game, their severity ratings, and solutions</p>
 	<table border="1">
 	  <thead>
 	    <tr>
@@ -455,7 +455,7 @@ Three participants were asked to play the game and evaluate it against the 10 Ni
 
 ## Quantitative Evaluation
 
-To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools (ADD CITATIONS), and statistical analysis:
+To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools, and statistical analysis:
 - **Raw NASA TLX** — to quantify perceived workload
 - **System Usability Survey (SUS)** — to quantify system usability
 - **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
@@ -466,10 +466,10 @@ These evaluations involved 10 participants, each trialing two difficulty modes. 
 ### Raw NASA TLX
 
 #### Subscale Workload Scores
-Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
+Across all six subscales, the median scores for all participants increased with difficulty (Table 3). The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
 <div align="center">
-  <p><strong>Table 2</strong><br>Median NASA TLX subscale scores for all participants</p>
+  <p><strong>Table 3</strong><br>Median NASA TLX subscale scores for all participants</p>
   <table>
     <thead>
       <tr>
@@ -491,7 +491,7 @@ Across all six subscales, the median scores for all participants increased with 
 </div>
 
 #### Overall Perceived Workload Scores
-All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
+All participants reported an increased perceived workload at higher difficulty levels (Figure 16). Learning effects were offset with alternating the difficulty testing order for each participant.
 
 <div align="center">
 	<img src="report/evaluation_figures/nasatlx_figure.png" width="700"/>
@@ -499,10 +499,10 @@ All participants reported an increased perceived workload at higher difficulty l
 </div>
 
 #### Statistical Analysis
-A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
+A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table 4) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
 
 <div align="center">
-  <p><strong>Table 3</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
+  <p><strong>Table 4</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
   <table>
     <thead>
       <tr>
@@ -533,10 +533,10 @@ Since the data show that higher difficulty led to significant increases in media
 ### System Usability Survey (SUS)
 
 #### Process
-After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology (Figure X).
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology.
 
 #### Results
-The individual SUS scores are shown in Figure X, with the industry average benchmark of 68 shown for comparison.
+The individual SUS scores are shown in Figure 17, with the industry average benchmark of 68 shown for comparison.
 - Mean SUS score (Easy) — 88.25
 - Mean SUS score (Hard) — 75.0
 
@@ -593,10 +593,10 @@ As a team, we each contributed sustainability-focused questions to prompt group 
 
 #### Analysis
 
-From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 4).
+From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 5).
 
 <div align=“center”>
-  <p align="center"><strong>Table 4</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
+  <p align="center"><strong>Table 5</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
   <table border="1">
     <thead>
       <tr>
@@ -639,10 +639,10 @@ We attempted to arrange these into short, medium and long-term effects, and visu
 
 #### Sustainability in Design
 
-By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 5), which we translated into actionable requirements in our product backlog.
+By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 6), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
-  <p align="center"><strong>Table 5</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
+  <p align="center"><strong>Table 6</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
   <table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>Dimension</th>
@@ -651,7 +651,7 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="2">Technical</td>
-        <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores.</td>
+        <td>As an avid player, I want to play this game for a long time and maintain my progress and high scores, so that my time doesn't feel wasted.</td>
         <td>Given a user is playing PengWings, when they close the game, then their highscores and progress should be maintained.</td>
     </tr>
     <tr>
@@ -661,16 +661,16 @@ By using these two protocols, we were able to make informed and accurate decisio
     <tr>
         <td rowspan="2">Social</td>
         <td>As a casual player, I want a game that doesn't become too addictive over time, so that it doesn't take up too much of my life.</td>
-        <td>The game should have clear milestones and reasonable progress that isn't too demanding.</td>
+        <td>Given a user is playing PengWings, when they progress, then they should reach clear milestones that aren't too demanding.</td>
     </tr>
     <tr>
         <td>As a casual player, I want a good balance of competitiveness, so that I don't have to spend too much time to stay on top.</td>
-        <td>Given a user is playing PengWings, when they are at a lower skill level, then they should still be rewareded.</td>
+        <td>Given a user is playing PengWings, when they are at a lower skill level, then they should still be rewarded.</td>
     </tr>
     <tr>
         <td rowspan="2">Economic</td>
         <td>As a casual player, I want to play free games, so that I don't feel I have to pay to be good at the game.</td>
-        <td>Given a user wants to play PengWings, when they open the game, it should be free and fun without necessary costs.</td>
+        <td>Given a user wants to play PengWings, when they open the game, then it should be free and fun without any necessary costs.</td>
     </tr>
     <tr>
         <td>As a casual player, I want to be able to just connect to the internet and be able to play, so that I don't require any specialised software or hardware.</td>
@@ -678,8 +678,8 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="1">Environmental</td>
-        <td>As an avid player, I want a game that feels representative of my interests.</td>
-        <td>The game should feel grounded in its environment.</td>
+        <td>As an environmentally conscious player, I want a game that reflects its environmental state, so that it can promote sustainability.</td>
+        <td>Given the game is set in the Antarctic, when a player interacts with the game, then they should have the opportunity to learn or contribute to the Antarctic sustainability.</td>
     </tr>
     <tr>
         <td rowspan="2">Individual</td>
@@ -687,7 +687,7 @@ By using these two protocols, we were able to make informed and accurate decisio
         <td>Given a user is playing the game, when they set a highscore, then they should not be required to provide personal data.</td>
     </tr>
     <tr>
-        <td>As a casual player, I don't want to feel addicted or in pain after playing for periods of time.</td>
+        <td>As a casual player, I don't want to feel in pain after playing for long periods of time, so I can protect my health.</td>
         <td>Given a user is playing the game, when they set custom controls, then they should not be uncomfortable.</td>
     </tr>
   </table>
@@ -695,7 +695,7 @@ By using these two protocols, we were able to make informed and accurate decisio
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactfull on our design. (citation X) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
 #### 1. Defer Offscreen Images
 
@@ -816,7 +816,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 # 10. Contribution Statement
 
 <div align="center">
-	<p><strong>Table 6</strong><br>Relative team contributions to the PengWings project</p>
+	<p><strong>Table 7</strong><br>Relative team contributions to the PengWings project</p>
 
 | Name | Contribution |
 | :-: | :-: |
