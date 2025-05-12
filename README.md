@@ -367,7 +367,7 @@ Player Control:
 
 Instructions:
 - Issues: Poor initial understanding of the gameplay, difficulty remembering the different features, and mixed feedback on the key mappings.
-- Solutions: Added a brief instruction page before each game, and implemented custom key mappings to satisfy all player's preferences.
+- Solutions: Added an instruction and controls page in the main menu, and implemented custom key mappings to satisfy all player's preferences.
 
 Difficulty:
 - Issues: Players were unsure why they were losing health, found the terrain too steep, and the obstacles too challenging.
