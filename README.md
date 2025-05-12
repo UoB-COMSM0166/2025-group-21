@@ -637,7 +637,7 @@ We attempted to arrange these into short, medium and long-term effects, and visu
 
 #### Sustainability in Design
 
-By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 6), which we translated into actionable requirements in our product backlog.
+By using this framework, we were able to make informed and accurate decisions about sustainability during development. The insights gathered during this process were used to develop a series of user stories (Table 6), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
   <p align="center"><strong>Table 6</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
@@ -676,8 +676,8 @@ By using these two protocols, we were able to make informed and accurate decisio
     </tr>
     <tr>
         <td rowspan="1">Environmental</td>
-        <td>As an environmentally conscious player, I want a game that reflects its environmental state, so that it can promote sustainability.</td>
-        <td>Given the game is set in the Antarctic, when a player interacts with the game, then they should have the opportunity to learn or contribute to the Antarctic sustainability.</td>
+        <td>As an environmentally conscious player, I want a game that reflects its environment, so that it can promote sustainability.</td>
+        <td>Given the game is set in the Antarctic, when a player interacts with the game, then they should have the opportunity to learn about or contribute to the Antarctic sustainability.</td>
     </tr>
     <tr>
         <td rowspan="2">Individual</td>
