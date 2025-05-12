@@ -559,7 +559,7 @@ We used Jest unit testing to verify our game code’s logic, focusing on game st
 **Example — Obstacle Testing**<br>
 Our game aerial obstacles, intended to challenge the player while flying. We tested their movement and interactions using a range of assertions. This was aided by using the inheritance and polymorphism in the obstacle subclasses. An excerpt is shown below.
 
-<pre>```
+<pre>
 test('position and angle change when freezing from snowball hit', () => {
         // Get initial params before registering hit
         obstacle.freezing = true;
@@ -572,7 +572,7 @@ test('position and angle change when freezing from snowball hit', () => {
         expect(obstacle.pos.y).toBeGreaterThan(initialY);
         expect(obstacle.angle).toBeGreaterThan(initialAngle);
     });
-```</pre>
+</pre>
 
 ### Black Box Testing
 We also conducted extensive black box testing throughout development. A develop branch allowed us to merge updates and test repeatedly, identifying bugs before deploying the code on the main branch.
