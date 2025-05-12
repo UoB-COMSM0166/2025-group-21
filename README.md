@@ -375,10 +375,10 @@ Difficulty:
 ### Heuristic Evaluation
 
 #### Process
-Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table X). All heuristic violations were addressed and the solution is documented below.
+Three participants were asked to play the game and evaluate it against the 10 Nielsen design heuristics. We felt that the Nielsen design heuristics were a valid approach, since our game involves a substantial amount of menu and shop navigation. The main heuristic violations identified were documented and our team assessed their severity based on impact, frequency, and persistence, to calculate an overall severity rating (Table 2). All heuristic violations were addressed and the solution is documented below.
 
 <div align="center">
- 	<p><b>Table X.</b> Heuristic violations identified in our game, their severity ratings, and solutions.</p>
+  	<p align="center"><strong>Table 2</strong><br>Heuristic violations identified in our game, their severity ratings, and solutions</p>
 	<table border="1">
 	  <thead>
 	    <tr>
@@ -464,10 +464,10 @@ These evaluations involved 10 participants, each trialing two difficulty modes. 
 ### Raw NASA TLX
 
 #### Subscale Workload Scores
-Across all six subscales, the median scores for all participants increased with difficulty. The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
+Across all six subscales, the median scores for all participants increased with difficulty (Table 3). The largest change was in Frustration, which rose from a median of 20 (easy) to 55 (hard). Other sizeable increases were seen in Effort and Temporal Demand.
 
 <div align="center">
-  <p><strong>Table 2</strong><br>Median NASA TLX subscale scores for all participants</p>
+  <p><strong>Table 3</strong><br>Median NASA TLX subscale scores for all participants</p>
   <table>
     <thead>
       <tr>
@@ -489,7 +489,7 @@ Across all six subscales, the median scores for all participants increased with 
 </div>
 
 #### Overall Perceived Workload Scores
-All participants reported an increased perceived workload at higher difficulty levels (Figure X). Learning effects were offset with alternating the difficulty testing order for each participant.
+All participants reported an increased perceived workload at higher difficulty levels (Figure 16). Learning effects were offset with alternating the difficulty testing order for each participant.
 
 <div align="center">
 	<img src="report/evaluation_figures/nasatlx_figure.png" width="700"/>
@@ -497,10 +497,10 @@ All participants reported an increased perceived workload at higher difficulty l
 </div>
 
 #### Statistical Analysis
-A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table X) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
+A Wilcoxon Signed-Rank test was performed at both a subscale and overall level to ascertain the statistical significance of the change at a granular overarching level. The results (Table 4) show that increasing difficulty gave a statistically significant difference in all scales except mental demand, and overall previewed workload.
 
 <div align="center">
-  <p><strong>Table 3</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
+  <p><strong>Table 4</strong><br>Wilcoxon Signed-Rank Test, with N = 10, α = 0.05 and a critical value of 8</p>
   <table>
     <thead>
       <tr>
@@ -591,10 +591,10 @@ As a team, we each contributed sustainability-focused questions to prompt group 
 
 #### Analysis
 
-From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 4).
+From this open discussion, we created a framework of notes, that divides the sustainability impacts of our game into focal points within these five dimensions (Table 5).
 
 <div align=“center”>
-  <p align="center"><strong>Table 4</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
+  <p align="center"><strong>Table 5</strong><br>Discussion notes divided into sustainability dimensions from SusAF protocol</p>
   <table border="1">
     <thead>
       <tr>
@@ -637,10 +637,10 @@ We attempted to arrange these into short, medium and long-term effects, and visu
 
 #### Sustainability in Design
 
-By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 5), which we translated into actionable requirements in our product backlog.
+By using these two protocols, we were able to make informed and accurate decisions sustainability during our development. The insights gathered during this process were used to develop a series of user stories (Table 6), which we translated into actionable requirements in our product backlog.
 
 <div align=“center”>
-  <p align="center"><strong>Table 5</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
+  <p align="center"><strong>Table 6</strong><br>Sustainability user stories and their acceptance criteria, arising from the SusAF</p>
   <table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>Dimension</th>
@@ -814,7 +814,7 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 # 10. Contribution Statement
 
 <div align="center">
-	<p><strong>Table 6</strong><br>Relative team contributions to the PengWings project</p>
+	<p><strong>Table 7</strong><br>Relative team contributions to the PengWings project</p>
 
 | Name | Contribution |
 | :-: | :-: |
