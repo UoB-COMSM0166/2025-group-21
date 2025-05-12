@@ -531,7 +531,7 @@ Since the data show that higher difficulty led to significant increases in media
 ### System Usability Survey (SUS)
 
 #### Process
-After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability. Scores were calculated using standard SUS methodology.
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardized questions assessing overall system usability.(Lewis, 2018) Scores were calculated using standard SUS methodology.
 
 #### Results
 The individual SUS scores are shown in Figure 17, with the industry average benchmark of 68 shown for comparison.
@@ -693,7 +693,7 @@ By using these two protocols, we were able to make informed and accurate decisio
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design.(Franziska Warncke, Liya Mathew, Catalog) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
 #### 1. Defer Offscreen Images
 
@@ -942,3 +942,11 @@ To conclude, we have found the PengWings project to be a deeply rewarding and en
 	<img src="report/requirements_figures/use_case_specification.png" width="800">
 	<p>PengWings use-case specification<br><br><br></p>
 </div>
+
+# References
+
+Lewis, J.R. (2018) ‘The system usability scale: Past, present, and future’, _International Journal of Human–Computer Interaction_, 34(7), pp. 577–590. doi:10.1080/10447318.2018.1455307. 
+
+_Catalog_ (no date) _Green Software Patterns_. Available at: https://patterns.greensoftware.foundation/catalog/ (Accessed: 10 May 2025). 
+
+
