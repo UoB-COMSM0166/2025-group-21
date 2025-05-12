@@ -289,7 +289,7 @@ To incorporate randomness, we combined multiple sine curves with varying amplitu
 
 #### Modifiable Difficulties
 
-Difficulty levels were implemented by adjusting the sine wave parameters. More extreme values produce steeper, more chaotic terrain—ideal for skilled players seeking higher scores through greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
+Difficulty levels were implemented by adjusting the sine wave parameters. More extreme parameters produce steeper, more chaotic terrain, suiting skilled players who can achieve higher scores by greater airtime. Significant effort went into balancing these parameters to keep gameplay fun and challenging at all levels.
 
 <div align="center">
     <img src="report/implementation_figures/terrain_difficulty_figure.gif" width="700" alt="Different difficulty terrains">
