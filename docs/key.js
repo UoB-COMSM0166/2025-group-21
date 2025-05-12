@@ -187,10 +187,13 @@ function keyPressed() {
             if (keyCode === DOWN_ARROW || keyCode === UP_ARROW) {
                 domains.game.stats.backButtonSelected = true;
                 document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
             }
             else if (keyCode === ENTER) {
+                document.body.classList.remove("show-cursor");
+                domains.game.death.cursorVisible = false;
+
                 if (domains.game.stats.backButtonSelected) {
-                    document.body.classList.remove("show-cursor");
                     domains.game.death.showStats = false;
                     domains.game.death.selectedButtonIndex = -1;
                     domains.game.stats.backButtonSelected = false;

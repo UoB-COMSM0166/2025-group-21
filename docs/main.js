@@ -144,8 +144,8 @@ function respondToMouseMovement() {
         case 'shop':
             if (domains.shop.keyNav.selected != null) {
                 domains.shop.keyNav.selected = null;
-                document.body.classList.add("show-cursor");
             }
+            document.body.classList.add("show-cursor");
             break;
     }
 }

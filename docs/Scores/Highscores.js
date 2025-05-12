@@ -175,7 +175,7 @@ class Highscores {
         if (hoveringOverButton(pos, size)) {
             image(submitButtonHover, pos.x, pos.y, size.x, size.y);
 
-            if (mouseIsPressed && this.userName.length > 0) {
+            if (mouseIsPressed) {
                 this.submitButtonPressed();
             }
         }
@@ -188,10 +188,12 @@ class Highscores {
     }
 
     submitButtonPressed() {
-        this.usernameEntered = true;
-        userIsTyping = false;
-        this.buttonsActive = false;
-        this.buttonCooldownTimer.tick();
+        if (this.userName.length > 0) {
+            this.usernameEntered = true;
+            userIsTyping = false;
+            this.buttonsActive = false;
+            this.buttonCooldownTimer.tick();
+        }
     }
 
     updateUsernameFromInput() {

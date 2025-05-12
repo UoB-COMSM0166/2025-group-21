@@ -195,9 +195,6 @@ class Death {
         fill('rgba(0, 0, 0, 0.6)') // overlay black tint under score
         rect(0, 0, width, height);
         // Allow cursor again, and load death screen menu
-        document.body.classList.add("show-cursor");
-
-        //document.body.classList.add("show-cursor");
         this.updateButtons();
     }
 
