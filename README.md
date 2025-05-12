@@ -154,7 +154,7 @@ A range of PengWings stakeholders were identified (Figure 5) and, from these, us
             <td>Given the player is interacting with a UI menu, when they look at the screen, then they see a minimal button layout with a consistent colour scheme.</td>
         </tr>
         <tr>
-            <td>As player who values rich sound design, I want a diverse range of sound effects so that the soundtrack does not become monotonous.</td>
+            <td>As a player who values rich sound design, I want a diverse range of sound effects so that the soundtrack does not become monotonous.</td>
             <td>Given the player is in game, when any unique event occurs, then a corresponding unique sound effect is played.</td>
         </tr>
         <tr>
