@@ -516,17 +516,13 @@ class Workshop {
     }
 
     showForceFieldDescription() {
-        // compute price for the displayed force field level
         let forceFieldPrice = (this.showForceField) * 750;
 
         push();
         textFont(instructionFont);
         text(
             `Force Field level ${this.showForceField}:  ${forceFieldPrice} coins\n\n` +
-            //--todo add requirement and descreiption for force field
-            //inventory.getForceFieldBuyRequirement(this.showForceField)
-            'requirements' + 'description',
-            //inventory.getForceFieldDescription(this.showForceField),
+            inventory.getForceFieldDescription(this.showForceField),
             0.34 * width,
             0.33 * height
         );
