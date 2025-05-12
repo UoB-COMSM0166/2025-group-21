@@ -279,7 +279,7 @@ We wanted the terrain to generate continuously as long as players stayed alive. 
 
 #### Random and Unpredictable Terrain
 
-To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (see Figure 12). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
+To incorporate randomness, we combined multiple sine curves with varying amplitudes, frequencies, and phases. This summation created terrain with natural variation and unpredictability (Figure 12). To ensure unique terrain for every session, we randomised the sine parameters using `Math.random()`.
 
 <div align="center">
     <img src="report/implementation_figures/sine_wave_figure.gif" width="700" alt="Sine curve diagram">
