@@ -5,7 +5,7 @@ const CURRENT_VERSION = 5;
 const NEW_GAME_STATE = {
     version: CURRENT_VERSION,
 
-    coins: 99999,
+    coins: 0,
     flyLevel: 0,
     projectileLevel: 0,
     forceFieldLevel: 0,
