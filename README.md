@@ -532,7 +532,7 @@ Since the data show that higher difficulty led to significant increases in media
 ### System Usability Survey (SUS)
 
 #### Process
-After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardised questions assessing overall system usability. (Lewis, 2018) Scores were calculated using standard SUS methodology.
+After completing the NASA TLX, all 10 participants completed the SUS, which consists of 10 standardised questions assessing overall system usability (Lewis, 2018). Scores were calculated using standard SUS methodology.
 
 #### Results
 The individual SUS scores are shown in Figure 17, with the industry average benchmark of 68 shown for comparison.
