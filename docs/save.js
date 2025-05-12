@@ -24,6 +24,7 @@ const NEW_GAME_STATE = {
     shieldKey: 'f'
 }
 
+// Reloads game progress and settings from prior save
 function loadGameProgress() {
     const progress = localStorage.getItem(SAVE_KEY);
 
@@ -43,6 +44,7 @@ function loadGameProgress() {
     }
 }
 
+// Saves game progress and settings to browser storage
 function saveGameProgress() {
     const progress = {
         version: CURRENT_VERSION,

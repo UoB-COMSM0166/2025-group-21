@@ -1,12 +1,11 @@
 class Highscores {
 
     constructor() {
-        // Need to remove these from the repo and add privately somehow - not good practice currently
         this.highscores = [];
         this.maxScores = 10;
         this.usernameEntered = false; // Flag to track if username has been entered
         this.userName = '';
-        // Load the highscores from the Gist when the game starts
+        // Load the highscores when the game starts
         this.loadHighscores();
         this.buttonsActive = true;
         this.buttonCooldownTimer = new Clock();
@@ -167,6 +166,7 @@ class Highscores {
         pop();
     }
 
+    // Display for highscore submission button
     updateSubmitButton(scale) {
         //console.log('typing = ' + userIsTyping);
         let size = createVector(submitButton.width / scale, submitButton.height / scale);
@@ -187,6 +187,7 @@ class Highscores {
         }
     }
 
+    // Run submission sequeunce
     submitButtonPressed() {
         if (this.userName.length > 0) {
             this.usernameEntered = true;
@@ -196,6 +197,7 @@ class Highscores {
         }
     }
 
+    // Display for typing username
     updateUsernameFromInput() {
         if (inputCharacter === 'Backspace') {
             if (this.userName.length > 0) {
@@ -219,6 +221,7 @@ class Highscores {
         inputCharacter = null;
     }
 
+    // Display for highscore screen text
     drawText() {
         push();
         fill('rgba(0, 0, 0, 0.6)');
@@ -236,6 +239,7 @@ class Highscores {
         pop();
     }
 
+    // Set params for back button
     updateBackButton() {
         push();
         this.updateButtonCooldown(30); // necessary as submit button is in same location as back button
@@ -260,6 +264,7 @@ class Highscores {
         pop();
     }
 
+    // Set params for menu button
     updateMainMenuButton() {
         push();
         let scale = 0.008 * width;
@@ -281,6 +286,7 @@ class Highscores {
         pop();
     }
 
+    // Set button cooldown
     updateButtonCooldown(cooldown) {
         if (this.buttonCooldownTimer.time > 0) {
             this.buttonCooldownTimer.tick();

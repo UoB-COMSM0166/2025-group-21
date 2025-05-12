@@ -399,6 +399,7 @@ function preload() {
 
 let volume = 0.2;
 
+// Sets the volume for all in game sound effects
 function setMasterVolume(masterVolume) {
     let sound;
     //if ((sound = soundBoard.cache['mainSoundtrack1']) !== undefined) sound.setVolume(2*volume*masterVolume);

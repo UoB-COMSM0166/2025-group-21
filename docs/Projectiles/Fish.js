@@ -3,7 +3,6 @@
 class Fish extends Projectile {
 
     constructor(position, velocity) {
-
         super(position, createVector(velocity.x/2, velocity.y/2));
         this.gravity = 0.7;
         this.angle = 0;
@@ -14,13 +13,14 @@ class Fish extends Projectile {
         domains.game.fishThrow.play();
     }
 
+    // Update the fish position on the screen
     updatePosition() {
-
         this.vel.y += this.gravity;
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
     }
 
+    // Draw the fish on the screen each frame
     drawProjectile() {
         push();
         translate(this.pos.x, this.pos.y);

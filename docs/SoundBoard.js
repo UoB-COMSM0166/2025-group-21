@@ -10,6 +10,7 @@ class SoundBoard {
         });
     }
 
+    // Load sound effects to audio cache
     async loadAudio() {
         this.cache['mainSoundtrack1'] = await loadSoundAsync('assets/sounds/mainSoundtrack1.mp3');
         this.cache['workshopMusic'] = await loadSoundAsync('assets/sounds/workshopMusic.mp3');
@@ -38,6 +39,7 @@ class SoundBoard {
         this.cache['rotorSound'] = await loadSoundAsync('assets/sounds/rotorSound.mp3');
     }
 
+    // Return a specific sound from cache
     async getSound(name) {
         if (this.cache[name]) {
             return this.cache[name];

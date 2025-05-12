@@ -29,12 +29,14 @@ class Pause {
         this.cursorVisible = false;
     }
 
+    // Asyncronously load sound from sound board for pause menu
     async loadAudio() {
         this.hoverPopSound      = await soundBoard.getSound('hoverPopSound');
         this.buttonPressedSound = await soundBoard.getSound('buttonPressedSound');
         setMasterVolume(this.masterVolume);
     }
 
+    // Display pause screen
     showPauseScreen() {
         if (this.fieldsReset) {
             //document.body.classList.add("show-cursor");

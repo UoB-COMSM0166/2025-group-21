@@ -51,6 +51,7 @@ class MainMenu {
         setMasterVolume(this.masterVolume);
     }
 
+    // Set main menu buttons
     updateButtons() {
         if (!this.showButtons) return;
 

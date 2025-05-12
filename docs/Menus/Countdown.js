@@ -5,6 +5,7 @@ class Countdown {
         this.completed = false;
     }
 
+    // Countdown for reentering game after pause
     display() {
         let elapsedTime = millis() - this.startTime;
 

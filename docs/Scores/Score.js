@@ -3,10 +3,8 @@
 class Score {
 
     constructor() {
-
         this.total = 0;
         this.airtime = 0
-
         this.currentAirtime = 0;
         this.pauseTime = null;
         this.pauseStart = null;
@@ -46,6 +44,7 @@ class Score {
         this.total += Math.round((airtimeBonus + speedBonus) * (settings.difficulty + 1));
     }
 
+    // Tracks length of player air time to calculate score
     trackAirtime() {
 
         if (domains.game.player.inAir) {
@@ -78,6 +77,7 @@ class Score {
         }
     }
 
+    // Display the airtime on the screen
     printAirtime() {
 
         let size = width/50;
@@ -88,6 +88,7 @@ class Score {
         text(`${round(this.currentAirtime, 3)} s`, 0.65*width, 0.02*height);
     }
 
+    // Print the running score on the screen
     printScore() {
 
         let size = width/50;

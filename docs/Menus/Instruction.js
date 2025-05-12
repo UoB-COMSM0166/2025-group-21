@@ -5,6 +5,7 @@ class Instruction {
 
     }
 
+    // Draw instructions page on the canvas
     draw() {
         background(240, 248, 255);
         imageMode(CORNER);
@@ -25,6 +26,7 @@ class Instruction {
         this.updateMainMenuButton();
     }
 
+    // Write instructions text
     drawInstructions(boxWidth, boxHeight) {
         push();
         textFont(instructionFont);
@@ -53,6 +55,7 @@ class Instruction {
         pop();
     }
 
+    // Draw back button
     drawClawButton(boxWidth, boxHeight) {
         const buttonWidth = boxWidth  * 0.15;
         const buttonHeight = boxHeight * 0.08;
@@ -82,10 +85,12 @@ class Instruction {
 
     }
 
+    // Process keyboard navigation movement
     moveSelection(direction) {
         this.selectedButtonIndex = direction > 0 ? 0 : -1;
     }
 
+    // Process keyboard navigation selection
     selectCurrentButton() {
         if (this.selectedButtonIndex === 0) {
             this.continueButtonPressed();
@@ -119,6 +124,7 @@ class Instruction {
         pop();
     }
 
+    // Handle keyboard navigation movement
     handleKeyNav(key) {
         if (key === UP_ARROW || key === DOWN_ARROW) {
             domains.mainMenu.hideCursor();
