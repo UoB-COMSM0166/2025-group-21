@@ -453,7 +453,7 @@ Three participants were asked to play the game and evaluate it against the 10 Ni
 
 ## Quantitative Evaluation
 
-To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools (ADD CITATIONS), and statistical analysis:
+To ensure our game was both appropriately challenging and also user-friendly, we conducted quantitative evaluations of usability using two established and validated questionnaire tools, and statistical analysis:
 - **Raw NASA TLX** — to quantify perceived workload
 - **System Usability Survey (SUS)** — to quantify system usability
 - **Wilcoxon Signed-Rank Test** — to evaluate the statistical significance of the evaluations
@@ -693,7 +693,7 @@ By using these two protocols, we were able to make informed and accurate decisio
 
 ### Green Software Foundation Patterns
 
-To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactfull on our design. (citation X) We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
+To support the sustainability of our game, we researched a range of Green Software Patterns, and selected three patterns that we felt were relevant to and impactful on our design. We evaluated their effectiveness against the Software Carbon Intensity (SCI) equation `SCI = (E * I) + M per R`.
 
 #### 1. Defer Offscreen Images
 
