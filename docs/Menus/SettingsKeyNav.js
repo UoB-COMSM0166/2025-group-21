@@ -448,7 +448,7 @@ class SettingsKeyNav {
             push();
             textAlign(CENTER);
             fill(209, 232, 255);
-            textSize(width/60);
+            textSize(width/70);
             strokeWeight(width/500);
             textFont(instructionFont);
             text("Use left/right keys to adjust, press Enter to confirm", width/2, 0.31*height);
