@@ -580,7 +580,7 @@ We also conducted extensive black box testing throughout development. A develop 
 
 # 7. Sustainability
 
-Sustainability was an important ethos to our development team, and our game's natural environment and themes reflected this. We attempted to incorporate into our development process utilising two protocols:
+Sustainability was an important ethos to our development team, and our game's natural environment and themes reflected this. We attempted to incorporate sustainability into our development process using two protocols:
 - **Sustainability Awareness Framework (SusAF)**
 - And, the **Green Software Foundation Design Patterns**
 
