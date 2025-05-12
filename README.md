@@ -222,7 +222,7 @@ In much the same way as the previous pair of classes, the LaserAbility class wou
 
 ## Final Design
 
-As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the overall program flow is illustrated in the class diagram (Figure 8) and sequence diagram (Figure 9) below.
+As new features were added throughout the development process, the system architecture underwent significant refactoring and structural changes. The final high-level architecture showing the main class interactions and program flow is illustrated in the class diagram (Figure 8) and sequence diagram (Figure 9) below.
 
 <div align="center">
     <img src="report/design_figures/final_architecture.png" width="700">
