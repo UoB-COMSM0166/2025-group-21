@@ -584,7 +584,7 @@ Sustainability was an important ethos to our development team, and our game's na
 - Sustainability Awareness Framework (SusAF)
 - And, the Green Software Foundation Design Patterns
 
-You can donate to support Penguin conservation directly from the link in PengWings' main menu!
+You can donate to support penguin conservation directly from the link in the PengWings main menu!
 
 ### Sustainability Awareness Framework
 
