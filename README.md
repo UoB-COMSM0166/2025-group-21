@@ -22,6 +22,7 @@
 9. [Conclusion](#9-conclusion)
 10. [Contribution Statement](#10-contribution-statement)
 11. [Appendix](#11-appendix)
+12. [References](#12-references)
 
 # 1. Development Team
 
